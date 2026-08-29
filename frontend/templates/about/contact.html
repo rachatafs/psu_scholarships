@@ -1,1 +1,148 @@
-{% extends 'base.html' %}{% block content %}<h1>ติดต่อเรา</h1>{% endblock %}
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}ติดต่อเรา | PSU Phuket Scholarships{% endblock %}
+
+{% block content %}
+<div style="
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+    background: #f8fafc;
+">
+    <div style="
+        background: white;
+        border-radius: 20px;
+        padding: 3rem;
+        max-width: 600px;
+        width: 100%;
+        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    ">
+        <!-- Header -->
+        <div style="text-align:center; margin-bottom:2rem;">
+            <div style="
+                width: 64px;
+                height: 64px;
+                background: #e3f0ff;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 1rem;
+                font-size: 1.8rem;
+            ">📞</div>
+            <h1 style="
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: #1a2e4a;
+                margin: 0;
+            ">ติดต่อเรา</h1>
+            <p style="color:#6b7280; margin-top:0.5rem; font-size:0.95rem;">
+                Contact Us
+            </p>
+        </div>
+
+        <!-- Divider -->
+        <hr style="border:none; border-top:1.5px solid #e5e7eb; margin-bottom:2rem;">
+
+        <!-- University Name -->
+        <div style="margin-bottom:1.5rem; text-align:center;">
+            <p style="
+                font-size:1.1rem;
+                font-weight:700;
+                color:#1565c0;
+                margin:0 0 0.25rem;
+            ">Prince of Songkla University Phuket Campus</p>
+            <p style="
+                font-size:0.95rem;
+                color:#374151;
+                margin:0;
+            ">Student Development and Relations PSU Phuket</p>
+        </div>
+
+        <!-- Contact Info Cards -->
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+
+            <!-- Phone -->
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:1rem;
+                padding:1rem 1.25rem;
+                background:#f8fafc;
+                border-radius:12px;
+                border:1.5px solid #e5e7eb;
+            ">
+                <div style="
+                    font-size:1.4rem;
+                    width:40px;
+                    text-align:center;
+                ">📱</div>
+                <div>
+                    <p style="font-size:0.8rem; color:#6b7280; margin:0 0 0.2rem;">โทรศัพท์ / Phone</p>
+                    <p style="font-size:1rem; font-weight:600; color:#1a2e4a; margin:0;">
+                        0 7627 6047
+                    </p>
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div style="
+                display:flex;
+                align-items:flex-start;
+                gap:1rem;
+                padding:1rem 1.25rem;
+                background:#f8fafc;
+                border-radius:12px;
+                border:1.5px solid #e5e7eb;
+            ">
+                <div style="
+                    font-size:1.4rem;
+                    width:40px;
+                    text-align:center;
+                    margin-top:0.1rem;
+                ">📍</div>
+                <div>
+                    <p style="font-size:0.8rem; color:#6b7280; margin:0 0 0.2rem;">ที่อยู่ / Address</p>
+                    <p style="font-size:1rem; font-weight:600; color:#1a2e4a; margin:0; line-height:1.6;">
+                        80 Moo 1 Vichit Songkram Rd.<br>
+                        Kathu, Phuket, Thailand 83210
+                    </p>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <div style="
+                display:flex;
+                align-items:center;
+                gap:1rem;
+                padding:1rem 1.25rem;
+                background:#f8fafc;
+                border-radius:12px;
+                border:1.5px solid #e5e7eb;
+            ">
+                <div style="
+                    font-size:1.4rem;
+                    width:40px;
+                    text-align:center;
+                ">✉️</div>
+                <div>
+                    <p style="font-size:0.8rem; color:#6b7280; margin:0 0 0.2rem;">อีเมล / E-mail</p>
+                    <a href="mailto:student-alumni@phuket.psu.ac.th"
+                       style="
+                           font-size:1rem;
+                           font-weight:600;
+                           color:#1565c0;
+                           text-decoration:none;
+                       ">
+                        student-alumni@phuket.psu.ac.th
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

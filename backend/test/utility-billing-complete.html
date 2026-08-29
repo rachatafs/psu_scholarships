@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility Billing API - Complete Reference</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans Thai', sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #f1f5f9;
+            min-height: 100vh;
+        }
+        .glass {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-hover:hover {
+            background: rgba(30, 41, 59, 0.8);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .method-get { background: rgba(34, 197, 94, 0.15); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.3); }
+        .method-post { background: rgba(59, 130, 246, 0.15); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .method-put { background: rgba(234, 179, 8, 0.15); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+        .method-delete { background: rgba(239, 68, 68, 0.15); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .table-badge {
+            background: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        .flow-step {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .flow-step::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 2rem;
+            bottom: -1rem;
+            width: 2px;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+        }
+        .flow-step:last-child::before {
+            display: none;
+        }
+        .flow-number {
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+        }
+        .example-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            font-size: 0.75rem;
+            overflow-x: auto;
+        }
+        .example-key { color: #a78bfa; }
+        .example-string { color: #4ade80; }
+        .example-number { color: #facc15; }
+        .example-bool { color: #60a5fa; }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(139, 92, 246, 0.3), transparent);
+        }
+        .use-case-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        .use-case-card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+        .db-table {
+            background: rgba(139, 92, 246, 0.08);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        .db-table:hover {
+            background: rgba(139, 92, 246, 0.12);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="max-w-7xl mx-auto space-y-8">
+        
+        <!-- Header -->
+        <div class="glass rounded-2xl p-8 shadow-2xl">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h1 class="text-4xl font-extrabold tracking-tight text-white flex items-center gap-3">
+                        <i class="ph-bold ph-lightning text-amber-400"></i>
+                        Utility Billing API
+                    </h1>
+                    <p class="text-slate-400 mt-2 text-sm">ระบบคำนวณค่าน้ำค่าไฟอัตโนมัติ — Complete Reference Guide</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="text-xs bg-emerald-900/30 px-3 py-1.5 rounded-full border border-emerald-700 flex items-center gap-2">
+                        <i class="ph-bold ph-check-circle text-emerald-400"></i>
+                        <span>100% Complete</span>
+                    </div>
+                    <div class="text-xs bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700">
+                        <span>3 Jul 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Database Tables Section -->
+        <div class="glass rounded-2xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <i class="ph-bold ph-database text-purple-400"></i>
+                Database Tables (5 ตาราง)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- master_meter_type -->
+                <div class="db-table rounded-xl p-4 transition-all">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-tag text-purple-400"></i>
+                        <h3 class="font-bold text-white text-sm">master_meter_type</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">ประเภทมิเตอร์ + ราคาต่อหน่วย</p>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">meter_type_id</span>
+                            <span>PK</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">type_name</span>
+                            <span class="text-purple-400">"water", "electricity"</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">unit_price</span>
+                            <span class="text-yellow-400">15.00, 4.50</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- master_meter -->
+                <div class="db-table rounded-xl p-4 transition-all">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-gauge text-blue-400"></i>
+                        <h3 class="font-bold text-white text-sm">master_meter</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">มิเตอร์แต่ละตัว (เลขมิเตอร์, ตำแหน่ง)</p>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">meter_id</span>
+                            <span>PK</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">meter_name</span>
+                            <span class="text-blue-400">"W-001", "E-001"</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">meter_type_id</span>
+                            <span>FK → master_meter_type</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">dock_id</span>
+                            <span>FK → master_dock</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- booking_meter -->
+                <div class="db-table rounded-xl p-4 transition-all">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-link text-emerald-400"></i>
+                        <h3 class="font-bold text-white text-sm">booking_meter</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">ผูกมิเตอร์กับ booking + ค่าที่อ่าน</p>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">booking_meter_id</span>
+                            <span>PK</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">ref_booking_id</span>
+                            <span>FK → booking</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">meter_id</span>
+                            <span>FK → master_meter</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">prev_reading</span>
+                            <span class="text-yellow-400">100.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">curr_reading</span>
+                            <span class="text-yellow-400">150.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">raw_usage</span>
+                            <span class="text-emerald-400">50.00 (auto)</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">unit_price</span>
+                            <span class="text-yellow-400">15.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">total_amount</span>
+                            <span class="text-yellow-400">750.00 (auto)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- meter_read_transaction -->
+                <div class="db-table rounded-xl p-4 transition-all">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-clipboard-text text-amber-400"></i>
+                        <h3 class="font-bold text-white text-sm">meter_read_transaction</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">ประวัติการจดค่ามิเตอร์</p>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">trans_id</span>
+                            <span>PK</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">meter_id</span>
+                            <span>FK → master_meter</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">booking_id</span>
+                            <span>FK → booking</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">read_date</span>
+                            <span>2026-07-01</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">read_value</span>
+                            <span class="text-yellow-400">150.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">read_type</span>
+                            <span>"initial", "final"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- utility_billing -->
+                <div class="db-table rounded-xl p-4 transition-all">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-receipt text-red-400"></i>
+                        <h3 class="font-bold text-white text-sm">utility_billing</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">Billing records (รอออกบิล)</p>
+                    <div class="space-y-1 text-xs">
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">billing_id</span>
+                            <span>PK</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">booking_meter_id</span>
+                            <span>FK → booking_meter</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">billing_period</span>
+                            <span class="text-purple-400">"2026-07"</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">usage</span>
+                            <span class="text-yellow-400">50.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">unit_price</span>
+                            <span class="text-yellow-400">15.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">total_amount</span>
+                            <span class="text-yellow-400">750.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">status</span>
+                            <span class="text-emerald-400">"Draft" → "Approved"</span>
+                        </div>
+                        <div class="flex justify-between text-slate-300">
+                            <span class="text-slate-500">invoice_id</span>
+                            <span>FK → invoice_head</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Relations Summary -->
+                <div class="db-table rounded-xl p-4 transition-all">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-git-merge text-cyan-400"></i>
+                        <h3 class="font-bold text-white text-sm">Relations</h3>
+                    </div>
+                    <div class="space-y-2 text-xs">
+                        <div class="bg-slate-900/50 p-2 rounded">
+                            <p class="text-slate-300 font-semibold mb-1">master_meter_type</p>
+                            <p class="text-slate-500">1:N → master_meter</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-2 rounded">
+                            <p class="text-slate-300 font-semibold mb-1">master_meter</p>
+                            <p class="text-slate-500">1:N → booking_meter</p>
+                            <p class="text-slate-500">1:N → meter_read_transaction</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-2 rounded">
+                            <p class="text-slate-300 font-semibold mb-1">booking_meter</p>
+                            <p class="text-slate-500">1:N → utility_billing</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-2 rounded">
+                            <p class="text-slate-300 font-semibold mb-1">utility_billing</p>
+                            <p class="text-slate-500">N:1 → invoice_head</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Endpoints Section -->
+        <div class="glass rounded-2xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <i class="ph-bold ph-plugs text-blue-400"></i>
+                API Endpoints (11 endpoints)
+            </h2>
+            
+            <!-- Meter Module -->
+            <div class="mb-6">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="ph-bold ph-gauge text-blue-400"></i>
+                    Meter Module
+                </h3>
+                <div class="space-y-3">
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-post px-2 py-1 rounded text-xs font-bold">POST</span>
+                            <code class="text-white text-sm">/api/meters/readings</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">บันทึกค่ามิเตอร์ (จดมิเตอร์)</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">meter_read_transaction</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">booking_meter</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-get px-2 py-1 rounded text-xs font-bold">GET</span>
+                            <code class="text-white text-sm">/api/meters/readings</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">ดูประวัติการจดมิเตอร์</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">meter_read_transaction</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-post px-2 py-1 rounded text-xs font-bold">POST</span>
+                            <code class="text-white text-sm">/api/meters/bookings/:bookingId</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">ผูกมิเตอร์กับ Booking (ตอนเช็คอิน)</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">booking_meter</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-post px-2 py-1 rounded text-xs font-bold">POST</span>
+                            <code class="text-white text-sm">/api/meters/bookings/:bookingId/:meterId/disconnect</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">ปลดมิเตอร์จาก Booking (ตอนเช็คเอาท์)</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">booking_meter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Utility Billing Module -->
+            <div>
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="ph-bold ph-receipt text-purple-400"></i>
+                    Utility Billing Module
+                </h3>
+                <div class="space-y-3">
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-post px-2 py-1 rounded text-xs font-bold">POST</span>
+                            <code class="text-white text-sm">/api/utility-billing/calculate</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">คำนวณ usage & ยอดเงิน (preview)</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">booking_meter</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">master_meter_type</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-post px-2 py-1 rounded text-xs font-bold">POST</span>
+                            <code class="text-white text-sm">/api/utility-billing</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">สร้าง billing record</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">utility_billing</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-post px-2 py-1 rounded text-xs font-bold">POST</span>
+                            <code class="text-white text-sm">/api/utility-billing/:id/generate-invoice</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">ออก invoice ทีละใบ</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">utility_billing</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">invoice_head</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">invoice_item</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-get px-2 py-1 rounded text-xs font-bold">GET</span>
+                            <code class="text-white text-sm">/api/utility-billing</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">List billings (พร้อม pagination)</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">utility_billing</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-get px-2 py-1 rounded text-xs font-bold">GET</span>
+                            <code class="text-white text-sm">/api/utility-billing/:id</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">Get billing by ID</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">utility_billing</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-get px-2 py-1 rounded text-xs font-bold">GET</span>
+                            <code class="text-white text-sm">/api/utility-billing/preview</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">Preview ค่าน้ำไฟรายเดือน (ยังไม่บันทึก)</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">booking_meter</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">master_meter</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">master_meter_type</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                        <div class="flex items-center gap-3 mb-2">
+                            <span class="method-post px-2 py-1 rounded text-xs font-bold">POST</span>
+                            <code class="text-white text-sm">/api/utility-billing/generate</code>
+                        </div>
+                        <p class="text-xs text-slate-400 mb-2">Bulk generate invoices (หลายใบพร้อมกัน)</p>
+                        <div class="text-xs">
+                            <span class="text-slate-500">Tables:</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">utility_billing</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">invoice_head</span>
+                            <span class="table-badge px-2 py-0.5 rounded text-xs ml-1">invoice_item</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Use Case Flows Section -->
+        <div class="glass rounded-2xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <i class="ph-bold ph-flow-arrow text-emerald-400"></i>
+                Use Case Flows (3 scenarios)
+            </h2>
+
+            <!-- Flow 1: Check-in -->
+            <div class="use-case-card rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="ph-bold ph-sign-in text-emerald-400"></i>
+                    Flow 1: ลูกค้าเช็คอิน → ผูกมิเตอร์
+                </h3>
+                <div class="space-y-4">
+                    <div class="flow-step">
+                        <div class="flow-number">1</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">ลูกค้าเช็คอินที่ท่าเรือ</p>
+                            <p class="text-xs text-slate-400 mt-1">สร้าง booking ในระบบ</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">2</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">เลือกมิเตอร์ที่จะใช้</p>
+                            <p class="text-xs text-slate-400 mt-1">ดูรายการมิเตอร์ว่างจาก <code class="text-purple-400">GET /api/meters</code></p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">3</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">ผูกมิเตอร์กับ booking</p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-blue-400">POST /api/meters/bookings/:bookingId</code>
+                            </p>
+                            <div class="example-box mt-2">
+<pre>{
+  <span class="example-key">"meterId"</span>: <span class="example-number">1</span>,
+  <span class="example-key">"connectedAt"</span>: <span class="example-string">"2026-07-01T10:00:00Z"</span>
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">4</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">ระบบบันทึกค่ามิเตอร์เริ่มต้น</p>
+                            <p class="text-xs text-slate-400 mt-1">ตาราง <code class="text-purple-400">booking_meter</code> สร้างแถวใหม่</p>
+                            <div class="example-box mt-2">
+<pre>booking_meter_id: 1
+ref_booking_id: 100
+meter_id: 1
+prev_reading: 100.00
+curr_reading: 100.00
+status: "active"</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flow 2: Monthly Billing -->
+            <div class="use-case-card rounded-xl p-6 mb-6">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="ph-bold ph-calendar-check text-blue-400"></i>
+                    Flow 2: สิ้นเดือน → คำนวณค่าน้ำไฟ + ออกบิล
+                </h3>
+                <div class="space-y-4">
+                    <div class="flow-step">
+                        <div class="flow-number">1</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">พนักงานจดค่ามิเตอร์</p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-blue-400">POST /api/meters/readings</code>
+                            </p>
+                            <div class="example-box mt-2">
+<pre>{
+  <span class="example-key">"meterId"</span>: <span class="example-number">1</span>,
+  <span class="example-key">"bookingId"</span>: <span class="example-number">100</span>,
+  <span class="example-key">"readValue"</span>: <span class="example-number">150.00</span>,
+  <span class="example-key">"readType"</span>: <span class="example-string">"monthly"</span>
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">2</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">ดู Preview ค่าน้ำไฟรายเดือน</p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-blue-400">GET /api/utility-billing/preview?fromDate=2026-07-01&toDate=2026-07-31</code>
+                            </p>
+                            <div class="example-box mt-2">
+<pre>[
+  {
+    <span class="example-key">"bookingNo"</span>: <span class="example-string">"BK-2026-001"</span>,
+    <span class="example-key">"customerName"</span>: <span class="example-string">"เรือยอทช์ A"</span>,
+    <span class="example-key">"meterName"</span>: <span class="example-string">"W-001"</span>,
+    <span class="example-key">"meterType"</span>: <span class="example-string">"water"</span>,
+    <span class="example-key">"prevReading"</span>: <span class="example-number">100.00</span>,
+    <span class="example-key">"currReading"</span>: <span class="example-number">150.00</span>,
+    <span class="example-key">"usage"</span>: <span class="example-number">50.00</span>,
+    <span class="example-key">"unitPrice"</span>: <span class="example-number">15.00</span>,
+    <span class="example-key">"totalAmount"</span>: <span class="example-number">750.00</span>
+  }
+]</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">3</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">Bulk Generate Invoices</p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-blue-400">POST /api/utility-billing/generate</code>
+                            </p>
+                            <div class="example-box mt-2">
+<pre>{
+  <span class="example-key">"billingIds"</span>: [<span class="example-number">1</span>, <span class="example-number">2</span>, <span class="example-number">3</span>]
+}</pre>
+                            </div>
+                            <p class="text-xs text-slate-400 mt-2">ระบบสร้าง invoice หลายใบใน transaction เดียว</p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">4</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">ระบบอัปเดตสถานะ</p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-purple-400">utility_billing.status</code>: "Draft" → "Approved"
+                            </p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-purple-400">utility_billing.invoice_id</code>: ถูกตั้งค่า
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flow 3: Check-out -->
+            <div class="use-case-card rounded-xl p-6">
+                <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+                    <i class="ph-bold ph-sign-out text-red-400"></i>
+                    Flow 3: ลูกค้าเช็คเอาท์ → ปลดมิเตอร์
+                </h3>
+                <div class="space-y-4">
+                    <div class="flow-step">
+                        <div class="flow-number">1</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">จดค่ามิเตอร์ครั้งสุดท้าย</p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-blue-400">POST /api/meters/readings</code>
+                            </p>
+                            <div class="example-box mt-2">
+<pre>{
+  <span class="example-key">"meterId"</span>: <span class="example-number">1</span>,
+  <span class="example-key">"bookingId"</span>: <span class="example-number">100</span>,
+  <span class="example-key">"readValue"</span>: <span class="example-number">200.00</span>,
+  <span class="example-key">"readType"</span>: <span class="example-string">"final"</span>
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">2</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">ปลดมิเตอร์จาก booking</p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-blue-400">POST /api/meters/bookings/:bookingId/:meterId/disconnect</code>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">3</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">ระบบอัปเดต booking_meter</p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-purple-400">curr_reading</code>: 200.00
+                            </p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-purple-400">status</code>: "completed"
+                            </p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-purple-400">disconnected_at</code>: 2026-07-31
+                            </p>
+                        </div>
+                    </div>
+                    <div class="flow-step">
+                        <div class="flow-number">4</div>
+                        <div class="bg-slate-900/50 rounded-lg p-3">
+                            <p class="text-sm text-white font-semibold">คำนวณยอดสุดท้าย</p>
+                            <p class="text-xs text-slate-400 mt-1">
+                                <code class="text-blue-400">POST /api/utility-billing/calculate</code>
+                            </p>
+                            <div class="example-box mt-2">
+<pre>{
+  <span class="example-key">"bookingMeterId"</span>: <span class="example-number">1</span>,
+  <span class="example-key">"usage"</span>: <span class="example-number">100.00</span>,
+  <span class="example-key">"unitPrice"</span>: <span class="example-number">15.00</span>,
+  <span class="example-key">"totalAmount"</span>: <span class="example-number">1500.00</span>
+}</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frontend Usage Section -->
+        <div class="glass rounded-2xl p-6 shadow-xl">
+            <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                <i class="ph-bold ph-monitor text-cyan-400"></i>
+                Frontend Screens (5 หน้าจอ)
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-link text-emerald-400 text-xl"></i>
+                        <h3 class="font-bold text-white text-sm">หน้าผูกมิเตอร์</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">ตอนลูกค้าเช็คอิน</p>
+                    <div class="space-y-1 text-xs">
+                        <p class="text-slate-300"><span class="text-emerald-400">GET</span> /api/meters</p>
+                        <p class="text-slate-300"><span class="text-blue-400">POST</span> /api/meters/bookings/:id</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-clipboard-text text-amber-400 text-xl"></i>
+                        <h3 class="font-bold text-white text-sm">หน้าจดมิเตอร์</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">จดค่ามิเตอร์รายเดือน</p>
+                    <div class="space-y-1 text-xs">
+                        <p class="text-slate-300"><span class="text-blue-400">POST</span> /api/meters/readings</p>
+                        <p class="text-slate-300"><span class="text-emerald-400">GET</span> /api/meters/readings</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-unlink text-red-400 text-xl"></i>
+                        <h3 class="font-bold text-white text-sm">หน้าปลดมิเตอร์</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">ตอนลูกค้าเช็คเอาท์</p>
+                    <div class="space-y-1 text-xs">
+                        <p class="text-slate-300"><span class="text-blue-400">POST</span> /api/meters/bookings/:id/:meterId/disconnect</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-eye text-purple-400 text-xl"></i>
+                        <h3 class="font-bold text-white text-sm">หน้า Preview ค่าน้ำไฟ</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">ดูยอดก่อนออกบิล</p>
+                    <div class="space-y-1 text-xs">
+                        <p class="text-slate-300"><span class="text-emerald-400">GET</span> /api/utility-billing/preview</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/50 rounded-xl p-4 border border-slate-700">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i class="ph-bold ph-receipt text-blue-400 text-xl"></i>
+                        <h3 class="font-bold text-white text-sm">หน้าออกบิล</h3>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-3">Bulk generate invoices</p>
+                    <div class="space-y-1 text-xs">
+                        <p class="text-slate-300"><span class="text-blue-400">POST</span> /api/utility-billing/generate</p>
+                        <p class="text-slate-300"><span class="text-emerald-400">GET</span> /api/utility-billing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center text-xs text-slate-500 py-4">
+            <p>Utility Billing API Complete Reference • Generated 3 Jul 2026</p>
+            <p class="mt-1">All endpoints verified from develop branch</p>
+        </div>
+
+    </div>
+</body>
+</html>

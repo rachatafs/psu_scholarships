@@ -29,13 +29,13 @@ def scholarships(request):
 
 
 def scholarship_list(request, category):
-    query = request.GET.get('q', '')  # รับค่าจาก search box
-    
+    query = request.GET.get('q', '')
+
     items = Scholarship.objects.filter(category=category, status='active')
-    
+
     if query:
         items = items.filter(title__icontains=query)
-    
+
     category_names = {
         'general': 'ทุนการศึกษาทั่วไป',
         'exchange': 'ทุนการศึกษาแลกเปลี่ยน',
@@ -46,7 +46,7 @@ def scholarship_list(request, category):
         'scholarships': items,
         'category_title': category_names.get(category, 'ทุนการศึกษา'),
         'category': category,
-        'query': query,  # ส่งกลับไปแสดงใน input
+        'query': query,
     })
 
 
@@ -178,6 +178,9 @@ def update_application(request, pk):
 def scholarship_dashboard(request):
     now = timezone.now().date()
 
+    # คำนวณปี พ.ศ. อัตโนมัติ
+    thai_year = now.year + 543
+
     # สถิติทุน
     total_scholarships = Scholarship.objects.count()
     total_value = Scholarship.objects.aggregate(
@@ -188,12 +191,12 @@ def scholarship_dashboard(request):
     ).count()
 
     # สถิติการสมัคร
-    total_applications   = Application.objects.count()
+    total_applications    = Application.objects.count()
     pending_applications  = Application.objects.filter(status='pending').count()
     approved_applications = Application.objects.filter(status='approved').count()
     rejected_applications = Application.objects.filter(status='rejected').count()
 
-    # ข้อมูลสำหรับ Donut Chart (จำนวนทุนแต่ละประเภท)
+    # ข้อมูลสำหรับ Donut Chart
     general_count  = Scholarship.objects.filter(category='general').count()
     exchange_count = Scholarship.objects.filter(category='exchange').count()
     waiver_count   = Scholarship.objects.filter(category='fee_waiver').count()
@@ -210,20 +213,21 @@ def scholarship_dashboard(request):
     ).order_by('end_date')[:5]
 
     context = {
-        'total_scholarships':   total_scholarships,
-        'total_value':          total_value,
-        'open_scholarships':    open_scholarships,
-        'total_applications':   total_applications,
+        'thai_year':             thai_year,           # ← เพิ่มใหม่
+        'total_scholarships':    total_scholarships,
+        'total_value':           total_value,
+        'open_scholarships':     open_scholarships,
+        'total_applications':    total_applications,
         'pending_applications':  pending_applications,
         'approved_applications': approved_applications,
         'rejected_applications': rejected_applications,
-        'general_count':  general_count,
-        'exchange_count': exchange_count,
-        'waiver_count':   waiver_count,
-        'lunch_count':    lunch_count,
-        'recent_scholarships': recent_scholarships,
-        'deadline_soon':       deadline_soon,
-        'today':               now,
+        'general_count':         general_count,
+        'exchange_count':        exchange_count,
+        'waiver_count':          waiver_count,
+        'lunch_count':           lunch_count,
+        'recent_scholarships':   recent_scholarships,
+        'deadline_soon':         deadline_soon,
+        'today':                 now,
     }
     return render(request, 'admin_dashboard.html', context)
 
@@ -254,13 +258,6 @@ def news(request):
 
 def faq(request):
     return render(request, 'faq/index.html', {})
-
-
-def set_language(request):
-    lang = request.GET.get('lang', 'th')
-    request.session['django_language'] = lang
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
-
 
 @login_required
 def profile(request):

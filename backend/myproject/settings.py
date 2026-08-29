@@ -91,10 +91,10 @@ LOCALE_PATHS = [
 # STATIC & MEDIA
 # =============================================
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'frontend' / 'static']  # ← แก้จุดที่ 5
+STATICFILES_DIRS = [BASE_DIR / 'frontend' / 'static']  
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'frontend' / 'media'  # ← แก้จุดที่ 6
+MEDIA_ROOT = BASE_DIR / 'frontend' / 'media'  
 
 # =============================================
 # AUTH
