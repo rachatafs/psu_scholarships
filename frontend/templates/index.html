@@ -5,15 +5,183 @@
 {% block title %}{% trans "หน้าแรก" %} | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <div class="hero-bg">
-        <img src="{% static 'images/PsuPhuketBG.jpg' %}" alt="PSU Phuket" class="hero-image">
-        <div class="hero-overlay"></div>
+<!-- ================= HERO SECTION ================= -->
+<section class="hero-modern">
+    <div class="hero-modern-bg">
+        <img src="{% static 'images/PsuPhuketBG.jpg' %}" alt="PSU Phuket" class="hero-modern-img">
+        <div class="hero-modern-overlay"></div>
     </div>
-    <div class="hero-content">
-        <h1 class="hero-title">{% trans "ทุนการศึกษาที่ใช่ เพื่ออนาคตที่ไกลกว่า ณ ม.อ. ภูเก็ต" %}</h1>
-        <p class="hero-subtitle">{% trans "ศูนย์รวมข้อมูลทุนการศึกษาและสวัสดิการ สำหรับนักศึกษามอ. ทุกคณะ" %}</p>
-        <a href="{% url 'scholarships' %}" class="btn-hero">{% trans "ค้นหาทุนสำหรับนักศึกษา" %}</a>
+
+    <div class="hero-modern-container">
+        <div class="hero-badge-pill">
+            <span class="badge-dot"></span>
+            <span>{% trans "ระบบรับสมัครและติดตามทุนการศึกษา มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต" %}</span>
+        </div>
+
+        <h1 class="hero-modern-title">
+            {% trans "ทุนการศึกษาที่ใช่" %}<br>
+            <span class="text-gradient">{% trans "เพื่ออนาคตที่ไกลกว่า ณ ม.อ. ภูเก็ต" %}</span>
+        </h1>
+
+        <p class="hero-modern-desc">
+            {% trans "ศูนย์รวมข้อมูลทุนการศึกษาและสวัสดิการ สำหรับนักศึกษา ม.อ. ทุกคณะ สะดวก รวดเร็ว สมัครและติดตามผลแบบครบวงจรผ่านระบบออนไลน์" %}
+        </p>
+
+        <!-- Hero Action Button (Single Primary) -->
+        <div class="hero-actions-group">
+            <a href="{% url 'scholarship_list' 'all' %}" class="btn-hero-explore">
+                {% trans "ดูทุนการศึกษาที่เปิดรับทั้งหมด" %} →
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= SCHOLARSHIP CATEGORIES ================= -->
+<section class="categories-section">
+    <div class="container-default">
+        <div class="section-header-center">
+            <div class="section-tag">CATEGORY</div>
+            <h2 class="section-title">{% trans 'หมวดหมู่ทุนการศึกษา' %}</h2>
+            <p class="section-subtitle">{% trans 'เลือกประเภททุนที่ตรงกับเกณฑ์และเป้าหมายของคุณ' %}</p>
+        </div>
+
+        <div class="category-cards-grid">
+            {% for cat in categories %}
+            <div class="modern-cat-card">
+                <div class="cat-card-top">
+                    <span class="cat-code-tag">{{ cat.code_num }}</span>
+                    <span class="cat-count-badge">{{ cat.count }} {% trans 'ทุนเปิดรับ' %}</span>
+                </div>
+                <h3 class="cat-title">{{ cat.name }}</h3>
+                <p class="cat-desc">{{ cat.desc }}</p>
+                <a href="{% url 'scholarship_list' cat.code %}" class="cat-link">
+                    <span>{% trans 'ค้นหาทุนหมวดนี้' %}</span>
+                    <span class="cat-arrow">→</span>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ================= EXPIRING SOON SCHOLARSHIPS ================= -->
+<section class="featured-section" style="background-color: var(--bg-body);">
+    <div class="container-default">
+        <div class="section-header-row">
+            <div>
+                <div class="section-tag" style="color: var(--danger-color); background: rgba(239, 68, 68, 0.1);">URGENT</div>
+                <h2 class="section-title">{% trans 'ทุนที่ใกล้หมดเขต' %}</h2>
+                <p class="section-subtitle">{% trans 'รีบตรวจสอบคุณสมบัติและส่งใบสมัครก่อนหมดเขต' %}</p>
+            </div>
+        </div>
+
+        <div class="scholarship-cards-grid">
+            {% for s in expiring_soon %}
+            <div class="modern-scholarship-card" style="border-top: 3px solid var(--danger-color);">
+                <div class="card-status-bar">
+                    <span class="status-pill status-open" style="background: rgba(239, 68, 68, 0.1); color: var(--danger-color);">
+                        <span class="dot-live" style="background: var(--danger-color);"></span> {% trans 'ด่วน! หมดเขต' %} {{ s.end_date|date:"j M y" }}
+                    </span>
+                    <span class="category-pill-tag">
+                        {% if s.category == 'general' %}ทุนทั่วไป
+                        {% elif s.category == 'exchange' %}ทุนแลกเปลี่ยน
+                        {% elif s.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
+                        {% elif s.category == 'lunch' %}อาหารกลางวัน
+                        {% else %}{{ s.get_category_display }}{% endif %}
+                    </span>
+                    {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'toggle_favorite' s.pk %}" class="favorite-form" style="margin: 0; display: inline-block; float: right;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; color: var(--text-muted);" title="บันทึกทุน">
+                            <span class="material-symbols-outlined fav-icon" style="{% if s.is_favorited %}font-variation-settings: 'FILL' 1; color: var(--danger-color);{% else %}font-variation-settings: 'FILL' 0;{% endif %}">
+                                favorite
+                            </span>
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+
+                <h3 class="card-scholarship-title">
+                    <a href="{% url 'scholarship_detail' s.pk %}">{{ s.title }}</a>
+                </h3>
+
+                <p class="card-scholarship-desc">
+                    {{ s.description|truncatewords:18 }}
+                </p>
+
+                <div class="card-meta-list">
+                    <div class="meta-row">
+                        <span class="meta-label">มูลค่าทุน:</span>
+                        <strong class="meta-value text-highlight">฿{{ s.amount_per_semester|floatformat:0 }}</strong>
+                        <span class="meta-sub">/ ภาคการศึกษา</span>
+                    </div>
+                    {% if s.min_gpax > 0 %}
+                    <div class="meta-row">
+                        <span class="meta-label">เกรดเฉลี่ย (GPAX):</span>
+                        <strong class="meta-value {% if user.is_authenticated and s.gpax_unmet %}text-danger{% endif %}">{{ s.min_gpax|floatformat:2 }}+</strong>
+                    </div>
+                    {% endif %}
+                    <div class="meta-row">
+                        <span class="meta-label">จำนวนที่เปิดรับ:</span>
+                        <strong class="meta-value">{{ s.capacity }} คน</strong>
+                    </div>
+                </div>
+
+                <div class="card-action-footer">
+                    {% if s.is_closed or s.is_expired %}
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply btn-card-closed">
+                        ดูรายละเอียด
+                    </a>
+                    {% elif user.is_authenticated and s.has_applied %}
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply btn-card-applied">
+                        ดูสถานะใบสมัคร →
+                    </a>
+                    {% elif user.is_authenticated and s.gpax_unmet %}
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply btn-card-ineligible">
+                        ดูรายละเอียด (เกรดไม่ถึงเกณฑ์)
+                    </a>
+                    {% else %}
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply">
+                        ดูรายละเอียดและสมัคร →
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="steps-section">
+    <div class="container-default">
+        <div class="section-header-center">
+            <div class="section-tag">GUIDELINES</div>
+            <h2 class="section-title">ขั้นตอนการสมัครทุนการศึกษา</h2>
+            <p class="section-subtitle">ระบบออนไลน์ครบวงจร ใช้งานสะดวก รวดเร็ว และตรวจสอบได้</p>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-badge">01</div>
+                <h3 class="step-title">ค้นหาและเลือกทุน</h3>
+                <p class="step-desc">เลือกประเภททุนที่สนใจ ตรวจสอบเกณฑ์คุณสมบัติ เช่น เกรดเฉลี่ยสะสม (GPAX) คณะ และกำหนดการรับสมัคร</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-badge">02</div>
+                <h3 class="step-title">กรอกข้อมูลและแนบเอกสาร</h3>
+                <p class="step-desc">ลงชื่อเข้าสู่ระบบ กรอกข้อมูลส่วนตัว และอัปโหลดไฟล์เอกสารหลักฐานผ่านระบบออนไลน์โดยไม่ต้องส่งกระดาษ</p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-badge">03</div>
+                <h3 class="step-title">ติดตามผลการพิจารณา</h3>
+                <p class="step-desc">ตรวจสอบสถานะใบสมัครได้แบบ Real-time ในหน้าข้อมูลส่วนตัว จนกระทั่งคณะกรรมการประกาศผลอนุมัติ</p>
+            </div>
+        </div>
     </div>
 </section>
 {% endblock %}

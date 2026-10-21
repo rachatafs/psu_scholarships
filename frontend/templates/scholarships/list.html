@@ -1,122 +1,185 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}{{ category_title }} | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
-<div class="list-page">
-    <div class="list-container">
-        <a href="{% url 'scholarships' %}" class="btn-back">← กลับ</a>
-        <h1 class="list-title">{{ category_title }}</h1>
-
-        <!-- Search Box -->
-        <form method="GET" action="" style="margin-bottom:1.5rem;">
-            <div style="display:flex; gap:0.75rem; max-width:480px;">
-                <input
-                    type="text"
-                    name="q"
-                    value="{{ query }}"
-                    placeholder="ค้นหาชื่อทุน..."
-                    style="
-                        flex:1;
-                        padding:0.65rem 1rem;
-                        border:1.5px solid #d0d9e8;
-                        border-radius:10px;
-                        font-size:0.95rem;
-                        font-family:var(--font-thai);
-                        color:#2d3748;
-                        outline:none;
-                        background:white;
-                        transition:border-color 0.2s;
-                    "
-                    onfocus="this.style.borderColor='#1565c0'"
-                    onblur="this.style.borderColor='#d0d9e8'"
-                >
-                <button
-                    type="submit"
-                    style="
-                        padding:0.65rem 1.4rem;
-                        background:#1565c0;
-                        color:white;
-                        border:none;
-                        border-radius:10px;
-                        font-size:0.95rem;
-                        font-family:var(--font-thai);
-                        cursor:pointer;
-                        font-weight:600;
-                        transition:background 0.2s;
-                    "
-                    onmouseover="this.style.background='#0d47a1'"
-                    onmouseout="this.style.background='#1565c0'"
-                >🔍 ค้นหา</button>
-
-                {% if query %}
-                <a href="?"
-                    style="
-                        padding:0.65rem 1rem;
-                        color:#6b7c93;
-                        text-decoration:none;
-                        border:1.5px solid #d0d9e8;
-                        border-radius:10px;
-                        font-size:0.9rem;
-                        display:flex;
-                        align-items:center;
-                        background:white;
-                    "
-                >✕ ล้าง</a>
-                {% endif %}
+<div class="list-page-modern">
+    <!-- Header Banner -->
+    <div class="list-header-banner">
+        <div class="container-default">
+            <div class="breadcrumb-nav">
+                <a href="{% url 'home' %}">หน้าแรก</a>
+                <span class="breadcrumb-sep">/</span>
+                <a href="{% url 'scholarships' %}">หมวดหมู่ทุน</a>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-current">{{ category_title }}</span>
             </div>
+            <div class="header-content-flex">
+                <div>
+                    <h1 class="page-main-title">{{ category_title }}</h1>
+                    <p class="page-subtitle">แสดงทุนการศึกษาที่เปิดรับสมัคร ค้นหาและตรวจสอบคุณสมบัติได้ทันที</p>
+                </div>
+                <div class="category-tabs-bar">
+                    <a href="{% url 'scholarship_list' 'all' %}" class="cat-tab {% if category == 'all' %}active{% endif %}">ทั้งหมด</a>
+                    <a href="{% url 'scholarship_list' 'general' %}" class="cat-tab {% if category == 'general' %}active{% endif %}">ทุนทั่วไป</a>
+                    <a href="{% url 'scholarship_list' 'exchange' %}" class="cat-tab {% if category == 'exchange' %}active{% endif %}">ทุนแลกเปลี่ยน</a>
+                    <a href="{% url 'scholarship_list' 'fee_waiver' %}" class="cat-tab {% if category == 'fee_waiver' %}active{% endif %}">ยกเว้นค่าธรรมเนียม</a>
+                    <a href="{% url 'scholarship_list' 'lunch' %}" class="cat-tab {% if category == 'lunch' %}active{% endif %}">อาหารกลางวัน</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            {% if query %}
-            <p style="margin-top:0.6rem; font-size:0.85rem; color:#6b7c93;">
-                ผลการค้นหา "<strong style="color:#1565c0;">{{ query }}</strong>"
-                พบ {{ scholarships|length }} รายการ
-            </p>
-            {% endif %}
-        </form>
+    <!-- Main Container -->
+    <div class="container-default list-main-content">
+        <!-- Search & Filter Card -->
+        <div class="search-filter-card">
+            <form method="GET" action="" class="filter-search-form">
+                <div class="filter-input-wrap">
+                    <svg class="search-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input
+                        type="text"
+                        name="q"
+                        value="{{ query }}"
+                        placeholder="พิมพ์ค้นหาชื่อทุน เช่น ทุนเรียนดี, ทุน STEM, แลกเปลี่ยน..."
+                        class="filter-search-input"
+                    >
+                    {% if query %}
+                    <a href="?" class="btn-clear-query" title="ล้างการค้นหา">✕</a>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn-filter-submit">
+                    ค้นหาทุน
+                </button>
+            </form>
 
-        <!-- Empty Search Result -->
-        {% if query and not scholarships %}
-        <div style="
-            text-align:center;
-            padding:3rem;
-            color:#94a3b8;
-            background:white;
-            border-radius:16px;
-            border:1.5px dashed #d0d9e8;
-        ">
-            <div style="font-size:2.5rem; margin-bottom:0.75rem;">🔍</div>
-            <p style="font-size:1rem; font-weight:600; color:#64748b;">
-                ไม่พบทุนที่ชื่อ "{{ query }}"
-            </p>
-            <p style="font-size:0.85rem; margin-top:0.35rem;">
-                ลองค้นหาด้วยคำอื่น หรือ
-                <a href="?" style="color:#1565c0; font-weight:600;">ดูทุนทั้งหมด</a>
-            </p>
+            <div class="search-summary-row">
+                <span class="results-count-text">
+                    {% if query %}
+                        ผลการค้นหาคำว่า "<strong class="text-primary">{{ query }}</strong>" พบ <strong>{{ scholarships|length }}</strong> ทุน
+                    {% else %}
+                        พบทุนการศึกษาทั้งหมด <strong>{{ scholarships|length }}</strong> รายการ
+                    {% endif %}
+                </span>
+                <span class="active-badge-info">เปิดรับสมัคร</span>
+            </div>
         </div>
 
+        <!-- Scholarships Grid -->
+        {% if query and not scholarships %}
+        <div class="modern-empty-state">
+            <h3 class="empty-title">ไม่พบทุนการศึกษาที่ตรงกับ "{{ query }}"</h3>
+            <p class="empty-subtitle">ลองค้นหาด้วยคำสำคัญอื่น หรือกดดูทุนการศึกษาทั้งหมดในหมวดหมู่นี้</p>
+            <a href="?" class="btn-empty-reset">ล้างการค้นหาทั้งหมด</a>
+        </div>
         {% else %}
-        <!-- Scholarship Cards -->
-        <div class="scholarship-grid">
+        <div class="scholarship-cards-grid">
             {% for s in scholarships %}
-            <div class="scholarship-card">
-                <div class="scholarship-card-header">
-                    <span class="scholarship-status {{ s.status }}">{{ s.get_status_display }}</span>
-                    <h3>{{ s.title }}</h3>
+            <div class="modern-scholarship-card">
+                <div class="card-status-bar">
+                    {% if s.is_closed or s.is_expired %}
+                    <span class="status-pill status-closed">
+                        ปิดรับสมัครแล้ว
+                    </span>
+                    {% elif user.is_authenticated and s.gpax_unmet %}
+                    <span class="status-pill status-ineligible">
+                        <span class="dot-ineligible"></span> เกรดไม่ถึงเกณฑ์ (ต้องการ {{ s.min_gpax|floatformat:2 }}+)
+                    </span>
+                    {% elif user.is_authenticated and s.has_applied %}
+                    <span class="status-pill status-applied">
+                        <span class="dot-applied"></span> ยื่นสมัครแล้ว
+                    </span>
+                    {% else %}
+                    <span class="status-pill status-open">
+                        <span class="dot-live"></span> เปิดรับสมัคร
+                    </span>
+                    {% endif %}
+                    <span class="category-pill-tag">
+                        {% if s.category == 'general' %}ทุนทั่วไป
+                        {% elif s.category == 'exchange' %}ทุนแลกเปลี่ยน
+                        {% elif s.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
+                        {% elif s.category == 'lunch' %}อาหารกลางวัน
+                        {% else %}{{ s.get_category_display }}{% endif %}
+                    </span>
+                    {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'toggle_favorite' s.pk %}" class="favorite-form" style="margin: 0; display: inline-block; float: right;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; color: var(--text-muted);" title="บันทึกทุน">
+                            <span class="material-symbols-outlined fav-icon" style="{% if s.is_favorited %}font-variation-settings: 'FILL' 1; color: var(--danger-color);{% else %}font-variation-settings: 'FILL' 0;{% endif %}">
+                                favorite
+                            </span>
+                        </button>
+                    </form>
+                    {% endif %}
                 </div>
-                <div class="scholarship-card-body">
-                    <p>💰 <strong>{{ s.amount_per_semester }}</strong> บาท/ภาคการศึกษา</p>
-                    <p>👥 รับจำนวน: <strong>{{ s.capacity }}</strong> คน</p>
-                    <p>📅 ปิดรับ: <strong>{{ s.end_date }}</strong></p>
+
+                <h3 class="card-scholarship-title">
+                    <a href="{% url 'scholarship_detail' s.pk %}">{{ s.title }}</a>
+                </h3>
+
+                <p class="card-scholarship-desc">
+                    {{ s.description|truncatewords:20 }}
+                </p>
+
+                <div class="card-meta-list">
+                    <div class="meta-row">
+                        <span class="meta-label">มูลค่าทุน:</span>
+                        <strong class="meta-value text-highlight">฿{{ s.amount_per_semester|floatformat:0 }}</strong>
+                        <span class="meta-sub">/ ภาคการศึกษา</span>
+                    </div>
+                    {% if s.min_gpax > 0 %}
+                    <div class="meta-row">
+                        <span class="meta-label">เกรดเฉลี่ย (GPAX):</span>
+                        <strong class="meta-value {% if user.is_authenticated and s.gpax_unmet %}text-danger{% endif %}">{{ s.min_gpax|floatformat:2 }}+</strong>
+                    </div>
+                    {% endif %}
+                    <div class="meta-row">
+                        <span class="meta-label">จำนวนที่เปิดรับ:</span>
+                        <strong class="meta-value">{{ s.capacity }} คน</strong>
+                    </div>
+                    <div class="meta-row">
+                        <span class="meta-label">ปิดรับสมัคร:</span>
+                        <strong class="meta-value {% if s.is_closed or s.is_expired %}text-danger{% endif %}">
+                            {{ s.end_date }}
+                            {% if s.is_closed or s.is_expired %}<span class="expired-tag">หมดเขต</span>{% endif %}
+                        </strong>
+                    </div>
                 </div>
-                <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card">ดูรายละเอียด</a>
+
+                <div class="card-action-footer">
+                    {% if s.is_closed or s.is_expired %}
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply btn-card-closed">
+                        ดูรายละเอียด
+                    </a>
+                    {% elif user.is_authenticated and s.has_applied %}
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply btn-card-applied">
+                        ดูสถานะใบสมัคร →
+                    </a>
+                    {% elif user.is_authenticated and s.gpax_unmet %}
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply btn-card-ineligible">
+                        ดูรายละเอียด (เกรดไม่ถึงเกณฑ์)
+                    </a>
+                    {% else %}
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply">
+                        ดูรายละเอียดและสมัคร →
+                    </a>
+                    {% endif %}
+                </div>
             </div>
             {% empty %}
-            <p class="empty-text">ยังไม่มีทุนในประเภทนี้</p>
+            <div class="modern-empty-state">
+                <h3 class="empty-title">ยังไม่มีทุนการศึกษาในหมวดหมู่นี้</h3>
+                <p class="empty-subtitle">ทุนใหม่อยู่ระหว่างการจัดเตรียมประกาศ หรือคุณสามารถสำรวจหมวดหมู่อื่นๆ ได้</p>
+                <a href="{% url 'scholarships' %}" class="btn-empty-reset">กลับไปเลือกหมวดหมู่อื่น</a>
+            </div>
             {% endfor %}
         </div>
         {% endif %}
-
     </div>
 </div>
 {% endblock %}

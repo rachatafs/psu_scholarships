@@ -1,0 +1,260 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard User{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Prompt:wght@300;400;500;600;700&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=10.8">
+    <style>
+        html, body.dashboard-layout { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #eef2f6 !important; }
+        body.dashboard-layout { font-family: var(--font-thai); display: flex !important; flex-direction: column !important; }
+        
+        .dashboard-wrapper { display: flex; flex: 1; overflow: hidden; position: relative; }
+        
+        .sidebar { width: 280px; background: #1a2e4a; color: white; display: flex; flex-direction: column; flex-shrink: 0; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); height: 100vh; overflow-y: auto; box-shadow: 4px 0 15px rgba(0,0,0,0.05); z-index: 100; padding-top: 1rem; }
+        
+        .sidebar-menu { list-style: none; padding: 0; margin: 1rem 0; flex: 1; }
+        .sidebar-menu li { margin: 0; }
+        .sidebar-menu a { display: flex; align-items: center; gap: 1.25rem; padding: 1.1rem 2.5rem; color: #a1b0c7; text-decoration: none; transition: all 0.2s ease; font-size: 1.05rem; font-weight: 500; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { color: white; background: transparent; border-left: 5px solid #fff; padding-left: calc(2.5rem - 5px); }
+        .sidebar-menu a .material-symbols-outlined { font-size: 1.4rem; opacity: 0.9; }
+        
+        .main-content { flex: 1; display: flex; flex-direction: column; overflow-y: auto; height: 100vh; position: relative; }
+        .content-area { padding: 2.5rem; flex: 1; max-width: 1400px; width: 100%; margin: 0 auto; }
+        
+        .sidebar-mobile-header { display: none; }
+        .dashboard-mobile-bar { display: none; }
+        .sidebar-backdrop { display: none; }
+
+        @media (max-width: 991px) {
+            html, body.dashboard-layout { overflow-y: auto !important; height: auto !important; }
+            .dashboard-wrapper { display: flex; flex-direction: column; overflow: visible; height: auto; }
+            
+            .dashboard-mobile-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0.75rem 1rem;
+                background: #ffffff;
+                border-bottom: 1px solid #e2e8f0;
+                position: sticky;
+                top: 0;
+                z-index: 30;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            }
+            
+            .btn-sidebar-toggle {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.45rem;
+                padding: 0.5rem 0.9rem;
+                background: #1a2e4a;
+                color: #ffffff;
+                border: none;
+                border-radius: 8px;
+                font-family: 'Sarabun', sans-serif;
+                font-size: 0.9rem;
+                font-weight: 600;
+                cursor: pointer;
+                transition: background 0.2s ease, transform 0.1s ease;
+            }
+            .btn-sidebar-toggle:active {
+                transform: scale(0.97);
+            }
+            .btn-sidebar-toggle .material-symbols-outlined {
+                font-size: 1.25rem;
+            }
+            
+            .mobile-bar-brand {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .mobile-role-pill {
+                background: #e0f2fe;
+                color: #0369a1;
+                font-size: 0.75rem;
+                font-weight: 600;
+                padding: 0.25rem 0.65rem;
+                border-radius: 9999px;
+            }
+
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 290px;
+                max-width: 85vw;
+                height: 100vh;
+                height: 100dvh;
+                z-index: 1050;
+                transform: translateX(-100%);
+                padding-top: 0;
+                box-shadow: none;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+                box-shadow: 10px 0 30px rgba(0,0,0,0.3);
+            }
+
+            .sidebar-mobile-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1.15rem 1.5rem;
+                background: #132238;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                color: #ffffff;
+                font-size: 1.05rem;
+                font-weight: 600;
+            }
+            
+            .sidebar-close-btn {
+                background: rgba(255,255,255,0.15);
+                border: none;
+                color: #ffffff;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+                line-height: 1;
+                transition: background 0.2s ease;
+            }
+            .sidebar-close-btn:hover {
+                background: rgba(255,255,255,0.25);
+            }
+
+            .sidebar-backdrop {
+                display: block;
+                position: fixed;
+                inset: 0;
+                background: rgba(15, 23, 42, 0.55);
+                backdrop-filter: blur(2px);
+                z-index: 1040;
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+            }
+            .sidebar-backdrop.active {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .main-content {
+                height: auto;
+                min-height: calc(100vh - 60px);
+                overflow-y: visible;
+                width: 100%;
+            }
+            .content-area {
+                padding: 1rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+        }
+        
+        @media print {
+            .sidebar { display: none !important; }
+            .dashboard-mobile-bar { display: none !important; }
+            .content-area { padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
+            body.dashboard-layout { background: white !important; }
+            .dash-meta button { display: none !important; }
+            .dash-meta form { display: none !important; }
+            .charts-grid canvas { max-width: 100% !important; }
+            .dash-header { margin-bottom: 1rem !important; }
+        }
+        
+        /* Ensure normal styles don't conflict */
+        .dash-wrap, .admin-management-page { min-height: auto; padding: 0; background: transparent; }
+        .dash-wrap .container-default, .admin-management-page .container-default { max-width: 100%; padding: 0; }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="dashboard-layout">
+    {% include 'partials/navbar.html' %}
+    
+    <div class="dashboard-wrapper">
+        <!-- Backdrop for mobile drawer -->
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="dashboardSidebar">
+            <div class="sidebar-mobile-header">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <span class="material-symbols-outlined" style="color: #60a5fa; font-size: 1.3rem;">space_dashboard</span>
+                    <span>เมนูจัดการระบบ</span>
+                </div>
+                <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="ปิดเมนู">✕</button>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="{% url 'scholarship_dashboard' %}" class="{% if request.path == '/dashboard/' %}active{% endif %}"><span class="material-symbols-outlined">analytics</span> แดชบอร์ดสถิติวิเคราะห์</a></li>
+                <li><a href="{% url 'admin_dashboard' %}" class="{% if request.path == '/admin-dashboard/' %}active{% endif %}"><span class="material-symbols-outlined">folder_managed</span> จัดการระบบ (Admin)</a></li>
+                <li><a href="/admin/"><span class="material-symbols-outlined">database</span> ฐานข้อมูลขั้นสูง</a></li>
+            </ul>
+            <div style="padding: 2rem; margin-top: auto;">
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" style="width:100%; padding:0.9rem; background:rgba(255,255,255,0.1); color:white; border:none; border-radius:8px; cursor:pointer; font-family: 'Sarabun'; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: 0.2s;">
+                        <span class="material-symbols-outlined">logout</span> ออกจากระบบ
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Mobile Bar with Toggle Button -->
+            <div class="dashboard-mobile-bar">
+                <button type="button" class="btn-sidebar-toggle" id="sidebarToggleBtn">
+                    <span class="material-symbols-outlined">menu_open</span>
+                    <span>เมนูแดชบอร์ด</span>
+                </button>
+                <div class="mobile-bar-brand">
+                    <span class="mobile-role-pill">Admin Dashboard</span>
+                </div>
+            </div>
+
+            <div class="content-area">
+                {% block dashboard_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    
+    <script src="{% static 'js/main.js' %}?v=10.0"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('dashboardSidebar');
+            const toggleBtn = document.getElementById('sidebarToggleBtn');
+            const closeBtn = document.getElementById('sidebarCloseBtn');
+            const backdrop = document.getElementById('sidebarBackdrop');
+
+            function openSidebar() {
+                if (sidebar) sidebar.classList.add('open');
+                if (backdrop) backdrop.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeSidebar() {
+                if (sidebar) sidebar.classList.remove('open');
+                if (backdrop) backdrop.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
+            if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+            if (backdrop) backdrop.addEventListener('click', closeSidebar);
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

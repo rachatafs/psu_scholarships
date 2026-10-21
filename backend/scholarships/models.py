@@ -50,6 +50,11 @@ class Scholarship(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def is_expired(self):
+        from django.utils import timezone
+        return self.end_date < timezone.now().date() or self.status == 'closed'
+
     def __str__(self):
         return self.title
 
@@ -57,6 +62,7 @@ class Scholarship(models.Model):
 class Application(models.Model):
     STATUS_CHOICES = [
         ('pending', 'รอพิจารณา'),
+        ('interview', 'รอสัมภาษณ์'),
         ('approved', 'อนุมัติ'),
         ('rejected', 'ไม่อนุมัติ'),
     ]
@@ -88,3 +94,13 @@ class Document(models.Model):
 
     def __str__(self):
         return f"{self.doc_type} - {self.application}"
+class FavoriteScholarship(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='favorite_scholarships')
+    scholarship = models.ForeignKey(Scholarship, on_delete=models.CASCADE, related_name='favorited_by')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('user', 'scholarship')
+
+    def __str__(self):
+        return f"{self.user.username} - {self.scholarship.title}"

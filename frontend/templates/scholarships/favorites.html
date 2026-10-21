@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}ทุนที่บันทึกไว้ | PSU Phuket Scholarships{% endblock %}
+
+{% block content %}
+<section class="page-header" style="background: var(--bg-card); padding: 40px 0; border-bottom: 1px solid var(--border-subtle);">
+    <div class="container-default">
+        <h1 class="page-title" style="font-size: 2rem; margin-bottom: 10px;">ทุนที่ฉันบันทึกไว้</h1>
+        <p class="page-subtitle" style="color: var(--text-muted);">จัดการทุนการศึกษาที่คุณสนใจเพื่อไม่ให้พลาดโอกาสสำคัญ</p>
+    </div>
+</section>
+
+<section class="featured-section">
+    <div class="container-default">
+        {% if favorites %}
+        <div class="scholarship-cards-grid">
+            {% for s in favorites %}
+            <div class="modern-scholarship-card">
+                <div class="card-status-bar">
+                    {% if s.is_closed or s.is_expired %}
+                    <span class="status-pill status-closed">
+                        ปิดรับสมัครแล้ว
+                    </span>
+                    {% elif user.is_authenticated and s.gpax_unmet %}
+                    <span class="status-pill status-ineligible">
+                        <span class="dot-ineligible"></span> เกรดไม่ถึงเกณฑ์
+                    </span>
+                    {% elif user.is_authenticated and s.has_applied %}
+                    <span class="status-pill status-applied">
+                        <span class="dot-applied"></span> ยื่นสมัครแล้ว
+                    </span>
+                    {% else %}
+                    <span class="status-pill status-open">
+                        <span class="dot-live"></span> เปิดรับสมัคร
+                    </span>
+                    {% endif %}
+                    
+                    <span class="category-pill-tag">
+                        {{ s.get_category_display }}
+                    </span>
+                    
+                    {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'toggle_favorite' s.pk %}" class="favorite-form" style="margin: 0; display: inline-block; float: right;">
+                        {% csrf_token %}
+                        <button type="submit" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; color: var(--text-muted);" title="เลิกบันทึก">
+                            <span class="material-symbols-outlined fav-icon" style="{% if s.is_favorited %}font-variation-settings: 'FILL' 1; color: var(--danger-color);{% else %}font-variation-settings: 'FILL' 0;{% endif %}">
+                                favorite
+                            </span>
+                        </button>
+                    </form>
+                    {% endif %}
+                </div>
+
+                <h3 class="card-scholarship-title">
+                    <a href="{% url 'scholarship_detail' s.pk %}">{{ s.title }}</a>
+                </h3>
+
+                <p class="card-scholarship-desc">
+                    {{ s.description|truncatewords:18 }}
+                </p>
+
+                <div class="card-meta-list">
+                    <div class="meta-row">
+                        <span class="meta-label">มูลค่าทุน:</span>
+                        <strong class="meta-value text-highlight">฿{{ s.amount_per_semester|floatformat:0 }}</strong>
+                        <span class="meta-sub">/ ภาค</span>
+                    </div>
+                    {% if s.min_gpax > 0 %}
+                    <div class="meta-row">
+                        <span class="meta-label">เกรดเฉลี่ย (GPAX):</span>
+                        <strong class="meta-value {% if user.is_authenticated and s.gpax_unmet %}text-danger{% endif %}">{{ s.min_gpax|floatformat:2 }}+</strong>
+                    </div>
+                    {% endif %}
+                    <div class="meta-row">
+                        <span class="meta-label">หมดเขต:</span>
+                        <strong class="meta-value {% if s.is_closed or s.is_expired %}text-danger{% endif %}">
+                            {{ s.end_date }}
+                        </strong>
+                    </div>
+                </div>
+
+                <div class="card-action-bar">
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-outline">ดูรายละเอียด</a>
+                    {% if s.has_applied %}
+                        <button class="btn-card-primary" disabled style="background:var(--success-color); border:none;">ยื่นสมัครแล้ว</button>
+                    {% elif s.gpax_unmet %}
+                        <button class="btn-card-primary" disabled style="background:var(--gray-300); border:none;">เกรดไม่ถึง</button>
+                    {% else %}
+                        <a href="{% url 'apply_form' s.pk %}" class="btn-card-primary" style="background:var(--primary-dark); border-color:var(--primary-dark);">สมัครเลย</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="empty-state" style="text-align: center; padding: 60px 20px; background: var(--bg-card); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+            <div style="margin-bottom: 20px;"><span class="material-symbols-outlined" style="font-size: 4rem; color: #cbd5e1;">bookmark</span></div>
+            <h3>ยังไม่มีทุนที่บันทึกไว้</h3>
+            <p style="color: var(--text-muted); margin-bottom: 20px;">คุณสามารถกดไอคอน <span class="material-symbols-outlined" style="vertical-align: middle; font-size: 1.2rem; color: #f43f5e;">favorite</span> ที่การ์ดทุนการศึกษาเพื่อบันทึกเก็บไว้ดูภายหลังได้</p>
+            <a href="{% url 'home' %}" class="btn-hero-explore" style="display: inline-block;">ดูทุนทั้งหมด</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

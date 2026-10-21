@@ -1,31 +1,40 @@
 /* =============================================
-   PSU Phuket Scholarships - Main JS
+   PSU Phuket Scholarships — Main JS
+   =============================================
+   Table of Contents:
+   1. Mobile Sidebar Toggle
+   2. Dropdown Menus
+   3. Navbar Scroll Shadow
+   4. Login Modal Logic
    ============================================= */
 
-   document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
 
-    // ---- Mobile Nav Toggle ----
+    // ─── Mobile Sidebar Toggle ────────────────────────────────
     const toggler = document.getElementById('navbarToggler');
-    const navbar = document.querySelector('.navbar');
+    const navbar  = document.querySelector('.navbar');
+    const closeBtn = document.getElementById('navbarClose');
+    const backdrop = document.getElementById('navbarBackdrop');
 
     if (toggler && navbar) {
-        toggler.addEventListener('click', function () {
-            navbar.classList.toggle('nav-open');
-
-            const lines = toggler.querySelectorAll('.hamburger-line');
-            if (navbar.classList.contains('nav-open')) {
-                lines[0].style.transform = 'translateY(7px) rotate(45deg)';
-                lines[1].style.opacity = '0';
-                lines[2].style.transform = 'translateY(-7px) rotate(-45deg)';
-            } else {
-                lines[0].style.transform = '';
-                lines[1].style.opacity = '';
-                lines[2].style.transform = '';
-            }
+        // Open sidebar
+        toggler.addEventListener('click', function (e) {
+            e.stopPropagation();
+            navbar.classList.add('sidebar-open');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
         });
+
+        // Close sidebar function
+        const closeSidebar = () => {
+            navbar.classList.remove('sidebar-open');
+            document.body.style.overflow = '';
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        if (backdrop) backdrop.addEventListener('click', closeSidebar);
     }
 
-    // ---- Dropdown on click (mobile) + hover (desktop) ----
+    // ─── Dropdown (click on mobile, hover on desktop) ─────────
     const dropdowns = document.querySelectorAll('.dropdown');
 
     dropdowns.forEach(function (dropdown) {
@@ -49,24 +58,24 @@
         }
     });
 
-    // ---- Navbar scroll shadow ----
+    // ─── Navbar scroll shadow ─────────────────────────────────
     const nav = document.querySelector('.navbar');
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 10) {
-            nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.12)';
-        } else {
-            nav.style.boxShadow = '0 2px 12px rgba(0,0,0,0.08)';
-        }
-    });
+    if (nav) {
+        window.addEventListener('scroll', function () {
+            nav.style.boxShadow = window.scrollY > 10
+                ? '0 4px 20px rgba(0,0,0,0.12)'
+                : '0 2px 12px rgba(0,0,0,0.08)';
+        });
+    }
 
-    // ---- Login Modal ----
-    document.addEventListener('keydown', function(e) {
+    // ─── Login Modal: close on Escape ─────────────────────────
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeLoginModal();
     });
 
 });
 
-// ต้องอยู่นอก DOMContentLoaded เพราะ onclick ใน HTML เรียกตรงๆ
+// ─── Login Modal (global — called from onclick in HTML) ───────
 function openLoginModal() {
     const modal = document.getElementById('loginModal');
     if (modal) {

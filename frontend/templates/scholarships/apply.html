@@ -1,141 +1,206 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}สมัครทุน | PSU Phuket Scholarships{% endblock %}
+{% block title %}แบบฟอร์มสมัครทุน | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
-<div class="apply-page">
-    <div class="apply-container">
-        <a href="javascript:history.back()" class="btn-back">← ย้อนกลับ</a>
+<div class="apply-page-modern">
+    <div class="container-default">
+        <!-- Breadcrumb & Back -->
+        <div class="apply-top-nav">
+            <a href="{% url 'scholarship_detail' scholarship.pk %}" class="btn-back-clean">
+                ← กลับสู่หน้ารายละเอียดทุน
+            </a>
+        </div>
 
-        <h1 class="apply-main-title">แบบฟอร์มใบสมัคร</h1>
-        <p class="apply-scholarship-name">{{ scholarship.title }}</p>
-
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-        {% endif %}
-
-        <form method="post" enctype="multipart/form-data" class="apply-form-main">
-            {% csrf_token %}
-            <div class="apply-two-col">
-
-                <!-- ซ้าย: ข้อมูลผู้สมัคร -->
-                <div class="apply-left">
-                    <h2 class="apply-section-title">ข้อมูลผู้สมัคร</h2>
-
-                    <div class="apply-field">
-                        <label>ชื่อ-นามสกุล:</label>
-                        <div class="apply-field-label">Full Name:</div>
-                        <input type="text" name="full_name"
-                            value="{{ student_profile.full_name|default:'' }}"
-                            placeholder="ชื่อ-นามสกุล" required>
-                    </div>
-
-                    <div class="apply-field">
-                        <label>รหัสนักศึกษา:</label>
-                        <input type="text" name="student_id"
-                            value="{{ student_profile.student_id|default:'' }}"
-                            placeholder="รหัสนักศึกษา" required>
-                    </div>
-
-                    <div class="apply-field">
-                        <label>คณะ/สาขา:</label>
-                        <input type="text" name="faculty_major"
-                            value="{% if student_profile %}{{ student_profile.get_faculty_display }} / {{ student_profile.major }}{% endif %}"
-                            placeholder="คณะ / สาขา" required>
-                    </div>
-
-                    <div class="apply-field">
-                        <label>เบอร์โทรศัพท์ติดต่อ:</label>
-                        <input type="text" name="phone"
-                            value="{{ student_profile.phone_number|default:'' }}"
-                            placeholder="เช่น 081-234-5678">
-                    </div>
-
-                    <div class="apply-checkbox">
-                        <input type="checkbox" id="confirmCheck" name="confirm" required>
-                        <label for="confirmCheck">
-                            ข้าพเจ้าขอรับรองว่าข้อมูลและเอกสารทั้งหมดเป็นความจริงและถูกต้อง
-                        </label>
-                    </div>
+        <!-- Form Card Container -->
+        <div class="apply-wrapper-card">
+            <!-- Header with Stepper -->
+            <div class="apply-header-area">
+                <div class="apply-badge-tag">APPLICATION FORM</div>
+                <h1 class="apply-headline">แบบฟอร์มการสมัครทุนการศึกษา</h1>
+                <div class="applying-for-box">
+                    <span class="apply-label-sub">ทุนที่กำลังสมัคร:</span>
+                    <strong class="apply-sch-name">{{ scholarship.title }}</strong>
+                    <span class="amount-mini-badge">฿{{ scholarship.amount_per_semester|floatformat:0 }} / ภาคการศึกษา</span>
                 </div>
 
-                <!-- ขวา: อัพโหลดเอกสาร -->
-                <div class="apply-right">
-                    <h2 class="apply-section-title">อัปโหลดเอกสาร</h2>
-
-                    <div class="upload-grid">
-                        <!-- Transcript -->
-                        <div class="upload-box" id="transcriptBox"
-                             onclick="document.getElementById('transcriptInput').click()">
-                            <div class="upload-icon-area" id="transcriptIcon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                     stroke-width="1.5" width="48" height="48">
-                                    <path d="M12 16V4m0 0L8 8m4-4l4 4"/>
-                                    <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
-                                </svg>
-                                <p>ลากไฟล์มาวางที่นี่<br>หรือคลิกเพื่ออัปโหลด</p>
-                                <small>(ใบแสดงผลการเรียน)</small>
-                            </div>
-                            <div class="upload-success" id="transcriptSuccess" style="display:none">
-                                <span class="upload-check">✅</span>
-                                <p>ไฟล์ถูกอัปโหลดแล้ว</p>
-                                <small id="transcriptName"></small>
-                            </div>
-                        </div>
-                        <input type="file" id="transcriptInput" name="transcript"
-                               accept=".pdf,.jpg,.png" style="display:none"
-                               onchange="handleUpload(this,'transcript')">
-
-                        <!-- Recommendation -->
-                        <div class="upload-box" id="recommendBox"
-                             onclick="document.getElementById('recommendInput').click()">
-                            <div class="upload-icon-area" id="recommendIcon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                     stroke-width="1.5" width="48" height="48">
-                                    <path d="M12 16V4m0 0L8 8m4-4l4 4"/>
-                                    <path d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2"/>
-                                </svg>
-                                <p>ลากไฟล์มาวางที่นี่<br>หรือคลิกเพื่ออัปโหลด</p>
-                                <small>(จดหมายแนะนำจากอาจารย์ที่ปรึกษา)</small>
-                            </div>
-                            <div class="upload-success" id="recommendSuccess" style="display:none">
-                                <span class="upload-check">✅</span>
-                                <p>ไฟล์ถูกอัปโหลดแล้ว</p>
-                                <small id="recommendName"></small>
-                            </div>
-                        </div>
-                        <input type="file" id="recommendInput" name="recommendation"
-                               accept=".pdf,.jpg,.png" style="display:none"
-                               onchange="handleUpload(this,'recommend')">
+                <!-- Step Flow Indicator -->
+                <div class="stepper-horizontal">
+                    <div class="step-item active">
+                        <div class="step-num">1</div>
+                        <div class="step-label">ข้อมูลส่วนตัว</div>
                     </div>
-
-                    <div class="upload-info">
-                        <p>รองรับไฟล์: PDF, JPG, PNG</p>
-                        <p>ขนาดไม่เกิน 12MB</p>
+                    <div class="step-line active"></div>
+                    <div class="step-item active">
+                        <div class="step-num">2</div>
+                        <div class="step-label">อัปโหลดเอกสาร</div>
+                    </div>
+                    <div class="step-line"></div>
+                    <div class="step-item">
+                        <div class="step-num">3</div>
+                        <div class="step-label">รอการพิจารณา</div>
                     </div>
                 </div>
             </div>
 
-            <div class="apply-btn-row">
-                <a href="javascript:history.back()" class="btn-back-form">ย้อนกลับ</a>
-                <button type="submit" class="btn-submit-apply">ส่งใบสมัคร</button>
-            </div>
-        </form>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert-box alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+            {% endif %}
+
+            <form method="post" enctype="multipart/form-data" class="apply-form-body" id="scholarshipApplyForm">
+                {% csrf_token %}
+                <div class="apply-grid-split">
+                    <!-- Left: Personal Information -->
+                    <div class="apply-form-section">
+                        <div class="section-badge-title">
+                            <h3>ข้อมูลผู้สมัครทุน</h3>
+                        </div>
+
+                        <div class="form-group-modern">
+                            <label class="field-label">ชื่อ - นามสกุล <span class="req-star">*</span></label>
+                            <input
+                                type="text"
+                                name="full_name"
+                                value="{{ student_profile.full_name|default:'' }}"
+                                placeholder="ชื่อ-นามสกุล"
+                                class="modern-text-input"
+                                required
+                            >
+                            <span class="field-hint">ชื่อและนามสกุลตรงตามบัตรประชาชน</span>
+                        </div>
+
+                        <div class="form-group-modern">
+                            <label class="field-label">รหัสนักศึกษา <span class="req-star">*</span></label>
+                            <input
+                                type="text"
+                                name="student_id"
+                                value="{{ student_profile.student_id|default:user.username }}"
+                                placeholder="เช่น 6630613014"
+                                class="modern-text-input"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group-modern">
+                            <label class="field-label">คณะ / สาขาวิชา <span class="req-star">*</span></label>
+                            <input
+                                type="text"
+                                name="faculty_major"
+                                value="{% if student_profile %}{{ student_profile.get_faculty_display }} / {{ student_profile.major }}{% endif %}"
+                                placeholder="คณะ / สาขาวิชา"
+                                class="modern-text-input"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group-modern">
+                            <label class="field-label">เบอร์โทรศัพท์ติดต่อ <span class="req-star">*</span></label>
+                            <input
+                                type="tel"
+                                name="phone"
+                                value="{{ student_profile.phone_number|default:'' }}"
+                                placeholder="0XX-XXX-XXXX"
+                                class="modern-text-input"
+                                required
+                            >
+                            <span class="field-hint">เบอร์โทรที่เจ้าหน้าที่สามารถติดต่อได้โดยตรง</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Document Upload -->
+                    <div class="apply-form-section">
+                        <div class="section-badge-title">
+                            <h3>อัปโหลดเอกสารประกอบ</h3>
+                        </div>
+
+                        <!-- Upload 1: Transcript -->
+                        <div class="upload-dropzone" id="transcriptDropzone" onclick="document.getElementById('transcriptInput').click()">
+                            <div class="dropzone-idle" id="transcriptIdle">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" style="margin: 0 auto 8px;">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                <div class="dropzone-text">
+                                    <strong>คลิกเพื่อเลือกไฟล์</strong> หรือลากไฟล์มาวางที่นี่
+                                </div>
+                                <div class="dropzone-subtext">ใบแสดงผลการเรียน (Transcript / ปพ.)</div>
+                                <div class="dropzone-file-type">รองรับไฟล์: PDF, JPG, PNG (ไม่เกิน 10MB)</div>
+                            </div>
+                            <div class="dropzone-selected" id="transcriptSelected" style="display:none">
+                                <span class="selected-check">✓</span>
+                                <div class="selected-info">
+                                    <strong id="transcriptFileName">filename.pdf</strong>
+                                    <span class="selected-hint">คลิกหากต้องการเปลี่ยนไฟล์ใหม่</span>
+                                </div>
+                            </div>
+                            <input type="file" id="transcriptInput" name="transcript" accept=".pdf,.jpg,.png" style="display:none" onchange="onFileChosen(this, 'transcript')">
+                        </div>
+
+                        <!-- Upload 2: Recommendation / Other -->
+                        <div class="upload-dropzone" id="recommendDropzone" onclick="document.getElementById('recommendInput').click()">
+                            <div class="dropzone-idle" id="recommendIdle">
+                                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.8" style="margin: 0 auto 8px;">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                <div class="dropzone-text">
+                                    <strong>คลิกเพื่อเลือกไฟล์</strong> (ถ้ามี)
+                                </div>
+                                <div class="dropzone-subtext">จดหมายแนะนำตัว หรือเอกสารรับรองอื่นๆ</div>
+                                <div class="dropzone-file-type">รองรับไฟล์: PDF, JPG, PNG (ไม่เกิน 10MB)</div>
+                            </div>
+                            <div class="dropzone-selected" id="recommendSelected" style="display:none">
+                                <span class="selected-check">✓</span>
+                                <div class="selected-info">
+                                    <strong id="recommendFileName">filename.pdf</strong>
+                                    <span class="selected-hint">คลิกหากต้องการเปลี่ยนไฟล์ใหม่</span>
+                                </div>
+                            </div>
+                            <input type="file" id="recommendInput" name="recommendation" accept=".pdf,.jpg,.png" style="display:none" onchange="onFileChosen(this, 'recommend')">
+                        </div>
+
+                        <!-- Consent Checkbox -->
+                        <div class="consent-checkbox-card">
+                            <label class="custom-checkbox-container">
+                                <input type="checkbox" id="confirmCheck" name="confirm" required>
+                                <span class="checkbox-text">
+                                    ข้าพเจ้าขอรับรองว่าข้อความและเอกสารทั้งหมดที่แนบมานี้ถูกต้องและเป็นความจริงทุกประการ หากตรวจพบว่าไม่เป็นความจริง ข้าพเจ้ายินยอมให้ตัดสิทธิ์การรับทุนทันที
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Bottom Actions -->
+                <div class="apply-submit-footer">
+                    <a href="javascript:history.back()" class="btn-cancel-apply">ยกเลิก</a>
+                    <button type="submit" class="btn-submit-application">
+                        ส่งใบสมัครทุนการศึกษา
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
 <script>
-function handleUpload(input, key) {
+function onFileChosen(input, type) {
     if (input.files && input.files[0]) {
-        const file = input.files[0];
-        document.getElementById(key + 'Icon').style.display = 'none';
-        document.getElementById(key + 'Success').style.display = 'flex';
-        document.getElementById(key + 'Name').textContent = file.name;
-        document.getElementById(key + 'Box').style.borderColor = '#16a34a';
-        document.getElementById(key + 'Box').style.background = '#f0fdf4';
+        var file = input.files[0];
+        var idleEl = document.getElementById(type + 'Idle');
+        var selectedEl = document.getElementById(type + 'Selected');
+        var nameEl = document.getElementById(type + 'FileName');
+        
+        idleEl.style.display = 'none';
+        selectedEl.style.display = 'flex';
+        nameEl.textContent = file.name + ' (' + (file.size / 1024 / 1024).toFixed(2) + ' MB)';
+        
+        var dropzone = document.getElementById(type + 'Dropzone');
+        dropzone.classList.add('has-file');
     }
 }
 </script>

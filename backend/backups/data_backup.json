@@ -1,0 +1,1282 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$2ojHykRUzwgrO0m6tVKGJZ$quHQvqYlmKy4wggY1tjJ/oYeqDqGx7zgVFAua7xiEmo=",
+    "last_login": "2026-09-15T06:07:16.425Z",
+    "is_superuser": true,
+    "username": "rachata",
+    "first_name": "",
+    "last_name": "",
+    "email": "s6630613014@phuket.psu.ac.th",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-03-01T09:08:19.947Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$PRwPAWuIIGvietXwtGuvL6$2oqkfSQhNrgXqp0VDTqzW2MragiOY+6ZD2RPI1aedMc=",
+    "last_login": "2026-03-07T11:37:19.768Z",
+    "is_superuser": false,
+    "username": "student01",
+    "first_name": "",
+    "last_name": "",
+    "email": "student@psu.ac.th",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-03-01T09:09:14Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$AtdnkKxmr5RtvhDV2VQUp7$7XH2qfj43dTrZjw3OUb3E95dw+S0xeit8DVtZOwtN1A=",
+    "last_login": "2026-05-12T02:49:42.107Z",
+    "is_superuser": false,
+    "username": "student03",
+    "first_name": "",
+    "last_name": "",
+    "email": "student03@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-04-23T03:08:42.387Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$6zBYPRkrfKzVlsAXfsUyvH$6lXVnRvuAG5STCGRMSTvPVts1WSf7HG7YxXx9TA4CFQ=",
+    "last_login": "2026-09-14T09:48:26.580Z",
+    "is_superuser": false,
+    "username": "studenttest",
+    "first_name": "",
+    "last_name": "",
+    "email": "test123@phuket.psu.ac.th",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-14T09:48:26.363Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "",
+    "last_login": "2026-09-14T10:10:45.840Z",
+    "is_superuser": false,
+    "username": "student_low_gpa",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-14T10:10:45.828Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$JDBMP5PHdVaXihwcTZfBnv$IIW6n7VT168v3XgoKbUbmI13HxTJm4hIZgll511Q5AA=",
+    "last_login": "2026-09-15T06:04:16.048Z",
+    "is_superuser": false,
+    "username": "student_de",
+    "first_name": "",
+    "last_name": "",
+    "email": "student_de@phuket.psu.ac.th",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-09-14T10:26:01Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$QHSdB9eqHVuT2rv3bz3mGE$adD4gyE0fwqa2AVh1wCormwXA7GPhuySbeLLc4FVnXU=",
+    "last_login": "2026-09-15T06:04:50.450Z",
+    "is_superuser": false,
+    "username": "student_fht",
+    "first_name": "",
+    "last_name": "",
+    "email": "student_fht@phuket.psu.ac.th",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-14T10:26:01.298Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$voOtM3BoSL7XFWLpPDkHUh$C6LIpmgaXW4b7fTLHE2r5o4uc7NEV2SdZYmuEN4ImV0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "student_fte",
+    "first_name": "",
+    "last_name": "",
+    "email": "student_fte@phuket.psu.ac.th",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-09-14T10:26:01.411Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "alypmu4sz9jvzr7t7i71aczdrhxn4bf7",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-rOOYkj5nsNbeNQ6gRIqTCnF3EikFtG9m3ltE3NYat8ZLHElchRaX3y1hfvJ0AHrgdJ9lnqd1GZM8FHnSJoeZ-HU73b-Diq3utet67xmYnEVTlNMQKBnokiYkS0AqZ3YIvWEFbEvwFnc7AGYM3hXx-QLnhzhl:1vyqIC:5MKToBF1EYPaSWkXc4OEyMztpTFU7I23W0Q3iWaQo3w",
+    "expire_date": "2026-03-21T11:58:00.877Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "cwj320ny71ssdbwp1cqo8vbalxfrulmn",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAURO_C2hAoDYJL956BfJj_pWrapLSrxrtrky50O--92VSidalpbTynAeqivDr9bpnKk8cd4EHjfdJlGpd5yHpX9EGbvk3g1_Vw_w4qtfqtcwwFxaP0nh1YDEx0xkQREywzoQN1EZwhAtdbWImd-HgOEDLOqvcHI5c5XA:1x63e9:F2Rh-iNN84Xte0CMjMzr30qf1rqbsbfVbfaQbkRukow",
+    "expire_date": "2026-09-28T10:10:45.841Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "es3oz1e0yjdesppng528pl461eat0fmy",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQGRikaiAp7cr479qkC93ec859sQjbWuM2aIlzZmcm2el3Q0gPajvId2i3zlNv6zIj3xV-0MGvPdPzcrh_BxVG_da6ZLA4JYEojZLBeGODEyRg8kWYEpSepM6moKRk0TuLTiikAl5L8MTeH9kJN8w:1x63cr:FZ-cQHk-hbWDNblNiu7U5tDHjBY2iJzmv5SY-oItY00",
+    "expire_date": "2026-09-28T10:09:25.209Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ijn2rsrh2pv25j6okhkidwlzk27m7on5",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQGRikaiAp7cr479qkC93ec859sQjbWuM2aIlzZmcm2el3Q0gPajvId2i3zlNv6zIj3xV-0MGvPdPzcrh_BxVG_da6ZLA4JYEojZLBeGODEyRg8kWYEpSepM6moKRk0TuLTiikAl5L8MTeH9kJN8w:1x6MK4:4BCyRaka3i2Cnm-VoKorRf27XGbmWlqDmh31BYXh89o",
+    "expire_date": "2026-09-29T06:07:16.426Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "jfrhqof9kytl2w3k3h68xlf99ka80haz",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQGRikaiAp7cr479qkC93ec859sQjbWuM2aIlzZmcm2el3Q0gPajvId2i3zlNv6zIj3xV-0MGvPdPzcrh_BxVG_da6ZLA4JYEojZLBeGODEyRg8kWYEpSepM6moKRk0TuLTiikAl5L8MTeH9kJN8w:1x63cQ:K154rQ6TqVPomR9nJfTbHomjErzpPteuKxlFYRwF8N0",
+    "expire_date": "2026-09-28T10:08:58.465Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "nawdznte55qzp40abeqp40fbrhnksudm",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSFAebp07zeQGRikaiAp7cr479qkC93ec859sQjbWuM2aIlzZmcm2el3Q0gPajvId2i3zlNv6zIj3xV-0MGvPdPzcrh_BxVG_da6ZLA4JYEojZLBeGODEyRg8kWYEpSepM6moKRk0TuLTiikAl5L8MTeH9kJN8w:1x63GS:KmwA2b3HXE5rpNDcWWHu5TfEt681d_0qH__1JOBGdnI",
+    "expire_date": "2026-09-28T09:46:16.010Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "xmpko5wcycj0jue5esk2wjjdhaf2sqf5",
+  "fields": {
+    "session_data": ".eJxVjDsOwjAQBe_iGln-rOOYkj5nsNbeNQ6gRIqTCnF3EikFtG9m3ltE3NYat8ZLHElchRaX3y1hfvJ0AHrgdJ9lnqd1GZM8FHnSJoeZ-HU73b-Diq3utet67xmYnEVTlNMQKBnokiYkS0AqZ3YIvWEFbEvwFnc7AGYM3hXx-QLnhzhl:1wMdDt:9LvAozMulEBtVEjP7bVvLr33vzEqinoweJ7dvqkw7RU",
+    "expire_date": "2026-05-26T02:51:53.777Z"
+  }
+},
+{
+  "model": "scholarships.studentprofile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "rachata"
+    ],
+    "student_id": "rachata",
+    "full_name": "Rachata Faisang",
+    "faculty": "computing",
+    "major": "",
+    "phone_number": "080-717-2609",
+    "gpax": 4.0,
+    "profile_image": "profiles/AI_Character.jpg",
+    "created_at": "2026-03-01T09:53:39.048Z"
+  }
+},
+{
+  "model": "scholarships.studentprofile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "student01"
+    ],
+    "student_id": "student01",
+    "full_name": "",
+    "faculty": "",
+    "major": "",
+    "phone_number": "1111-111--1-1",
+    "gpax": 0.0,
+    "profile_image": "profiles/AI_Character_liHi8ll.jpg",
+    "created_at": "2026-03-01T09:57:13.417Z"
+  }
+},
+{
+  "model": "scholarships.studentprofile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "student03"
+    ],
+    "student_id": "student03",
+    "full_name": "student03",
+    "faculty": "computing",
+    "major": "DE",
+    "phone_number": "080-777-22222",
+    "gpax": 3.0,
+    "profile_image": "profiles/PSU_Logo.png",
+    "created_at": "2026-04-23T03:09:05.711Z"
+  }
+},
+{
+  "model": "scholarships.studentprofile",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "studenttest"
+    ],
+    "student_id": "66306130011",
+    "full_name": "test",
+    "faculty": "engineering",
+    "major": "DE",
+    "phone_number": "0801113134",
+    "gpax": 1.0,
+    "profile_image": "",
+    "created_at": "2026-09-14T09:49:09.404Z"
+  }
+},
+{
+  "model": "scholarships.studentprofile",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "student_low_gpa"
+    ],
+    "student_id": "6600000001",
+    "full_name": "Test Low GPA",
+    "faculty": "computing",
+    "major": "",
+    "phone_number": "",
+    "gpax": 2.2,
+    "profile_image": "",
+    "created_at": "2026-09-14T10:10:45.831Z"
+  }
+},
+{
+  "model": "scholarships.studentprofile",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "student_de"
+    ],
+    "student_id": "6630613001",
+    "full_name": "นายชลน่าน ภูเก็ตดี",
+    "faculty": "computing",
+    "major": "Digital Engineering",
+    "phone_number": "0812345671",
+    "gpax": 3.45,
+    "profile_image": "",
+    "created_at": "2026-09-14T10:26:01.298Z"
+  }
+},
+{
+  "model": "scholarships.studentprofile",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "student_fht"
+    ],
+    "student_id": "6630613002",
+    "full_name": "นางสาวสุพิชชา อันดามัน",
+    "faculty": "other",
+    "major": "Hospitality and Tourism Management",
+    "phone_number": "0812345672",
+    "gpax": 2.85,
+    "profile_image": "",
+    "created_at": "2026-09-14T10:26:01.410Z"
+  }
+},
+{
+  "model": "scholarships.studentprofile",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "student_fte"
+    ],
+    "student_id": "6630613003",
+    "full_name": "นายปรมินทร์ วงศ์สุวรรณ",
+    "faculty": "science",
+    "major": "Environmental Technology",
+    "phone_number": "0812345673",
+    "gpax": 2.15,
+    "profile_image": "",
+    "created_at": "2026-09-14T10:26:01.524Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 8,
+  "fields": {
+    "title": "Global Leadership Award",
+    "category": "general",
+    "description": "Supports students with proven leadership records in student government or community service.",
+    "requirements": "GPA 3.5+, Portfolio of leadership activities, and 1 Recommendation letter.",
+    "amount_per_semester": "25000.00",
+    "capacity": 5,
+    "start_date": "2026-05-12",
+    "end_date": "2026-10-31",
+    "status": "active",
+    "min_gpax": 3.5,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-05-09T08:37:03.380Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 9,
+  "fields": {
+    "title": "International Exchange Grant",
+    "category": "exchange",
+    "description": "Financial support for students selected for overseas exchange programs in Japan, Korea, or Europe.",
+    "requirements": "Official acceptance letter from a partner university, English proficiency (IELTS/TOEIC), GPA 3.0+.",
+    "amount_per_semester": "50000.00",
+    "capacity": 10,
+    "start_date": "2026-05-13",
+    "end_date": "2026-05-15",
+    "status": "active",
+    "min_gpax": 0.0,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-05-09T08:37:52.707Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 10,
+  "fields": {
+    "title": "The Academic Brightness Award",
+    "category": "general",
+    "description": "A merit-based scholarship dedicated to supporting students who maintain exceptional academic records and contribute to the university's academic reputation.",
+    "requirements": "Minimum GPA of 3.75, no history of academic probation, and an endorsement letter from the Department Head.",
+    "amount_per_semester": "30000.00",
+    "capacity": 10,
+    "start_date": "2026-05-13",
+    "end_date": "2026-05-16",
+    "status": "active",
+    "min_gpax": 3.75,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-05-09T08:38:56.647Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 11,
+  "fields": {
+    "title": "Semester Study Abroad Fund",
+    "category": "exchange",
+    "description": "Subsidy for short-term cultural exchange programs (1 semester) to enhance global perspectives.",
+    "requirements": "Currently in 2nd or 3rd year of study, Valid passport, Statement of purpose for the exchange.",
+    "amount_per_semester": "45499.99",
+    "capacity": 8,
+    "start_date": "2026-05-20",
+    "end_date": "2026-05-21",
+    "status": "active",
+    "min_gpax": 0.0,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-05-11T13:01:05.008Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 12,
+  "fields": {
+    "title": "STEM Excellence Scholarship",
+    "category": "general",
+    "description": "Encouraging students in Science and Tech to pursue innovation and research projects.",
+    "requirements": "Enrollment in Engineering or Science faculty, GPA 3.25+, Active participation in tech competitions.",
+    "amount_per_semester": "30000.00",
+    "capacity": 15,
+    "start_date": "2026-05-20",
+    "end_date": "2026-12-31",
+    "status": "active",
+    "min_gpax": 3.0,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-05-11T13:26:35.178Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 13,
+  "fields": {
+    "title": "Talent & Innovation Scholarship",
+    "category": "general",
+    "description": "Awarded to students who show unique talents (e.g., coding, invention, arts, or entrepreneurship) that don't necessarily fit into standard academic categories.",
+    "requirements": "Proof of talent (award, certificate, or project), interview with the committee, and GPA 2.50+.",
+    "amount_per_semester": "25000.00",
+    "capacity": 5,
+    "start_date": "2026-05-20",
+    "end_date": "2026-11-30",
+    "status": "active",
+    "min_gpax": 2.5,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-05-12T02:54:05.840Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 14,
+  "fields": {
+    "title": "ทุนแลกเปลี่ยนนักศึกษานานาชาติ Global Mobility Grant 2026",
+    "category": "exchange",
+    "description": "ทุนสนับสนุนค่าใช้จ่ายในการเข้าร่วมโครงการแลกเปลี่ยนนักศึกษา ณ มหาวิทยาลัยคู่สัญญาในต่างประเทศ เช่น ญี่ปุ่น เกาหลีใต้ ไต้หวัน และประเทศสมาชิกอาเซียน เพื่อพัฒนาทักษะระดับสากลและเปิดโลกทัศน์ทางวิชาการ",
+    "requirements": "1. เป็นนักศึกษา ม.อ. ภูเก็ต ชั้นปีที่ 2 ขึ้นไป\n2. มีเกรดเฉลี่ยสะสม (GPAX) ไม่ต่ำกว่า 2.75\n3. มีคะแนนทดสอบภาษาอังกฤษ TOEIC 550+ หรือเทียบเท่า\n4. ผ่านการสัมภาษณ์จากคณะกรรมการคัดเลือก",
+    "amount_per_semester": "45000.00",
+    "capacity": 8,
+    "start_date": "2026-08-01",
+    "end_date": "2026-12-20",
+    "status": "active",
+    "min_gpax": 2.75,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-09-14T10:26:01.178Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 15,
+  "fields": {
+    "title": "ทุนโครงการฝึกงานและทัศนศึกษาต่างประเทศ (Global Internship Fund)",
+    "category": "exchange",
+    "description": "ทุนสนับสนุนการฝึกประสบการณ์วิชาชีพหรือสหกิจศึกษาในหน่วยงาน องค์กรธุรกิจ และสถาบันวิจัยชั้นนำในต่างประเทศ มุ่งเน้นสร้างเครือข่ายวิชาชีพข้ามวัฒนธรรม",
+    "requirements": "1. นักศึกษาชั้นปีที่ 3 หรือ 4 ทุกสาขาวิชา\n2. มีผลการเรียนเฉลี่ยสะสม 2.50 ขึ้นไป\n3. มีหนังสือตอบรับการฝึกงานหรือเข้าร่วมโครงการจากหน่วยงานต่างประเทศ",
+    "amount_per_semester": "35000.00",
+    "capacity": 12,
+    "start_date": "2026-08-15",
+    "end_date": "2026-11-30",
+    "status": "active",
+    "min_gpax": 2.5,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-09-14T10:26:01.179Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 16,
+  "fields": {
+    "title": "ทุนยกเว้นค่าธรรมเนียมการศึกษาสำหรับผู้มีความสามารถพิเศษทางนวัตกรรมดิจิทัล",
+    "category": "fee_waiver",
+    "description": "ทุนยกเว้นค่าธรรมเนียมการศึกษาประจำภาคเรียน สำหรับนักศึกษาที่มีผลงานสร้างสรรค์และนวัตกรรม เช่น Software Development, AI, Data Science, IoT หรือได้รับรางวัลการแข่งขันในระดับประเทศ",
+    "requirements": "1. นักศึกษา ม.อ. ภูเก็ต ทุกคณะและสาขาวิชา\n2. มีเกรดเฉลี่ยสะสม (GPAX) 2.75 ขึ้นไป\n3. แนบแฟ้มสะสมผลงาน (Portfolio) ลิงก์ GitHub หรือเกียรติบัตรรางวัลการแข่งขัน",
+    "amount_per_semester": "28000.00",
+    "capacity": 10,
+    "start_date": "2026-08-01",
+    "end_date": "2026-12-31",
+    "status": "active",
+    "min_gpax": 2.75,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-09-14T10:26:01.180Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 17,
+  "fields": {
+    "title": "ทุนยกเว้นค่าธรรมเนียมการศึกษา 50% สำหรับผู้นำกิจกรรมและจิตอาสา",
+    "category": "fee_waiver",
+    "description": "ทุนยกเว้นค่าธรรมเนียมการศึกษาครึ่งหนึ่ง เพื่อเชิดชูเกียรติและสนับสนุนนักศึกษาที่มีผลงานการเป็นผู้นำองค์กรนักศึกษา สโมสรนักศึกษา ชมรม และผู้มีจิตสาธารณะบำเพ็ญประโยชน์เพื่อสังคม",
+    "requirements": "1. ผ่านการสะสมชั่วโมงกิจกรรมพัฒนานักศึกษาตามเกณฑ์ของมหาวิทยาลัย\n2. มีเกรดเฉลี่ยสะสม (GPAX) ไม่ต่ำกว่า 2.20\n3. มีหนังสือรับรองการปฏิบัติงานกิจกรรมจากกองพัฒนานักศึกษาหรืออาจารย์ที่ปรึกษา",
+    "amount_per_semester": "14000.00",
+    "capacity": 15,
+    "start_date": "2026-08-20",
+    "end_date": "2026-11-25",
+    "status": "active",
+    "min_gpax": 2.2,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-09-14T10:26:01.180Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 18,
+  "fields": {
+    "title": "ทุนสวัสดิการอาหารกลางวันเพื่อน้อง ม.อ. ภูเก็ต (ภาคการศึกษาที่ 1/2569)",
+    "category": "lunch",
+    "description": "ทุนสวัสดิการเพื่อส่งเสริมสุขภาวะและสนับสนุนค่าครองชีพแก่นักศึกษา สนับสนุนค่าอาหารกลางวันตลอดภาคการศึกษาโดยไม่มีข้อจำกัดด้านเกรดเฉลี่ย เพื่อความเท่าเทียมทางการศึกษา",
+    "requirements": "1. เป็นนักศึกษา ม.อ. ภูเก็ต ที่มีความประพฤติดีและมีความจำเป็นด้านค่าครองชีพ\n2. ไม่จำกัดเกรดเฉลี่ยขั้นต่ำ (GPAX 0.00+)\n3. เข้ารับการสัมภาษณ์พูดคุยกับอาจารย์ที่ปรึกษาหรือเจ้าหน้าที่พัฒนานักศึกษา",
+    "amount_per_semester": "8000.00",
+    "capacity": 30,
+    "start_date": "2026-08-01",
+    "end_date": "2026-12-10",
+    "status": "active",
+    "min_gpax": 0.0,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-09-14T10:26:01.181Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 19,
+  "fields": {
+    "title": "ทุนคูปองอาหารกลางวันเพื่อสุขอนามัยนักศึกษา ม.อ. ภูเก็ต",
+    "category": "lunch",
+    "description": "ทุนช่วยเหลือค่าอาหารรายวันผ่านระบบสวัสดิการโรงอาหาร ม.อ. ภูเก็ต สนับสนุนนักศึกษาที่ขาดแคลนทุนทรัพย์เพื่อสุขอนามัยที่ดีและการใช้ชีวิตในรั้วมหาวิทยาลัยอย่างมีความสุข",
+    "requirements": "1. นักศึกษา ม.อ. ภูเก็ต ทุกคณะที่กำลังศึกษาอยู่\n2. ไม่จำกัดเกรดเฉลี่ยสะสม (GPAX 0.00+)\n3. ได้รับการรับรองความประพฤติจากอาจารย์ที่ปรึกษา",
+    "amount_per_semester": "6000.00",
+    "capacity": 25,
+    "start_date": "2026-08-10",
+    "end_date": "2026-11-15",
+    "status": "active",
+    "min_gpax": 0.0,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-09-14T10:26:01.181Z"
+  }
+},
+{
+  "model": "scholarships.scholarship",
+  "pk": 20,
+  "fields": {
+    "title": "ทุนส่งเสริมการศึกษาสำหรับนักศึกษาขาดแคลนทุนทรัพย์ (ทุนทั่วไป)",
+    "category": "general",
+    "description": "ทุนการศึกษาสำหรับนักศึกษาที่มีความประพฤติดี มุ่งมั่นตั้งใจศึกษาเล่าเรียน แต่ครอบครัวประสบปัญหาทางเศรษฐกิจหรือมีรายได้ไม่เพียงพอต่อค่าใช้จ่ายในการศึกษา",
+    "requirements": "1. นักศึกษา ม.อ. ภูเก็ต ทุกชั้นปี\n2. มีเกรดเฉลี่ยสะสม (GPAX) ไม่ต่ำกว่า 2.00\n3. หนังสือรับรองรายได้ครอบครัวและรูปถ่ายที่พักอาศัย",
+    "amount_per_semester": "15000.00",
+    "capacity": 20,
+    "start_date": "2026-08-01",
+    "end_date": "2026-12-15",
+    "status": "active",
+    "min_gpax": 2.0,
+    "created_by": [
+      "rachata"
+    ],
+    "created_at": "2026-09-14T10:26:01.182Z"
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 10,
+  "fields": {
+    "student": 4,
+    "scholarship": 8,
+    "status": "rejected",
+    "submitted_at": "2026-05-09T08:42:41.425Z",
+    "note": ""
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 11,
+  "fields": {
+    "student": 4,
+    "scholarship": 10,
+    "status": "approved",
+    "submitted_at": "2026-05-11T08:24:51.622Z",
+    "note": ""
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 12,
+  "fields": {
+    "student": 4,
+    "scholarship": 12,
+    "status": "rejected",
+    "submitted_at": "2026-05-12T02:50:58.606Z",
+    "note": ""
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 13,
+  "fields": {
+    "student": 1,
+    "scholarship": 10,
+    "status": "pending",
+    "submitted_at": "2026-09-14T09:29:11.306Z",
+    "note": ""
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 14,
+  "fields": {
+    "student": 7,
+    "scholarship": 14,
+    "status": "pending",
+    "submitted_at": "2026-09-14T10:26:17.073Z",
+    "note": "มีความสนใจแลกเปลี่ยนด้านวิศวกรรมซอฟต์แวร์ ณ ประเทศญี่ปุ่น"
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 15,
+  "fields": {
+    "student": 7,
+    "scholarship": 16,
+    "status": "approved",
+    "submitted_at": "2026-09-14T10:26:17.074Z",
+    "note": "มีผลงานพัฒนาแอปพลิเคชันคว้ารางวัลชนะเลิศ Hackathon"
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 16,
+  "fields": {
+    "student": 8,
+    "scholarship": 15,
+    "status": "pending",
+    "submitted_at": "2026-09-14T10:26:17.075Z",
+    "note": "ผ่านการคัดเลือกฝึกงานด้านการจัดการโรงแรม ณ ประเทศสิงคโปร์"
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 17,
+  "fields": {
+    "student": 8,
+    "scholarship": 18,
+    "status": "approved",
+    "submitted_at": "2026-09-14T10:26:17.076Z",
+    "note": "ขอรับการสนับสนุนค่าอาหารกลางวันเพื่อแบ่งเบาภาระครอบครัว"
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 18,
+  "fields": {
+    "student": 9,
+    "scholarship": 20,
+    "status": "pending",
+    "submitted_at": "2026-09-14T10:26:17.077Z",
+    "note": "ครอบครัวได้รับผลกระทบด้านเศรษฐกิจ มุ่งมั่นตั้งใจเรียน"
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 19,
+  "fields": {
+    "student": 9,
+    "scholarship": 19,
+    "status": "approved",
+    "submitted_at": "2026-09-14T10:26:17.078Z",
+    "note": "ขอรับคูปองอาหารกลางวันโรงอาหาร ม.อ."
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 20,
+  "fields": {
+    "student": 5,
+    "scholarship": 18,
+    "status": "pending",
+    "submitted_at": "2026-09-14T10:26:17.080Z",
+    "note": "ต้องการความช่วยเหลือสวัสดิการอาหารกลางวัน"
+  }
+},
+{
+  "model": "scholarships.application",
+  "pk": 21,
+  "fields": {
+    "student": 7,
+    "scholarship": 20,
+    "status": "pending",
+    "submitted_at": "2026-09-15T05:50:24.644Z",
+    "note": ""
+  }
+},
+{
+  "model": "scholarships.document",
+  "pk": 1,
+  "fields": {
+    "application": 21,
+    "file": "documents/Template_Report_DE_Project2_v3.pdf",
+    "doc_type": "transcript",
+    "uploaded_at": "2026-09-15T05:50:24.648Z"
+  }
+},
+{
+  "model": "scholarships.document",
+  "pk": 2,
+  "fields": {
+    "application": 21,
+    "file": "documents/Rubric_-_Sheet1.pdf",
+    "doc_type": "recommendation",
+    "uploaded_at": "2026-09-15T05:50:24.650Z"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-03-01T09:41:26.746Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "1",
+    "object_repr": "นอน",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-03-03T09:26:42.553Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "2",
+    "object_repr": "ไปไหน",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-03-03T09:26:53.591Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "1",
+    "object_repr": "นอน",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-03-04T14:45:03.617Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "1",
+    "object_repr": "นอน",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-03-04T14:45:37.348Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "2",
+    "object_repr": "ไปไหน",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-03-06T06:47:13.679Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "กิร",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-03-06T06:47:24.355Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "กิร",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-03-06T06:48:06.624Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "3",
+    "object_repr": "กิน",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-03-06T08:07:51.597Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "3",
+    "object_repr": "กิน",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-03-06T08:19:57.321Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "4",
+    "object_repr": "ทุนฟรี",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-03-06T08:20:50.778Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "4",
+    "object_repr": "ทุนฟรี",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-03-06T08:21:24.554Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "กิร",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-03-06T08:22:31.808Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "student01",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-03-06T08:50:29.605Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "5",
+    "object_repr": "ทุนเรียนดี",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-03-07T10:09:13.490Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "5",
+    "object_repr": "ทุนเรียนดี",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-03-07T10:12:34.801Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "5",
+    "object_repr": "ทุนเรียนดี",
+    "action_flag": 2,
+    "change_message": "[]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-03-07T11:08:45.234Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "6",
+    "object_repr": "food free",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 18,
+  "fields": {
+    "action_time": "2026-03-07T11:09:55.690Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "6",
+    "object_repr": "food free",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 19,
+  "fields": {
+    "action_time": "2026-03-08T07:53:45.197Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "student02",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 20,
+  "fields": {
+    "action_time": "2026-04-23T06:48:51.294Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "6",
+    "object_repr": "food free",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2026-04-23T06:48:51.295Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "5",
+    "object_repr": "ทุนเรียนดี",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2026-04-23T06:49:35.837Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "7",
+    "object_repr": "ทุนไรดี",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2026-05-09T08:30:45.853Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "7",
+    "object_repr": "ทุนไรดี",
+    "action_flag": 3,
+    "change_message": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2026-05-09T08:37:03.381Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "8",
+    "object_repr": "Global Leadership Award",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2026-05-09T08:37:52.709Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "9",
+    "object_repr": "International Exchange Grant",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2026-05-09T08:38:56.648Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "10",
+    "object_repr": "The Academic Brightness Award",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2026-05-11T13:01:05.010Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "11",
+    "object_repr": "Semester Study Abroad Fund",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2026-05-11T13:26:35.179Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "12",
+    "object_repr": "STEM Excellence Scholarship",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2026-05-12T02:54:05.841Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "scholarships",
+      "scholarship"
+    ],
+    "object_id": "13",
+    "object_repr": "Talent & Innovation Scholarship",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2026-09-15T05:47:27.485Z",
+    "user": [
+      "rachata"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "7",
+    "object_repr": "student_de",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Staff status\"]}}]"
+  }
+}
+]

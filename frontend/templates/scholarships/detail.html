@@ -1,78 +1,227 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}{{ scholarship.title }} | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
-<div class="detail-page">
-    <div class="detail-container">
-        <a href="javascript:history.back()" class="btn-back">← กลับ</a>
-
-        <div class="detail-card">
-            <div class="detail-header">
-                <span class="scholarship-status {{ scholarship.status }}">{{ scholarship.get_status_display }}</span>
-                <h1>{{ scholarship.title }}</h1>
+<div class="detail-page-modern">
+    <!-- Header Banner -->
+    <div class="detail-header-banner">
+        <div class="container-default">
+            <div class="breadcrumb-nav">
+                <a href="{% url 'home' %}">หน้าแรก</a>
+                <span class="breadcrumb-sep">/</span>
+                <a href="{% url 'scholarships' %}">หมวดหมู่ทุน</a>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-current">{{ scholarship.title }}</span>
             </div>
 
-            <div class="detail-info-grid">
-                <div class="detail-info-item">
-                    <span class="detail-label">💰 จำนวนทุน</span>
-                    <span class="detail-value">{{ scholarship.amount_per_semester }} บาท/ภาคการศึกษา</span>
-                </div>
-                <div class="detail-info-item">
-                    <span class="detail-label">👥 จำนวนที่รับ</span>
-                    <span class="detail-value">{{ scholarship.capacity }} คน</span>
-                </div>
-                <div class="detail-info-item">
-                    <span class="detail-label">📅 เปิดรับ</span>
-                    <span class="detail-value">{{ scholarship.start_date }}</span>
-                </div>
-                <div class="detail-info-item">
-                    <span class="detail-label">📅 ปิดรับ</span>
-                    <span class="detail-value">{{ scholarship.end_date }}</span>
-                </div>
-            </div>
+            <div class="detail-title-area">
+                <div class="detail-badge-group">
+                    {% if is_expired or scholarship.status != 'active' %}
+                    <span class="status-pill status-closed">
+                        ปิดรับสมัครแล้ว
+                    </span>
+                    {% elif user.is_authenticated and already_applied %}
+                    <span class="status-pill status-applied">
+                        <span class="dot-applied"></span> ยื่นสมัครแล้ว
+                    </span>
+                    {% else %}
+                    <span class="status-pill status-open">
+                        <span class="dot-live"></span> เปิดรับสมัคร
+                    </span>
+                    {% endif %}
+                    <span class="category-pill-tag">
+                        {% if scholarship.category == 'general' %}ทุนทั่วไป
+                        {% elif scholarship.category == 'exchange' %}ทุนแลกเปลี่ยน
+                        {% elif scholarship.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
+                        {% elif scholarship.category == 'lunch' %}อาหารกลางวัน
+                        {% else %}{{ scholarship.get_category_display }}{% endif %}
+                    </span>
+                    
 
-            <div class="detail-section">
-                <h2>รายละเอียด</h2>
-                <p>{{ scholarship.description }}</p>
+                </div>
+                <h1 class="detail-main-title">{{ scholarship.title }}</h1>
             </div>
+        </div>
+    </div>
 
-            <div class="detail-section">
-                <h2>คุณสมบัติผู้สมัคร</h2>
-                <p>{{ scholarship.requirements }}</p>
-            </div>
-
+    <!-- Main 2-Column Content -->
+    <div class="container-default detail-main-layout">
+        <!-- Left: Details & Requirements -->
+        <div class="detail-left-column">
             {% if messages %}
             {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            <div class="alert-box alert-{{ message.tags }}">{{ message }}</div>
             {% endfor %}
             {% endif %}
 
-            {% if scholarship.status == 'active' %}
-    {% if user.is_authenticated %}
-        {% if already_applied %}
-            <div class="alert alert-success">✅ คุณได้สมัครทุนนี้แล้ว รอผลการพิจารณา</div>
-        {% else %}
-            <div class="detail-btn-row">
-                <a href="javascript:history.back()" class="btn-back-form">ย้อนกลับ</a>
-                <a href="{% url 'apply_form' scholarship.pk %}" class="btn-submit-apply">สมัครทันที</a>
+            <!-- Description Card -->
+            <div class="detail-content-card">
+                <div class="card-title-bar">
+                    <h2>รายละเอียดทุนการศึกษา</h2>
+                </div>
+                <div class="card-rich-text">
+                    <p>{{ scholarship.description|linebreaks }}</p>
+                </div>
             </div>
-        {% endif %}
-    {% else %}
-        <div class="alert alert-info">
-            <a href="#" onclick="openLoginModal()">เข้าสู่ระบบ</a> เพื่อสมัครทุนนี้
+
+            <!-- Requirements Card -->
+            <div class="detail-content-card">
+                <div class="card-title-bar">
+                    <h2>คุณสมบัติผู้สมัคร</h2>
+                </div>
+                <div class="card-rich-text requirements-box">
+                    <p>{{ scholarship.requirements|linebreaks }}</p>
+                </div>
+            </div>
+
+            <!-- Required Documents Checklist -->
+            <div class="detail-content-card">
+                <div class="card-title-bar">
+                    <h2>เอกสารประกอบการสมัคร</h2>
+                </div>
+                <ul class="documents-checklist">
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>ใบแสดงผลการเรียน (Transcript / ปพ.)</strong>
+                            <p>เอกสารแสดงผลการเรียนฉบับจริงหรือพิมพ์จากระบบบริการการศึกษา</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>หนังสือรับรองหรือเอกสารเพิ่มเติม (ถ้ามี)</strong>
+                            <p>จดหมายแนะนำจากอาจารย์ที่ปรึกษา หรือเอกสารรับรองรายได้ผู้ปกครอง</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="detail-btn-row">
-            <a href="javascript:history.back()" class="btn-back-form">ย้อนกลับ</a>
-        </div>
-    {% endif %}
-{% else %}
-    <div class="alert alert-error">🔒 ทุนนี้ปิดรับสมัครแล้ว</div>
-    <div class="detail-btn-row">
-        <a href="javascript:history.back()" class="btn-back-form">ย้อนกลับ</a>
-    </div>
-{% endif %}
+
+        <!-- Right: Sticky Summary & Action Card -->
+        <div class="detail-right-column">
+            <div class="sticky-action-card">
+                <div class="action-card-header">
+                    <div class="amount-label">มูลค่าทุนสนับสนุน</div>
+                    <div class="amount-display">
+                        <span class="amount-currency">฿</span>
+                        <span class="amount-num">{{ scholarship.amount_per_semester|floatformat:0 }}</span>
+                    </div>
+                    <div class="amount-period">ต่อภาคการศึกษา</div>
+                </div>
+
+                <div class="action-specs-list">
+                    <div class="spec-row">
+                        <span class="spec-label">จำนวนที่เปิดรับ</span>
+                        <span class="spec-val"><strong>{{ scholarship.capacity }}</strong> คน</span>
+                    </div>
+
+                    <div class="spec-row">
+                        <span class="spec-label">วันเปิดรับสมัคร</span>
+                        <span class="spec-val">{{ scholarship.start_date }}</span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">วันปิดรับสมัคร</span>
+                        <span class="spec-val {% if is_expired %}text-danger{% endif %}">
+                            <strong>{{ scholarship.end_date }}</strong>
+                            {% if is_expired %}<span class="expired-tag">หมดเขตแล้ว</span>{% endif %}
+                        </span>
+                    </div>
+                    <div class="spec-row">
+                        <span class="spec-label">วิทยาเขต</span>
+                        <span class="spec-val">ม.อ. ภูเก็ต</span>
+                    </div>
+                </div>
+
+                <div class="action-btn-area">
+                    {% if is_expired %}
+                        <!-- กรณีหมดเขตรับสมัคร: ล็อกปุ่มสีเทา -->
+                        <div class="closed-notice-box">
+                            <strong>ปิดรับสมัครแล้ว</strong>
+                            <p>ทุนนี้สิ้นสุดระยะเวลารับสมัครเมื่อวันที่ {{ scholarship.end_date }}</p>
+                        </div>
+                        <button class="btn-disabled-lock" disabled>
+                            ทุนนี้หมดเขตรับสมัครแล้ว
+                        </button>
+                    {% elif scholarship.status != 'active' %}
+                        <div class="closed-notice-box">
+                            <strong>ปิดรับสมัครแล้ว</strong>
+                            <p>ทุนนี้ไม่ได้เปิดรับสมัครในขณะนี้</p>
+                        </div>
+                        <button class="btn-disabled-lock" disabled>
+                            ปิดรับสมัครแล้ว
+                        </button>
+                    {% else %}
+                        <!-- กรณีทุนยังเปิดรับสมัคร -->
+                        {% if user.is_authenticated %}
+                            {% if already_applied %}
+                                <div class="already-applied-card">
+                                    <span class="applied-icon">✓</span>
+                                    <div>
+                                        <strong>คุณได้ยื่นสมัครทุนนี้แล้ว</strong>
+                                        <p>ระบบกำลังอยู่ระหว่างการตรวจสอบข้อมูล</p>
+                                    </div>
+                                </div>
+                                <a href="{% url 'profile' %}" class="btn-goto-profile">
+                                    ดูสถานะใบสมัครในข้อมูลส่วนตัว →
+                                </a>
+                            {% else %}
+                                <a href="{% url 'apply_form' scholarship.pk %}" class="btn-primary-apply-action">
+                                    สมัครทุนนี้
+                                </a>
+                            {% endif %}
+                        {% else %}
+                            <button onclick="openLoginModal()" class="btn-primary-apply-action">
+                                เข้าสู่ระบบเพื่อสมัครทุน
+                            </button>
+                            <p class="login-prompt-sub">ต้องเข้าสู่ระบบก่อนจึงจะสามารถส่งใบสมัครได้</p>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if user.is_authenticated %}
+                    <form method="POST" action="{% url 'toggle_favorite' scholarship.pk %}" class="detail-favorite-form" style="margin-top: 15px; width: 100%;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-outline-favorite" style="width: 100%; padding: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--border-color); border-radius: 8px; background: transparent; cursor: pointer; transition: all 0.2s;" title="บันทึกทุน">
+                            <span class="material-symbols-outlined favorite-icon" style="{% if is_favorited %}font-variation-settings: 'FILL' 1; color: var(--danger-color);{% else %}font-variation-settings: 'FILL' 0; color: var(--text-muted);{% endif %}">
+                                favorite
+                            </span>
+                            <span style="font-weight: 500; color: var(--text-color);">{% if is_favorited %}ลบบันทึกทุนนี้{% else %}บันทึกทุนนี้ไว้ดูภายหลัง{% endif %}</span>
+                        </button>
+                    </form>
+                    {% endif %}
+
+                    <a href="javascript:history.back()" class="btn-back-clean">
+                        ← ย้อนกลับ
+                    </a>
+                </div>
+
+                <!-- Admin Management Box: เฉพาะผู้มีสิทธิ์ Admin / Staff เท่านั้น -->
+                {% if user.is_staff or user.is_superuser %}
+                <div class="admin-control-box">
+                    <div class="admin-box-title">สิทธิ์ผู้ดูแลระบบ (Admin)</div>
+                    <div class="admin-btn-row">
+                        <a href="/admin/scholarships/scholarship/{{ scholarship.pk }}/change/" class="btn-admin-edit">
+                            แก้ไขข้อมูลทุน
+                        </a>
+                        <form method="post" action="{% url 'delete_scholarship' scholarship.pk %}" onsubmit="return confirm('ยืนยันการลบทุนการศึกษานี้หรือไม่? ข้อมูลใบสมัครที่เกี่ยวข้องจะถูกลบด้วย')" style="margin:0">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-admin-delete">
+                                ลบทุนนี้
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="action-card-footer">
+                    <div class="help-notice">
+                        <span>มีปัญหาการส่งใบสมัคร ติดต่อ 076-276-000 ต่อ 6050</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

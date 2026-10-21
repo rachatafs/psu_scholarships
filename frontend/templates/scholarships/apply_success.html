@@ -1,30 +1,54 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}ส่งใบสมัครสำเร็จ | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
-<div class="success-page">
-    <div class="success-card">
-        <div class="success-icon">✅</div>
-        <h1>ส่งใบสมัครเรียบร้อยแล้ว!</h1>
-        <p class="success-sub">ขอบคุณที่สมัคร{{ scholarship.title }}</p>
+<div class="success-page-wrapper">
+    <div class="container-default">
+        <div class="success-card-modern">
+            <div class="success-icon-badge">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+            </div>
 
-        {% if application %}
-        <div class="success-detail">
-            <h3>รายละเอียดการสมัครของคุณ:</h3>
-            <ul>
-                <li>ชื่อผู้สมัคร: <strong>{{ application.student.full_name }}</strong></li>
-                <li>รหัสนักศึกษา: <strong>{{ application.student.student_id }}</strong></li>
-                <li>ทุนที่สมัคร: <strong>{{ scholarship.title }} ({{ scholarship.get_category_display }})</strong></li>
-                <li>วันที่ส่ง: <strong>{{ application.submitted_at|date:"d F Y" }}</strong></li>
-            </ul>
+            <h1 class="success-title">ส่งใบสมัครเรียบร้อยแล้ว</h1>
+            <p class="success-subtitle">ระบบได้รับใบสมัครทุน {{ scholarship.title }} ของคุณเข้าสู่กระบวนการพิจารณาแล้ว</p>
+
+            {% if application %}
+            <div class="success-details-box">
+                <div class="detail-header-sub">รายละเอียดการสมัครของคุณ</div>
+                <div class="detail-line-item">
+                    <span class="label">ชื่อผู้สมัคร:</span>
+                    <span class="val">{{ application.student.full_name }}</span>
+                </div>
+                <div class="detail-line-item">
+                    <span class="label">รหัสนักศึกษา:</span>
+                    <span class="val">{{ application.student.student_id }}</span>
+                </div>
+                <div class="detail-line-item">
+                    <span class="label">ทุนที่สมัคร:</span>
+                    <span class="val">{{ scholarship.title }} ({{ scholarship.get_category_display }})</span>
+                </div>
+                <div class="detail-line-item">
+                    <span class="label">วันที่ยื่นสมัคร:</span>
+                    <span class="val">{{ application.submitted_at|date:"d F Y" }}</span>
+                </div>
+            </div>
+            {% endif %}
+
+            <p class="success-instructions">
+                คุณสามารถติดตามความคืบหน้าและผลการพิจารณาทุนได้ที่หน้าข้อมูลส่วนตัวของคุณ
+            </p>
+
+            <div class="success-actions-row">
+                <a href="{% url 'profile' %}" class="btn-success-profile">ดูสถานะในหน้าข้อมูลส่วนตัว</a>
+                <a href="{% url 'home' %}" class="btn-success-home">กลับสู่หน้าแรก</a>
+            </div>
         </div>
-        {% endif %}
-
-        <p class="success-note">กรุณาตรวจสอบอีเมลของคุณเพื่อติดตามผลการประกาศและการแจ้งเตือนอื่นๆ</p>
-
-        <a href="{% url 'home' %}" class="btn-submit">กลับสู่หน้าหลัก</a>
     </div>
 </div>
 {% endblock %}
