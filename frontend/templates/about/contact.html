@@ -1,147 +1,139 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
-{% block title %}ติดต่อเรา | PSU Phuket Scholarships{% endblock %}
+{% block title %}ติดต่อเรา | งานพัฒนานักศึกษา ม.อ. ภูเก็ต{% endblock %}
 
 {% block content %}
-<div style="
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 1rem;
-    background: #f8fafc;
-">
-    <div style="
-        background: white;
-        border-radius: 20px;
-        padding: 3rem;
-        max-width: 600px;
-        width: 100%;
-        box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    ">
-        <!-- Header -->
-        <div style="text-align:center; margin-bottom:2rem;">
-            <div style="
-                width: 64px;
-                height: 64px;
-                background: #e3f0ff;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 auto 1rem;
-                font-size: 1.8rem;
-            ">📞</div>
-            <h1 style="
-                font-size: 1.8rem;
-                font-weight: 700;
-                color: #1a2e4a;
-                margin: 0;
-            ">ติดต่อเรา</h1>
-            <p style="color:#6b7280; margin-top:0.5rem; font-size:0.95rem;">
-                Contact Us
-            </p>
+<div class="contact-page-modern">
+    <!-- Header Banner -->
+    <div class="contact-header-banner">
+        <div class="container-default">
+            <div class="breadcrumb-nav">
+                <a href="{% url 'home' %}">หน้าแรก</a>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-current">ติดต่อเรา</span>
+            </div>
+            <div class="contact-header-content">
+                <span class="contact-tag-badge">STUDENT DEVELOPMENT &amp; RELATIONS</span>
+                <h1 class="contact-main-title">ติดต่อฝ่ายทุนการศึกษา ม.อ. ภูเก็ต</h1>
+                <p class="contact-subtitle">
+                    งานพัฒนานักศึกษาและศิษย์เก่าสัมพันธ์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต<br>
+                    พร้อมให้คำปรึกษา แนะนำข้อมูลทุนการศึกษา และช่วยเหลือขั้นตอนการยื่นเอกสาร
+                </p>
+            </div>
         </div>
+    </div>
 
-        <!-- Divider -->
-        <hr style="border:none; border-top:1.5px solid #e5e7eb; margin-bottom:2rem;">
-
-        <!-- University Name -->
-        <div style="margin-bottom:1.5rem; text-align:center;">
-            <p style="
-                font-size:1.1rem;
-                font-weight:700;
-                color:#1565c0;
-                margin:0 0 0.25rem;
-            ">Prince of Songkla University Phuket Campus</p>
-            <p style="
-                font-size:0.95rem;
-                color:#374151;
-                margin:0;
-            ">Student Development and Relations PSU Phuket</p>
-        </div>
-
-        <!-- Contact Info Cards -->
-        <div style="display:flex; flex-direction:column; gap:1rem;">
-
-            <!-- Phone -->
-            <div style="
-                display:flex;
-                align-items:center;
-                gap:1rem;
-                padding:1rem 1.25rem;
-                background:#f8fafc;
-                border-radius:12px;
-                border:1.5px solid #e5e7eb;
-            ">
-                <div style="
-                    font-size:1.4rem;
-                    width:40px;
-                    text-align:center;
-                ">📱</div>
-                <div>
-                    <p style="font-size:0.8rem; color:#6b7280; margin:0 0 0.2rem;">โทรศัพท์ / Phone</p>
-                    <p style="font-size:1rem; font-weight:600; color:#1a2e4a; margin:0;">
-                        0 7627 6047
-                    </p>
+    <!-- Contact Content Grid -->
+    <div class="container-default contact-body-layout">
+        <div class="contact-cards-grid">
+            
+            <!-- Phone & Direct Contact -->
+            <div class="contact-info-card">
+                <div class="contact-card-icon-wrap">
+                    <svg class="contact-svg-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                </div>
+                <h3 class="contact-card-title">โทรศัพท์ติดต่อ</h3>
+                <p class="contact-card-desc">สอบถามข้อมูลทุนการศึกษาและขั้นตอนการสมัคร</p>
+                <div class="contact-item-detail">
+                    <div class="detail-label">เบอร์โทรศัพท์ตรง:</div>
+                    <a href="tel:076276047" class="detail-highlight-link">0 7627 6047</a>
+                </div>
+                <div class="contact-item-detail">
+                    <div class="detail-label">เบอร์โทรศัพท์กลางวิทยาเขต:</div>
+                    <span class="detail-text">076-276-000 ต่อ 6047, 6050</span>
                 </div>
             </div>
 
-            <!-- Address -->
-            <div style="
-                display:flex;
-                align-items:flex-start;
-                gap:1rem;
-                padding:1rem 1.25rem;
-                background:#f8fafc;
-                border-radius:12px;
-                border:1.5px solid #e5e7eb;
-            ">
-                <div style="
-                    font-size:1.4rem;
-                    width:40px;
-                    text-align:center;
-                    margin-top:0.1rem;
-                ">📍</div>
-                <div>
-                    <p style="font-size:0.8rem; color:#6b7280; margin:0 0 0.2rem;">ที่อยู่ / Address</p>
-                    <p style="font-size:1rem; font-weight:600; color:#1a2e4a; margin:0; line-height:1.6;">
-                        80 Moo 1 Vichit Songkram Rd.<br>
-                        Kathu, Phuket, Thailand 83210
-                    </p>
+            <!-- Email Contact -->
+            <div class="contact-info-card">
+                <div class="contact-card-icon-wrap">
+                    <svg class="contact-svg-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
                 </div>
-            </div>
-
-            <!-- Email -->
-            <div style="
-                display:flex;
-                align-items:center;
-                gap:1rem;
-                padding:1rem 1.25rem;
-                background:#f8fafc;
-                border-radius:12px;
-                border:1.5px solid #e5e7eb;
-            ">
-                <div style="
-                    font-size:1.4rem;
-                    width:40px;
-                    text-align:center;
-                ">✉️</div>
-                <div>
-                    <p style="font-size:0.8rem; color:#6b7280; margin:0 0 0.2rem;">อีเมล / E-mail</p>
-                    <a href="mailto:student-alumni@phuket.psu.ac.th"
-                       style="
-                           font-size:1rem;
-                           font-weight:600;
-                           color:#1565c0;
-                           text-decoration:none;
-                       ">
+                <h3 class="contact-card-title">อีเมลติดต่อ</h3>
+                <p class="contact-card-desc">ส่งคำถาม เอกสาร หรือข้อสงสัยทางอีเมลทางการ</p>
+                <div class="contact-item-detail">
+                    <div class="detail-label">อีเมลงานพัฒนานักศึกษา:</div>
+                    <a href="mailto:student-alumni@phuket.psu.ac.th" class="detail-highlight-link">
                         student-alumni@phuket.psu.ac.th
                     </a>
                 </div>
+                <div class="contact-item-detail">
+                    <div class="detail-label">การตอบกลับ:</div>
+                    <span class="detail-text">เจ้าหน้าที่ตอบกลับภายใน 1-2 วันทำการ</span>
+                </div>
             </div>
 
+            <!-- Office Hours -->
+            <div class="contact-info-card">
+                <div class="contact-card-icon-wrap">
+                    <svg class="contact-svg-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <h3 class="contact-card-title">วันและเวลาทำการ</h3>
+                <p class="contact-card-desc">เวลาเปิดให้บริการติดต่อด้วยตนเอง</p>
+                <div class="contact-item-detail">
+                    <div class="detail-label">วันเปิดทำการ:</div>
+                    <span class="detail-text font-bold">วันจันทร์ – วันศุกร์</span>
+                </div>
+                <div class="contact-item-detail">
+                    <div class="detail-label">เวลาให้บริการ:</div>
+                    <span class="detail-highlight">08:30 – 16:30 น.</span>
+                </div>
+                <div class="contact-item-detail">
+                    <div class="detail-label">วันหยุด:</div>
+                    <span class="detail-text text-muted">ปิดทำการวันเสาร์ - อาทิตย์ และวันหยุดนักขัตฤกษ์</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Location & Campus Card -->
+        <div class="contact-location-card">
+            <div class="location-card-header">
+                <div class="contact-card-icon-wrap">
+                    <svg class="contact-svg-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="location-title">สถานที่ติดต่อด้วยตนเอง</h2>
+                    <p class="location-subtitle">งานพัฒนานักศึกษาและศิษย์เก่าสัมพันธ์ วิทยาเขตภูเก็ต</p>
+                </div>
+            </div>
+
+            <div class="location-details-grid">
+                <div class="loc-detail-box">
+                    <div class="loc-label">ห้องทำงาน / อาคาร:</div>
+                    <div class="loc-value">ห้อง 7102 อาคาร 7 ชั้น 1 (อาคารสำนักงานอธิการบดี)</div>
+                </div>
+                <div class="loc-detail-box">
+                    <div class="loc-label">ที่อยู่ไปรษณีย์:</div>
+                    <div class="loc-value">
+                        มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต<br>
+                        80 หมู่ 1 ถนนวิชิตสงคราม ตำบลกะทู้ อำเภอกะทู้ จังหวัดภูเก็ต 83120
+                    </div>
+                </div>
+                <div class="loc-detail-box">
+                    <div class="loc-label">จุดสังเกต:</div>
+                    <div class="loc-value">
+                        เข้าทางประตูด้านหน้าวิทยาเขต มุ่งตรงมายังอาคาร 7 (ด้านหน้ามีพระราชานุสาวรีย์สมเด็จพระบรมราชชนก)
+                    </div>
+                </div>
+            </div>
+
+            <div class="location-footer-note">
+                นักศึกษาที่ต้องการส่งเอกสารตัวจริง หรือขอคำปรึกษาเรื่องทุน สามารถเดินทางมาติดต่อได้ที่ห้อง 7102 ในวันและเวลาทำการ
+            </div>
         </div>
     </div>
 </div>

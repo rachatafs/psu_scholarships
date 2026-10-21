@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-25 15:25+0700\n"
+"POT-Creation-Date: 2026-09-25 13:06+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,13 +17,47 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: backend/myproject/settings.py:76
+#: backend/myproject/settings.py:87
 msgid "Thai"
 msgstr "Thai"
 
-#: backend/myproject/settings.py:77
+#: backend/myproject/settings.py:88
 msgid "English"
 msgstr "English"
+
+#: backend/scholarships/views/scholarship_views.py:18
+msgid "ทุนการศึกษาทั่วไป"
+msgstr "General Scholarships"
+
+#: backend/scholarships/views/scholarship_views.py:18
+msgid "ทุนสนับสนุนการศึกษาสำหรับนักศึกษาทั่วไป ทุนขาดแคลนทุนทรัพย์"
+msgstr "Financial support for general students and those in need."
+
+#: backend/scholarships/views/scholarship_views.py:19
+msgid "ทุนศึกษาแลกเปลี่ยน"
+msgstr "Exchange Scholarships"
+
+#: backend/scholarships/views/scholarship_views.py:19
+msgid "ทุนสนับสนุนการแลกเปลี่ยนต่างประเทศและโครงการระดับนานาชาติ"
+msgstr "Support for international exchange and global programs."
+
+#: backend/scholarships/views/scholarship_views.py:20
+#: frontend/templates/partials/navbar.html:33
+msgid "ทุนยกเว้นค่าธรรมเนียม"
+msgstr "Fee Waiver Scholarships"
+
+#: backend/scholarships/views/scholarship_views.py:20
+msgid "ทุนยกเว้นค่าธรรมเนียมการศึกษาตามเกณฑ์ผลการเรียนและกิจกรรม"
+msgstr "Tuition fee waivers based on academic and extracurricular performance."
+
+#: backend/scholarships/views/scholarship_views.py:21
+#: frontend/templates/partials/navbar.html:34
+msgid "ทุนอาหารกลางวัน"
+msgstr "Lunch Scholarships"
+
+#: backend/scholarships/views/scholarship_views.py:21
+msgid "ทุนสวัสดิการอาหารกลางวันเพื่อสุขภาวะและการใช้ชีวิตในรั้วมหาวิทยาลัย"
+msgstr "Lunch welfare for student well-being on campus."
 
 #: frontend/templates/admin/index.html:11
 #, python-format
@@ -43,99 +76,128 @@ msgstr ""
 msgid "You don't have permission to view or edit anything."
 msgstr ""
 
-#: frontend/templates/index.html:5 frontend/templates/partials/navbar.html:11
+#: frontend/templates/index.html:5 frontend/templates/partials/navbar.html:21
 msgid "หน้าแรก"
 msgstr "Home"
 
-#: frontend/templates/index.html:14
-msgid "ทุนการศึกษาที่ใช่ เพื่ออนาคตที่ไกลกว่า ณ ม.อ. ภูเก็ต"
-msgstr "The Right Scholarship for a Brighter Future at PSU Phuket"
+#: frontend/templates/index.html:18
+msgid "ระบบรับสมัครและติดตามทุนการศึกษา มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต"
+msgstr "Scholarship Application System, PSU Phuket"
 
-#: frontend/templates/index.html:15
-msgid "ศูนย์รวมข้อมูลทุนการศึกษาและสวัสดิการ สำหรับนักศึกษามอ. ทุกคณะ"
+#: frontend/templates/index.html:22
+msgid "ทุนการศึกษาที่ใช่"
+msgstr "The Right Scholarship"
+
+#: frontend/templates/index.html:23
+msgid "เพื่ออนาคตที่ไกลกว่า ณ ม.อ. ภูเก็ต"
+msgstr "For a brighter future at PSU Phuket"
+
+#: frontend/templates/index.html:27
+msgid ""
+"ศูนย์รวมข้อมูลทุนการศึกษาและสวัสดิการ สำหรับนักศึกษา ม.อ. ทุกคณะ สะดวก รวดเร็ว "
+"สมัครและติดตามผลแบบครบวงจรผ่านระบบออนไลน์"
 msgstr "Scholarship and welfare information center for all PSU students"
 
-#: frontend/templates/index.html:16
-msgid "ค้นหาทุนสำหรับนักศึกษา"
-msgstr "Find Scholarships"
+#: frontend/templates/index.html:33
+msgid "ดูทุนการศึกษาที่เปิดรับทั้งหมด"
+msgstr "View All Open Scholarships"
 
-#: frontend/templates/partials/navbar.html:14
+#: frontend/templates/index.html:45
+msgid "หมวดหมู่ทุนการศึกษา"
+msgstr "Scholarship Categories"
+
+#: frontend/templates/index.html:46
+msgid "เลือกประเภททุนที่ตรงกับเกณฑ์และเป้าหมายของคุณ"
+msgstr "Choose the scholarship type that fits your goals and criteria"
+
+#: frontend/templates/index.html:54
+msgid "ทุนเปิดรับ"
+msgstr "Open Scholarships"
+
+#: frontend/templates/index.html:59
+msgid "ค้นหาทุนหมวดนี้"
+msgstr "Explore this category"
+
+#: frontend/templates/index.html:74
+msgid "ทุนที่ใกล้หมดเขต"
+msgstr "Expiring Soon"
+
+#: frontend/templates/index.html:75
+msgid "รีบตรวจสอบคุณสมบัติและส่งใบสมัครก่อนหมดเขต"
+msgstr "Check your eligibility and apply before the deadline"
+
+#: frontend/templates/index.html:84
+msgid "ด่วน! หมดเขต"
+msgstr "Urgent! Deadline"
+
+#: frontend/templates/partials/navbar.html:24
 msgid "ทุนการศึกษา"
 msgstr "Scholarships"
 
-#: frontend/templates/partials/navbar.html:18
+#: frontend/templates/partials/navbar.html:28
 msgid "ข้อมูลทุน"
 msgstr "Scholarship Info"
 
-#: frontend/templates/partials/navbar.html:21
+#: frontend/templates/partials/navbar.html:31
 msgid "ทุนทั่วไป"
-msgstr "General Scholarships"
+msgstr "General"
 
-#: frontend/templates/partials/navbar.html:22
+#: frontend/templates/partials/navbar.html:32
 msgid "ทุนแลกเปลี่ยน"
-msgstr "Exchange Scholarships"
+msgstr "Exchange"
 
-#: frontend/templates/partials/navbar.html:23
-msgid "ทุนยกเว้นค่าธรรมเนียม"
-msgstr "Fee Waiver"
-
-#: frontend/templates/partials/navbar.html:24
-msgid "ทุนอาหารกลางวัน"
-msgstr "Lunch Scholarships"
-
-#: frontend/templates/partials/navbar.html:28
+#: frontend/templates/partials/navbar.html:38
 msgid "ติดต่อเรา"
 msgstr "Contact Us"
 
-#: frontend/templates/partials/navbar.html:40
-msgid "แดชบอร์ด"
-msgstr "Dashboard"
+#: frontend/templates/partials/navbar.html:55
+msgid "แดชบอร์ดสถิติ"
+msgstr "Analytics"
 
-#: frontend/templates/partials/navbar.html:41
-msgid "จัดการระบบ"
-msgstr "Admin Panel"
-
-#: frontend/templates/partials/navbar.html:43
-msgid "โปรไฟล์"
+#: frontend/templates/partials/navbar.html:57
+msgid "ข้อมูลส่วนตัว"
 msgstr "Profile"
 
-#: frontend/templates/partials/navbar.html:49
+#: frontend/templates/partials/navbar.html:58
+msgid "ทุนที่บันทึกไว้"
+msgstr "Favorites"
+
+#: frontend/templates/partials/navbar.html:63
 msgid "ออกจากระบบ"
-msgstr "Sign Out"
+msgstr "Logout"
 
-#: frontend/templates/partials/navbar.html:56
+#: frontend/templates/partials/navbar.html:70
 msgid "ลงชื่อเข้าใช้"
-msgstr "Sign In"
+msgstr "Login"
 
-#: frontend/templates/partials/navbar.html:92
-#: frontend/templates/partials/navbar.html:109
+#: frontend/templates/partials/navbar.html:110
 msgid "เข้าสู่ระบบ"
 msgstr "Login"
 
-#: frontend/templates/partials/navbar.html:95
+#: frontend/templates/partials/navbar.html:113
 msgid "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
 msgstr "Invalid username or password"
 
-#: frontend/templates/partials/navbar.html:102
-msgid "ชื่อผู้ใช้"
-msgstr "Username"
+#~ msgid "จัดการระบบ"
+#~ msgstr "Admin Panel"
 
-#: frontend/templates/partials/navbar.html:103
-msgid "กรอกชื่อผู้ใช้"
-msgstr "Enter username"
+#~ msgid "โปรไฟล์"
+#~ msgstr "Profile"
 
-#: frontend/templates/partials/navbar.html:106
-msgid "รหัสผ่าน"
-msgstr "Password"
+#~ msgid "ชื่อผู้ใช้"
+#~ msgstr "Username"
 
-#: frontend/templates/partials/navbar.html:107
-msgid "กรอกรหัสผ่าน"
-msgstr "Enter password"
+#~ msgid "กรอกชื่อผู้ใช้"
+#~ msgstr "Enter username"
 
-#: frontend/templates/partials/navbar.html:111
-msgid "ยังไม่มีบัญชี?"
-msgstr "Don't have an account?"
+#~ msgid "รหัสผ่าน"
+#~ msgstr "Password"
 
-#: frontend/templates/partials/navbar.html:112
-msgid "สมัครสมาชิก"
-msgstr "Register"
+#~ msgid "กรอกรหัสผ่าน"
+#~ msgstr "Enter password"
+
+#~ msgid "ยังไม่มีบัญชี?"
+#~ msgstr "Don't have an account?"
+
+#~ msgid "สมัครสมาชิก"
+#~ msgstr "Register"

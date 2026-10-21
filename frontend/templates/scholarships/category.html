@@ -1,42 +1,90 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}ค้นหาทุน | PSU Phuket Scholarships{% endblock %}
+{% block title %}หมวดหมู่ทุนการศึกษา | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
-<section class="category-section">
-    <div class="hero-bg">
-        <img src="{% static 'images/PsuPhuketBG.jpg' %}" alt="PSU Phuket" class="hero-image">
-        <div class="hero-overlay"></div>
-    </div>
-    <div class="category-content">
-        <div class="category-grid">
-
-            <div class="category-card">
-                <div class="card-icon">📄</div>
-                <h3>ทุนการศึกษาทั่วไป</h3>
-                <a href="{% url 'scholarship_list' 'general' %}" class="btn-card">ค้นหาทุน</a>
+<div class="category-page-modern">
+    <div class="category-page-header">
+        <div class="container-default">
+            <div class="breadcrumb-nav">
+                <a href="{% url 'home' %}">หน้าแรก</a>
+                <span class="breadcrumb-sep">/</span>
+                <span class="breadcrumb-current">หมวดหมู่ทุนการศึกษา</span>
             </div>
-
-            <div class="category-card">
-                <div class="card-icon">💼</div>
-                <h3>ทุนการศึกษาแลกเปลี่ยน</h3>
-                <a href="{% url 'scholarship_list' 'exchange' %}" class="btn-card">ค้นหาทุน</a>
-            </div>
-
-            <div class="category-card">
-                <div class="card-icon">🎓</div>
-                <h3>ทุนยกเว้นค่าธรรมเนียมการศึกษา</h3>
-                <a href="{% url 'scholarship_list' 'fee_waiver' %}" class="btn-card">ค้นหาทุน</a>
-            </div>
-
-            <div class="category-card">
-                <div class="card-icon">🍱</div>
-                <h3>ทุนการศึกษาอาหารกลางวัน</h3>
-                <a href="{% url 'scholarship_list' 'lunch' %}" class="btn-card">ค้นหาทุน</a>
-            </div>
-
+            <h1 class="page-main-title">หมวดหมู่ทุนการศึกษา ม.อ. ภูเก็ต</h1>
+            <p class="page-subtitle">เลือกประเภททุนที่ตรงกับเกณฑ์และเป้าหมายทางการศึกษาของคุณ หรือค้นหาจากทุนทั้งหมดที่มีในระบบ</p>
         </div>
     </div>
-</section>
+
+    <div class="container-default category-page-body">
+        <div class="category-grid-extended">
+            <!-- All Scholarships Card -->
+            <div class="category-card-premium all-card">
+                <div class="cat-card-header">
+                    <span class="cat-badge-code">ALL</span>
+                    <span class="badge-tag">ดูทั้งหมด</span>
+                </div>
+                <h3 class="cat-name">ทุนการศึกษาทั้งหมด</h3>
+                <p class="cat-explanation">สำรวจทุนการศึกษาทุกประเภทที่เปิดรับสมัครในปัจจุบัน พร้อมตัวกรองตามเงื่อนไข</p>
+                <a href="{% url 'scholarship_list' 'all' %}" class="btn-cat-action">
+                    สำรวจทุนทั้งหมด →
+                </a>
+            </div>
+
+            <!-- General Scholarship -->
+            <div class="category-card-premium">
+                <div class="cat-card-header">
+                    <span class="cat-badge-code">01</span>
+                    <span class="badge-tag">ทั่วไป</span>
+                </div>
+                <h3 class="cat-name">ทุนการศึกษาทั่วไป</h3>
+                <p class="cat-explanation">ทุนสนับสนุนการศึกษาสำหรับนักศึกษาทั่วไป ทุนเรียนดี ทุนขาดแคลนทุนทรัพย์ และทุนส่งเสริมศักยภาพ</p>
+                <a href="{% url 'scholarship_list' 'general' %}" class="btn-cat-action">
+                    ดูทุนทั่วไป →
+                </a>
+            </div>
+
+            <!-- Exchange Scholarship -->
+            <div class="category-card-premium">
+                <div class="cat-card-header">
+                    <span class="cat-badge-code">02</span>
+                    <span class="badge-tag">นานาชาติ</span>
+                </div>
+                <h3 class="cat-name">ทุนศึกษาแลกเปลี่ยน</h3>
+                <p class="cat-explanation">ทุนสนับสนุนโครงการแลกเปลี่ยนนักศึกษาต่างประเทศ การฝึกงานในต่างแดน และสัมมนาวิชาการระดับสากล</p>
+                <a href="{% url 'scholarship_list' 'exchange' %}" class="btn-cat-action">
+                    ดูทุนแลกเปลี่ยน →
+                </a>
+            </div>
+
+            <!-- Fee Waiver -->
+            <div class="category-card-premium">
+                <div class="cat-card-header">
+                    <span class="cat-badge-code">03</span>
+                    <span class="badge-tag">สวัสดิการ</span>
+                </div>
+                <h3 class="cat-name">ทุนยกเว้นค่าธรรมเนียมการศึกษา</h3>
+                <p class="cat-explanation">ทุนลดหย่อนหรือยกเว้นค่าธรรมเนียมการศึกษา สำหรับนักศึกษาที่มีผลการเรียนโดดเด่นหรือสร้างชื่อเสียงให้มหาวิทยาลัย</p>
+                <a href="{% url 'scholarship_list' 'fee_waiver' %}" class="btn-cat-action">
+                    ดูทุนยกเว้นค่าธรรมเนียม →
+                </a>
+            </div>
+
+            <!-- Lunch -->
+            <div class="category-card-premium">
+                <div class="cat-card-header">
+                    <span class="cat-badge-code">04</span>
+                    <span class="badge-tag">ค่าครองชีพ</span>
+                </div>
+                <h3 class="cat-name">ทุนอาหารกลางวัน</h3>
+                <p class="cat-explanation">ทุนสวัสดิการค่าอาหารกลางวันเพื่อสุขอนามัยและแบ่งเบาภาระค่าครองชีพสำหรับนักศึกษา</p>
+                <a href="{% url 'scholarship_list' 'lunch' %}" class="btn-cat-action">
+                    ดูทุนอาหารกลางวัน →
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

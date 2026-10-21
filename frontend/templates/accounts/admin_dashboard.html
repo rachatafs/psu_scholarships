@@ -1,100 +1,728 @@
-{% extends 'base.html' %}
+{% extends 'dashboard_base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}จัดการระบบ | PSU Phuket Scholarships{% endblock %}
 
-{% block content %}
-<div class="admin-page">
-    <div class="admin-container">
-        <h1 class="admin-title">🛠 แผงควบคุม Admin</h1>
-        <p class="admin-subtitle">ยินดีต้อนรับ, {{ user.username }}</p>
-
-        <!-- Stats -->
-        <div class="admin-stats">
-            <div class="stat-card">
-                <div class="stat-icon">🎓</div>
-                <div class="stat-num">{{ total_scholarships }}</div>
-                <div class="stat-label">ทุนทั้งหมด</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">📋</div>
-                <div class="stat-num">{{ total_applications }}</div>
-                <div class="stat-label">ใบสมัครทั้งหมด</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">⏳</div>
-                <div class="stat-num">{{ pending_applications }}</div>
-                <div class="stat-label">รอพิจารณา</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-icon">✅</div>
-                <div class="stat-num">{{ approved_applications }}</div>
-                <div class="stat-label">อนุมัติแล้ว</div>
+{% block dashboard_content %}
+<div class="admin-management-page">
+    <div class="container-default">
+        <!-- Header -->
+        <div class="admin-header-row">
+            <div>
+                <div class="admin-badge-tag">ADMINISTRATION</div>
+                <h1 class="admin-page-title">แผงควบคุมและจัดการระบบ</h1>
+                <p class="admin-page-sub">ยินดีต้อนรับผู้ดูแลระบบ: <strong>{{ user.username }}</strong></p>
             </div>
         </div>
 
-        <!-- ใบสมัครล่าสุด -->
-        <div class="admin-section">
-            <h2 class="section-title">📋 รายการใบสมัครล่าสุด</h2>
-            <div class="admin-table-wrap">
-                <table class="admin-table">
+        <!-- 4 Stats Cards Grid -->
+        <div class="admin-kpi-grid">
+            <div class="admin-kpi-card" onclick="switchAdminTab('scholarships')" style="cursor:pointer;" title="คลิกเพื่อดูรายการทุนทั้งหมด">
+                <div class="kpi-num">{{ total_scholarships }}</div>
+                <div class="kpi-label">ทุนทั้งหมดในระบบ →</div>
+            </div>
+
+            <div class="admin-kpi-card" onclick="switchAdminTab('apps')" style="cursor:pointer;" title="คลิกเพื่อดูรายการใบสมัครทั้งหมด">
+                <div class="kpi-num">{{ total_applications }}</div>
+                <div class="kpi-label">ใบสมัครทั้งหมด →</div>
+            </div>
+
+            <div class="admin-kpi-card highlight-pending" onclick="switchAdminTab('apps', 'pending')" style="cursor:pointer;" title="คลิกเพื่อดูใบสมัครรอตรวจสอบ">
+                <div class="kpi-num text-amber">{{ pending_applications }}</div>
+                <div class="kpi-label">รอการตรวจสอบ/พิจารณา →</div>
+            </div>
+
+            <div class="admin-kpi-card highlight-approved" onclick="switchAdminTab('apps', 'approved')" style="cursor:pointer;" title="คลิกเพื่อดูใบสมัครที่อนุมัติแล้ว">
+                <div class="kpi-num text-emerald">{{ approved_applications }}</div>
+                <div class="kpi-label">ผ่านการอนุมัติแล้ว →</div>
+            </div>
+        </div>
+
+        <!-- Main Mode Switcher Tabs (สลับระหว่าง: รายการใบสมัคร VS รายการทุนการศึกษา) -->
+        <div class="admin-main-nav-tabs">
+            <button type="button" class="admin-nav-tab-btn active" id="tabBtnApps" onclick="switchAdminTab('apps')">
+                <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                <span>จัดการใบสมัครนักศึกษา</span>
+                <span class="tab-badge-pill" id="totalAppsBadge">{{ total_applications }}</span>
+            </button>
+
+            <button type="button" class="admin-nav-tab-btn" id="tabBtnSch" onclick="switchAdminTab('scholarships')">
+                <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                </svg>
+                <span>จัดการรายการทุนการศึกษาในระบบ</span>
+                <span class="tab-badge-pill">{{ scholarships_list|length }}</span>
+            </button>
+
+            <button type="button" class="admin-nav-tab-btn" id="tabBtnHistory" onclick="switchAdminTab('history')">
+                <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+                <span>ประวัติทุนที่ผ่านมา</span>
+                <span class="tab-badge-pill">{{ expired_scholarships|length }}</span>
+            </button>
+
+            <a href="/admin/scholarships/scholarship/add/" class="btn-create-sch-link" target="_blank">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>สร้างทุนการศึกษาใหม่</span>
+            </a>
+        </div>
+
+        <!-- ================= SECTION 1: APPLICATIONS MANAGEMENT ================= -->
+        <div class="admin-table-container-card" id="sectionApps">
+            <div class="table-header-bar">
+                <div>
+                    <h2 class="table-main-title">รายการใบสมัครและการคัดกรองนักศึกษา</h2>
+                    <p class="table-sub-desc">ค้นหา ตรวจสอบคุณสมบัติเกรดเฉลี่ย (GPAX) และปรับเปลี่ยนสถานะการพิจารณาทุน</p>
+                </div>
+            </div>
+
+            <div class="admin-notice-box">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                <span>
+                    <strong>คำแนะนำ:</strong> หน้านี้แสดงเฉพาะ <strong>ใบสมัครที่นักศึกษายื่นเข้ามาแล้ว</strong> (หากท่านเพิ่งสร้างทุนการศึกษาใหม่และยังไม่มีนักศึกษาคนไหนยื่นสมัคร สามารถดูและจัดการทุนได้ที่แท็บ <strong>"จัดการรายการทุนการศึกษาในระบบ"</strong> ด้านบนครับ)
+                </span>
+            </div>
+
+            <!-- Category Filter Tabs (แบ่งหมวดหมู่ทุนชัดเจน) -->
+            <div class="admin-cat-tabs-row" id="categoryTabs">
+                <a href="?category=all&status={{ selected_status }}&q={{ q }}" 
+                   class="admin-cat-tab {% if selected_category == 'all' or not selected_category %}active{% endif %}" 
+                   data-category="all">
+                    <span>ทั้งหมด</span>
+                    <span class="cat-count-pill">{{ cat_counts.all }}</span>
+                </a>
+                <a href="?category=general&status={{ selected_status }}&q={{ q }}" 
+                   class="admin-cat-tab {% if selected_category == 'general' %}active{% endif %}" 
+                   data-category="general">
+                    <span>ทุนทั่วไป</span>
+                    <span class="cat-count-pill">{{ cat_counts.general }}</span>
+                </a>
+                <a href="?category=exchange&status={{ selected_status }}&q={{ q }}" 
+                   class="admin-cat-tab {% if selected_category == 'exchange' %}active{% endif %}" 
+                   data-category="exchange">
+                    <span>ทุนศึกษาแลกเปลี่ยน</span>
+                    <span class="cat-count-pill">{{ cat_counts.exchange }}</span>
+                </a>
+                <a href="?category=fee_waiver&status={{ selected_status }}&q={{ q }}" 
+                   class="admin-cat-tab {% if selected_category == 'fee_waiver' %}active{% endif %}" 
+                   data-category="fee_waiver">
+                    <span>ทุนยกเว้นค่าธรรมเนียม</span>
+                    <span class="cat-count-pill">{{ cat_counts.fee_waiver }}</span>
+                </a>
+                <a href="?category=lunch&status={{ selected_status }}&q={{ q }}" 
+                   class="admin-cat-tab {% if selected_category == 'lunch' %}active{% endif %}" 
+                   data-category="lunch">
+                    <span>ทุนอาหารกลางวัน</span>
+                    <span class="cat-count-pill">{{ cat_counts.lunch }}</span>
+                </a>
+            </div>
+
+            <!-- Search & Status Filter Toolbar (ค้นหา & คัดกรองสถานะ) -->
+            <form method="GET" action="" class="admin-filter-toolbar" id="adminFilterForm">
+                <input type="hidden" name="category" id="hiddenCategory" value="{{ selected_category|default:'all' }}">
+                
+                <div class="admin-search-wrapper">
+                    <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" 
+                           id="adminSearchInput" 
+                           name="q" 
+                           value="{{ q }}" 
+                           placeholder="ค้นหาชื่อผู้สมัคร, รหัสนักศึกษา, ชื่อทุน..." 
+                           class="admin-search-field"
+                           autocomplete="off">
+                </div>
+
+                <div class="admin-filter-right">
+                    <select name="status" id="adminStatusSelect" class="admin-filter-select">
+                        <option value="all" {% if selected_status == 'all' or not selected_status %}selected{% endif %}>ทุกสถานะ ({{ total_applications }})</option>
+                        <option value="pending" {% if selected_status == 'pending' %}selected{% endif %}>รอการตรวจสอบ ({{ pending_applications }})</option>
+                        <option value="interview" {% if selected_status == 'interview' %}selected{% endif %}>รอสัมภาษณ์</option>
+                        <option value="approved" {% if selected_status == 'approved' %}selected{% endif %}>ผ่านการอนุมัติ ({{ approved_applications }})</option>
+                        <option value="rejected" {% if selected_status == 'rejected' %}selected{% endif %}>ไม่อนุมัติ ({{ rejected_applications }})</option>
+                    </select>
+
+                    <div class="admin-result-counter">
+                        แสดง <strong id="visibleCount">{{ applications|length }}</strong> รายการ
+                    </div>
+                </div>
+            </form>
+
+            <!-- Table of Applications -->
+            <div class="modern-table-responsive">
+                <table class="modern-data-table" id="applicationsTable">
                     <thead>
                         <tr>
                             <th>ชื่อผู้สมัคร</th>
-                            <th>รหัส</th>
-                            <th>ทุนที่สมัคร</th>
-                            <th>วันที่สมัคร</th>
-                            <th>สถานะ</th>
-                            <th>จัดการ</th>
+                            <th>รหัสนักศึกษา</th>
+                            <th>ทุนการศึกษา</th>
+                            <th>วันที่ยื่นสมัคร</th>
+                            <th>เอกสารที่แนบ</th>
+                            <th>สถานะปัจจุบัน</th>
+                            <th style="text-align:center;">จัดการสถานะ</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for app in applications %}
-                        <tr>
-                            <td>{{ app.student.full_name }}</td>
-                            <td>{{ app.student.student_id }}</td>
-                            <td>{{ app.scholarship.title }}</td>
-                            <td>{{ app.submitted_at|date:"d M Y" }}</td>
+                        <tr class="app-row" 
+                            data-name="{{ app.student.full_name|lower }}"
+                            data-id="{{ app.student.student_id }}"
+                            data-sch="{{ app.scholarship.title|lower }}"
+                            data-category="{{ app.scholarship.category }}"
+                            data-status="{{ app.status }}"
+                            data-student-name="{{ app.student.full_name }}"
+                            data-student-id="{{ app.student.student_id }}"
+                            data-student-email="{{ app.student.user.email }}"
+                            data-sch-title="{{ app.scholarship.title }}"
+                            data-note="{{ app.note|default:'' }}"
+                            data-app-id="{{ app.pk }}">
                             <td>
-                                <span class="app-status {{ app.status }}">
-                                    {% if app.status == 'pending' %}⏳ รอพิจารณา
-                                    {% elif app.status == 'approved' %}✅ อนุมัติ
-                                    {% else %}❌ ไม่อนุมัติ{% endif %}
+                                <div class="font-bold">{{ app.student.full_name }}</div>
+                                <div class="sub-meta-text">
+                                    {{ app.student.get_faculty_display|default:app.student.faculty }}
+                                    {% if app.student.major %} • {{ app.student.major }}{% endif %}
+                                </div>
+                            </td>
+                            <td>
+                                <span class="id-badge">{{ app.student.student_id }}</span>
+                            </td>
+
+                            <td>
+                                <div class="table-sch-title">{{ app.scholarship.title }}</div>
+                                <span class="category-pill-tag">
+                                    {% if app.scholarship.category == 'general' %}ทุนทั่วไป
+                                    {% elif app.scholarship.category == 'exchange' %}ทุนแลกเปลี่ยน
+                                    {% elif app.scholarship.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
+                                    {% elif app.scholarship.category == 'lunch' %}อาหารกลางวัน
+                                    {% else %}{{ app.scholarship.get_category_display }}{% endif %}
                                 </span>
                             </td>
-                            <td class="action-btns">
-                                <form method="post" action="{% url 'update_application' app.pk %}" style="display:inline">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="status" value="approved">
-                                    <button type="submit" class="btn-approve">✅</button>
-                                </form>
-                                <form method="post" action="{% url 'update_application' app.pk %}" style="display:inline">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="status" value="rejected">
-                                    <button type="submit" class="btn-reject">❌</button>
-                                </form>
+                            <td>{{ app.submitted_at|date:"d M Y" }}</td>
+                            <td>
+                                {% if app.documents.all %}
+                                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                                    {% for doc in app.documents.all %}
+                                        <a href="{{ doc.file.url }}" target="_blank" class="doc-link-pill" title="{{ doc.get_doc_type_display }}">
+                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+                                                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                                <polyline points="13 2 13 9 20 9"></polyline>
+                                            </svg>
+                                            {% if doc.doc_type == 'transcript' %}ใบเกรด
+                                            {% elif doc.doc_type == 'recommendation' %}จดหมายแนะนำ
+                                            {% else %}อื่นๆ{% endif %}
+                                        </a>
+                                    {% endfor %}
+                                    </div>
+                                {% else %}
+                                    <span style="color: #94a3b8; font-size: 0.85rem;">ไม่มีเอกสาร</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;">
+                                    {% if app.status == 'pending' %}
+                                        <span class="dot-live" style="background: #d97706;"></span>
+                                        <span style="color: #b45309;">รอพิจารณา</span>
+                                    {% elif app.status == 'interview' %}
+                                        <span class="dot-live" style="background: var(--psu-blue-500);"></span>
+                                        <span style="color: var(--psu-blue-700);">รอสัมภาษณ์</span>
+                                    {% elif app.status == 'approved' %}
+                                        <span class="dot-live" style="background: #059669;"></span>
+                                        <span style="color: #047857;">อนุมัติแล้ว</span>
+                                    {% else %}
+                                        <span class="dot-live" style="background: #dc2626;"></span>
+                                        <span style="color: #b91c1c;">ไม่อนุมัติ</span>
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td style="text-align:center;">
+                                <div class="action-btn-group" style="display: flex; flex-direction: column; gap: 4px; align-items: center;">
+                                    {% if app.status == 'pending' %}
+                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="interview">
+                                            <button type="submit" class="btn-table-action btn-act-interview" style="width: 100%;" title="นัดสัมภาษณ์">เรียกสัมภาษณ์</button>
+                                        </form>
+                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="approved">
+                                            <button type="submit" class="btn-table-action btn-act-approve" style="width: 100%;" title="อนุมัติใบสมัคร">อนุมัติให้ทุนเลย</button>
+                                        </form>
+                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="rejected">
+                                            <button type="submit" class="btn-table-action btn-act-reject" style="width: 100%;" title="ปฏิเสธใบสมัคร">ไม่อนุมัติ</button>
+                                        </form>
+                                    {% elif app.status == 'interview' %}
+                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="approved">
+                                            <button type="submit" class="btn-table-action btn-act-approve" style="width: 100%;" title="อนุมัติใบสมัคร">ผ่านสัมภาษณ์ (ให้ทุน)</button>
+                                        </form>
+                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="rejected">
+                                            <button type="submit" class="btn-table-action btn-act-reject" style="width: 100%;" title="ปฏิเสธใบสมัคร">ไม่ผ่านสัมภาษณ์</button>
+                                        </form>
+                                    {% elif app.status == 'approved' or app.status == 'rejected' %}
+                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="pending">
+                                            <button type="submit" class="btn-table-action" style="background-color: transparent; border: 1px solid #ccc; color: #666; font-size: 0.75rem; width: 100%;" title="รีเซ็ตสถานะ">ย้อนกลับ</button>
+                                        </form>
+                                    {% endif %}
+                                    <button type="button" class="btn-table-action btn-act-notice" style="width: 100%; background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; font-weight: 600; font-size: 0.76rem; padding: 5px 6px; margin-top: 2px; border-radius: 6px; cursor: pointer; transition: background 0.15s;" title="ส่งข้อความ/ขอเอกสาร/แจ้งเตือนนักศึกษา" onclick="openDirectNoticeModal(this)">
+                                        เพิ่มเติม
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                         {% empty %}
-                        <tr><td colspan="6" style="text-align:center;color:#9ca3af">ยังไม่มีใบสมัคร</td></tr>
+                        <tr id="emptyTableRow">
+                            <td colspan="7" class="text-center-empty">
+                                ยังไม่มีข้อมูลใบสมัครที่ตรงกับเงื่อนไขการค้นหา
+                            </td>
+                        </tr>
                         {% endfor %}
+                        <tr id="noMatchesRow" style="display:none;">
+                            <td colspan="7" class="text-center-empty">
+                                ไม่พบใบสมัครที่ตรงกับเงื่อนไขการค้นหา
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
 
-        <div class="admin-grid" style="margin-top:32px">
-            <a href="/admin/" class="admin-card">
-                <div class="admin-card-icon">⚙️</div>
-                <h3>Django Admin Panel</h3>
-                <p>จัดการข้อมูลทั้งหมดในระบบ</p>
+        <!-- ================= SECTION 2: SCHOLARSHIPS MANAGEMENT ================= -->
+        <div class="admin-table-container-card" id="sectionScholarships" style="display:none;">
+            <div class="table-header-bar">
+                <div>
+                    <h2 class="table-main-title">รายการทุนการศึกษาทั้งหมดในระบบ ({{ total_scholarships }} ทุน)</h2>
+                    <p class="table-sub-desc">จัดการ ตรวจสอบยอดผู้สมัคร โควตา และสถานะของทุนทั้งหมด</p>
+                </div>
+            </div>
+
+            <!-- Category Filter Tabs for Scholarships -->
+            <div class="admin-cat-tabs-row" id="schCategoryTabs">
+                <a href="#" class="admin-cat-tab active" data-sch-cat-filter="all">
+                    <span>ทั้งหมด</span>
+                    <span class="cat-count-pill">{{ sch_cat_counts.all }}</span>
+                </a>
+                <a href="#" class="admin-cat-tab" data-sch-cat-filter="general">
+                    <span>ทุนทั่วไป</span>
+                    <span class="cat-count-pill">{{ sch_cat_counts.general }}</span>
+                </a>
+                <a href="#" class="admin-cat-tab" data-sch-cat-filter="exchange">
+                    <span>ทุนศึกษาแลกเปลี่ยน</span>
+                    <span class="cat-count-pill">{{ sch_cat_counts.exchange }}</span>
+                </a>
+                <a href="#" class="admin-cat-tab" data-sch-cat-filter="fee_waiver">
+                    <span>ทุนยกเว้นค่าธรรมเนียม</span>
+                    <span class="cat-count-pill">{{ sch_cat_counts.fee_waiver }}</span>
+                </a>
+                <a href="#" class="admin-cat-tab" data-sch-cat-filter="lunch">
+                    <span>ทุนอาหารกลางวัน</span>
+                    <span class="cat-count-pill">{{ sch_cat_counts.lunch }}</span>
+                </a>
+            </div>
+
+            <!-- Search Toolbar for Scholarships -->
+            <div class="admin-filter-toolbar">
+                <div class="admin-search-wrapper" style="max-width:550px;">
+                    <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" 
+                           id="schSearchInput" 
+                           placeholder="ค้นหาชื่อทุน, เช่น test, DL, ทุนแลกเปลี่ยน, GPAX..." 
+                           class="admin-search-field"
+                           autocomplete="off">
+                </div>
+
+                <div class="admin-result-counter">
+                    แสดง <strong id="schVisibleCount">{{ scholarships_list|length }}</strong> ทุน
+                </div>
+            </div>
+
+            <!-- Table of Scholarships -->
+            <div class="modern-table-responsive">
+                <table class="modern-data-table" id="scholarshipsTable">
+                    <thead>
+                        <tr>
+                            <th>ชื่อทุนการศึกษา</th>
+                            <th>หมวดหมู่</th>
+                            <th>มูลค่าทุน</th>
+                            <th style="text-align:center;">ผู้สมัคร / โควตา</th>
+                            <th>วันปิดรับสมัคร</th>
+                            <th>สถานะ</th>
+                            <th style="text-align:center;">จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in scholarships_list %}
+                        <tr class="sch-row" 
+                            data-sch-title="{{ s.title|lower }}"
+                            data-sch-cat="{{ s.category }}"
+                            data-sch-desc="{{ s.description|lower }}">
+                            <td>
+                                <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title" style="text-decoration:none; color:var(--psu-blue-600);">
+                                    {{ s.title }}
+                                </a>
+                            </td>
+                            <td>
+                                <span class="category-pill-tag">
+                                    {% if s.category == 'general' %}ทุนทั่วไป
+                                    {% elif s.category == 'exchange' %}ทุนแลกเปลี่ยน
+                                    {% elif s.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
+                                    {% elif s.category == 'lunch' %}อาหารกลางวัน
+                                    {% else %}{{ s.get_category_display }}{% endif %}
+                                </span>
+                            </td>
+                            <td><strong>฿{{ s.amount_per_semester|floatformat:0 }}</strong></td>
+
+                            <td style="text-align:center;">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                                    <span class="quota-pill">
+                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} คน
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="{% if s.is_expired %}text-danger font-bold{% endif %}">
+                                    {{ s.end_date|date:"d M Y" }}
+                                </span>
+                            </td>
+                            <td>
+                                {% if s.status == 'active' and not s.is_expired %}
+                                    <span class="status-pill status-open" style="font-size:0.75rem; padding:2px 8px;">
+                                        <span class="dot-live"></span> เปิดรับสมัคร
+                                    </span>
+                                {% else %}
+                                    <span class="status-pill status-closed" style="font-size:0.75rem; padding:2px 8px;">
+                                        ปิดรับสมัคร
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td style="text-align:center;">
+                                <div style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
+                                    {% if s.apps_count > 0 %}
+                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank" class="btn-sch-action btn-sch-view" title="ดูรายชื่อผู้สมัคร">
+                                        ดูรายชื่อผู้สมัคร
+                                    </a>
+                                    {% else %}
+                                    <span class="btn-sch-action" style="visibility: hidden;">
+                                        ดูรายชื่อผู้สมัคร
+                                    </span>
+                                    {% endif %}
+                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view" target="_blank" title="ดูหน้ารายละเอียด">
+                                        ดูหน้าทุน
+                                    </a>
+                                    <a href="/admin/scholarships/scholarship/{{ s.pk }}/change/" class="btn-sch-action btn-sch-edit" target="_blank" title="แก้ไขข้อมูลทุน">
+                                        แก้ไข
+                                    </a>
+                                    <form method="post" action="{% url 'delete_scholarship' s.pk %}" style="display:inline; margin:0;" onsubmit="return confirm('ยืนยันว่าต้องการลบทุน {{ s.title }} ใช่หรือไม่?');">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn-sch-action btn-sch-del" title="ลบทุนนี้">
+                                            ลบ
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8" class="text-center-empty">
+                                ยังไม่มีทุนการศึกษาในระบบ
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <tr id="noSchMatchesRow" style="display:none;">
+                            <td colspan="8" class="text-center-empty">
+                                ไม่พบทุนการศึกษาที่ตรงกับคำค้นหา
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- ================= SECTION 3: HISTORY (EXPIRED SCHOLARSHIPS) ================= -->
+        <div class="admin-table-container-card" id="sectionHistory" style="display:none;">
+            <div class="table-header-bar">
+                <div>
+                    <h2 class="table-main-title">ประวัติทุนการศึกษาที่ผ่านมา ({{ expired_scholarships|length }} ทุน)</h2>
+                    <p class="table-sub-desc">รายการทุนการศึกษาที่ปิดรับสมัครหรือหมดเขตไปแล้ว</p>
+                </div>
+            </div>
+
+            <!-- Search Toolbar for History -->
+            <div class="admin-filter-toolbar">
+                <div class="admin-search-wrapper" style="max-width:550px;">
+                    <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" 
+                           id="histSearchInput" 
+                           placeholder="ค้นหาชื่อทุนที่ผ่านมา..." 
+                           class="admin-search-field"
+                           autocomplete="off">
+                </div>
+            </div>
+
+            <!-- Table of Expired Scholarships -->
+            <div class="modern-table-responsive">
+                <table class="modern-data-table" id="historyTable">
+                    <thead>
+                        <tr>
+                            <th>ชื่อทุนการศึกษา</th>
+                            <th>หมวดหมู่</th>
+                            <th>มูลค่าทุน</th>
+                            <th style="text-align:center;">ผู้สมัคร / โควตา</th>
+                            <th>วันปิดรับสมัคร</th>
+                            <th>สถานะ</th>
+                            <th style="text-align:center;">จัดการ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in expired_scholarships %}
+                        <tr class="hist-row" 
+                            data-hist-title="{{ s.title|lower }}"
+                            data-hist-cat="{{ s.category }}"
+                            data-hist-desc="{{ s.description|lower }}">
+                            <td>
+                                <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title" style="text-decoration:none; color:var(--psu-blue-600);">
+                                    {{ s.title }}
+                                </a>
+                            </td>
+                            <td>
+                                <span class="category-pill-tag">
+                                    {% if s.category == 'general' %}ทุนทั่วไป
+                                    {% elif s.category == 'exchange' %}ทุนแลกเปลี่ยน
+                                    {% elif s.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
+                                    {% elif s.category == 'lunch' %}อาหารกลางวัน
+                                    {% else %}{{ s.get_category_display }}{% endif %}
+                                </span>
+                            </td>
+                            <td><strong>฿{{ s.amount_per_semester|floatformat:0 }}</strong></td>
+
+                            <td style="text-align:center;">
+                                <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
+                                    <span class="quota-pill">
+                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} คน
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="text-danger font-bold">
+                                    {{ s.end_date|date:"d M Y" }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="status-pill status-closed" style="font-size:0.75rem; padding:2px 8px;">
+                                    ปิดรับสมัคร
+                                </span>
+                            </td>
+                            <td style="text-align:center;">
+                                <div style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
+                                    {% if s.apps_count > 0 %}
+                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank" class="btn-sch-action btn-sch-view" title="ดูรายชื่อผู้สมัคร">
+                                        ดูรายชื่อผู้สมัคร
+                                    </a>
+                                    {% else %}
+                                    <span class="btn-sch-action" style="visibility: hidden;">
+                                        ดูรายชื่อผู้สมัคร
+                                    </span>
+                                    {% endif %}
+                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view" target="_blank" title="ดูหน้ารายละเอียด">
+                                        ดูหน้าทุน
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="7" class="text-center-empty">
+                                ยังไม่มีประวัติทุนการศึกษา
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        <tr id="noHistMatchesRow" style="display:none;">
+                            <td colspan="7" class="text-center-empty">
+                                ไม่พบประวัติทุนที่ตรงกับคำค้นหา
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Quick Admin Links -->
+        <div class="admin-quick-links-grid">
+            <a href="/admin/" class="admin-nav-box">
+                <div class="nav-box-header">
+                    <h3>Django Database Admin</h3>
+                    <span class="arrow-right">→</span>
+                </div>
+                <p>เข้าสู่ระบบจัดการฐานข้อมูลหลัก เพิ่ม ลบ แก้ไขสิทธิ์ผู้ใช้และข้อมูลทุกตาราง</p>
             </a>
-            <a href="{% url 'scholarships' %}" class="admin-card">
-                <div class="admin-card-icon">🎓</div>
-                <h3>จัดการทุนการศึกษา</h3>
-                <p>ดูและจัดการทุนทั้งหมด</p>
+
+            <a href="{% url 'scholarships' %}" class="admin-nav-box">
+                <div class="nav-box-header">
+                    <h3>หน้าสำรวจหมวดหมู่ทุนการศึกษา</h3>
+                    <span class="arrow-right">→</span>
+                </div>
+                <p>ดูมุมมองของนักศึกษาในการสำรวจทุนการศึกษาตาม 4 หมวดหมู่หลัก</p>
             </a>
         </div>
     </div>
 </div>
+
+<!-- ================= MODAL: CUSTOM STATUS UPDATE & EMAIL NOTIFICATION ================= -->
+<div class="modal-overlay" id="statusEmailModal" onclick="handleStatusModalBackdrop(event)">
+    <div class="modal-card email-modal-card" style="max-width: 680px; width: 92%; max-height: 90vh; overflow-y: auto; padding: 28px; border-radius: 16px;">
+        <button type="button" class="modal-close" onclick="closeStatusEmailModal()" aria-label="Close">✕</button>
+
+        <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">
+            <div style="width: 44px; height: 44px; border-radius: 12px; background: #eff6ff; color: #1d4ed8; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </div>
+            <div>
+                <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: #0f172a; font-family: 'Prompt', sans-serif;">อัปเดตสถานะและปรับแต่งอีเมล</h3>
+                <p style="margin: 2px 0 0; font-size: 0.85rem; color: #64748b; font-family: 'Sarabun', sans-serif;">ตรวจสอบหรือเขียนข้อความเพิ่มเติมที่ต้องการแจ้งให้นักศึกษาทราบ</p>
+            </div>
+        </div>
+
+        <form id="statusEmailForm" method="post" action="">
+            {% csrf_token %}
+            <input type="hidden" name="status" id="modalTargetStatus" value="">
+            <input type="hidden" name="is_notice" id="modalIsNotice" value="false">
+            <input type="hidden" id="modalAppId" value="">
+
+            <!-- Recipient & Application Summary -->
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; margin-bottom: 1.1rem; font-family: 'Sarabun', sans-serif;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.9rem;">
+                    <div>
+                        <span style="color: #64748b; font-size: 0.8rem; display: block;">ชื่อนักศึกษา:</span>
+                        <strong id="modalStudentName" style="color: #0f172a; font-size: 0.95rem;">-</strong>
+                        <div id="modalStudentId" style="color: #64748b; font-size: 0.82rem;">(-)</div>
+                    </div>
+                    <div>
+                        <span style="color: #64748b; font-size: 0.8rem; display: block;">อีเมลแจ้งเตือนปลายทาง:</span>
+                        <strong id="modalStudentEmail" style="color: #0284c7; word-break: break-all; font-size: 0.92rem;">-</strong>
+                    </div>
+                </div>
+                <div style="margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.88rem;">
+                    <div>
+                        <span style="color: #64748b;">ทุนการศึกษา: </span>
+                        <strong id="modalSchTitle" style="color: #1e293b;">-</strong>
+                    </div>
+                    <div>
+                        <span style="color: #64748b;" id="modalStatusLabelPrefix">เปลี่ยนสถานะเป็น: </span>
+                        <span id="modalStatusBadge" style="display: inline-block; padding: 3px 10px; border-radius: 20px; font-weight: 700; font-size: 0.82rem;">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkbox: Send email -->
+            <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.65rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.65rem 0.9rem; font-family: 'Sarabun', sans-serif;">
+                <input type="checkbox" id="modalSendEmailCheck" name="send_email" value="true" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: #15803d;">
+                <label for="modalSendEmailCheck" style="font-size: 0.92rem; font-weight: 600; color: #166534; cursor: pointer; margin: 0; user-select: none;">
+                    ส่งอีเมลแจ้งเตือนไปยังนักศึกษาทันที
+                </label>
+            </div>
+
+            <!-- Email Content Editor Section -->
+            <div id="emailEditorSection" style="display: block; font-family: 'Sarabun', sans-serif;">
+                <!-- Quick Template Preset Selector -->
+                <div style="margin-bottom: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem 0.9rem; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 0.4rem;">
+                        <span style="font-size: 0.88rem; font-weight: 600; color: #1e293b;">📋 เลือกแม่แบบข้อความ (Template):</span>
+                    </div>
+                    <select id="modalTemplateSelector" onchange="onTemplateSelectChange(this.value)" style="flex: 1; min-width: 220px; padding: 0.5rem 0.8rem; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.88rem; font-family: 'Sarabun', sans-serif; background: #ffffff; color: #1e293b; cursor: pointer; font-weight: 500;">
+                        <option value="custom">-- เลือกแม่แบบข้อความสำเร็จรูป --</option>
+                        <option value="request_docs">📑 ขอเอกสารเพิ่มเติม / ตรวจสอบเอกสารใหม่</option>
+                        <option value="interview">📅 นัดหมายวันเวลาสอบสัมภาษณ์</option>
+                        <option value="reschedule">⏰ แจ้งเลื่อนเวลา / เปลี่ยนแปลงสถานที่นัดหมาย</option>
+                        <option value="approved">🏆 แจ้งผลอนุมัติทุนและส่งสมุดบัญชีเพื่อรับเงิน</option>
+                        <option value="rejected">❌ แจ้งผลไม่อนุมัติทุนการศึกษา</option>
+                        <option value="general">✉️ แจ้งเตือนทั่วไป / สอบถามข้อมูลเพิ่มเติม</option>
+                    </select>
+                </div>
+
+                <!-- Subject -->
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #1e293b; margin-bottom: 0.35rem;">
+                        หัวข้ออีเมล (Subject):
+                    </label>
+                    <input type="text" name="email_subject" id="modalEmailSubject" style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.65rem 0.85rem; font-size: 0.95rem; font-family: 'Sarabun', sans-serif; box-sizing: border-box; color: #0f172a;">
+                </div>
+
+                <!-- Template Message Body -->
+                <div style="margin-bottom: 1rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                        <label style="font-size: 0.88rem; font-weight: 600; color: #1e293b; margin: 0;">
+                            ข้อความในอีเมล (แก้ไขและเพิ่มเติมได้ตามต้องการ):
+                        </label>
+                        <button type="button" onclick="resetEmailTemplate()" style="background: none; border: none; color: #1d4ed8; font-size: 0.82rem; cursor: pointer; text-decoration: underline; font-family: 'Sarabun', sans-serif; font-weight: 500;">
+                            รีเซ็ตเป็นเทมเพลตเริ่มต้น
+                        </button>
+                    </div>
+                    <textarea name="email_message" id="modalEmailMessage" rows="7" style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.75rem 0.9rem; font-size: 0.92rem; font-family: 'Sarabun', sans-serif; line-height: 1.6; resize: vertical; box-sizing: border-box; color: #0f172a;"></textarea>
+                    <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">
+                        💡 สามารถระบุ วัน เวลา ห้องสอบสัมภาษณ์ ลิงก์ Zoom หรือข้อกำหนดเพิ่มเติมในกล่องข้อความนี้ได้เลย
+                    </div>
+                </div>
+            </div>
+
+            <!-- Internal Note for Staff -->
+            <div style="margin-bottom: 1.25rem; font-family: 'Sarabun', sans-serif;">
+                <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">
+                    บันทึกช่วยจำภายใน (Note - เจ้าหน้าที่เห็นคนเดียว):
+                </label>
+                <input type="text" name="note" id="modalAppNote" placeholder="เช่น นัดสัมภาษณ์ห้อง 5204 หรือ ผ่านรอบแรก..." style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.55rem 0.85rem; font-size: 0.88rem; font-family: 'Sarabun', sans-serif; box-sizing: border-box; color: #334155;">
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; border-top: 1px solid #e2e8f0; padding-top: 1.1rem; font-family: 'Sarabun', sans-serif;">
+                <button type="button" onclick="closeStatusEmailModal()" style="background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 500; cursor: pointer;">
+                    ยกเลิก
+                </button>
+                <button type="submit" id="btnConfirmStatusSubmit" style="background: #1e3a8a; color: white; border: none; padding: 0.65rem 1.6rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25); transition: background 0.2s;">
+                    <svg id="btnSubmitIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span id="btnSubmitText">บันทึกและส่งอีเมล</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/admin_dashboard.js' %}?v=11"></script>
 {% endblock %}
