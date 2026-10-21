@@ -3822,13 +3822,23 @@ button, input, select, textarea {
 }
 
 /* --- Admin Mode Switcher & Scholarships Table --- */
+.admin-tabs-action-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
 .admin-main-nav-tabs {
     display: flex;
     align-items: center;
     gap: 0;
-    margin-bottom: 24px;
-    flex-wrap: wrap;
+    flex: 1;
+    min-width: 0;
     border-bottom: 2px solid var(--border-subtle);
+    align-self: stretch;
 }
 
 .admin-nav-tab-btn {
@@ -3880,25 +3890,29 @@ button, input, select, textarea {
 }
 
 .btn-create-sch-link {
-    margin-left: auto;
+    flex-shrink: 0;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 11px 22px;
-    background: linear-gradient(135deg, var(--psu-blue-600) 0%, var(--psu-blue-500) 100%);
+    gap: 7px;
+    padding: 9px 18px;
+    background: var(--psu-blue-600);
     color: white;
     font-weight: 600;
-    font-size: 0.92rem;
-    border-radius: var(--radius-lg);
+    font-size: 0.88rem;
+    font-family: var(--font-th);
+    border-radius: var(--radius-md);
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(2, 99, 184, 0.3);
-    transition: all 0.2s ease;
+    border: none;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
 }
 
 .btn-create-sch-link:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(2, 99, 184, 0.4);
+    background: var(--psu-blue-700, #0254a0);
     color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(2, 99, 184, 0.35);
 }
 
 .admin-notice-box {
