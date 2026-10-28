@@ -16,6 +16,7 @@ urlpatterns = [
     
     # ── Auth & Profile ────────────────────────────────────────────
     path('login/', views.CustomLoginView.as_view(), name='login'),
+    path('auth/redirect/', views.auth_redirect, name='auth_redirect'),
     path('logout/', auth_views.LogoutView.as_view(next_page='home'), name='logout'),
     path('profile/', views.profile, name='profile'),
     path('profile/favorites/', views.my_favorites, name='my_favorites'),

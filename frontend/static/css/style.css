@@ -2756,6 +2756,63 @@ button, input, select, textarea {
     font-size: 1rem;
     cursor: pointer;
     margin-top: 10px;
+    transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(2, 99, 184, 0.35);
+}
+
+/* Google Auth Button */
+.btn-google-auth {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    background-color: #ffffff !important;
+    border: 1.5px solid #d1d5db !important;
+    border-radius: var(--radius-md) !important;
+    color: #374151 !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 11px 16px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+.btn-google-auth:hover {
+    background-color: #f9fafb !important;
+    border-color: #9ca3af !important;
+    color: #111827 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0 16px;
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: '';
+    flex: 1;
+    border-top: 1px solid #e5e7eb;
+}
+
+.auth-divider span {
+    padding: 0 12px;
+    font-weight: 500;
 }
 
 /* --- 17. Responsive Media Queries --- */
@@ -3827,7 +3884,6 @@ button, input, select, textarea {
     align-items: center;
     gap: 0;
     margin-bottom: 24px;
-    flex-wrap: wrap;
     border-bottom: 2px solid var(--border-subtle);
 }
 
@@ -3880,25 +3936,29 @@ button, input, select, textarea {
 }
 
 .btn-create-sch-link {
-    margin-left: auto;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 11px 22px;
-    background: linear-gradient(135deg, var(--psu-blue-600) 0%, var(--psu-blue-500) 100%);
-    color: white;
+    gap: 7px;
+    padding: 9px 20px;
+    background: transparent;
+    color: var(--psu-blue-600);
     font-weight: 600;
-    font-size: 0.92rem;
-    border-radius: var(--radius-lg);
+    font-size: 0.88rem;
+    font-family: var(--font-th);
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--psu-blue-600);
     text-decoration: none;
-    box-shadow: 0 4px 12px rgba(2, 99, 184, 0.3);
-    transition: all 0.2s ease;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    white-space: nowrap;
+    align-self: flex-end;
 }
 
 .btn-create-sch-link:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 16px rgba(2, 99, 184, 0.4);
+    background: var(--psu-blue-600);
     color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(2, 99, 184, 0.25);
 }
 
 .admin-notice-box {

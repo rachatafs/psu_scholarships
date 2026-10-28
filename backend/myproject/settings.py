@@ -111,7 +111,7 @@ MEDIA_ROOT = BASE_DIR / 'frontend' / 'media'
 # AUTH & SOCIAL AUTH
 # =============================================
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/auth/redirect/'
 LOGOUT_REDIRECT_URL = '/'
 
 # =============================================
@@ -131,7 +131,8 @@ if _env_file.exists():
 
 # Force HTTPS for redirect URI behind Ngrok/proxy
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
+# ปิดบังคับ HTTPS สำหรับ localhost (เพื่อให้ส่ง http://127.0.0.1 ได้ถูกต้อง)
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = False
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',

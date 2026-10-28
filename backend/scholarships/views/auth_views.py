@@ -4,16 +4,51 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from ..models import StudentProfile, Application
 
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
 
+    def form_valid(self, form):
+        super().form_valid(form)
+        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest' or self.request.headers.get('Accept') == 'application/json':
+            return JsonResponse({
+                'success': True,
+                'redirect_url': self.get_success_url()
+            })
+        return redirect(self.get_success_url())
+
+    def form_invalid(self, form):
+        if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest' or self.request.headers.get('Accept') == 'application/json':
+            return JsonResponse({
+                'success': False,
+                'message': 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง'
+            }, status=400)
+        return super().form_invalid(form)
+
     def get_success_url(self):
+        next_url = self.request.POST.get('next') or self.request.GET.get('next')
+        if next_url and next_url != '/':
+            return next_url
         user = self.request.user
         if user.is_staff or user.is_superuser:
             return '/admin-dashboard/'
         return '/'
+
+@login_required
+def auth_redirect(request):
+    """
+    Redirects user to the correct dashboard based on their role:
+    - Staff / Superuser -> /admin-dashboard/
+    - Regular Student   -> / (home)
+    """
+    next_url = request.GET.get('next')
+    if next_url and next_url != '/':
+        return redirect(next_url)
+    if request.user.is_staff or request.user.is_superuser:
+        return redirect('admin_dashboard')
+    return redirect('home')
 
 @login_required
 def profile(request):
