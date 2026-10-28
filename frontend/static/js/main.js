@@ -78,6 +78,8 @@ document.addEventListener('DOMContentLoaded', function () {
 // ─── Login Modal (global — called from onclick in HTML) ───────
 function openLoginModal() {
     const modal = document.getElementById('loginModal');
+    const errorBox = document.getElementById('modalLoginError');
+    if (errorBox) errorBox.style.display = 'none';
     if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
@@ -92,3 +94,65 @@ function closeLoginModal(event) {
         document.body.style.overflow = '';
     }
 }
+
+// ─── AJAX Login Form Submission (ไม่เปลี่ยนหน้าเมื่อกรอกรหัสผิด) ────────
+document.addEventListener("DOMContentLoaded", function() {
+    const loginForms = document.querySelectorAll('#modalLoginForm, #pageLoginForm');
+    loginForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const isModal = form.id === 'modalLoginForm';
+            const errorBox = isModal ? document.getElementById('modalLoginError') : document.getElementById('pageLoginError');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const passwordInput = form.querySelector('input[name="password"]');
+            const originalBtnText = submitBtn ? submitBtn.textContent : 'เข้าสู่ระบบ';
+
+            if (errorBox) errorBox.style.display = 'none';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'กำลังตรวจสอบ...';
+            }
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            })
+            .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, data: data })))
+            .then(result => {
+                if (result.ok && result.data.success) {
+                    if (submitBtn) submitBtn.textContent = 'เข้าสู่ระบบสำเร็จ!';
+                    window.location.href = result.data.redirect_url || '/';
+                } else {
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                    }
+                    if (errorBox) {
+                        errorBox.textContent = result.data.message || 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง';
+                        errorBox.style.display = 'block';
+                    }
+                    if (passwordInput) {
+                        passwordInput.value = '';
+                        passwordInput.focus();
+                    }
+                }
+            })
+            .catch(err => {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                }
+                if (errorBox) {
+                    errorBox.textContent = 'เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง';
+                    errorBox.style.display = 'block';
+                }
+            });
+        });
+    });
+});

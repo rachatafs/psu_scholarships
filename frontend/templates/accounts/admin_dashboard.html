@@ -14,13 +14,6 @@
                 <h1 class="admin-page-title">แผงควบคุมและจัดการระบบ</h1>
                 <p class="admin-page-sub">ยินดีต้อนรับผู้ดูแลระบบ: <strong>{{ user.username }}</strong></p>
             </div>
-            <a href="/admin/scholarships/scholarship/add/" class="btn-create-sch-link" target="_blank">
-                <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-                <span>สร้างทุนการศึกษาใหม่</span>
-            </a>
         </div>
 
         <!-- 4 Stats Cards Grid -->
@@ -46,7 +39,7 @@
             </div>
         </div>
 
-        <!-- Main Mode Switcher Tabs (สลับระหว่าง: รายการใบสมัคร VS รายการทุนการศึกษา) -->
+        <!-- Main Mode Switcher Tabs -->
         <div class="admin-main-nav-tabs">
             <button type="button" class="admin-nav-tab-btn active" id="tabBtnApps" onclick="switchAdminTab('apps')">
                 <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
@@ -85,6 +78,13 @@
                     <h2 class="table-main-title">รายการใบสมัครและการคัดกรองนักศึกษา</h2>
                     <p class="table-sub-desc">ค้นหา ตรวจสอบคุณสมบัติเกรดเฉลี่ย (GPAX) และปรับเปลี่ยนสถานะการพิจารณาทุน</p>
                 </div>
+                <a href="/admin/scholarships/scholarship/add/" class="btn-create-sch-link" target="_blank">
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>สร้างทุนการศึกษาใหม่</span>
+                </a>
             </div>
 
             <div class="admin-notice-box">
