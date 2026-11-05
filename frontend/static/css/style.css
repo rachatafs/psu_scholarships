@@ -204,6 +204,7 @@ button, input, select, textarea {
     display: flex;
     align-items: center;
     gap: 5px;
+    white-space: nowrap;
 }
 
 .nav-link:hover, .nav-link.active {
