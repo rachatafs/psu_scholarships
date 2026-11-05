@@ -4,6 +4,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.utils import timezone
 from django.db.models import Sum, Q, Count
+from django.utils.translation import gettext as _
 from ..models import Scholarship, Application
 
 def admin_dashboard(request):
@@ -37,8 +38,11 @@ def admin_dashboard(request):
     total_scholarships = Scholarship.objects.count()
     total_applications = Application.objects.count()
     pending_applications = Application.objects.filter(status='pending').count()
+    in_progress_applications = Application.objects.filter(status__in=['in_progress', 'interview']).count()
     approved_applications = Application.objects.filter(status='approved').count()
     rejected_applications = Application.objects.filter(status='rejected').count()
+    completed_applications = Application.objects.filter(status='completed').count()
+    cancelled_applications = Application.objects.filter(status='cancelled').count()
 
     cat_counts = {
         'all': Application.objects.count(),
@@ -67,8 +71,11 @@ def admin_dashboard(request):
         'total_scholarships': total_scholarships,
         'total_applications': total_applications,
         'pending_applications': pending_applications,
+        'in_progress_applications': in_progress_applications,
         'approved_applications': approved_applications,
         'rejected_applications': rejected_applications,
+        'completed_applications': completed_applications,
+        'cancelled_applications': cancelled_applications,
         'applications': apps,
         'scholarships_list': active_scholarships,
         'expired_scholarships': expired_scholarships,
@@ -113,7 +120,7 @@ def update_application(request, pk):
         email_sent = False
         email_error = None
         
-        if send_email and (custom_message or app.status in ('interview', 'approved', 'rejected')):
+        if send_email and (custom_message or app.status in ('interview', 'in_progress', 'approved', 'rejected', 'completed', 'cancelled')):
             from scholarships.emails import send_status_update_email
             try:
                 send_status_update_email(
@@ -141,12 +148,12 @@ def update_application(request, pk):
             })
             
         if email_sent:
-            msg = f'ส่งอีเมลแจ้งนักศึกษาเรียบร้อยแล้ว' if not status_changed else f'อัพเดทสถานะเป็น {app.get_status_display()} และส่งอีเมลแจ้งนักศึกษาเรียบร้อยแล้ว'
+            msg = _('Notification email sent to student successfully.') if not status_changed else _('Status updated to %(status)s and notification email sent.') % {'status': app.get_status_display()}
             messages.success(request, msg)
         elif send_email and email_error:
-            messages.warning(request, f'บันทึกข้อมูลสำเร็จ (แต่ไม่สามารถส่งอีเมลได้: {email_error})')
+            messages.warning(request, _('Saved successfully (Email error: %(error)s)') % {'error': email_error})
         else:
-            messages.success(request, f'อัพเดทข้อมูลเรียบร้อยแล้ว')
+            messages.success(request, _('Updated successfully.'))
             
     return redirect('admin_dashboard')
 
@@ -196,8 +203,11 @@ def scholarship_dashboard(request):
 
     total_applications    = a_qs.count()
     pending_applications  = a_qs.filter(status='pending').count()
+    in_progress_applications = a_qs.filter(status__in=['in_progress', 'interview']).count()
     approved_applications = a_qs.filter(status='approved').count()
     rejected_applications = a_qs.filter(status='rejected').count()
+    completed_applications = a_qs.filter(status='completed').count()
+    cancelled_applications = a_qs.filter(status='cancelled').count()
 
     general_count  = s_qs.filter(category='general').count()
     exchange_count = s_qs.filter(category='exchange').count()
@@ -218,8 +228,11 @@ def scholarship_dashboard(request):
         'open_scholarships':     open_scholarships,
         'total_applications':    total_applications,
         'pending_applications':  pending_applications,
+        'in_progress_applications': in_progress_applications,
         'approved_applications': approved_applications,
         'rejected_applications': rejected_applications,
+        'completed_applications': completed_applications,
+        'cancelled_applications': cancelled_applications,
         'general_count':         general_count,
         'exchange_count':        exchange_count,
         'waiver_count':          waiver_count,
@@ -239,5 +252,5 @@ def delete_scholarship(request, pk):
         scholarship = get_object_or_404(Scholarship, pk=pk)
         title = scholarship.title
         scholarship.delete()
-        messages.success(request, f'ลบทุนการศึกษา "{title}" เรียบร้อยแล้ว')
+        messages.success(request, _('Scholarship "%(title)s" has been deleted.') % {'title': title})
     return redirect('scholarships')

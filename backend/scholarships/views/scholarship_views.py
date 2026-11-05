@@ -5,7 +5,7 @@ from django.utils import timezone
 from django.utils.translation import gettext as _
 from django.db.models import Sum
 from ..models import Scholarship, Application, StudentProfile, Document
-from .utils import enrich_scholarships
+from .utils import enrich_scholarships, CATEGORY_LABELS
 
 def home(request):
     today = timezone.now().date()
@@ -15,10 +15,34 @@ def home(request):
     active_count = total_count
     total_value = Scholarship.objects.filter(status='active', end_date__gte=today).aggregate(total=Sum('amount_per_semester'))['total'] or 0
     categories = [
-        {'code': 'general', 'name': _('ทุนการศึกษาทั่วไป'), 'code_num': '01', 'desc': _('ทุนสนับสนุนการศึกษาสำหรับนักศึกษาทั่วไป ทุนขาดแคลนทุนทรัพย์'), 'count': Scholarship.objects.filter(category='general', status='active', end_date__gte=today).count()},
-        {'code': 'exchange', 'name': _('ทุนศึกษาแลกเปลี่ยน'), 'code_num': '02', 'desc': _('ทุนสนับสนุนการแลกเปลี่ยนต่างประเทศและโครงการระดับนานาชาติ'), 'count': Scholarship.objects.filter(category='exchange', status='active', end_date__gte=today).count()},
-        {'code': 'fee_waiver', 'name': _('ทุนยกเว้นค่าธรรมเนียม'), 'code_num': '03', 'desc': _('ทุนยกเว้นค่าธรรมเนียมการศึกษาตามเกณฑ์ผลการเรียนและกิจกรรม'), 'count': Scholarship.objects.filter(category='fee_waiver', status='active', end_date__gte=today).count()},
-        {'code': 'lunch', 'name': _('ทุนอาหารกลางวัน'), 'code_num': '04', 'desc': _('ทุนสวัสดิการอาหารกลางวันเพื่อสุขภาวะและการใช้ชีวิตในรั้วมหาวิทยาลัย'), 'count': Scholarship.objects.filter(category='lunch', status='active', end_date__gte=today).count()},
+        {
+            'code': 'general',
+            'name': _('General Scholarships'),
+            'code_num': '01',
+            'desc': _('Financial support for general students, academic excellence, and need-based aid.'),
+            'count': Scholarship.objects.filter(category='general', status='active', end_date__gte=today).count(),
+        },
+        {
+            'code': 'exchange',
+            'name': _('Exchange Scholarships'),
+            'code_num': '02',
+            'desc': _('Support for international student exchange programs and overseas internships.'),
+            'count': Scholarship.objects.filter(category='exchange', status='active', end_date__gte=today).count(),
+        },
+        {
+            'code': 'fee_waiver',
+            'name': _('Fee Waiver Scholarships'),
+            'code_num': '03',
+            'desc': _('Tuition fee discounts or exemptions for students with exceptional achievements.'),
+            'count': Scholarship.objects.filter(category='fee_waiver', status='active', end_date__gte=today).count(),
+        },
+        {
+            'code': 'lunch',
+            'name': _('Lunch Scholarships'),
+            'code_num': '04',
+            'desc': _('Meal welfare subsidies to support campus well-being and alleviate living expenses.'),
+            'count': Scholarship.objects.filter(category='lunch', status='active', end_date__gte=today).count(),
+        },
     ]
     
     expiring_qs = Scholarship.objects.filter(
@@ -55,16 +79,9 @@ def scholarship_list(request, category):
 
     items = enrich_scholarships(items, request.user)
 
-    category_names = {
-        'all': 'ทุนการศึกษาทั้งหมด',
-        'general': 'ทุนการศึกษาทั่วไป',
-        'exchange': 'ทุนการศึกษาแลกเปลี่ยน',
-        'fee_waiver': 'ทุนยกเว้นค่าธรรมเนียม',
-        'lunch': 'ทุนอาหารกลางวัน',
-    }
     return render(request, 'scholarships/list.html', {
         'scholarships': items,
-        'category_title': category_names.get(category, 'ทุนการศึกษา'),
+        'category_title': CATEGORY_LABELS.get(category, _('Scholarships')),
         'category': category,
         'query': query,
     })
@@ -97,15 +114,15 @@ def apply_form(request, pk):
     scholarship = get_object_or_404(Scholarship, pk=pk)
 
     if scholarship.is_expired:
-        messages.error(request, 'ขออภัย ทุนการศึกษานี้ปิดรับสมัครหรือหมดเขตแล้ว')
+        messages.error(request, _('Sorry, this scholarship is closed or has expired.'))
         return redirect('scholarship_detail', pk=pk)
 
     approved_count = Application.objects.filter(
-        scholarship=scholarship, status__in=['pending', 'approved']).count()
+        scholarship=scholarship, status__in=['pending', 'in_progress', 'interview', 'approved', 'completed']).count()
     if approved_count >= scholarship.capacity:
         scholarship.status = 'closed'
         scholarship.save()
-        messages.error(request, 'ขออภัย ทุนนี้รับสมัครครบตามจำนวนแล้ว')
+        messages.error(request, _('Sorry, this scholarship has reached maximum applicant capacity.'))
         return redirect('scholarship_detail', pk=pk)
 
     try:
@@ -116,7 +133,7 @@ def apply_form(request, pk):
     if request.method == 'POST':
         if student_profile and Application.objects.filter(
                 student=student_profile, scholarship=scholarship).exists():
-            messages.warning(request, 'คุณได้สมัครทุนนี้แล้ว')
+            messages.warning(request, _('You have already applied for this scholarship.'))
             return redirect('scholarship_detail', pk=pk)
 
         if not student_profile:
@@ -148,7 +165,7 @@ def apply_form(request, pk):
                 )
 
         total = Application.objects.filter(
-            scholarship=scholarship, status__in=['pending', 'approved']).count()
+            scholarship=scholarship, status__in=['pending', 'in_progress', 'interview', 'approved', 'completed']).count()
         if total >= scholarship.capacity:
             scholarship.status = 'closed'
             scholarship.save()

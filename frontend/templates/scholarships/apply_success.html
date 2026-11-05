@@ -2,51 +2,52 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}ส่งใบสมัครสำเร็จ | PSU Phuket Scholarships{% endblock %}
+{% block title %}{% trans "Application Submitted Successfully" %} | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
 <div class="success-page-wrapper">
     <div class="container-default">
         <div class="success-card-modern">
             <div class="success-icon-badge">
-                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                     <polyline points="22 4 12 14.01 9 11.01"></polyline>
                 </svg>
             </div>
 
-            <h1 class="success-title">ส่งใบสมัครเรียบร้อยแล้ว</h1>
-            <p class="success-subtitle">ระบบได้รับใบสมัครทุน {{ scholarship.title }} ของคุณเข้าสู่กระบวนการพิจารณาแล้ว</p>
+            <h1 class="success-title">{% trans "Application Submitted Successfully" %}</h1>
+            <p class="success-subtitle">{% trans "Your application for" %} {{ scholarship.title }} {% trans "has been received and is being processed." %}</p>
 
             {% if application %}
             <div class="success-details-box">
-                <div class="detail-header-sub">รายละเอียดการสมัครของคุณ</div>
+                <div class="detail-header-sub">{% trans "Application Details" %}</div>
                 <div class="detail-line-item">
-                    <span class="label">ชื่อผู้สมัคร:</span>
+                    <span class="label">{% trans "Applicant" %}:</span>
                     <span class="val">{{ application.student.full_name }}</span>
                 </div>
                 <div class="detail-line-item">
-                    <span class="label">รหัสนักศึกษา:</span>
+                    <span class="label">{% trans "Student ID" %}:</span>
                     <span class="val">{{ application.student.student_id }}</span>
                 </div>
                 <div class="detail-line-item">
-                    <span class="label">ทุนที่สมัคร:</span>
+                    <span class="label">{% trans "Scholarship" %}:</span>
                     <span class="val">{{ scholarship.title }} ({{ scholarship.get_category_display }})</span>
                 </div>
                 <div class="detail-line-item">
-                    <span class="label">วันที่ยื่นสมัคร:</span>
+                    <span class="label">{% trans "Submitted Date" %}:</span>
                     <span class="val">{{ application.submitted_at|date:"d F Y" }}</span>
                 </div>
             </div>
             {% endif %}
 
             <p class="success-instructions">
-                คุณสามารถติดตามความคืบหน้าและผลการพิจารณาทุนได้ที่หน้าข้อมูลส่วนตัวของคุณ
+                {% trans "You can track your application review progress in your Profile page." %}
             </p>
 
             <div class="success-actions-row">
-                <a href="{% url 'profile' %}" class="btn-success-profile">ดูสถานะในหน้าข้อมูลส่วนตัว</a>
-                <a href="{% url 'home' %}" class="btn-success-home">กลับสู่หน้าแรก</a>
+                <a href="{% url 'profile' %}" class="btn-success-profile">{% trans "View Status in Profile" %}</a>
+                <a href="{% url 'home' %}" class="btn-success-home">{% trans "Back to Home" %}</a>
             </div>
         </div>
     </div>

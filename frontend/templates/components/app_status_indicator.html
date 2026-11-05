@@ -1,0 +1,23 @@
+{% load i18n %}
+<div class="status-indicator-inline" style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;">
+    {% if status == 'pending' %}
+        <span class="dot-live" style="background: #d97706;"></span>
+        <span style="color: #b45309;">{% trans "Pending" %}</span>
+    {% elif status == 'in_progress' or status == 'interview' %}
+        <span class="dot-live" style="background: var(--psu-blue-500, #0284c7);"></span>
+        <span style="color: var(--psu-blue-700, #0369a1);">{% trans "In Progress" %}</span>
+    {% elif status == 'approved' %}
+        <span class="dot-live" style="background: #059669;"></span>
+        <span style="color: #047857;">{% trans "Approve" %}</span>
+    {% elif status == 'completed' %}
+        <span class="dot-live" style="background: #7e22ce;"></span>
+        <span style="color: #6b21a8;">{% trans "Complete" %}</span>
+    {% elif status == 'cancelled' %}
+        <span class="dot-live" style="background: #64748b;"></span>
+        <span style="color: #475569;">{% trans "Cancel" %}</span>
+    {% else %}
+        <span class="dot-live" style="background: #dc2626;"></span>
+        <span style="color: #b91c1c;">{% trans "Reject" %}</span>
+    {% endif %}
+</div>
+

@@ -2,23 +2,19 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}ข้อมูลส่วนตัว & ประวัติการสมัคร | PSU Phuket Scholarships{% endblock %}
+{% block title %}{% trans "Profile & Applications" %} | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
 <div class="profile-page-modern">
     <div class="container-default">
         <!-- Breadcrumb -->
         <div class="breadcrumb-nav">
-            <a href="{% url 'home' %}">หน้าแรก</a>
+            <a href="{% url 'home' %}">{% trans "Home" %}</a>
             <span class="breadcrumb-sep">/</span>
-            <span class="breadcrumb-current">ข้อมูลส่วนตัวและประวัติการสมัครทุน</span>
+            <span class="breadcrumb-current">{% trans "Profile & Application History" %}</span>
         </div>
 
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert-box alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-        {% endif %}
+        {% include 'components/alert_messages.html' %}
 
         <div class="profile-layout-grid">
             <!-- Left Side: Profile Card & Edit Form -->
@@ -33,70 +29,68 @@
                             {% else %}
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iI2UxZTdmZSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzgiIHI9IjE4IiBmaWxsPSIjMDI4NGM3Ii8+PHBhdGggZD0iTTIwIDgwIGMwLTIwIDEzLjMtMzAgMzAtMzAgczMwIDEwIDMwIDMwIiBmaWxsPSIjMDI4NGM3Ii8+PC9zdmc+" alt="Profile" class="avatar-image" id="avatarPreview">
                             {% endif %}
-                            <label for="profileImageInput" class="avatar-change-badge" title="คลิกเปลี่ยนรูปประจำตัว">
-                                เปลี่ยนรูป
+                            <label for="profileImageInput" class="avatar-change-badge" title="{% trans 'Click to change photo' %}">
+                                {% trans "Change Photo" %}
                             </label>
                             <input type="file" name="profile_image" id="profileImageInput" accept="image/*" style="display:none" onchange="previewImage(this)">
                         </div>
 
                         <div class="profile-title-group">
                             <div class="profile-user-role">
-                                {% if user.is_staff %}ผู้ดูแลระบบ (Staff){% else %}บัญชีนักศึกษา (Student){% endif %}
+                                {% if user.is_staff %}{% trans "Staff / Admin" %}{% else %}{% trans "Student Account" %}{% endif %}
                             </div>
                             <h2 class="profile-display-name">
                                 {{ student_profile.full_name|default:user.username }}
                             </h2>
                             <p class="profile-student-id">
-                                รหัสนักศึกษา: <strong>{{ student_profile.student_id|default:user.username }}</strong>
+                                {% trans "Student ID" %}: <strong>{{ student_profile.student_id|default:user.username }}</strong>
                             </p>
                         </div>
                     </div>
 
                     <div class="profile-form-fields-grid">
                         <div class="form-group-modern">
-                            <label class="field-label">ชื่อ - สกุล</label>
-                            <input type="text" name="full_name" class="modern-text-input" value="{{ student_profile.full_name|default:'' }}" placeholder="ชื่อ-นามสกุล">
+                            <label class="field-label">{% trans "Full Name" %}</label>
+                            <input type="text" name="full_name" class="modern-text-input" value="{{ student_profile.full_name|default:'' }}" placeholder="{% trans 'Full Name' %}">
                         </div>
 
                         <div class="form-group-modern">
-                            <label class="field-label">รหัสนักศึกษา</label>
-                            <input type="text" name="student_id" class="modern-text-input" value="{{ student_profile.student_id|default:user.username }}" placeholder="รหัสนักศึกษา">
+                            <label class="field-label">{% trans "Student ID" %}</label>
+                            <input type="text" name="student_id" class="modern-text-input" value="{{ student_profile.student_id|default:user.username }}" placeholder="{% trans 'Student ID' %}">
                         </div>
 
                         <div class="form-group-modern">
-                            <label class="field-label">คณะที่สังกัด</label>
+                            <label class="field-label">{% trans "Faculty" %}</label>
                             <select name="faculty" class="modern-text-input">
-                                <option value="">-- เลือกคณะ --</option>
-                                <option value="computing" {% if student_profile.faculty == 'computing' %}selected{% endif %}>วิทยาลัยการคอมพิวเตอร์ (CoC)</option>
-                                <option value="engineering" {% if student_profile.faculty == 'engineering' %}selected{% endif %}>วิศวกรรมศาสตร์</option>
-                                <option value="science" {% if student_profile.faculty == 'science' %}selected{% endif %}>วิทยาศาสตร์</option>
-                                <option value="management" {% if student_profile.faculty == 'management' %}selected{% endif %}>การจัดการ / บริหารธุรกิจ</option>
-                                <option value="other" {% if student_profile.faculty == 'other' %}selected{% endif %}>คณะอื่นๆ</option>
+                                <option value="">-- {% trans "Select Faculty" %} --</option>
+                                <option value="computing" {% if student_profile.faculty == 'computing' %}selected{% endif %}>College of Computing (CoC)</option>
+                                <option value="engineering" {% if student_profile.faculty == 'engineering' %}selected{% endif %}>Faculty of Technology and Environment (FTE)</option>
+                                <option value="science" {% if student_profile.faculty == 'science' %}selected{% endif %}>Faculty of Hospitality and Tourism (FHT)</option>
+                                <option value="management" {% if student_profile.faculty == 'management' %}selected{% endif %}>Faculty of International Studies (FIS)</option>
+                                <option value="other" {% if student_profile.faculty == 'other' %}selected{% endif %}>Other Faculty</option>
                             </select>
                         </div>
 
                         <div class="form-group-modern">
-                            <label class="field-label">สาขาวิชา</label>
-                            <input type="text" name="major" class="modern-text-input" value="{{ student_profile.major|default:'' }}" placeholder="เช่น วิศวกรรมดิจิทัล (DE)">
+                            <label class="field-label">{% trans "Major" %}</label>
+                            <input type="text" name="major" class="modern-text-input" value="{{ student_profile.major|default:'' }}" placeholder="{% trans 'e.g., Digital Engineering (DE)' %}">
                         </div>
 
                         <div class="form-group-modern">
-                            <label class="field-label">เบอร์โทรศัพท์</label>
+                            <label class="field-label">{% trans "Phone Number" %}</label>
                             <input type="tel" name="phone_number" class="modern-text-input" value="{{ student_profile.phone_number|default:'' }}" placeholder="0XX-XXX-XXXX">
                         </div>
 
-
-
                         <div class="form-group-modern full-width">
-                            <label class="field-label">อีเมลมหาวิทยาลัย (PSU Passport)</label>
+                            <label class="field-label">{% trans "University Email (PSU Passport)" %}</label>
                             <input type="text" class="modern-text-input disabled-input" value="{{ user.email|default:user.username }}" disabled>
-                            <span class="field-hint">อีเมลเชื่อมต่ออัตโนมัติ ไม่สามารถแก้ไขได้</span>
+                            <span class="field-hint">{% trans "Connected automatically, cannot be edited." %}</span>
                         </div>
                     </div>
 
                     <div class="profile-btn-row">
                         <button type="submit" class="btn-save-profile">
-                            บันทึกการเปลี่ยนแปลง
+                            {% trans "Save Changes" %}
                         </button>
                     </div>
                 </form>
@@ -106,25 +100,25 @@
             <div class="profile-side-panel">
                 <div class="side-info-card">
                     <div class="side-card-title">
-                        <span>สรุปภาพรวม</span>
+                        <span>{% trans "Overview" %}</span>
                     </div>
                     <div class="side-metrics-list">
                         <div class="side-metric-item">
-                            <span class="m-label">ทุนที่เคยยื่นสมัคร</span>
-                            <strong class="m-val">{{ applications|length }} รายการ</strong>
+                            <span class="m-label">{% trans "Applications Submitted" %}</span>
+                            <strong class="m-val">{{ applications|length }} {% trans "item(s)" %}</strong>
                         </div>
 
                         <div class="side-metric-item">
-                            <span class="m-label">สถานะบัญชี</span>
-                            <span class="badge-tag-success">ข้อมูลสมบูรณ์</span>
+                            <span class="m-label">{% trans "Account Status" %}</span>
+                            <span class="badge-tag-success">{% trans "Complete" %}</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="side-info-card quick-help-card">
-                    <h4>ต้องการความช่วยเหลือ?</h4>
-                    <p>หากต้องการแก้ไขเอกสารหลังยื่นใบสมัครแล้ว สามารถติดต่อเจ้าหน้าที่งานพัฒนานักศึกษาได้ที่ห้อง 7102</p>
-                    <a href="{% url 'contact' %}" class="btn-side-contact">ติดต่อฝ่ายทุน →</a>
+                    <h4>{% trans "Need Assistance?" %}</h4>
+                    <p>{% trans "If you need to update documents after submitting your application, please contact the Student Affairs Office at Room 7102." %}</p>
+                    <a href="{% url 'contact' %}" class="btn-side-contact">{% trans "Contact Us" %} →</a>
                 </div>
             </div>
         </div>
@@ -133,11 +127,11 @@
         <div class="applications-tracker-section">
             <div class="tracker-header-row">
                 <div>
-                    <h2 class="tracker-title">ประวัติและสถานะการสมัครทุน</h2>
-                    <p class="tracker-subtitle">ตรวจสอบความคืบหน้าของใบสมัครทุนที่คุณได้ยื่นไว้ผ่านระบบ</p>
+                    <h2 class="tracker-title">{% trans "Application History & Status" %}</h2>
+                    <p class="tracker-subtitle">{% trans "Track the progress and review updates for your submitted applications." %}</p>
                 </div>
                 <a href="{% url 'scholarships' %}" class="btn-find-more">
-                    ค้นหาทุนใหม่
+                    {% trans "Browse Scholarships" %}
                 </a>
             </div>
 
@@ -147,26 +141,12 @@
                 <div class="app-tracking-card">
                     <div class="app-card-top-bar">
                         <div>
-                            <span class="category-pill-tag">
-                                {% if app.scholarship.category == 'general' %}ทุนทั่วไป
-                                {% elif app.scholarship.category == 'exchange' %}ทุนแลกเปลี่ยน
-                                {% elif app.scholarship.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
-                                {% elif app.scholarship.category == 'lunch' %}อาหารกลางวัน
-                                {% else %}{{ app.scholarship.get_category_display }}{% endif %}
-                            </span>
+                            {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
                             <h3 class="app-sch-title">{{ app.scholarship.title }}</h3>
                         </div>
 
                         <div class="app-status-badge-wrap">
-                            {% if app.status == 'pending' %}
-                                <span class="app-status-badge status-pending">อยู่ระหว่างการพิจารณา</span>
-                            {% elif app.status == 'approved' %}
-                                <span class="app-status-badge status-approved">ได้รับการอนุมัติทุน</span>
-                            {% elif app.status == 'interview' %}
-                                <span class="app-status-badge status-pending" style="background-color: var(--psu-blue-100); color: var(--psu-blue-700);">รอสัมภาษณ์</span>
-                            {% else %}
-                                <span class="app-status-badge status-rejected">ไม่ผ่านการคัดเลือก</span>
-                            {% endif %}
+                            {% include 'components/status_badge.html' with status=app.status %}
                         </div>
                     </div>
 
@@ -174,38 +154,50 @@
                     <div class="app-stepper-visual">
                         <div class="step-point done">
                             <div class="point-circle">1</div>
-                            <div class="point-text">ยื่นเอกสารเรียบร้อย</div>
+                            <div class="point-text">{% trans "Submitted" %}</div>
                             <div class="point-date">{{ app.submitted_at|date:"d M Y" }}</div>
                         </div>
-                        <div class="point-line {% if app.status == 'approved' or app.status == 'pending' %}active{% endif %}"></div>
-                        
-                        <div class="step-point {% if app.status == 'pending' %}current{% elif app.status == 'approved' or app.status == 'rejected' %}done{% endif %}">
+                        <div class="point-line {% if app.status != 'cancelled' %}active{% endif %}"></div>
+
+                        <div class="step-point {% if app.status == 'pending' or app.status == 'in_progress' or app.status == 'interview' %}current{% elif app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}done{% endif %}">
                             <div class="point-circle">2</div>
-                            <div class="point-text">คณะกรรมการตรวจสอบ</div>
+                            <div class="point-text">
+                                {% if app.status == 'in_progress' or app.status == 'interview' %}
+                                In Progress
+                                {% else %}
+                                Committee Review
+                                {% endif %}
+                            </div>
                             <div class="point-date">
-                                {% if app.status == 'pending' %}กำลังดำเนินการ{% else %}เสร็จสิ้น{% endif %}
+                                {% if app.status == 'pending' %}Pending{% elif app.status == 'in_progress' or app.status == 'interview' %}Processing{% elif app.status == 'cancelled' %}Cancelled{% else %}Completed{% endif %}
                             </div>
                         </div>
-                        <div class="point-line {% if app.status == 'approved' %}active{% endif %}"></div>
+                        <div class="point-line {% if app.status == 'approved' or app.status == 'completed' %}active{% endif %}"></div>
 
-                        <div class="step-point {% if app.status == 'approved' %}done-success{% elif app.status == 'rejected' %}done-fail{% else %}waiting{% endif %}">
+                        <div class="step-point {% if app.status == 'completed' %}done-success{% elif app.status == 'approved' %}done-success{% elif app.status == 'rejected' or app.status == 'cancelled' %}done-fail{% else %}waiting{% endif %}">
                             <div class="point-circle">3</div>
                             <div class="point-text">
-                                {% if app.status == 'approved' %}ผ่านการคัดเลือก
-                                {% elif app.status == 'rejected' %}ไม่ผ่านการคัดเลือก
-                                {% else %}ประกาศผลเป็นทางการ{% endif %}
+                                {% if app.status == 'completed' %}Complete
+                                {% elif app.status == 'approved' %}Approve
+                                {% elif app.status == 'rejected' %}Reject
+                                {% elif app.status == 'cancelled' %}Cancel
+                                {% else %}Official Announcement{% endif %}
                             </div>
                             <div class="point-date">
-                                {% if app.status == 'approved' %}อนุมัติแล้ว{% elif app.status == 'rejected' %}สิ้นสุด{% else %}รอประกาศ{% endif %}
+                                {% if app.status == 'completed' %}Completed
+                                {% elif app.status == 'approved' %}Approved
+                                {% elif app.status == 'rejected' %}Rejected
+                                {% elif app.status == 'cancelled' %}Cancelled
+                                {% else %}Pending Announcement{% endif %}
                             </div>
                         </div>
                     </div>
 
                     <div class="app-card-details-row">
-                        <span>มูลค่าทุน: <strong>฿{{ app.scholarship.amount_per_semester|floatformat:0 }}</strong> / ภาคการศึกษา</span>
-                        <span>ยื่นเมื่อ: <strong>{{ app.submitted_at|date:"d F Y เวลา H:i น." }}</strong></span>
+                        <span>{% trans "Amount" %}: <strong>฿{{ app.scholarship.amount_per_semester|floatformat:0 }}</strong> / {% trans "semester" %}</span>
+                        <span>{% trans "Submitted on" %}: <strong>{{ app.submitted_at|date:"d M Y H:i" }}</strong></span>
                         <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="link-view-details">
-                            ดูรายละเอียดทุนนี้ →
+                            {% trans "View Details" %} →
                         </a>
                     </div>
                 </div>
@@ -213,9 +205,9 @@
             </div>
             {% else %}
             <div class="modern-empty-state">
-                <h3 class="empty-title">คุณยังไม่เคยยื่นสมัครทุนการศึกษาใดๆ</h3>
-                <p class="empty-subtitle">คุณสามารถค้นหาทุนการศึกษาที่เปิดรับสมัคร และส่งใบสมัครผ่านระบบได้ทันที</p>
-                <a href="{% url 'scholarships' %}" class="btn-empty-reset">สำรวจทุนการศึกษาที่เปิดรับสมัคร</a>
+                <h3 class="empty-title">{% trans "You haven't submitted any scholarship applications yet." %}</h3>
+                <p class="empty-subtitle">{% trans "Browse available scholarships and apply online today." %}</p>
+                <a href="{% url 'scholarships' %}" class="btn-empty-reset">{% trans "Explore Open Scholarships" %}</a>
             </div>
             {% endif %}
         </div>
@@ -223,14 +215,14 @@
 </div>
 
 <script>
-function previewImage(input) {
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('avatarPreview').src = e.target.result;
-        };
-        reader.readAsDataURL(input.files[0]);
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('avatarPreview').src = e.target.result;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     }
-}
 </script>
 {% endblock %}

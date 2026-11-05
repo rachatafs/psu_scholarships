@@ -2,19 +2,19 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}หมวดหมู่ทุนการศึกษา | PSU Phuket Scholarships{% endblock %}
+{% block title %}{% trans "Scholarship Categories" %} | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
 <div class="category-page-modern">
     <div class="category-page-header">
         <div class="container-default">
             <div class="breadcrumb-nav">
-                <a href="{% url 'home' %}">หน้าแรก</a>
+                <a href="{% url 'home' %}">{% trans "Home" %}</a>
                 <span class="breadcrumb-sep">/</span>
-                <span class="breadcrumb-current">หมวดหมู่ทุนการศึกษา</span>
+                <span class="breadcrumb-current">{% trans "Scholarship Categories" %}</span>
             </div>
-            <h1 class="page-main-title">หมวดหมู่ทุนการศึกษา ม.อ. ภูเก็ต</h1>
-            <p class="page-subtitle">เลือกประเภททุนที่ตรงกับเกณฑ์และเป้าหมายทางการศึกษาของคุณ หรือค้นหาจากทุนทั้งหมดที่มีในระบบ</p>
+            <h1 class="page-main-title">{% trans "PSU Phuket Scholarship Categories" %}</h1>
+            <p class="page-subtitle">{% trans "Choose a category that aligns with your educational goals, or browse all available opportunities." %}</p>
         </div>
     </div>
 
@@ -24,12 +24,12 @@
             <div class="category-card-premium all-card">
                 <div class="cat-card-header">
                     <span class="cat-badge-code">ALL</span>
-                    <span class="badge-tag">ดูทั้งหมด</span>
+                    <span class="badge-tag">{% trans "View All" %}</span>
                 </div>
-                <h3 class="cat-name">ทุนการศึกษาทั้งหมด</h3>
-                <p class="cat-explanation">สำรวจทุนการศึกษาทุกประเภทที่เปิดรับสมัครในปัจจุบัน พร้อมตัวกรองตามเงื่อนไข</p>
+                <h3 class="cat-name">{% trans "All Scholarships" %}</h3>
+                <p class="cat-explanation">{% trans "Explore all scholarship opportunities currently accepting applications with condition filters." %}</p>
                 <a href="{% url 'scholarship_list' 'all' %}" class="btn-cat-action">
-                    สำรวจทุนทั้งหมด →
+                    {% trans "Explore All Scholarships" %} →
                 </a>
             </div>
 
@@ -37,12 +37,12 @@
             <div class="category-card-premium">
                 <div class="cat-card-header">
                     <span class="cat-badge-code">01</span>
-                    <span class="badge-tag">ทั่วไป</span>
+                    <span class="badge-tag">{% trans "General" %}</span>
                 </div>
-                <h3 class="cat-name">ทุนการศึกษาทั่วไป</h3>
-                <p class="cat-explanation">ทุนสนับสนุนการศึกษาสำหรับนักศึกษาทั่วไป ทุนเรียนดี ทุนขาดแคลนทุนทรัพย์ และทุนส่งเสริมศักยภาพ</p>
+                <h3 class="cat-name">{% trans "General Scholarships" %}</h3>
+                <p class="cat-explanation">{% trans "Financial support for general students, academic excellence, need-based aid, and talent development." %}</p>
                 <a href="{% url 'scholarship_list' 'general' %}" class="btn-cat-action">
-                    ดูทุนทั่วไป →
+                    {% trans "View General" %} →
                 </a>
             </div>
 
@@ -50,12 +50,12 @@
             <div class="category-card-premium">
                 <div class="cat-card-header">
                     <span class="cat-badge-code">02</span>
-                    <span class="badge-tag">นานาชาติ</span>
+                    <span class="badge-tag">{% trans "Exchange" %}</span>
                 </div>
-                <h3 class="cat-name">ทุนศึกษาแลกเปลี่ยน</h3>
-                <p class="cat-explanation">ทุนสนับสนุนโครงการแลกเปลี่ยนนักศึกษาต่างประเทศ การฝึกงานในต่างแดน และสัมมนาวิชาการระดับสากล</p>
+                <h3 class="cat-name">{% trans "Exchange Scholarships" %}</h3>
+                <p class="cat-explanation">{% trans "Support for international student exchange programs, overseas internships, and global academic seminars." %}</p>
                 <a href="{% url 'scholarship_list' 'exchange' %}" class="btn-cat-action">
-                    ดูทุนแลกเปลี่ยน →
+                    {% trans "View Exchange" %} →
                 </a>
             </div>
 
@@ -63,12 +63,12 @@
             <div class="category-card-premium">
                 <div class="cat-card-header">
                     <span class="cat-badge-code">03</span>
-                    <span class="badge-tag">สวัสดิการ</span>
+                    <span class="badge-tag">{% trans "Welfare" %}</span>
                 </div>
-                <h3 class="cat-name">ทุนยกเว้นค่าธรรมเนียมการศึกษา</h3>
-                <p class="cat-explanation">ทุนลดหย่อนหรือยกเว้นค่าธรรมเนียมการศึกษา สำหรับนักศึกษาที่มีผลการเรียนโดดเด่นหรือสร้างชื่อเสียงให้มหาวิทยาลัย</p>
+                <h3 class="cat-name">{% trans "Fee Waiver Scholarships" %}</h3>
+                <p class="cat-explanation">{% trans "Tuition fee discounts or exemptions for students with exceptional academic or extracurricular achievements." %}</p>
                 <a href="{% url 'scholarship_list' 'fee_waiver' %}" class="btn-cat-action">
-                    ดูทุนยกเว้นค่าธรรมเนียม →
+                    {% trans "View Fee Waiver" %} →
                 </a>
             </div>
 
@@ -76,12 +76,12 @@
             <div class="category-card-premium">
                 <div class="cat-card-header">
                     <span class="cat-badge-code">04</span>
-                    <span class="badge-tag">ค่าครองชีพ</span>
+                    <span class="badge-tag">{% trans "Living Aid" %}</span>
                 </div>
-                <h3 class="cat-name">ทุนอาหารกลางวัน</h3>
-                <p class="cat-explanation">ทุนสวัสดิการค่าอาหารกลางวันเพื่อสุขอนามัยและแบ่งเบาภาระค่าครองชีพสำหรับนักศึกษา</p>
+                <h3 class="cat-name">{% trans "Lunch Scholarships" %}</h3>
+                <p class="cat-explanation">{% trans "Meal welfare subsidies to support campus well-being and alleviate living expenses for students." %}</p>
                 <a href="{% url 'scholarship_list' 'lunch' %}" class="btn-cat-action">
-                    ดูทุนอาหารกลางวัน →
+                    {% trans "View Lunch" %} →
                 </a>
             </div>
         </div>

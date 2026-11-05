@@ -73,8 +73,14 @@ def send_status_update_email(application, custom_subject=None, custom_message=No
         content = f"<p>สถานะใบสมัครทุน <strong>{scholarship.title}</strong> ของคุณได้รับการอัปเดตเป็น: <strong>{status}</strong></p>"
         if application.status == 'approved':
             content += "<p>ขอแสดงความยินดีด้วยครับ! คุณได้รับทุนการศึกษานี้ โปรดรอการติดต่อกลับจากเจ้าหน้าที่เพื่อดำเนินการต่อไป</p>"
+        elif application.status == 'completed':
+            content += "<p>กระบวนการรับมอบทุนการศึกษาและการดำเนินการที่เกี่ยวข้องเสร็จสมบูรณ์เรียบร้อยแล้ว ขอขอบคุณและขอให้ตั้งใจศึกษาเล่าเรียนครับ</p>"
+        elif application.status == 'in_progress':
+            content += "<p>ใบสมัครของคุณอยู่ระหว่างการดำเนินการและตรวจสอบข้อมูล/เอกสารโดยคณะกรรมการ โปรดติดตามความคืบหน้าอย่างต่อเนื่องครับ</p>"
         elif application.status == 'rejected':
             content += "<p>ขอแสดงความเสียใจด้วยครับ คุณไม่ผ่านการพิจารณาสำหรับทุนการศึกษานี้ในครั้งนี้ ขอเป็นกำลังใจให้ในโอกาสหน้านะครับ</p>"
+        elif application.status == 'cancelled':
+            content += "<p>ใบสมัครทุนการศึกษานี้ของคุณได้รับการยกเลิกแล้ว หากมีข้อสงสัยสามารถติดต่อหน่วยกิจการนักศึกษาได้ครับ</p>"
         elif application.status == 'interview':
             content += "<p>คุณผ่านการคัดเลือกเบื้องต้นและมีกำหนดการ <strong>นัดสัมภาษณ์</strong> เจ้าหน้าที่จะติดต่อกลับเพื่อแจ้งวันและเวลาอีกครั้งครับ</p>"
         

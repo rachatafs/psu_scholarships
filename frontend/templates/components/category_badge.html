@@ -1,0 +1,10 @@
+{% load i18n %}
+<span class="category-pill-tag">
+    {% if category == 'general' %}{% trans "General" %}
+    {% elif category == 'exchange' %}{% trans "Exchange" %}
+    {% elif category == 'fee_waiver' %}{% trans "Fee Waiver" %}
+    {% elif category == 'lunch' %}{% trans "Lunch" %}
+    {% elif category_display %}{{ category_display }}
+    {% else %}{{ category|title }}{% endif %}
+</span>
+

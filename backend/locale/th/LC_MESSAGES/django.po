@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-25 13:06+0700\n"
+"POT-Creation-Date: 2026-11-05 11:41+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,45 +19,2350 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: backend/myproject/settings.py:87
-msgid "Thai"
-msgstr ""
-
-#: backend/myproject/settings.py:88
 msgid "English"
 msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:18
-msgid "ทุนการศึกษาทั่วไป"
+#: backend/myproject/settings.py:88
+msgid "Thai"
 msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:18
-msgid "ทุนสนับสนุนการศึกษาสำหรับนักศึกษาทั่วไป ทุนขาดแคลนทุนทรัพย์"
+#: backend/scholarships/admin.py:14
+msgid "Personal info"
 msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:19
-msgid "ทุนศึกษาแลกเปลี่ยน"
+#: backend/scholarships/admin.py:15
+msgid "Permissions"
 msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:19
-msgid "ทุนสนับสนุนการแลกเปลี่ยนต่างประเทศและโครงการระดับนานาชาติ"
+#: backend/scholarships/admin.py:18
+msgid "Important dates"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:151
+msgid "Notification email sent to student successfully."
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:151
+#, python-format
+msgid "Status updated to %(status)s and notification email sent."
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:154
+#, python-format
+msgid "Saved successfully (Email error: %(error)s)"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:156
+msgid "Updated successfully."
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:255
+#, python-format
+msgid "Scholarship \"%(title)s\" has been deleted."
+msgstr ""
+
+#: backend/scholarships/views/auth_views.py:27
+#: frontend/templates/accounts/login.html:19
+msgid "Invalid username or password. Please check and try again."
+msgstr ""
+
+#: backend/scholarships/views/auth_views.py:92
+msgid "Profile updated successfully!"
 msgstr ""
 
 #: backend/scholarships/views/scholarship_views.py:20
+#: backend/scholarships/views/utils.py:6
+#: frontend/templates/partials/navbar.html:31
+#: frontend/templates/scholarships/category.html:42
+msgid "General Scholarships"
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:22
+msgid ""
+"Financial support for general students, academic excellence, and need-based "
+"aid."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:27
+#: backend/scholarships/views/utils.py:7
+#: frontend/templates/partials/navbar.html:32
+#: frontend/templates/scholarships/category.html:55
+msgid "Exchange Scholarships"
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:29
+msgid ""
+"Support for international student exchange programs and overseas internships."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:34
+#: backend/scholarships/views/utils.py:8
 #: frontend/templates/partials/navbar.html:33
-msgid "ทุนยกเว้นค่าธรรมเนียม"
+#: frontend/templates/scholarships/category.html:68
+msgid "Fee Waiver Scholarships"
 msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:20
-msgid "ทุนยกเว้นค่าธรรมเนียมการศึกษาตามเกณฑ์ผลการเรียนและกิจกรรม"
+#: backend/scholarships/views/scholarship_views.py:36
+msgid ""
+"Tuition fee discounts or exemptions for students with exceptional "
+"achievements."
 msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:21
+#: backend/scholarships/views/scholarship_views.py:41
+#: backend/scholarships/views/utils.py:9
 #: frontend/templates/partials/navbar.html:34
-msgid "ทุนอาหารกลางวัน"
+#: frontend/templates/scholarships/category.html:81
+msgid "Lunch Scholarships"
 msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:21
-msgid "ทุนสวัสดิการอาหารกลางวันเพื่อสุขภาวะและการใช้ชีวิตในรั้วมหาวิทยาลัย"
+#: backend/scholarships/views/scholarship_views.py:43
+msgid ""
+"Meal welfare subsidies to support campus well-being and alleviate living "
+"expenses."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:84
+#: frontend/templates/partials/navbar.html:24
+msgid "Scholarships"
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:117
+msgid "Sorry, this scholarship is closed or has expired."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:125
+msgid "Sorry, this scholarship has reached maximum applicant capacity."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:136
+msgid "You have already applied for this scholarship."
+msgstr ""
+
+#: backend/scholarships/views/utils.py:5
+#: frontend/templates/scholarships/category.html:29
+msgid "All Scholarships"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/contrib/messages/apps.py:16
+#: backend/venv/lib/python3.14/site-packages/django/contrib/messages/apps.py:16
+msgid "Messages"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/contrib/sitemaps/apps.py:8
+#: backend/venv/lib/python3.14/site-packages/django/contrib/sitemaps/apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/contrib/staticfiles/apps.py:9
+#: backend/venv/lib/python3.14/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/contrib/syndication/apps.py:7
+#: backend/venv/lib/python3.14/site-packages/django/contrib/syndication/apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: backend/venv/lib/python3.13/site-packages/django/core/paginator.py:33
+#: backend/venv/lib/python3.14/site-packages/django/core/paginator.py:33
+msgid "…"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/paginator.py:35
+#: backend/venv/lib/python3.14/site-packages/django/core/paginator.py:35
+msgid "That page number is not an integer"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/paginator.py:36
+#: backend/venv/lib/python3.14/site-packages/django/core/paginator.py:36
+msgid "That page number is less than 1"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/paginator.py:37
+#: backend/venv/lib/python3.14/site-packages/django/core/paginator.py:37
+msgid "That page contains no results"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:22
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:70
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:70
+msgid "Enter a valid domain name."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:153
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:774
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:153
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:773
+msgid "Enter a valid URL."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:200
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:200
+msgid "Enter a valid integer."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:211
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:211
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:289
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:289
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:297
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:297
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:309
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:318
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:332
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2220
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:309
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:318
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:332
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2220
+#, python-format
+msgid "Enter a valid %(protocol)s address."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:311
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:311
+msgid "IPv4"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:320
+#: backend/venv/lib/python3.13/site-packages/django/utils/ipv6.py:43
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:320
+#: backend/venv/lib/python3.14/site-packages/django/utils/ipv6.py:43
+msgid "IPv6"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:334
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:334
+msgid "IPv4 or IPv6"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:375
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:375
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:381
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:381
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:416
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:416
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:425
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:425
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:434
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:434
+#, python-format
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:441
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:441
+#, python-format
+msgid ""
+"Ensure this value is a multiple of step size %(limit_value)s, starting from "
+"%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:473
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:473
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:491
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:491
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:514
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:365
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:404
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:514
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:364
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:403
+msgid "Enter a number."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:516
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:516
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:521
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:521
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:526
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:526
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:597
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:597
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:659
+#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:659
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/base.py:1633
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:932
+#: backend/venv/lib/python3.14/site-packages/django/db/models/base.py:1633
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:932
+msgid "and"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/base.py:1635
+#: backend/venv/lib/python3.14/site-packages/django/db/models/base.py:1635
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/constraints.py:20
+#: backend/venv/lib/python3.14/site-packages/django/db/models/constraints.py:20
+#, python-format
+msgid "Constraint “%(name)s” is violated."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:134
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:134
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:135
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:135
+msgid "This field cannot be null."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:136
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:136
+msgid "This field cannot be blank."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:137
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:137
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or
+#. 'month'. Eg: "Title must be unique for pub_date year"
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:141
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:141
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:180
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:180
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1161
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1161
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1162
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1162
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1164
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1164
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1214
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1214
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1216
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1216
+msgid "String (unlimited)"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1325
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1325
+msgid "Comma-separated integers"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1426
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1426
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1430
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1565
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1430
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1565
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1434
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1434
+msgid "Date (without time)"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1561
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1561
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1569
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1569
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1574
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1574
+msgid "Date (with time)"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1701
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1701
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1703
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1703
+msgid "Decimal number"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1864
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1864
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] "
+"[[HH:]MM:]ss[.uuuuuu] format."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1868
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1868
+msgid "Duration"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1920
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1920
+msgid "Email address"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1945
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1945
+msgid "File path"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2023
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2023
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2025
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2025
+msgid "Floating point number"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2065
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2065
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2067
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2067
+msgid "Integer"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2163
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2163
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2180
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2180
+msgid "Small integer"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2188
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2188
+msgid "IPv4 address"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2219
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2219
+msgid "IP address"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2310
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2311
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2310
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2311
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2313
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2313
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2364
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2364
+msgid "Positive big integer"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2379
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2379
+msgid "Positive integer"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2394
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2394
+msgid "Positive small integer"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2410
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2410
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2446
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2446
+msgid "Text"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2526
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2526
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2530
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2530
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2534
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2534
+msgid "Time"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2642
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2642
+msgid "URL"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2666
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2666
+msgid "Raw binary data"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2731
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2731
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2733
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2733
+msgid "Universally unique identifier"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/files.py:244
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/files.py:244
+msgid "File"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/files.py:420
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/files.py:420
+msgid "Image"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/json.py:24
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/json.py:24
+msgid "A JSON object"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/json.py:26
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/json.py:26
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:978
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:974
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r is not a valid choice."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:981
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:977
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:1275
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:1271
+msgid "One-to-one relationship"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:1332
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:1328
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:1334
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:1330
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:1382
+#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:1378
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to
+#. the label
+#: backend/venv/lib/python3.13/site-packages/django/forms/boundfield.py:188
+#: backend/venv/lib/python3.14/site-packages/django/forms/boundfield.py:188
+msgid ":?.!"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:92
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:91
+msgid "This field is required."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:314
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:313
+msgid "Enter a whole number."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:485
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1251
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:484
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1241
+msgid "Enter a valid date."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:508
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1252
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:507
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1242
+msgid "Enter a valid time."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:535
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:534
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:569
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:568
+msgid "Enter a valid duration."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:570
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:569
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:639
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:638
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:640
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:639
+msgid "No file was submitted."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:641
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:640
+msgid "The submitted file is empty."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:643
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:642
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:648
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:647
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:716
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:715
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:872
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:959
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1621
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:862
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:949
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1621
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:961
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1080
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1619
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:951
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1070
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1619
+msgid "Enter a list of values."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1081
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1071
+msgid "Enter a complete value."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1323
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1313
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1353
+#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1343
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: backend/venv/lib/python3.13/site-packages/django/forms/forms.py:97
+#: backend/venv/lib/python3.14/site-packages/django/forms/forms.py:97
+msgid ":"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/forms.py:239
+#: backend/venv/lib/python3.14/site-packages/django/forms/forms.py:239
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:61
+#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:65
+#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:65
+#, python-format
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:70
+#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:70
+#, python-format
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:484
+#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:491
+#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:484
+#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:491
+msgid "Order"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:499
+#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:499
+#: frontend/templates/accounts/admin_dashboard.html:440
+#: frontend/templates/accounts/admin_dashboard.html:441
+msgid "Delete"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:925
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:925
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:930
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:930
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:937
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:937
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:946
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:946
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1383
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1383
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1474
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1474
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1623
+#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1623
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/utils.py:229
+#: backend/venv/lib/python3.14/site-packages/django/forms/utils.py:229
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:528
+#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:528
+#: frontend/templates/scholarships/list.html:55
+msgid "Clear"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:529
+#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:529
+msgid "Currently"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:530
+#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:530
+#: frontend/templates/admin/index.html:28
+msgid "Change"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:869
+#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:869
+msgid "Unknown"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:870
+#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:870
+msgid "Yes"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:871
+#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:871
+msgid "No"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/tasks/base.py:34
+#: backend/venv/lib/python3.14/site-packages/django/tasks/base.py:34
+msgctxt "Task"
+msgid "Ready"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/tasks/base.py:36
+#: backend/venv/lib/python3.14/site-packages/django/tasks/base.py:36
+msgctxt "Task"
+msgid "Running"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/tasks/base.py:38
+#: backend/venv/lib/python3.14/site-packages/django/tasks/base.py:38
+msgctxt "Task"
+msgid "Failed"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/tasks/base.py:40
+#: backend/venv/lib/python3.14/site-packages/django/tasks/base.py:40
+msgctxt "Task"
+msgid "Successful"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:878
+#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:878
+msgid "yes,no,maybe"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:908
+#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:925
+#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:908
+#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:925
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:927
+#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:927
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:929
+#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:929
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:931
+#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:931
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:933
+#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:933
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:935
+#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:935
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:74
+#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:74
+msgid "p.m."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:75
+#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:75
+msgid "a.m."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:80
+#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:80
+msgid "PM"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:81
+#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:81
+msgid "AM"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:153
+#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:153
+msgid "midnight"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:155
+#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:155
+msgid "noon"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:7
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:7
+msgid "Monday"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:8
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:8
+msgid "Tuesday"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:9
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:9
+msgid "Wednesday"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:10
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:10
+msgid "Thursday"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:11
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:11
+msgid "Friday"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:12
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:12
+msgid "Saturday"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:13
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:13
+msgid "Sunday"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:16
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:16
+msgid "Mon"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:17
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:17
+msgid "Tue"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:18
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:18
+msgid "Wed"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:19
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:19
+msgid "Thu"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:20
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:20
+msgid "Fri"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:21
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:21
+msgid "Sat"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:22
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:22
+msgid "Sun"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:25
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:25
+#: frontend/templates/scholarship_dashboard.html:539
+msgid "January"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:26
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:26
+#: frontend/templates/scholarship_dashboard.html:540
+msgid "February"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:27
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:27
+#: frontend/templates/scholarship_dashboard.html:541
+msgid "March"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:28
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:28
+#: frontend/templates/scholarship_dashboard.html:542
+msgid "April"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:29
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:29
+#: frontend/templates/scholarship_dashboard.html:543
+msgid "May"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:30
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:30
+#: frontend/templates/scholarship_dashboard.html:544
+msgid "June"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:31
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:31
+#: frontend/templates/scholarship_dashboard.html:545
+msgid "July"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:32
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:32
+#: frontend/templates/scholarship_dashboard.html:546
+msgid "August"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:33
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:33
+#: frontend/templates/scholarship_dashboard.html:547
+msgid "September"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:34
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:34
+#: frontend/templates/scholarship_dashboard.html:548
+msgid "October"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:35
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:35
+#: frontend/templates/scholarship_dashboard.html:549
+msgid "November"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:36
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:36
+#: frontend/templates/scholarship_dashboard.html:550
+msgid "December"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:39
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:39
+msgid "jan"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:40
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:40
+msgid "feb"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:41
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:41
+msgid "mar"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:42
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:42
+msgid "apr"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:43
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:43
+msgid "may"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:44
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:44
+msgid "jun"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:45
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:45
+msgid "jul"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:46
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:46
+msgid "aug"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:47
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:47
+msgid "sep"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:48
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:48
+msgid "oct"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:49
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:49
+msgid "nov"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:50
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:50
+msgid "dec"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:53
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:53
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:54
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:54
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:55
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:55
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:56
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:56
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:57
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:57
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:58
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:58
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:59
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:59
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:60
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:60
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:61
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:61
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:62
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:62
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:63
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:63
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:64
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:64
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:67
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:67
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:68
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:68
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:69
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:69
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:70
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:70
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:71
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:71
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:72
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:72
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:73
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:73
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:74
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:74
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:75
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:75
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:76
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:76
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:77
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:77
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:78
+#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:78
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/ipv6.py:20
+#: backend/venv/lib/python3.14/site-packages/django/utils/ipv6.py:20
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/text.py:76
+#: backend/venv/lib/python3.14/site-packages/django/utils/text.py:76
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/text.py:288
+#: backend/venv/lib/python3.14/site-packages/django/utils/text.py:282
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: backend/venv/lib/python3.13/site-packages/django/utils/text.py:307
+#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:135
+#: backend/venv/lib/python3.14/site-packages/django/utils/text.py:301
+#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:135
+msgid ", "
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:8
+#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:8
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:9
+#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:10
+#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:11
+#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:12
+#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:13
+#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:29
+#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:29
+msgid "Forbidden"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:30
+#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:30
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:34
+#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:34
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:40
+#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:40
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:45
+#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:45
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:54
+#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:54
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:60
+#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:60
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:66
+#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:66
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:44
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:44
+msgid "No year specified"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:64
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:115
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:214
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:64
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:115
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:214
+msgid "Date out of range"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:94
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:94
+msgid "No month specified"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:147
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:147
+msgid "No day specified"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:194
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:194
+msgid "No week specified"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:353
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:384
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:353
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:384
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:680
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:680
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:720
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:720
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/detail.py:56
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/detail.py:56
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/list.py:70
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/list.py:70
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/list.py:77
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/list.py:77
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/generic/list.py:173
+#: backend/venv/lib/python3.14/site-packages/django/views/generic/list.py:173
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/static.py:49
+#: backend/venv/lib/python3.14/site-packages/django/views/static.py:49
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/static.py:51
+#: backend/venv/lib/python3.14/site-packages/django/views/static.py:51
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/static.py:68
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/directory_index.html:8
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/directory_index.html:11
+#: backend/venv/lib/python3.14/site-packages/django/views/static.py:68
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/directory_index.html:8
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/directory_index.html:11
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:7
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:204
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:7
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:204
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:206
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:208
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:208
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:217
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:217
+msgid "Django Documentation"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:218
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:218
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:226
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:226
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:227
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:227
+msgid "Get started with Django"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:235
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:235
+msgid "Django Community"
+msgstr ""
+
+#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:236
+#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:236
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:5
+msgid "Admin Management"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:14
+msgid "Admin Management Dashboard"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:15
+msgid "Welcome Administrator"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:21
+msgid "Click to view all scholarships"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:23
+#: frontend/templates/scholarship_dashboard.html:573
+msgid "Total Scholarships"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:26
+msgid "Click to view all applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:28
+#: frontend/templates/scholarship_dashboard.html:602
+msgid "Total Applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:31
+msgid "Click to view pending applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:33
+msgid "Pending Review"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:36
+msgid "Click to view approved applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:38
+msgid "Approved"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:52
+msgid "Manage Student Applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:60
+msgid "Manage Scholarships"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:69
+msgid "Scholarship History"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:78
+msgid "Student Applications & Screening"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:79
+msgid ""
+"Search, verify GPAX eligibility, and update application review statuses."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:86
+msgid "Create New Scholarship"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:97
+msgid "Note"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:97
+msgid ""
+"This view displays active student applications. To manage scholarship "
+"listings without applications, use the Manage Scholarships tab."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:106
+#: frontend/templates/accounts/admin_dashboard.html:328
+#: frontend/templates/scholarships/list.html:26
+msgid "All"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:112
+#: frontend/templates/accounts/admin_dashboard.html:332
+#: frontend/templates/components/category_badge.html:3
+#: frontend/templates/scholarship_dashboard.html:678
+#: frontend/templates/scholarship_dashboard.html:719
+#: frontend/templates/scholarships/category.html:40
+#: frontend/templates/scholarships/list.html:28
+msgid "General"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:118
+#: frontend/templates/accounts/admin_dashboard.html:336
+#: frontend/templates/components/category_badge.html:4
+#: frontend/templates/scholarship_dashboard.html:681
+#: frontend/templates/scholarship_dashboard.html:720
+#: frontend/templates/scholarships/category.html:53
+#: frontend/templates/scholarships/list.html:30
+msgid "Exchange"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:124
+#: frontend/templates/accounts/admin_dashboard.html:340
+#: frontend/templates/components/category_badge.html:5
+#: frontend/templates/scholarship_dashboard.html:684
+#: frontend/templates/scholarship_dashboard.html:721
+#: frontend/templates/scholarships/list.html:32
+msgid "Fee Waiver"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:130
+#: frontend/templates/accounts/admin_dashboard.html:344
+#: frontend/templates/components/category_badge.html:6
+#: frontend/templates/scholarship_dashboard.html:687
+#: frontend/templates/scholarship_dashboard.html:722
+#: frontend/templates/scholarships/list.html:34
+msgid "Lunch"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:148
+msgid "Search applicant name, student ID, scholarship title..."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:155
+msgid "All Statuses"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:156
+#: frontend/templates/components/app_status_indicator.html:5
+#: frontend/templates/components/status_badge.html:3
+msgid "Pending"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:157
+#: frontend/templates/components/app_status_indicator.html:8
+#: frontend/templates/components/status_badge.html:5
+msgid "In Progress"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:158
+#: frontend/templates/components/app_status_indicator.html:11
+#: frontend/templates/components/status_badge.html:7
+msgid "Approve"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:159
+#: frontend/templates/components/app_status_indicator.html:20
+#: frontend/templates/components/status_badge.html:13
+msgid "Reject"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:160
+#: frontend/templates/accounts/profile.html:113
+#: frontend/templates/components/app_status_indicator.html:14
+#: frontend/templates/components/status_badge.html:9
+msgid "Complete"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:161
+#: frontend/templates/accounts/admin_dashboard.html:701
+#: frontend/templates/components/app_status_indicator.html:17
+#: frontend/templates/components/status_badge.html:11
+#: frontend/templates/scholarships/apply.html:162
+msgid "Cancel"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:165
+#: frontend/templates/accounts/admin_dashboard.html:364
+msgid "Showing"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:165
+msgid "items"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:175
+#: frontend/templates/scholarships/apply_success.html:26
+msgid "Applicant"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:176
+#: frontend/templates/accounts/profile.html:46
+#: frontend/templates/accounts/profile.html:58
+#: frontend/templates/accounts/profile.html:59
+#: frontend/templates/scholarships/apply.html:67
+#: frontend/templates/scholarships/apply_success.html:30
+msgid "Student ID"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:177
+#: frontend/templates/accounts/admin_dashboard.html:629
+#: frontend/templates/scholarship_dashboard.html:707
+#: frontend/templates/scholarships/apply_success.html:34
+msgid "Scholarship"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:178
+#: frontend/templates/scholarships/apply_success.html:38
+msgid "Submitted Date"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:179
+msgid "Attached Documents"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:180
+msgid "Current Status"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:181
+#: frontend/templates/accounts/admin_dashboard.html:379
+#: frontend/templates/accounts/admin_dashboard.html:499
+msgid "Actions"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:223
+msgid "Transcript"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:224
+msgid "Recommendation"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:225
+msgid "Other"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:230
+msgid "No documents"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:242
+msgid "Change to In Progress"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:247
+#: frontend/templates/accounts/admin_dashboard.html:263
+msgid "Approve application"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:252
+#: frontend/templates/accounts/admin_dashboard.html:268
+msgid "Reject application"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:257
+#: frontend/templates/accounts/admin_dashboard.html:273
+msgid "Cancel application"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:279
+msgid "Complete scholarship process"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:284
+#: frontend/templates/accounts/admin_dashboard.html:290
+msgid "Reset status to Pending"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:284
+#: frontend/templates/accounts/admin_dashboard.html:290
+msgid "Reset to Pending"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:293
+msgid "Send notice / Request additional documents"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:294
+msgid "Additional Docs"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:302
+#: frontend/templates/accounts/admin_dashboard.html:308
+msgid "No applications match the search criteria"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:320
+msgid "All Scholarships in System"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:321
+msgid ""
+"Manage listings, view applicant counts, quotas, and scholarship statuses."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:358
+msgid "Search scholarship title, category, GPAX..."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:364
+#: frontend/templates/scholarship_dashboard.html:575
+#: frontend/templates/scholarship_dashboard.html:591
+msgid "scholarships"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:373
+#: frontend/templates/accounts/admin_dashboard.html:493
+msgid "Scholarship Name"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:374
+#: frontend/templates/accounts/admin_dashboard.html:494
+#: frontend/templates/scholarship_dashboard.html:708
+msgid "Category"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:375
+#: frontend/templates/accounts/admin_dashboard.html:495
+msgid "Value"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:376
+#: frontend/templates/accounts/admin_dashboard.html:496
+msgid "Applicants / Quota"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:377
+#: frontend/templates/accounts/admin_dashboard.html:497
+#: frontend/templates/components/scholarship_card.html:66
+#: frontend/templates/scholarship_dashboard.html:711
+msgid "Deadline"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:378
+#: frontend/templates/accounts/admin_dashboard.html:498
+#: frontend/templates/scholarship_dashboard.html:710
+msgid "Status"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:401
+#: frontend/templates/accounts/admin_dashboard.html:521
+#: frontend/templates/components/scholarship_card.html:62
+#: frontend/templates/scholarships/detail.html:107
+msgid "Grants"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:413
+#: frontend/templates/components/scholarship_card.html:22
+#: frontend/templates/index.html:53
+#: frontend/templates/scholarships/detail.html:32
+#: frontend/templates/scholarships/list.html:71
+msgid "Open"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:417
+#: frontend/templates/accounts/admin_dashboard.html:532
+#: frontend/templates/components/scholarship_card.html:10
+#: frontend/templates/scholarships/detail.html:24
+#: frontend/templates/scholarships/detail.html:131
+#: frontend/templates/scholarships/detail.html:139
+#: frontend/templates/scholarships/detail.html:143
+msgid "Closed"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:424
+#: frontend/templates/accounts/admin_dashboard.html:425
+#: frontend/templates/accounts/admin_dashboard.html:429
+#: frontend/templates/accounts/admin_dashboard.html:538
+#: frontend/templates/accounts/admin_dashboard.html:539
+#: frontend/templates/accounts/admin_dashboard.html:543
+msgid "View Applicants"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:432
+#: frontend/templates/accounts/admin_dashboard.html:433
+#: frontend/templates/accounts/admin_dashboard.html:546
+#: frontend/templates/accounts/admin_dashboard.html:547
+msgid "View Page"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:435
+#: frontend/templates/accounts/admin_dashboard.html:436
+msgid "Edit"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:438
+msgid "Are you sure you want to delete this scholarship?"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:450
+msgid "No scholarships in the system"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:456
+msgid "No scholarships match search criteria"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:468
+msgid "Past Scholarship History"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:469
+msgid "List of expired or closed scholarships."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:482
+msgid "Search past scholarships..."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:555
+msgid "No past scholarship history"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:561
+msgid "No past scholarships match search criteria"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:576
+msgid "Access the core database to manage users, permissions, and all models."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:581
+msgid "Explore Scholarship Categories"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:584
+msgid "View the student catalog across all 4 major scholarship categories."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:603
+msgid "Update Status & Customize Email"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:604
+msgid "Review or compose additional notes to be sent to the student."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:618
+msgid "Student Name"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:623
+msgid "Notification Email"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:633
+msgid "Change status to"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:643
+msgid "Send notification email to student immediately"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:652
+msgid "Select Message Template:"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:655
+msgid "Select Message Template"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:656
+msgid "Request Additional Docs"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:657
+msgid "Interview Invitation"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:658
+msgid "Reschedule Interview"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:659
+msgid "Scholarship Approved"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:660
+msgid "Scholarship Rejected"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:661
+msgid "General Notification"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:668
+msgid "Email Subject:"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:677
+msgid "Email Message (Customize as needed):"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:680
+msgid "Reset to Default Template"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:685
+msgid ""
+"You can specify date, time, location, online meeting link, or instructions "
+"in this box."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:693
+msgid "Internal Note (Staff only):"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:695
+msgid "e.g. Interview Room 5204 or Passed round 1..."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:708
+msgid "Save and Send Email"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:5
+#: frontend/templates/accounts/login.html:49
+#: frontend/templates/partials/navbar.html:70
+#: frontend/templates/partials/navbar.html:130
+msgid "Sign In"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:31
+#: frontend/templates/partials/navbar.html:121
+msgid "Username"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:33
+#: frontend/templates/partials/navbar.html:122
+msgid "Enter username"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:41
+#: frontend/templates/partials/navbar.html:126
+msgid "Password"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:43
+#: frontend/templates/partials/navbar.html:127
+msgid "Enter password"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:57
+msgid "or sign in with"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:84
+msgid "*Please sign in with university email (@phuket.psu.ac.th)"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:5
+msgid "Profile & Applications"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:12 frontend/templates/index.html:5
+#: frontend/templates/partials/navbar.html:21
+#: frontend/templates/scholarships/category.html:12
+#: frontend/templates/scholarships/detail.html:13
+#: frontend/templates/scholarships/list.html:13
+msgid "Home"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:14
+msgid "Profile & Application History"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:32
+msgid "Click to change photo"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:33
+msgid "Change Photo"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:40
+msgid "Staff / Admin"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:40
+msgid "Student Account"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:53
+#: frontend/templates/accounts/profile.html:54
+#: frontend/templates/scholarships/apply.html:60
+msgid "Full Name"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:63
+msgid "Faculty"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:65
+msgid "Select Faculty"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:75
+msgid "Major"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:76
+msgid "e.g., Digital Engineering (DE)"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:80
+#: frontend/templates/scholarships/apply.html:82
+msgid "Phone Number"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:85
+msgid "University Email (PSU Passport)"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:87
+msgid "Connected automatically, cannot be edited."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:93
+msgid "Save Changes"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:103
+msgid "Overview"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:107
+msgid "Applications Submitted"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:108
+msgid "item(s)"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:112
+msgid "Account Status"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:119
+msgid "Need Assistance?"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:120
+msgid ""
+"If you need to update documents after submitting your application, please "
+"contact the Student Affairs Office at Room 7102."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:121
+#: frontend/templates/partials/navbar.html:38
+msgid "Contact Us"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:130
+msgid "Application History & Status"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:131
+msgid "Track the progress and review updates for your submitted applications."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:134
+msgid "Browse Scholarships"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:157
+msgid "Submitted"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:197
+#: frontend/templates/components/scholarship_card.html:50
+#: frontend/templates/scholarship_dashboard.html:709
+msgid "Amount"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:197
+#: frontend/templates/components/scholarship_card.html:52
+#: frontend/templates/scholarships/apply.html:26
+msgid "semester"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:198
+msgid "Submitted on"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:200
+#: frontend/templates/components/scholarship_card.html:78
+msgid "View Details"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:208
+msgid "You haven't submitted any scholarship applications yet."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:209
+msgid "Browse available scholarships and apply online today."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:210
+msgid "Explore Open Scholarships"
 msgstr ""
 
 #: frontend/templates/admin/index.html:11
@@ -69,112 +2374,648 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: frontend/templates/admin/index.html:28
-msgid "Change"
-msgstr ""
-
 #: frontend/templates/admin/index.html:38
 msgid "You don't have permission to view or edit anything."
 msgstr ""
 
-#: frontend/templates/index.html:5 frontend/templates/partials/navbar.html:21
-msgid "หน้าแรก"
+#: frontend/templates/components/scholarship_card.html:6
+msgid "Urgent! Deadline"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:14
+msgid "GPAX Unmet"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:14
+msgid "Requires"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:18
+#: frontend/templates/scholarships/detail.html:28
+msgid "Applied"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:31
+#: frontend/templates/scholarships/detail.html:178
+msgid "Save"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:56
+msgid "Minimum GPAX"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:61
+#: frontend/templates/scholarships/detail.html:106
+msgid "Quota"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:69
+#: frontend/templates/scholarships/detail.html:118
+msgid "Expired"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:82
+msgid "View Status"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:86
+msgid "View Details (GPAX Unmet)"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:90
+msgid "View Details & Apply"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:196
+msgid "Management Menu"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:198
+msgid "Close menu"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:201
+#: frontend/templates/partials/navbar.html:55
+#: frontend/templates/scholarship_dashboard.html:525
+msgid "Analytics Dashboard"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:202
+msgid "Admin Console"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:203
+msgid "Advanced Database"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:209
+#: frontend/templates/partials/navbar.html:63
+msgid "Logout"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:221
+msgid "Dashboard Menu"
 msgstr ""
 
 #: frontend/templates/index.html:18
-msgid "ระบบรับสมัครและติดตามทุนการศึกษา มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต"
+msgid "Scholarship Application & Tracking System, PSU Phuket"
 msgstr ""
 
 #: frontend/templates/index.html:22
-msgid "ทุนการศึกษาที่ใช่"
+msgid "The Right Scholarship"
 msgstr ""
 
 #: frontend/templates/index.html:23
-msgid "เพื่ออนาคตที่ไกลกว่า ณ ม.อ. ภูเก็ต"
+msgid "For a Brighter Future at PSU Phuket"
 msgstr ""
 
 #: frontend/templates/index.html:27
 msgid ""
-"ศูนย์รวมข้อมูลทุนการศึกษาและสวัสดิการ สำหรับนักศึกษา ม.อ. ทุกคณะ สะดวก รวดเร็ว "
-"สมัครและติดตามผลแบบครบวงจรผ่านระบบออนไลน์"
+"Scholarship and welfare information center for all PSU Phuket students. "
+"Convenient, fast, apply and track online seamlessly."
 msgstr ""
 
 #: frontend/templates/index.html:33
-msgid "ดูทุนการศึกษาที่เปิดรับทั้งหมด"
+msgid "View All Open Scholarships"
+msgstr ""
+
+#: frontend/templates/index.html:44
+#: frontend/templates/scholarships/category.html:5
+#: frontend/templates/scholarships/category.html:14
+#: frontend/templates/scholarships/detail.html:15
+#: frontend/templates/scholarships/list.html:15
+msgid "Scholarship Categories"
 msgstr ""
 
 #: frontend/templates/index.html:45
-msgid "หมวดหมู่ทุนการศึกษา"
+msgid "Choose a category that aligns with your educational goals"
 msgstr ""
 
-#: frontend/templates/index.html:46
-msgid "เลือกประเภททุนที่ตรงกับเกณฑ์และเป้าหมายของคุณ"
+#: frontend/templates/index.html:58
+msgid "Explore Category"
 msgstr ""
 
-#: frontend/templates/index.html:54
-msgid "ทุนเปิดรับ"
-msgstr ""
-
-#: frontend/templates/index.html:59
-msgid "ค้นหาทุนหมวดนี้"
+#: frontend/templates/index.html:73
+msgid "Expiring Soon"
 msgstr ""
 
 #: frontend/templates/index.html:74
-msgid "ทุนที่ใกล้หมดเขต"
+msgid "Check your eligibility and apply before the deadline"
 msgstr ""
 
-#: frontend/templates/index.html:75
-msgid "รีบตรวจสอบคุณสมบัติและส่งใบสมัครก่อนหมดเขต"
+#: frontend/templates/index.html:91
+msgid "How to Apply"
 msgstr ""
 
-#: frontend/templates/index.html:84
-msgid "ด่วน! หมดเขต"
+#: frontend/templates/index.html:92
+msgid "End-to-end online system: simple, fast, and transparent."
 msgstr ""
 
-#: frontend/templates/partials/navbar.html:24
-msgid "ทุนการศึกษา"
+#: frontend/templates/index.html:98
+msgid "Search & Choose"
+msgstr ""
+
+#: frontend/templates/index.html:99
+msgid ""
+"Select scholarships matching your profile and check GPAX and faculty "
+"requirements."
+msgstr ""
+
+#: frontend/templates/index.html:104
+msgid "Fill In & Upload Documents"
+msgstr ""
+
+#: frontend/templates/index.html:105
+msgid ""
+"Sign in, complete your information, and upload required documents online "
+"without paper submissions."
+msgstr ""
+
+#: frontend/templates/index.html:110
+msgid "Track Application Status"
+msgstr ""
+
+#: frontend/templates/index.html:111
+msgid ""
+"Track your application status in real time from your Profile page until "
+"final approval."
+msgstr ""
+
+#: frontend/templates/partials/navbar.html:8
+#: frontend/templates/partials/navbar.html:107
+msgid "Prince of Songkla University, Phuket Campus"
 msgstr ""
 
 #: frontend/templates/partials/navbar.html:28
-msgid "ข้อมูลทุน"
-msgstr ""
-
-#: frontend/templates/partials/navbar.html:31
-msgid "ทุนทั่วไป"
-msgstr ""
-
-#: frontend/templates/partials/navbar.html:32
-msgid "ทุนแลกเปลี่ยน"
-msgstr ""
-
-#: frontend/templates/partials/navbar.html:38
-msgid "ติดต่อเรา"
-msgstr ""
-
-#: frontend/templates/partials/navbar.html:55
-msgid "แดชบอร์ดสถิติ"
+msgid "Scholarship Info"
 msgstr ""
 
 #: frontend/templates/partials/navbar.html:57
-msgid "ข้อมูลส่วนตัว"
+msgid "Profile"
 msgstr ""
 
 #: frontend/templates/partials/navbar.html:58
-msgid "ทุนที่บันทึกไว้"
+#: frontend/templates/scholarships/favorites.html:5
+msgid "Saved Scholarships"
 msgstr ""
 
-#: frontend/templates/partials/navbar.html:63
-msgid "ออกจากระบบ"
+#: frontend/templates/partials/navbar.html:114
+msgid "Invalid username or password. Please try again."
 msgstr ""
 
-#: frontend/templates/partials/navbar.html:70
-msgid "ลงชื่อเข้าใช้"
+#: frontend/templates/partials/navbar.html:136
+msgid "Or sign in with"
 msgstr ""
 
-#: frontend/templates/partials/navbar.html:110
-msgid "เข้าสู่ระบบ"
+#: frontend/templates/partials/navbar.html:154
+msgid "*For PSU students (@phuket.psu.ac.th)"
 msgstr ""
 
-#: frontend/templates/partials/navbar.html:113
-msgid "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
+#: frontend/templates/scholarship_dashboard.html:525
+msgid "PSU Phuket Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:531
+msgid "All Terms"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:532
+msgid "Term 1 (Aug-Dec)"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:533
+msgid "Term 2 (Jan-May)"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:534
+msgid "Summer (Jun-Jul)"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:538
+msgid "All Months"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:554
+msgid "All Years"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:560
+msgid "Filter"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:581
+msgid "Total Fund Value"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:589
+msgid "Currently Open"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:657
+msgid "Applications by Status"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:658
+msgid "Overall breakdown of application stages"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:670
+msgid "Scholarship Distribution"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:671
+msgid "Categorized by scholarship type"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:700
+msgid "Recent Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:701
+msgid "View all"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:5
+msgid "Application Form"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:13
+msgid "Back to Scholarship Details"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:22
+msgid "Scholarship Application Form"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:24
+msgid "Applying for"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:33
+msgid "Applicant Info"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:38
+msgid "Upload Documents"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:43
+msgid "Review & Decision"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:56
+msgid "Applicant Information"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:63
+msgid "As indicated on official ID or passport"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:74
+msgid "Faculty / Major"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:86
+msgid "Phone number reachable directly"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:93
+msgid "Supporting Documents"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:106
+#: frontend/templates/scholarships/apply.html:132
+msgid "Click to select file"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:106
+msgid "or drag & drop here"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:108
+#: frontend/templates/scholarships/detail.html:77
+msgid "Official Transcript / Academic Record"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:109
+#: frontend/templates/scholarships/apply.html:135
+msgid "Supported formats: PDF, JPG, PNG (Max 10MB)"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:115
+#: frontend/templates/scholarships/apply.html:141
+msgid "Click to replace file"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:132
+msgid "Optional"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:134
+msgid "Recommendation Letters or Other Supporting Documents"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:153
+msgid ""
+"I hereby certify that all information and documents provided are accurate "
+"and true. If any discrepancies or false statements are found, I accept "
+"immediate disqualification from the scholarship."
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:164
+msgid "Submit Application"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:5
+#: frontend/templates/scholarships/apply_success.html:19
+msgid "Application Submitted Successfully"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:20
+msgid "Your application for"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:20
+msgid "has been received and is being processed."
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:24
+msgid "Application Details"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:45
+msgid "You can track your application review progress in your Profile page."
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:49
+msgid "View Status in Profile"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:50
+msgid "Back to Home"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:16
+msgid "PSU Phuket Scholarship Categories"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:17
+msgid ""
+"Choose a category that aligns with your educational goals, or browse all "
+"available opportunities."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:27
+msgid "View All"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:30
+msgid ""
+"Explore all scholarship opportunities currently accepting applications with "
+"condition filters."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:32
+msgid "Explore All Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:43
+msgid ""
+"Financial support for general students, academic excellence, need-based aid, "
+"and talent development."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:45
+msgid "View General"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:56
+msgid ""
+"Support for international student exchange programs, overseas internships, "
+"and global academic seminars."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:58
+msgid "View Exchange"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:66
+msgid "Welfare"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:69
+msgid ""
+"Tuition fee discounts or exemptions for students with exceptional academic "
+"or extracurricular achievements."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:71
+msgid "View Fee Waiver"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:79
+msgid "Living Aid"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:82
+msgid ""
+"Meal welfare subsidies to support campus well-being and alleviate living "
+"expenses for students."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:84
+msgid "View Lunch"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:51
+msgid "Scholarship Details"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:61
+msgid "Eligibility & Requirements"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:71
+msgid "Required Documents"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:78
+msgid "Official grade report or transcript from the registration system."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:84
+msgid "Recommendation Letters or Supporting Documents (If any)"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:85
+msgid ""
+"Letter of recommendation from academic advisor or parent income certificate."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:96
+msgid "Scholarship Value"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:101
+msgid "per semester"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:111
+msgid "Opening Date"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:115
+msgid "Closing Date"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:122
+msgid "Campus"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:123
+msgid "PSU Phuket"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:132
+msgid "Application period ended on"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:135
+msgid "This scholarship has expired"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:140
+msgid "This scholarship is not accepting applications at this time."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:152
+msgid "You have applied for this scholarship"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:153
+msgid "Your application is currently being processed."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:157
+msgid "View application status in Profile"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:161
+msgid "Apply for Scholarship"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:166
+msgid "Sign In to Apply"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:168
+msgid "You must sign in before submitting an application."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:183
+msgid "Remove from Favorites"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:183
+msgid "Save to Favorites"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:189
+msgid "Back"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:196
+msgid "Admin Controls"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:199
+msgid "Edit Scholarship"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:202
+msgid ""
+" Are you sure you want to delete this scholarship? Related applications will "
+"also be deleted."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:205
+msgid "Delete Scholarship"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:214
+msgid "Application assistance: Contact 076-276-000 ext. 6050"
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:11
+msgid "My Saved Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:12
+msgid ""
+"Manage scholarships you are interested in so you don't miss important "
+"opportunities."
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:29
+msgid "No saved scholarships yet"
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:30
+msgid "Click the favorite icon on any scholarship card to save it for later."
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:31
+msgid "Explore Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:22
+msgid "Browse available scholarships, search, and verify eligibility criteria."
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:52
+msgid "Search scholarships by title, keyword..."
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:59
+msgid "Search"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:66
+msgid "Search results for"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:66
+msgid "found"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:66
+msgid "scholarship(s)"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:68
+msgid "Total available scholarships"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:78
+msgid "No scholarships found matching"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:79
+msgid "Try searching with different keywords or browse all categories."
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:80
+msgid "Clear Search"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:88
+msgid "No scholarships available in this category"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:89
+msgid "New scholarships are being prepared. You can explore other categories."
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:90
+msgid "Back to Categories"
 msgstr ""
