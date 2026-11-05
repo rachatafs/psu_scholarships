@@ -81,11 +81,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 from django.utils.translation import gettext_lazy as _
 
-LANGUAGE_CODE = 'th'
+LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
-    ('th', _('Thai')),
     ('en', _('English')),
+    ('th', _('Thai')),
 ]
 
 USE_I18N = True

@@ -5,6 +5,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.http import JsonResponse
+from django.utils.translation import gettext as _
 from ..models import StudentProfile, Application
 
 class CustomLoginView(LoginView):
@@ -23,7 +24,7 @@ class CustomLoginView(LoginView):
         if self.request.headers.get('X-Requested-With') == 'XMLHttpRequest' or self.request.headers.get('Accept') == 'application/json':
             return JsonResponse({
                 'success': False,
-                'message': 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง'
+                'message': _('Invalid username or password. Please check and try again.')
             }, status=400)
         return super().form_invalid(form)
 
@@ -88,7 +89,7 @@ def profile(request):
             sp.save()
             student_profile = sp
 
-        messages.success(request, 'บันทึกข้อมูลเรียบร้อย!')
+        messages.success(request, _('Profile updated successfully!'))
         return redirect('profile')
 
     app_list = []

@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}จัดการระบบ | PSU Phuket Scholarships{% endblock %}
+{% block title %}{% trans "Admin Management" %} | PSU Phuket Scholarships{% endblock %}
 
 {% block dashboard_content %}
 <div class="admin-management-page">
@@ -11,31 +11,31 @@
         <div class="admin-header-row">
             <div>
                 <div class="admin-badge-tag">ADMINISTRATION</div>
-                <h1 class="admin-page-title">แผงควบคุมและจัดการระบบ</h1>
-                <p class="admin-page-sub">ยินดีต้อนรับผู้ดูแลระบบ: <strong>{{ user.username }}</strong></p>
+                <h1 class="admin-page-title">{% trans "Admin Management Dashboard" %}</h1>
+                <p class="admin-page-sub">{% trans "Welcome Administrator" %}: <strong>{{ user.username }}</strong></p>
             </div>
         </div>
 
         <!-- 4 Stats Cards Grid -->
         <div class="admin-kpi-grid">
-            <div class="admin-kpi-card" onclick="switchAdminTab('scholarships')" style="cursor:pointer;" title="คลิกเพื่อดูรายการทุนทั้งหมด">
+            <div class="admin-kpi-card" onclick="switchAdminTab('scholarships')" style="cursor:pointer;" title="{% trans 'Click to view all scholarships' %}">
                 <div class="kpi-num">{{ total_scholarships }}</div>
-                <div class="kpi-label">ทุนทั้งหมดในระบบ →</div>
+                <div class="kpi-label">{% trans "Total Scholarships" %} →</div>
             </div>
 
-            <div class="admin-kpi-card" onclick="switchAdminTab('apps')" style="cursor:pointer;" title="คลิกเพื่อดูรายการใบสมัครทั้งหมด">
+            <div class="admin-kpi-card" onclick="switchAdminTab('apps')" style="cursor:pointer;" title="{% trans 'Click to view all applications' %}">
                 <div class="kpi-num">{{ total_applications }}</div>
-                <div class="kpi-label">ใบสมัครทั้งหมด →</div>
+                <div class="kpi-label">{% trans "Total Applications" %} →</div>
             </div>
 
-            <div class="admin-kpi-card highlight-pending" onclick="switchAdminTab('apps', 'pending')" style="cursor:pointer;" title="คลิกเพื่อดูใบสมัครรอตรวจสอบ">
+            <div class="admin-kpi-card highlight-pending" onclick="switchAdminTab('apps', 'pending')" style="cursor:pointer;" title="{% trans 'Click to view pending applications' %}">
                 <div class="kpi-num text-amber">{{ pending_applications }}</div>
-                <div class="kpi-label">รอการตรวจสอบ/พิจารณา →</div>
+                <div class="kpi-label">{% trans "Pending Review" %} →</div>
             </div>
 
-            <div class="admin-kpi-card highlight-approved" onclick="switchAdminTab('apps', 'approved')" style="cursor:pointer;" title="คลิกเพื่อดูใบสมัครที่อนุมัติแล้ว">
+            <div class="admin-kpi-card highlight-approved" onclick="switchAdminTab('apps', 'approved')" style="cursor:pointer;" title="{% trans 'Click to view approved applications' %}">
                 <div class="kpi-num text-emerald">{{ approved_applications }}</div>
-                <div class="kpi-label">ผ่านการอนุมัติแล้ว →</div>
+                <div class="kpi-label">{% trans "Approved" %} →</div>
             </div>
         </div>
 
@@ -49,7 +49,7 @@
                     <line x1="16" y1="17" x2="8" y2="17"></line>
                     <polyline points="10 9 9 9 8 9"></polyline>
                 </svg>
-                <span>จัดการใบสมัครนักศึกษา</span>
+                <span>{% trans "Manage Student Applications" %}</span>
                 <span class="tab-badge-pill" id="totalAppsBadge">{{ total_applications }}</span>
             </button>
 
@@ -57,7 +57,7 @@
                 <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
                 </svg>
-                <span>จัดการรายการทุนการศึกษาในระบบ</span>
+                <span>{% trans "Manage Scholarships" %}</span>
                 <span class="tab-badge-pill">{{ scholarships_list|length }}</span>
             </button>
 
@@ -66,7 +66,7 @@
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
-                <span>ประวัติทุนที่ผ่านมา</span>
+                <span>{% trans "Scholarship History" %}</span>
                 <span class="tab-badge-pill">{{ expired_scholarships|length }}</span>
             </button>
         </div>
@@ -75,15 +75,15 @@
         <div class="admin-table-container-card" id="sectionApps">
             <div class="table-header-bar">
                 <div>
-                    <h2 class="table-main-title">รายการใบสมัครและการคัดกรองนักศึกษา</h2>
-                    <p class="table-sub-desc">ค้นหา ตรวจสอบคุณสมบัติเกรดเฉลี่ย (GPAX) และปรับเปลี่ยนสถานะการพิจารณาทุน</p>
+                    <h2 class="table-main-title">{% trans "Student Applications & Screening" %}</h2>
+                    <p class="table-sub-desc">{% trans "Search, verify GPAX eligibility, and update application review statuses." %}</p>
                 </div>
                 <a href="/admin/scholarships/scholarship/add/" class="btn-create-sch-link" target="_blank">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
                         <line x1="12" y1="5" x2="12" y2="19"></line>
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg>
-                    <span>สร้างทุนการศึกษาใหม่</span>
+                    <span>{% trans "Create New Scholarship" %}</span>
                 </a>
             </div>
 
@@ -94,45 +94,45 @@
                     <line x1="12" y1="8" x2="12.01" y2="8"></line>
                 </svg>
                 <span>
-                    <strong>คำแนะนำ:</strong> หน้านี้แสดงเฉพาะ <strong>ใบสมัครที่นักศึกษายื่นเข้ามาแล้ว</strong> (หากท่านเพิ่งสร้างทุนการศึกษาใหม่และยังไม่มีนักศึกษาคนไหนยื่นสมัคร สามารถดูและจัดการทุนได้ที่แท็บ <strong>"จัดการรายการทุนการศึกษาในระบบ"</strong> ด้านบนครับ)
+                    <strong>{% trans "Note" %}:</strong> {% trans "This view displays active student applications. To manage scholarship listings without applications, use the Manage Scholarships tab." %}
                 </span>
             </div>
 
-            <!-- Category Filter Tabs (แบ่งหมวดหมู่ทุนชัดเจน) -->
+            <!-- Category Filter Tabs (หมวดหมู่ทุน) -->
             <div class="admin-cat-tabs-row" id="categoryTabs">
                 <a href="?category=all&status={{ selected_status }}&q={{ q }}" 
                    class="admin-cat-tab {% if selected_category == 'all' or not selected_category %}active{% endif %}" 
                    data-category="all">
-                    <span>ทั้งหมด</span>
+                    <span>{% trans "All" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.all }}</span>
                 </a>
                 <a href="?category=general&status={{ selected_status }}&q={{ q }}" 
                    class="admin-cat-tab {% if selected_category == 'general' %}active{% endif %}" 
                    data-category="general">
-                    <span>ทุนทั่วไป</span>
+                    <span>{% trans "General" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.general }}</span>
                 </a>
                 <a href="?category=exchange&status={{ selected_status }}&q={{ q }}" 
                    class="admin-cat-tab {% if selected_category == 'exchange' %}active{% endif %}" 
                    data-category="exchange">
-                    <span>ทุนศึกษาแลกเปลี่ยน</span>
+                    <span>{% trans "Exchange" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.exchange }}</span>
                 </a>
                 <a href="?category=fee_waiver&status={{ selected_status }}&q={{ q }}" 
                    class="admin-cat-tab {% if selected_category == 'fee_waiver' %}active{% endif %}" 
                    data-category="fee_waiver">
-                    <span>ทุนยกเว้นค่าธรรมเนียม</span>
+                    <span>{% trans "Fee Waiver" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.fee_waiver }}</span>
                 </a>
                 <a href="?category=lunch&status={{ selected_status }}&q={{ q }}" 
                    class="admin-cat-tab {% if selected_category == 'lunch' %}active{% endif %}" 
                    data-category="lunch">
-                    <span>ทุนอาหารกลางวัน</span>
+                    <span>{% trans "Lunch" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.lunch }}</span>
                 </a>
             </div>
 
-            <!-- Search & Status Filter Toolbar (ค้นหา & คัดกรองสถานะ) -->
+            <!-- Search & Status Filter Toolbar -->
             <form method="GET" action="" class="admin-filter-toolbar" id="adminFilterForm">
                 <input type="hidden" name="category" id="hiddenCategory" value="{{ selected_category|default:'all' }}">
                 
@@ -145,22 +145,24 @@
                            id="adminSearchInput" 
                            name="q" 
                            value="{{ q }}" 
-                           placeholder="ค้นหาชื่อผู้สมัคร, รหัสนักศึกษา, ชื่อทุน..." 
+                           placeholder="{% trans "Search applicant name, student ID, scholarship title..." %}" 
                            class="admin-search-field"
                            autocomplete="off">
                 </div>
 
                 <div class="admin-filter-right">
                     <select name="status" id="adminStatusSelect" class="admin-filter-select">
-                        <option value="all" {% if selected_status == 'all' or not selected_status %}selected{% endif %}>ทุกสถานะ ({{ total_applications }})</option>
-                        <option value="pending" {% if selected_status == 'pending' %}selected{% endif %}>รอการตรวจสอบ ({{ pending_applications }})</option>
-                        <option value="interview" {% if selected_status == 'interview' %}selected{% endif %}>รอสัมภาษณ์</option>
-                        <option value="approved" {% if selected_status == 'approved' %}selected{% endif %}>ผ่านการอนุมัติ ({{ approved_applications }})</option>
-                        <option value="rejected" {% if selected_status == 'rejected' %}selected{% endif %}>ไม่อนุมัติ ({{ rejected_applications }})</option>
+                        <option value="all" {% if selected_status == 'all' or not selected_status %}selected{% endif %}>{% trans "All Statuses" %} ({{ total_applications }})</option>
+                        <option value="pending" {% if selected_status == 'pending' %}selected{% endif %}>{% trans "Pending" %} ({{ pending_applications }})</option>
+                        <option value="in_progress" {% if selected_status == 'in_progress' %}selected{% endif %}>{% trans "In Progress" %}</option>
+                        <option value="approved" {% if selected_status == 'approved' %}selected{% endif %}>{% trans "Approve" %} ({{ approved_applications }})</option>
+                        <option value="rejected" {% if selected_status == 'rejected' %}selected{% endif %}>{% trans "Reject" %} ({{ rejected_applications }})</option>
+                        <option value="completed" {% if selected_status == 'completed' %}selected{% endif %}>{% trans "Complete" %}</option>
+                        <option value="cancelled" {% if selected_status == 'cancelled' %}selected{% endif %}>{% trans "Cancel" %}</option>
                     </select>
 
                     <div class="admin-result-counter">
-                        แสดง <strong id="visibleCount">{{ applications|length }}</strong> รายการ
+                        {% trans "Showing" %} <strong id="visibleCount">{{ applications|length }}</strong> {% trans "items" %}
                     </div>
                 </div>
             </form>
@@ -170,13 +172,13 @@
                 <table class="modern-data-table" id="applicationsTable">
                     <thead>
                         <tr>
-                            <th>ชื่อผู้สมัคร</th>
-                            <th>รหัสนักศึกษา</th>
-                            <th>ทุนการศึกษา</th>
-                            <th>วันที่ยื่นสมัคร</th>
-                            <th>เอกสารที่แนบ</th>
-                            <th>สถานะปัจจุบัน</th>
-                            <th style="text-align:center;">จัดการสถานะ</th>
+                            <th>{% trans "Applicant" %}</th>
+                            <th>{% trans "Student ID" %}</th>
+                            <th>{% trans "Scholarship" %}</th>
+                            <th>{% trans "Submitted Date" %}</th>
+                            <th>{% trans "Attached Documents" %}</th>
+                            <th>{% trans "Current Status" %}</th>
+                            <th style="text-align:center;">{% trans "Actions" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -206,13 +208,7 @@
 
                             <td>
                                 <div class="table-sch-title">{{ app.scholarship.title }}</div>
-                                <span class="category-pill-tag">
-                                    {% if app.scholarship.category == 'general' %}ทุนทั่วไป
-                                    {% elif app.scholarship.category == 'exchange' %}ทุนแลกเปลี่ยน
-                                    {% elif app.scholarship.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
-                                    {% elif app.scholarship.category == 'lunch' %}อาหารกลางวัน
-                                    {% else %}{{ app.scholarship.get_category_display }}{% endif %}
-                                </span>
+                                {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
                             </td>
                             <td>{{ app.submitted_at|date:"d M Y" }}</td>
                             <td>
@@ -224,71 +220,78 @@
                                                 <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
                                                 <polyline points="13 2 13 9 20 9"></polyline>
                                             </svg>
-                                            {% if doc.doc_type == 'transcript' %}ใบเกรด
-                                            {% elif doc.doc_type == 'recommendation' %}จดหมายแนะนำ
-                                            {% else %}อื่นๆ{% endif %}
+                                            {% if doc.doc_type == 'transcript' %}{% trans "Transcript" %}
+                                            {% elif doc.doc_type == 'recommendation' %}{% trans "Recommendation" %}
+                                            {% else %}{% trans "Other" %}{% endif %}
                                         </a>
                                     {% endfor %}
                                     </div>
                                 {% else %}
-                                    <span style="color: #94a3b8; font-size: 0.85rem;">ไม่มีเอกสาร</span>
+                                    <span style="color: #94a3b8; font-size: 0.85rem;">{% trans "No documents" %}</span>
                                 {% endif %}
                             </td>
                             <td>
-                                <div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;">
-                                    {% if app.status == 'pending' %}
-                                        <span class="dot-live" style="background: #d97706;"></span>
-                                        <span style="color: #b45309;">รอพิจารณา</span>
-                                    {% elif app.status == 'interview' %}
-                                        <span class="dot-live" style="background: var(--psu-blue-500);"></span>
-                                        <span style="color: var(--psu-blue-700);">รอสัมภาษณ์</span>
-                                    {% elif app.status == 'approved' %}
-                                        <span class="dot-live" style="background: #059669;"></span>
-                                        <span style="color: #047857;">อนุมัติแล้ว</span>
-                                    {% else %}
-                                        <span class="dot-live" style="background: #dc2626;"></span>
-                                        <span style="color: #b91c1c;">ไม่อนุมัติ</span>
-                                    {% endif %}
-                                </div>
+                                {% include 'components/app_status_indicator.html' with status=app.status %}
                             </td>
                             <td style="text-align:center;">
-                                <div class="action-btn-group" style="display: flex; flex-direction: column; gap: 4px; align-items: center;">
+                                <div class="action-btn-group">
                                     {% if app.status == 'pending' %}
-                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
                                             {% csrf_token %}
-                                            <input type="hidden" name="status" value="interview">
-                                            <button type="submit" class="btn-table-action btn-act-interview" style="width: 100%;" title="นัดสัมภาษณ์">เรียกสัมภาษณ์</button>
+                                            <input type="hidden" name="status" value="in_progress">
+                                            <button type="submit" class="btn-table-action btn-act-inprogress" title="{% trans 'Change to In Progress' %}">In Progress</button>
                                         </form>
-                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="approved">
-                                            <button type="submit" class="btn-table-action btn-act-approve" style="width: 100%;" title="อนุมัติใบสมัคร">อนุมัติให้ทุนเลย</button>
-                                        </form>
-                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="rejected">
-                                            <button type="submit" class="btn-table-action btn-act-reject" style="width: 100%;" title="ปฏิเสธใบสมัคร">ไม่อนุมัติ</button>
-                                        </form>
-                                    {% elif app.status == 'interview' %}
-                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
                                             {% csrf_token %}
                                             <input type="hidden" name="status" value="approved">
-                                            <button type="submit" class="btn-table-action btn-act-approve" style="width: 100%;" title="อนุมัติใบสมัคร">ผ่านสัมภาษณ์ (ให้ทุน)</button>
+                                            <button type="submit" class="btn-table-action btn-act-approve" title="{% trans 'Approve application' %}">Approve</button>
                                         </form>
-                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
                                             {% csrf_token %}
                                             <input type="hidden" name="status" value="rejected">
-                                            <button type="submit" class="btn-table-action btn-act-reject" style="width: 100%;" title="ปฏิเสธใบสมัคร">ไม่ผ่านสัมภาษณ์</button>
+                                            <button type="submit" class="btn-table-action btn-act-reject" title="{% trans 'Reject application' %}">Reject</button>
                                         </form>
-                                    {% elif app.status == 'approved' or app.status == 'rejected' %}
-                                        <form method="post" action="{% url 'update_application' app.pk %}" style="width: 100%;">
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="cancelled">
+                                            <button type="submit" class="btn-table-action btn-act-cancel" title="{% trans 'Cancel application' %}">Cancel</button>
+                                        </form>
+                                    {% elif app.status == 'in_progress' or app.status == 'interview' %}
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="approved">
+                                            <button type="submit" class="btn-table-action btn-act-approve" title="{% trans 'Approve application' %}">Approve</button>
+                                        </form>
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="rejected">
+                                            <button type="submit" class="btn-table-action btn-act-reject" title="{% trans 'Reject application' %}">Reject</button>
+                                        </form>
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="cancelled">
+                                            <button type="submit" class="btn-table-action btn-act-cancel" title="{% trans 'Cancel application' %}">Cancel</button>
+                                        </form>
+                                    {% elif app.status == 'approved' %}
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="completed">
+                                            <button type="submit" class="btn-table-action btn-act-complete" title="{% trans 'Complete scholarship process' %}">Complete</button>
+                                        </form>
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
                                             {% csrf_token %}
                                             <input type="hidden" name="status" value="pending">
-                                            <button type="submit" class="btn-table-action" style="background-color: transparent; border: 1px solid #ccc; color: #666; font-size: 0.75rem; width: 100%;" title="รีเซ็ตสถานะ">ย้อนกลับ</button>
+                                            <button type="submit" class="btn-table-action btn-act-reset" title="{% trans 'Reset status to Pending' %}">{% trans "Reset to Pending" %}</button>
+                                        </form>
+                                    {% elif app.status == 'completed' or app.status == 'rejected' or app.status == 'cancelled' %}
+                                        <form method="post" action="{% url 'update_application' app.pk %}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="status" value="pending">
+                                            <button type="submit" class="btn-table-action btn-act-reset" title="{% trans 'Reset status to Pending' %}">{% trans "Reset to Pending" %}</button>
                                         </form>
                                     {% endif %}
-                                    <button type="button" class="btn-table-action btn-act-notice" style="width: 100%; background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; font-weight: 600; font-size: 0.76rem; padding: 5px 6px; margin-top: 2px; border-radius: 6px; cursor: pointer; transition: background 0.15s;" title="ส่งข้อความ/ขอเอกสาร/แจ้งเตือนนักศึกษา" onclick="openDirectNoticeModal(this)">
-                                        เพิ่มเติม
+                                    <button type="button" class="btn-table-action btn-act-notice" title="{% trans 'Send notice / Request additional documents' %}" onclick="openDirectNoticeModal(this)">
+                                        {% trans "Additional Docs" %}
                                     </button>
                                 </div>
                             </td>
@@ -296,13 +299,13 @@
                         {% empty %}
                         <tr id="emptyTableRow">
                             <td colspan="7" class="text-center-empty">
-                                ยังไม่มีข้อมูลใบสมัครที่ตรงกับเงื่อนไขการค้นหา
+                                {% trans "No applications match the search criteria" %}
                             </td>
                         </tr>
                         {% endfor %}
                         <tr id="noMatchesRow" style="display:none;">
                             <td colspan="7" class="text-center-empty">
-                                ไม่พบใบสมัครที่ตรงกับเงื่อนไขการค้นหา
+                                {% trans "No applications match the search criteria" %}
                             </td>
                         </tr>
                     </tbody>
@@ -314,31 +317,31 @@
         <div class="admin-table-container-card" id="sectionScholarships" style="display:none;">
             <div class="table-header-bar">
                 <div>
-                    <h2 class="table-main-title">รายการทุนการศึกษาทั้งหมดในระบบ ({{ total_scholarships }} ทุน)</h2>
-                    <p class="table-sub-desc">จัดการ ตรวจสอบยอดผู้สมัคร โควตา และสถานะของทุนทั้งหมด</p>
+                    <h2 class="table-main-title">{% trans "All Scholarships in System" %} ({{ total_scholarships }})</h2>
+                    <p class="table-sub-desc">{% trans "Manage listings, view applicant counts, quotas, and scholarship statuses." %}</p>
                 </div>
             </div>
 
             <!-- Category Filter Tabs for Scholarships -->
             <div class="admin-cat-tabs-row" id="schCategoryTabs">
                 <a href="#" class="admin-cat-tab active" data-sch-cat-filter="all">
-                    <span>ทั้งหมด</span>
+                    <span>{% trans "All" %}</span>
                     <span class="cat-count-pill">{{ sch_cat_counts.all }}</span>
                 </a>
                 <a href="#" class="admin-cat-tab" data-sch-cat-filter="general">
-                    <span>ทุนทั่วไป</span>
+                    <span>{% trans "General" %}</span>
                     <span class="cat-count-pill">{{ sch_cat_counts.general }}</span>
                 </a>
                 <a href="#" class="admin-cat-tab" data-sch-cat-filter="exchange">
-                    <span>ทุนศึกษาแลกเปลี่ยน</span>
+                    <span>{% trans "Exchange" %}</span>
                     <span class="cat-count-pill">{{ sch_cat_counts.exchange }}</span>
                 </a>
                 <a href="#" class="admin-cat-tab" data-sch-cat-filter="fee_waiver">
-                    <span>ทุนยกเว้นค่าธรรมเนียม</span>
+                    <span>{% trans "Fee Waiver" %}</span>
                     <span class="cat-count-pill">{{ sch_cat_counts.fee_waiver }}</span>
                 </a>
                 <a href="#" class="admin-cat-tab" data-sch-cat-filter="lunch">
-                    <span>ทุนอาหารกลางวัน</span>
+                    <span>{% trans "Lunch" %}</span>
                     <span class="cat-count-pill">{{ sch_cat_counts.lunch }}</span>
                 </a>
             </div>
@@ -352,13 +355,13 @@
                     </svg>
                     <input type="text" 
                            id="schSearchInput" 
-                           placeholder="ค้นหาชื่อทุน, เช่น test, DL, ทุนแลกเปลี่ยน, GPAX..." 
+                           placeholder="{% trans "Search scholarship title, category, GPAX..." %}" 
                            class="admin-search-field"
                            autocomplete="off">
                 </div>
 
                 <div class="admin-result-counter">
-                    แสดง <strong id="schVisibleCount">{{ scholarships_list|length }}</strong> ทุน
+                    {% trans "Showing" %} <strong id="schVisibleCount">{{ scholarships_list|length }}</strong> {% trans "scholarships" %}
                 </div>
             </div>
 
@@ -367,13 +370,13 @@
                 <table class="modern-data-table" id="scholarshipsTable">
                     <thead>
                         <tr>
-                            <th>ชื่อทุนการศึกษา</th>
-                            <th>หมวดหมู่</th>
-                            <th>มูลค่าทุน</th>
-                            <th style="text-align:center;">ผู้สมัคร / โควตา</th>
-                            <th>วันปิดรับสมัคร</th>
-                            <th>สถานะ</th>
-                            <th style="text-align:center;">จัดการ</th>
+                            <th>{% trans "Scholarship Name" %}</th>
+                            <th>{% trans "Category" %}</th>
+                            <th>{% trans "Value" %}</th>
+                            <th style="text-align:center;">{% trans "Applicants / Quota" %}</th>
+                            <th>{% trans "Deadline" %}</th>
+                            <th>{% trans "Status" %}</th>
+                            <th style="text-align:center;">{% trans "Actions" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -388,20 +391,14 @@
                                 </a>
                             </td>
                             <td>
-                                <span class="category-pill-tag">
-                                    {% if s.category == 'general' %}ทุนทั่วไป
-                                    {% elif s.category == 'exchange' %}ทุนแลกเปลี่ยน
-                                    {% elif s.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
-                                    {% elif s.category == 'lunch' %}อาหารกลางวัน
-                                    {% else %}{{ s.get_category_display }}{% endif %}
-                                </span>
+                                {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
                             </td>
                             <td><strong>฿{{ s.amount_per_semester|floatformat:0 }}</strong></td>
 
                             <td style="text-align:center;">
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                                     <span class="quota-pill">
-                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} คน
+                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} {% trans "Grants" %}
                                     </span>
                                 </div>
                             </td>
@@ -413,35 +410,35 @@
                             <td>
                                 {% if s.status == 'active' and not s.is_expired %}
                                     <span class="status-pill status-open" style="font-size:0.75rem; padding:2px 8px;">
-                                        <span class="dot-live"></span> เปิดรับสมัคร
+                                        <span class="dot-live"></span> {% trans "Open" %}
                                     </span>
                                 {% else %}
                                     <span class="status-pill status-closed" style="font-size:0.75rem; padding:2px 8px;">
-                                        ปิดรับสมัคร
+                                        {% trans "Closed" %}
                                     </span>
                                 {% endif %}
                             </td>
                             <td style="text-align:center;">
                                 <div style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
                                     {% if s.apps_count > 0 %}
-                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank" class="btn-sch-action btn-sch-view" title="ดูรายชื่อผู้สมัคร">
-                                        ดูรายชื่อผู้สมัคร
+                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank" class="btn-sch-action btn-sch-view" title="{% trans "View Applicants" %}">
+                                        {% trans "View Applicants" %}
                                     </a>
                                     {% else %}
                                     <span class="btn-sch-action" style="visibility: hidden;">
-                                        ดูรายชื่อผู้สมัคร
+                                        {% trans "View Applicants" %}
                                     </span>
                                     {% endif %}
-                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view" target="_blank" title="ดูหน้ารายละเอียด">
-                                        ดูหน้าทุน
+                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view" target="_blank" title="{% trans "View Page" %}">
+                                        {% trans "View Page" %}
                                     </a>
-                                    <a href="/admin/scholarships/scholarship/{{ s.pk }}/change/" class="btn-sch-action btn-sch-edit" target="_blank" title="แก้ไขข้อมูลทุน">
-                                        แก้ไข
+                                    <a href="/admin/scholarships/scholarship/{{ s.pk }}/change/" class="btn-sch-action btn-sch-edit" target="_blank" title="{% trans "Edit" %}">
+                                        {% trans "Edit" %}
                                     </a>
-                                    <form method="post" action="{% url 'delete_scholarship' s.pk %}" style="display:inline; margin:0;" onsubmit="return confirm('ยืนยันว่าต้องการลบทุน {{ s.title }} ใช่หรือไม่?');">
+                                    <form method="post" action="{% url 'delete_scholarship' s.pk %}" style="display:inline; margin:0;" onsubmit="return confirm('{% trans "Are you sure you want to delete this scholarship?" %}');">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn-sch-action btn-sch-del" title="ลบทุนนี้">
-                                            ลบ
+                                        <button type="submit" class="btn-sch-action btn-sch-del" title="{% trans "Delete" %}">
+                                            {% trans "Delete" %}
                                         </button>
                                     </form>
                                 </div>
@@ -450,13 +447,13 @@
                         {% empty %}
                         <tr>
                             <td colspan="8" class="text-center-empty">
-                                ยังไม่มีทุนการศึกษาในระบบ
+                                {% trans "No scholarships in the system" %}
                             </td>
                         </tr>
                         {% endfor %}
                         <tr id="noSchMatchesRow" style="display:none;">
                             <td colspan="8" class="text-center-empty">
-                                ไม่พบทุนการศึกษาที่ตรงกับคำค้นหา
+                                {% trans "No scholarships match search criteria" %}
                             </td>
                         </tr>
                     </tbody>
@@ -468,8 +465,8 @@
         <div class="admin-table-container-card" id="sectionHistory" style="display:none;">
             <div class="table-header-bar">
                 <div>
-                    <h2 class="table-main-title">ประวัติทุนการศึกษาที่ผ่านมา ({{ expired_scholarships|length }} ทุน)</h2>
-                    <p class="table-sub-desc">รายการทุนการศึกษาที่ปิดรับสมัครหรือหมดเขตไปแล้ว</p>
+                    <h2 class="table-main-title">{% trans "Past Scholarship History" %} ({{ expired_scholarships|length }})</h2>
+                    <p class="table-sub-desc">{% trans "List of expired or closed scholarships." %}</p>
                 </div>
             </div>
 
@@ -482,7 +479,7 @@
                     </svg>
                     <input type="text" 
                            id="histSearchInput" 
-                           placeholder="ค้นหาชื่อทุนที่ผ่านมา..." 
+                           placeholder="{% trans "Search past scholarships..." %}" 
                            class="admin-search-field"
                            autocomplete="off">
                 </div>
@@ -493,13 +490,13 @@
                 <table class="modern-data-table" id="historyTable">
                     <thead>
                         <tr>
-                            <th>ชื่อทุนการศึกษา</th>
-                            <th>หมวดหมู่</th>
-                            <th>มูลค่าทุน</th>
-                            <th style="text-align:center;">ผู้สมัคร / โควตา</th>
-                            <th>วันปิดรับสมัคร</th>
-                            <th>สถานะ</th>
-                            <th style="text-align:center;">จัดการ</th>
+                            <th>{% trans "Scholarship Name" %}</th>
+                            <th>{% trans "Category" %}</th>
+                            <th>{% trans "Value" %}</th>
+                            <th style="text-align:center;">{% trans "Applicants / Quota" %}</th>
+                            <th>{% trans "Deadline" %}</th>
+                            <th>{% trans "Status" %}</th>
+                            <th style="text-align:center;">{% trans "Actions" %}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -514,20 +511,14 @@
                                 </a>
                             </td>
                             <td>
-                                <span class="category-pill-tag">
-                                    {% if s.category == 'general' %}ทุนทั่วไป
-                                    {% elif s.category == 'exchange' %}ทุนแลกเปลี่ยน
-                                    {% elif s.category == 'fee_waiver' %}ยกเว้นค่าธรรมเนียม
-                                    {% elif s.category == 'lunch' %}อาหารกลางวัน
-                                    {% else %}{{ s.get_category_display }}{% endif %}
-                                </span>
+                                {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
                             </td>
                             <td><strong>฿{{ s.amount_per_semester|floatformat:0 }}</strong></td>
 
                             <td style="text-align:center;">
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                                     <span class="quota-pill">
-                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} คน
+                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} {% trans "Grants" %}
                                     </span>
                                 </div>
                             </td>
@@ -538,22 +529,22 @@
                             </td>
                             <td>
                                 <span class="status-pill status-closed" style="font-size:0.75rem; padding:2px 8px;">
-                                    ปิดรับสมัคร
+                                    {% trans "Closed" %}
                                 </span>
                             </td>
                             <td style="text-align:center;">
                                 <div style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
                                     {% if s.apps_count > 0 %}
-                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank" class="btn-sch-action btn-sch-view" title="ดูรายชื่อผู้สมัคร">
-                                        ดูรายชื่อผู้สมัคร
+                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank" class="btn-sch-action btn-sch-view" title="{% trans "View Applicants" %}">
+                                        {% trans "View Applicants" %}
                                     </a>
                                     {% else %}
                                     <span class="btn-sch-action" style="visibility: hidden;">
-                                        ดูรายชื่อผู้สมัคร
+                                        {% trans "View Applicants" %}
                                     </span>
                                     {% endif %}
-                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view" target="_blank" title="ดูหน้ารายละเอียด">
-                                        ดูหน้าทุน
+                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view" target="_blank" title="{% trans "View Page" %}">
+                                        {% trans "View Page" %}
                                     </a>
                                 </div>
                             </td>
@@ -561,13 +552,13 @@
                         {% empty %}
                         <tr>
                             <td colspan="7" class="text-center-empty">
-                                ยังไม่มีประวัติทุนการศึกษา
+                                {% trans "No past scholarship history" %}
                             </td>
                         </tr>
                         {% endfor %}
                         <tr id="noHistMatchesRow" style="display:none;">
                             <td colspan="7" class="text-center-empty">
-                                ไม่พบประวัติทุนที่ตรงกับคำค้นหา
+                                {% trans "No past scholarships match search criteria" %}
                             </td>
                         </tr>
                     </tbody>
@@ -582,15 +573,15 @@
                     <h3>Django Database Admin</h3>
                     <span class="arrow-right">→</span>
                 </div>
-                <p>เข้าสู่ระบบจัดการฐานข้อมูลหลัก เพิ่ม ลบ แก้ไขสิทธิ์ผู้ใช้และข้อมูลทุกตาราง</p>
+                <p>{% trans "Access the core database to manage users, permissions, and all models." %}</p>
             </a>
 
             <a href="{% url 'scholarships' %}" class="admin-nav-box">
                 <div class="nav-box-header">
-                    <h3>หน้าสำรวจหมวดหมู่ทุนการศึกษา</h3>
+                    <h3>{% trans "Explore Scholarship Categories" %}</h3>
                     <span class="arrow-right">→</span>
                 </div>
-                <p>ดูมุมมองของนักศึกษาในการสำรวจทุนการศึกษาตาม 4 หมวดหมู่หลัก</p>
+                <p>{% trans "View the student catalog across all 4 major scholarship categories." %}</p>
             </a>
         </div>
     </div>
@@ -609,8 +600,8 @@
                 </svg>
             </div>
             <div>
-                <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: #0f172a; font-family: 'Prompt', sans-serif;">อัปเดตสถานะและปรับแต่งอีเมล</h3>
-                <p style="margin: 2px 0 0; font-size: 0.85rem; color: #64748b; font-family: 'Sarabun', sans-serif;">ตรวจสอบหรือเขียนข้อความเพิ่มเติมที่ต้องการแจ้งให้นักศึกษาทราบ</p>
+                <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: #0f172a; font-family: 'Prompt', sans-serif;">{% trans "Update Status & Customize Email" %}</h3>
+                <p style="margin: 2px 0 0; font-size: 0.85rem; color: #64748b; font-family: 'Sarabun', sans-serif;">{% trans "Review or compose additional notes to be sent to the student." %}</p>
             </div>
         </div>
 
@@ -624,22 +615,22 @@
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; margin-bottom: 1.1rem; font-family: 'Sarabun', sans-serif;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.9rem;">
                     <div>
-                        <span style="color: #64748b; font-size: 0.8rem; display: block;">ชื่อนักศึกษา:</span>
+                        <span style="color: #64748b; font-size: 0.8rem; display: block;">{% trans "Student Name" %}:</span>
                         <strong id="modalStudentName" style="color: #0f172a; font-size: 0.95rem;">-</strong>
                         <div id="modalStudentId" style="color: #64748b; font-size: 0.82rem;">(-)</div>
                     </div>
                     <div>
-                        <span style="color: #64748b; font-size: 0.8rem; display: block;">อีเมลแจ้งเตือนปลายทาง:</span>
+                        <span style="color: #64748b; font-size: 0.8rem; display: block;">{% trans "Notification Email" %}:</span>
                         <strong id="modalStudentEmail" style="color: #0284c7; word-break: break-all; font-size: 0.92rem;">-</strong>
                     </div>
                 </div>
                 <div style="margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.88rem;">
                     <div>
-                        <span style="color: #64748b;">ทุนการศึกษา: </span>
+                        <span style="color: #64748b;">{% trans "Scholarship" %}: </span>
                         <strong id="modalSchTitle" style="color: #1e293b;">-</strong>
                     </div>
                     <div>
-                        <span style="color: #64748b;" id="modalStatusLabelPrefix">เปลี่ยนสถานะเป็น: </span>
+                        <span style="color: #64748b;" id="modalStatusLabelPrefix">{% trans "Change status to" %}: </span>
                         <span id="modalStatusBadge" style="display: inline-block; padding: 3px 10px; border-radius: 20px; font-weight: 700; font-size: 0.82rem;">-</span>
                     </div>
                 </div>
@@ -649,7 +640,7 @@
             <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.65rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.65rem 0.9rem; font-family: 'Sarabun', sans-serif;">
                 <input type="checkbox" id="modalSendEmailCheck" name="send_email" value="true" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: #15803d;">
                 <label for="modalSendEmailCheck" style="font-size: 0.92rem; font-weight: 600; color: #166534; cursor: pointer; margin: 0; user-select: none;">
-                    ส่งอีเมลแจ้งเตือนไปยังนักศึกษาทันที
+                    {% trans "Send notification email to student immediately" %}
                 </label>
             </div>
 
@@ -658,23 +649,23 @@
                 <!-- Quick Template Preset Selector -->
                 <div style="margin-bottom: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem 0.9rem; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center; gap: 0.4rem;">
-                        <span style="font-size: 0.88rem; font-weight: 600; color: #1e293b;">เลือกแม่แบบข้อความ (Template):</span>
+                        <span style="font-size: 0.88rem; font-weight: 600; color: #1e293b;">{% trans "Select Message Template:" %}</span>
                     </div>
                     <select id="modalTemplateSelector" onchange="onTemplateSelectChange(this.value)" style="flex: 1; min-width: 220px; padding: 0.5rem 0.8rem; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.88rem; font-family: 'Sarabun', sans-serif; background: #ffffff; color: #1e293b; cursor: pointer; font-weight: 500;">
-                        <option value="custom">-- เลือกแม่แบบข้อความสำเร็จรูป --</option>
-                        <option value="request_docs">ขอเอกสารเพิ่มเติม / ตรวจสอบเอกสารใหม่</option>
-                        <option value="interview">นัดหมายวันเวลาสอบสัมภาษณ์</option>
-                        <option value="reschedule">แจ้งเลื่อนเวลา / เปลี่ยนแปลงสถานที่นัดหมาย</option>
-                        <option value="approved">แจ้งผลการอนุมัติทุนการศึกษา</option>
-                        <option value="rejected">แจ้งผลไม่อนุมัติทุนการศึกษา</option>
-                        <option value="general">แจ้งเตือนทั่วไป / ข้อมูลเพิ่มเติม</option>
+                        <option value="custom">-- {% trans "Select Message Template" %} --</option>
+                        <option value="request_docs">{% trans "Request Additional Docs" %}</option>
+                        <option value="interview">{% trans "Interview Invitation" %}</option>
+                        <option value="reschedule">{% trans "Reschedule Interview" %}</option>
+                        <option value="approved">{% trans "Scholarship Approved" %}</option>
+                        <option value="rejected">{% trans "Scholarship Rejected" %}</option>
+                        <option value="general">{% trans "General Notification" %}</option>
                     </select>
                 </div>
 
                 <!-- Subject -->
                 <div style="margin-bottom: 1rem;">
                     <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #1e293b; margin-bottom: 0.35rem;">
-                        หัวข้ออีเมล (Subject):
+                        {% trans "Email Subject:" %}
                     </label>
                     <input type="text" name="email_subject" id="modalEmailSubject" style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.65rem 0.85rem; font-size: 0.95rem; font-family: 'Sarabun', sans-serif; box-sizing: border-box; color: #0f172a;">
                 </div>
@@ -683,15 +674,15 @@
                 <div style="margin-bottom: 1rem;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
                         <label style="font-size: 0.88rem; font-weight: 600; color: #1e293b; margin: 0;">
-                            ข้อความในอีเมล (แก้ไขและเพิ่มเติมได้ตามต้องการ):
+                            {% trans "Email Message (Customize as needed):" %}
                         </label>
                         <button type="button" onclick="resetEmailTemplate()" style="background: none; border: none; color: #1d4ed8; font-size: 0.82rem; cursor: pointer; text-decoration: underline; font-family: 'Sarabun', sans-serif; font-weight: 500;">
-                            รีเซ็ตเป็นเทมเพลตเริ่มต้น
+                            {% trans "Reset to Default Template" %}
                         </button>
                     </div>
                     <textarea name="email_message" id="modalEmailMessage" rows="7" style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.75rem 0.9rem; font-size: 0.92rem; font-family: 'Sarabun', sans-serif; line-height: 1.6; resize: vertical; box-sizing: border-box; color: #0f172a;"></textarea>
                     <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">
-                        สามารถระบุ วัน เวลา สถานที่สอบสัมภาษณ์ ลิงก์ออนไลน์ หรือข้อกำหนดเพิ่มเติมในกล่องข้อความนี้ได้
+                        {% trans "You can specify date, time, location, online meeting link, or instructions in this box." %}
                     </div>
                 </div>
             </div>
@@ -699,22 +690,22 @@
             <!-- Internal Note for Staff -->
             <div style="margin-bottom: 1.25rem; font-family: 'Sarabun', sans-serif;">
                 <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">
-                    บันทึกช่วยจำภายใน (Note - เจ้าหน้าที่เห็นคนเดียว):
+                    {% trans "Internal Note (Staff only):" %}
                 </label>
-                <input type="text" name="note" id="modalAppNote" placeholder="เช่น นัดสัมภาษณ์ห้อง 5204 หรือ ผ่านรอบแรก..." style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.55rem 0.85rem; font-size: 0.88rem; font-family: 'Sarabun', sans-serif; box-sizing: border-box; color: #334155;">
+                <input type="text" name="note" id="modalAppNote" placeholder="{% trans 'e.g. Interview Room 5204 or Passed round 1...' %}" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.55rem 0.85rem; font-size: 0.88rem; font-family: 'Sarabun', sans-serif; box-sizing: border-box; color: #334155;">
             </div>
 
             <!-- Action Buttons -->
             <div style="display: flex; justify-content: flex-end; gap: 0.75rem; border-top: 1px solid #e2e8f0; padding-top: 1.1rem; font-family: 'Sarabun', sans-serif;">
                 <button type="button" onclick="closeStatusEmailModal()" style="background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 500; cursor: pointer;">
-                    ยกเลิก
+                    {% trans "Cancel" %}
                 </button>
                 <button type="submit" id="btnConfirmStatusSubmit" style="background: #1e3a8a; color: white; border: none; padding: 0.65rem 1.6rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25); transition: background 0.2s;">
                     <svg id="btnSubmitIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="22" y1="2" x2="11" y2="13"></line>
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
-                    <span id="btnSubmitText">บันทึกและส่งอีเมล</span>
+                    <span id="btnSubmitText">{% trans "Save and Send Email" %}</span>
                 </button>
             </div>
         </form>
@@ -723,5 +714,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/admin_dashboard.js' %}?v=11"></script>
+<script src="{% static 'js/admin_dashboard.js' %}?v=13"></script>
 {% endblock %}

@@ -9,7 +9,9 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
 
-  * { box-sizing: border-box; }
+  * {
+    box-sizing: border-box;
+  }
 
   .dash-wrap {
     font-family: 'Sarabun', sans-serif;
@@ -25,12 +27,25 @@
     gap: 1rem;
   }
 
-  .dash-title { font-size: 1.55rem; font-weight: 700; color: #1a2e4a; margin: 0; }
-  .dash-title span { color: #1565c0; }
+  .dash-title {
+    font-size: 1.55rem;
+    font-weight: 700;
+    color: #1a2e4a;
+    margin: 0;
+  }
 
-  .dash-meta { display: flex; align-items: center; gap: 0.75rem; }
+  .dash-title span {
+    color: #1565c0;
+  }
 
-  .year-badge, .user-badge {
+  .dash-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .year-badge,
+  .user-badge {
     background: white;
     border: 1px solid #d0d9e8;
     border-radius: 8px;
@@ -40,14 +55,23 @@
     font-weight: 500;
   }
 
-  .user-badge { display: flex; align-items: center; gap: 0.5rem; }
+  .user-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 
   .avatar {
-    width: 26px; height: 26px;
+    width: 26px;
+    height: 26px;
     background: linear-gradient(135deg, #1565c0, #0288d1);
     border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 0.68rem; font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.68rem;
+    font-weight: 700;
   }
 
   /* ===== STAT CARDS ===== */
@@ -65,50 +89,104 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     border: 1.5px solid #e8eef5;
     position: relative;
     overflow: hidden;
     transition: transform 0.2s, box-shadow 0.2s;
   }
 
-  .stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+  .stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
 
   .stat-card::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     height: 3px;
   }
 
-  .stat-blue::before  { background: linear-gradient(90deg, #1565c0, #0288d1); }
-  .stat-green::before { background: linear-gradient(90deg, #2e7d32, #43a047); }
-  .stat-amber::before { background: linear-gradient(90deg, #e65100, #ef6c00); }
-
-  .stat-blue  { border-color: #e3f0ff; }
-  .stat-green { border-color: #e8f5e9; }
-  .stat-amber { border-color: #fff3e0; }
-
-  .stat-label { font-size: 0.8rem; color: #6b7c93; margin-bottom: 0.35rem; font-weight: 500; }
-
-  .stat-value { font-size: 1.9rem; font-weight: 700; line-height: 1; margin-bottom: 0.15rem; }
-
-  .stat-blue  .stat-value { color: #1565c0; }
-  .stat-green .stat-value { color: #2e7d32; }
-  .stat-amber .stat-value { color: #e65100; }
-
-  .stat-unit { font-size: 0.8rem; color: #94a3b8; }
-
-  .stat-icon {
-    width: 52px; height: 52px;
-    border-radius: 14px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.45rem; flex-shrink: 0;
+  .stat-blue::before {
+    background: linear-gradient(90deg, #1565c0, #0288d1);
   }
 
-  .stat-blue  .stat-icon { background: #e3f0ff; }
-  .stat-green .stat-icon { background: #e8f5e9; }
-  .stat-amber .stat-icon { background: #fff3e0; }
+  .stat-green::before {
+    background: linear-gradient(90deg, #2e7d32, #43a047);
+  }
+
+  .stat-amber::before {
+    background: linear-gradient(90deg, #e65100, #ef6c00);
+  }
+
+  .stat-blue {
+    border-color: #e3f0ff;
+  }
+
+  .stat-green {
+    border-color: #e8f5e9;
+  }
+
+  .stat-amber {
+    border-color: #fff3e0;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+    color: #6b7c93;
+    margin-bottom: 0.35rem;
+    font-weight: 500;
+  }
+
+  .stat-value {
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.15rem;
+  }
+
+  .stat-blue .stat-value {
+    color: #1565c0;
+  }
+
+  .stat-green .stat-value {
+    color: #2e7d32;
+  }
+
+  .stat-amber .stat-value {
+    color: #e65100;
+  }
+
+  .stat-unit {
+    font-size: 0.8rem;
+    color: #94a3b8;
+  }
+
+  .stat-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    flex-shrink: 0;
+  }
+
+  .stat-blue .stat-icon {
+    background: #e3f0ff;
+  }
+
+  .stat-green .stat-icon {
+    background: #e8f5e9;
+  }
+
+  .stat-amber .stat-icon {
+    background: #fff3e0;
+  }
 
   /* ===== APP STATS ===== */
   .app-grid {
@@ -122,18 +200,47 @@
     background: white;
     border-radius: 12px;
     padding: 0.95rem 1.2rem;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    display: flex; align-items: center; gap: 0.85rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
   }
 
-  .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .dot-gray   { background: #607d8b; }
-  .dot-orange { background: #f57c00; }
-  .dot-green  { background: #2e7d32; }
-  .dot-red    { background: #c62828; }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
 
-  .app-label { font-size: 0.76rem; color: #6b7c93; margin-bottom: 0.1rem; }
-  .app-num   { font-size: 1.35rem; font-weight: 700; color: #1a2e4a; line-height: 1; }
+  .dot-gray {
+    background: #607d8b;
+  }
+
+  .dot-orange {
+    background: #f57c00;
+  }
+
+  .dot-green {
+    background: #2e7d32;
+  }
+
+  .dot-red {
+    background: #c62828;
+  }
+
+  .app-label {
+    font-size: 0.76rem;
+    color: #6b7c93;
+    margin-bottom: 0.1rem;
+  }
+
+  .app-num {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #1a2e4a;
+    line-height: 1;
+  }
 
   /* ===== CHARTS ROW ===== */
   .charts-grid {
@@ -146,32 +253,54 @@
   .chart-card {
     background: white;
     border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     overflow: hidden;
   }
 
   .chart-head {
     padding: 1rem 1.4rem 0.6rem;
     border-bottom: 1px solid #f0f4f8;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .chart-title { font-size: 0.9rem; font-weight: 600; color: #1a2e4a; }
-  .chart-sub   { font-size: 0.75rem; color: #94a3b8; margin-top: 0.15rem; }
+  .chart-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a2e4a;
+  }
 
-  .chart-body  { padding: 1.25rem 1.4rem; }
+  .chart-sub {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 0.15rem;
+  }
+
+  .chart-body {
+    padding: 1.25rem 1.4rem;
+  }
 
   .chart-legend {
-    display: flex; gap: 1rem; flex-wrap: wrap;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin-top: 0.75rem;
   }
 
   .legend-item {
-    display: flex; align-items: center; gap: 0.4rem;
-    font-size: 0.75rem; color: #6b7c93;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: #6b7c93;
   }
 
-  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
 
   /* ===== TABLES GRID ===== */
   .tables-grid {
@@ -183,77 +312,206 @@
   .tcard {
     background: white;
     border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     overflow: hidden;
   }
 
   .tcard-head {
     padding: 1rem 1.4rem;
     border-bottom: 1px solid #f0f4f8;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .tcard-title { font-size: 0.9rem; font-weight: 600; color: #1a2e4a; }
+  .tcard-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1a2e4a;
+  }
 
-  .tcard-link { font-size: 0.76rem; color: #1565c0; text-decoration: none; font-weight: 500; }
-  .tcard-link:hover { text-decoration: underline; }
+  .tcard-link {
+    font-size: 0.76rem;
+    color: #1565c0;
+    text-decoration: none;
+    font-weight: 500;
+  }
 
-  table.dtable { width: 100%; border-collapse: collapse; }
+  .tcard-link:hover {
+    text-decoration: underline;
+  }
+
+  table.dtable {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
   .dtable th {
     background: #f7fafc;
     padding: 0.55rem 1rem;
-    font-size: 0.72rem; font-weight: 600; color: #6b7c93;
-    text-align: left; text-transform: uppercase;
-    letter-spacing: 0.4px; border-bottom: 1px solid #edf2f7;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #6b7c93;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    border-bottom: 1px solid #edf2f7;
   }
 
   .dtable td {
     padding: 0.75rem 1rem;
-    font-size: 0.84rem; color: #2d3748;
-    border-bottom: 1px solid #f7fafc; vertical-align: middle;
+    font-size: 0.84rem;
+    color: #2d3748;
+    border-bottom: 1px solid #f7fafc;
+    vertical-align: middle;
   }
 
-  .dtable tr:last-child td { border-bottom: none; }
-  .dtable tr:hover td { background: #f7fafc; }
+  .dtable tr:last-child td {
+    border-bottom: none;
+  }
+
+  .dtable tr:hover td {
+    background: #f7fafc;
+  }
 
   .badge {
     display: inline-block;
     padding: 0.2rem 0.6rem;
-    border-radius: 20px; font-size: 0.7rem; font-weight: 600;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
   }
 
-  .badge-open     { background: #e8f5e9; color: #2e7d32; }
-  .badge-closed   { background: #f1f5f9; color: #64748b; }
-  .badge-general  { background: #e3f0ff; color: #1565c0; }
-  .badge-exchange { background: #fff8e1; color: #f57c00; }
-  .badge-waiver   { background: #f3e5f5; color: #7b1fa2; }
-  .badge-lunch    { background: #e8f5e9; color: #388e3c; }
+  .badge-open {
+    background: #e8f5e9;
+    color: #2e7d32;
+  }
 
-  .urgent { color: #c62828; font-weight: 600; }
-  .ok     { color: #2e7d32; }
-  .empty  { text-align: center; padding: 2rem; color: #94a3b8; font-size: 0.86rem; }
+  .badge-closed {
+    background: #f1f5f9;
+    color: #64748b;
+  }
+
+  .badge-general {
+    background: #e3f0ff;
+    color: #1565c0;
+  }
+
+  .badge-exchange {
+    background: #fff8e1;
+    color: #f57c00;
+  }
+
+  .badge-waiver {
+    background: #f3e5f5;
+    color: #7b1fa2;
+  }
+
+  .badge-lunch {
+    background: #e8f5e9;
+    color: #388e3c;
+  }
+
+  .urgent {
+    color: #c62828;
+    font-weight: 600;
+  }
+
+  .ok {
+    color: #2e7d32;
+  }
+
+  .empty {
+    text-align: center;
+    padding: 2rem;
+    color: #94a3b8;
+    font-size: 0.86rem;
+  }
 
   @media (max-width: 900px) {
-    .stats-grid, .tables-grid { grid-template-columns: 1fr; }
-    .app-grid { grid-template-columns: repeat(2,1fr); }
-    .charts-grid { grid-template-columns: 1fr; }
+
+    .stats-grid,
+    .tables-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .app-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .charts-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 600px) {
-    .dash-header { flex-direction: column; align-items: stretch; gap: 0.85rem; }
-    .dash-title { font-size: 1.3rem; }
-    .dash-meta { width: 100%; flex-direction: column; align-items: stretch; gap: 0.75rem; }
-    .dash-meta form { width: 100%; flex-wrap: wrap; }
-    .dash-meta form select { flex: 1 1 calc(50% - 0.5rem); min-width: 110px; font-size: 0.85rem; }
-    .dash-meta form button { flex: 1 1 100%; text-align: center; justify-content: center; padding: 0.6rem; }
-    .dash-meta > button { width: 100%; justify-content: center; padding: 0.6rem; }
-    .app-grid { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
-    .app-card { padding: 0.75rem 0.9rem; }
-    .app-num { font-size: 1.15rem; }
-    .stat-card { padding: 1.1rem 1.25rem; }
-    .stat-value { font-size: 1.6rem; }
-    .stat-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+    .dash-header {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.85rem;
+    }
+
+    .dash-title {
+      font-size: 1.3rem;
+    }
+
+    .dash-meta {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.75rem;
+    }
+
+    .dash-meta form {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .dash-meta form select {
+      flex: 1 1 calc(50% - 0.5rem);
+      min-width: 110px;
+      font-size: 0.85rem;
+    }
+
+    .dash-meta form button {
+      flex: 1 1 100%;
+      text-align: center;
+      justify-content: center;
+      padding: 0.6rem;
+    }
+
+    .dash-meta>button {
+      width: 100%;
+      justify-content: center;
+      padding: 0.6rem;
+    }
+
+    .app-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .app-card {
+      padding: 0.75rem 0.9rem;
+    }
+
+    .app-num {
+      font-size: 1.15rem;
+    }
+
+    .stat-card {
+      padding: 1.1rem 1.25rem;
+    }
+
+    .stat-value {
+      font-size: 1.6rem;
+    }
+
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.2rem;
+    }
   }
 </style>
 
@@ -264,39 +522,45 @@
 
   <!-- Header -->
   <div class="dash-header">
-    <h1 class="dash-title">แดชบอร์ดทุนการศึกษา <span>ม.อ. ภูเก็ต</span></h1>
+    <h1 class="dash-title">{% trans "PSU Phuket Scholarships" %} <span>{% trans "Analytics Dashboard" %}</span></h1>
     <div class="dash-meta" style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
-      <form method="get" action="{% url 'scholarship_dashboard' %}" style="display: flex; gap: 0.5rem; align-items: center;">
-        <select name="term" style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-family: 'Sarabun'; color: #1a2e4a;">
-          <option value="">ทุกเทอม</option>
-          <option value="1" {% if filter_term == '1' %}selected{% endif %}>เทอม 1 (ส.ค.-ธ.ค.)</option>
-          <option value="2" {% if filter_term == '2' %}selected{% endif %}>เทอม 2 (ม.ค.-พ.ค.)</option>
-          <option value="3" {% if filter_term == '3' %}selected{% endif %}>ซัมเมอร์ (มิ.ย.-ก.ค.)</option>
+      <form method="get" action="{% url 'scholarship_dashboard' %}"
+        style="display: flex; gap: 0.5rem; align-items: center;">
+        <select name="term"
+          style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-family: 'Sarabun'; color: #1a2e4a;">
+          <option value="">{% trans "All Terms" %}</option>
+          <option value="1" {% if filter_term == '1' %}selected{% endif %}>{% trans "Term 1 (Aug-Dec)" %}</option>
+          <option value="2" {% if filter_term == '2' %}selected{% endif %}>{% trans "Term 2 (Jan-May)" %}</option>
+          <option value="3" {% if filter_term == '3' %}selected{% endif %}>{% trans "Summer (Jun-Jul)" %}</option>
         </select>
-        <select name="month" style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-family: 'Sarabun'; color: #1a2e4a;">
-          <option value="">ทุกเดือน</option>
-          <option value="1" {% if filter_month == '1' %}selected{% endif %}>มกราคม</option>
-          <option value="2" {% if filter_month == '2' %}selected{% endif %}>กุมภาพันธ์</option>
-          <option value="3" {% if filter_month == '3' %}selected{% endif %}>มีนาคม</option>
-          <option value="4" {% if filter_month == '4' %}selected{% endif %}>เมษายน</option>
-          <option value="5" {% if filter_month == '5' %}selected{% endif %}>พฤษภาคม</option>
-          <option value="6" {% if filter_month == '6' %}selected{% endif %}>มิถุนายน</option>
-          <option value="7" {% if filter_month == '7' %}selected{% endif %}>กรกฎาคม</option>
-          <option value="8" {% if filter_month == '8' %}selected{% endif %}>สิงหาคม</option>
-          <option value="9" {% if filter_month == '9' %}selected{% endif %}>กันยายน</option>
-          <option value="10" {% if filter_month == '10' %}selected{% endif %}>ตุลาคม</option>
-          <option value="11" {% if filter_month == '11' %}selected{% endif %}>พฤศจิกายน</option>
-          <option value="12" {% if filter_month == '12' %}selected{% endif %}>ธันวาคม</option>
+        <select name="month"
+          style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-family: 'Sarabun'; color: #1a2e4a;">
+          <option value="">{% trans "All Months" %}</option>
+          <option value="1" {% if filter_month == '1' %}selected{% endif %}>{% trans "January" %}</option>
+          <option value="2" {% if filter_month == '2' %}selected{% endif %}>{% trans "February" %}</option>
+          <option value="3" {% if filter_month == '3' %}selected{% endif %}>{% trans "March" %}</option>
+          <option value="4" {% if filter_month == '4' %}selected{% endif %}>{% trans "April" %}</option>
+          <option value="5" {% if filter_month == '5' %}selected{% endif %}>{% trans "May" %}</option>
+          <option value="6" {% if filter_month == '6' %}selected{% endif %}>{% trans "June" %}</option>
+          <option value="7" {% if filter_month == '7' %}selected{% endif %}>{% trans "July" %}</option>
+          <option value="8" {% if filter_month == '8' %}selected{% endif %}>{% trans "August" %}</option>
+          <option value="9" {% if filter_month == '9' %}selected{% endif %}>{% trans "September" %}</option>
+          <option value="10" {% if filter_month == '10' %}selected{% endif %}>{% trans "October" %}</option>
+          <option value="11" {% if filter_month == '11' %}selected{% endif %}>{% trans "November" %}</option>
+          <option value="12" {% if filter_month == '12' %}selected{% endif %}>{% trans "December" %}</option>
         </select>
-        <select name="year" style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-family: 'Sarabun'; color: #1a2e4a;">
-          <option value="">ทุกปี</option>
+        <select name="year"
+          style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-family: 'Sarabun'; color: #1a2e4a;">
+          <option value="">{% trans "All Years" %}</option>
           <option value="2026" {% if filter_year == '2026' %}selected{% endif %}>2026</option>
           <option value="2025" {% if filter_year == '2025' %}selected{% endif %}>2025</option>
           <option value="2024" {% if filter_year == '2024' %}selected{% endif %}>2024</option>
         </select>
-        <button type="submit" style="padding: 0.5rem 1.2rem; border-radius: 8px; background: #1565c0; color: white; border: none; cursor: pointer; font-family: 'Sarabun'; font-weight: 500;">กรอง</button>
+        <button type="submit"
+          style="padding: 0.5rem 1.2rem; border-radius: 8px; background: #1565c0; color: white; border: none; cursor: pointer; font-family: 'Sarabun'; font-weight: 500;">{% trans "Filter" %}</button>
       </form>
-      <button onclick="window.print()" style="padding: 0.5rem 1.2rem; border-radius: 8px; background: #f43f5e; color: white; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; font-family: 'Sarabun'; font-weight: 500;">
+      <button onclick="window.print()"
+        style="padding: 0.5rem 1.2rem; border-radius: 8px; background: #f43f5e; color: white; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; font-family: 'Sarabun'; font-weight: 500;">
         <span class="material-symbols-outlined" style="font-size: 1.2rem;">picture_as_pdf</span> PDF
       </button>
     </div>
@@ -306,25 +570,25 @@
   <div class="stats-grid">
     <div class="stat-card stat-blue">
       <div>
-        <div class="stat-label">จำนวนทุนทั้งหมด</div>
+        <div class="stat-label">{% trans "Total Scholarships" %}</div>
         <div class="stat-value">{{ total_scholarships }}</div>
-        <div class="stat-unit">ทุน</div>
+        <div class="stat-unit">{% trans "scholarships" %}</div>
       </div>
       <div class="stat-icon"><span class="material-symbols-outlined">school</span></div>
     </div>
     <div class="stat-card stat-green">
       <div>
-        <div class="stat-label">มูลค่ารวม</div>
+        <div class="stat-label">{% trans "Total Fund Value" %}</div>
         <div class="stat-value">฿ {{ total_value|floatformat:0|intcomma }}</div>
-        <div class="stat-unit">บาท</div>
+        <div class="stat-unit">THB</div>
       </div>
       <div class="stat-icon"><span class="material-symbols-outlined">payments</span></div>
     </div>
     <div class="stat-card stat-amber">
       <div>
-        <div class="stat-label">เปิดรับสมัครอยู่</div>
+        <div class="stat-label">{% trans "Currently Open" %}</div>
         <div class="stat-value">{{ open_scholarships }}</div>
-        <div class="stat-unit">ทุน</div>
+        <div class="stat-unit">{% trans "scholarships" %}</div>
       </div>
       <div class="stat-icon"><span class="material-symbols-outlined">content_paste</span></div>
     </div>
@@ -335,29 +599,50 @@
     <div class="app-card">
       <div class="dot dot-gray"></div>
       <div>
-        <div class="app-label">การสมัครทั้งหมด</div>
+        <div class="app-label">{% trans "Total Applications" %}</div>
         <div class="app-num">{{ total_applications }}</div>
       </div>
     </div>
     <div class="app-card">
       <div class="dot dot-orange"></div>
       <div>
-        <div class="app-label">รอการพิจารณา</div>
+        <div class="app-label">Pending</div>
         <div class="app-num">{{ pending_applications }}</div>
+      </div>
+    </div>
+    <div class="app-card">
+      <div class="dot" style="background:#0284c7;"></div>
+      <div>
+        <div class="app-label">In Progress</div>
+        <div class="app-num">{{ in_progress_applications }}</div>
       </div>
     </div>
     <div class="app-card">
       <div class="dot dot-green"></div>
       <div>
-        <div class="app-label">อนุมัติแล้ว</div>
+        <div class="app-label">Approve</div>
         <div class="app-num">{{ approved_applications }}</div>
+      </div>
+    </div>
+    <div class="app-card">
+      <div class="dot" style="background:#7e22ce;"></div>
+      <div>
+        <div class="app-label">Complete</div>
+        <div class="app-num">{{ completed_applications }}</div>
       </div>
     </div>
     <div class="app-card">
       <div class="dot dot-red"></div>
       <div>
-        <div class="app-label">ไม่ผ่านการพิจารณา</div>
+        <div class="app-label">Reject</div>
         <div class="app-num">{{ rejected_applications }}</div>
+      </div>
+    </div>
+    <div class="app-card">
+      <div class="dot" style="background:#64748b;"></div>
+      <div>
+        <div class="app-label">Cancel</div>
+        <div class="app-num">{{ cancelled_applications }}</div>
       </div>
     </div>
   </div>
@@ -369,8 +654,8 @@
     <div class="chart-card">
       <div class="chart-head">
         <div>
-          <div class="chart-title">จำนวนการสมัครตามประเภทสถานะ</div>
-          <div class="chart-sub">ภาพรวมการสมัครทุนทั้งหมด</div>
+          <div class="chart-title">{% trans "Applications by Status" %}</div>
+          <div class="chart-sub">{% trans "Overall breakdown of application stages" %}</div>
         </div>
       </div>
       <div class="chart-body">
@@ -382,17 +667,25 @@
     <div class="chart-card">
       <div class="chart-head">
         <div>
-          <div class="chart-title">สัดส่วนประเภททุน</div>
-          <div class="chart-sub">จำแนกตามหมวดหมู่</div>
+          <div class="chart-title">{% trans "Scholarship Distribution" %}</div>
+          <div class="chart-sub">{% trans "Categorized by scholarship type" %}</div>
         </div>
       </div>
       <div class="chart-body" style="display:flex;flex-direction:column;align-items:center;">
         <canvas id="donutChart" height="220" style="max-width:220px;"></canvas>
         <div class="chart-legend" style="justify-content:center;margin-top:1rem;">
-          <div class="legend-item"><div class="legend-dot" style="background:#1565c0"></div> ทุนทั่วไป</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#f57c00"></div> แลกเปลี่ยน</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#7b1fa2"></div> ยกเว้นค่าธรรมเนียม</div>
-          <div class="legend-item"><div class="legend-dot" style="background:#2e7d32"></div> อาหารกลางวัน</div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#1565c0"></div> {% trans "General" %}
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#f57c00"></div> {% trans "Exchange" %}
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#7b1fa2"></div> {% trans "Fee Waiver" %}
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#2e7d32"></div> {% trans "Lunch" %}
+          </div>
         </div>
       </div>
     </div>
@@ -404,18 +697,18 @@
 
     <div class="tcard">
       <div class="tcard-head">
-        <span class="tcard-title">รายชื่อทุนการศึกษาล่าสุด</span>
-        <a href="{% url 'admin:scholarships_scholarship_changelist' %}" class="tcard-link">ดูทั้งหมด →</a>
+        <span class="tcard-title">{% trans "Recent Scholarships" %}</span>
+        <a href="{% url 'admin:scholarships_scholarship_changelist' %}" class="tcard-link">{% trans "View all" %} →</a>
       </div>
       {% if recent_scholarships %}
       <table class="dtable">
         <thead>
           <tr>
-            <th>ชื่อทุน</th>
-            <th>ประเภท</th>
-            <th>จำนวนเงิน/ทุน</th>
-            <th>สถานะ</th>
-            <th>หมดเขต</th>
+            <th>{% trans "Scholarship" %}</th>
+            <th>{% trans "Category" %}</th>
+            <th>{% trans "Amount" %}</th>
+            <th>{% trans "Status" %}</th>
+            <th>{% trans "Deadline" %}</th>
           </tr>
         </thead>
         <tbody>
@@ -423,10 +716,10 @@
           <tr>
             <td><strong>{{ s.title }}</strong></td>
             <td>
-              {% if s.category == 'general' %}<span class="badge badge-general">ทั่วไป</span>
-              {% elif s.category == 'exchange' %}<span class="badge badge-exchange">แลกเปลี่ยน</span>
-              {% elif s.category == 'fee_waiver' %}<span class="badge badge-waiver">ยกเว้นค่าธรรมเนียม</span>
-              {% else %}<span class="badge badge-lunch">อาหารกลางวัน</span>{% endif %}
+              {% if s.category == 'general' %}<span class="badge badge-general">{% trans "General" %}</span>
+              {% elif s.category == 'exchange' %}<span class="badge badge-exchange">{% trans "Exchange" %}</span>
+              {% elif s.category == 'fee_waiver' %}<span class="badge badge-waiver">{% trans "Fee Waiver" %}</span>
+              {% else %}<span class="badge badge-lunch">{% trans "Lunch" %}</span>{% endif %}
             </td>
             <td>฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</td>
             <td>
@@ -435,7 +728,7 @@
             </td>
             <td>
               {% if s.end_date %}
-                <span class="{% if s.end_date < today %}urgent{% else %}ok{% endif %}">{{ s.end_date|date:"j M y" }}</span>
+              <span class="{% if s.end_date < today %}urgent{% else %}ok{% endif %}">{{ s.end_date|date:"j M y" }}</span>
               {% else %}—{% endif %}
             </td>
           </tr>
@@ -455,7 +748,11 @@
       {% if deadline_soon %}
       <table class="dtable">
         <thead>
-          <tr><th>ชื่อทุน</th><th>หมดเขต</th><th>จำนวนผู้สมัคร</th></tr>
+          <tr>
+            <th>ชื่อทุน</th>
+            <th>หมดเขต</th>
+            <th>จำนวนผู้สมัคร</th>
+          </tr>
         </thead>
         <tbody>
           {% for s in deadline_soon %}
@@ -476,134 +773,141 @@
 </div>
 
 <script>
-// ===== ข้อมูลจาก Django context =====
-const pendingCount  = {{ pending_applications }};
-const approvedCount = {{ approved_applications }};
-const rejectedCount = {{ rejected_applications }};
-const totalApps     = {{ total_applications }};
+  // ===== ข้อมูลจาก Django context =====
+  const pendingCount = {{ pending_applications }};
+  const inProgressCount = {{ in_progress_applications }};
+  const approvedCount = {{ approved_applications }};
+  const completedCount = {{ completed_applications }};
+  const rejectedCount = {{ rejected_applications }};
+  const cancelledCount = {{ cancelled_applications }};
+  const totalApps = {{ total_applications }};
 
-const generalCount  = {{ general_count }};
-const exchangeCount = {{ exchange_count }};
-const waiverCount   = {{ waiver_count }};
-const lunchCount    = {{ lunch_count }};
+  const generalCount = {{ general_count }};
+  const exchangeCount = {{ exchange_count }};
+  const waiverCount = {{ waiver_count }};
+  const lunchCount = {{ lunch_count }};
 
-// ===== Chart defaults =====
-Chart.defaults.font.family = "'Sarabun', sans-serif";
-Chart.defaults.color = '#6b7c93';
+  // ===== Chart defaults =====
+  Chart.defaults.font.family = "'Sarabun', sans-serif";
+  Chart.defaults.color = '#6b7c93';
 
-// ===== Bar Chart =====
-const barCtx = document.getElementById('barChart').getContext('2d');
-new Chart(barCtx, {
-  type: 'bar',
-  data: {
-    labels: ['รอพิจารณา', 'อนุมัติแล้ว', 'ไม่ผ่าน', 'ทั้งหมด'],
-    datasets: [{
-      label: 'จำนวนการสมัคร',
-      data: [pendingCount, approvedCount, rejectedCount, totalApps],
-      backgroundColor: [
-        'rgba(245, 124, 0, 0.85)',
-        'rgba(46, 125, 50, 0.85)',
-        'rgba(198, 40, 40, 0.85)',
-        'rgba(21, 101, 192, 0.85)',
-      ],
-      borderColor: [
-        'rgba(245, 124, 0, 1)',
-        'rgba(46, 125, 50, 1)',
-        'rgba(198, 40, 40, 1)',
-        'rgba(21, 101, 192, 1)',
-      ],
-      borderWidth: 0,
-      borderRadius: 8,
-      borderSkipped: false,
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        backgroundColor: '#1a2e4a',
-        padding: 10,
-        cornerRadius: 8,
-        callbacks: {
-          label: (ctx) => `  ${ctx.parsed.y} คน`
+  // ===== Bar Chart =====
+  const barCtx = document.getElementById('barChart').getContext('2d');
+  new Chart(barCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Pending', 'In Progress', 'Approve', 'Complete', 'Reject', 'Cancel'],
+      datasets: [{
+        label: 'จำนวนการสมัคร',
+        data: [pendingCount, inProgressCount, approvedCount, completedCount, rejectedCount, cancelledCount],
+        backgroundColor: [
+          'rgba(245, 124, 0, 0.85)',
+          'rgba(2, 132, 199, 0.85)',
+          'rgba(46, 125, 50, 0.85)',
+          'rgba(126, 34, 206, 0.85)',
+          'rgba(198, 40, 40, 0.85)',
+          'rgba(100, 116, 139, 0.85)',
+        ],
+        borderColor: [
+          'rgba(245, 124, 0, 1)',
+          'rgba(2, 132, 199, 1)',
+          'rgba(46, 125, 50, 1)',
+          'rgba(126, 34, 206, 1)',
+          'rgba(198, 40, 40, 1)',
+          'rgba(100, 116, 139, 1)',
+        ],
+        borderWidth: 0,
+        borderRadius: 8,
+        borderSkipped: false,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1a2e4a',
+          padding: 10,
+          cornerRadius: 8,
+          callbacks: {
+            label: (ctx) => `  ${ctx.parsed.y} คน`
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          border: { display: false },
+          ticks: { font: { size: 13 } }
+        },
+        y: {
+          grid: { color: '#f0f4f8', drawBorder: false },
+          border: { display: false, dash: [4, 4] },
+          ticks: {
+            stepSize: 1,
+            font: { size: 11 },
+            callback: (v) => Number.isInteger(v) ? v : ''
+          },
+          beginAtZero: true,
         }
       }
-    },
-    scales: {
-      x: {
-        grid: { display: false },
-        border: { display: false },
-        ticks: { font: { size: 13 } }
-      },
-      y: {
-        grid: { color: '#f0f4f8', drawBorder: false },
-        border: { display: false, dash: [4,4] },
-        ticks: {
-          stepSize: 1,
-          font: { size: 11 },
-          callback: (v) => Number.isInteger(v) ? v : ''
-        },
-        beginAtZero: true,
-      }
     }
-  }
-});
+  });
 
-// ===== Donut Chart =====
-const donutCtx = document.getElementById('donutChart').getContext('2d');
-const donutData = [generalCount, exchangeCount, waiverCount, lunchCount];
-const donutTotal = donutData.reduce((a, b) => a + b, 0);
+  // ===== Donut Chart =====
+  const donutCtx = document.getElementById('donutChart').getContext('2d');
+  const donutData = [generalCount, exchangeCount, waiverCount, lunchCount];
+  const donutTotal = donutData.reduce((a, b) => a + b, 0);
 
-new Chart(donutCtx, {
-  type: 'doughnut',
-  data: {
-    labels: ['ทุนทั่วไป', 'แลกเปลี่ยน', 'ยกเว้นค่าธรรมเนียม', 'อาหารกลางวัน'],
-    datasets: [{
-      data: donutTotal > 0 ? donutData : [1, 1, 1, 1],
-      backgroundColor: ['#1565c0', '#f57c00', '#7b1fa2', '#2e7d32'],
-      hoverBackgroundColor: ['#1976d2', '#fb8c00', '#9c27b0', '#388e3c'],
-      borderWidth: 3,
-      borderColor: '#ffffff',
-      hoverOffset: 6,
-    }]
-  },
-  options: {
-    responsive: true,
-    cutout: '65%',
-    plugins: {
-      legend: { display: false },
-      tooltip: {
-        backgroundColor: '#1a2e4a',
-        padding: 10,
-        cornerRadius: 8,
-        callbacks: {
-          label: (ctx) => {
-            if (donutTotal === 0) return '  ยังไม่มีข้อมูล';
-            const pct = ((ctx.parsed / donutTotal) * 100).toFixed(1);
-            return `  ${ctx.label}: ${ctx.parsed} ทุน (${pct}%)`;
+  new Chart(donutCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['ทุนทั่วไป', 'แลกเปลี่ยน', 'ยกเว้นค่าธรรมเนียม', 'อาหารกลางวัน'],
+      datasets: [{
+        data: donutTotal > 0 ? donutData : [1, 1, 1, 1],
+        backgroundColor: ['#1565c0', '#f57c00', '#7b1fa2', '#2e7d32'],
+        hoverBackgroundColor: ['#1976d2', '#fb8c00', '#9c27b0', '#388e3c'],
+        borderWidth: 3,
+        borderColor: '#ffffff',
+        hoverOffset: 6,
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: '65%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1a2e4a',
+          padding: 10,
+          cornerRadius: 8,
+          callbacks: {
+            label: (ctx) => {
+              if (donutTotal === 0) return '  ยังไม่มีข้อมูล';
+              const pct = ((ctx.parsed / donutTotal) * 100).toFixed(1);
+              return `  ${ctx.label}: ${ctx.parsed} ทุน (${pct}%)`;
+            }
           }
         }
       }
-    }
-  },
-  plugins: [{
-    id: 'centerText',
-    beforeDraw(chart) {
-      const { width, height, ctx } = chart;
-      ctx.save();
-      ctx.font = `700 ${(height / 7)}px Sarabun, sans-serif`;
-      ctx.fillStyle = '#1a2e4a';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(donutTotal > 0 ? donutTotal : '-', width / 2, height / 2 - 8);
-      ctx.font = `400 ${(height / 14)}px Sarabun, sans-serif`;
-      ctx.fillStyle = '#94a3b8';
-      ctx.fillText('ทุนทั้งหมด', width / 2, height / 2 + height / 9);
-      ctx.restore();
-    }
-  }]
-});
+    },
+    plugins: [{
+      id: 'centerText',
+      beforeDraw(chart) {
+        const { width, height, ctx } = chart;
+        ctx.save();
+        ctx.font = `700 ${(height / 7)}px Sarabun, sans-serif`;
+        ctx.fillStyle = '#1a2e4a';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(donutTotal > 0 ? donutTotal : '-', width / 2, height / 2 - 8);
+        ctx.font = `400 ${(height / 14)}px Sarabun, sans-serif`;
+        ctx.fillStyle = '#94a3b8';
+        ctx.fillText('ทุนทั้งหมด', width / 2, height / 2 + height / 9);
+        ctx.restore();
+      }
+    }]
+  });
 </script>
 
 {% endblock %}

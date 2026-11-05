@@ -27,15 +27,15 @@ class StudentProfile(models.Model):
 
 class Scholarship(models.Model):
     CATEGORY_CHOICES = [
-        ('general', 'ทุนการศึกษาทั่วไป'),
-        ('exchange', 'ทุนการศึกษาแลกเปลี่ยน'),
-        ('fee_waiver', 'ทุนยกเว้นค่าธรรมเนียม'),
-        ('lunch', 'ทุนอาหารกลางวัน'),
+        ('general', 'General Scholarships'),
+        ('exchange', 'Exchange Scholarships'),
+        ('fee_waiver', 'Fee Waiver Scholarships'),
+        ('lunch', 'Lunch Scholarships'),
     ]
     STATUS_CHOICES = [
-        ('active', 'เปิดรับสมัคร'),
-        ('closed', 'ปิดรับสมัคร'),
-        ('draft', 'ฉบับร่าง'),
+        ('active', 'Active'),
+        ('closed', 'Closed'),
+        ('draft', 'Draft'),
     ]
 
     title = models.CharField(max_length=300)
@@ -61,10 +61,13 @@ class Scholarship(models.Model):
 
 class Application(models.Model):
     STATUS_CHOICES = [
-        ('pending', 'รอพิจารณา'),
-        ('interview', 'รอสัมภาษณ์'),
-        ('approved', 'อนุมัติ'),
-        ('rejected', 'ไม่อนุมัติ'),
+        ('pending', 'Pending'),
+        ('in_progress', 'In Progress'),
+        ('interview', 'Interview'),
+        ('approved', 'Approve'),
+        ('rejected', 'Reject'),
+        ('completed', 'Complete'),
+        ('cancelled', 'Cancel'),
     ]
 
     student = models.ForeignKey(StudentProfile, on_delete=models.CASCADE, related_name='applications')

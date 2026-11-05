@@ -1,0 +1,15 @@
+{% load i18n %}
+{% if status == 'pending' %}
+<span class="app-status-badge status-pending">{% trans "Pending" %}</span>
+{% elif status == 'in_progress' or status == 'interview' %}
+<span class="app-status-badge status-inprogress">{% trans "In Progress" %}</span>
+{% elif status == 'approved' %}
+<span class="app-status-badge status-approved">{% trans "Approve" %}</span>
+{% elif status == 'completed' %}
+<span class="app-status-badge status-completed">{% trans "Complete" %}</span>
+{% elif status == 'cancelled' %}
+<span class="app-status-badge status-cancelled">{% trans "Cancel" %}</span>
+{% else %}
+<span class="app-status-badge status-rejected">{% trans "Reject" %}</span>
+{% endif %}
+

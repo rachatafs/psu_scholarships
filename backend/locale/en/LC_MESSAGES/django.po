@@ -184,20 +184,41 @@ msgstr "Invalid username or password"
 #~ msgid "โปรไฟล์"
 #~ msgstr "Profile"
 
-#~ msgid "ชื่อผู้ใช้"
-#~ msgstr "Username"
+#: frontend/templates/partials/navbar.html:114
+msgid "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง"
+msgstr "Incorrect username or password. Please check and try again."
 
-#~ msgid "กรอกชื่อผู้ใช้"
-#~ msgstr "Enter username"
+#: frontend/templates/partials/navbar.html:8
+msgid "มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต"
+msgstr "Prince of Songkla University, Phuket Campus"
 
-#~ msgid "รหัสผ่าน"
-#~ msgstr "Password"
+#: frontend/templates/partials/navbar.html:121
+msgid "ชื่อผู้ใช้"
+msgstr "Username"
 
-#~ msgid "กรอกรหัสผ่าน"
-#~ msgstr "Enter password"
+#: frontend/templates/partials/navbar.html:122
+msgid "กรอกชื่อผู้ใช้"
+msgstr "Enter username"
 
-#~ msgid "ยังไม่มีบัญชี?"
-#~ msgstr "Don't have an account?"
+#: frontend/templates/partials/navbar.html:126
+msgid "รหัสผ่าน"
+msgstr "Password"
 
-#~ msgid "สมัครสมาชิก"
-#~ msgstr "Register"
+#: frontend/templates/partials/navbar.html:127
+msgid "กรอกรหัสผ่าน"
+msgstr "Enter password"
+
+#: frontend/templates/partials/navbar.html:136
+msgid "หรือเข้าสู่ระบบด้วย"
+msgstr "Or sign in with"
+
+#: frontend/templates/partials/navbar.html:153
+msgid "*สำหรับนักศึกษา (@phuket.psu.ac.th)"
+msgstr "*For PSU students (@phuket.psu.ac.th)"
+
+#: frontend/templates/accounts/login.html:84
+msgid "*กรุณาเข้าสู่ระบบด้วยอีเมลมหาวิทยาลัย (@phuket.psu.ac.th)"
+msgstr "*Please sign in with your university email (@phuket.psu.ac.th)"
+
+msgid "ทุนการศึกษาทั้งหมด"
+msgstr "All Scholarships"

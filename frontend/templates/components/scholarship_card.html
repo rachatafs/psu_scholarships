@@ -1,0 +1,95 @@
+{% load i18n %}
+<div class="modern-scholarship-card">
+    <div class="card-status-bar">
+        {% if show_urgent %}
+        <span class="status-pill status-urgent">
+            <span class="dot-urgent"></span> {% trans "Urgent! Deadline" %} {{ s.end_date|date:"j M y" }}
+        </span>
+        {% elif s.is_closed or s.is_expired %}
+        <span class="status-pill status-closed">
+            {% trans "Closed" %}
+        </span>
+        {% elif user.is_authenticated and s.gpax_unmet %}
+        <span class="status-pill status-ineligible">
+            <span class="dot-ineligible"></span> {% trans "GPAX Unmet" %}{% if s.min_gpax %} ({% trans "Requires" %} {{ s.min_gpax|floatformat:2 }}+){% endif %}
+        </span>
+        {% elif user.is_authenticated and s.has_applied %}
+        <span class="status-pill status-applied">
+            <span class="dot-applied"></span> {% trans "Applied" %}
+        </span>
+        {% else %}
+        <span class="status-pill status-open">
+            <span class="dot-live"></span> {% trans "Open" %}
+        </span>
+        {% endif %}
+
+        {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
+
+        {% if user.is_authenticated %}
+        <form method="POST" action="{% url 'toggle_favorite' s.pk %}" class="favorite-form" style="margin: 0; display: inline-block; float: right;">
+            {% csrf_token %}
+            <button type="submit" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; padding: 0; display: flex; align-items: center; justify-content: center; color: var(--text-muted);" title="{% trans 'Save' %}">
+                <span class="material-symbols-outlined fav-icon" style="{% if s.is_favorited %}font-variation-settings: 'FILL' 1; color: var(--danger-color);{% else %}font-variation-settings: 'FILL' 0;{% endif %}">
+                    favorite
+                </span>
+            </button>
+        </form>
+        {% endif %}
+    </div>
+
+    <h3 class="card-scholarship-title">
+        <a href="{% url 'scholarship_detail' s.pk %}">{{ s.title }}</a>
+    </h3>
+
+    <p class="card-scholarship-desc">
+        {{ s.description|truncatewords:18 }}
+    </p>
+
+    <div class="card-meta-list">
+        <div class="meta-row">
+            <span class="meta-label">{% trans "Amount" %}:</span>
+            <strong class="meta-value text-highlight">฿{{ s.amount_per_semester|floatformat:0 }}</strong>
+            <span class="meta-sub">/ {% trans "semester" %}</span>
+        </div>
+        {% if s.min_gpax > 0 %}
+        <div class="meta-row">
+            <span class="meta-label">{% trans "Minimum GPAX" %}:</span>
+            <strong class="meta-value {% if user.is_authenticated and s.gpax_unmet %}text-danger{% endif %}">{{ s.min_gpax|floatformat:2 }}+</strong>
+        </div>
+        {% endif %}
+        <div class="meta-row">
+            <span class="meta-label">{% trans "Quota" %}:</span>
+            <strong class="meta-value">{{ s.capacity }} {% trans "Grants" %}</strong>
+        </div>
+        {% if not show_urgent and s.end_date %}
+        <div class="meta-row">
+            <span class="meta-label">{% trans "Deadline" %}:</span>
+            <strong class="meta-value {% if s.is_closed or s.is_expired %}text-danger{% endif %}">
+                {{ s.end_date }}
+                {% if s.is_closed or s.is_expired %}<span class="expired-tag">{% trans "Expired" %}</span>{% endif %}
+            </strong>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="card-action-footer">
+        {% if s.is_closed or s.is_expired %}
+        <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply btn-card-closed">
+            {% trans "View Details" %}
+        </a>
+        {% elif user.is_authenticated and s.has_applied %}
+        <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply btn-card-applied">
+            {% trans "View Status" %} →
+        </a>
+        {% elif user.is_authenticated and s.gpax_unmet %}
+        <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply btn-card-ineligible">
+            {% trans "View Details (GPAX Unmet)" %}
+        </a>
+        {% else %}
+        <a href="{% url 'scholarship_detail' s.pk %}" class="btn-card-apply">
+            {% trans "View Details & Apply" %} →
+        </a>
+        {% endif %}
+    </div>
+</div>
+

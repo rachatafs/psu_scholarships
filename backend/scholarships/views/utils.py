@@ -1,5 +1,13 @@
 from django.utils import timezone
-from ..models import Application
+from django.utils.translation import gettext_lazy as _
+
+CATEGORY_LABELS = {
+    'all': _('All Scholarships'),
+    'general': _('General Scholarships'),
+    'exchange': _('Exchange Scholarships'),
+    'fee_waiver': _('Fee Waiver Scholarships'),
+    'lunch': _('Lunch Scholarships'),
+}
 
 def enrich_scholarships(scholarships_qs, user):
     """
@@ -45,11 +53,3 @@ def enrich_scholarships(scholarships_qs, user):
                 s.gpax_unmet = s.student_gpax < min_gpax
 
     return items
-
-CATEGORY_NAMES = {
-    'all': 'ทุนการศึกษาทั้งหมด',
-    'general': 'ทุนการศึกษาทั่วไป',
-    'exchange': 'ทุนการศึกษาแลกเปลี่ยน',
-    'fee_waiver': 'ทุนยกเว้นค่าธรรมเนียม',
-    'lunch': 'ทุนอาหารกลางวัน',
-}

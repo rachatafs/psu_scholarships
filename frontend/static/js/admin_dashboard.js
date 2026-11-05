@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 emailEditorSection.style.display = this.checked ? 'block' : 'none';
             }
             if (btnSubmitText) {
-                btnSubmitText.textContent = this.checked ? 'บันทึกและส่งอีเมล' : 'บันทึกสถานะ (ไม่ส่งอีเมล)';
+                btnSubmitText.textContent = this.checked ? 'Save & Send Email' : 'Save Status (No Email)';
             }
         });
     }
@@ -299,23 +299,32 @@ document.addEventListener('DOMContentLoaded', function () {
         let message = '';
 
         if (key === 'request_docs') {
-            subject = `[PSU Phuket Scholarships] แจ้งขอเอกสารประกอบการสมัครเพิ่มเติม ทุน ${schTitle}`;
-            message = `เรียนคุณ ${studentName},\n\nตามที่คุณได้ยื่นสมัครทุนการศึกษา "${schTitle}" นั้น\nจากการตรวจสอบเอกสารเบื้องต้น ทางหน่วยกิจการนักศึกษาพบว่าเอกสารบางรายการยังไม่ครบถ้วนหรือไม่สมบูรณ์\n\nจึงขอความอนุเคราะห์ส่งเอกสารเพิ่มเติม ดังนี้:\n1. [ระบุชื่อเอกสารที่ต้องการ เช่น หนังสือรับรองรายได้ครอบครัว / สำเนาใบแสดงผลการเรียน]\n2. กำหนดส่งภายในวันที่: [ระบุวันที่ เช่น ภายใน 3 วันทำการ]\n3. ช่องทางการส่ง: [ส่งตอบกลับทางอีเมลนี้ หรือนำส่งที่ห้องกิจการนักศึกษา]\n\nหากพ้นกำหนดเวลาดังกล่าว ทางคณะกรรมการขอสงวนสิทธิ์ในการพิจารณาใบสมัครในรอบนี้ครับ\nขอบคุณครับ`;
+            subject = `[PSU Phuket Scholarships] Additional Documents Required for ${schTitle}`;
+            message = `Dear ${studentName},\n\nRegarding your application for the "${schTitle}" scholarship:\nUpon reviewing your application, additional documentation is required to complete the verification process.\n\nPlease submit the following documents:\n1. [Specify required documents, e.g. official transcript / household income certificate]\n2. Submission deadline: [e.g. Within 3 business days]\n3. Submission channel: [Reply to this email or submit to Student Affairs Office]\n\nThank you,\nStudent Affairs Division, PSU Phuket`;
+        } else if (key === 'in_progress') {
+            subject = `[PSU Phuket Scholarships] Application Status: In Progress for ${schTitle}`;
+            message = `Dear ${studentName},\n\nYour application for "${schTitle}" is currently under review by the scholarship committee.\n\nPlease monitor your profile dashboard or email for further updates.\n\nBest regards,\nStudent Affairs Division, PSU Phuket`;
         } else if (key === 'interview') {
-            subject = `[PSU Phuket Scholarships] แจ้งนัดสัมภาษณ์ทุนการศึกษา ${schTitle}`;
-            message = `เรียนคุณ ${studentName},\n\nขอแสดงความยินดีที่คุณผ่านการคัดเลือกคุณสมบัติเบื้องต้น สำหรับทุนการศึกษา "${schTitle}"\nหน่วยกิจการนักศึกษาขอเชิญคุณเข้ารับการสัมภาษณ์ โดยมีรายละเอียดดังนี้:\n\n- วันที่สัมภาษณ์: [ระบุวันที่ เช่น 28 ตุลาคม 2569]\n- เวลา: [ระบุเวลา เช่น 09:30 - 10:00 น.]\n- สถานที่ / ช่องทาง: [ระบุห้อง เช่น ห้องประชุม 5204 หรือ ลิงก์ Zoom/Google Meet]\n- สิ่งที่ต้องเตรียมมา: [เช่น แฟ้มสะสมผลงาน (Portfolio), บัตรนักศึกษา]\n\nหากมีข้อสงสัยหรือติดขัดเรื่องเวลา กรุณาติดต่อหน่วยกิจการนักศึกษาโดยเร็วครับ`;
+            subject = `[PSU Phuket Scholarships] Interview Invitation for ${schTitle}`;
+            message = `Dear ${studentName},\n\nCongratulations! You have passed the preliminary screening for "${schTitle}".\nYou are invited to attend an interview with details as follows:\n\n- Date: [Specify date, e.g. Oct 28, 2026]\n- Time: [Specify time, e.g. 09:30 - 10:00 AM]\n- Location / Link: [Specify room or Zoom/Google Meet link]\n- Items to bring: [e.g. Student ID card, Portfolio]\n\nIf you have any scheduling conflicts, please contact Student Affairs promptly.\n\nBest regards,\nStudent Affairs Division, PSU Phuket`;
         } else if (key === 'reschedule') {
-            subject = `[PSU Phuket Scholarships] แจ้งเปลี่ยนแปลงกำหนดการสัมภาษณ์ทุน ${schTitle}`;
-            message = `เรียนคุณ ${studentName},\n\nหน่วยกิจการนักศึกษาขอแจ้งเปลี่ยนแปลงกำหนดการสัมภาษณ์ สำหรับทุนการศึกษา "${schTitle}" ดังนี้:\n\n- วันที่ใหม่: [ระบุวันที่ เช่น 30 ตุลาคม 2569]\n- เวลาใหม่: [ระบุเวลา เช่น 13:30 น.]\n- สถานที่ / ช่องทาง: [ระบุห้อง หรือ ลิงก์ออนไลน์]\n\nขออภัยในความไม่สะดวก หากติดขัดหรือไม่สามารถมาตามเวลาดังกล่าวได้ กรุณาติดต่อกลับทันทีครับ`;
+            subject = `[PSU Phuket Scholarships] Interview Rescheduled for ${schTitle}`;
+            message = `Dear ${studentName},\n\nPlease be informed that your interview for "${schTitle}" has been rescheduled:\n\n- New Date: [Specify date]\n- New Time: [Specify time]\n- Location / Link: [Room or online link]\n\nWe apologize for the inconvenience.\n\nBest regards,\nStudent Affairs Division, PSU Phuket`;
         } else if (key === 'approved') {
-            subject = `[PSU Phuket Scholarships] แจ้งผลการอนุมัติทุนการศึกษา ${schTitle}`;
-            message = `เรียนคุณ ${studentName},\n\nขอแสดงความยินดีด้วยเป็นอย่างยิ่ง! คุณผ่านการพิจารณาคัดเลือกและได้รับทุนการศึกษา "${schTitle}"\n\nขั้นตอนการยืนยันสิทธิ์และการรับมอบทุน:\n1. กรุณานำสำเนาหน้าสมุดบัญชีธนาคาร (ชื่อบัญชีตรงกับนักศึกษา) มาส่งที่หน่วยกิจการนักศึกษา\n2. กำหนดส่งเอกสารยืนยันสิทธิ์ภายในวันที่: [ระบุวันที่ เช่น 5 พฤศจิกายน 2569]\n3. เจ้าหน้าที่จะดำเนินการโอนเงินทุนหลังจากตรวจสอบเอกสารเรียบร้อยแล้ว\n\nขอแสดงความยินดีอีกครั้ง และขอให้มุ่งมั่นตั้งใจศึกษาเล่าเรียนต่อไปครับ`;
+            subject = `[PSU Phuket Scholarships] Congratulations! Scholarship Approved for ${schTitle}`;
+            message = `Dear ${studentName},\n\nCongratulations! We are pleased to inform you that your application for "${schTitle}" has been APPROVED.\n\nNext steps for grant confirmation:\n1. Submit a copy of your bank passbook (account holder name must match student) to Student Affairs.\n2. Submission deadline: [Specify date]\n3. The scholarship funds will be transferred upon verification.\n\nCongratulations once again on your achievement!\n\nBest regards,\nStudent Affairs Division, PSU Phuket`;
+        } else if (key === 'completed') {
+            subject = `[PSU Phuket Scholarships] Scholarship Completed for ${schTitle}`;
+            message = `Dear ${studentName},\n\nWe would like to inform you that the scholarship disbursement process for "${schTitle}" is now complete.\n\nWe wish you all the best in your continued studies at PSU Phuket.\n\nBest regards,\nStudent Affairs Division, PSU Phuket`;
         } else if (key === 'rejected') {
-            subject = `[PSU Phuket Scholarships] แจ้งผลการพิจารณาทุนการศึกษา ${schTitle}`;
-            message = `เรียนคุณ ${studentName},\n\nตามที่คุณได้ยื่นสมัครทุนการศึกษา "${schTitle}" นั้น\nคณะกรรมการได้พิจารณาคุณสมบัติอย่างละเอียดแล้ว และขอแจ้งให้ทราบว่า ในครั้งนี้คุณยังไม่ผ่านการคัดเลือก เนื่องจากมีผู้สมัครจำนวนมากและโควตาทุนการศึกษามีจำกัด\n\n[ข้อเสนอแนะ: นักศึกษาสามารถติดตามและยื่นขอรับทุนการศึกษาประเภทอื่นๆ ในรอบถัดไปได้ครับ]\n\nขอเป็นกำลังใจให้ในการศึกษาเล่าเรียน และขอขอบคุณที่ให้ความสนใจสมัครทุนการศึกษาของมหาวิทยาลัยครับ`;
+            subject = `[PSU Phuket Scholarships] Application Outcome for ${schTitle}`;
+            message = `Dear ${studentName},\n\nThank you for applying for the "${schTitle}" scholarship.\nAfter careful review by the scholarship committee, we regret to inform you that we are unable to offer you a scholarship this round due to high applicant volume and limited quotas.\n\nWe encourage you to apply for upcoming scholarship opportunities in future terms.\n\nBest regards,\nStudent Affairs Division, PSU Phuket`;
+        } else if (key === 'cancelled') {
+            subject = `[PSU Phuket Scholarships] Application Cancelled for ${schTitle}`;
+            message = `Dear ${studentName},\n\nYour application for "${schTitle}" has been cancelled.\nIf you did not request this cancellation or have any questions, please contact the Student Affairs Division.\n\nBest regards,\nStudent Affairs Division, PSU Phuket`;
         } else if (key === 'general') {
-            subject = `[PSU Phuket Scholarships] แจ้งข้อมูลเพิ่มเติม ทุน ${schTitle}`;
-            message = `เรียนคุณ ${studentName},\n\nหน่วยกิจการนักศึกษา มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต มีข้อความแจ้งเกี่ยวกับทุนการศึกษา "${schTitle}" ของคุณ ดังนี้:\n\n[พิมพ์ข้อความหรือหมายเหตุที่ต้องการแจ้งที่นี่...]\n\nหากมีข้อสงสัยเพิ่มเติม สามารถติดต่อสอบถามได้ที่หน่วยกิจการนักศึกษาครับ`;
+            subject = `[PSU Phuket Scholarships] Notification Regarding ${schTitle}`;
+            message = `Dear ${studentName},\n\nStudent Affairs Division, Prince of Songkla University, Phuket Campus would like to share the following update regarding your application for "${schTitle}":\n\n[Write your message here...]\n\nBest regards,\nStudent Affairs Division, PSU Phuket`;
         }
 
         if (subject && modalEmailSubject) modalEmailSubject.value = subject;
@@ -341,27 +350,33 @@ document.addEventListener('DOMContentLoaded', function () {
         if (modalAppId) modalAppId.value = context.appId;
         if (modalStudentName) modalStudentName.textContent = context.studentName;
         if (modalStudentId) modalStudentId.textContent = `(${context.studentId})`;
-        if (modalStudentEmail) modalStudentEmail.textContent = context.studentEmail || 'ไม่มีอีเมลในระบบ';
+        if (modalStudentEmail) modalStudentEmail.textContent = context.studentEmail || 'No email in system';
         if (modalSchTitle) modalSchTitle.textContent = context.schTitle;
         if (modalAppNote) modalAppNote.value = context.existingNote || '';
 
         // Status badge color & prefix text
         if (modalStatusLabelPrefix) {
-            modalStatusLabelPrefix.textContent = context.isNoticeOnly ? 'สถานะปัจจุบัน: ' : 'เปลี่ยนสถานะเป็น: ';
+            modalStatusLabelPrefix.textContent = context.isNoticeOnly ? 'Current Status: ' : 'Change Status to: ';
         }
 
         if (modalStatusBadge) {
             modalStatusBadge.textContent = context.statusLabel;
             const s = context.isNoticeOnly ? context.currentStatus : context.targetStatus;
-            if (s === 'interview') {
+            if (s === 'interview' || s === 'in_progress') {
                 modalStatusBadge.style.background = '#e0f2fe';
                 modalStatusBadge.style.color = '#0369a1';
             } else if (s === 'approved') {
                 modalStatusBadge.style.background = '#dcfce7';
                 modalStatusBadge.style.color = '#15803d';
+            } else if (s === 'completed') {
+                modalStatusBadge.style.background = '#f3e8ff';
+                modalStatusBadge.style.color = '#7e22ce';
             } else if (s === 'rejected') {
                 modalStatusBadge.style.background = '#fee2e2';
                 modalStatusBadge.style.color = '#b91c1c';
+            } else if (s === 'cancelled') {
+                modalStatusBadge.style.background = '#f1f5f9';
+                modalStatusBadge.style.color = '#475569';
             } else {
                 modalStatusBadge.style.background = '#fef3c7';
                 modalStatusBadge.style.color = '#b45309';
@@ -371,9 +386,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Set matching template in dropdown and populate text
         let initialTmplKey = 'general';
         if (!context.isNoticeOnly) {
-            if (context.targetStatus === 'interview') initialTmplKey = 'interview';
+            if (context.targetStatus === 'in_progress') initialTmplKey = 'in_progress';
+            else if (context.targetStatus === 'interview') initialTmplKey = 'interview';
             else if (context.targetStatus === 'approved') initialTmplKey = 'approved';
+            else if (context.targetStatus === 'completed') initialTmplKey = 'completed';
             else if (context.targetStatus === 'rejected') initialTmplKey = 'rejected';
+            else if (context.targetStatus === 'cancelled') initialTmplKey = 'cancelled';
         } else {
             initialTmplKey = 'request_docs';
         }
@@ -388,7 +406,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (emailEditorSection) emailEditorSection.style.display = 'block';
         }
         if (btnSubmitText) {
-            btnSubmitText.textContent = context.isNoticeOnly ? 'ส่งข้อความแจ้งเตือน' : 'บันทึกและส่งอีเมล';
+            btnSubmitText.textContent = context.isNoticeOnly ? 'Send Notice' : 'Save & Send Email';
         }
 
         if (statusModal) {
@@ -410,10 +428,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const existingNote = row.getAttribute('data-note') || '';
         const currentStatus = row.getAttribute('data-status') || 'pending';
 
-        let statusLabel = 'รอพิจารณา';
-        if (currentStatus === 'interview') statusLabel = 'รอสัมภาษณ์';
-        else if (currentStatus === 'approved') statusLabel = 'ผ่านการอนุมัติ';
-        else if (currentStatus === 'rejected') statusLabel = 'ไม่อนุมัติ';
+        let statusLabel = 'Pending';
+        if (currentStatus === 'in_progress') statusLabel = 'In Progress';
+        else if (currentStatus === 'interview') statusLabel = 'Interview';
+        else if (currentStatus === 'approved') statusLabel = 'Approve';
+        else if (currentStatus === 'completed') statusLabel = 'Complete';
+        else if (currentStatus === 'rejected') statusLabel = 'Reject';
+        else if (currentStatus === 'cancelled') statusLabel = 'Cancel';
 
         openStatusEmailModal({
             formElement: null,
@@ -472,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // If target status is "pending" (Reset back):
         if (targetStatus === 'pending') {
-            if (!confirm('คุณต้องการย้อนกลับสถานะใบสมัครนี้เป็น "รอพิจารณา" ใช่หรือไม่?')) {
+            if (!confirm('Are you sure you want to reset this application status to "Pending"?')) {
                 e.preventDefault();
                 return;
             }
@@ -498,30 +519,35 @@ document.addEventListener('DOMContentLoaded', function () {
                     row.setAttribute('data-status', 'pending');
                     const statusCell = row.cells ? row.cells[5] : row.querySelector('td:nth-child(6)');
                     if (statusCell) {
-                        statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #d97706;"></span><span style="color: #b45309;">รอพิจารณา</span></div>';
+                        statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #d97706;"></span><span style="color: #b45309;">Pending</span></div>';
                     }
                     const btnGroup = form.closest('.action-btn-group');
                     const csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
                     const actionUrl = form.action;
 
                     btnGroup.innerHTML = `
-                        <form method="post" action="${actionUrl}" style="width: 100%;">
+                        <form method="post" action="${actionUrl}">
                             <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
-                            <input type="hidden" name="status" value="interview">
-                            <button type="submit" class="btn-table-action btn-act-interview" style="width: 100%;" title="นัดสัมภาษณ์">เรียกสัมภาษณ์</button>
+                            <input type="hidden" name="status" value="in_progress">
+                            <button type="submit" class="btn-table-action btn-act-inprogress" title="Change to In Progress">In Progress</button>
                         </form>
-                        <form method="post" action="${actionUrl}" style="width: 100%;">
+                        <form method="post" action="${actionUrl}">
                             <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                             <input type="hidden" name="status" value="approved">
-                            <button type="submit" class="btn-table-action btn-act-approve" style="width: 100%;" title="อนุมัติใบสมัคร">อนุมัติให้ทุนเลย</button>
+                            <button type="submit" class="btn-table-action btn-act-approve" title="Approve application">Approve</button>
                         </form>
-                        <form method="post" action="${actionUrl}" style="width: 100%;">
+                        <form method="post" action="${actionUrl}">
                             <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                             <input type="hidden" name="status" value="rejected">
-                            <button type="submit" class="btn-table-action btn-act-reject" style="width: 100%;" title="ปฏิเสธใบสมัคร">ไม่อนุมัติ</button>
+                            <button type="submit" class="btn-table-action btn-act-reject" title="Reject application">Reject</button>
                         </form>
-                        <button type="button" class="btn-table-action btn-act-notice" style="width: 100%; background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; font-weight: 600; font-size: 0.76rem; padding: 5px 6px; margin-top: 2px; border-radius: 6px; cursor: pointer; transition: background 0.15s;" title="ส่งข้อความ/ขอเอกสาร/แจ้งเตือนนักศึกษา" onclick="openDirectNoticeModal(this)">
-                            เพิ่มเติม
+                        <form method="post" action="${actionUrl}">
+                            <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                            <input type="hidden" name="status" value="cancelled">
+                            <button type="submit" class="btn-table-action btn-act-cancel" title="Cancel application">Cancel</button>
+                        </form>
+                        <button type="button" class="btn-table-action btn-act-notice" title="Send notice / Request additional documents" onclick="openDirectNoticeModal(this)">
+                            Additional Docs
                         </button>
                     `;
                 }
@@ -530,12 +556,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error(err);
                 btn.innerHTML = originalBtnText;
                 btn.disabled = false;
-                alert('เกิดข้อผิดพลาดในการย้อนกลับสถานะ');
+                alert('Error resetting application status.');
             });
             return;
         }
 
-        // For interview, approved, rejected: Open the Email & Status Modal!
+        // For in_progress, interview, approved, completed, rejected, cancelled: Open the Email & Status Modal!
         e.preventDefault();
         e.stopPropagation();
 
@@ -546,10 +572,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const schTitle = row.getAttribute('data-sch-title') || row.querySelector('.table-sch-title')?.textContent.trim() || '';
         const existingNote = row.getAttribute('data-note') || '';
 
-        let statusLabel = 'รอพิจารณา';
-        if (targetStatus === 'interview') statusLabel = 'เรียกสัมภาษณ์';
-        else if (targetStatus === 'approved') statusLabel = 'ผ่านการอนุมัติ';
-        else if (targetStatus === 'rejected') statusLabel = 'ไม่อนุมัติ';
+        let statusLabel = 'Pending';
+        if (targetStatus === 'in_progress') statusLabel = 'In Progress';
+        else if (targetStatus === 'interview') statusLabel = 'Interview';
+        else if (targetStatus === 'approved') statusLabel = 'Approve';
+        else if (targetStatus === 'completed') statusLabel = 'Complete';
+        else if (targetStatus === 'rejected') statusLabel = 'Reject';
+        else if (targetStatus === 'cancelled') statusLabel = 'Cancel';
 
         openStatusEmailModal({
             formElement: form,
@@ -605,13 +634,17 @@ document.addEventListener('DOMContentLoaded', function () {
                             const statusCell = row.cells ? row.cells[5] : row.querySelector('td:nth-child(6)');
                             if (statusCell) {
                                 if (data.status === 'pending') {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #d97706;"></span><span style="color: #b45309;">รอพิจารณา</span></div>';
-                                } else if (data.status === 'interview') {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: var(--psu-blue-500);"></span><span style="color: var(--psu-blue-700);">รอสัมภาษณ์</span></div>';
+                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #d97706;"></span><span style="color: #b45309;">Pending</span></div>';
+                                } else if (data.status === 'in_progress' || data.status === 'interview') {
+                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #0284c7;"></span><span style="color: #0369a1;">In Progress</span></div>';
                                 } else if (data.status === 'approved') {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #059669;"></span><span style="color: #047857;">อนุมัติแล้ว</span></div>';
+                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #059669;"></span><span style="color: #047857;">Approve</span></div>';
+                                } else if (data.status === 'completed') {
+                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #7e22ce;"></span><span style="color: #6b21a8;">Complete</span></div>';
+                                } else if (data.status === 'cancelled') {
+                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #64748b;"></span><span style="color: #475569;">Cancel</span></div>';
                                 } else {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #dc2626;"></span><span style="color: #b91c1c;">ไม่อนุมัติ</span></div>';
+                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #dc2626;"></span><span style="color: #b91c1c;">Reject</span></div>';
                                 }
                             }
 
@@ -621,49 +654,80 @@ document.addEventListener('DOMContentLoaded', function () {
                             const actionUrl = statusForm.action;
 
                             const noticeBtnHtml = `
-                                <button type="button" class="btn-table-action btn-act-notice" style="width: 100%; background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; font-weight: 600; font-size: 0.76rem; padding: 5px 6px; margin-top: 2px; border-radius: 6px; cursor: pointer; transition: background 0.15s;" title="ส่งข้อความ/ขอเอกสาร/แจ้งเตือนนักศึกษา" onclick="openDirectNoticeModal(this)">
-                                    เพิ่มเติม
+                                <button type="button" class="btn-table-action btn-act-notice" title="Send notice / Request additional documents" onclick="openDirectNoticeModal(this)">
+                                    Additional Docs
                                 </button>
                             `;
 
                             let newButtons = '';
                             if (data.status === 'pending') {
                                 newButtons += `
-                                    <form method="post" action="${actionUrl}" style="width: 100%;">
+                                    <form method="post" action="${actionUrl}">
                                         <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
-                                        <input type="hidden" name="status" value="interview">
-                                        <button type="submit" class="btn-table-action btn-act-interview" style="width: 100%;" title="นัดสัมภาษณ์">เรียกสัมภาษณ์</button>
+                                        <input type="hidden" name="status" value="in_progress">
+                                        <button type="submit" class="btn-table-action btn-act-inprogress" title="Change to In Progress">In Progress</button>
                                     </form>
-                                    <form method="post" action="${actionUrl}" style="width: 100%;">
-                                        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
-                                        <input type="hidden" name="status" value="approved">
-                                        <button type="submit" class="btn-table-action btn-act-approve" style="width: 100%;" title="อนุมัติใบสมัคร">อนุมัติให้ทุนเลย</button>
-                                    </form>
-                                    <form method="post" action="${actionUrl}" style="width: 100%;">
-                                        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
-                                        <input type="hidden" name="status" value="rejected">
-                                        <button type="submit" class="btn-table-action btn-act-reject" style="width: 100%;" title="ปฏิเสธใบสมัคร">ไม่อนุมัติ</button>
-                                    </form>
-                                `;
-                            } else if (data.status === 'interview') {
-                                newButtons += `
-                                    <form method="post" action="${actionUrl}" style="width: 100%;">
+                                    <form method="post" action="${actionUrl}">
                                         <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                                         <input type="hidden" name="status" value="approved">
-                                        <button type="submit" class="btn-table-action btn-act-approve" style="width: 100%;" title="อนุมัติใบสมัคร">ผ่านสัมภาษณ์ (ให้ทุน)</button>
+                                        <button type="submit" class="btn-table-action btn-act-approve" title="Approve application">Approve</button>
                                     </form>
-                                    <form method="post" action="${actionUrl}" style="width: 100%;">
+                                    <form method="post" action="${actionUrl}">
                                         <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                                         <input type="hidden" name="status" value="rejected">
-                                        <button type="submit" class="btn-table-action btn-act-reject" style="width: 100%;" title="ปฏิเสธใบสมัคร">ไม่ผ่านสัมภาษณ์</button>
+                                        <button type="submit" class="btn-table-action btn-act-reject" title="Reject application">Reject</button>
+                                    </form>
+                                    <form method="post" action="${actionUrl}">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                        <input type="hidden" name="status" value="cancelled">
+                                        <button type="submit" class="btn-table-action btn-act-cancel" title="Cancel application">Cancel</button>
                                     </form>
                                 `;
-                            } else if (data.status === 'approved' || data.status === 'rejected') {
+                            } else if (data.status === 'in_progress' || data.status === 'interview') {
                                 newButtons += `
-                                    <form method="post" action="${actionUrl}" style="width: 100%;">
+                                    <form method="post" action="${actionUrl}">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                        <input type="hidden" name="status" value="approved">
+                                        <button type="submit" class="btn-table-action btn-act-approve" title="Approve application">Approve</button>
+                                    </form>
+                                    <form method="post" action="${actionUrl}">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                        <input type="hidden" name="status" value="rejected">
+                                        <button type="submit" class="btn-table-action btn-act-reject" title="Reject application">Reject</button>
+                                    </form>
+                                    <form method="post" action="${actionUrl}">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                        <input type="hidden" name="status" value="cancelled">
+                                        <button type="submit" class="btn-table-action btn-act-cancel" title="Cancel application">Cancel</button>
+                                    </form>
+                                `;
+                            } else if (data.status === 'approved') {
+                                newButtons += `
+                                    <form method="post" action="${actionUrl}">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                        <input type="hidden" name="status" value="completed">
+                                        <button type="submit" class="btn-table-action btn-act-complete" title="Complete scholarship process">Complete</button>
+                                    </form>
+                                    <form method="post" action="${actionUrl}">
                                         <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                                         <input type="hidden" name="status" value="pending">
-                                        <button type="submit" class="btn-table-action" style="background-color: transparent; border: 1px solid #ccc; color: #666; font-size: 0.75rem; width: 100%;" title="รีเซ็ตสถานะ">ย้อนกลับ</button>
+                                        <button type="submit" class="btn-table-action btn-act-reset" title="Reset status to Pending">Reset to Pending</button>
+                                    </form>
+                                `;
+                            } else if (data.status === 'completed') {
+                                newButtons += `
+                                    <form method="post" action="${actionUrl}">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                        <input type="hidden" name="status" value="pending">
+                                        <button type="submit" class="btn-table-action btn-act-reset" title="Reset status to Pending">Reset to Pending</button>
+                                    </form>
+                                `;
+                            } else if (data.status === 'rejected' || data.status === 'cancelled') {
+                                newButtons += `
+                                    <form method="post" action="${actionUrl}">
+                                        <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
+                                        <input type="hidden" name="status" value="pending">
+                                        <button type="submit" class="btn-table-action btn-act-reset" title="Reset status to Pending">Reset to Pending</button>
                                     </form>
                                 `;
                             }
@@ -675,19 +739,19 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
 
                     if (data.email_sent) {
-                        alert('ดำเนินการสำเร็จ และส่งอีเมลแจ้งนักศึกษาเรียบร้อยแล้ว');
+                        alert('Operation completed and notification email sent successfully.');
                     } else if (data.email_error) {
-                        alert('บันทึกข้อมูลสำเร็จ (แต่ไม่สามารถส่งอีเมลได้: ' + data.email_error + ')');
+                        alert('Data saved successfully (Email error: ' + data.email_error + ')');
                     } else {
-                        alert('บันทึกข้อมูลในระบบเรียบร้อยแล้ว');
+                        alert('Data saved successfully in system.');
                     }
                 } else {
-                    alert('เกิดข้อผิดพลาดในการอัปเดตข้อมูล');
+                    alert('Error updating application data.');
                 }
             })
             .catch(err => {
                 console.error(err);
-                alert('เกิดข้อผิดพลาดในการเชื่อมต่อเซิร์ฟเวอร์');
+                alert('Server connection error.');
             })
             .finally(() => {
                 if (submitBtn) submitBtn.disabled = false;
