@@ -78,13 +78,19 @@
                     <h2 class="table-main-title">{% trans "Student Applications & Screening" %}</h2>
                     <p class="table-sub-desc">{% trans "Search, verify GPAX eligibility, and update application review statuses." %}</p>
                 </div>
-                <a href="/admin/scholarships/scholarship/add/" class="btn-create-sch-link" target="_blank">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
-                        <line x1="12" y1="5" x2="12" y2="19"></line>
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                    </svg>
-                    <span>{% trans "Create New Scholarship" %}</span>
-                </a>
+                <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
+                    <a href="{% url 'admin_guide' %}" class="btn-create-sch-link" style="background: #ffffff; color: #0284c7; border: 1.5px solid #bfdbfe;">
+                        <span class="material-symbols-outlined" style="font-size: 1rem;">menu_book</span>
+                        <span>{% trans "Review Manual" %}</span>
+                    </a>
+                    <a href="/admin/scholarships/scholarship/add/" class="btn-create-sch-link" target="_blank">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        <span>{% trans "Create New Scholarship" %}</span>
+                    </a>
+                </div>
             </div>
 
             <div class="admin-notice-box">

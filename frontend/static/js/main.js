@@ -12,29 +12,53 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ─── Mobile Sidebar Toggle ────────────────────────────────
     const toggler = document.getElementById('navbarToggler');
-    const navbar  = document.querySelector('.navbar');
+    const navbar = document.querySelector('.navbar');
     const closeBtn = document.getElementById('navbarClose');
     const backdrop = document.getElementById('navbarBackdrop');
+
+    // Ensure scrolling is always enabled initially
+    document.body.style.overflow = '';
+
+    const closeSidebar = () => {
+        if (navbar) navbar.classList.remove('sidebar-open');
+        document.body.style.overflow = '';
+    };
 
     if (toggler && navbar) {
         // Open sidebar
         toggler.addEventListener('click', function (e) {
             e.stopPropagation();
             navbar.classList.add('sidebar-open');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
         });
-
-        // Close sidebar function
-        const closeSidebar = () => {
-            navbar.classList.remove('sidebar-open');
-            document.body.style.overflow = '';
-        };
 
         if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
         if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+        // Prevent clicks inside the drawer from bubbling out to the backdrop or document
+        const collapseElem = document.getElementById('navbarCollapse');
+        if (collapseElem) {
+            collapseElem.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+        }
+
+        // Close sidebar ONLY when a real page navigation link inside it is clicked
+        const navLinks = navbar.querySelectorAll('.navbar-collapse a:not(.dropdown-toggle):not([href="#"])');
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', closeSidebar);
+        });
     }
 
-    // ─── Dropdown (click on mobile, hover on desktop) ─────────
+    // Safety resets for viewport resize & back-forward cache
+    window.addEventListener('pageshow', closeSidebar);
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 1024) {
+            closeSidebar();
+        }
+    });
+
+    // ─── Dropdown (click on mobile/tablet <= 1024px, hover on desktop) ─────────
     const dropdowns = document.querySelectorAll('.dropdown');
 
     dropdowns.forEach(function (dropdown) {
@@ -42,12 +66,23 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!toggle) return;
 
         toggle.addEventListener('click', function (e) {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024) {
                 e.preventDefault();
-                dropdown.classList.toggle('open');
+                e.stopPropagation();
+
+                const willOpen = !dropdown.classList.contains('open');
+
+                // Close other dropdowns first
                 dropdowns.forEach(function (other) {
                     if (other !== dropdown) other.classList.remove('open');
                 });
+
+                // Toggle this dropdown
+                if (willOpen) {
+                    dropdown.classList.add('open');
+                } else {
+                    dropdown.classList.remove('open');
+                }
             }
         });
     });
@@ -96,10 +131,10 @@ function closeLoginModal(event) {
 }
 
 // ─── AJAX Login Form Submission (ไม่เปลี่ยนหน้าเมื่อกรอกรหัสผิด) ────────
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const loginForms = document.querySelectorAll('#modalLoginForm, #pageLoginForm');
     loginForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
             const isModal = form.id === 'modalLoginForm';
             const errorBox = isModal ? document.getElementById('modalLoginError') : document.getElementById('pageLoginError');
@@ -123,36 +158,36 @@ document.addEventListener("DOMContentLoaded", function() {
                     'Accept': 'application/json'
                 }
             })
-            .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, data: data })))
-            .then(result => {
-                if (result.ok && result.data.success) {
-                    if (submitBtn) submitBtn.textContent = 'เข้าสู่ระบบสำเร็จ!';
-                    window.location.href = result.data.redirect_url || '/';
-                } else {
+                .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, data: data })))
+                .then(result => {
+                    if (result.ok && result.data.success) {
+                        if (submitBtn) submitBtn.textContent = 'เข้าสู่ระบบสำเร็จ!';
+                        window.location.href = result.data.redirect_url || '/';
+                    } else {
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalBtnText;
+                        }
+                        if (errorBox) {
+                            errorBox.textContent = result.data.message || 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง';
+                            errorBox.style.display = 'block';
+                        }
+                        if (passwordInput) {
+                            passwordInput.value = '';
+                            passwordInput.focus();
+                        }
+                    }
+                })
+                .catch(err => {
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.textContent = originalBtnText;
                     }
                     if (errorBox) {
-                        errorBox.textContent = result.data.message || 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง';
+                        errorBox.textContent = 'เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง';
                         errorBox.style.display = 'block';
                     }
-                    if (passwordInput) {
-                        passwordInput.value = '';
-                        passwordInput.focus();
-                    }
-                }
-            })
-            .catch(err => {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalBtnText;
-                }
-                if (errorBox) {
-                    errorBox.textContent = 'เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง';
-                    errorBox.style.display = 'block';
-                }
-            });
+                });
         });
     });
 });

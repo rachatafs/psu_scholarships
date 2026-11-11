@@ -28,6 +28,11 @@ urlpatterns = [
     path('application/<int:pk>/update/', views.update_application, name='update_application'),
     path('scholarship/<int:pk>/delete/', views.delete_scholarship, name='delete_scholarship'),
 
+    # ── User Guides (Role-Based) ──────────────────────────────────
+    path('guide/', views.guide_redirect, name='guide_redirect'),
+    path('guide/student/', views.student_guide, name='student_guide'),
+    path('guide/admin/', views.admin_guide, name='admin_guide'),
+
     # ── Static Info Pages ─────────────────────────────────────────
     path('jobs/', views.jobs, name='jobs'),
     path('payment-form/', views.payment_form, name='payment_form'),
