@@ -200,6 +200,7 @@
             <ul class="sidebar-menu">
                 <li><a href="{% url 'scholarship_dashboard' %}" class="{% if request.path == '/dashboard/' %}active{% endif %}"><span class="material-symbols-outlined">analytics</span> {% trans "Analytics Dashboard" %}</a></li>
                 <li><a href="{% url 'admin_dashboard' %}" class="{% if request.path == '/admin-dashboard/' %}active{% endif %}"><span class="material-symbols-outlined">folder_managed</span> {% trans "Admin Console" %}</a></li>
+                <li><a href="{% url 'admin_guide' %}" class="{% if request.path == '/guide/admin/' %}active{% endif %}"><span class="material-symbols-outlined">menu_book</span> {% trans "Admin Guide" %}</a></li>
                 <li><a href="/admin/"><span class="material-symbols-outlined">database</span> {% trans "Advanced Database" %}</a></li>
             </ul>
             <div style="padding: 2rem; margin-top: auto;">

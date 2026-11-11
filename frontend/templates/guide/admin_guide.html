@@ -1,0 +1,209 @@
+{% extends 'dashboard_base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Admin Guide" %} | PSU Phuket Scholarships{% endblock %}
+
+{% block dashboard_content %}
+<div class="admin-guide-wrapper" style="padding: 24px; max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Header Banner -->
+    <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px 32px; margin-bottom: 28px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 12px;">
+            <div style="display: inline-block; padding: 4px 12px; background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 999px; font-size: 0.75rem; font-weight: 700; color: #1d4ed8; letter-spacing: 0.05em; text-transform: uppercase;">
+                ADMINISTRATOR MANUAL
+            </div>
+            <a href="{% url 'admin_dashboard' %}" class="btn-card-apply" style="text-decoration: none; padding: 8px 16px; font-size: 0.88rem; width: auto; border-radius: 8px;">
+                ← {% trans "Back to Admin Dashboard" %}
+            </a>
+        </div>
+        <h1 style="font-size: 1.85rem; font-weight: 800; color: #0f172a; margin: 0 0 8px;">
+            {% trans "Scholarship Administration & Review Procedures" %}
+        </h1>
+        <p style="font-size: 0.98rem; color: #64748b; line-height: 1.6; margin: 0; max-width: 820px;">
+            {% trans "Standard operating procedures for scholarship committee members, document verification, application transitions, additional document requests, and quota management." %}
+        </p>
+    </div>
+
+    <!-- Main Grid -->
+    <div style="display: grid; grid-template-columns: 280px 1fr; gap: 28px; align-items: start;">
+        
+        <!-- Sticky Sidebar Navigation -->
+        <aside style="position: sticky; top: 20px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+            <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 10px;">
+                {% trans "Admin Procedures" %}
+            </div>
+            <nav style="display: flex; flex-direction: column; gap: 6px; font-size: 0.9rem;">
+                <a href="#admin-workflow" style="padding: 8px 12px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600;">
+                    01. {% trans "Applicant Review Workflow" %}
+                </a>
+                <a href="#admin-status-matrix" style="padding: 8px 12px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600;">
+                    02. {% trans "Status Transition Matrix" %}
+                </a>
+                <a href="#admin-reset-docs" style="padding: 8px 12px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600;">
+                    03. {% trans "Additional Docs & Reset" %}
+                </a>
+                <a href="#admin-quota-mgmt" style="padding: 8px 12px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600;">
+                    04. {% trans "Scholarship Quotas & Grants" %}
+                </a>
+                <a href="#admin-security" style="padding: 8px 12px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600;">
+                    05. {% trans "Data Privacy & Compliance" %}
+                </a>
+            </nav>
+            <hr style="border: none; border-top: 1px solid #f1f5f9; margin: 16px 0;">
+            <div style="background: #fffbeb; border: 1px solid #fef3c7; border-radius: 8px; padding: 12px; font-size: 0.82rem; color: #92400e; line-height: 1.5;">
+                <strong>{% trans "Confidentiality" %}:</strong> {% trans "Applicant data contains sensitive student information. Do not disclose records to unauthorized third parties." %}
+            </div>
+        </aside>
+
+        <!-- Main Articles -->
+        <main style="display: flex; flex-direction: column; gap: 28px;">
+
+            <!-- Section 1: Workflow -->
+            <section id="admin-workflow" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                    <span style="font-size: 1.25rem;">📄</span>
+                    <h2 style="font-size: 1.35rem; font-weight: 700; color: #0f172a; margin: 0;">{% trans "01. Applicant Review Workflow & Document Inspection" %}</h2>
+                </div>
+                <p style="font-size: 0.95rem; color: #334155; line-height: 1.7; margin-bottom: 16px;">
+                    {% trans "Every incoming application is displayed in the Applications table on the Admin Dashboard. Committee members should inspect submitted files before updating review statuses:" %}
+                </p>
+                <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem; color: #334155;">
+                    <div style="padding: 12px 16px; border-radius: 8px; background: #f8fafc; border: 1px solid #e2e8f0;">
+                        <strong>1. {% trans "Inspect Documents" %}:</strong> {% trans "Click on the document pills (e.g. 'Transcript', 'Recommendation') in the table row to view the student's uploaded file in a new browser tab." %}
+                    </div>
+                    <div style="padding: 12px 16px; border-radius: 8px; background: #f8fafc; border: 1px solid #e2e8f0;">
+                        <strong>2. {% trans "Verify Academic Standing" %}:</strong> {% trans "Cross-check the student's recorded GPAX and faculty against the scholarship criteria." %}
+                    </div>
+                    <div style="padding: 12px 16px; border-radius: 8px; background: #f8fafc; border: 1px solid #e2e8f0;">
+                        <strong>3. {% trans "Advance Review Phase" %}:</strong> {% trans "Click 'In Progress' to indicate the application is actively undergoing committee evaluation or interview scheduling." %}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Status Transition Matrix -->
+            <section id="admin-status-matrix" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                    <span style="font-size: 1.25rem;">🔄</span>
+                    <h2 style="font-size: 1.35rem; font-weight: 700; color: #0f172a; margin: 0;">{% trans "02. Standardized Application Status Matrix" %}</h2>
+                </div>
+                <p style="font-size: 0.95rem; color: #334155; line-height: 1.7; margin-bottom: 16px;">
+                    {% trans "The system supports 6 primary statuses. Reviewers must transition statuses strictly following this lifecycle:" %}
+                </p>
+
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+                        <thead>
+                            <tr style="background: #f1f5f9; color: #475569; border-bottom: 1.5px solid #cbd5e1;">
+                                <th style="padding: 10px 14px;">{% trans "Status" %}</th>
+                                <th style="padding: 10px 14px;">{% trans "Indicator" %}</th>
+                                <th style="padding: 10px 14px;">{% trans "When to Use" %}</th>
+                                <th style="padding: 10px 14px;">{% trans "Next Allowed State" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 14px; font-weight: 700;">Pending</td>
+                                <td style="padding: 12px 14px;"><span class="dot-live" style="background: #d97706;"></span> Pending</td>
+                                <td style="padding: 12px 14px;">{% trans "Default state when application is submitted by student." %}</td>
+                                <td style="padding: 12px 14px;">In Progress, Reject, Cancel</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 14px; font-weight: 700;">In Progress</td>
+                                <td style="padding: 12px 14px;"><span class="dot-live" style="background: #0284c7;"></span> In Progress</td>
+                                <td style="padding: 12px 14px;">{% trans "Active review, interviews, or awaiting additional documents." %}</td>
+                                <td style="padding: 12px 14px;">Approve, Reject, Cancel</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 14px; font-weight: 700; color: #15803d;">Approve</td>
+                                <td style="padding: 12px 14px;"><span class="dot-live" style="background: #059669;"></span> Approve</td>
+                                <td style="padding: 12px 14px;">{% trans "Applicant has met all criteria and is awarded the scholarship." %}</td>
+                                <td style="padding: 12px 14px;">Complete, Cancel</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 14px; font-weight: 700; color: #b91c1c;">Reject</td>
+                                <td style="padding: 12px 14px;"><span class="dot-live" style="background: #dc2626;"></span> Reject</td>
+                                <td style="padding: 12px 14px;">{% trans "Ineligible, missing mandatory criteria, or quota filled." %}</td>
+                                <td style="padding: 12px 14px;">Reset to Pending</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e2e8f0;">
+                                <td style="padding: 12px 14px; font-weight: 700; color: #7e22ce;">Complete</td>
+                                <td style="padding: 12px 14px;"><span class="dot-live" style="background: #7e22ce;"></span> Complete</td>
+                                <td style="padding: 12px 14px;">{% trans "Scholarship disbursement and onboarding completed." %}</td>
+                                <td style="padding: 12px 14px;">Final State</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 12px 14px; font-weight: 700; color: #475569;">Cancel</td>
+                                <td style="padding: 12px 14px;"><span class="dot-live" style="background: #64748b;"></span> Cancel</td>
+                                <td style="padding: 12px 14px;">{% trans "Application retracted by student or disqualified." %}</td>
+                                <td style="padding: 12px 14px;">Reset to Pending</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 3: Additional Docs & Reset -->
+            <section id="admin-reset-docs" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                    <span style="font-size: 1.25rem;">⚡</span>
+                    <h2 style="font-size: 1.35rem; font-weight: 700; color: #0f172a; margin: 0;">{% trans "03. Additional Docs Requests & Status Reset" %}</h2>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div style="border: 1px solid #bae6fd; background: #f0f9ff; border-radius: 10px; padding: 18px;">
+                        <h4 style="font-size: 1.05rem; font-weight: 700; color: #0369a1; margin-top: 0; margin-bottom: 8px;">
+                            {% trans "Requesting 'Additional Docs'" %}
+                        </h4>
+                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.6; margin: 0 0 10px;">
+                            {% trans "When a student's file is blurry, incomplete, or requires clarification, click the 'Additional Docs' button in the row." %}
+                        </p>
+                        <ul style="font-size: 0.85rem; color: #0284c7; margin: 0; padding-left: 18px;">
+                            <li>{% trans "Sends automated email with instructions to student" %}</li>
+                            <li>{% trans "Keeps the application in 'In Progress' queue" %}</li>
+                        </ul>
+                    </div>
+
+                    <div style="border: 1px solid #fecdd3; background: #fff1f2; border-radius: 10px; padding: 18px;">
+                        <h4 style="font-size: 1.05rem; font-weight: 700; color: #be123c; margin-top: 0; margin-bottom: 8px;">
+                            {% trans "Using 'Reset to Pending'" %}
+                        </h4>
+                        <p style="font-size: 0.88rem; color: #334155; line-height: 1.6; margin: 0 0 10px;">
+                            {% trans "If a reviewer accidentally clicked Reject, Approve, or Cancel, the 'Reset' button immediately returns the record to Pending state." %}
+                        </p>
+                        <ul style="font-size: 0.85rem; color: #e11d48; margin: 0; padding-left: 18px;">
+                            <li>{% trans "Avoids permanent lockout for accidental decisions" %}</li>
+                            <li>{% trans "Restores standard review buttons for the row" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Quota Grants -->
+            <section id="admin-quota-mgmt" style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                    <span style="font-size: 1.25rem;">🎯</span>
+                    <h2 style="font-size: 1.35rem; font-weight: 700; color: #0f172a; margin: 0;">{% trans "04. Managing Scholarship Quotas & Grants" %}</h2>
+                </div>
+                <p style="font-size: 0.95rem; color: #334155; line-height: 1.7; margin-bottom: 14px;">
+                    {% trans "Every scholarship defines a capacity quota ('Grants'). The system automatically protects and manages quotas as follows:" %}
+                </p>
+                <ul style="font-size: 0.92rem; color: #334155; line-height: 1.7; margin: 0; padding-left: 20px;">
+                    <li><strong>{% trans "Automatic Closure" %}:</strong> {% trans "When the number of approved + in-progress applicants equals the scholarship quota, the scholarship status transitions to 'closed' automatically." %}</li>
+                    <li><strong>{% trans "Deadline Enforcement" %}:</strong> {% trans "When the deadline passes, cards automatically show 'Expired' and the application form disables new entries." %}</li>
+                    <li><strong>{% trans "Editing Capacity" %}:</strong> {% trans "To increase quota grants, click 'Edit' in the Scholarships Management tab." %}</li>
+                </ul>
+            </section>
+
+            <!-- Section 5: Security -->
+            <section id="admin-security" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 24px;">
+                <h3 style="font-size: 1.15rem; font-weight: 700; color: #0f172a; margin-top: 0; margin-bottom: 8px;">
+                    🔒 {% trans "05. Data Privacy & PDPA Compliance" %}
+                </h3>
+                <p style="font-size: 0.9rem; color: #475569; line-height: 1.6; margin: 0;">
+                    {% trans "Student transcripts and personal data must be stored and processed strictly for scholarship evaluation purposes under Prince of Songkla University privacy regulations and Thailand's PDPA. Exported spreadsheets should be encrypted and deleted once committee decisions are gazetted." %}
+                </p>
+            </section>
+
+        </main>
+    </div>
+</div>
+{% endblock %}

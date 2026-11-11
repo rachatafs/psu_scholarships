@@ -35,6 +35,13 @@
                     </ul>
                 </li>
                 <li class="nav-item">
+                    {% if user.is_staff or user.is_superuser %}
+                    <a href="{% url 'admin_guide' %}" class="nav-link">{% trans "Admin Guide" %}</a>
+                    {% else %}
+                    <a href="{% url 'student_guide' %}" class="nav-link">{% trans "User Guide" %}</a>
+                    {% endif %}
+                </li>
+                <li class="nav-item">
                     <a href="{% url 'contact' %}" class="nav-link">{% trans "Contact Us" %}</a>
                 </li>
             </ul>
@@ -52,10 +59,14 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         {% if user.is_staff or user.is_superuser %}
+                        <li><a href="{% url 'admin_dashboard' %}" class="dropdown-item">{% trans "Admin Console" %}</a></li>
                         <li><a href="{% url 'scholarship_dashboard' %}" class="dropdown-item">{% trans "Analytics Dashboard" %}</a></li>
-                        {% endif %}
+                        <li><a href="{% url 'admin_guide' %}" class="dropdown-item">{% trans "Admin Guide" %}</a></li>
+                        {% else %}
                         <li><a href="{% url 'profile' %}" class="dropdown-item">{% trans "Profile" %}</a></li>
                         <li><a href="{% url 'my_favorites' %}" class="dropdown-item">{% trans "Saved Scholarships" %}</a></li>
+                        <li><a href="{% url 'student_guide' %}" class="dropdown-item">{% trans "User Guide" %}</a></li>
+                        {% endif %}
                         <li>
                             <form method="post" action="{% url 'logout' %}" style="margin:0">
                                 {% csrf_token %}

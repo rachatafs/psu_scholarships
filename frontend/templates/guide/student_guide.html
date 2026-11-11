@@ -1,0 +1,330 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Student Guide" %} | PSU Phuket Scholarships{% endblock %}
+
+{% block content %}
+<div class="guide-page-wrapper" style="background-color: var(--bg-body, #f8fafc); min-height: 80vh; padding-bottom: 60px;">
+    <!-- Page Header -->
+    <section class="guide-hero-banner" style="background: linear-gradient(135deg, #002D62 0%, #0369a1 100%); color: #ffffff; padding: 48px 0 40px; box-shadow: 0 4px 20px rgba(0,45,98,0.12);">
+        <div class="container-default">
+            <div class="breadcrumb-nav" style="color: rgba(255,255,255,0.75); margin-bottom: 16px; font-size: 0.88rem;">
+                <a href="{% url 'home' %}" style="color: #ffffff; text-decoration: none;">Home</a>
+                <span style="margin: 0 8px; opacity: 0.6;">/</span>
+                <span style="color: #93c5fd; font-weight: 500;">{% trans "Student Guide" %}</span>
+            </div>
+            <div style="display: inline-block; padding: 4px 12px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 999px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 12px;">
+                STUDENT MANUAL
+            </div>
+            <h1 style="font-size: 2.25rem; font-weight: 800; line-height: 1.25; margin-bottom: 12px;">
+                {% trans "Student Scholarship Application Guide" %}
+            </h1>
+            <p style="font-size: 1.05rem; color: rgba(255,255,255,0.9); max-width: 760px; line-height: 1.6; margin: 0;">
+                {% trans "A comprehensive guide on searching scholarships, checking eligibility criteria, submitting required documents, and tracking your application review status." %}
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Guide Content Layout -->
+    <div class="container-default" style="margin-top: 36px;">
+        <div style="display: grid; grid-template-columns: 280px 1fr; gap: 32px; align-items: start;">
+            
+            <!-- Left Sticky Navigation -->
+            <aside style="position: sticky; top: 90px; background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);">
+                <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 12px;">
+                    {% trans "Table of Contents" %}
+                </div>
+                <nav style="display: flex; flex-direction: column; gap: 6px; font-size: 0.92rem;">
+                    <a href="#section-eligibility" style="padding: 8px 12px; border-radius: 8px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s;">
+                        <span style="color: #0284c7;">01</span> {% trans "Search & Eligibility" %}
+                    </a>
+                    <a href="#section-documents" style="padding: 8px 12px; border-radius: 8px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s;">
+                        <span style="color: #0284c7;">02</span> {% trans "Apply & Documents" %}
+                    </a>
+                    <a href="#section-statuses" style="padding: 8px 12px; border-radius: 8px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s;">
+                        <span style="color: #0284c7;">03</span> {% trans "Review Statuses" %}
+                    </a>
+                    <a href="#section-additional" style="padding: 8px 12px; border-radius: 8px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s;">
+                        <span style="color: #0284c7;">04</span> {% trans "Additional Docs" %}
+                    </a>
+                    <a href="#section-faq" style="padding: 8px 12px; border-radius: 8px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s;">
+                        <span style="color: #0284c7;">05</span> {% trans "Student FAQs" %}
+                    </a>
+                    <a href="#section-contact" style="padding: 8px 12px; border-radius: 8px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: all 0.2s;">
+                        <span style="color: #0284c7;">06</span> {% trans "Need Assistance" %}
+                    </a>
+                </nav>
+
+                <hr style="border: none; border-top: 1px solid #f1f5f9; margin: 16px 0;">
+
+                <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 12px; font-size: 0.85rem; color: #166534;">
+                    <strong>{% trans "Tip" %}:</strong> {% trans "Always submit your application before the deadline. Late submissions cannot be accepted." %}
+                </div>
+            </aside>
+
+            <!-- Right Main Content -->
+            <main style="display: flex; flex-direction: column; gap: 32px;">
+
+                <!-- Section 1: Search & Eligibility -->
+                <section id="section-eligibility" style="background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 32px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 38px; height: 38px; border-radius: 10px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+                            01
+                        </div>
+                        <div>
+                            <h2 style="font-size: 1.45rem; font-weight: 700; color: #0f172a; margin: 0;">{% trans "Searching Scholarships & Checking Eligibility" %}</h2>
+                            <p style="font-size: 0.88rem; color: #64748b; margin: 2px 0 0;">{% trans "Find opportunities tailored to your degree and academic standing" %}</p>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.95rem; color: #334155; line-height: 1.7; margin-bottom: 20px;">
+                        {% trans "PSU Phuket offers 4 primary categories of scholarships. Check each category's eligibility conditions before proceeding with an application:" %}
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px;">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
+                            <span class="category-pill-tag">{% trans "General" %}</span>
+                            <h4 style="font-size: 1rem; font-weight: 700; color: #0f172a; margin: 10px 0 6px;">{% trans "General Scholarships" %}</h4>
+                            <p style="font-size: 0.85rem; color: #64748b; margin: 0; line-height: 1.5;">{% trans "Academic excellence and need-based financial support for regular undergraduate students." %}</p>
+                        </div>
+
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
+                            <span class="category-pill-tag">{% trans "Exchange" %}</span>
+                            <h4 style="font-size: 1rem; font-weight: 700; color: #0f172a; margin: 10px 0 6px;">{% trans "Exchange Scholarships" %}</h4>
+                            <p style="font-size: 0.85rem; color: #64748b; margin: 0; line-height: 1.5;">{% trans "Overseas student exchange, international seminars, and study-abroad programs." %}</p>
+                        </div>
+
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
+                            <span class="category-pill-tag">{% trans "Fee Waiver" %}</span>
+                            <h4 style="font-size: 1rem; font-weight: 700; color: #0f172a; margin: 10px 0 6px;">{% trans "Fee Waiver Scholarships" %}</h4>
+                            <p style="font-size: 0.85rem; color: #64748b; margin: 0; line-height: 1.5;">{% trans "Tuition fee deductions for students with outstanding leadership and social contributions." %}</p>
+                        </div>
+
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px;">
+                            <span class="category-pill-tag">{% trans "Lunch" %}</span>
+                            <h4 style="font-size: 1rem; font-weight: 700; color: #0f172a; margin: 10px 0 6px;">{% trans "Lunch Scholarships" %}</h4>
+                            <p style="font-size: 0.85rem; color: #64748b; margin: 0; line-height: 1.5;">{% trans "Campus meal welfare grants to alleviate daily living expenses for students." %}</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #eff6ff; border-left: 4px solid #0284c7; padding: 14px 18px; border-radius: 0 10px 10px 0; font-size: 0.9rem; color: #1e3a8a;">
+                        <strong>{% trans "GPAX Verification" %}:</strong> {% trans "If a scholarship requires a minimum GPAX (e.g. 2.75+), the card will highlight whether your profile meets the threshold automatically." %}
+                    </div>
+                </section>
+
+                <!-- Section 2: Application & Documents -->
+                <section id="section-documents" style="background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 32px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 38px; height: 38px; border-radius: 10px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+                            02
+                        </div>
+                        <div>
+                            <h2 style="font-size: 1.45rem; font-weight: 700; color: #0f172a; margin: 0;">{% trans "Submitting Applications & Document Uploads" %}</h2>
+                            <p style="font-size: 0.88rem; color: #64748b; margin: 2px 0 0;">{% trans "100% paperless online submission workflow" %}</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 16px; font-size: 0.95rem; color: #334155; line-height: 1.7;">
+                        <div style="display: flex; gap: 14px; align-items: flex-start;">
+                            <span style="background: #0284c7; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;">1</span>
+                            <div>
+                                <strong>{% trans "Sign in with PSU Passport" %}:</strong>
+                                <div>{% trans "Sign in using your student email account (@phuket.psu.ac.th) to ensure your Student ID and department details connect seamlessly." %}</div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 14px; align-items: flex-start;">
+                            <span style="background: #0284c7; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;">2</span>
+                            <div>
+                                <strong>{% trans "Prepare Supporting Documents" %}:</strong>
+                                <ul style="margin: 6px 0 0 20px; padding: 0;">
+                                    <li><strong>{% trans "Academic Transcript" %}:</strong> {% trans "Official or student-portal copy showing cumulative GPAX (PDF or clear image)." %}</li>
+                                    <li><strong>{% trans "Recommendation / Advisor Letter" %}:</strong> {% trans "Letter from your academic advisor or program head (when required by the scholarship terms)." %}</li>
+                                    <li><strong>{% trans "Supported Formats" %}:</strong> {% trans "PDF, JPG, PNG with maximum size up to 5MB per document." %}</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 14px; align-items: flex-start;">
+                            <span style="background: #0284c7; color: #fff; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;">3</span>
+                            <div>
+                                <strong>{% trans "Submit & Confirmation" %}:</strong>
+                                <div>{% trans "Click 'Submit Application'. A confirmation email will be delivered to your PSU email address, and your application will immediately appear in your Profile tracker." %}</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 3: Review Statuses -->
+                <section id="section-statuses" style="background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 32px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 38px; height: 38px; border-radius: 10px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+                            03
+                        </div>
+                        <div>
+                            <h2 style="font-size: 1.45rem; font-weight: 700; color: #0f172a; margin: 0;">{% trans "Understanding the 6 Application Review Statuses" %}</h2>
+                            <p style="font-size: 0.88rem; color: #64748b; margin: 2px 0 0;">{% trans "Track each phase of your application directly from your Profile" %}</p>
+                        </div>
+                    </div>
+
+                    <p style="font-size: 0.95rem; color: #334155; line-height: 1.7; margin-bottom: 20px;">
+                        {% trans "Your application will transition through standardized review states. Here is what each status represents:" %}
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        <!-- Pending -->
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 10px; background: #fffbeb; border: 1px solid #fef3c7;">
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <span class="app-status-badge status-pending">Pending</span>
+                                <span style="font-size: 0.92rem; color: #92400e; font-weight: 500;">
+                                    {% trans "Application received successfully and is waiting in queue for document pre-screening." %}
+                                </span>
+                            </div>
+                            <span style="font-size: 0.8rem; font-weight: 700; color: #b45309;">STAGE 1</span>
+                        </div>
+
+                        <!-- In Progress -->
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 10px; background: #f0f9ff; border: 1px solid #e0f2fe;">
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <span class="app-status-badge status-inprogress">In Progress</span>
+                                <span style="font-size: 0.92rem; color: #0369a1; font-weight: 500;">
+                                    {% trans "Under review by the scholarship committee or scheduled for an interview session." %}
+                                </span>
+                            </div>
+                            <span style="font-size: 0.8rem; font-weight: 700; color: #0284c7;">STAGE 2</span>
+                        </div>
+
+                        <!-- Approve -->
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 10px; background: #f0fdf4; border: 1px solid #dcfce7;">
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <span class="app-status-badge status-approved">Approve</span>
+                                <span style="font-size: 0.92rem; color: #166534; font-weight: 500;">
+                                    {% trans "Congratulations! Your application has been approved by the committee to receive the scholarship." %}
+                                </span>
+                            </div>
+                            <span style="font-size: 0.8rem; font-weight: 700; color: #15803d;">STAGE 3 (PASS)</span>
+                        </div>
+
+                        <!-- Reject -->
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 10px; background: #fef2f2; border: 1px solid #fee2e2;">
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <span class="app-status-badge status-rejected">Reject</span>
+                                <span style="font-size: 0.92rem; color: #991b1b; font-weight: 500;">
+                                    {% trans "Application criteria or quota was not met for this cycle. You may explore and apply for other open scholarships." %}
+                                </span>
+                            </div>
+                            <span style="font-size: 0.8rem; font-weight: 700; color: #b91c1c;">UNSUCCESSFUL</span>
+                        </div>
+
+                        <!-- Complete -->
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 10px; background: #faf5ff; border: 1px solid #f3e8ff;">
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <span class="app-status-badge status-completed">Complete</span>
+                                <span style="font-size: 0.92rem; color: #6b21a8; font-weight: 500;">
+                                    {% trans "Funding distribution, tuition waiver processing, or paperwork formalities have finished completely." %}
+                                </span>
+                            </div>
+                            <span style="font-size: 0.8rem; font-weight: 700; color: #7e22ce;">FINALIZED</span>
+                        </div>
+
+                        <!-- Cancel -->
+                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 10px; background: #f8fafc; border: 1px solid #e2e8f0;">
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <span class="app-status-badge status-cancelled">Cancel</span>
+                                <span style="font-size: 0.92rem; color: #475569; font-weight: 500;">
+                                    {% trans "Application has been withdrawn by the student or cancelled due to ineligibility." %}
+                                </span>
+                            </div>
+                            <span style="font-size: 0.8rem; font-weight: 700; color: #64748b;">CANCELLED</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section 4: Additional Docs -->
+                <section id="section-additional" style="background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 32px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <div style="width: 38px; height: 38px; border-radius: 10px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+                            04
+                        </div>
+                        <div>
+                            <h2 style="font-size: 1.45rem; font-weight: 700; color: #0f172a; margin: 0;">{% trans "What to Do When 'Additional Docs' Is Requested" %}</h2>
+                            <p style="font-size: 0.88rem; color: #64748b; margin: 2px 0 0;">{% trans "Guidance on resolving missing or unreadable application documents" %}</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; font-size: 0.95rem; color: #334155; line-height: 1.7;">
+                        <p style="margin-top: 0;">
+                            {% trans "If a scholarship officer requires supplementary documents (e.g. clearer grade report, missing advisor endorsement), they will click the 'Additional Docs' button to notify you." %}
+                        </p>
+                        <strong>{% trans "Follow these steps to respond promptly" %}:</strong>
+                        <ol style="margin: 8px 0 0 20px; padding: 0;">
+                            <li>{% trans "Check your PSU student email for the exact documents requested by the committee." %}</li>
+                            <li>{% trans "Prepare high-resolution, readable copies in PDF or JPG format." %}</li>
+                            <li>{% trans "Submit the additional files directly to the Student Affairs Office (Room 7102) or reply as instructed in the notification email." %}</li>
+                            <li>{% trans "Your application will remain in 'In Progress' status until the committee re-examines the new submissions." %}</li>
+                        </ol>
+                    </div>
+                </section>
+
+                <!-- Section 5: FAQs -->
+                <section id="section-faq" style="background: #ffffff; border-radius: 14px; border: 1px solid #e2e8f0; padding: 32px; box-shadow: 0 2px 10px rgba(0,0,0,0.02);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                        <div style="width: 38px; height: 38px; border-radius: 10px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.1rem;">
+                            05
+                        </div>
+                        <div>
+                            <h2 style="font-size: 1.45rem; font-weight: 700; color: #0f172a; margin: 0;">{% trans "Frequently Asked Questions (FAQ)" %}</h2>
+                            <p style="font-size: 0.88rem; color: #64748b; margin: 2px 0 0;">{% trans "Quick answers to common questions asked by students" %}</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; flex-direction: column; gap: 14px;">
+                        <details style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 18px; cursor: pointer;">
+                            <summary style="font-weight: 700; color: #0f172a; font-size: 0.98rem;">
+                                {% trans "Can I apply for multiple scholarships simultaneously?" %}
+                            </summary>
+                            <p style="margin: 10px 0 0; color: #475569; font-size: 0.92rem; line-height: 1.6;">
+                                {% trans "Yes, you may submit applications for different scholarships. However, university policy may restrict holding two tuition waiver scholarships concurrently. The committee will clarify funding combinations upon approval." %}
+                            </p>
+                        </details>
+
+                        <details style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 18px; cursor: pointer;">
+                            <summary style="font-weight: 700; color: #0f172a; font-size: 0.98rem;">
+                                {% trans "What if my GPAX is slightly below the requirement?" %}
+                            </summary>
+                            <p style="margin: 10px 0 0; color: #475569; font-size: 0.92rem; line-height: 1.6;">
+                                {% trans "The system enforces minimum GPAX thresholds strictly for academic awards. For need-based lunch or welfare aid, exceptions may be considered upon advisor recommendation." %}
+                            </p>
+                        </details>
+
+                        <details style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 18px; cursor: pointer;">
+                            <summary style="font-weight: 700; color: #0f172a; font-size: 0.98rem;">
+                                {% trans "Can I change my uploaded documents after submitting?" %}
+                            </summary>
+                            <p style="margin: 10px 0 0; color: #475569; font-size: 0.92rem; line-height: 1.6;">
+                                {% trans "Once submitted, applications are locked to preserve audit integrity. If you need to make urgent corrections, please visit the Student Affairs Office (Room 7102) with your Student ID." %}
+                            </p>
+                        </details>
+                    </div>
+                </section>
+
+                <!-- Section 6: Contact & Support -->
+                <section id="section-contact" style="background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%); border-radius: 14px; border: 1px solid #bae6fd; padding: 30px;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #0369a1; margin-top: 0; margin-bottom: 8px;">
+                        {% trans "Need Further Assistance?" %}
+                    </h3>
+                    <p style="color: #334155; font-size: 0.95rem; line-height: 1.6; margin-bottom: 16px;">
+                        {% trans "If you experience any difficulties or have questions about scholarship selection, our staff at the Student Affairs Office are here to help." %}
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.9rem; color: #1e293b;">
+                        <div>📍 <strong>{% trans "Office" %}:</strong> Room 7102, Building 7, PSU Phuket</div>
+                        <div>⏰ <strong>{% trans "Hours" %}:</strong> Monday – Friday, 08:30 – 16:30</div>
+                        <div>✉️ <strong>{% trans "Email" %}:</strong> scholarship@phuket.psu.ac.th</div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+</div>
+{% endblock %}

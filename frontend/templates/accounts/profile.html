@@ -119,6 +119,7 @@
                     <h4>{% trans "Need Assistance?" %}</h4>
                     <p>{% trans "If you need to update documents after submitting your application, please contact the Student Affairs Office at Room 7102." %}</p>
                     <a href="{% url 'contact' %}" class="btn-side-contact">{% trans "Contact Us" %} →</a>
+                    <a href="{% url 'student_guide' %}" style="display: block; margin-top: 10px; font-size: 0.85rem; color: #0284c7; text-decoration: none; font-weight: 600;">📖 {% trans "Read Student Guide" %} →</a>
                 </div>
             </div>
         </div>
@@ -130,9 +131,14 @@
                     <h2 class="tracker-title">{% trans "Application History & Status" %}</h2>
                     <p class="tracker-subtitle">{% trans "Track the progress and review updates for your submitted applications." %}</p>
                 </div>
-                <a href="{% url 'scholarships' %}" class="btn-find-more">
-                    {% trans "Browse Scholarships" %}
-                </a>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <a href="{% url 'student_guide' %}#section-statuses" style="background: #ffffff; border: 1.5px solid #cbd5e1; color: #334155; padding: 8px 14px; border-radius: 8px; text-decoration: none; font-size: 0.88rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
+                        <span class="material-symbols-outlined" style="font-size: 1.1rem; color: #0284c7;">help</span> {% trans "Status Guide" %}
+                    </a>
+                    <a href="{% url 'scholarships' %}" class="btn-find-more">
+                        {% trans "Browse Scholarships" %}
+                    </a>
+                </div>
             </div>
 
             {% if applications %}
