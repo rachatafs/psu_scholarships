@@ -32,14 +32,6 @@
                         <li><a href="{% url 'scholarship_list' 'exchange' %}" class="dropdown-item">{% trans "Exchange Scholarships" %}</a></li>
                         <li><a href="{% url 'scholarship_list' 'fee_waiver' %}" class="dropdown-item">{% trans "Fee Waiver Scholarships" %}</a></li>
                         <li><a href="{% url 'scholarship_list' 'lunch' %}" class="dropdown-item">{% trans "Lunch Scholarships" %}</a></li>
-                        <li><hr style="margin: 6px 0; border: none; border-top: 1px solid var(--border-subtle);"></li>
-                        <li>
-                            {% if user.is_staff or user.is_superuser %}
-                            <a href="{% url 'admin_guide' %}" class="dropdown-item">{% trans "Admin Guide" %}</a>
-                            {% else %}
-                            <a href="{% url 'student_guide' %}" class="dropdown-item">{% trans "User Guide" %}</a>
-                            {% endif %}
-                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

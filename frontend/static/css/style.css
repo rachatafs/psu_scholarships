@@ -2877,21 +2877,21 @@ button, input, select, textarea {
     .profile-layout-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 768px) {
-    /* ─── Mobile Navbar Base ─── */
+@media (max-width: 1024px) {
+    /* ─── Mobile / Tablet Navbar Base (includes Mac Half-Screen <= 1024px) ─── */
     .navbar-container {
         padding: 0 20px;
     }
     
     .navbar-subtitle {
-        display: none; /* Hide long subtitle on mobile to save space */
+        display: none; /* Hide long subtitle on mobile/half-screen to save space */
     }
     
     .navbar-title {
         font-size: 1.05rem; /* Slightly smaller title */
     }
 
-    /* ─── Sliding Sidebar Nav on Mobile ─── */
+    /* ─── Sliding Sidebar Nav on Mobile / Half-Screen ─── */
     .navbar-collapse {
         position: fixed;
         top: 0;
@@ -2945,11 +2945,13 @@ button, input, select, textarea {
         z-index: 1999;
         opacity: 0;
         transition: opacity 0.3s ease;
+        pointer-events: none;
     }
 
     .navbar.sidebar-open .navbar-backdrop {
         display: block;
         opacity: 1;
+        pointer-events: auto;
     }
 
     .navbar-nav {
@@ -4207,10 +4209,20 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
    ROLE-BASED USER GUIDES & COMPREHENSIVE MOBILE RESPONSIVENESS
    ========================================================================== */
 
-/* Contain horizontal overflow on all viewports */
-html, body {
+/* Contain horizontal overflow safely without breaking vertical scroll */
+html {
     max-width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: clip;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
 }
 
 /* --- Guide System Grid, Cards & Typography --- */
@@ -4220,7 +4232,8 @@ html, body {
     padding-bottom: 60px;
     box-sizing: border-box;
     width: 100%;
-    overflow-x: hidden;
+    max-width: 100%;
+    overflow-x: clip;
 }
 
 .guide-hero-banner {
@@ -4411,20 +4424,26 @@ html, body {
 
 .guide-card-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
+    flex-wrap: wrap;
     border-bottom: 1px solid #f1f5f9;
     padding-bottom: 12px;
     margin-bottom: 16px;
-    gap: 12px;
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .guide-card-title {
-    font-size: 1.25rem;
+    font-size: 1.22rem;
     font-weight: 700;
     color: #0f172a;
     margin: 0;
+    flex: 1 1 200px;
+    min-width: 0;
     word-break: break-word;
+    line-height: 1.35;
 }
 
 .guide-card-tag {
@@ -4446,7 +4465,7 @@ html, body {
     word-break: break-word;
 }
 
-/* Section 1: Categories Grid */
+/* Section 1: Categories Grid with distinct badges & borders */
 .guide-cards-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -4457,27 +4476,62 @@ html, body {
 }
 
 .guide-category-card {
-    background: #f8fafc;
-    border: 1px solid #f1f5f9;
-    border-radius: 10px;
-    padding: 16px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px;
     box-sizing: border-box;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    border-top: 3.5px solid transparent;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.guide-category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.category-card-general { border-top-color: #0284c7; }
+.category-card-exchange { border-top-color: #10b981; }
+.category-card-fee { border-top-color: #8b5cf6; }
+.category-card-lunch { border-top-color: #f59e0b; }
+
+.category-card-top {
+    margin-bottom: 6px;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    width: fit-content;
+}
+
+.badge-general { background: #e0f2fe; color: #0284c7; }
+.badge-exchange { background: #d1fae5; color: #059669; }
+.badge-fee { background: #ede9fe; color: #7c3aed; }
+.badge-lunch { background: #fef3c7; color: #d97706; }
+
 .guide-category-name {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
     font-weight: 700;
     color: #0f172a;
-    margin: 8px 0 4px;
+    margin: 4px 0 6px;
     word-break: break-word;
 }
 
 .guide-category-desc {
-    font-size: 0.84rem;
+    font-size: 0.85rem;
     color: #64748b;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.55;
     word-break: break-word;
 }
 
@@ -4504,18 +4558,53 @@ html, body {
 }
 
 .guide-inner-box {
-    background: #f8fafc;
-    border: 1px solid #f1f5f9;
-    border-radius: 10px;
-    padding: 16px;
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px;
     box-sizing: border-box;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.guide-box-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+
+.guide-box-icon {
+    font-size: 1.25rem;
+    color: #0284c7;
+    flex-shrink: 0;
 }
 
 .guide-box-title {
     font-weight: 700;
     color: #0f172a;
     font-size: 0.92rem;
+    word-break: break-word;
+}
+
+.guide-box-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.55;
+    word-break: break-word;
+}
+
+.guide-file-standards-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    color: #334155;
+    box-sizing: border-box;
+    word-break: break-word;
+}
     margin-bottom: 6px;
     word-break: break-word;
 }
@@ -5095,18 +5184,19 @@ html, body {
    MOBILE & TABLET RESPONSIVE RULES (ALL ROLES & PAGES)
    ========================================================================== */
 
-/* --- Tablet Breakpoint (max-width: 900px) --- */
-@media (max-width: 900px) {
+/* --- Tablet & Half-Screen Breakpoint (max-width: 1024px) --- */
+@media (max-width: 1024px) {
     .guide-layout-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: 100% !important;
+        gap: 20px !important;
+        width: 100% !important;
     }
     
     .guide-sidebar,
     .admin-guide-sidebar {
-        position: static;
-        top: auto;
-        margin-bottom: 20px;
+        position: static !important;
+        top: auto !important;
+        margin-bottom: 20px !important;
     }
 
     .guide-two-col-grid {
@@ -5115,6 +5205,61 @@ html, body {
 
     .admin-guide-wrapper {
         padding: 16px 12px !important;
+    }
+
+    /* Transform Guide Sidebar into Swipeable Pill Bar on Mobile/Tablet */
+    .guide-sidebar {
+        position: static !important;
+        top: auto !important;
+        padding: 8px 10px !important;
+        margin-bottom: 18px !important;
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 9999px !important;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.03) !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .guide-sidebar-title,
+    .guide-sidebar-notice {
+        display: none !important;
+    }
+
+    .guide-sidebar-nav {
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        white-space: nowrap !important;
+        gap: 8px !important;
+        padding: 4px 6px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .guide-sidebar-nav a {
+        flex-shrink: 0 !important;
+        background: #f1f5f9 !important;
+        color: #1e293b !important;
+        padding: 7px 16px !important;
+        border-radius: 9999px !important;
+        font-size: 0.82rem !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+    }
+
+    .guide-sidebar-nav a:hover,
+    .guide-sidebar-nav a:active {
+        background: #0284c7 !important;
+        color: #ffffff !important;
+    }
+
+    .guide-sidebar-nav a:hover .nav-num,
+    .guide-sidebar-nav a:active .nav-num {
+        color: #ffffff !important;
     }
 }
 
@@ -5132,52 +5277,6 @@ html, body {
 
     .navbar-title {
         font-size: 1.02rem;
-    }
-
-    /* Transform Guide Sidebar into Swipeable Pill Bar on Mobile */
-    .guide-sidebar {
-        position: static !important;
-        top: auto !important;
-        padding: 8px 10px !important;
-        margin-bottom: 18px !important;
-        background: #ffffff !important;
-        border: 1px solid #e2e8f0 !important;
-        border-radius: 12px !important;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.03) !important;
-    }
-
-    .guide-sidebar-title,
-    .guide-sidebar-notice {
-        display: none !important;
-    }
-
-    .guide-sidebar-nav {
-        flex-direction: row !important;
-        overflow-x: auto !important;
-        -webkit-overflow-scrolling: touch !important;
-        white-space: nowrap !important;
-        gap: 8px !important;
-        padding: 2px 2px 4px !important;
-    }
-
-    .guide-sidebar-nav a {
-        flex-shrink: 0 !important;
-        background: #f1f5f9 !important;
-        color: #1e293b !important;
-        padding: 6px 14px !important;
-        border-radius: 20px !important;
-        font-size: 0.82rem !important;
-        font-weight: 600 !important;
-        text-decoration: none !important;
-        display: inline-flex !important;
-        align-items: center !important;
-        gap: 5px !important;
-    }
-
-    .guide-sidebar-nav a:hover,
-    .guide-sidebar-nav a:active {
-        background: #e0f2fe !important;
-        color: #0284c7 !important;
     }
 
     /* Modern Guide Steps & Cards on Mobile */
@@ -5712,7 +5811,25 @@ html, body {
 
     .guide-content-card {
         padding: 16px 14px !important;
-        border-radius: 10px !important;
+        border-radius: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .guide-card-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px !important;
+    }
+
+    .guide-card-title {
+        font-size: 1.1rem !important;
+        line-height: 1.35 !important;
+    }
+
+    .guide-card-tag {
+        align-self: flex-start !important;
     }
 
     .guide-status-row {

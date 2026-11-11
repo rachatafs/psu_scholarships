@@ -64,7 +64,7 @@
     <div class="container-default guide-main-container">
         <div class="guide-layout-grid">
             
-            <!-- Left Sticky Sidebar / Mobile Quick Links -->
+            <!-- Sticky Sidebar / Mobile Quick Links -->
             <aside class="guide-sidebar">
                 <div class="guide-sidebar-title">
                     {% trans "Navigation" %}
@@ -113,26 +113,34 @@
                     </p>
 
                     <div class="guide-cards-grid">
-                        <div class="guide-category-card">
-                            <span class="category-pill-tag">{% trans "General" %}</span>
+                        <div class="guide-category-card category-card-general">
+                            <div class="category-card-top">
+                                <span class="category-badge badge-general">{% trans "General" %}</span>
+                            </div>
                             <h3 class="guide-category-name">{% trans "General Scholarships" %}</h3>
                             <p class="guide-category-desc">{% trans "Merit-based and need-based financial aid for full-time enrolled students." %}</p>
                         </div>
 
-                        <div class="guide-category-card">
-                            <span class="category-pill-tag">{% trans "Exchange" %}</span>
+                        <div class="guide-category-card category-card-exchange">
+                            <div class="category-card-top">
+                                <span class="category-badge badge-exchange">{% trans "Exchange" %}</span>
+                            </div>
                             <h3 class="guide-category-name">{% trans "Exchange Scholarships" %}</h3>
                             <p class="guide-category-desc">{% trans "Funding for international student exchange and overseas internships." %}</p>
                         </div>
 
-                        <div class="guide-category-card">
-                            <span class="category-pill-tag">{% trans "Fee Waiver" %}</span>
+                        <div class="guide-category-card category-card-fee">
+                            <div class="category-card-top">
+                                <span class="category-badge badge-fee">{% trans "Fee Waiver" %}</span>
+                            </div>
                             <h3 class="guide-category-name">{% trans "Fee Waiver Scholarships" %}</h3>
                             <p class="guide-category-desc">{% trans "Tuition exemptions (50% or 100%) for recognized student leaders and athletes." %}</p>
                         </div>
 
-                        <div class="guide-category-card">
-                            <span class="category-pill-tag">{% trans "Lunch" %}</span>
+                        <div class="guide-category-card category-card-lunch">
+                            <div class="category-card-top">
+                                <span class="category-badge badge-lunch">{% trans "Lunch" %}</span>
+                            </div>
                             <h3 class="guide-category-name">{% trans "Lunch Scholarships" %}</h3>
                             <p class="guide-category-desc">{% trans "Living cost meal vouchers to support campus welfare and health." %}</p>
                         </div>
@@ -158,8 +166,11 @@
 
                     <div class="guide-two-col-grid">
                         <div class="guide-inner-box">
-                            <div class="guide-box-title">
-                                {% trans "1. Academic Transcript (Mandatory)" %}
+                            <div class="guide-box-header">
+                                <span class="material-symbols-outlined guide-box-icon">description</span>
+                                <div class="guide-box-title">
+                                    {% trans "1. Academic Transcript (Mandatory)" %}
+                                </div>
                             </div>
                             <div class="guide-box-desc">
                                 {% trans "Official grade report or registrar portal export showing cumulative GPAX and total credits earned." %}
@@ -167,8 +178,11 @@
                         </div>
 
                         <div class="guide-inner-box">
-                            <div class="guide-box-title">
-                                {% trans "2. Recommendation Letter (If applicable)" %}
+                            <div class="guide-box-header">
+                                <span class="material-symbols-outlined guide-box-icon">verified</span>
+                                <div class="guide-box-title">
+                                    {% trans "2. Recommendation Letter (If applicable)" %}
+                                </div>
                             </div>
                             <div class="guide-box-desc">
                                 {% trans "Signed endorsement from your academic advisor or faculty department head." %}

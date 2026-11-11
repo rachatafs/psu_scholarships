@@ -16,25 +16,41 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.getElementById('navbarClose');
     const backdrop = document.getElementById('navbarBackdrop');
 
+    // Ensure scrolling is always enabled initially
+    document.body.style.overflow = '';
+
+    const closeSidebar = () => {
+        if (navbar) navbar.classList.remove('sidebar-open');
+        document.body.style.overflow = '';
+    };
+
     if (toggler && navbar) {
         // Open sidebar
         toggler.addEventListener('click', function (e) {
             e.stopPropagation();
             navbar.classList.add('sidebar-open');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
         });
-
-        // Close sidebar function
-        const closeSidebar = () => {
-            navbar.classList.remove('sidebar-open');
-            document.body.style.overflow = '';
-        };
 
         if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
         if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+        // Close sidebar whenever a nav link inside it is clicked
+        const navLinks = navbar.querySelectorAll('.navbar-collapse a');
+        navLinks.forEach(function (link) {
+            link.addEventListener('click', closeSidebar);
+        });
     }
 
-    // ─── Dropdown (click on mobile, hover on desktop) ─────────
+    // Safety resets for viewport resize & back-forward cache
+    window.addEventListener('pageshow', closeSidebar);
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 1024) {
+            closeSidebar();
+        }
+    });
+
+    // ─── Dropdown (click on mobile/tablet <= 1024px, hover on desktop) ─────────
     const dropdowns = document.querySelectorAll('.dropdown');
 
     dropdowns.forEach(function (dropdown) {
@@ -42,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!toggle) return;
 
         toggle.addEventListener('click', function (e) {
-            if (window.innerWidth <= 768) {
+            if (window.innerWidth <= 1024) {
                 e.preventDefault();
                 dropdown.classList.toggle('open');
                 dropdowns.forEach(function (other) {
