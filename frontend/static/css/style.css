@@ -227,7 +227,8 @@ button, input, select, textarea {
     transform: translateY(0);
 }
 
-.dropdown:hover .dropdown-arrow {
+.dropdown:hover .dropdown-arrow,
+.dropdown.open .dropdown-arrow {
     transform: rotate(180deg);
 }
 

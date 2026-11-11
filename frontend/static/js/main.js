@@ -35,8 +35,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
         if (backdrop) backdrop.addEventListener('click', closeSidebar);
 
-        // Close sidebar whenever a nav link inside it is clicked
-        const navLinks = navbar.querySelectorAll('.navbar-collapse a');
+        // Prevent clicks inside the drawer from bubbling out to the backdrop or document
+        const collapseElem = document.getElementById('navbarCollapse');
+        if (collapseElem) {
+            collapseElem.addEventListener('click', function (e) {
+                e.stopPropagation();
+            });
+        }
+
+        // Close sidebar ONLY when a real page navigation link inside it is clicked
+        const navLinks = navbar.querySelectorAll('.navbar-collapse a:not(.dropdown-toggle):not([href="#"])');
         navLinks.forEach(function (link) {
             link.addEventListener('click', closeSidebar);
         });
@@ -60,10 +68,21 @@ document.addEventListener('DOMContentLoaded', function () {
         toggle.addEventListener('click', function (e) {
             if (window.innerWidth <= 1024) {
                 e.preventDefault();
-                dropdown.classList.toggle('open');
+                e.stopPropagation();
+                
+                const willOpen = !dropdown.classList.contains('open');
+                
+                // Close other dropdowns first
                 dropdowns.forEach(function (other) {
                     if (other !== dropdown) other.classList.remove('open');
                 });
+
+                // Toggle this dropdown
+                if (willOpen) {
+                    dropdown.classList.add('open');
+                } else {
+                    dropdown.classList.remove('open');
+                }
             }
         });
     });
