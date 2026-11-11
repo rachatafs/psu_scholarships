@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // ─── Mobile Sidebar Toggle ────────────────────────────────
     const toggler = document.getElementById('navbarToggler');
-    const navbar  = document.querySelector('.navbar');
+    const navbar = document.querySelector('.navbar');
     const closeBtn = document.getElementById('navbarClose');
     const backdrop = document.getElementById('navbarBackdrop');
 
@@ -69,9 +69,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (window.innerWidth <= 1024) {
                 e.preventDefault();
                 e.stopPropagation();
-                
+
                 const willOpen = !dropdown.classList.contains('open');
-                
+
                 // Close other dropdowns first
                 dropdowns.forEach(function (other) {
                     if (other !== dropdown) other.classList.remove('open');
@@ -131,10 +131,10 @@ function closeLoginModal(event) {
 }
 
 // ─── AJAX Login Form Submission (ไม่เปลี่ยนหน้าเมื่อกรอกรหัสผิด) ────────
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const loginForms = document.querySelectorAll('#modalLoginForm, #pageLoginForm');
     loginForms.forEach(form => {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
             const isModal = form.id === 'modalLoginForm';
             const errorBox = isModal ? document.getElementById('modalLoginError') : document.getElementById('pageLoginError');
@@ -158,36 +158,36 @@ document.addEventListener("DOMContentLoaded", function() {
                     'Accept': 'application/json'
                 }
             })
-            .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, data: data })))
-            .then(result => {
-                if (result.ok && result.data.success) {
-                    if (submitBtn) submitBtn.textContent = 'เข้าสู่ระบบสำเร็จ!';
-                    window.location.href = result.data.redirect_url || '/';
-                } else {
+                .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, data: data })))
+                .then(result => {
+                    if (result.ok && result.data.success) {
+                        if (submitBtn) submitBtn.textContent = 'เข้าสู่ระบบสำเร็จ!';
+                        window.location.href = result.data.redirect_url || '/';
+                    } else {
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalBtnText;
+                        }
+                        if (errorBox) {
+                            errorBox.textContent = result.data.message || 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง';
+                            errorBox.style.display = 'block';
+                        }
+                        if (passwordInput) {
+                            passwordInput.value = '';
+                            passwordInput.focus();
+                        }
+                    }
+                })
+                .catch(err => {
                     if (submitBtn) {
                         submitBtn.disabled = false;
                         submitBtn.textContent = originalBtnText;
                     }
                     if (errorBox) {
-                        errorBox.textContent = result.data.message || 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง';
+                        errorBox.textContent = 'เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง';
                         errorBox.style.display = 'block';
                     }
-                    if (passwordInput) {
-                        passwordInput.value = '';
-                        passwordInput.focus();
-                    }
-                }
-            })
-            .catch(err => {
-                if (submitBtn) {
-                    submitBtn.disabled = false;
-                    submitBtn.textContent = originalBtnText;
-                }
-                if (errorBox) {
-                    errorBox.textContent = 'เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง';
-                    errorBox.style.display = 'block';
-                }
-            });
+                });
         });
     });
 });

@@ -24,37 +24,13 @@
                 {% trans "A clear step-by-step handbook on verifying eligibility, preparing electronic files, submitting applications online, and monitoring committee evaluation updates." %}
             </p>
 
-            <!-- 4-Step Process Roadmap (All steps matching cohesive theme) -->
+            <!-- 4-Step Process Roadmap (Reusable Components) -->
             <div class="guide-steps-container">
                 <div class="guide-steps-grid">
-                    <div class="guide-step-card">
-                        <div class="guide-step-num">1</div>
-                        <div class="guide-step-body">
-                            <span class="guide-step-label">{% trans "Step 1" %}</span>
-                            <span class="guide-step-text">{% trans "Find & Verify Criteria" %}</span>
-                        </div>
-                    </div>
-                    <div class="guide-step-card">
-                        <div class="guide-step-num">2</div>
-                        <div class="guide-step-body">
-                            <span class="guide-step-label">{% trans "Step 2" %}</span>
-                            <span class="guide-step-text">{% trans "Upload Documents" %}</span>
-                        </div>
-                    </div>
-                    <div class="guide-step-card">
-                        <div class="guide-step-num">3</div>
-                        <div class="guide-step-body">
-                            <span class="guide-step-label">{% trans "Step 3" %}</span>
-                            <span class="guide-step-text">{% trans "Track Review Status" %}</span>
-                        </div>
-                    </div>
-                    <div class="guide-step-card">
-                        <div class="guide-step-num">4</div>
-                        <div class="guide-step-body">
-                            <span class="guide-step-label">{% trans "Step 4" %}</span>
-                            <span class="guide-step-text">{% trans "Receive Funding" %}</span>
-                        </div>
-                    </div>
+                    {% include 'components/guide_step_card.html' with num="1" step_label=_("Step 1") text=_("Find & Verify Criteria") %}
+                    {% include 'components/guide_step_card.html' with num="2" step_label=_("Step 2") text=_("Upload Documents") %}
+                    {% include 'components/guide_step_card.html' with num="3" step_label=_("Step 3") text=_("Track Review Status") %}
+                    {% include 'components/guide_step_card.html' with num="4" step_label=_("Step 4") text=_("Receive Funding") %}
                 </div>
             </div>
         </div>
@@ -77,37 +53,10 @@
                 </p>
 
                 <div class="guide-cards-grid">
-                    <div class="guide-category-card category-card-general">
-                        <div class="category-card-top">
-                            <span class="category-badge badge-general">{% trans "General" %}</span>
-                        </div>
-                        <h3 class="guide-category-name">{% trans "General Scholarships" %}</h3>
-                        <p class="guide-category-desc">{% trans "Merit-based and need-based financial aid for full-time enrolled students." %}</p>
-                    </div>
-
-                    <div class="guide-category-card category-card-exchange">
-                        <div class="category-card-top">
-                            <span class="category-badge badge-exchange">{% trans "Exchange" %}</span>
-                        </div>
-                        <h3 class="guide-category-name">{% trans "Exchange Scholarships" %}</h3>
-                        <p class="guide-category-desc">{% trans "Funding for international student exchange and overseas internships." %}</p>
-                    </div>
-
-                    <div class="guide-category-card category-card-fee">
-                        <div class="category-card-top">
-                            <span class="category-badge badge-fee">{% trans "Fee Waiver" %}</span>
-                        </div>
-                        <h3 class="guide-category-name">{% trans "Fee Waiver Scholarships" %}</h3>
-                        <p class="guide-category-desc">{% trans "Tuition exemptions (50% or 100%) for recognized student leaders and athletes." %}</p>
-                    </div>
-
-                    <div class="guide-category-card category-card-lunch">
-                        <div class="category-card-top">
-                            <span class="category-badge badge-lunch">{% trans "Lunch" %}</span>
-                        </div>
-                        <h3 class="guide-category-name">{% trans "Lunch Scholarships" %}</h3>
-                        <p class="guide-category-desc">{% trans "Living cost meal vouchers to support campus welfare and health." %}</p>
-                    </div>
+                    {% include 'components/guide_category_card.html' with category="general" badge_text=_("General") title=_("General Scholarships") desc=_("Merit-based and need-based financial aid for full-time enrolled students.") %}
+                    {% include 'components/guide_category_card.html' with category="exchange" badge_text=_("Exchange") title=_("Exchange Scholarships") desc=_("Funding for international student exchange and overseas internships.") %}
+                    {% include 'components/guide_category_card.html' with category="fee" badge_text=_("Fee Waiver") title=_("Fee Waiver Scholarships") desc=_("Tuition exemptions (50% or 100%) for recognized student leaders and athletes.") %}
+                    {% include 'components/guide_category_card.html' with category="lunch" badge_text=_("Lunch") title=_("Lunch Scholarships") desc=_("Living cost meal vouchers to support campus welfare and health.") %}
                 </div>
 
                 <div class="guide-callout-info">
@@ -158,7 +107,7 @@
                 </div>
             </section>
 
-            <!-- 03: Status Meanings (NO OVAL BADGE BORDER - CLEAN ACCENT BAR) -->
+            <!-- 03: Status Meanings (Reusable Status Rows) -->
             <section id="section-statuses" class="guide-content-card">
                 <div class="guide-card-header">
                     <h2 class="guide-card-title">
@@ -171,77 +120,12 @@
                 </p>
 
                 <div class="guide-status-list">
-                    <!-- Pending -->
-                    <div class="guide-status-row status-theme-pending">
-                        <div class="guide-status-accent-bar"></div>
-                        <div class="guide-status-main">
-                            <div class="guide-status-heading">Pending</div>
-                            <div class="guide-status-explanation">{% trans "Application successfully submitted; awaiting committee pre-screening queue." %}</div>
-                        </div>
-                        <div class="guide-status-side">
-                            <span class="guide-status-action-pill">{% trans "Action: None (Awaiting)" %}</span>
-                        </div>
-                    </div>
-
-                    <!-- In Progress -->
-                    <div class="guide-status-row status-theme-progress">
-                        <div class="guide-status-accent-bar"></div>
-                        <div class="guide-status-main">
-                            <div class="guide-status-heading">In Progress</div>
-                            <div class="guide-status-explanation">{% trans "Under evaluation by faculty committee or scheduled for applicant interview." %}</div>
-                        </div>
-                        <div class="guide-status-side">
-                            <span class="guide-status-action-pill">{% trans "Action: Check Email" %}</span>
-                        </div>
-                    </div>
-
-                    <!-- Approve -->
-                    <div class="guide-status-row status-theme-approve">
-                        <div class="guide-status-accent-bar"></div>
-                        <div class="guide-status-main">
-                            <div class="guide-status-heading">Approve</div>
-                            <div class="guide-status-explanation">{% trans "Approved by committee. Follow award notification guidelines for disbursement." %}</div>
-                        </div>
-                        <div class="guide-status-side">
-                            <span class="guide-status-action-pill">{% trans "Action: Completed" %}</span>
-                        </div>
-                    </div>
-
-                    <!-- Reject -->
-                    <div class="guide-status-row status-theme-reject">
-                        <div class="guide-status-accent-bar"></div>
-                        <div class="guide-status-main">
-                            <div class="guide-status-heading">Reject</div>
-                            <div class="guide-status-explanation">{% trans "Requirements or quota filled for this cycle. Students may apply for other open scholarships." %}</div>
-                        </div>
-                        <div class="guide-status-side">
-                            <span class="guide-status-action-pill">{% trans "Action: Try Other Grants" %}</span>
-                        </div>
-                    </div>
-
-                    <!-- Complete -->
-                    <div class="guide-status-row status-theme-complete">
-                        <div class="guide-status-accent-bar"></div>
-                        <div class="guide-status-main">
-                            <div class="guide-status-heading">Complete</div>
-                            <div class="guide-status-explanation">{% trans "Fund disbursement or tuition waiver credit has been fully processed." %}</div>
-                        </div>
-                        <div class="guide-status-side">
-                            <span class="guide-status-action-pill">{% trans "Action: Finalized" %}</span>
-                        </div>
-                    </div>
-
-                    <!-- Cancel -->
-                    <div class="guide-status-row status-theme-cancel">
-                        <div class="guide-status-accent-bar"></div>
-                        <div class="guide-status-main">
-                            <div class="guide-status-heading">Cancel</div>
-                            <div class="guide-status-explanation">{% trans "Application cancelled by student request or administratively withdrawn." %}</div>
-                        </div>
-                        <div class="guide-status-side">
-                            <span class="guide-status-action-pill">{% trans "Action: Cancelled" %}</span>
-                        </div>
-                    </div>
+                    {% include 'components/guide_status_row.html' with theme="pending" name="Pending" desc=_("Application successfully submitted; awaiting committee pre-screening queue.") action=_("Action: None (Awaiting)") %}
+                    {% include 'components/guide_status_row.html' with theme="progress" name="In Progress" desc=_("Under evaluation by faculty committee or scheduled for applicant interview.") action=_("Action: Check Email") %}
+                    {% include 'components/guide_status_row.html' with theme="approve" name="Approve" desc=_("Approved by committee. Follow award notification guidelines for disbursement.") action=_("Action: Completed") %}
+                    {% include 'components/guide_status_row.html' with theme="reject" name="Reject" desc=_("Requirements or quota filled for this cycle. Students may apply for other open scholarships.") action=_("Action: Try Other Grants") %}
+                    {% include 'components/guide_status_row.html' with theme="complete" name="Complete" desc=_("Fund disbursement or tuition waiver credit has been fully processed.") action=_("Action: Finalized") %}
+                    {% include 'components/guide_status_row.html' with theme="cancel" name="Cancel" desc=_("Application cancelled by student request or administratively withdrawn.") action=_("Action: Cancelled") %}
                 </div>
             </section>
 
