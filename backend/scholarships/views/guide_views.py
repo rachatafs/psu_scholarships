@@ -35,3 +35,4 @@ def guide_redirect(request):
     if request.user.is_authenticated and (request.user.is_staff or request.user.is_superuser):
         return redirect('admin_guide')
     return redirect('student_guide')
+
