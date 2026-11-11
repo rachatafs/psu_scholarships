@@ -50,39 +50,9 @@
         </div>
     </div>
 
-    <!-- Main Content Layout -->
-    <div class="guide-layout-grid">
-        
-        <!-- Sidebar -->
-        <aside class="guide-sidebar admin-guide-sidebar">
-            <div class="guide-sidebar-title">
-                {% trans "Procedures" %}
-            </div>
-            <nav class="guide-sidebar-nav">
-                <a href="#admin-workflow" class="guide-nav-link">
-                    <span class="nav-num">01.</span> {% trans "Review Workflow" %}
-                </a>
-                <a href="#admin-status-matrix" class="guide-nav-link">
-                    <span class="nav-num">02.</span> {% trans "Status Lifecycle" %}
-                </a>
-                <a href="#admin-reset-docs" class="guide-nav-link">
-                    <span class="nav-num">03.</span> {% trans "Additional Docs & Reset" %}
-                </a>
-                <a href="#admin-quota-mgmt" class="guide-nav-link">
-                    <span class="nav-num">04.</span> {% trans "Quota Management" %}
-                </a>
-                <a href="#admin-security" class="guide-nav-link">
-                    <span class="nav-num">05.</span> {% trans "Data Compliance" %}
-                </a>
-            </nav>
-            <div class="guide-sidebar-notice">
-                <div class="guide-notice-title">{% trans "Confidentiality" %}</div>
-                <p class="guide-notice-body">{% trans "Student application files contain protected personal data under PSU guidelines." %}</p>
-            </div>
-        </aside>
-
-        <!-- Articles -->
-        <main class="guide-content-main">
+    <!-- Main Content Layout (Clean, Centered, Clutter-free) -->
+    <div class="guide-main-container">
+        <main class="guide-content-main guide-container-centered">
 
             <!-- Section 1 -->
             <section id="admin-workflow" class="guide-content-card">
@@ -90,7 +60,6 @@
                     <h2 class="guide-card-title">
                         {% trans "01. Application Verification & Review Workflow" %}
                     </h2>
-                    <span class="guide-card-tag">WORKFLOW</span>
                 </div>
                 <div class="guide-admin-steps-list">
                     <div class="guide-admin-step-item">
@@ -111,7 +80,6 @@
                     <h2 class="guide-card-title">
                         {% trans "02. Status Transition Matrix" %}
                     </h2>
-                    <span class="guide-card-tag">MATRIX</span>
                 </div>
                 <div class="guide-table-responsive">
                     <table class="guide-admin-table">
@@ -171,7 +139,6 @@
                     <h2 class="guide-card-title">
                         {% trans "03. Additional Docs Requests & Status Reset" %}
                     </h2>
-                    <span class="guide-card-tag">ACTIONS</span>
                 </div>
                 <div class="guide-two-col-grid">
                     <div class="guide-action-box action-box-info">
@@ -208,7 +175,6 @@
                     <h2 class="guide-card-title">
                         {% trans "04. Scholarship Quotas & Capacity Controls" %}
                     </h2>
-                    <span class="guide-card-tag">QUOTAS</span>
                 </div>
                 <div class="guide-quota-content">
                     <p class="guide-quota-intro">

@@ -24,7 +24,7 @@
                 {% trans "A clear step-by-step handbook on verifying eligibility, preparing electronic files, submitting applications online, and monitoring committee evaluation updates." %}
             </p>
 
-            <!-- 4-Step Process Roadmap Integrated cleanly -->
+            <!-- 4-Step Process Roadmap (All steps matching cohesive theme) -->
             <div class="guide-steps-container">
                 <div class="guide-steps-grid">
                     <div class="guide-step-card">
@@ -48,10 +48,10 @@
                             <span class="guide-step-text">{% trans "Track Review Status" %}</span>
                         </div>
                     </div>
-                    <div class="guide-step-card guide-step-card-success">
-                        <div class="guide-step-num guide-step-num-success">4</div>
+                    <div class="guide-step-card">
+                        <div class="guide-step-num">4</div>
                         <div class="guide-step-body">
-                            <span class="guide-step-label guide-step-label-success">{% trans "Step 4" %}</span>
+                            <span class="guide-step-label">{% trans "Step 4" %}</span>
                             <span class="guide-step-text">{% trans "Receive Funding" %}</span>
                         </div>
                     </div>
@@ -60,317 +60,278 @@
         </div>
     </header>
 
-    <!-- Main Content Layout -->
+    <!-- Main Content Layout (Clean, Centered, Clutter-free) -->
     <div class="container-default guide-main-container">
-        <div class="guide-layout-grid">
-            
-            <!-- Sticky Sidebar / Mobile Quick Links -->
-            <aside class="guide-sidebar">
-                <div class="guide-sidebar-title">
-                    {% trans "Navigation" %}
+        <main class="guide-content-main guide-container-centered">
+
+            <!-- 01: Categories & Eligibility -->
+            <section id="section-eligibility" class="guide-content-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "01. Scholarship Categories & Eligibility" %}
+                    </h2>
                 </div>
-                <nav class="guide-sidebar-nav">
-                    <a href="#section-eligibility" class="guide-nav-link">
-                        <span class="nav-num">01.</span> {% trans "Scholarship Categories" %}
-                    </a>
-                    <a href="#section-documents" class="guide-nav-link">
-                        <span class="nav-num">02.</span> {% trans "Document Checklist" %}
-                    </a>
-                    <a href="#section-statuses" class="guide-nav-link">
-                        <span class="nav-num">03.</span> {% trans "Status Meanings" %}
-                    </a>
-                    <a href="#section-additional" class="guide-nav-link">
-                        <span class="nav-num">04.</span> {% trans "Additional Documents" %}
-                    </a>
-                    <a href="#section-faq" class="guide-nav-link">
-                        <span class="nav-num">05.</span> {% trans "Questions & Answers" %}
-                    </a>
-                    <a href="#section-contact" class="guide-nav-link">
-                        <span class="nav-num">06.</span> {% trans "Contact & Support" %}
-                    </a>
-                </nav>
 
-                <div class="guide-sidebar-notice">
-                    <div class="guide-notice-title">{% trans "Deadline Notice" %}</div>
-                    <p class="guide-notice-body">{% trans "Applications close at 23:59 on the indicated end date. Incomplete submissions cannot be processed." %}</p>
+                <p class="guide-lead-text">
+                    {% trans "Review the 4 primary scholarship classifications available to PSU Phuket undergraduate students:" %}
+                </p>
+
+                <div class="guide-cards-grid">
+                    <div class="guide-category-card category-card-general">
+                        <div class="category-card-top">
+                            <span class="category-badge badge-general">{% trans "General" %}</span>
+                        </div>
+                        <h3 class="guide-category-name">{% trans "General Scholarships" %}</h3>
+                        <p class="guide-category-desc">{% trans "Merit-based and need-based financial aid for full-time enrolled students." %}</p>
+                    </div>
+
+                    <div class="guide-category-card category-card-exchange">
+                        <div class="category-card-top">
+                            <span class="category-badge badge-exchange">{% trans "Exchange" %}</span>
+                        </div>
+                        <h3 class="guide-category-name">{% trans "Exchange Scholarships" %}</h3>
+                        <p class="guide-category-desc">{% trans "Funding for international student exchange and overseas internships." %}</p>
+                    </div>
+
+                    <div class="guide-category-card category-card-fee">
+                        <div class="category-card-top">
+                            <span class="category-badge badge-fee">{% trans "Fee Waiver" %}</span>
+                        </div>
+                        <h3 class="guide-category-name">{% trans "Fee Waiver Scholarships" %}</h3>
+                        <p class="guide-category-desc">{% trans "Tuition exemptions (50% or 100%) for recognized student leaders and athletes." %}</p>
+                    </div>
+
+                    <div class="guide-category-card category-card-lunch">
+                        <div class="category-card-top">
+                            <span class="category-badge badge-lunch">{% trans "Lunch" %}</span>
+                        </div>
+                        <h3 class="guide-category-name">{% trans "Lunch Scholarships" %}</h3>
+                        <p class="guide-category-desc">{% trans "Living cost meal vouchers to support campus welfare and health." %}</p>
+                    </div>
                 </div>
-            </aside>
 
-            <!-- Right Content Panels -->
-            <main class="guide-content-main">
+                <div class="guide-callout-info">
+                    <strong>{% trans "GPAX Check" %}:</strong> {% trans "When signed in, the system compares your current GPAX with the scholarship requirement. Cards indicate if your GPAX qualifies automatically." %}
+                </div>
+            </section>
 
-                <!-- 01: Categories & Eligibility -->
-                <section id="section-eligibility" class="guide-content-card">
-                    <div class="guide-card-header">
-                        <h2 class="guide-card-title">
-                            {% trans "01. Scholarship Categories & Eligibility" %}
-                        </h2>
-                        <span class="guide-card-tag">CRITERIA</span>
-                    </div>
+            <!-- 02: Document Checklist -->
+            <section id="section-documents" class="guide-content-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "02. Required Application Documents Checklist" %}
+                    </h2>
+                </div>
 
-                    <p class="guide-lead-text">
-                        {% trans "Review the 4 primary scholarship classifications available to PSU Phuket undergraduate students:" %}
-                    </p>
+                <p class="guide-lead-text">
+                    {% trans "Prepare electronic copies before starting the application form:" %}
+                </p>
 
-                    <div class="guide-cards-grid">
-                        <div class="guide-category-card category-card-general">
-                            <div class="category-card-top">
-                                <span class="category-badge badge-general">{% trans "General" %}</span>
+                <div class="guide-two-col-grid">
+                    <div class="guide-inner-box">
+                        <div class="guide-box-header">
+                            <span class="material-symbols-outlined guide-box-icon">description</span>
+                            <div class="guide-box-title">
+                                {% trans "1. Academic Transcript (Mandatory)" %}
                             </div>
-                            <h3 class="guide-category-name">{% trans "General Scholarships" %}</h3>
-                            <p class="guide-category-desc">{% trans "Merit-based and need-based financial aid for full-time enrolled students." %}</p>
                         </div>
-
-                        <div class="guide-category-card category-card-exchange">
-                            <div class="category-card-top">
-                                <span class="category-badge badge-exchange">{% trans "Exchange" %}</span>
-                            </div>
-                            <h3 class="guide-category-name">{% trans "Exchange Scholarships" %}</h3>
-                            <p class="guide-category-desc">{% trans "Funding for international student exchange and overseas internships." %}</p>
-                        </div>
-
-                        <div class="guide-category-card category-card-fee">
-                            <div class="category-card-top">
-                                <span class="category-badge badge-fee">{% trans "Fee Waiver" %}</span>
-                            </div>
-                            <h3 class="guide-category-name">{% trans "Fee Waiver Scholarships" %}</h3>
-                            <p class="guide-category-desc">{% trans "Tuition exemptions (50% or 100%) for recognized student leaders and athletes." %}</p>
-                        </div>
-
-                        <div class="guide-category-card category-card-lunch">
-                            <div class="category-card-top">
-                                <span class="category-badge badge-lunch">{% trans "Lunch" %}</span>
-                            </div>
-                            <h3 class="guide-category-name">{% trans "Lunch Scholarships" %}</h3>
-                            <p class="guide-category-desc">{% trans "Living cost meal vouchers to support campus welfare and health." %}</p>
+                        <div class="guide-box-desc">
+                            {% trans "Official grade report or registrar portal export showing cumulative GPAX and total credits earned." %}
                         </div>
                     </div>
 
-                    <div class="guide-callout-info">
-                        <strong>{% trans "GPAX Check" %}:</strong> {% trans "When signed in, the system compares your current GPAX with the scholarship requirement. Cards indicate if your GPAX qualifies automatically." %}
-                    </div>
-                </section>
-
-                <!-- 02: Document Checklist -->
-                <section id="section-documents" class="guide-content-card">
-                    <div class="guide-card-header">
-                        <h2 class="guide-card-title">
-                            {% trans "02. Required Application Documents Checklist" %}
-                        </h2>
-                        <span class="guide-card-tag">FILES</span>
-                    </div>
-
-                    <p class="guide-lead-text">
-                        {% trans "Prepare electronic copies before starting the application form:" %}
-                    </p>
-
-                    <div class="guide-two-col-grid">
-                        <div class="guide-inner-box">
-                            <div class="guide-box-header">
-                                <span class="material-symbols-outlined guide-box-icon">description</span>
-                                <div class="guide-box-title">
-                                    {% trans "1. Academic Transcript (Mandatory)" %}
-                                </div>
-                            </div>
-                            <div class="guide-box-desc">
-                                {% trans "Official grade report or registrar portal export showing cumulative GPAX and total credits earned." %}
+                    <div class="guide-inner-box">
+                        <div class="guide-box-header">
+                            <span class="material-symbols-outlined guide-box-icon">verified</span>
+                            <div class="guide-box-title">
+                                {% trans "2. Recommendation Letter (If applicable)" %}
                             </div>
                         </div>
+                        <div class="guide-box-desc">
+                            {% trans "Signed endorsement from your academic advisor or faculty department head." %}
+                        </div>
+                    </div>
+                </div>
 
-                        <div class="guide-inner-box">
-                            <div class="guide-box-header">
-                                <span class="material-symbols-outlined guide-box-icon">verified</span>
-                                <div class="guide-box-title">
-                                    {% trans "2. Recommendation Letter (If applicable)" %}
-                                </div>
-                            </div>
-                            <div class="guide-box-desc">
-                                {% trans "Signed endorsement from your academic advisor or faculty department head." %}
-                            </div>
+                <div class="guide-file-standards-box">
+                    <strong>{% trans "File Standards" %}:</strong> {% trans "Format: PDF, JPG, PNG | Maximum file size: 5 MB per document | Ensure all text and seal stamps are legible." %}
+                </div>
+            </section>
+
+            <!-- 03: Status Meanings (NO OVAL BADGE BORDER - CLEAN ACCENT BAR) -->
+            <section id="section-statuses" class="guide-content-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "03. Application Status Cheat Sheet" %}
+                    </h2>
+                </div>
+
+                <p class="guide-lead-text">
+                    {% trans "Each application displays one of six standardized review states in your Profile tracking panel:" %}
+                </p>
+
+                <div class="guide-status-list">
+                    <!-- Pending -->
+                    <div class="guide-status-row status-theme-pending">
+                        <div class="guide-status-accent-bar"></div>
+                        <div class="guide-status-main">
+                            <div class="guide-status-heading">Pending</div>
+                            <div class="guide-status-explanation">{% trans "Application successfully submitted; awaiting committee pre-screening queue." %}</div>
+                        </div>
+                        <div class="guide-status-side">
+                            <span class="guide-status-action-pill">{% trans "Action: None (Awaiting)" %}</span>
                         </div>
                     </div>
 
-                    <div class="guide-file-standards-box">
-                        <strong>{% trans "File Standards" %}:</strong> {% trans "Format: PDF, JPG, PNG | Maximum file size: 5 MB per document | Ensure all text and seal stamps are legible." %}
-                    </div>
-                </section>
-
-                <!-- 03: Status Meanings (NO OVAL BADGE BORDER - CLEAN PROFESSIONAL STATUS LIST) -->
-                <section id="section-statuses" class="guide-content-card">
-                    <div class="guide-card-header">
-                        <h2 class="guide-card-title">
-                            {% trans "03. Application Status Cheat Sheet" %}
-                        </h2>
-                        <span class="guide-card-tag">STATUSES</span>
-                    </div>
-
-                    <p class="guide-lead-text">
-                        {% trans "Each application displays one of six standardized review states in your Profile tracking panel:" %}
-                    </p>
-
-                    <div class="guide-status-list">
-                        <!-- Pending -->
-                        <div class="guide-status-row status-theme-pending">
-                            <div class="guide-status-accent-bar"></div>
-                            <div class="guide-status-main">
-                                <div class="guide-status-heading">Pending</div>
-                                <div class="guide-status-explanation">{% trans "Application successfully submitted; awaiting committee pre-screening queue." %}</div>
-                            </div>
-                            <div class="guide-status-side">
-                                <span class="guide-status-action-pill">{% trans "Action: None (Awaiting)" %}</span>
-                            </div>
+                    <!-- In Progress -->
+                    <div class="guide-status-row status-theme-progress">
+                        <div class="guide-status-accent-bar"></div>
+                        <div class="guide-status-main">
+                            <div class="guide-status-heading">In Progress</div>
+                            <div class="guide-status-explanation">{% trans "Under evaluation by faculty committee or scheduled for applicant interview." %}</div>
                         </div>
-
-                        <!-- In Progress -->
-                        <div class="guide-status-row status-theme-progress">
-                            <div class="guide-status-accent-bar"></div>
-                            <div class="guide-status-main">
-                                <div class="guide-status-heading">In Progress</div>
-                                <div class="guide-status-explanation">{% trans "Under evaluation by faculty committee or scheduled for applicant interview." %}</div>
-                            </div>
-                            <div class="guide-status-side">
-                                <span class="guide-status-action-pill">{% trans "Action: Check Email" %}</span>
-                            </div>
-                        </div>
-
-                        <!-- Approve -->
-                        <div class="guide-status-row status-theme-approve">
-                            <div class="guide-status-accent-bar"></div>
-                            <div class="guide-status-main">
-                                <div class="guide-status-heading">Approve</div>
-                                <div class="guide-status-explanation">{% trans "Approved by committee. Follow award notification guidelines for disbursement." %}</div>
-                            </div>
-                            <div class="guide-status-side">
-                                <span class="guide-status-action-pill">{% trans "Action: Completed" %}</span>
-                            </div>
-                        </div>
-
-                        <!-- Reject -->
-                        <div class="guide-status-row status-theme-reject">
-                            <div class="guide-status-accent-bar"></div>
-                            <div class="guide-status-main">
-                                <div class="guide-status-heading">Reject</div>
-                                <div class="guide-status-explanation">{% trans "Requirements or quota filled for this cycle. Students may apply for other open scholarships." %}</div>
-                            </div>
-                            <div class="guide-status-side">
-                                <span class="guide-status-action-pill">{% trans "Action: Try Other Grants" %}</span>
-                            </div>
-                        </div>
-
-                        <!-- Complete -->
-                        <div class="guide-status-row status-theme-complete">
-                            <div class="guide-status-accent-bar"></div>
-                            <div class="guide-status-main">
-                                <div class="guide-status-heading">Complete</div>
-                                <div class="guide-status-explanation">{% trans "Fund disbursement or tuition waiver credit has been fully processed." %}</div>
-                            </div>
-                            <div class="guide-status-side">
-                                <span class="guide-status-action-pill">{% trans "Action: Finalized" %}</span>
-                            </div>
-                        </div>
-
-                        <!-- Cancel -->
-                        <div class="guide-status-row status-theme-cancel">
-                            <div class="guide-status-accent-bar"></div>
-                            <div class="guide-status-main">
-                                <div class="guide-status-heading">Cancel</div>
-                                <div class="guide-status-explanation">{% trans "Application cancelled by student request or administratively withdrawn." %}</div>
-                            </div>
-                            <div class="guide-status-side">
-                                <span class="guide-status-action-pill">{% trans "Action: Cancelled" %}</span>
-                            </div>
+                        <div class="guide-status-side">
+                            <span class="guide-status-action-pill">{% trans "Action: Check Email" %}</span>
                         </div>
                     </div>
-                </section>
 
-                <!-- 04: Additional Docs -->
-                <section id="section-additional" class="guide-content-card">
-                    <div class="guide-card-header">
-                        <h2 class="guide-card-title">
-                            {% trans "04. Handling 'Additional Documents' Requests" %}
-                        </h2>
-                        <span class="guide-card-tag">NOTICE</span>
-                    </div>
-
-                    <p class="guide-lead-text">
-                        {% trans "If committee pre-screening requires clearer documentation, an email alert will be dispatched to your student address." %}
-                    </p>
-
-                    <div class="guide-notice-card">
-                        <div class="guide-notice-heading">{% trans "Required Actions" %}:</div>
-                        <ol class="guide-ordered-list">
-                            <li>{% trans "Read the specific missing document listed in the notification email." %}</li>
-                            <li>{% trans "Scan or export a clear copy in PDF or JPG format." %}</li>
-                            <li>{% trans "Deliver the files as instructed in the email or submit directly at Student Affairs (Room 7102)." %}</li>
-                        </ol>
-                    </div>
-                </section>
-
-                <!-- 05: Questions & Answers -->
-                <section id="section-faq" class="guide-content-card">
-                    <div class="guide-card-header">
-                        <h2 class="guide-card-title">
-                            {% trans "05. Frequently Asked Questions" %}
-                        </h2>
-                        <span class="guide-card-tag">FAQ</span>
-                    </div>
-
-                    <div class="guide-faq-list">
-                        <details class="guide-faq-item">
-                            <summary class="guide-faq-question">
-                                {% trans "Can I apply for more than one scholarship concurrently?" %}
-                            </summary>
-                            <p class="guide-faq-answer">
-                                {% trans "Yes, you can apply for multiple open scholarships. If awarded more than one, university rules dictate whether funding can be combined or if a choice must be made." %}
-                            </p>
-                        </details>
-
-                        <details class="guide-faq-item">
-                            <summary class="guide-faq-question">
-                                {% trans "What if my GPAX is below the minimum threshold?" %}
-                            </summary>
-                            <p class="guide-faq-answer">
-                                {% trans "Merit-based scholarships require meeting the stated cutoff. Need-based or emergency welfare grants (e.g. Lunch Grants) may allow exceptions based on special recommendation." %}
-                            </p>
-                        </details>
-
-                        <details class="guide-faq-item">
-                            <summary class="guide-faq-question">
-                                {% trans "Can I update my documents after pressing submit?" %}
-                            </summary>
-                            <p class="guide-faq-answer">
-                                {% trans "Submitted files are locked to preserve audit integrity. If you made an error, visit Room 7102 with your student ID card to request an administrative re-upload." %}
-                            </p>
-                        </details>
-                    </div>
-                </section>
-
-                <!-- 06: Contact & Support (No emojis, sleek material icons) -->
-                <section id="section-contact" class="guide-content-card guide-contact-card">
-                    <div class="guide-contact-title">
-                        {% trans "Student Affairs & Scholarship Division" %}
-                    </div>
-                    <p class="guide-contact-desc">
-                        {% trans "For technical questions regarding application submissions or document requirements, visit or contact our office:" %}
-                    </p>
-                    <div class="guide-contact-grid">
-                        <div class="guide-contact-item">
-                            <span class="material-symbols-outlined guide-contact-icon">location_on</span>
-                            <span>Room 7102, Building 7, PSU Phuket</span>
+                    <!-- Approve -->
+                    <div class="guide-status-row status-theme-approve">
+                        <div class="guide-status-accent-bar"></div>
+                        <div class="guide-status-main">
+                            <div class="guide-status-heading">Approve</div>
+                            <div class="guide-status-explanation">{% trans "Approved by committee. Follow award notification guidelines for disbursement." %}</div>
                         </div>
-                        <div class="guide-contact-item">
-                            <span class="material-symbols-outlined guide-contact-icon">schedule</span>
-                            <span>Monday – Friday, 08:30 – 16:30</span>
-                        </div>
-                        <div class="guide-contact-item">
-                            <span class="material-symbols-outlined guide-contact-icon">mail</span>
-                            <span>scholarship@phuket.psu.ac.th</span>
+                        <div class="guide-status-side">
+                            <span class="guide-status-action-pill">{% trans "Action: Completed" %}</span>
                         </div>
                     </div>
-                </section>
 
-            </main>
-        </div>
+                    <!-- Reject -->
+                    <div class="guide-status-row status-theme-reject">
+                        <div class="guide-status-accent-bar"></div>
+                        <div class="guide-status-main">
+                            <div class="guide-status-heading">Reject</div>
+                            <div class="guide-status-explanation">{% trans "Requirements or quota filled for this cycle. Students may apply for other open scholarships." %}</div>
+                        </div>
+                        <div class="guide-status-side">
+                            <span class="guide-status-action-pill">{% trans "Action: Try Other Grants" %}</span>
+                        </div>
+                    </div>
+
+                    <!-- Complete -->
+                    <div class="guide-status-row status-theme-complete">
+                        <div class="guide-status-accent-bar"></div>
+                        <div class="guide-status-main">
+                            <div class="guide-status-heading">Complete</div>
+                            <div class="guide-status-explanation">{% trans "Fund disbursement or tuition waiver credit has been fully processed." %}</div>
+                        </div>
+                        <div class="guide-status-side">
+                            <span class="guide-status-action-pill">{% trans "Action: Finalized" %}</span>
+                        </div>
+                    </div>
+
+                    <!-- Cancel -->
+                    <div class="guide-status-row status-theme-cancel">
+                        <div class="guide-status-accent-bar"></div>
+                        <div class="guide-status-main">
+                            <div class="guide-status-heading">Cancel</div>
+                            <div class="guide-status-explanation">{% trans "Application cancelled by student request or administratively withdrawn." %}</div>
+                        </div>
+                        <div class="guide-status-side">
+                            <span class="guide-status-action-pill">{% trans "Action: Cancelled" %}</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 04: Additional Docs -->
+            <section id="section-additional" class="guide-content-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "04. Handling 'Additional Documents' Requests" %}
+                    </h2>
+                </div>
+
+                <p class="guide-lead-text">
+                    {% trans "If committee pre-screening requires clearer documentation, an email alert will be dispatched to your student address." %}
+                </p>
+
+                <div class="guide-notice-card">
+                    <div class="guide-notice-heading">{% trans "Required Actions" %}:</div>
+                    <ol class="guide-ordered-list">
+                        <li>{% trans "Read the specific missing document listed in the notification email." %}</li>
+                        <li>{% trans "Scan or export a clear copy in PDF or JPG format." %}</li>
+                        <li>{% trans "Deliver the files as instructed in the email or submit directly at Student Affairs (Room 7102)." %}</li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- 05: Questions & Answers -->
+            <section id="section-faq" class="guide-content-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "05. Frequently Asked Questions" %}
+                    </h2>
+                </div>
+
+                <div class="guide-faq-list">
+                    <details class="guide-faq-item">
+                        <summary class="guide-faq-question">
+                            {% trans "Can I apply for more than one scholarship concurrently?" %}
+                        </summary>
+                        <p class="guide-faq-answer">
+                            {% trans "Yes, you can apply for multiple open scholarships. If awarded more than one, university rules dictate whether funding can be combined or if a choice must be made." %}
+                        </p>
+                    </details>
+
+                    <details class="guide-faq-item">
+                        <summary class="guide-faq-question">
+                            {% trans "What if my GPAX is below the minimum threshold?" %}
+                        </summary>
+                        <p class="guide-faq-answer">
+                            {% trans "Merit-based scholarships require meeting the stated cutoff. Need-based or emergency welfare grants (e.g. Lunch Grants) may allow exceptions based on special recommendation." %}
+                        </p>
+                    </details>
+
+                    <details class="guide-faq-item">
+                        <summary class="guide-faq-question">
+                            {% trans "Can I update my documents after pressing submit?" %}
+                        </summary>
+                        <p class="guide-faq-answer">
+                            {% trans "Submitted files are locked to preserve audit integrity. If you made an error, visit Room 7102 with your student ID card to request an administrative re-upload." %}
+                        </p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- 06: Contact & Support (No emojis, sleek material icons) -->
+            <section id="section-contact" class="guide-content-card guide-contact-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "06. Student Affairs & Scholarship Division" %}
+                    </h2>
+                </div>
+                <p class="guide-contact-desc">
+                    {% trans "For technical questions regarding application submissions or document requirements, visit or contact our office:" %}
+                </p>
+                <div class="guide-contact-grid">
+                    <div class="guide-contact-item">
+                        <span class="material-symbols-outlined guide-contact-icon">location_on</span>
+                        <span>Room 7102, Building 7, PSU Phuket</span>
+                    </div>
+                    <div class="guide-contact-item">
+                        <span class="material-symbols-outlined guide-contact-icon">schedule</span>
+                        <span>Monday – Friday, 08:30 – 16:30</span>
+                    </div>
+                    <div class="guide-contact-item">
+                        <span class="material-symbols-outlined guide-contact-icon">mail</span>
+                        <span>scholarship@phuket.psu.ac.th</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
     </div>
 </div>
 {% endblock %}
