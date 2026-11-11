@@ -54,169 +54,169 @@
         </div>
     </div>
 
-        <!-- Main Content Layout (Clean, Centered, Clutter-free) -->
-        <div class="guide-main-container">
-            <main class="guide-content-main guide-container-centered">
+    <!-- Main Content Layout (Clean, Centered, Clutter-free) -->
+    <div class="guide-main-container">
+        <main class="guide-content-main guide-container-centered">
 
-                    <!-- Section 1 -->
-                    <section id="admin-workflow" class="guide-content-card">
-                        <div class="guide-card-header">
-                            <h2 class="guide-card-title">
-                                {% trans "01. Application Verification & Review Workflow" %}
-                            </h2>
-                        </div>
-                        <div class="guide-admin-steps-list">
-                            <div class="guide-admin-step-item">
-                                <strong>1. {% trans "Access Uploaded Documents" %}:</strong> {% trans "Click document
-                                badges in the row (e.g. 'Transcript', 'Recommendation') to view submitted files
-                                directly." %}
-                            </div>
-                            <div class="guide-admin-step-item">
-                                <strong>2. {% trans "Verify Academic Standing" %}:</strong> {% trans "Compare the
-                                student's cumulative GPAX and active enrolled semester status against scholarship
-                                requirements." %}
-                            </div>
-                            <div class="guide-admin-step-item">
-                                <strong>3. {% trans "Progress Review State" %}:</strong> {% trans "Click 'In Progress'
-                                to signify the application is actively undergoing committee review or interview
-                                scheduling." %}
-                            </div>
-                        </div>
-                    </section>
+            <!-- Section 1 -->
+            <section id="admin-workflow" class="guide-content-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "01. Application Verification & Review Workflow" %}
+                    </h2>
+                </div>
+                <div class="guide-admin-steps-list">
+                    <div class="guide-admin-step-item">
+                        <strong>1. {% trans "Access Uploaded Documents" %}:</strong> {% trans "Click document
+                        badges in the row (e.g. 'Transcript', 'Recommendation') to view submitted files
+                        directly." %}
+                    </div>
+                    <div class="guide-admin-step-item">
+                        <strong>2. {% trans "Verify Academic Standing" %}:</strong> {% trans "Compare the
+                        student's cumulative GPAX and active enrolled semester status against scholarship
+                        requirements." %}
+                    </div>
+                    <div class="guide-admin-step-item">
+                        <strong>3. {% trans "Progress Review State" %}:</strong> {% trans "Click 'In Progress'
+                        to signify the application is actively undergoing committee review or interview
+                        scheduling." %}
+                    </div>
+                </div>
+            </section>
 
-                    <!-- Section 2 -->
-                    <section id="admin-status-matrix" class="guide-content-card">
-                        <div class="guide-card-header">
-                            <h2 class="guide-card-title">
-                                {% trans "02. Status Transition Matrix" %}
-                            </h2>
-                        </div>
-                        <div class="guide-table-responsive">
-                            <table class="guide-admin-table">
-                                <thead>
-                                    <tr>
-                                        <th>{% trans "Status" %}</th>
-                                        <th>{% trans "Indicator" %}</th>
-                                        <th>{% trans "Operational Meaning" %}</th>
-                                        <th>{% trans "Permitted Action" %}</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="status-name-cell">Pending</td>
-                                        <td>{% include 'components/app_status_indicator.html' with status='pending' %}</td>
-                                        <td>{% trans "New submission awaiting committee screening queue." %}</td>
-                                        <td>In Progress, Reject, Cancel</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="status-name-cell">In Progress</td>
-                                        <td>{% include 'components/app_status_indicator.html' with status='in_progress' %}</td>
-                                        <td>{% trans "Active review, interviews, or awaiting additional documents." %}</td>
-                                        <td>Approve, Reject, Cancel</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="status-name-cell status-text-success">Approve</td>
-                                        <td>{% include 'components/app_status_indicator.html' with status='approved' %}</td>
-                                        <td>{% trans "Applicant has met all criteria and is awarded the scholarship." %}</td>
-                                        <td>Complete, Cancel</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="status-name-cell status-text-danger">Reject</td>
-                                        <td>{% include 'components/app_status_indicator.html' with status='rejected' %}</td>
-                                        <td>{% trans "Ineligible, missing mandatory criteria, or quota filled." %}</td>
-                                        <td>Reset to Pending</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="status-name-cell status-text-purple">Complete</td>
-                                        <td>{% include 'components/app_status_indicator.html' with status='completed' %}</td>
-                                        <td>{% trans "Scholarship disbursement and onboarding completed." %}</td>
-                                        <td>Final State</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="status-name-cell status-text-muted">Cancel</td>
-                                        <td>{% include 'components/app_status_indicator.html' with status='cancelled' %}</td>
-                                        <td>{% trans "Application retracted by student or disqualified." %}</td>
-                                        <td>Reset to Pending</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </section>
+            <!-- Section 2 -->
+            <section id="admin-status-matrix" class="guide-content-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "02. Status Transition Matrix" %}
+                    </h2>
+                </div>
+                <div class="guide-table-responsive">
+                    <table class="guide-admin-table">
+                        <thead>
+                            <tr>
+                                <th>{% trans "Status" %}</th>
+                                <th>{% trans "Indicator" %}</th>
+                                <th>{% trans "Operational Meaning" %}</th>
+                                <th>{% trans "Permitted Action" %}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="status-name-cell">Pending</td>
+                                <td>{% include 'components/app_status_indicator.html' with status='pending' %}</td>
+                                <td>{% trans "New submission awaiting committee screening queue." %}</td>
+                                <td>In Progress, Reject, Cancel</td>
+                            </tr>
+                            <tr>
+                                <td class="status-name-cell">In Progress</td>
+                                <td>{% include 'components/app_status_indicator.html' with status='in_progress' %}</td>
+                                <td>{% trans "Active review, interviews, or awaiting additional documents." %}</td>
+                                <td>Approve, Reject, Cancel</td>
+                            </tr>
+                            <tr>
+                                <td class="status-name-cell status-text-success">Approve</td>
+                                <td>{% include 'components/app_status_indicator.html' with status='approved' %}</td>
+                                <td>{% trans "Applicant has met all criteria and is awarded the scholarship." %}</td>
+                                <td>Complete, Cancel</td>
+                            </tr>
+                            <tr>
+                                <td class="status-name-cell status-text-danger">Reject</td>
+                                <td>{% include 'components/app_status_indicator.html' with status='rejected' %}</td>
+                                <td>{% trans "Ineligible, missing mandatory criteria, or quota filled." %}</td>
+                                <td>Reset to Pending</td>
+                            </tr>
+                            <tr>
+                                <td class="status-name-cell status-text-purple">Complete</td>
+                                <td>{% include 'components/app_status_indicator.html' with status='completed' %}</td>
+                                <td>{% trans "Scholarship disbursement and onboarding completed." %}</td>
+                                <td>Final State</td>
+                            </tr>
+                            <tr>
+                                <td class="status-name-cell status-text-muted">Cancel</td>
+                                <td>{% include 'components/app_status_indicator.html' with status='cancelled' %}</td>
+                                <td>{% trans "Application retracted by student or disqualified." %}</td>
+                                <td>Reset to Pending</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-                    <!-- Section 3 -->
-                    <section id="admin-reset-docs" class="guide-content-card">
-                        <div class="guide-card-header">
-                            <h2 class="guide-card-title">
-                                {% trans "03. Additional Docs Requests & Status Reset" %}
-                            </h2>
+            <!-- Section 3 -->
+            <section id="admin-reset-docs" class="guide-content-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "03. Additional Docs Requests & Status Reset" %}
+                    </h2>
+                </div>
+                <div class="guide-two-col-grid">
+                    <div class="guide-action-box action-box-info">
+                        <div class="action-box-title action-title-info">
+                            {% trans "Requesting 'Additional Docs'" %}
                         </div>
-                        <div class="guide-two-col-grid">
-                            <div class="guide-action-box action-box-info">
-                                <div class="action-box-title action-title-info">
-                                    {% trans "Requesting 'Additional Docs'" %}
-                                </div>
-                                <p class="action-box-desc">
-                                    {% trans "When a student's file is illegible, incomplete, or requires clarification,
-                                    click 'Additional Docs' in the table row." %}
-                                </p>
-                                <ul class="action-box-list action-list-info">
-                                    <li>{% trans "Sends automated email with instructions to student" %}</li>
-                                    <li>{% trans "Maintains the record in 'In Progress' queue" %}</li>
-                                </ul>
-                            </div>
-
-                            <div class="guide-action-box action-box-danger">
-                                <div class="action-box-title action-title-danger">
-                                    {% trans "Using 'Reset to Pending'" %}
-                                </div>
-                                <p class="action-box-desc">
-                                    {% trans "If a reviewer mistakenly marked an application, click 'Reset' to restore
-                                    the row to unreviewed Pending state." %}
-                                </p>
-                                <ul class="action-box-list action-list-danger">
-                                    <li>{% trans "Restores standard review buttons for the row" %}</li>
-                                    <li>{% trans "Prevents locked states from accidental selections" %}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Section 4 -->
-                    <section id="admin-quota-mgmt" class="guide-content-card">
-                        <div class="guide-card-header">
-                            <h2 class="guide-card-title">
-                                {% trans "04. Scholarship Quotas & Capacity Controls" %}
-                            </h2>
-                        </div>
-                        <div class="guide-quota-content">
-                            <p class="guide-quota-intro">
-                                {% trans "Each scholarship defines a capacity quota ('Grants'). The system automatically
-                                protects and manages quotas as follows:" %}
-                            </p>
-                            <ul class="guide-quota-list">
-                                <li><strong>{% trans "Automatic Closure" %}:</strong> {% trans "When the count of
-                                    approved and in-progress applicants equals the quota, the scholarship closes
-                                    automatically to new applicants." %}</li>
-                                <li><strong>{% trans "Deadline Enforcement" %}:</strong> {% trans "When the deadline
-                                    passes, scholarship cards display 'Expired' and the application form disables
-                                    submission." %}</li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <!-- Section 5 -->
-                    <section id="admin-security" class="guide-content-card guide-compliance-card">
-                        <div class="guide-compliance-title">
-                            {% trans "05. Data Privacy & Compliance" %}
-                        </div>
-                        <p class="guide-compliance-desc">
-                            {% trans "Applicant transcripts and personal records must be processed strictly for
-                            scholarship evaluation under Prince of Songkla University regulations and Thailand's PDPA.
-                            Unauthorized dissemination of applicant records is strictly prohibited." %}
+                        <p class="action-box-desc">
+                            {% trans "When a student's file is illegible, incomplete, or requires clarification,
+                            click 'Additional Docs' in the table row." %}
                         </p>
-                    </section>
+                        <ul class="action-box-list action-list-info">
+                            <li>{% trans "Sends automated email with instructions to student" %}</li>
+                            <li>{% trans "Maintains the record in 'In Progress' queue" %}</li>
+                        </ul>
+                    </div>
 
-                </main>
-        </div>
+                    <div class="guide-action-box action-box-danger">
+                        <div class="action-box-title action-title-danger">
+                            {% trans "Using 'Reset to Pending'" %}
+                        </div>
+                        <p class="action-box-desc">
+                            {% trans "If a reviewer mistakenly marked an application, click 'Reset' to restore
+                            the row to unreviewed Pending state." %}
+                        </p>
+                        <ul class="action-box-list action-list-danger">
+                            <li>{% trans "Restores standard review buttons for the row" %}</li>
+                            <li>{% trans "Prevents locked states from accidental selections" %}</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4 -->
+            <section id="admin-quota-mgmt" class="guide-content-card">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
+                        {% trans "04. Scholarship Quotas & Capacity Controls" %}
+                    </h2>
+                </div>
+                <div class="guide-quota-content">
+                    <p class="guide-quota-intro">
+                        {% trans "Each scholarship defines a capacity quota ('Grants'). The system automatically
+                        protects and manages quotas as follows:" %}
+                    </p>
+                    <ul class="guide-quota-list">
+                        <li><strong>{% trans "Automatic Closure" %}:</strong> {% trans "When the count of
+                            approved and in-progress applicants equals the quota, the scholarship closes
+                            automatically to new applicants." %}</li>
+                        <li><strong>{% trans "Deadline Enforcement" %}:</strong> {% trans "When the deadline
+                            passes, scholarship cards display 'Expired' and the application form disables
+                            submission." %}</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 5 -->
+            <section id="admin-security" class="guide-content-card guide-compliance-card">
+                <div class="guide-compliance-title">
+                    {% trans "05. Data Privacy & Compliance" %}
+                </div>
+                <p class="guide-compliance-desc">
+                    {% trans "Applicant transcripts and personal records must be processed strictly for
+                    scholarship evaluation under Prince of Songkla University regulations and Thailand's PDPA.
+                    Unauthorized dissemination of applicant records is strictly prohibited." %}
+                </p>
+            </section>
+
+        </main>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
