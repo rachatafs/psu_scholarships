@@ -4202,3 +4202,334 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
     color: var(--psu-blue-700);
     border-color: var(--psu-blue-200);
 }
+
+/* ==========================================================================
+   ROLE-BASED USER GUIDES & COMPREHENSIVE MOBILE RESPONSIVENESS
+   ========================================================================== */
+
+/* --- Guide System Grid & Typography --- */
+.guide-page-wrapper {
+    background-color: var(--bg-body, #f8fafc);
+    min-height: 80vh;
+    padding-bottom: 60px;
+}
+
+.guide-hero-banner {
+    background: linear-gradient(135deg, #002D62 0%, #0369a1 100%);
+    color: #ffffff;
+    padding: 44px 0 36px;
+    box-shadow: 0 4px 20px rgba(0,45,98,0.12);
+}
+
+.guide-layout-grid {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.guide-sidebar {
+    position: sticky;
+    top: 90px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 18px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.admin-guide-sidebar {
+    top: 20px;
+    padding: 16px;
+}
+
+.guide-two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.guide-status-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    border-radius: 8px;
+    gap: 14px;
+}
+
+.guide-status-content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+}
+
+.guide-status-name {
+    font-weight: 800;
+    font-size: 0.95rem;
+    min-width: 105px;
+    flex-shrink: 0;
+}
+
+.guide-status-desc {
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+.guide-status-action {
+    font-size: 0.78rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   MOBILE & TABLET RESPONSIVE RULES (ALL ROLES & PAGES)
+   ========================================================================== */
+
+/* --- Tablet Breakpoint (max-width: 900px) --- */
+@media (max-width: 900px) {
+    .guide-layout-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .guide-sidebar,
+    .admin-guide-sidebar {
+        position: static;
+        top: auto;
+        margin-bottom: 20px;
+    }
+
+    .guide-two-col-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-guide-wrapper {
+        padding: 16px 12px !important;
+    }
+}
+
+/* --- Mobile Breakpoint (max-width: 768px) --- */
+@media (max-width: 768px) {
+    /* Admin Management Layout */
+    .admin-table-container-card {
+        padding: 20px 14px;
+        border-radius: var(--radius-lg);
+    }
+
+    .table-header-bar {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        align-items: stretch;
+    }
+
+    .table-header-bar > div:last-child {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .btn-create-sch-link {
+        width: 100%;
+        justify-content: center;
+        align-self: stretch;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .admin-main-nav-tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        padding-bottom: 2px;
+        gap: 4px;
+    }
+
+    .admin-nav-tab-btn {
+        flex-shrink: 0;
+        padding: 10px 14px;
+        font-size: 0.88rem;
+    }
+
+    .admin-cat-tabs-row {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        padding-bottom: 10px;
+        margin-bottom: 16px;
+    }
+
+    .admin-cat-tab {
+        flex-shrink: 0;
+        padding: 6px 14px;
+        font-size: 0.82rem;
+    }
+
+    .admin-filter-toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .admin-search-wrapper {
+        min-width: 100%;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .admin-filter-right {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .admin-filter-select {
+        flex: 1;
+    }
+
+    .modern-table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .modern-data-table {
+        min-width: 760px;
+    }
+
+    /* Action Buttons in Admin Table */
+    .btn-table-action {
+        min-height: 34px;
+        padding: 7px 10px;
+        font-size: 0.82rem;
+    }
+
+    /* Student Scholarship List & Filter Bar */
+    .category-tabs-bar {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+        padding-bottom: 8px;
+    }
+
+    .category-tabs-bar .cat-tab {
+        flex-shrink: 0;
+    }
+
+    /* Scholarship Detail Sticky Card */
+    .sticky-action-card {
+        position: static;
+        top: auto;
+    }
+}
+
+/* --- Small Mobile Breakpoint (max-width: 600px) --- */
+@media (max-width: 600px) {
+    .container-default {
+        padding: 0 16px;
+    }
+
+    /* User Guide Mobile Optimization */
+    .guide-hero-banner {
+        padding: 28px 0 22px;
+    }
+
+    .guide-hero-banner h1 {
+        font-size: 1.5rem !important;
+    }
+
+    .guide-hero-banner p {
+        font-size: 0.88rem !important;
+    }
+
+    .guide-status-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 12px 14px;
+    }
+
+    .guide-status-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        width: 100%;
+    }
+
+    .guide-status-action {
+        align-self: flex-start;
+    }
+
+    /* Search form in list */
+    .filter-search-form {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-filter-submit {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .search-summary-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    /* Application tracker card in profile */
+    .tracker-header-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .tracker-header-row > div:last-child {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .tracker-header-row a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .app-card-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .app-card-details-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .app-card-details-row .link-view-details {
+        margin-top: 4px;
+    }
+
+    /* Modals on small mobile */
+    .modal-card,
+    .admin-modal-card {
+        width: 92% !important;
+        max-width: 94vw !important;
+        margin: 12px auto !important;
+        padding: 20px 16px !important;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}
+

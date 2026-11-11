@@ -65,10 +65,10 @@
 
     <!-- Main Content Layout -->
     <div class="container-default" style="margin-top: 32px;">
-        <div style="display: grid; grid-template-columns: 260px 1fr; gap: 32px; align-items: start;">
+        <div class="guide-layout-grid">
             
             <!-- Left Sticky Sidebar -->
-            <aside style="position: sticky; top: 90px; background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 18px; box-shadow: 0 2px 8px rgba(0,0,0,0.02);">
+            <aside class="guide-sidebar">
                 <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 10px;">
                     {% trans "Navigation" %}
                 </div>
@@ -161,7 +161,7 @@
                         {% trans "Prepare electronic copies before starting the application form:" %}
                     </p>
 
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+                    <div class="guide-two-col-grid" style="margin-bottom: 16px;">
                         <div style="background: #f8fafc; border-radius: 8px; padding: 16px;">
                             <div style="font-weight: 700; color: #0f172a; font-size: 0.92rem; margin-bottom: 6px;">
                                 {% trans "1. Academic Transcript (Mandatory)" %}
@@ -201,57 +201,57 @@
 
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <!-- Pending -->
-                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 8px; background: #fffbeb;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <span style="font-weight: 800; font-size: 0.95rem; color: #b45309; min-width: 105px;">Pending</span>
-                                <span style="font-size: 0.88rem; color: #92400e;">{% trans "Application successfully submitted; awaiting committee pre-screening queue." %}</span>
+                        <div class="guide-status-item" style="background: #fffbeb;">
+                            <div class="guide-status-content">
+                                <span class="guide-status-name" style="color: #b45309;">Pending</span>
+                                <span class="guide-status-desc" style="color: #92400e;">{% trans "Application successfully submitted; awaiting committee pre-screening queue." %}</span>
                             </div>
-                            <span style="font-size: 0.78rem; font-weight: 700; color: #b45309;">{% trans "Action: None (Awaiting)" %}</span>
+                            <span class="guide-status-action" style="color: #b45309;">{% trans "Action: None (Awaiting)" %}</span>
                         </div>
 
                         <!-- In Progress -->
-                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 8px; background: #f0f9ff;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <span style="font-weight: 800; font-size: 0.95rem; color: #0284c7; min-width: 105px;">In Progress</span>
-                                <span style="font-size: 0.88rem; color: #0369a1;">{% trans "Under evaluation by faculty committee or scheduled for applicant interview." %}</span>
+                        <div class="guide-status-item" style="background: #f0f9ff;">
+                            <div class="guide-status-content">
+                                <span class="guide-status-name" style="color: #0284c7;">In Progress</span>
+                                <span class="guide-status-desc" style="color: #0369a1;">{% trans "Under evaluation by faculty committee or scheduled for applicant interview." %}</span>
                             </div>
-                            <span style="font-size: 0.78rem; font-weight: 700; color: #0284c7;">{% trans "Action: Check Email" %}</span>
+                            <span class="guide-status-action" style="color: #0284c7;">{% trans "Action: Check Email" %}</span>
                         </div>
 
                         <!-- Approve -->
-                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 8px; background: #f0fdf4;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <span style="font-weight: 800; font-size: 0.95rem; color: #15803d; min-width: 105px;">Approve</span>
-                                <span style="font-size: 0.88rem; color: #166534;">{% trans "Approved by committee. Follow award notification guidelines for disbursement." %}</span>
+                        <div class="guide-status-item" style="background: #f0fdf4;">
+                            <div class="guide-status-content">
+                                <span class="guide-status-name" style="color: #15803d;">Approve</span>
+                                <span class="guide-status-desc" style="color: #166534;">{% trans "Approved by committee. Follow award notification guidelines for disbursement." %}</span>
                             </div>
-                            <span style="font-size: 0.78rem; font-weight: 700; color: #15803d;">{% trans "Action: Completed" %}</span>
+                            <span class="guide-status-action" style="color: #15803d;">{% trans "Action: Completed" %}</span>
                         </div>
 
                         <!-- Reject -->
-                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 8px; background: #fef2f2;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <span style="font-weight: 800; font-size: 0.95rem; color: #b91c1c; min-width: 105px;">Reject</span>
-                                <span style="font-size: 0.88rem; color: #991b1b;">{% trans "Requirements or quota filled for this cycle. Students may apply for other open scholarships." %}</span>
+                        <div class="guide-status-item" style="background: #fef2f2;">
+                            <div class="guide-status-content">
+                                <span class="guide-status-name" style="color: #b91c1c;">Reject</span>
+                                <span class="guide-status-desc" style="color: #991b1b;">{% trans "Requirements or quota filled for this cycle. Students may apply for other open scholarships." %}</span>
                             </div>
-                            <span style="font-size: 0.78rem; font-weight: 700; color: #b91c1c;">{% trans "Action: Try Other Grants" %}</span>
+                            <span class="guide-status-action" style="color: #b91c1c;">{% trans "Action: Try Other Grants" %}</span>
                         </div>
 
                         <!-- Complete -->
-                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 8px; background: #faf5ff;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <span style="font-weight: 800; font-size: 0.95rem; color: #7e22ce; min-width: 105px;">Complete</span>
-                                <span style="font-size: 0.88rem; color: #6b21a8;">{% trans "Fund disbursement or tuition waiver credit has been fully processed." %}</span>
+                        <div class="guide-status-item" style="background: #faf5ff;">
+                            <div class="guide-status-content">
+                                <span class="guide-status-name" style="color: #7e22ce;">Complete</span>
+                                <span class="guide-status-desc" style="color: #6b21a8;">{% trans "Fund disbursement or tuition waiver credit has been fully processed." %}</span>
                             </div>
-                            <span style="font-size: 0.78rem; font-weight: 700; color: #7e22ce;">{% trans "Action: Finalized" %}</span>
+                            <span class="guide-status-action" style="color: #7e22ce;">{% trans "Action: Finalized" %}</span>
                         </div>
 
                         <!-- Cancel -->
-                        <div style="display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-radius: 8px; background: #f8fafc;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <span style="font-weight: 800; font-size: 0.95rem; color: #475569; min-width: 105px;">Cancel</span>
-                                <span style="font-size: 0.88rem; color: #475569;">{% trans "Application cancelled by student request or administratively withdrawn." %}</span>
+                        <div class="guide-status-item" style="background: #f8fafc;">
+                            <div class="guide-status-content">
+                                <span class="guide-status-name" style="color: #475569;">Cancel</span>
+                                <span class="guide-status-desc" style="color: #475569;">{% trans "Application cancelled by student request or administratively withdrawn." %}</span>
                             </div>
-                            <span style="font-size: 0.78rem; font-weight: 700; color: #64748b;">{% trans "Action: Cancelled" %}</span>
+                            <span class="guide-status-action" style="color: #64748b;">{% trans "Action: Cancelled" %}</span>
                         </div>
                     </div>
                 </section>
