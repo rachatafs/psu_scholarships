@@ -4,14 +4,12 @@
 {% block title %}{% trans "Admin Guide" %} | PSU Phuket Scholarships{% endblock %}
 
 {% block dashboard_content %}
-<div class="admin-guide-wrapper" style="padding: 24px; max-width: 1200px; margin: 0 auto;">
+<div class="admin-guide-wrapper">
     
     <!-- Header Banner -->
-    <div class="guide-admin-banner">
+    <header class="guide-admin-banner">
         <div class="guide-admin-banner-top">
-            <div class="guide-role-tag">
-                ADMINISTRATIVE MANUAL
-            </div>
+            <span class="guide-role-tag">ADMINISTRATIVE MANUAL</span>
             <a href="{% url 'admin_dashboard' %}" class="btn-card-apply btn-admin-back-link">
                 ← {% trans "Back to Admin Dashboard" %}
             </a>
@@ -22,7 +20,7 @@
         <p class="guide-admin-desc">
             {% trans "Standard operational procedures for scholarship committee members: document verification, review lifecycle transitions, additional document notices, and quota management." %}
         </p>
-    </div>
+    </header>
 
     <!-- Quick Action Reference (At a glance) -->
     <div class="guide-decision-card">
@@ -61,47 +59,47 @@
                 {% trans "Procedures" %}
             </div>
             <nav class="guide-sidebar-nav">
-                <a href="#admin-workflow">
+                <a href="#admin-workflow" class="guide-nav-link">
                     <span class="nav-num">01.</span> {% trans "Review Workflow" %}
                 </a>
-                <a href="#admin-status-matrix">
+                <a href="#admin-status-matrix" class="guide-nav-link">
                     <span class="nav-num">02.</span> {% trans "Status Lifecycle" %}
                 </a>
-                <a href="#admin-reset-docs">
+                <a href="#admin-reset-docs" class="guide-nav-link">
                     <span class="nav-num">03.</span> {% trans "Additional Docs & Reset" %}
                 </a>
-                <a href="#admin-quota-mgmt">
+                <a href="#admin-quota-mgmt" class="guide-nav-link">
                     <span class="nav-num">04.</span> {% trans "Quota Management" %}
                 </a>
-                <a href="#admin-security">
+                <a href="#admin-security" class="guide-nav-link">
                     <span class="nav-num">05.</span> {% trans "Data Compliance" %}
                 </a>
             </nav>
             <div class="guide-sidebar-notice">
-                <div style="font-weight: 700; color: #334155; margin-bottom: 2px;">{% trans "Confidentiality" %}</div>
-                {% trans "Student application files contain protected personal data under PSU guidelines." %}
+                <div class="guide-notice-title">{% trans "Confidentiality" %}</div>
+                <p class="guide-notice-body">{% trans "Student application files contain protected personal data under PSU guidelines." %}</p>
             </div>
         </aside>
 
         <!-- Articles -->
-        <main style="display: flex; flex-direction: column; gap: 24px;">
+        <main class="guide-content-main">
 
             <!-- Section 1 -->
             <section id="admin-workflow" class="guide-content-card">
-                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 14px;">
-                    <h2 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0;">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
                         {% trans "01. Application Verification & Review Workflow" %}
                     </h2>
-                    <span style="font-size: 0.78rem; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 3px 8px; border-radius: 4px;">WORKFLOW</span>
+                    <span class="guide-card-tag">WORKFLOW</span>
                 </div>
-                <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem; color: #334155; line-height: 1.6;">
-                    <div style="padding: 12px 14px; border-radius: 8px; background: #f8fafc; border: 1px solid #e2e8f0;">
+                <div class="guide-admin-steps-list">
+                    <div class="guide-admin-step-item">
                         <strong>1. {% trans "Access Uploaded Documents" %}:</strong> {% trans "Click document badges in the row (e.g. 'Transcript', 'Recommendation') to view submitted files directly." %}
                     </div>
-                    <div style="padding: 12px 14px; border-radius: 8px; background: #f8fafc; border: 1px solid #e2e8f0;">
+                    <div class="guide-admin-step-item">
                         <strong>2. {% trans "Verify Academic Standing" %}:</strong> {% trans "Compare the student's cumulative GPAX and active enrolled semester status against scholarship requirements." %}
                     </div>
-                    <div style="padding: 12px 14px; border-radius: 8px; background: #f8fafc; border: 1px solid #e2e8f0;">
+                    <div class="guide-admin-step-item">
                         <strong>3. {% trans "Progress Review State" %}:</strong> {% trans "Click 'In Progress' to signify the application is actively undergoing committee review or interview scheduling." %}
                     </div>
                 </div>
@@ -109,58 +107,58 @@
 
             <!-- Section 2 -->
             <section id="admin-status-matrix" class="guide-content-card">
-                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 14px;">
-                    <h2 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0;">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
                         {% trans "02. Status Transition Matrix" %}
                     </h2>
-                    <span style="font-size: 0.78rem; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 3px 8px; border-radius: 4px;">MATRIX</span>
+                    <span class="guide-card-tag">MATRIX</span>
                 </div>
-                <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
-                    <table style="width: 100%; min-width: 580px; border-collapse: collapse; font-size: 0.85rem; text-align: left;">
+                <div class="guide-table-responsive">
+                    <table class="guide-admin-table">
                         <thead>
-                            <tr style="background: #f1f5f9; color: #475569; border-bottom: 1.5px solid #cbd5e1;">
-                                <th style="padding: 10px 12px;">{% trans "Status" %}</th>
-                                <th style="padding: 10px 12px;">{% trans "Indicator" %}</th>
-                                <th style="padding: 10px 12px;">{% trans "Operational Meaning" %}</th>
-                                <th style="padding: 10px 12px;">{% trans "Permitted Action" %}</th>
+                            <tr>
+                                <th>{% trans "Status" %}</th>
+                                <th>{% trans "Indicator" %}</th>
+                                <th>{% trans "Operational Meaning" %}</th>
+                                <th>{% trans "Permitted Action" %}</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr style="border-bottom: 1px solid #e2e8f0;">
-                                <td style="padding: 10px 12px; font-weight: 700;">Pending</td>
-                                <td style="padding: 10px 12px;"><span class="dot-live" style="background: #d97706;"></span> Pending</td>
-                                <td style="padding: 10px 12px;">{% trans "New submission awaiting committee screening queue." %}</td>
-                                <td style="padding: 10px 12px;">In Progress, Reject, Cancel</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #e2e8f0;">
-                                <td style="padding: 10px 12px; font-weight: 700;">In Progress</td>
-                                <td style="padding: 10px 12px;"><span class="dot-live" style="background: #0284c7;"></span> In Progress</td>
-                                <td style="padding: 10px 12px;">{% trans "Active review, interviews, or awaiting additional documents." %}</td>
-                                <td style="padding: 10px 12px;">Approve, Reject, Cancel</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #e2e8f0;">
-                                <td style="padding: 10px 12px; font-weight: 700; color: #15803d;">Approve</td>
-                                <td style="padding: 10px 12px;"><span class="dot-live" style="background: #059669;"></span> Approve</td>
-                                <td style="padding: 10px 12px;">{% trans "Applicant has met all criteria and is awarded the scholarship." %}</td>
-                                <td style="padding: 10px 12px;">Complete, Cancel</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #e2e8f0;">
-                                <td style="padding: 10px 12px; font-weight: 700; color: #b91c1c;">Reject</td>
-                                <td style="padding: 10px 12px;"><span class="dot-live" style="background: #dc2626;"></span> Reject</td>
-                                <td style="padding: 10px 12px;">{% trans "Ineligible, missing mandatory criteria, or quota filled." %}</td>
-                                <td style="padding: 10px 12px;">Reset to Pending</td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid #e2e8f0;">
-                                <td style="padding: 10px 12px; font-weight: 700; color: #7e22ce;">Complete</td>
-                                <td style="padding: 10px 12px;"><span class="dot-live" style="background: #7e22ce;"></span> Complete</td>
-                                <td style="padding: 10px 12px;">{% trans "Scholarship disbursement and onboarding completed." %}</td>
-                                <td style="padding: 10px 12px;">Final State</td>
+                            <tr>
+                                <td class="status-name-cell">Pending</td>
+                                <td><span class="dot-live" style="background: #d97706;"></span> Pending</td>
+                                <td>{% trans "New submission awaiting committee screening queue." %}</td>
+                                <td>In Progress, Reject, Cancel</td>
                             </tr>
                             <tr>
-                                <td style="padding: 10px 12px; font-weight: 700; color: #475569;">Cancel</td>
-                                <td style="padding: 10px 12px;"><span class="dot-live" style="background: #64748b;"></span> Cancel</td>
-                                <td style="padding: 10px 12px;">{% trans "Application retracted by student or disqualified." %}</td>
-                                <td style="padding: 10px 12px;">Reset to Pending</td>
+                                <td class="status-name-cell">In Progress</td>
+                                <td><span class="dot-live" style="background: #0284c7;"></span> In Progress</td>
+                                <td>{% trans "Active review, interviews, or awaiting additional documents." %}</td>
+                                <td>Approve, Reject, Cancel</td>
+                            </tr>
+                            <tr>
+                                <td class="status-name-cell status-text-success">Approve</td>
+                                <td><span class="dot-live" style="background: #059669;"></span> Approve</td>
+                                <td>{% trans "Applicant has met all criteria and is awarded the scholarship." %}</td>
+                                <td>Complete, Cancel</td>
+                            </tr>
+                            <tr>
+                                <td class="status-name-cell status-text-danger">Reject</td>
+                                <td><span class="dot-live" style="background: #dc2626;"></span> Reject</td>
+                                <td>{% trans "Ineligible, missing mandatory criteria, or quota filled." %}</td>
+                                <td>Reset to Pending</td>
+                            </tr>
+                            <tr>
+                                <td class="status-name-cell status-text-purple">Complete</td>
+                                <td><span class="dot-live" style="background: #7e22ce;"></span> Complete</td>
+                                <td>{% trans "Scholarship disbursement and onboarding completed." %}</td>
+                                <td>Final State</td>
+                            </tr>
+                            <tr>
+                                <td class="status-name-cell status-text-muted">Cancel</td>
+                                <td><span class="dot-live" style="background: #64748b;"></span> Cancel</td>
+                                <td>{% trans "Application retracted by student or disqualified." %}</td>
+                                <td>Reset to Pending</td>
                             </tr>
                         </tbody>
                     </table>
@@ -169,34 +167,34 @@
 
             <!-- Section 3 -->
             <section id="admin-reset-docs" class="guide-content-card">
-                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 14px;">
-                    <h2 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0;">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
                         {% trans "03. Additional Docs Requests & Status Reset" %}
                     </h2>
-                    <span style="font-size: 0.78rem; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 3px 8px; border-radius: 4px;">ACTIONS</span>
+                    <span class="guide-card-tag">ACTIONS</span>
                 </div>
                 <div class="guide-two-col-grid">
-                    <div style="background: #f0f9ff; border-radius: 8px; padding: 16px;">
-                        <div style="font-weight: 700; color: #0369a1; font-size: 0.95rem; margin-bottom: 6px;">
+                    <div class="guide-action-box action-box-info">
+                        <div class="action-box-title action-title-info">
                             {% trans "Requesting 'Additional Docs'" %}
                         </div>
-                        <p style="font-size: 0.85rem; color: #334155; line-height: 1.5; margin: 0 0 8px;">
+                        <p class="action-box-desc">
                             {% trans "When a student's file is illegible, incomplete, or requires clarification, click 'Additional Docs' in the table row." %}
                         </p>
-                        <ul style="font-size: 0.83rem; color: #0284c7; margin: 0; padding-left: 16px;">
+                        <ul class="action-box-list action-list-info">
                             <li>{% trans "Sends automated email with instructions to student" %}</li>
                             <li>{% trans "Maintains the record in 'In Progress' queue" %}</li>
                         </ul>
                     </div>
 
-                    <div style="background: #fff1f2; border-radius: 8px; padding: 16px;">
-                        <div style="font-weight: 700; color: #be123c; font-size: 0.95rem; margin-bottom: 6px;">
+                    <div class="guide-action-box action-box-danger">
+                        <div class="action-box-title action-title-danger">
                             {% trans "Using 'Reset to Pending'" %}
                         </div>
-                        <p style="font-size: 0.85rem; color: #334155; line-height: 1.5; margin: 0 0 8px;">
+                        <p class="action-box-desc">
                             {% trans "If a reviewer mistakenly marked an application, click 'Reset' to restore the row to unreviewed Pending state." %}
                         </p>
-                        <ul style="font-size: 0.83rem; color: #e11d48; margin: 0; padding-left: 16px;">
+                        <ul class="action-box-list action-list-danger">
                             <li>{% trans "Restores standard review buttons for the row" %}</li>
                             <li>{% trans "Prevents locked states from accidental selections" %}</li>
                         </ul>
@@ -206,17 +204,17 @@
 
             <!-- Section 4 -->
             <section id="admin-quota-mgmt" class="guide-content-card">
-                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 14px;">
-                    <h2 style="font-size: 1.25rem; font-weight: 700; color: #0f172a; margin: 0;">
+                <div class="guide-card-header">
+                    <h2 class="guide-card-title">
                         {% trans "04. Scholarship Quotas & Capacity Controls" %}
                     </h2>
-                    <span style="font-size: 0.78rem; font-weight: 700; color: #0284c7; background: #e0f2fe; padding: 3px 8px; border-radius: 4px;">QUOTAS</span>
+                    <span class="guide-card-tag">QUOTAS</span>
                 </div>
-                <div style="font-size: 0.9rem; color: #334155; line-height: 1.6;">
-                    <p style="margin: 0 0 10px;">
+                <div class="guide-quota-content">
+                    <p class="guide-quota-intro">
                         {% trans "Each scholarship defines a capacity quota ('Grants'). The system automatically protects and manages quotas as follows:" %}
                     </p>
-                    <ul style="margin: 0; padding-left: 18px;">
+                    <ul class="guide-quota-list">
                         <li><strong>{% trans "Automatic Closure" %}:</strong> {% trans "When the count of approved and in-progress applicants equals the quota, the scholarship closes automatically to new applicants." %}</li>
                         <li><strong>{% trans "Deadline Enforcement" %}:</strong> {% trans "When the deadline passes, scholarship cards display 'Expired' and the application form disables submission." %}</li>
                     </ul>
@@ -224,11 +222,11 @@
             </section>
 
             <!-- Section 5 -->
-            <section id="admin-security" class="guide-content-card" style="background: #f8fafc;">
-                <div style="font-weight: 700; font-size: 0.95rem; color: #0f172a; margin-bottom: 4px;">
+            <section id="admin-security" class="guide-content-card guide-compliance-card">
+                <div class="guide-compliance-title">
                     {% trans "05. Data Privacy & Compliance" %}
                 </div>
-                <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin: 0;">
+                <p class="guide-compliance-desc">
                     {% trans "Applicant transcripts and personal records must be processed strictly for scholarship evaluation under Prince of Songkla University regulations and Thailand's PDPA. Unauthorized dissemination of applicant records is strictly prohibited." %}
                 </p>
             </section>
