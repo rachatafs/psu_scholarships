@@ -27,85 +27,83 @@
     </section>
 
     <!-- Quick Process Roadmap (Overview at a glance) -->
-    <div class="container-default" style="margin-top: -24px; position: relative; z-index: 2;">
-        <div style="background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 20px 24px; box-shadow: 0 4px 14px rgba(0,0,0,0.06); display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 36px; height: 36px; border-radius: 8px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem;">1</div>
+    <div class="container-default guide-roadmap-wrapper">
+        <div class="guide-roadmap-card">
+            <div class="guide-roadmap-step">
+                <div class="step-circle step-circle-blue">1</div>
                 <div>
-                    <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">{% trans "Step 1" %}</div>
-                    <div style="font-size: 0.92rem; font-weight: 700; color: #0f172a;">{% trans "Find & Verify Criteria" %}</div>
+                    <div class="step-tag">{% trans "Step 1" %}</div>
+                    <div class="step-title-text">{% trans "Find & Verify Criteria" %}</div>
                 </div>
             </div>
 
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 36px; height: 36px; border-radius: 8px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem;">2</div>
+            <div class="guide-roadmap-step">
+                <div class="step-circle step-circle-blue">2</div>
                 <div>
-                    <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">{% trans "Step 2" %}</div>
-                    <div style="font-size: 0.92rem; font-weight: 700; color: #0f172a;">{% trans "Upload Documents" %}</div>
+                    <div class="step-tag">{% trans "Step 2" %}</div>
+                    <div class="step-title-text">{% trans "Upload Documents" %}</div>
                 </div>
             </div>
 
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 36px; height: 36px; border-radius: 8px; background: #e0f2fe; color: #0284c7; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem;">3</div>
+            <div class="guide-roadmap-step">
+                <div class="step-circle step-circle-blue">3</div>
                 <div>
-                    <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; text-transform: uppercase;">{% trans "Step 3" %}</div>
-                    <div style="font-size: 0.92rem; font-weight: 700; color: #0f172a;">{% trans "Track Review Status" %}</div>
+                    <div class="step-tag">{% trans "Step 3" %}</div>
+                    <div class="step-title-text">{% trans "Track Review Status" %}</div>
                 </div>
             </div>
 
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <div style="width: 36px; height: 36px; border-radius: 8px; background: #dcfce7; color: #166534; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.95rem;">4</div>
+            <div class="guide-roadmap-step">
+                <div class="step-circle step-circle-green">4</div>
                 <div>
-                    <div style="font-size: 0.75rem; font-weight: 700; color: #16a34a; text-transform: uppercase;">{% trans "Step 4" %}</div>
-                    <div style="font-size: 0.92rem; font-weight: 700; color: #0f172a;">{% trans "Receive Funding" %}</div>
+                    <div class="step-tag step-tag-green">{% trans "Step 4" %}</div>
+                    <div class="step-title-text">{% trans "Receive Funding" %}</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Main Content Layout -->
-    <div class="container-default" style="margin-top: 32px;">
+    <div class="container-default" style="margin-top: 24px;">
         <div class="guide-layout-grid">
             
             <!-- Left Sticky Sidebar -->
             <aside class="guide-sidebar">
-                <div style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; margin-bottom: 10px;">
+                <div class="guide-sidebar-title">
                     {% trans "Navigation" %}
                 </div>
-                <nav style="display: flex; flex-direction: column; gap: 4px; font-size: 0.9rem;">
-                    <a href="#section-eligibility" style="padding: 8px 10px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                        <span style="color: #0284c7; font-weight: 700;">01.</span> {% trans "Scholarship Categories" %}
+                <nav class="guide-sidebar-nav">
+                    <a href="#section-eligibility">
+                        <span class="nav-num">01.</span> {% trans "Scholarship Categories" %}
                     </a>
-                    <a href="#section-documents" style="padding: 8px 10px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                        <span style="color: #0284c7; font-weight: 700;">02.</span> {% trans "Document Checklist" %}
+                    <a href="#section-documents">
+                        <span class="nav-num">02.</span> {% trans "Document Checklist" %}
                     </a>
-                    <a href="#section-statuses" style="padding: 8px 10px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                        <span style="color: #0284c7; font-weight: 700;">03.</span> {% trans "Status Meanings" %}
+                    <a href="#section-statuses">
+                        <span class="nav-num">03.</span> {% trans "Status Meanings" %}
                     </a>
-                    <a href="#section-additional" style="padding: 8px 10px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                        <span style="color: #0284c7; font-weight: 700;">04.</span> {% trans "Additional Documents" %}
+                    <a href="#section-additional">
+                        <span class="nav-num">04.</span> {% trans "Additional Documents" %}
                     </a>
-                    <a href="#section-faq" style="padding: 8px 10px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                        <span style="color: #0284c7; font-weight: 700;">05.</span> {% trans "Questions & Answers" %}
+                    <a href="#section-faq">
+                        <span class="nav-num">05.</span> {% trans "Questions & Answers" %}
                     </a>
-                    <a href="#section-contact" style="padding: 8px 10px; border-radius: 6px; color: #1e293b; text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 8px;">
-                        <span style="color: #0284c7; font-weight: 700;">06.</span> {% trans "Contact & Support" %}
+                    <a href="#section-contact">
+                        <span class="nav-num">06.</span> {% trans "Contact & Support" %}
                     </a>
                 </nav>
 
-                <hr style="border: none; border-top: 1px solid #f1f5f9; margin: 14px 0;">
-
-                <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; font-size: 0.82rem; color: #475569; line-height: 1.5;">
+                <div class="guide-sidebar-notice">
                     <div style="font-weight: 700; color: #0f172a; margin-bottom: 4px;">{% trans "Deadline Notice" %}</div>
                     {% trans "Applications close at 23:59 on the indicated end date. Incomplete submissions cannot be processed." %}
                 </div>
             </aside>
 
             <!-- Right Content Panels -->
-            <main style="display: flex; flex-direction: column; gap: 28px;">
+            <main style="display: flex; flex-direction: column; gap: 24px;">
 
                 <!-- 01: Categories & Eligibility -->
-                <section id="section-eligibility" style="background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 28px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                <section id="section-eligibility" class="guide-content-card">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 16px;">
                         <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin: 0;">
                             {% trans "01. Scholarship Categories & Eligibility" %}
@@ -149,7 +147,7 @@
                 </section>
 
                 <!-- 02: Document Checklist -->
-                <section id="section-documents" style="background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 28px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                <section id="section-documents" class="guide-content-card">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 16px;">
                         <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin: 0;">
                             {% trans "02. Required Application Documents Checklist" %}
@@ -187,7 +185,7 @@
                 </section>
 
                 <!-- 03: Status Meanings -->
-                <section id="section-statuses" style="background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 28px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                <section id="section-statuses" class="guide-content-card">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 16px;">
                         <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin: 0;">
                             {% trans "03. Application Status Cheat Sheet" %}
@@ -257,7 +255,7 @@
                 </section>
 
                 <!-- 04: Additional Docs -->
-                <section id="section-additional" style="background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 28px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                <section id="section-additional" class="guide-content-card">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 16px;">
                         <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin: 0;">
                             {% trans "04. Handling 'Additional Documents' Requests" %}
@@ -280,7 +278,7 @@
                 </section>
 
                 <!-- 05: Questions & Answers -->
-                <section id="section-faq" style="background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 28px; box-shadow: 0 2px 6px rgba(0,0,0,0.02);">
+                <section id="section-faq" class="guide-content-card">
                     <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f1f5f9; padding-bottom: 12px; margin-bottom: 16px;">
                         <h2 style="font-size: 1.3rem; font-weight: 700; color: #0f172a; margin: 0;">
                             {% trans "05. Frequently Asked Questions" %}
@@ -319,7 +317,28 @@
                 </section>
 
                 <!-- 06: Contact & Support (No emojis, sleek material icons) -->
-                <section id="section-contact" style="background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0; padding: 24px;">
+                <section id="section-contact" class="guide-content-card" style="background: #f8fafc;">
+                    <div style="font-weight: 700; font-size: 1.1rem; color: #0f172a; margin-bottom: 8px;">
+                        {% trans "Student Affairs & Scholarship Division" %}
+                    </div>
+                    <p style="font-size: 0.9rem; color: #475569; margin: 0 0 16px; line-height: 1.5;">
+                        {% trans "For technical questions regarding application submissions or document requirements, visit or contact our office:" %}
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; font-size: 0.88rem; color: #1e293b;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem; color: #0284c7;">location_on</span>
+                            <span>Room 7102, Building 7, PSU Phuket</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem; color: #0284c7;">schedule</span>
+                            <span>Monday – Friday, 08:30 – 16:30</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="font-size: 1.2rem; color: #0284c7;">mail</span>
+                            <span>scholarship@phuket.psu.ac.th</span>
+                        </div>
+                    </div>
+                </section>
                     <div style="font-weight: 700; font-size: 1.1rem; color: #0f172a; margin-bottom: 8px;">
                         {% trans "Student Affairs & Scholarship Division" %}
                     </div>

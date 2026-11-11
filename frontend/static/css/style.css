@@ -4207,7 +4207,13 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
    ROLE-BASED USER GUIDES & COMPREHENSIVE MOBILE RESPONSIVENESS
    ========================================================================== */
 
-/* --- Guide System Grid & Typography --- */
+/* Contain horizontal overflow on all viewports */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* --- Guide System Grid, Cards & Typography --- */
 .guide-page-wrapper {
     background-color: var(--bg-body, #f8fafc);
     min-height: 80vh;
@@ -4228,6 +4234,84 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
     align-items: start;
 }
 
+.guide-content-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 28px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.guide-two-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+/* Roadmap Grid */
+.guide-roadmap-wrapper {
+    margin-top: -24px;
+    position: relative;
+    z-index: 2;
+}
+
+.guide-roadmap-card {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 18px 24px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.guide-roadmap-step {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.step-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.step-circle-blue {
+    background: #e0f2fe;
+    color: #0284c7;
+}
+
+.step-circle-green {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.step-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.step-tag-green {
+    color: #16a34a;
+}
+
+.step-title-text {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+/* Guide Sidebar & Navigation */
 .guide-sidebar {
     position: sticky;
     top: 90px;
@@ -4243,12 +4327,56 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
     padding: 16px;
 }
 
-.guide-two-col-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
+.guide-sidebar-title {
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #64748b;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
 }
 
+.guide-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.9rem;
+}
+
+.guide-sidebar-nav a {
+    padding: 8px 10px;
+    border-radius: 6px;
+    color: #1e293b;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.15s ease;
+}
+
+.guide-sidebar-nav a:hover {
+    background: #f1f5f9;
+    color: #0284c7;
+}
+
+.guide-sidebar-nav a .nav-num {
+    color: #0284c7;
+    font-weight: 700;
+}
+
+.guide-sidebar-notice {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 0.82rem;
+    color: #475569;
+    line-height: 1.5;
+    margin-top: 14px;
+}
+
+/* Status Cheat Sheet Rows */
 .guide-status-item {
     display: flex;
     align-items: center;
@@ -4283,6 +4411,115 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
     flex-shrink: 0;
 }
 
+/* Admin Guide Banner & Decision Rules */
+.guide-admin-banner {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.guide-admin-banner-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.guide-role-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #1d4ed8;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.btn-admin-back-link {
+    text-decoration: none;
+    padding: 7px 14px;
+    font-size: 0.85rem;
+    width: auto;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.guide-admin-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 6px;
+}
+
+.guide-admin-desc {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 820px;
+}
+
+.guide-decision-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.guide-decision-heading {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+}
+
+.guide-decision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    font-size: 0.88rem;
+}
+
+.decision-box {
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+
+.decision-title {
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.decision-text {
+    color: #334155;
+    line-height: 1.5;
+}
+
+.decision-met { background: #f0fdf4; }
+.decision-met .decision-title { color: #15803d; }
+
+.decision-disqualified { background: #fef2f2; }
+.decision-disqualified .decision-title { color: #b91c1c; }
+
+.decision-unclear { background: #f0f9ff; }
+.decision-unclear .decision-title { color: #0369a1; }
+
+.decision-accident { background: #fff1f2; }
+.decision-accident .decision-title { color: #be123c; }
+
 /* ==========================================================================
    MOBILE & TABLET RESPONSIVE RULES (ALL ROLES & PAGES)
    ========================================================================== */
@@ -4312,16 +4549,130 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
 
 /* --- Mobile Breakpoint (max-width: 768px) --- */
 @media (max-width: 768px) {
+    /* Navbar Scaling */
+    .navbar-container {
+        padding: 0 16px;
+        height: 66px;
+    }
+
+    .navbar-logo-img {
+        height: 38px;
+    }
+
+    .navbar-title {
+        font-size: 1.02rem;
+    }
+
+    /* Transform Guide Sidebar into Swipeable Pill Bar on Mobile */
+    .guide-sidebar {
+        position: static !important;
+        top: auto !important;
+        padding: 8px 10px !important;
+        margin-bottom: 18px !important;
+        background: #ffffff !important;
+        border: 1px solid #e2e8f0 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.03) !important;
+    }
+
+    .guide-sidebar-title,
+    .guide-sidebar-notice {
+        display: none !important;
+    }
+
+    .guide-sidebar-nav {
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        white-space: nowrap !important;
+        gap: 8px !important;
+        padding: 2px 2px 4px !important;
+    }
+
+    .guide-sidebar-nav a {
+        flex-shrink: 0 !important;
+        background: #f1f5f9 !important;
+        color: #1e293b !important;
+        padding: 6px 14px !important;
+        border-radius: 20px !important;
+        font-size: 0.82rem !important;
+        font-weight: 600 !important;
+        text-decoration: none !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 5px !important;
+    }
+
+    .guide-sidebar-nav a:hover,
+    .guide-sidebar-nav a:active {
+        background: #e0f2fe !important;
+        color: #0284c7 !important;
+    }
+
+    /* Roadmap Grid on Mobile: 2x2 Clean Layout */
+    .guide-roadmap-wrapper {
+        margin-top: -12px !important;
+    }
+
+    .guide-roadmap-card {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 10px !important;
+        padding: 12px 14px !important;
+    }
+
+    .guide-roadmap-step {
+        gap: 8px !important;
+    }
+
+    .step-circle {
+        width: 30px !important;
+        height: 30px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .step-tag {
+        font-size: 0.68rem !important;
+    }
+
+    .step-title-text {
+        font-size: 0.8rem !important;
+    }
+
+    .guide-content-card {
+        padding: 18px 14px !important;
+        border-radius: 10px !important;
+    }
+
     /* Admin Management Layout */
     .admin-table-container-card {
-        padding: 20px 14px;
+        padding: 16px 12px !important;
         border-radius: var(--radius-lg);
+    }
+
+    .admin-kpi-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .admin-kpi-card {
+        padding: 14px 12px !important;
+        border-radius: var(--radius-md) !important;
+    }
+
+    .admin-kpi-card .kpi-num {
+        font-size: 1.6rem !important;
+    }
+
+    .admin-kpi-card .kpi-label {
+        font-size: 0.78rem !important;
+        margin-top: 2px !important;
     }
 
     .table-header-bar {
         display: flex;
         flex-direction: column;
-        gap: 14px;
+        gap: 12px;
         align-items: stretch;
     }
 
@@ -4345,14 +4696,15 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
         -webkit-overflow-scrolling: touch;
         flex-wrap: nowrap;
         white-space: nowrap;
-        padding-bottom: 2px;
+        padding-bottom: 4px;
+        margin-bottom: 14px;
         gap: 4px;
     }
 
     .admin-nav-tab-btn {
         flex-shrink: 0;
-        padding: 10px 14px;
-        font-size: 0.88rem;
+        padding: 8px 12px;
+        font-size: 0.85rem;
     }
 
     .admin-cat-tabs-row {
@@ -4360,26 +4712,33 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
         -webkit-overflow-scrolling: touch;
         flex-wrap: nowrap;
         white-space: nowrap;
-        padding-bottom: 10px;
-        margin-bottom: 16px;
+        padding-bottom: 8px;
+        margin-bottom: 14px;
+        gap: 6px;
     }
 
     .admin-cat-tab {
         flex-shrink: 0;
-        padding: 6px 14px;
-        font-size: 0.82rem;
+        padding: 6px 12px;
+        font-size: 0.8rem;
     }
 
     .admin-filter-toolbar {
         flex-direction: column;
         align-items: stretch;
-        gap: 12px;
+        gap: 10px;
+        margin-bottom: 14px;
     }
 
     .admin-search-wrapper {
-        min-width: 100%;
-        max-width: 100%;
-        width: 100%;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+    .admin-search-field {
+        padding: 9px 12px 9px 38px;
+        font-size: 0.88rem;
     }
 
     .admin-filter-right {
@@ -4387,27 +4746,59 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 10px;
+        gap: 8px;
     }
 
     .admin-filter-select {
         flex: 1;
+        padding: 8px 10px;
+        font-size: 0.84rem;
     }
 
     .modern-table-responsive {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-md);
     }
 
     .modern-data-table {
-        min-width: 760px;
+        min-width: 800px;
+        font-size: 0.84rem;
     }
 
-    /* Action Buttons in Admin Table */
+    .modern-data-table th {
+        padding: 10px 12px;
+        font-size: 0.78rem;
+        white-space: nowrap;
+    }
+
+    .modern-data-table td {
+        padding: 10px 12px;
+        font-size: 0.84rem;
+    }
+
+    /* Action Buttons in Admin Table: Compact 2-column cluster */
+    .action-btn-group {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        gap: 4px !important;
+        width: 165px !important;
+        justify-content: center !important;
+    }
+
+    .action-btn-group form {
+        flex: 1 1 calc(50% - 4px) !important;
+        margin: 0 !important;
+    }
+
     .btn-table-action {
-        min-height: 34px;
-        padding: 7px 10px;
-        font-size: 0.82rem;
+        padding: 5px 6px !important;
+        font-size: 0.76rem !important;
+        min-height: 32px;
+        border-radius: 6px;
+        white-space: nowrap;
     }
 
     /* Student Scholarship List & Filter Bar */
@@ -4436,17 +4827,107 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
         padding: 0 16px;
     }
 
+    /* Homepage Hero */
+    .hero-modern {
+        min-height: auto;
+        padding: 44px 16px 50px;
+    }
+
+    .hero-badge-pill {
+        font-size: 0.72rem;
+        padding: 4px 12px;
+        margin-bottom: 14px;
+        max-width: 100%;
+        line-height: 1.4;
+    }
+
+    .hero-modern-title {
+        font-size: 1.55rem !important;
+        line-height: 1.3;
+        margin-bottom: 14px;
+    }
+
+    .hero-modern-desc {
+        font-size: 0.86rem !important;
+        line-height: 1.55;
+        margin-bottom: 22px;
+    }
+
+    .btn-hero-explore {
+        width: 100%;
+        justify-content: center;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+
+    /* Category Cards */
+    .modern-cat-card {
+        padding: 20px 16px;
+        border-radius: var(--radius-md);
+    }
+
+    /* Steps Section */
+    .steps-section {
+        padding: 40px 0;
+    }
+
+    .step-card {
+        padding: 22px 18px;
+        border-radius: var(--radius-md);
+    }
+
+    /* Scholarship Cards on Mobile */
+    .modern-scholarship-card {
+        padding: 18px 14px;
+        border-radius: var(--radius-md);
+    }
+
+    .card-status-bar {
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .card-scholarship-title {
+        font-size: 1.08rem;
+        line-height: 1.35;
+        margin-bottom: 8px;
+    }
+
+    .card-scholarship-desc {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        margin-bottom: 12px;
+    }
+
+    .card-meta-list {
+        padding: 10px 12px;
+        gap: 6px;
+        margin-bottom: 14px;
+    }
+
+    .meta-row {
+        font-size: 0.82rem;
+    }
+
+    .btn-card-apply {
+        padding: 10px 14px;
+        font-size: 0.88rem;
+    }
+
     /* User Guide Mobile Optimization */
     .guide-hero-banner {
-        padding: 28px 0 22px;
+        padding: 26px 0 20px;
     }
 
     .guide-hero-banner h1 {
-        font-size: 1.5rem !important;
+        font-size: 1.4rem !important;
+        line-height: 1.3;
     }
 
     .guide-hero-banner p {
-        font-size: 0.88rem !important;
+        font-size: 0.85rem !important;
+        line-height: 1.5;
     }
 
     .guide-status-item {
@@ -4467,6 +4948,44 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
         align-self: flex-start;
     }
 
+    .guide-admin-title {
+        font-size: 1.35rem;
+    }
+
+    .guide-admin-desc {
+        font-size: 0.85rem;
+    }
+
+    .btn-admin-back-link {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Stepper in Application Form */
+    .stepper-horizontal {
+        gap: 6px;
+        margin-top: 16px;
+    }
+
+    .stepper-horizontal .step-label {
+        display: none;
+    }
+
+    .stepper-horizontal .step-item {
+        gap: 0;
+    }
+
+    .stepper-horizontal .step-num {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .apply-wrapper-card {
+        padding: 20px 14px;
+    }
+
     /* Search form in list */
     .filter-search-form {
         flex-direction: column;
@@ -4482,6 +5001,37 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
+    }
+
+    /* Student Profile Mobile Optimization */
+    .profile-main-card {
+        padding: 18px 14px;
+        border-radius: var(--radius-md);
+    }
+
+    .profile-header-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+    .profile-avatar-wrapper {
+        width: 80px;
+        height: 80px;
+    }
+
+    .profile-title-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-btn-row .btn-save-profile {
+        width: 100%;
+        justify-content: center;
     }
 
     /* Application tracker card in profile */
@@ -4521,6 +5071,27 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
         margin-top: 4px;
     }
 
+    /* Detail Page */
+    .detail-content-card,
+    .sticky-action-card {
+        padding: 20px 14px !important;
+        border-radius: var(--radius-md);
+    }
+
+    .detail-header-banner {
+        padding: 24px 0 18px;
+    }
+
+    .detail-main-title {
+        font-size: 1.4rem !important;
+        line-height: 1.35;
+    }
+
+    .documents-checklist li {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
     /* Modals on small mobile */
     .modal-card,
     .admin-modal-card {
@@ -4532,4 +5103,5 @@ button[title="เลิกบันทึก"]:hover .material-symbols-outlined,
         overflow-y: auto;
     }
 }
+
 
