@@ -214,6 +214,24 @@ def scholarship_dashboard(request):
     waiver_count   = s_qs.filter(category='fee_waiver').count()
     lunch_count    = s_qs.filter(category='lunch').count()
 
+    filtered_scholarships = s_qs.order_by('-created_at')
+
+    month_names = {
+        '1': _('January'), '2': _('February'), '3': _('March'), '4': _('April'),
+        '5': _('May'), '6': _('June'), '7': _('July'), '8': _('August'),
+        '9': _('September'), '10': _('October'), '11': _('November'), '12': _('December')
+    }
+    filter_month_name = month_names.get(filter_month, '')
+
+    term_names = {
+        '1': _('Semester 1 (Aug-Dec)'),
+        '2': _('Semester 2 (Jan-May)'),
+        '3': _('Summer (Jun-Jul)'),
+    }
+    filter_term_name = term_names.get(filter_term, '')
+
+    has_active_filter = bool(filter_term or filter_month or (filter_year and filter_year != str(now.year)))
+
     recent_scholarships = s_qs.order_by('-id')[:5]
 
     deadline_soon = Scholarship.objects.filter(
@@ -237,12 +255,16 @@ def scholarship_dashboard(request):
         'exchange_count':        exchange_count,
         'waiver_count':          waiver_count,
         'lunch_count':           lunch_count,
+        'filtered_scholarships': filtered_scholarships,
         'recent_scholarships':   recent_scholarships,
         'deadline_soon':         deadline_soon,
         'today':                 now,
         'filter_year':           filter_year,
         'filter_month':          filter_month,
+        'filter_month_name':     filter_month_name,
         'filter_term':           filter_term,
+        'filter_term_name':      filter_term_name,
+        'has_active_filter':     has_active_filter,
     }
     return render(request, 'scholarship_dashboard.html', context)
 

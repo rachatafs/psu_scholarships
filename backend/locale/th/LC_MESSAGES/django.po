@@ -3028,3 +3028,48 @@ msgstr ""
 #: frontend/templates/scholarships/list.html:90
 msgid "Back to Categories"
 msgstr ""
+
+msgid "Scholarships Matching Current Filter"
+msgstr "รายชื่อทุนการศึกษาตามเงื่อนไขที่เลือก"
+
+msgid "All Scholarships in Period"
+msgstr "รายชื่อทุนการศึกษาทั้งหมดในรอบนี้"
+
+msgid "Detailed list of all scholarships included in the statistics above"
+msgstr "รายละเอียดทุนการศึกษาทั้งหมดที่ถูกคำนวณในสถิติด้านบน"
+
+msgid "Scholarship Title"
+msgstr "ชื่อทุนการศึกษา"
+
+msgid "Amount / Semester"
+msgstr "มูลค่าทุน / เทอม"
+
+msgid "Quota & Applicants"
+msgstr "โควตา & ผู้สมัคร"
+
+msgid "Application Period"
+msgstr "ช่วงเวลาเปิดรับสมัคร"
+
+msgid "Reset Filter"
+msgstr "รีเซ็ตตัวกรอง"
+
+msgid "Clear Filter & View All"
+msgstr "ล้างตัวกรองและดูทั้งหมด"
+
+msgid "Filtered Results"
+msgstr "ผลการกรอง"
+
+msgid "scholarship(s) found"
+msgstr "ทุนที่พบ"
+
+msgid "Upcoming Deadlines"
+msgstr "ทุนที่ใกล้หมดเขตที่สุด"
+
+msgid "Manage in Admin Console"
+msgstr "จัดการในคอนโซลแอดมิน"
+
+msgid "No open scholarships nearing deadline."
+msgstr "ไม่มีทุนที่ใกล้หมดเขตในขณะนี้"
+
+msgid "applicant(s)"
+msgstr "คน"
