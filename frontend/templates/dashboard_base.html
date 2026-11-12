@@ -15,7 +15,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=20.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=21.0">
     <style>
         html,
         body.dashboard-layout {
@@ -354,15 +354,6 @@
                             class="material-symbols-outlined">menu_book</span> {% trans "Admin Guide" %}</a></li>
                 <li><a href="/admin/"><span class="material-symbols-outlined">database</span> {% trans "Advanced Database" %}</a></li>
             </ul>
-            <div style="padding: 2rem; margin-top: auto;">
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit"
-                        style="width:100%; padding:0.9rem; background:rgba(255,255,255,0.1); color:white; border:none; border-radius:8px; cursor:pointer; font-family: 'Sarabun'; font-size: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: 0.2s;">
-                        <span class="material-symbols-outlined">logout</span> {% trans "Logout" %}
-                    </button>
-                </form>
-            </div>
         </div>
 
         <!-- Main Content -->
@@ -384,7 +375,7 @@
         </div>
     </div>
 
-    <script src="{% static 'js/main.js' %}?v=20.0"></script>
+    <script src="{% static 'js/main.js' %}?v=21.0"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const sidebar = document.getElementById('dashboardSidebar');

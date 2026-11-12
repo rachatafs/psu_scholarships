@@ -2576,16 +2576,16 @@ msgid "PSU Phuket Scholarships"
 msgstr ""
 
 #: frontend/templates/scholarship_dashboard.html:531
-msgid "All Terms"
-msgstr ""
+msgid "All Semesters"
+msgstr "ทุกภาคการศึกษา"
 
 #: frontend/templates/scholarship_dashboard.html:532
-msgid "Term 1 (Aug-Dec)"
-msgstr ""
+msgid "Semester 1 (Aug-Dec)"
+msgstr "ภาคการศึกษา 1 (ส.ค.-ธ.ค.)"
 
 #: frontend/templates/scholarship_dashboard.html:533
-msgid "Term 2 (Jan-May)"
-msgstr ""
+msgid "Semester 2 (Jan-May)"
+msgstr "ภาคการศึกษา 2 (ม.ค.-พ.ค.)"
 
 #: frontend/templates/scholarship_dashboard.html:534
 msgid "Summer (Jun-Jul)"

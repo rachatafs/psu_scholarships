@@ -528,9 +528,9 @@
         style="display: flex; gap: 0.5rem; align-items: center;">
         <select name="term"
           style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-family: 'Sarabun'; color: #1a2e4a;">
-          <option value="">{% trans "All Terms" %}</option>
-          <option value="1" {% if filter_term == '1' %}selected{% endif %}>{% trans "Term 1 (Aug-Dec)" %}</option>
-          <option value="2" {% if filter_term == '2' %}selected{% endif %}>{% trans "Term 2 (Jan-May)" %}</option>
+          <option value="">{% trans "All Semesters" %}</option>
+          <option value="1" {% if filter_term == '1' %}selected{% endif %}>{% trans "Semester 1 (Aug-Dec)" %}</option>
+          <option value="2" {% if filter_term == '2' %}selected{% endif %}>{% trans "Semester 2 (Jan-May)" %}</option>
           <option value="3" {% if filter_term == '3' %}selected{% endif %}>{% trans "Summer (Jun-Jul)" %}</option>
         </select>
         <select name="month"
