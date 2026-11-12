@@ -51,12 +51,11 @@
                         <span class="dropdown-arrow">▼</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="{% url 'profile' %}" class="dropdown-item">{% trans "Profile" %}</a></li>
                         {% if user.is_staff or user.is_superuser %}
-                        <li><a href="{% url 'admin_dashboard' %}" class="dropdown-item">{% trans "Admin Console" %}</a></li>
                         <li><a href="{% url 'scholarship_dashboard' %}" class="dropdown-item">{% trans "Analytics Dashboard" %}</a></li>
                         <li><a href="{% url 'admin_guide' %}" class="dropdown-item">{% trans "Admin Guide" %}</a></li>
                         {% else %}
-                        <li><a href="{% url 'profile' %}" class="dropdown-item">{% trans "Profile" %}</a></li>
                         <li><a href="{% url 'my_favorites' %}" class="dropdown-item">{% trans "Saved Scholarships" %}</a></li>
                         <li><a href="{% url 'student_guide' %}" class="dropdown-item">{% trans "User Guide" %}</a></li>
                         {% endif %}
