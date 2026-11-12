@@ -15,7 +15,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
         rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=21.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}?v=22.0">
     <style>
         html,
         body.dashboard-layout {
@@ -24,11 +24,11 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #eef2f6 !important;
+            background: #f8fafc !important;
         }
 
         body.dashboard-layout {
-            font-family: var(--font-thai);
+            font-family: var(--font-thai, 'Prompt', 'Sarabun', sans-serif);
             display: flex !important;
             flex-direction: column !important;
         }
@@ -38,59 +38,228 @@
             flex: 1;
             overflow: hidden;
             position: relative;
+            background: #f8fafc;
         }
 
+        /* ─── Modern PSU Light Sidebar ─── */
         .sidebar {
-            width: 280px;
-            background: #1a2e4a;
-            color: white;
+            width: 275px;
+            background: #ffffff;
+            border-right: 1px solid #e2e8f0;
+            color: var(--text-main, #0f172a);
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            height: 100vh;
+            height: calc(100vh - 72px);
             overflow-y: auto;
-            box-shadow: 4px 0 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 2px 0 10px rgba(0, 43, 73, 0.03);
             z-index: 100;
-            padding-top: 1rem;
+        }
+
+        .sidebar-desktop-header {
+            padding: 1.15rem 1.15rem 0.75rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .sidebar-brand-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.65rem 0.85rem;
+            background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+        }
+
+        .sidebar-brand-icon {
+            font-size: 1.55rem;
+            color: #0263b8;
+        }
+
+        .sidebar-brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-brand-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #001e36;
+            line-height: 1.2;
+        }
+
+        .sidebar-brand-sub {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: #64748b;
+        }
+
+        .sidebar-section-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #94a3b8;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            padding: 1rem 1.25rem 0.4rem;
         }
 
         .sidebar-menu {
             list-style: none;
-            padding: 0;
-            margin: 1rem 0;
+            padding: 0.25rem 0.75rem;
+            margin: 0;
             flex: 1;
         }
 
         .sidebar-menu li {
-            margin: 0;
+            margin: 0 0 0.35rem 0;
         }
 
         .sidebar-menu a {
             display: flex;
             align-items: center;
-            gap: 1.25rem;
-            padding: 1.1rem 2.5rem;
-            color: #a1b0c7;
+            gap: 0.85rem;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            color: #475569;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.95rem;
+            font-weight: 600;
+            border: 1px solid transparent;
+            position: relative;
+        }
+
+        .sidebar-menu a .nav-icon {
+            font-size: 1.35rem;
+            color: #64748b;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-menu a .nav-text {
+            flex: 1;
+        }
+
+        .sidebar-menu a .nav-external-icon {
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+
+        .sidebar-menu a:hover {
+            background: #f1f5f9;
+            color: #0263b8;
+            border-color: #e2e8f0;
+            transform: translateX(2px);
+        }
+
+        .sidebar-menu a:hover .nav-icon {
+            color: #0263b8;
+        }
+
+        .sidebar-menu a.active {
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f7ff 100%);
+            color: #001e36;
+            border-color: #bfdbfe;
+            border-left: 4px solid #0263b8;
+            font-weight: 700;
+            box-shadow: 0 2px 8px rgba(2, 99, 184, 0.08);
+        }
+
+        .sidebar-menu a.active .nav-icon {
+            color: #0263b8;
+            font-variation-settings: 'FILL' 1;
+        }
+
+        .active-pill-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #0263b8;
+        }
+
+        .sidebar-footer {
+            padding: 0.85rem 0.85rem;
+            border-top: 1px solid #f1f5f9;
+            background: #fafbfc;
+        }
+
+        .sidebar-admin-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 0.85rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+        }
+
+        .admin-card-header {
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .admin-card-header .shield-icon {
+            font-size: 1.5rem;
+            color: #0263b8;
+        }
+
+        .admin-card-meta {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .admin-name {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .admin-role-tag {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 700;
+            color: #0369a1;
+            background: #e0f2fe;
+            padding: 0.12rem 0.45rem;
+            border-radius: 9999px;
+            width: fit-content;
+            margin-top: 2px;
+        }
+
+        .btn-return-home {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #475569;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
             text-decoration: none;
             transition: all 0.2s ease;
+        }
+
+        .btn-return-home:hover {
+            background: #f1f5f9;
+            color: #0263b8;
+            border-color: #cbd5e1;
+        }
+
+        .btn-return-home .material-symbols-outlined {
             font-size: 1.05rem;
-            font-weight: 500;
         }
 
-        .sidebar-menu a:hover,
-        .sidebar-menu a.active {
-            color: white;
-            background: transparent;
-            border-left: 5px solid #fff;
-            padding-left: calc(2.5rem - 5px);
-        }
-
-        .sidebar-menu a .material-symbols-outlined {
-            font-size: 1.4rem;
-            opacity: 0.9;
-        }
-
+        /* ─── Main Content Layout ─── */
         .main-content {
             flex: 1;
             display: flex;
@@ -120,6 +289,7 @@
             display: none;
         }
 
+        /* ─── Responsive Mobile / Tablet Layout ─── */
         @media (max-width: 1024px) {
 
             html,
@@ -139,33 +309,40 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 0.75rem 1rem;
+                padding: 0.75rem 1.15rem;
                 background: #ffffff;
                 border-bottom: 1px solid #e2e8f0;
                 position: sticky;
                 top: 0;
                 z-index: 30;
-                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
             }
 
             .btn-sidebar-toggle {
                 display: inline-flex;
                 align-items: center;
-                gap: 0.45rem;
-                padding: 0.5rem 0.9rem;
-                background: #1a2e4a;
+                gap: 0.55rem;
+                padding: 0.55rem 1.05rem;
+                background: linear-gradient(135deg, #002b49 0%, #0263b8 100%);
                 color: #ffffff;
-                border: none;
-                border-radius: 8px;
-                font-family: 'Sarabun', sans-serif;
-                font-size: 0.9rem;
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                border-radius: 12px;
+                font-family: var(--font-thai, 'Prompt', 'Sarabun', sans-serif);
+                font-size: 0.92rem;
                 font-weight: 600;
                 cursor: pointer;
-                transition: background 0.2s ease, transform 0.1s ease;
+                box-shadow: 0 4px 12px rgba(2, 99, 184, 0.22);
+                transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .btn-sidebar-toggle:hover {
+                background: linear-gradient(135deg, #001e36 0%, #003b64 100%);
+                box-shadow: 0 6px 16px rgba(2, 99, 184, 0.35);
+                transform: translateY(-1px);
             }
 
             .btn-sidebar-toggle:active {
-                transform: scale(0.97);
+                transform: translateY(0) scale(0.98);
             }
 
             .btn-sidebar-toggle .material-symbols-outlined {
@@ -175,16 +352,26 @@
             .mobile-bar-brand {
                 display: flex;
                 align-items: center;
-                gap: 0.5rem;
             }
 
             .mobile-role-pill {
-                background: #e0f2fe;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.45rem;
+                background: #eff6ff;
                 color: #0369a1;
-                font-size: 0.75rem;
-                font-weight: 600;
-                padding: 0.25rem 0.65rem;
+                border: 1px solid #bfdbfe;
+                font-size: 0.78rem;
+                font-weight: 700;
+                padding: 0.32rem 0.75rem;
                 border-radius: 9999px;
+            }
+
+            .mobile-role-dot {
+                width: 7px;
+                height: 7px;
+                border-radius: 50%;
+                background: #0284c7;
             }
 
             .sidebar {
@@ -192,51 +379,73 @@
                 top: 0;
                 left: 0;
                 bottom: 0;
-                width: 290px;
+                width: 295px;
                 max-width: 85vw;
                 height: 100vh;
                 height: 100dvh;
-                z-index: 1050;
+                z-index: 2050;
                 transform: translateX(-100%);
                 padding-top: 0;
+                border-right: none;
                 box-shadow: none;
+                background: #ffffff;
             }
 
             .sidebar.open {
                 transform: translateX(0);
-                box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+                box-shadow: 10px 0 35px rgba(0, 30, 54, 0.2);
+            }
+
+            .sidebar-desktop-header {
+                display: none;
             }
 
             .sidebar-mobile-header {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 1.15rem 1.5rem;
-                background: #132238;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                color: #ffffff;
+                padding: 1.15rem 1.25rem;
+                background: #ffffff;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+            .mobile-header-title {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
                 font-size: 1.05rem;
-                font-weight: 600;
+                font-weight: 700;
+                color: #001e36;
+                font-family: var(--font-thai, 'Prompt', 'Sarabun', sans-serif);
+            }
+
+            .mobile-header-icon {
+                color: #0263b8;
+                font-size: 1.35rem;
             }
 
             .sidebar-close-btn {
-                background: rgba(255, 255, 255, 0.15);
-                border: none;
-                color: #ffffff;
-                width: 32px;
-                height: 32px;
+                background: #f1f5f9;
+                border: 1px solid #e2e8f0;
+                color: #64748b;
+                width: 34px;
+                height: 34px;
                 border-radius: 50%;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                font-size: 1.1rem;
-                line-height: 1;
-                transition: background 0.2s ease;
+                transition: all 0.2s ease;
+            }
+
+            .sidebar-close-btn .material-symbols-outlined {
+                font-size: 1.2rem;
             }
 
             .sidebar-close-btn:hover {
-                background: rgba(255, 255, 255, 0.25);
+                background: #fee2e2;
+                color: #ef4444;
+                border-color: #fca5a5;
             }
 
             .sidebar-backdrop {
@@ -245,7 +454,7 @@
                 inset: 0;
                 background: rgba(15, 23, 42, 0.55);
                 backdrop-filter: blur(2px);
-                z-index: 1040;
+                z-index: 2040;
                 opacity: 0;
                 pointer-events: none;
                 transition: opacity 0.3s ease;
@@ -264,7 +473,7 @@
             }
 
             .content-area {
-                padding: 1rem !important;
+                padding: 1.25rem !important;
                 width: 100% !important;
                 max-width: 100% !important;
             }
@@ -331,51 +540,108 @@
         <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
         <!-- Sidebar -->
-        <div class="sidebar" id="dashboardSidebar">
+        <aside class="sidebar" id="dashboardSidebar" aria-label="{% trans 'Management Menu' %}">
+            <!-- Mobile Header -->
             <div class="sidebar-mobile-header">
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <span class="material-symbols-outlined"
-                        style="color: #60a5fa; font-size: 1.3rem;">space_dashboard</span>
+                <div class="mobile-header-title">
+                    <span class="material-symbols-outlined mobile-header-icon">space_dashboard</span>
                     <span>{% trans "Management Menu" %}</span>
                 </div>
                 <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn"
-                    aria-label="{% trans 'Close menu' %}">✕</button>
+                    aria-label="{% trans 'Close menu' %}">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
             </div>
+
+            <!-- Desktop Header -->
+            <div class="sidebar-desktop-header">
+                <div class="sidebar-brand-badge">
+                    <span class="material-symbols-outlined sidebar-brand-icon">space_dashboard</span>
+                    <div class="sidebar-brand-text">
+                        <span class="sidebar-brand-title">{% trans "Admin Portal" %}</span>
+                        <span class="sidebar-brand-sub">PSU Phuket Campus</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-section-label">{% trans "Navigation" %}</div>
+
             <ul class="sidebar-menu">
-                <li><a href="{% url 'scholarship_dashboard' %}"
-                        class="{% if request.path == '/dashboard/' %}active{% endif %}"><span
-                            class="material-symbols-outlined">analytics</span> {% trans "Analytics Dashboard" %}</a>
+                <li>
+                    <a href="{% url 'scholarship_dashboard' %}"
+                        class="{% if request.path == '/dashboard/' %}active{% endif %}">
+                        <span class="material-symbols-outlined nav-icon">analytics</span>
+                        <span class="nav-text">{% trans "Analytics Dashboard" %}</span>
+                        {% if request.path == '/dashboard/' %}<span class="active-pill-dot"></span>{% endif %}
+                    </a>
                 </li>
-                <li><a href="{% url 'admin_dashboard' %}"
-                        class="{% if request.path == '/admin-dashboard/' %}active{% endif %}"><span
-                            class="material-symbols-outlined">folder_managed</span> {% trans "Admin Console" %}</a></li>
-                <li><a href="{% url 'admin_guide' %}"
-                        class="{% if request.path == '/guide/admin/' %}active{% endif %}"><span
-                            class="material-symbols-outlined">menu_book</span> {% trans "Admin Guide" %}</a></li>
-                <li><a href="/admin/"><span class="material-symbols-outlined">database</span> {% trans "Advanced Database" %}</a></li>
+                <li>
+                    <a href="{% url 'admin_dashboard' %}"
+                        class="{% if request.path == '/admin-dashboard/' %}active{% endif %}">
+                        <span class="material-symbols-outlined nav-icon">folder_managed</span>
+                        <span class="nav-text">{% trans "Admin Console" %}</span>
+                        {% if request.path == '/admin-dashboard/' %}<span class="active-pill-dot"></span>{% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'admin_guide' %}"
+                        class="{% if request.path == '/guide/admin/' %}active{% endif %}">
+                        <span class="material-symbols-outlined nav-icon">menu_book</span>
+                        <span class="nav-text">{% trans "Admin Guide" %}</span>
+                        {% if request.path == '/guide/admin/' %}<span class="active-pill-dot"></span>{% endif %}
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/" target="_blank" rel="noopener noreferrer">
+                        <span class="material-symbols-outlined nav-icon">database</span>
+                        <span class="nav-text">{% trans "Advanced Database" %}</span>
+                        <span class="material-symbols-outlined nav-external-icon">open_in_new</span>
+                    </a>
+                </li>
             </ul>
-        </div>
+
+            <!-- Sidebar Footer with Administrator Info & Back Button -->
+            <div class="sidebar-footer">
+                <div class="sidebar-admin-card">
+                    <div class="admin-card-header">
+                        <span class="material-symbols-outlined shield-icon">verified_user</span>
+                        <div class="admin-card-meta">
+                            <div class="admin-name">{{ request.user.username }}</div>
+                            <span class="admin-role-tag">Administrator</span>
+                        </div>
+                    </div>
+                    <a href="{% url 'home' %}" class="btn-return-home">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                        <span>{% trans "Back to Main Site" %}</span>
+                    </a>
+                </div>
+            </div>
+        </aside>
 
         <!-- Main Content -->
-        <div class="main-content">
+        <main class="main-content">
             <!-- Mobile Bar with Toggle Button -->
             <div class="dashboard-mobile-bar">
-                <button type="button" class="btn-sidebar-toggle" id="sidebarToggleBtn">
+                <button type="button" class="btn-sidebar-toggle" id="sidebarToggleBtn"
+                    aria-label="{% trans 'Open Management Menu' %}">
                     <span class="material-symbols-outlined">menu_open</span>
-                    <span>{% trans "Dashboard Menu" %}</span>
+                    <span>{% trans "Management Menu" %}</span>
                 </button>
                 <div class="mobile-bar-brand">
-                    <span class="mobile-role-pill">Admin Dashboard</span>
+                    <span class="mobile-role-pill">
+                        <span class="mobile-role-dot"></span>
+                        <span>Admin Portal</span>
+                    </span>
                 </div>
             </div>
 
             <div class="content-area">
                 {% block dashboard_content %}{% endblock %}
             </div>
-        </div>
+        </main>
     </div>
 
-    <script src="{% static 'js/main.js' %}?v=21.0"></script>
+    <script src="{% static 'js/main.js' %}?v=22.0"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const sidebar = document.getElementById('dashboardSidebar');
@@ -398,6 +664,13 @@
             if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
             if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
             if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+            // Also close sidebar on pressing Escape
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
+                    closeSidebar();
+                }
+            });
         });
     </script>
     {% block extra_js %}{% endblock %}

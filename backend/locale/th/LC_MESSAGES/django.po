@@ -2428,34 +2428,43 @@ msgstr ""
 
 #: frontend/templates/dashboard_base.html:196
 msgid "Management Menu"
-msgstr ""
+msgstr "เมนูจัดการระบบ"
 
 #: frontend/templates/dashboard_base.html:198
 msgid "Close menu"
-msgstr ""
+msgstr "ปิดเมนู"
 
 #: frontend/templates/dashboard_base.html:201
 #: frontend/templates/partials/navbar.html:55
 #: frontend/templates/scholarship_dashboard.html:525
 msgid "Analytics Dashboard"
-msgstr ""
+msgstr "แดชบอร์ดสถิติ"
 
 #: frontend/templates/dashboard_base.html:202
 msgid "Admin Console"
-msgstr ""
+msgstr "แผงควบคุมแอดมิน"
 
 #: frontend/templates/dashboard_base.html:203
 msgid "Advanced Database"
-msgstr ""
+msgstr "ฐานข้อมูลขั้นสูง"
 
 #: frontend/templates/dashboard_base.html:209
 #: frontend/templates/partials/navbar.html:63
 msgid "Logout"
-msgstr ""
+msgstr "ออกจากระบบ"
 
 #: frontend/templates/dashboard_base.html:221
 msgid "Dashboard Menu"
-msgstr ""
+msgstr "เมนูจัดการระบบ"
+
+msgid "Admin Portal"
+msgstr "พอร์ทัลผู้ดูแลระบบ"
+
+msgid "Back to Main Site"
+msgstr "กลับสู่หน้าหลัก"
+
+msgid "Navigation"
+msgstr "การนำทาง"
 
 #: frontend/templates/index.html:18
 msgid "Scholarship Application & Tracking System, PSU Phuket"
