@@ -18,22 +18,26 @@
 
         <!-- 4 Stats Cards Grid -->
         <div class="admin-kpi-grid">
-            <div class="admin-kpi-card" onclick="switchAdminTab('scholarships')" style="cursor:pointer;" title="{% trans 'Click to view all scholarships' %}">
+            <div class="admin-kpi-card" onclick="switchAdminTab('scholarships')" style="cursor:pointer;"
+                title="{% trans 'Click to view all scholarships' %}">
                 <div class="kpi-num">{{ total_scholarships }}</div>
                 <div class="kpi-label">{% trans "Total Scholarships" %} →</div>
             </div>
 
-            <div class="admin-kpi-card" onclick="switchAdminTab('apps')" style="cursor:pointer;" title="{% trans 'Click to view all applications' %}">
+            <div class="admin-kpi-card" onclick="switchAdminTab('apps')" style="cursor:pointer;"
+                title="{% trans 'Click to view all applications' %}">
                 <div class="kpi-num">{{ total_applications }}</div>
                 <div class="kpi-label">{% trans "Total Applications" %} →</div>
             </div>
 
-            <div class="admin-kpi-card highlight-pending" onclick="switchAdminTab('apps', 'pending')" style="cursor:pointer;" title="{% trans 'Click to view pending applications' %}">
+            <div class="admin-kpi-card highlight-pending" onclick="switchAdminTab('apps', 'pending')"
+                style="cursor:pointer;" title="{% trans 'Click to view pending applications' %}">
                 <div class="kpi-num text-amber">{{ pending_applications }}</div>
                 <div class="kpi-label">{% trans "Pending Review" %} →</div>
             </div>
 
-            <div class="admin-kpi-card highlight-approved" onclick="switchAdminTab('apps', 'approved')" style="cursor:pointer;" title="{% trans 'Click to view approved applications' %}">
+            <div class="admin-kpi-card highlight-approved" onclick="switchAdminTab('apps', 'approved')"
+                style="cursor:pointer;" title="{% trans 'Click to view approved applications' %}">
                 <div class="kpi-num text-emerald">{{ approved_applications }}</div>
                 <div class="kpi-label">{% trans "Approved" %} →</div>
             </div>
@@ -42,7 +46,8 @@
         <!-- Main Mode Switcher Tabs -->
         <div class="admin-main-nav-tabs">
             <button type="button" class="admin-nav-tab-btn active" id="tabBtnApps" onclick="switchAdminTab('apps')">
-                <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
                     <line x1="16" y1="13" x2="8" y2="13"></line>
@@ -54,7 +59,8 @@
             </button>
 
             <button type="button" class="admin-nav-tab-btn" id="tabBtnSch" onclick="switchAdminTab('scholarships')">
-                <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
                 </svg>
                 <span>{% trans "Manage Scholarships" %}</span>
@@ -62,7 +68,8 @@
             </button>
 
             <button type="button" class="admin-nav-tab-btn" id="tabBtnHistory" onclick="switchAdminTab('history')">
-                <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
+                    stroke-width="2">
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
@@ -79,12 +86,14 @@
                     <p class="table-sub-desc">{% trans "Search, verify GPAX eligibility, and update application review statuses." %}</p>
                 </div>
                 <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-                    <a href="{% url 'admin_guide' %}" class="btn-create-sch-link" style="background: #ffffff; color: #0284c7; border: 1.5px solid #bfdbfe;">
+                    <a href="{% url 'admin_guide' %}" class="btn-create-sch-link"
+                        style="background: #ffffff; color: #0284c7; border: 1.5px solid #bfdbfe;">
                         <span class="material-symbols-outlined" style="font-size: 1rem;">menu_book</span>
                         <span>{% trans "Review Manual" %}</span>
                     </a>
                     <a href="/admin/scholarships/scholarship/add/" class="btn-create-sch-link" target="_blank">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
@@ -106,33 +115,32 @@
 
             <!-- Category Filter Tabs (หมวดหมู่ทุน) -->
             <div class="admin-cat-tabs-row" id="categoryTabs">
-                <a href="?category=all&status={{ selected_status }}&q={{ q }}" 
-                   class="admin-cat-tab {% if selected_category == 'all' or not selected_category %}active{% endif %}" 
-                   data-category="all">
+                <a href="?category=all&status={{ selected_status }}&q={{ q }}"
+                    class="admin-cat-tab {% if selected_category == 'all' or not selected_category %}active{% endif %}"
+                    data-category="all">
                     <span>{% trans "All" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.all }}</span>
                 </a>
-                <a href="?category=general&status={{ selected_status }}&q={{ q }}" 
-                   class="admin-cat-tab {% if selected_category == 'general' %}active{% endif %}" 
-                   data-category="general">
+                <a href="?category=general&status={{ selected_status }}&q={{ q }}"
+                    class="admin-cat-tab {% if selected_category == 'general' %}active{% endif %}"
+                    data-category="general">
                     <span>{% trans "General" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.general }}</span>
                 </a>
-                <a href="?category=exchange&status={{ selected_status }}&q={{ q }}" 
-                   class="admin-cat-tab {% if selected_category == 'exchange' %}active{% endif %}" 
-                   data-category="exchange">
+                <a href="?category=exchange&status={{ selected_status }}&q={{ q }}"
+                    class="admin-cat-tab {% if selected_category == 'exchange' %}active{% endif %}"
+                    data-category="exchange">
                     <span>{% trans "Exchange" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.exchange }}</span>
                 </a>
-                <a href="?category=fee_waiver&status={{ selected_status }}&q={{ q }}" 
-                   class="admin-cat-tab {% if selected_category == 'fee_waiver' %}active{% endif %}" 
-                   data-category="fee_waiver">
+                <a href="?category=fee_waiver&status={{ selected_status }}&q={{ q }}"
+                    class="admin-cat-tab {% if selected_category == 'fee_waiver' %}active{% endif %}"
+                    data-category="fee_waiver">
                     <span>{% trans "Fee Waiver" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.fee_waiver }}</span>
                 </a>
-                <a href="?category=lunch&status={{ selected_status }}&q={{ q }}" 
-                   class="admin-cat-tab {% if selected_category == 'lunch' %}active{% endif %}" 
-                   data-category="lunch">
+                <a href="?category=lunch&status={{ selected_status }}&q={{ q }}"
+                    class="admin-cat-tab {% if selected_category == 'lunch' %}active{% endif %}" data-category="lunch">
                     <span>{% trans "Lunch" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.lunch }}</span>
                 </a>
@@ -141,30 +149,26 @@
             <!-- Search & Status Filter Toolbar -->
             <form method="GET" action="" class="admin-filter-toolbar" id="adminFilterForm">
                 <input type="hidden" name="category" id="hiddenCategory" value="{{ selected_category|default:'all' }}">
-                
+
                 <div class="admin-search-wrapper">
-                    <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" 
-                           id="adminSearchInput" 
-                           name="q" 
-                           value="{{ q }}" 
-                           placeholder="{% trans "Search applicant name, student ID, scholarship title..." %}" 
-                           class="admin-search-field"
-                           autocomplete="off">
+                    <input type="text" id="adminSearchInput" name="q" value="{{ q }}" placeholder="{% trans " Search applicant name, student ID, scholarship title..." %}" class="admin-search-field"
+                        autocomplete="off">
                 </div>
 
                 <div class="admin-filter-right">
                     <select name="status" id="adminStatusSelect" class="admin-filter-select">
-                        <option value="all" {% if selected_status == 'all' or not selected_status %}selected{% endif %}>{% trans "All Statuses" %} ({{ total_applications }})</option>
-                        <option value="pending" {% if selected_status == 'pending' %}selected{% endif %}>{% trans "Pending" %} ({{ pending_applications }})</option>
-                        <option value="in_progress" {% if selected_status == 'in_progress' %}selected{% endif %}>{% trans "In Progress" %}</option>
-                        <option value="approved" {% if selected_status == 'approved' %}selected{% endif %}>{% trans "Approve" %} ({{ approved_applications }})</option>
-                        <option value="rejected" {% if selected_status == 'rejected' %}selected{% endif %}>{% trans "Reject" %} ({{ rejected_applications }})</option>
-                        <option value="completed" {% if selected_status == 'completed' %}selected{% endif %}>{% trans "Complete" %}</option>
-                        <option value="cancelled" {% if selected_status == 'cancelled' %}selected{% endif %}>{% trans "Cancel" %}</option>
+                        <option value="all" {% if selected_status=='all' or not selected_status %}selected{% endif %}>{% trans "All Statuses" %} ({{ total_applications }})</option>
+                        <option value="pending" {% if selected_status=='pending' %}selected{% endif %}>{% trans "Pending" %} ({{ pending_applications }})</option>
+                        <option value="in_progress" {% if selected_status=='in_progress' %}selected{% endif %}>{% trans "In Progress" %}</option>
+                        <option value="approved" {% if selected_status=='approved' %}selected{% endif %}>{% trans "Approve" %} ({{ approved_applications }})</option>
+                        <option value="rejected" {% if selected_status=='rejected' %}selected{% endif %}>{% trans "Reject" %} ({{ rejected_applications }})</option>
+                        <option value="completed" {% if selected_status=='completed' %}selected{% endif %}>{% trans "Complete" %}</option>
+                        <option value="cancelled" {% if selected_status=='cancelled' %}selected{% endif %}>{% trans "Cancel" %}</option>
                     </select>
 
                     <div class="admin-result-counter">
@@ -189,17 +193,13 @@
                     </thead>
                     <tbody>
                         {% for app in applications %}
-                        <tr class="app-row" 
-                            data-name="{{ app.student.full_name|lower }}"
-                            data-id="{{ app.student.student_id }}"
-                            data-sch="{{ app.scholarship.title|lower }}"
-                            data-category="{{ app.scholarship.category }}"
-                            data-status="{{ app.status }}"
+                        <tr class="app-row" data-name="{{ app.student.full_name|lower }}"
+                            data-id="{{ app.student.student_id }}" data-sch="{{ app.scholarship.title|lower }}"
+                            data-category="{{ app.scholarship.category }}" data-status="{{ app.status }}"
                             data-student-name="{{ app.student.full_name }}"
                             data-student-id="{{ app.student.student_id }}"
                             data-student-email="{{ app.student.user.email }}"
-                            data-sch-title="{{ app.scholarship.title }}"
-                            data-note="{{ app.note|default:'' }}"
+                            data-sch-title="{{ app.scholarship.title }}" data-note="{{ app.note|default:'' }}"
                             data-app-id="{{ app.pk }}">
                             <td>
                                 <div class="font-bold">{{ app.student.full_name }}</div>
@@ -219,21 +219,23 @@
                             <td>{{ app.submitted_at|date:"d M Y" }}</td>
                             <td>
                                 {% if app.documents.all %}
-                                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                                <div style="display: flex; flex-direction: column; gap: 4px;">
                                     {% for doc in app.documents.all %}
-                                        <a href="{{ doc.file.url }}" target="_blank" class="doc-link-pill" title="{{ doc.get_doc_type_display }}">
-                                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                                                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                                                <polyline points="13 2 13 9 20 9"></polyline>
-                                            </svg>
-                                            {% if doc.doc_type == 'transcript' %}{% trans "Transcript" %}
-                                            {% elif doc.doc_type == 'recommendation' %}{% trans "Recommendation" %}
-                                            {% else %}{% trans "Other" %}{% endif %}
-                                        </a>
+                                    <a href="{{ doc.file.url }}" target="_blank" class="doc-link-pill"
+                                        title="{{ doc.get_doc_type_display }}">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" fill="none"
+                                            stroke="currentColor" stroke-width="2">
+                                            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                                            <polyline points="13 2 13 9 20 9"></polyline>
+                                        </svg>
+                                        {% if doc.doc_type == 'transcript' %}{% trans "Transcript" %}
+                                        {% elif doc.doc_type == 'recommendation' %}{% trans "Recommendation" %}
+                                        {% else %}{% trans "Other" %}{% endif %}
+                                    </a>
                                     {% endfor %}
-                                    </div>
+                                </div>
                                 {% else %}
-                                    <span style="color: #94a3b8; font-size: 0.85rem;">{% trans "No documents" %}</span>
+                                <span style="color: #94a3b8; font-size: 0.85rem;">{% trans "No documents" %}</span>
                                 {% endif %}
                             </td>
                             <td>
@@ -242,61 +244,73 @@
                             <td style="text-align:center;">
                                 <div class="action-btn-group">
                                     {% if app.status == 'pending' %}
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="in_progress">
-                                            <button type="submit" class="btn-table-action btn-act-inprogress" title="{% trans 'Change to In Progress' %}">In Progress</button>
-                                        </form>
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="approved">
-                                            <button type="submit" class="btn-table-action btn-act-approve" title="{% trans 'Approve application' %}">Approve</button>
-                                        </form>
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="rejected">
-                                            <button type="submit" class="btn-table-action btn-act-reject" title="{% trans 'Reject application' %}">Reject</button>
-                                        </form>
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="cancelled">
-                                            <button type="submit" class="btn-table-action btn-act-cancel" title="{% trans 'Cancel application' %}">Cancel</button>
-                                        </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="in_progress">
+                                        <button type="submit" class="btn-table-action btn-act-inprogress"
+                                            title="{% trans 'Change to In Progress' %}">In Progress</button>
+                                    </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="approved">
+                                        <button type="submit" class="btn-table-action btn-act-approve"
+                                            title="{% trans 'Approve application' %}">Approve</button>
+                                    </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="rejected">
+                                        <button type="submit" class="btn-table-action btn-act-reject"
+                                            title="{% trans 'Reject application' %}">Reject</button>
+                                    </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="cancelled">
+                                        <button type="submit" class="btn-table-action btn-act-cancel"
+                                            title="{% trans 'Cancel application' %}">Cancel</button>
+                                    </form>
                                     {% elif app.status == 'in_progress' or app.status == 'interview' %}
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="approved">
-                                            <button type="submit" class="btn-table-action btn-act-approve" title="{% trans 'Approve application' %}">Approve</button>
-                                        </form>
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="rejected">
-                                            <button type="submit" class="btn-table-action btn-act-reject" title="{% trans 'Reject application' %}">Reject</button>
-                                        </form>
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="cancelled">
-                                            <button type="submit" class="btn-table-action btn-act-cancel" title="{% trans 'Cancel application' %}">Cancel</button>
-                                        </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="approved">
+                                        <button type="submit" class="btn-table-action btn-act-approve"
+                                            title="{% trans 'Approve application' %}">Approve</button>
+                                    </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="rejected">
+                                        <button type="submit" class="btn-table-action btn-act-reject"
+                                            title="{% trans 'Reject application' %}">Reject</button>
+                                    </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="cancelled">
+                                        <button type="submit" class="btn-table-action btn-act-cancel"
+                                            title="{% trans 'Cancel application' %}">Cancel</button>
+                                    </form>
                                     {% elif app.status == 'approved' %}
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="completed">
-                                            <button type="submit" class="btn-table-action btn-act-complete" title="{% trans 'Complete scholarship process' %}">Complete</button>
-                                        </form>
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="pending">
-                                            <button type="submit" class="btn-table-action btn-act-reset" title="{% trans 'Reset status to Pending' %}">{% trans "Reset to Pending" %}</button>
-                                        </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="completed">
+                                        <button type="submit" class="btn-table-action btn-act-complete"
+                                            title="{% trans 'Complete scholarship process' %}">Complete</button>
+                                    </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="pending">
+                                        <button type="submit" class="btn-table-action btn-act-reset"
+                                            title="{% trans 'Reset status to Pending' %}">{% trans "Reset to Pending" %}</button>
+                                    </form>
                                     {% elif app.status == 'completed' or app.status == 'rejected' or app.status == 'cancelled' %}
-                                        <form method="post" action="{% url 'update_application' app.pk %}">
-                                            {% csrf_token %}
-                                            <input type="hidden" name="status" value="pending">
-                                            <button type="submit" class="btn-table-action btn-act-reset" title="{% trans 'Reset status to Pending' %}">{% trans "Reset to Pending" %}</button>
-                                        </form>
+                                    <form method="post" action="{% url 'update_application' app.pk %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="status" value="pending">
+                                        <button type="submit" class="btn-table-action btn-act-reset"
+                                            title="{% trans 'Reset status to Pending' %}">{% trans "Reset to Pending" %}</button>
+                                    </form>
                                     {% endif %}
-                                    <button type="button" class="btn-table-action btn-act-notice" title="{% trans 'Send notice / Request additional documents' %}" onclick="openDirectNoticeModal(this)">
+                                    <button type="button" class="btn-table-action btn-act-notice"
+                                        title="{% trans 'Send notice / Request additional documents' %}"
+                                        onclick="openDirectNoticeModal(this)">
                                         {% trans "Additional Docs" %}
                                     </button>
                                 </div>
@@ -323,7 +337,8 @@
         <div class="admin-table-container-card" id="sectionScholarships" style="display:none;">
             <div class="table-header-bar">
                 <div>
-                    <h2 class="table-main-title">{% trans "All Scholarships in System" %} ({{ total_scholarships }})</h2>
+                    <h2 class="table-main-title">{% trans "All Scholarships in System" %} ({{ total_scholarships }})
+                    </h2>
                     <p class="table-sub-desc">{% trans "Manage listings, view applicant counts, quotas, and scholarship statuses." %}</p>
                 </div>
             </div>
@@ -355,15 +370,12 @@
             <!-- Search Toolbar for Scholarships -->
             <div class="admin-filter-toolbar">
                 <div class="admin-search-wrapper" style="max-width:550px;">
-                    <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                        stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" 
-                           id="schSearchInput" 
-                           placeholder="{% trans "Search scholarship title, category, GPAX..." %}" 
-                           class="admin-search-field"
-                           autocomplete="off">
+                    <input type="text" id="schSearchInput" placeholder="{% trans " Search scholarship title, category, GPAX..." %}" class="admin-search-field" autocomplete="off">
                 </div>
 
                 <div class="admin-result-counter">
@@ -387,12 +399,11 @@
                     </thead>
                     <tbody>
                         {% for s in scholarships_list %}
-                        <tr class="sch-row" 
-                            data-sch-title="{{ s.title|lower }}"
-                            data-sch-cat="{{ s.category }}"
+                        <tr class="sch-row" data-sch-title="{{ s.title|lower }}" data-sch-cat="{{ s.category }}"
                             data-sch-desc="{{ s.description|lower }}">
                             <td>
-                                <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title" style="text-decoration:none; color:var(--psu-blue-600);">
+                                <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title"
+                                    style="text-decoration:none; color:var(--psu-blue-600);">
                                     {{ s.title }}
                                 </a>
                             </td>
@@ -415,19 +426,20 @@
                             </td>
                             <td>
                                 {% if s.status == 'active' and not s.is_expired %}
-                                    <span class="status-pill status-open" style="font-size:0.75rem; padding:2px 8px;">
-                                        <span class="dot-live"></span> {% trans "Open" %}
-                                    </span>
+                                <span class="status-pill status-open" style="font-size:0.75rem; padding:2px 8px;">
+                                    <span class="dot-live"></span> {% trans "Open" %}
+                                </span>
                                 {% else %}
-                                    <span class="status-pill status-closed" style="font-size:0.75rem; padding:2px 8px;">
-                                        {% trans "Closed" %}
-                                    </span>
+                                <span class="status-pill status-closed" style="font-size:0.75rem; padding:2px 8px;">
+                                    {% trans "Closed" %}
+                                </span>
                                 {% endif %}
                             </td>
                             <td style="text-align:center;">
                                 <div style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
                                     {% if s.apps_count > 0 %}
-                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank" class="btn-sch-action btn-sch-view" title="{% trans "View Applicants" %}">
+                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank"
+                                        class="btn-sch-action btn-sch-view" title="{% trans " View Applicants" %}">
                                         {% trans "View Applicants" %}
                                     </a>
                                     {% else %}
@@ -435,15 +447,18 @@
                                         {% trans "View Applicants" %}
                                     </span>
                                     {% endif %}
-                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view" target="_blank" title="{% trans "View Page" %}">
+                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view"
+                                        target="_blank" title="{% trans " View Page" %}">
                                         {% trans "View Page" %}
                                     </a>
-                                    <a href="/admin/scholarships/scholarship/{{ s.pk }}/change/" class="btn-sch-action btn-sch-edit" target="_blank" title="{% trans "Edit" %}">
+                                    <a href="/admin/scholarships/scholarship/{{ s.pk }}/change/"
+                                        class="btn-sch-action btn-sch-edit" target="_blank" title="{% trans " Edit" %}">
                                         {% trans "Edit" %}
                                     </a>
-                                    <form method="post" action="{% url 'delete_scholarship' s.pk %}" style="display:inline; margin:0;" onsubmit="return confirm('{% trans "Are you sure you want to delete this scholarship?" %}');">
+                                    <form method="post" action="{% url 'delete_scholarship' s.pk %}"
+                                        style="display:inline; margin:0;" onsubmit="return confirm('{% trans " Are you sure you want to delete this scholarship?" %}');">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn-sch-action btn-sch-del" title="{% trans "Delete" %}">
+                                        <button type="submit" class="btn-sch-action btn-sch-del" title="{% trans " Delete" %}">
                                             {% trans "Delete" %}
                                         </button>
                                     </form>
@@ -471,7 +486,8 @@
         <div class="admin-table-container-card" id="sectionHistory" style="display:none;">
             <div class="table-header-bar">
                 <div>
-                    <h2 class="table-main-title">{% trans "Past Scholarship History" %} ({{ expired_scholarships|length }})</h2>
+                    <h2 class="table-main-title">{% trans "Past Scholarship History" %} ({{ expired_scholarships|length
+                        }})</h2>
                     <p class="table-sub-desc">{% trans "List of expired or closed scholarships." %}</p>
                 </div>
             </div>
@@ -479,15 +495,13 @@
             <!-- Search Toolbar for History -->
             <div class="admin-filter-toolbar">
                 <div class="admin-search-wrapper" style="max-width:550px;">
-                    <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+                    <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
+                        stroke="currentColor" stroke-width="2">
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" 
-                           id="histSearchInput" 
-                           placeholder="{% trans "Search past scholarships..." %}" 
-                           class="admin-search-field"
-                           autocomplete="off">
+                    <input type="text" id="histSearchInput" placeholder="{% trans " Search past scholarships..." %}"
+                        class="admin-search-field" autocomplete="off">
                 </div>
             </div>
 
@@ -507,12 +521,11 @@
                     </thead>
                     <tbody>
                         {% for s in expired_scholarships %}
-                        <tr class="hist-row" 
-                            data-hist-title="{{ s.title|lower }}"
-                            data-hist-cat="{{ s.category }}"
+                        <tr class="hist-row" data-hist-title="{{ s.title|lower }}" data-hist-cat="{{ s.category }}"
                             data-hist-desc="{{ s.description|lower }}">
                             <td>
-                                <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title" style="text-decoration:none; color:var(--psu-blue-600);">
+                                <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title"
+                                    style="text-decoration:none; color:var(--psu-blue-600);">
                                     {{ s.title }}
                                 </a>
                             </td>
@@ -541,7 +554,8 @@
                             <td style="text-align:center;">
                                 <div style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
                                     {% if s.apps_count > 0 %}
-                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank" class="btn-sch-action btn-sch-view" title="{% trans "View Applicants" %}">
+                                    <a href="?q={{ s.title|urlencode }}#apps" target="_blank"
+                                        class="btn-sch-action btn-sch-view" title="{% trans " View Applicants" %}">
                                         {% trans "View Applicants" %}
                                     </a>
                                     {% else %}
@@ -549,7 +563,8 @@
                                         {% trans "View Applicants" %}
                                     </span>
                                     {% endif %}
-                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view" target="_blank" title="{% trans "View Page" %}">
+                                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view"
+                                        target="_blank" title="{% trans " View Page" %}">
                                         {% trans "View Page" %}
                                     </a>
                                 </div>
@@ -576,18 +591,23 @@
 
 <!-- ================= MODAL: CUSTOM STATUS UPDATE & EMAIL NOTIFICATION ================= -->
 <div class="modal-overlay" id="statusEmailModal" onclick="handleStatusModalBackdrop(event)">
-    <div class="modal-card email-modal-card" style="max-width: 680px; width: 92%; max-height: 90vh; overflow-y: auto; padding: 28px; border-radius: 16px;">
+    <div class="modal-card email-modal-card"
+        style="max-width: 680px; width: 92%; max-height: 90vh; overflow-y: auto; padding: 28px; border-radius: 16px;">
         <button type="button" class="modal-close" onclick="closeStatusEmailModal()" aria-label="Close">✕</button>
 
-        <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">
-            <div style="width: 44px; height: 44px; border-radius: 12px; background: #eff6ff; color: #1d4ed8; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <div
+            style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">
+            <div
+                style="width: 44px; height: 44px; border-radius: 12px; background: #eff6ff; color: #1d4ed8; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
             </div>
             <div>
-                <h3 style="margin: 0; font-size: 1.25rem; font-weight: 700; color: #0f172a; font-family: 'Prompt', sans-serif;">{% trans "Update Status & Customize Email" %}</h3>
+                <h3
+                    style="margin: 0; font-size: 1.25rem; font-weight: 700; color: #0f172a; font-family: 'Prompt', sans-serif;">
+                    {% trans "Update Status & Customize Email" %}</h3>
                 <p style="margin: 2px 0 0; font-size: 0.85rem; color: #64748b; font-family: 'Sarabun', sans-serif;">{% trans "Review or compose additional notes to be sent to the student." %}</p>
             </div>
         </div>
@@ -599,7 +619,8 @@
             <input type="hidden" id="modalAppId" value="">
 
             <!-- Recipient & Application Summary -->
-            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; margin-bottom: 1.1rem; font-family: 'Sarabun', sans-serif;">
+            <div
+                style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; margin-bottom: 1.1rem; font-family: 'Sarabun', sans-serif;">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.9rem;">
                     <div>
                         <span style="color: #64748b; font-size: 0.8rem; display: block;">{% trans "Student Name" %}:</span>
@@ -608,25 +629,32 @@
                     </div>
                     <div>
                         <span style="color: #64748b; font-size: 0.8rem; display: block;">{% trans "Notification Email" %}:</span>
-                        <strong id="modalStudentEmail" style="color: #0284c7; word-break: break-all; font-size: 0.92rem;">-</strong>
+                        <strong id="modalStudentEmail"
+                            style="color: #0284c7; word-break: break-all; font-size: 0.92rem;">-</strong>
                     </div>
                 </div>
-                <div style="margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.88rem;">
+                <div
+                    style="margin-top: 0.65rem; padding-top: 0.65rem; border-top: 1px dashed #cbd5e1; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.88rem;">
                     <div>
                         <span style="color: #64748b;">{% trans "Scholarship" %}: </span>
                         <strong id="modalSchTitle" style="color: #1e293b;">-</strong>
                     </div>
                     <div>
-                        <span style="color: #64748b;" id="modalStatusLabelPrefix">{% trans "Change status to" %}: </span>
-                        <span id="modalStatusBadge" style="display: inline-block; padding: 3px 10px; border-radius: 20px; font-weight: 700; font-size: 0.82rem;">-</span>
+                        <span style="color: #64748b;" id="modalStatusLabelPrefix">{% trans "Change status to" %}:
+                        </span>
+                        <span id="modalStatusBadge"
+                            style="display: inline-block; padding: 3px 10px; border-radius: 20px; font-weight: 700; font-size: 0.82rem;">-</span>
                     </div>
                 </div>
             </div>
 
             <!-- Checkbox: Send email -->
-            <div style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.65rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.65rem 0.9rem; font-family: 'Sarabun', sans-serif;">
-                <input type="checkbox" id="modalSendEmailCheck" name="send_email" value="true" checked style="width: 18px; height: 18px; cursor: pointer; accent-color: #15803d;">
-                <label for="modalSendEmailCheck" style="font-size: 0.92rem; font-weight: 600; color: #166534; cursor: pointer; margin: 0; user-select: none;">
+            <div
+                style="margin-bottom: 1rem; display: flex; align-items: center; gap: 0.65rem; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 0.65rem 0.9rem; font-family: 'Sarabun', sans-serif;">
+                <input type="checkbox" id="modalSendEmailCheck" name="send_email" value="true" checked
+                    style="width: 18px; height: 18px; cursor: pointer; accent-color: #15803d;">
+                <label for="modalSendEmailCheck"
+                    style="font-size: 0.92rem; font-weight: 600; color: #166534; cursor: pointer; margin: 0; user-select: none;">
                     {% trans "Send notification email to student immediately" %}
                 </label>
             </div>
@@ -634,11 +662,13 @@
             <!-- Email Content Editor Section -->
             <div id="emailEditorSection" style="display: block; font-family: 'Sarabun', sans-serif;">
                 <!-- Quick Template Preset Selector -->
-                <div style="margin-bottom: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem 0.9rem; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
+                <div
+                    style="margin-bottom: 1rem; background: #f8fafc; border: 1px solid #e2e8f0; padding: 0.75rem 0.9rem; border-radius: 8px; display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap;">
                     <div style="display: flex; align-items: center; gap: 0.4rem;">
                         <span style="font-size: 0.88rem; font-weight: 600; color: #1e293b;">{% trans "Select Message Template:" %}</span>
                     </div>
-                    <select id="modalTemplateSelector" onchange="onTemplateSelectChange(this.value)" style="flex: 1; min-width: 220px; padding: 0.5rem 0.8rem; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.88rem; font-family: 'Sarabun', sans-serif; background: #ffffff; color: #1e293b; cursor: pointer; font-weight: 500;">
+                    <select id="modalTemplateSelector" onchange="onTemplateSelectChange(this.value)"
+                        style="flex: 1; min-width: 220px; padding: 0.5rem 0.8rem; border: 1.5px solid #cbd5e1; border-radius: 6px; font-size: 0.88rem; font-family: 'Sarabun', sans-serif; background: #ffffff; color: #1e293b; cursor: pointer; font-weight: 500;">
                         <option value="custom">-- {% trans "Select Message Template" %} --</option>
                         <option value="request_docs">{% trans "Request Additional Docs" %}</option>
                         <option value="interview">{% trans "Interview Invitation" %}</option>
@@ -651,23 +681,28 @@
 
                 <!-- Subject -->
                 <div style="margin-bottom: 1rem;">
-                    <label style="display: block; font-size: 0.88rem; font-weight: 600; color: #1e293b; margin-bottom: 0.35rem;">
+                    <label
+                        style="display: block; font-size: 0.88rem; font-weight: 600; color: #1e293b; margin-bottom: 0.35rem;">
                         {% trans "Email Subject:" %}
                     </label>
-                    <input type="text" name="email_subject" id="modalEmailSubject" style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.65rem 0.85rem; font-size: 0.95rem; font-family: 'Sarabun', sans-serif; box-sizing: border-box; color: #0f172a;">
+                    <input type="text" name="email_subject" id="modalEmailSubject"
+                        style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.65rem 0.85rem; font-size: 0.95rem; font-family: 'Sarabun', sans-serif; box-sizing: border-box; color: #0f172a;">
                 </div>
 
                 <!-- Template Message Body -->
                 <div style="margin-bottom: 1rem;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
                         <label style="font-size: 0.88rem; font-weight: 600; color: #1e293b; margin: 0;">
                             {% trans "Email Message (Customize as needed):" %}
                         </label>
-                        <button type="button" onclick="resetEmailTemplate()" style="background: none; border: none; color: #1d4ed8; font-size: 0.82rem; cursor: pointer; text-decoration: underline; font-family: 'Sarabun', sans-serif; font-weight: 500;">
+                        <button type="button" onclick="resetEmailTemplate()"
+                            style="background: none; border: none; color: #1d4ed8; font-size: 0.82rem; cursor: pointer; text-decoration: underline; font-family: 'Sarabun', sans-serif; font-weight: 500;">
                             {% trans "Reset to Default Template" %}
                         </button>
                     </div>
-                    <textarea name="email_message" id="modalEmailMessage" rows="7" style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.75rem 0.9rem; font-size: 0.92rem; font-family: 'Sarabun', sans-serif; line-height: 1.6; resize: vertical; box-sizing: border-box; color: #0f172a;"></textarea>
+                    <textarea name="email_message" id="modalEmailMessage" rows="7"
+                        style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 8px; padding: 0.75rem 0.9rem; font-size: 0.92rem; font-family: 'Sarabun', sans-serif; line-height: 1.6; resize: vertical; box-sizing: border-box; color: #0f172a;"></textarea>
                     <div style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">
                         {% trans "You can specify date, time, location, online meeting link, or instructions in this box." %}
                     </div>
@@ -676,19 +711,26 @@
 
             <!-- Internal Note for Staff -->
             <div style="margin-bottom: 1.25rem; font-family: 'Sarabun', sans-serif;">
-                <label style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">
+                <label
+                    style="display: block; font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 0.35rem;">
                     {% trans "Internal Note (Staff only):" %}
                 </label>
-                <input type="text" name="note" id="modalAppNote" placeholder="{% trans 'e.g. Interview Room 5204 or Passed round 1...' %}" style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.55rem 0.85rem; font-size: 0.88rem; font-family: 'Sarabun', sans-serif; box-sizing: border-box; color: #334155;">
+                <input type="text" name="note" id="modalAppNote"
+                    placeholder="{% trans 'e.g. Interview Room 5204 or Passed round 1...' %}"
+                    style="width: 100%; border: 1px solid #cbd5e1; border-radius: 8px; padding: 0.55rem 0.85rem; font-size: 0.88rem; font-family: 'Sarabun', sans-serif; box-sizing: border-box; color: #334155;">
             </div>
 
             <!-- Action Buttons -->
-            <div style="display: flex; justify-content: flex-end; gap: 0.75rem; border-top: 1px solid #e2e8f0; padding-top: 1.1rem; font-family: 'Sarabun', sans-serif;">
-                <button type="button" onclick="closeStatusEmailModal()" style="background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 500; cursor: pointer;">
+            <div
+                style="display: flex; justify-content: flex-end; gap: 0.75rem; border-top: 1px solid #e2e8f0; padding-top: 1.1rem; font-family: 'Sarabun', sans-serif;">
+                <button type="button" onclick="closeStatusEmailModal()"
+                    style="background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; padding: 0.6rem 1.25rem; border-radius: 8px; font-weight: 500; cursor: pointer;">
                     {% trans "Cancel" %}
                 </button>
-                <button type="submit" id="btnConfirmStatusSubmit" style="background: #1e3a8a; color: white; border: none; padding: 0.65rem 1.6rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25); transition: background 0.2s;">
-                    <svg id="btnSubmitIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <button type="submit" id="btnConfirmStatusSubmit"
+                    style="background: #1e3a8a; color: white; border: none; padding: 0.65rem 1.6rem; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 0.45rem; box-shadow: 0 2px 8px rgba(30, 58, 138, 0.25); transition: background 0.2s;">
+                    <svg id="btnSubmitIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
                         <line x1="22" y1="2" x2="11" y2="13"></line>
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
