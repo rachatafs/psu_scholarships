@@ -43,11 +43,7 @@
                 {% if user.is_authenticated %}
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle user-nav-pill">
-                        {% if user.profile and user.profile.profile_image %}
-                        <img src="{{ user.profile.profile_image.url }}" alt="{{ user.username }}" class="user-avatar-img">
-                        {% else %}
-                        <span class="user-avatar-circle">{{ user.username|first|upper }}</span>
-                        {% endif %}
+                        {% include 'components/user_avatar.html' %}
                         <span class="user-name-text">{{ user.username }}</span>
                         {% if user.is_staff or user.is_superuser %}
                         <span class="user-role-tag">Admin</span>
