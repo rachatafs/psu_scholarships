@@ -503,8 +503,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'admin_guide' %}"
-                        class="{% if request.path == '/guide/admin/' %}active{% endif %}">
+                    <a href="{% url 'admin_guide' %}" class="{% if request.path == '/guide/admin/' %}active{% endif %}">
                         <span class="material-symbols-outlined nav-icon">menu_book</span>
                         <span class="nav-text">{% trans "Admin Guide" %}</span>
                         {% if request.path == '/guide/admin/' %}<span class="active-pill-dot"></span>{% endif %}

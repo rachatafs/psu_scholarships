@@ -162,13 +162,13 @@
 
                 <div class="admin-filter-right">
                     <select name="status" id="adminStatusSelect" class="admin-filter-select">
-                        <option value="all" {% if selected_status=='all' or not selected_status %}selected{% endif %}>{% trans "All Statuses" %} ({{ total_applications }})</option>
-                        <option value="pending" {% if selected_status=='pending' %}selected{% endif %}>{% trans "Pending" %} ({{ pending_applications }})</option>
-                        <option value="in_progress" {% if selected_status=='in_progress' %}selected{% endif %}>{% trans "In Progress" %}</option>
-                        <option value="approved" {% if selected_status=='approved' %}selected{% endif %}>{% trans "Approve" %} ({{ approved_applications }})</option>
-                        <option value="rejected" {% if selected_status=='rejected' %}selected{% endif %}>{% trans "Reject" %} ({{ rejected_applications }})</option>
-                        <option value="completed" {% if selected_status=='completed' %}selected{% endif %}>{% trans "Complete" %}</option>
-                        <option value="cancelled" {% if selected_status=='cancelled' %}selected{% endif %}>{% trans "Cancel" %}</option>
+                        <option value="all" {% if selected_status == 'all' or not selected_status %}selected{% endif %}>{% trans "All Statuses" %} ({{ total_applications }})</option>
+                        <option value="pending" {% if selected_status == 'pending' %}selected{% endif %}>{% trans "Pending" %} ({{ pending_applications }})</option>
+                        <option value="in_progress" {% if selected_status == 'in_progress' %}selected{% endif %}>{% trans "In Progress" %}</option>
+                        <option value="approved" {% if selected_status == 'approved' %}selected{% endif %}>{% trans "Approve" %} ({{ approved_applications }})</option>
+                        <option value="rejected" {% if selected_status == 'rejected' %}selected{% endif %}>{% trans "Reject" %} ({{ rejected_applications }})</option>
+                        <option value="completed" {% if selected_status == 'completed' %}selected{% endif %}>{% trans "Complete" %}</option>
+                        <option value="cancelled" {% if selected_status == 'cancelled' %}selected{% endif %}>{% trans "Cancel" %}</option>
                     </select>
 
                     <div class="admin-result-counter">
