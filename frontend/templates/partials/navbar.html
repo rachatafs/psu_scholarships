@@ -87,6 +87,19 @@
                     <button type="submit" class="lang-toggle" title="เปลี่ยนเป็นภาษาไทย">TH</button>
                     {% endif %}
                 </form>
+
+                {% if user.is_authenticated %}
+                <!-- ปุ่ม Logout ที่หน้าแรกของ Drawer เมนูมือถือก่อนกด Dropdown -->
+                <div class="mobile-drawer-logout">
+                    <form method="post" action="{% url 'logout' %}" style="margin:0; width:100%;">
+                        {% csrf_token %}
+                        <button type="submit" class="mobile-logout-btn">
+                            <span class="material-symbols-outlined" style="font-size: 1.15rem;">logout</span>
+                            <span>{% trans "Logout" %}</span>
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
             </div>
         </div> <!-- End navbar-collapse -->
 

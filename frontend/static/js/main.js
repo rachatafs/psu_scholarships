@@ -16,11 +16,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.getElementById('navbarClose');
     const backdrop = document.getElementById('navbarBackdrop');
 
+    // Ensure backdrop is direct child of body to guarantee 100% full-screen coverage
+    // and prevent any parent backdrop-filter clipping
+    if (backdrop && backdrop.parentElement !== document.body) {
+        document.body.appendChild(backdrop);
+    }
+
     // Ensure scrolling is always enabled initially
     document.body.style.overflow = '';
 
     const closeSidebar = () => {
         if (navbar) navbar.classList.remove('sidebar-open');
+        document.body.classList.remove('sidebar-open');
         document.body.style.overflow = '';
     };
 
@@ -29,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         toggler.addEventListener('click', function (e) {
             e.stopPropagation();
             navbar.classList.add('sidebar-open');
+            document.body.classList.add('sidebar-open');
             document.body.style.overflow = 'hidden';
         });
 
