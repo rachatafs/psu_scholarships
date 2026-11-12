@@ -1,0 +1,9 @@
+{
+  "html.format.wrapLineLength": 0,
+  "[html]": {
+    "editor.formatOnSave": false
+  },
+  "[django-html]": {
+    "editor.formatOnSave": false
+  }
+}
