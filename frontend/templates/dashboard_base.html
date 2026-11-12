@@ -178,87 +178,6 @@
             background: #0263b8;
         }
 
-        .sidebar-footer {
-            padding: 0.85rem 0.85rem;
-            border-top: 1px solid #f1f5f9;
-            background: #fafbfc;
-        }
-
-        .sidebar-admin-card {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 0.85rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
-        }
-
-        .admin-card-header {
-            display: flex;
-            align-items: center;
-            gap: 0.65rem;
-            margin-bottom: 0.7rem;
-        }
-
-        .admin-card-header .shield-icon {
-            font-size: 1.5rem;
-            color: #0263b8;
-        }
-
-        .admin-card-meta {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .admin-name {
-            font-size: 0.88rem;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.2;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .admin-role-tag {
-            display: inline-block;
-            font-size: 0.68rem;
-            font-weight: 700;
-            color: #0369a1;
-            background: #e0f2fe;
-            padding: 0.12rem 0.45rem;
-            border-radius: 9999px;
-            width: fit-content;
-            margin-top: 2px;
-        }
-
-        .btn-return-home {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.45rem;
-            width: 100%;
-            padding: 0.5rem;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: #475569;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .btn-return-home:hover {
-            background: #f1f5f9;
-            color: #0263b8;
-            border-color: #cbd5e1;
-        }
-
-        .btn-return-home .material-symbols-outlined {
-            font-size: 1.05rem;
-        }
-
         /* ─── Main Content Layout ─── */
         .main-content {
             flex: 1;
@@ -599,23 +518,6 @@
                     </a>
                 </li>
             </ul>
-
-            <!-- Sidebar Footer with Administrator Info & Back Button -->
-            <div class="sidebar-footer">
-                <div class="sidebar-admin-card">
-                    <div class="admin-card-header">
-                        <span class="material-symbols-outlined shield-icon">verified_user</span>
-                        <div class="admin-card-meta">
-                            <div class="admin-name">{{ request.user.username }}</div>
-                            <span class="admin-role-tag">Administrator</span>
-                        </div>
-                    </div>
-                    <a href="{% url 'home' %}" class="btn-return-home">
-                        <span class="material-symbols-outlined">arrow_back</span>
-                        <span>{% trans "Back to Main Site" %}</span>
-                    </a>
-                </div>
-            </div>
         </aside>
 
         <!-- Main Content -->
