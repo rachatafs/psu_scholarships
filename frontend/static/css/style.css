@@ -369,21 +369,56 @@ textarea {
     transform: translateY(-1px);
 }
 
+.navbar-right-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.desktop-logout-form {
+    display: flex;
+    align-items: center;
+}
+
+.desktop-logout-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    background: transparent;
+    color: #dc2626;
+    border: 1.5px solid #fee2e2;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-thai);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.desktop-logout-btn:hover {
+    background: #fef2f2;
+    border-color: #fca5a5;
+    color: #b91c1c;
+}
+
 .lang-toggle {
     width: 36px;
     height: 36px;
     border-radius: var(--radius-full);
     border: 1.5px solid var(--border-subtle);
-    background: var(--bg-card);
-    color: var(--text-muted);
+    background: #ffffff;
+    color: var(--text-main);
     font-family: var(--font-en);
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
     transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .lang-toggle:hover {
@@ -3136,17 +3171,26 @@ textarea {
         gap: 16px;
     }
 
-    .navbar-actions .btn-login,
-    .navbar-actions .lang-toggle {
+    .navbar-actions .btn-login {
         width: 100%;
         justify-content: center;
     }
 
-    /* Hide toggler animation elements since it's just a trigger now */
+    .desktop-logout-form {
+        display: none !important;
+    }
+
+    .navbar-right-controls {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
     .navbar-toggler {
         display: flex;
         flex-direction: column;
-        margin-left: auto;
+        margin-left: 0;
     }
 
     /* ─── Other layout fixes ─── */

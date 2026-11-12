@@ -59,34 +59,20 @@
                         <li><a href="{% url 'my_favorites' %}" class="dropdown-item">{% trans "Saved Scholarships" %}</a></li>
                         <li><a href="{% url 'student_guide' %}" class="dropdown-item">{% trans "User Guide" %}</a></li>
                         {% endif %}
-                        <li>
-                            <form method="post" action="{% url 'logout' %}" style="margin:0">
-                                {% csrf_token %}
-                                <button type="submit" class="dropdown-item logout-btn-item">
-                                    {% trans "Logout" %}
-                                </button>
-                            </form>
-                        </li>
                     </ul>
                 </div>
+
+                <!-- ปุ่ม Logout สำหรับหน้าจอ Desktop (อยู่นอก dropdown) -->
+                <form method="post" action="{% url 'logout' %}" class="desktop-logout-form" style="margin:0">
+                    {% csrf_token %}
+                    <button type="submit" class="desktop-logout-btn" title="{% trans 'Logout' %}">
+                        <span class="material-symbols-outlined" style="font-size: 1.15rem;">logout</span>
+                        <span class="desktop-logout-text">{% trans "Logout" %}</span>
+                    </button>
+                </form>
                 {% else %}
                 <button onclick="openLoginModal()" class="btn-login">{% trans "Sign In" %}</button>
                 {% endif %}
-
-                <!-- ปุ่มเปลี่ยนภาษา -->
-                {% get_current_language as CURRENT_LANG %}
-                <form action="{% url 'set_language' %}" method="post" style="margin:0">
-                    {% csrf_token %}
-                    {% if CURRENT_LANG == 'th' %}
-                    <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:'|default:'/' }}">
-                    <input name="language" type="hidden" value="en">
-                    <button type="submit" class="lang-toggle" title="Switch to English">EN</button>
-                    {% else %}
-                    <input name="next" type="hidden" value="/th{{ request.get_full_path }}">
-                    <input name="language" type="hidden" value="th">
-                    <button type="submit" class="lang-toggle" title="เปลี่ยนเป็นภาษาไทย">TH</button>
-                    {% endif %}
-                </form>
 
                 {% if user.is_authenticated %}
                 <!-- ปุ่ม Logout ที่หน้าแรกของ Drawer เมนูมือถือก่อนกด Dropdown -->
@@ -103,11 +89,28 @@
             </div>
         </div> <!-- End navbar-collapse -->
 
-        <button class="navbar-toggler" id="navbarToggler">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
+        <!-- ส่วนควบคุมด้านขวา (ปุ่มเปลี่ยนภาษาอยู่นอก sidebar ข้างปุ่ม 3 ขีดเสมอ) -->
+        <div class="navbar-right-controls">
+            {% get_current_language as CURRENT_LANG %}
+            <form action="{% url 'set_language' %}" method="post" class="lang-form" style="margin:0">
+                {% csrf_token %}
+                {% if CURRENT_LANG == 'th' %}
+                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:'|default:'/' }}">
+                <input name="language" type="hidden" value="en">
+                <button type="submit" class="lang-toggle" title="Switch to English">EN</button>
+                {% else %}
+                <input name="next" type="hidden" value="/th{{ request.get_full_path }}">
+                <input name="language" type="hidden" value="th">
+                <button type="submit" class="lang-toggle" title="เปลี่ยนเป็นภาษาไทย">TH</button>
+                {% endif %}
+            </form>
+
+            <button class="navbar-toggler" id="navbarToggler" aria-label="Toggle navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
     </div>
 </nav>
 
