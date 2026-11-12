@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const closeSidebar = () => {
         if (navbar) navbar.classList.remove('sidebar-open');
+        document.body.classList.remove('sidebar-open');
         document.body.style.overflow = '';
     };
 
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
         toggler.addEventListener('click', function (e) {
             e.stopPropagation();
             navbar.classList.add('sidebar-open');
+            document.body.classList.add('sidebar-open');
             document.body.style.overflow = 'hidden';
         });
 

@@ -513,6 +513,189 @@
       font-size: 1.2rem;
     }
   }
+
+  /* Active Filter Banner */
+  .dash-filter-banner {
+    background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 12px;
+    padding: 0.85rem 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .dash-filter-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .dash-filter-info .filter-icon {
+    font-size: 1.45rem;
+    color: #0263b8;
+  }
+
+  .dash-filter-tags {
+    display: inline-flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .dash-filter-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: #ffffff;
+    color: #002b49;
+    border: 1px solid #93c5fd;
+    border-radius: 9999px;
+    padding: 0.2rem 0.65rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  .btn-reset-filters {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.85rem;
+    background: #ffffff;
+    color: #0263b8;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-reset-filters:hover {
+    background: #eff6ff;
+    border-color: #60a5fa;
+    color: #001e36;
+  }
+
+  /* Filtered Scholarships Section */
+  .filtered-sch-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 59, 113, 0.05);
+    margin-bottom: 1.75rem;
+  }
+
+  .filtered-sch-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.15rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .filtered-sch-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .filtered-sch-title-group .title-icon {
+    font-size: 1.6rem;
+    color: #0263b8;
+  }
+
+  .filtered-sch-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #001e36;
+    margin: 0;
+  }
+
+  .filtered-sch-count-badge {
+    background: #eff6ff;
+    color: #0263b8;
+    border: 1px solid #bfdbfe;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sch-title-link {
+    color: #002b49;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.92rem;
+    transition: color 0.15s ease;
+  }
+
+  .sch-title-link:hover {
+    color: #0263b8;
+    text-decoration: underline;
+  }
+
+  .btn-table-view {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.75rem;
+    background: #eff6ff;
+    color: #0263b8;
+    border: 1px solid #bfdbfe;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-table-view:hover {
+    background: #0263b8;
+    color: #ffffff;
+    border-color: #0263b8;
+  }
+
+  .badge-draft {
+    background: #fef3c7;
+    color: #b45309;
+  }
+
+  .empty-state-box {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    color: #64748b;
+  }
+
+  .empty-state-box .empty-icon {
+    font-size: 2.5rem;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+  }
+
+  .empty-state-box .empty-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #334155;
+    margin-bottom: 0.25rem;
+  }
+
+  .empty-state-box .empty-desc {
+    font-size: 0.88rem;
+    margin-bottom: 1rem;
+  }
 </style>
 
 <!-- Chart.js CDN -->
@@ -528,9 +711,9 @@
         style="display: flex; gap: 0.5rem; align-items: center;">
         <select name="term"
           style="padding: 0.5rem; border-radius: 8px; border: 1px solid #cbd5e1; font-family: 'Sarabun'; color: #1a2e4a;">
-          <option value="">{% trans "All Terms" %}</option>
-          <option value="1" {% if filter_term == '1' %}selected{% endif %}>{% trans "Term 1 (Aug-Dec)" %}</option>
-          <option value="2" {% if filter_term == '2' %}selected{% endif %}>{% trans "Term 2 (Jan-May)" %}</option>
+          <option value="">{% trans "All Semesters" %}</option>
+          <option value="1" {% if filter_term == '1' %}selected{% endif %}>{% trans "Semester 1 (Aug-Dec)" %}</option>
+          <option value="2" {% if filter_term == '2' %}selected{% endif %}>{% trans "Semester 2 (Jan-May)" %}</option>
           <option value="3" {% if filter_term == '3' %}selected{% endif %}>{% trans "Summer (Jun-Jul)" %}</option>
         </select>
         <select name="month"
@@ -565,6 +748,43 @@
       </button>
     </div>
   </div>
+
+  {% if has_active_filter or filter_term or filter_month %}
+  <!-- Active Filter Notification Banner -->
+  <div class="dash-filter-banner">
+    <div class="dash-filter-info">
+      <span class="material-symbols-outlined filter-icon">filter_alt</span>
+      <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <strong style="color: #002b49;">{% trans "Filtered Results" %}:</strong>
+        <span style="color: #475569;">{% trans "Showing" %} <strong>{{ total_scholarships }}</strong> {% trans "scholarship(s)" %}</span>
+        <div class="dash-filter-tags">
+          {% if filter_term %}
+          <span class="dash-filter-tag">
+            <span class="material-symbols-outlined" style="font-size: 0.9rem;">calendar_month</span>
+            {{ filter_term_name }}
+          </span>
+          {% endif %}
+          {% if filter_month_name %}
+          <span class="dash-filter-tag">
+            <span class="material-symbols-outlined" style="font-size: 0.9rem;">schedule</span>
+            {{ filter_month_name }}
+          </span>
+          {% endif %}
+          {% if filter_year %}
+          <span class="dash-filter-tag">
+            <span class="material-symbols-outlined" style="font-size: 0.9rem;">event</span>
+            {{ filter_year }}
+          </span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <a href="{% url 'scholarship_dashboard' %}" class="btn-reset-filters" title="{% trans 'Reset to all' %}">
+      <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
+      <span>{% trans "Reset Filter" %}</span>
+    </a>
+  </div>
+  {% endif %}
 
   <!-- Main Stats -->
   <div class="stats-grid">
@@ -647,6 +867,100 @@
     </div>
   </div>
 
+  <!-- Filtered Scholarships Section -->
+  <div class="filtered-sch-card" id="filteredScholarshipsSection">
+    <div class="filtered-sch-head">
+      <div class="filtered-sch-title-group">
+        <span class="material-symbols-outlined title-icon">school</span>
+        <div>
+          <h2 class="filtered-sch-title">
+            {% if has_active_filter %}
+            {% trans "Scholarships Matching Current Filter" %}
+            {% else %}
+            {% trans "All Scholarships in Period" %}
+            {% endif %}
+          </h2>
+          <div style="font-size: 0.8rem; color: #64748b; margin-top: 2px;">
+            {% trans "Detailed list of all scholarships included in the statistics above" %}
+          </div>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <span class="filtered-sch-count-badge">{{ total_scholarships }} {% trans "scholarship(s)" %}</span>
+      </div>
+    </div>
+
+    {% if filtered_scholarships %}
+    <div class="table-responsive-wrapper">
+      <table class="dtable modern-filtered-table">
+        <thead>
+          <tr>
+            <th style="width: 50px;">#</th>
+            <th>{% trans "Scholarship Title" %}</th>
+            <th>{% trans "Category" %}</th>
+            <th>{% trans "Amount / Semester" %}</th>
+            <th>{% trans "Quota & Applicants" %}</th>
+            <th>{% trans "Status" %}</th>
+            <th>{% trans "Application Period" %}</th>
+            <th style="text-align: right;">{% trans "Action" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in filtered_scholarships %}
+          <tr>
+            <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter }}</td>
+            <td>
+              <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank" title="{% trans 'View details' %}">
+                {{ s.title }}
+              </a>
+            </td>
+            <td>
+              {% if s.category == 'general' %}<span class="badge badge-general">{% trans "General" %}</span>
+              {% elif s.category == 'exchange' %}<span class="badge badge-exchange">{% trans "Exchange" %}</span>
+              {% elif s.category == 'fee_waiver' %}<span class="badge badge-waiver">{% trans "Fee Waiver" %}</span>
+              {% else %}<span class="badge badge-lunch">{% trans "Lunch" %}</span>{% endif %}
+            </td>
+            <td>
+              <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
+            </td>
+            <td>
+              <span style="font-weight: 600; color: #334155;">{{ s.applications.count }}</span>
+              <span style="color: #94a3b8;">/ {{ s.capacity }}</span>
+            </td>
+            <td>
+              {% if s.status == 'active' %}<span class="badge badge-open">{% trans "Active" %}</span>
+              {% elif s.status == 'closed' %}<span class="badge badge-closed">{% trans "Closed" %}</span>
+              {% else %}<span class="badge badge-draft">{% trans "Draft" %}</span>{% endif %}
+            </td>
+            <td>
+              <span style="font-size: 0.8rem; color: #475569;">
+                {{ s.start_date|date:"j M Y" }} – {{ s.end_date|date:"j M Y" }}
+              </span>
+            </td>
+            <td style="text-align: right;">
+              <a href="{% url 'scholarship_detail' s.pk %}" class="btn-table-view" target="_blank">
+                <span>{% trans "View" %}</span>
+                <span class="material-symbols-outlined" style="font-size: 0.95rem;">arrow_outward</span>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% else %}
+    <div class="empty-state-box">
+      <span class="material-symbols-outlined empty-icon">search_off</span>
+      <div class="empty-title">{% trans "No scholarships found" %}</div>
+      <p class="empty-desc">{% trans "There are no scholarships matching the selected semester, month, or year filter." %}</p>
+      <a href="{% url 'scholarship_dashboard' %}" class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
+        <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
+        {% trans "Clear Filter & View All" %}
+      </a>
+    </div>
+    {% endif %}
+  </div>
+
   <!-- Charts -->
   <div class="charts-grid">
 
@@ -692,29 +1006,35 @@
 
   </div>
 
-  <!-- Tables -->
-  <div class="tables-grid">
-
+  <!-- Upcoming Deadlines Table -->
+  <div class="tables-grid" style="grid-template-columns: 1fr;">
     <div class="tcard">
       <div class="tcard-head">
-        <span class="tcard-title">{% trans "Recent Scholarships" %}</span>
-        <a href="{% url 'admin:scholarships_scholarship_changelist' %}" class="tcard-link">{% trans "View all" %} →</a>
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span class="material-symbols-outlined" style="color: #f43f5e; font-size: 1.35rem;">notification_important</span>
+          <span class="tcard-title">{% trans "Upcoming Deadlines" %}</span>
+        </div>
+        <a href="{% url 'admin_dashboard' %}" class="tcard-link">{% trans "Manage in Admin Console" %} →</a>
       </div>
-      {% if recent_scholarships %}
+      {% if deadline_soon %}
       <table class="dtable">
         <thead>
           <tr>
             <th>{% trans "Scholarship" %}</th>
             <th>{% trans "Category" %}</th>
             <th>{% trans "Amount" %}</th>
-            <th>{% trans "Status" %}</th>
             <th>{% trans "Deadline" %}</th>
+            <th>{% trans "Applications" %}</th>
           </tr>
         </thead>
         <tbody>
-          {% for s in recent_scholarships %}
+          {% for s in deadline_soon %}
           <tr>
-            <td><strong>{{ s.title }}</strong></td>
+            <td>
+              <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank">
+                <strong>{{ s.title }}</strong>
+              </a>
+            </td>
             <td>
               {% if s.category == 'general' %}<span class="badge badge-general">{% trans "General" %}</span>
               {% elif s.category == 'exchange' %}<span class="badge badge-exchange">{% trans "Exchange" %}</span>
@@ -722,53 +1042,16 @@
               {% else %}<span class="badge badge-lunch">{% trans "Lunch" %}</span>{% endif %}
             </td>
             <td>฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</td>
-            <td>
-              {% if s.status == 'active' %}<span class="badge badge-open">เปิดรับ</span>
-              {% else %}<span class="badge badge-closed">ปิดแล้ว</span>{% endif %}
-            </td>
-            <td>
-              {% if s.end_date %}
-              <span class="{% if s.end_date < today %}urgent{% else %}ok{% endif %}">{{ s.end_date|date:"j M y" }}</span>
-              {% else %}—{% endif %}
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-      <div class="empty">ยังไม่มีทุนการศึกษา</div>
-      {% endif %}
-    </div>
-
-    <div class="tcard">
-      <div class="tcard-head">
-        <span class="tcard-title">5 ทุนที่ใกล้หมดเขตที่สุด</span>
-        <a href="{% url 'admin:scholarships_scholarship_changelist' %}" class="tcard-link">ดูทั้งหมด →</a>
-      </div>
-      {% if deadline_soon %}
-      <table class="dtable">
-        <thead>
-          <tr>
-            <th>ชื่อทุน</th>
-            <th>หมดเขต</th>
-            <th>จำนวนผู้สมัคร</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for s in deadline_soon %}
-          <tr>
-            <td><strong>{{ s.title }}</strong></td>
             <td class="urgent">{{ s.end_date|date:"j M y" }}</td>
-            <td>{{ s.applications.count }} คน</td>
+            <td>{{ s.applications.count }} {% trans "applicant(s)" %}</td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
       {% else %}
-      <div class="empty">ไม่มีทุนที่เปิดรับสมัคร</div>
+      <div class="empty">{% trans "No open scholarships nearing deadline." %}</div>
       {% endif %}
     </div>
-
   </div>
 </div>
 

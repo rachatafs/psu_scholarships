@@ -15,7 +15,7 @@
                 <span class="navbar-title">Menu</span>
                 <button class="navbar-close" id="navbarClose">✕</button>
             </div>
-            
+
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="{% url 'home' %}" class="nav-link">Home</a>
@@ -43,7 +43,7 @@
                 {% if user.is_authenticated %}
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle user-nav-pill">
-                        <span class="user-avatar-circle">{{ user.username|first|upper }}</span>
+                        {% include 'components/user_avatar.html' %}
                         <span class="user-name-text">{{ user.username }}</span>
                         {% if user.is_staff or user.is_superuser %}
                         <span class="user-role-tag">Admin</span>
@@ -51,51 +51,66 @@
                         <span class="dropdown-arrow">▼</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a href="{% url 'profile' %}" class="dropdown-item">{% trans "Profile" %}</a></li>
                         {% if user.is_staff or user.is_superuser %}
-                        <li><a href="{% url 'admin_dashboard' %}" class="dropdown-item">{% trans "Admin Console" %}</a></li>
                         <li><a href="{% url 'scholarship_dashboard' %}" class="dropdown-item">{% trans "Analytics Dashboard" %}</a></li>
                         <li><a href="{% url 'admin_guide' %}" class="dropdown-item">{% trans "Admin Guide" %}</a></li>
                         {% else %}
-                        <li><a href="{% url 'profile' %}" class="dropdown-item">{% trans "Profile" %}</a></li>
                         <li><a href="{% url 'my_favorites' %}" class="dropdown-item">{% trans "Saved Scholarships" %}</a></li>
                         <li><a href="{% url 'student_guide' %}" class="dropdown-item">{% trans "User Guide" %}</a></li>
                         {% endif %}
-                        <li>
-                            <form method="post" action="{% url 'logout' %}" style="margin:0">
-                                {% csrf_token %}
-                                <button type="submit" class="dropdown-item logout-btn-item">
-                                    {% trans "Logout" %}
-                                </button>
-                            </form>
-                        </li>
                     </ul>
                 </div>
+
+                <!-- ปุ่ม Logout สำหรับหน้าจอ Desktop (อยู่นอก dropdown) -->
+                <form method="post" action="{% url 'logout' %}" class="desktop-logout-form" style="margin:0">
+                    {% csrf_token %}
+                    <button type="submit" class="desktop-logout-btn" title="{% trans 'Logout' %}">
+                        <span class="material-symbols-outlined" style="font-size: 1.15rem;">logout</span>
+                        <span class="desktop-logout-text">{% trans "Logout" %}</span>
+                    </button>
+                </form>
                 {% else %}
                 <button onclick="openLoginModal()" class="btn-login">{% trans "Sign In" %}</button>
                 {% endif %}
 
-                <!-- ปุ่มเปลี่ยนภาษา -->
-                {% get_current_language as CURRENT_LANG %}
-                <form action="{% url 'set_language' %}" method="post" style="margin:0">
-                    {% csrf_token %}
-                    {% if CURRENT_LANG == 'th' %}
-                    <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:'|default:'/' }}">
-                    <input name="language" type="hidden" value="en">
-                    <button type="submit" class="lang-toggle" title="Switch to English">EN</button>
-                    {% else %}
-                    <input name="next" type="hidden" value="/th{{ request.get_full_path }}">
-                    <input name="language" type="hidden" value="th">
-                    <button type="submit" class="lang-toggle" title="เปลี่ยนเป็นภาษาไทย">TH</button>
-                    {% endif %}
-                </form>
+                {% if user.is_authenticated %}
+                <!-- ปุ่ม Logout ที่หน้าแรกของ Drawer เมนูมือถือก่อนกด Dropdown -->
+                <div class="mobile-drawer-logout">
+                    <form method="post" action="{% url 'logout' %}" style="margin:0; width:100%;">
+                        {% csrf_token %}
+                        <button type="submit" class="mobile-logout-btn">
+                            <span class="material-symbols-outlined" style="font-size: 1.15rem;">logout</span>
+                            <span>{% trans "Logout" %}</span>
+                        </button>
+                    </form>
+                </div>
+                {% endif %}
             </div>
         </div> <!-- End navbar-collapse -->
 
-        <button class="navbar-toggler" id="navbarToggler">
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-            <span class="hamburger-line"></span>
-        </button>
+        <!-- ส่วนควบคุมด้านขวา (ปุ่มเปลี่ยนภาษาอยู่นอก sidebar ข้างปุ่ม 3 ขีดเสมอ) -->
+        <div class="navbar-right-controls">
+            {% get_current_language as CURRENT_LANG %}
+            <form action="{% url 'set_language' %}" method="post" class="lang-form" style="margin:0">
+                {% csrf_token %}
+                {% if CURRENT_LANG == 'th' %}
+                <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:'|default:'/' }}">
+                <input name="language" type="hidden" value="en">
+                <button type="submit" class="lang-toggle" title="Switch to English">EN</button>
+                {% else %}
+                <input name="next" type="hidden" value="/th{{ request.get_full_path }}">
+                <input name="language" type="hidden" value="th">
+                <button type="submit" class="lang-toggle" title="เปลี่ยนเป็นภาษาไทย">TH</button>
+                {% endif %}
+            </form>
+
+            <button class="navbar-toggler" id="navbarToggler" aria-label="Toggle navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
     </div>
 </nav>
 
@@ -114,12 +129,14 @@
 
         <div style="margin-top: 10px; margin-bottom: 6px;">
             <!-- กล่องแจ้งเตือนข้อผิดพลาด (AJAX แสดงผลตรงนี้โดยไม่เปลี่ยนหน้า) -->
-            <div id="modalLoginError" style="display: none; background-color: #fee2e2; border: 1.5px solid #f87171; color: #b91c1c; padding: 10px 14px; border-radius: var(--radius-md); font-size: 0.88rem; margin-bottom: 14px; text-align: center; font-weight: 500;">
+            <div id="modalLoginError"
+                style="display: none; background-color: #fee2e2; border: 1.5px solid #f87171; color: #b91c1c; padding: 10px 14px; border-radius: var(--radius-md); font-size: 0.88rem; margin-bottom: 14px; text-align: center; font-weight: 500;">
                 {% trans "Invalid username or password. Please try again." %}
             </div>
 
             <!-- 1. ฟอร์ม Username / Password -->
-            <form method="post" action="{% url 'login' %}" class="login-form" id="modalLoginForm" onsubmit="return handleAjaxLogin(event, this)">
+            <form method="post" action="{% url 'login' %}" class="login-form" id="modalLoginForm"
+                onsubmit="return handleAjaxLogin(event, this)">
                 {% csrf_token %}
                 <div class="form-group" style="margin-bottom: 14px; text-align: left;">
                     <label style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px; color: #374151;">{% trans "Username" %}</label>
@@ -135,7 +152,8 @@
             </form>
 
             <!-- เส้นคั่น Divider -->
-            <div style="display: flex; align-items: center; text-align: center; margin: 20px 0 16px; color: #9ca3af; font-size: 0.85rem;">
+            <div
+                style="display: flex; align-items: center; text-align: center; margin: 20px 0 16px; color: #9ca3af; font-size: 0.85rem;">
                 <hr style="flex: 1; border: none; border-top: 1px solid #e5e7eb; margin: 0;">
                 <span style="padding: 0 12px; font-weight: 500;">{% trans "Or sign in with" %}</span>
                 <hr style="flex: 1; border: none; border-top: 1px solid #e5e7eb; margin: 0;">
@@ -147,10 +165,18 @@
                 <button type="submit" class="btn-google-auth"
                     style="display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; background: #ffffff !important; border: 1.5px solid #dadce0 !important; border-radius: var(--radius-md); color: #3c4043 !important; font-size: 0.95rem; font-weight: 600; padding: 11px 16px; cursor: pointer; box-shadow: 0 1px 2px rgba(60,64,67,0.1); box-sizing: border-box; font-family: inherit;">
                     <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
-                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
-                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                        <path
+                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                            fill="#4285F4" />
+                        <path
+                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                            fill="#34A853" />
+                        <path
+                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                            fill="#FBBC05" />
+                        <path
+                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                            fill="#EA4335" />
                     </svg>
                     <span>Sign in with Google</span>
                 </button>
