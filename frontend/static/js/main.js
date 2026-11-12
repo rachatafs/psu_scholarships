@@ -16,12 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const closeBtn = document.getElementById('navbarClose');
     const backdrop = document.getElementById('navbarBackdrop');
 
-    // Ensure backdrop is direct child of body to guarantee 100% full-screen coverage
-    // and prevent any parent backdrop-filter clipping
-    if (backdrop && backdrop.parentElement !== document.body) {
-        document.body.appendChild(backdrop);
-    }
-
     // Ensure scrolling is always enabled initially
     document.body.style.overflow = '';
 
