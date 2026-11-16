@@ -422,11 +422,26 @@
                     </tbody>
                 </table>
             </div>
-            <div class="dash-pagination-wrap" id="appsPaginationWrap">
+            <div class="dash-pagination-wrap" id="appsPaginationWrap" {% if total_applications <= 10 %}style="display:none;"{% endif %}>
                 <div class="dash-pagination-info" id="appsPaginationInfo">
                     {% trans "Showing" %} <strong>1–10</strong> {% trans "of" %} <strong>{{ total_applications }}</strong> {% trans "applications" %}
                 </div>
-                <div class="dash-pagination-nav" id="appsPaginationNav"></div>
+                <div class="dash-pagination-nav" id="appsPaginationNav">
+                    <span class="dash-page-btn disabled">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <span>{% trans "Previous" %}</span>
+                    </span>
+                    <span class="dash-page-num active">1</span>
+                    <button type="button" class="dash-page-num" data-page="2">2</button>
+                    <button type="button" class="dash-page-num" data-page="3">3</button>
+                    <button type="button" class="dash-page-num" data-page="4">4</button>
+                    <span class="dash-page-ellipsis">…</span>
+                    <button type="button" class="dash-page-num" data-page="7">7</button>
+                    <button type="button" class="dash-page-btn" data-page="2" title="{% trans 'Next' %}">
+                        <span>{% trans "Next" %}</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -587,11 +602,24 @@
                     </tbody>
                 </table>
             </div>
-            <div class="dash-pagination-wrap" id="schPaginationWrap">
+            <div class="dash-pagination-wrap" id="schPaginationWrap" {% if sch_cat_counts.all <= 10 %}style="display:none;"{% endif %}>
                 <div class="dash-pagination-info" id="schPaginationInfo">
                     {% trans "Showing" %} <strong>1–10</strong> {% trans "of" %} <strong>{{ sch_cat_counts.all }}</strong> {% trans "scholarships" %}
                 </div>
-                <div class="dash-pagination-nav" id="schPaginationNav"></div>
+                <div class="dash-pagination-nav" id="schPaginationNav">
+                    <span class="dash-page-btn disabled">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <span>{% trans "Previous" %}</span>
+                    </span>
+                    <span class="dash-page-num active">1</span>
+                    <button type="button" class="dash-page-num" data-page="2">2</button>
+                    <button type="button" class="dash-page-num" data-page="3">3</button>
+                    <button type="button" class="dash-page-num" data-page="4">4</button>
+                    <button type="button" class="dash-page-btn" data-page="2" title="{% trans 'Next' %}">
+                        <span>{% trans "Next" %}</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -697,11 +725,22 @@
                     </tbody>
                 </table>
             </div>
-            <div class="dash-pagination-wrap" id="histPaginationWrap">
+            <div class="dash-pagination-wrap" id="histPaginationWrap" {% if expired_scholarships_count <= 10 %}style="display:none;"{% endif %}>
                 <div class="dash-pagination-info" id="histPaginationInfo">
                     {% trans "Showing" %} <strong>1–10</strong> {% trans "of" %} <strong>{{ expired_scholarships_count }}</strong> {% trans "scholarships" %}
                 </div>
-                <div class="dash-pagination-nav" id="histPaginationNav"></div>
+                <div class="dash-pagination-nav" id="histPaginationNav">
+                    <span class="dash-page-btn disabled">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <span>{% trans "Previous" %}</span>
+                    </span>
+                    <span class="dash-page-num active">1</span>
+                    <button type="button" class="dash-page-num" data-page="2">2</button>
+                    <button type="button" class="dash-page-btn" data-page="2" title="{% trans 'Next' %}">
+                        <span>{% trans "Next" %}</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -861,5 +900,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/admin_dashboard.js' %}?v=13"></script>
+<script src="{% static 'js/admin_dashboard.js' %}?v=20261116-v3"></script>
 {% endblock %}

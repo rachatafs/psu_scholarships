@@ -80,7 +80,7 @@ window.viewApplicantsForSch = function(schTitle) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
+function initAdminDashboard() {
     // Check URL hash for initial tab state
     if (window.location.hash.startsWith('#scholarships')) {
         switchAdminTab('scholarships');
@@ -947,4 +947,10 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-});
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAdminDashboard);
+} else {
+    initAdminDashboard();
+}
