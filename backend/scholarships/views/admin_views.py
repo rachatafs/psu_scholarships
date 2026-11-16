@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.http import JsonResponse
 from django.utils import timezone
 from django.db.models import Sum, Q, Count
 from django.utils.translation import gettext as _
@@ -136,7 +137,6 @@ def update_application(request, pk):
                 
         # Check if AJAX / JSON request
         if request.headers.get('Accept') == 'application/json' or request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-            from django.http import JsonResponse
             return JsonResponse({
                 'success': True, 
                 'status': app.status, 
@@ -280,7 +280,6 @@ def _get_dashboard_analytics_data(request):
 @staff_member_required
 def scholarship_dashboard(request):
     data = _get_dashboard_analytics_data(request)
-    data['recent_scholarships'] = data['filtered_scholarships'][:5]
     return render(request, 'scholarship_dashboard.html', data)
 
 @staff_member_required

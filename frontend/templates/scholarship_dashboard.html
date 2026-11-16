@@ -1251,10 +1251,7 @@
                 </a>
               </td>
               <td>
-                {% if s.category == 'general' %}<span class="badge badge-general">{% trans "General" %}</span>
-                {% elif s.category == 'exchange' %}<span class="badge badge-exchange">{% trans "Exchange" %}</span>
-                {% elif s.category == 'fee_waiver' %}<span class="badge badge-waiver">{% trans "Fee Waiver" %}</span>
-                {% else %}<span class="badge badge-lunch">{% trans "Lunch" %}</span>{% endif %}
+                {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
               </td>
               <td>
                 <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
@@ -1332,23 +1329,7 @@
               </td>
               <td style="font-size: 0.8rem; color: #475569;">{{ app.submitted_at|date:"j M Y" }}</td>
               <td style="text-align: center;">
-                {% if app.status == 'approved' %}
-                <span class="badge" style="background:#dcfce7;color:#15803d;border:1px solid #bbf7d0;">Approve</span>
-                {% elif app.status == 'in_progress' %}
-                <span class="badge" style="background:#e0f2fe;color:#0369a1;border:1px solid #bae6fd;">In Progress</span>
-                {% elif app.status == 'interview' %}
-                <span class="badge" style="background:#e0f2fe;color:#0369a1;border:1px solid #bae6fd;">Interview</span>
-                {% elif app.status == 'pending' %}
-                <span class="badge" style="background:#fef3c7;color:#b45309;border:1px solid #fde68a;">Pending</span>
-                {% elif app.status == 'rejected' %}
-                <span class="badge" style="background:#fee2e2;color:#b91c1c;border:1px solid #fecaca;">Reject</span>
-                {% elif app.status == 'completed' %}
-                <span class="badge" style="background:#f3e8ff;color:#7e22ce;border:1px solid #e9d5ff;">Complete</span>
-                {% elif app.status == 'cancelled' %}
-                <span class="badge" style="background:#f1f5f9;color:#475569;border:1px solid #e2e8f0;">Cancel</span>
-                {% else %}
-                <span class="badge badge-draft">{{ app.get_status_display }}</span>
-                {% endif %}
+                {% include 'components/app_status_indicator.html' with status=app.status %}
               </td>
             </tr>
             {% endfor %}
@@ -1444,10 +1425,7 @@
               </a>
             </td>
             <td>
-              {% if s.category == 'general' %}<span class="badge badge-general">{% trans "General" %}</span>
-              {% elif s.category == 'exchange' %}<span class="badge badge-exchange">{% trans "Exchange" %}</span>
-              {% elif s.category == 'fee_waiver' %}<span class="badge badge-waiver">{% trans "Fee Waiver" %}</span>
-              {% else %}<span class="badge badge-lunch">{% trans "Lunch" %}</span>{% endif %}
+              {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
             </td>
             <td>฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</td>
             <td class="urgent">{{ s.end_date|date:"j M y" }}</td>
