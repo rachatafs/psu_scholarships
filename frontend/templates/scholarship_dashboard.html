@@ -973,21 +973,6 @@
     background: rgba(2, 99, 184, 0.06);
   }
 
-  .dash-main-tab-badge {
-    background: #e2e8f0;
-    color: #475569;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 0.15rem 0.55rem;
-    border-radius: 9999px;
-    transition: all 0.2s ease;
-  }
-
-  .dash-main-tab-btn.active .dash-main-tab-badge {
-    background: #0263b8;
-    color: #ffffff;
-  }
-
   /* Pagination */
   .dash-pagination-wrap {
     display: flex;
@@ -1175,13 +1160,10 @@
   <!-- Main Dashboard Tabs Navigation -->
   <div class="dash-main-tabs-nav">
     <button type="button" class="dash-main-tab-btn {% if active_tab != 'records' %}active{% endif %}" id="mainTabBtnOverview" onclick="switchMainTab('overview')">
-      <span class="material-symbols-outlined" style="font-size: 1.25rem;">insights</span>
       <span>{% trans "Analytics & Overview" %}</span>
     </button>
     <button type="button" class="dash-main-tab-btn {% if active_tab == 'records' %}active{% endif %}" id="mainTabBtnRecords" onclick="switchMainTab('records')">
-      <span class="material-symbols-outlined" style="font-size: 1.25rem;">table_chart</span>
       <span>{% trans "Scholarships & Applicants" %}</span>
-      <span class="dash-main-tab-badge">{{ total_scholarships }} / {{ total_applications }}</span>
     </button>
   </div>
 
