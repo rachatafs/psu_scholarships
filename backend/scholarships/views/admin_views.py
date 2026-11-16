@@ -309,8 +309,13 @@ def scholarship_dashboard(request):
     except EmptyPage:
         app_page = app_paginator.page(app_paginator.num_pages)
 
+    sch_page_range = list(sch_paginator.get_elided_page_range(sch_page.number, on_each_side=2, on_ends=1))
+    app_page_range = list(app_paginator.get_elided_page_range(app_page.number, on_each_side=2, on_ends=1))
+
     data['filtered_scholarships'] = sch_page
     data['filtered_applications'] = app_page
+    data['sch_page_range'] = sch_page_range
+    data['app_page_range'] = app_page_range
     data['active_tab'] = active_tab
     data['active_subtab'] = active_subtab
 
