@@ -281,9 +281,20 @@ def scholarship_dashboard(request):
 
     active_tab = request.GET.get('tab', 'overview')
     active_subtab = request.GET.get('subtab', 'sch')
-    if 'page_sch' in request.GET or 'page_app' in request.GET:
+
+    if 'page_sch' in request.GET and 'page_app' not in request.GET:
         active_tab = 'records'
-        if 'page_app' in request.GET:
+        active_subtab = 'sch'
+    elif 'page_app' in request.GET and 'page_sch' not in request.GET:
+        active_tab = 'records'
+        active_subtab = 'apps'
+    elif 'page_sch' in request.GET or 'page_app' in request.GET:
+        active_tab = 'records'
+        if 'subtab' in request.GET:
+            active_subtab = request.GET.get('subtab')
+        elif 'page_sch' in request.GET:
+            active_subtab = 'sch'
+        elif 'page_app' in request.GET:
             active_subtab = 'apps'
 
     # Paginate Scholarships (10 per page)
@@ -317,8 +328,8 @@ def scholarship_dashboard(request):
     data['filtered_applications'] = app_page
     data['sch_page_range'] = sch_page_range
     data['app_page_range'] = app_page_range
-    data['sch_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}&tab=records&subtab=sch&page_app={app_page.number}"
-    data['app_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}&tab=records&subtab=apps&page_sch={sch_page.number}"
+    data['sch_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}&tab=records&subtab=sch"
+    data['app_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}&tab=records&subtab=apps"
     data['active_tab'] = active_tab
     data['active_subtab'] = active_subtab
 
