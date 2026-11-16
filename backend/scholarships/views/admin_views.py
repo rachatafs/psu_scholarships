@@ -278,6 +278,13 @@ def _get_dashboard_analytics_data(request):
         'is_all_scope': is_all_scope or (filter_year == 'all' and not filter_term and not filter_month),
     }
 
+def _get_chunked_page_range(current_page, num_pages, chunk_size=5):
+    if num_pages <= chunk_size:
+        return list(range(1, num_pages + 1))
+    start_page = ((current_page - 1) // chunk_size) * chunk_size + 1
+    end_page = min(start_page + chunk_size - 1, num_pages)
+    return list(range(start_page, end_page + 1))
+
 @staff_member_required
 def scholarship_dashboard(request):
     data = _get_dashboard_analytics_data(request)
@@ -309,8 +316,8 @@ def scholarship_dashboard(request):
     except EmptyPage:
         app_page = app_paginator.page(app_paginator.num_pages)
 
-    sch_page_range = list(sch_paginator.get_elided_page_range(sch_page.number, on_each_side=2, on_ends=1))
-    app_page_range = list(app_paginator.get_elided_page_range(app_page.number, on_each_side=2, on_ends=1))
+    sch_page_range = _get_chunked_page_range(sch_page.number, sch_paginator.num_pages, 5)
+    app_page_range = _get_chunked_page_range(app_page.number, app_paginator.num_pages, 5)
 
     data['filtered_scholarships'] = sch_page
     data['filtered_applications'] = app_page

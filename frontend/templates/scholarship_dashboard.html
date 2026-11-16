@@ -708,8 +708,15 @@
   }
 
   @keyframes fadeInDropdown {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .pdf-dropdown-item {
@@ -1164,14 +1171,16 @@
         </button>
 
         <!-- Reset Button -->
-        <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab={{ active_tab|default:'overview' }}&subtab={{ active_subtab|default:'sch' }}" class="btn-dash-action btn-dash-reset" title="{% trans 'Reset all filters to view all records' %}">
+        <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab={{ active_tab|default:'overview' }}&subtab={{ active_subtab|default:'sch' }}"
+          class="btn-dash-action btn-dash-reset" title="{% trans 'Reset all filters to view all records' %}">
           <span class="material-symbols-outlined" style="font-size: 1.15rem;">restart_alt</span>
           <span>{% trans "Reset" %}</span>
         </a>
 
         <!-- Export PDF Dropdown Button -->
         <div class="export-pdf-dropdown-wrap">
-          <button type="button" class="btn-dash-action btn-dash-pdf" id="btnExportPdfDropdown" onclick="togglePdfDropdown(event)">
+          <button type="button" class="btn-dash-action btn-dash-pdf" id="btnExportPdfDropdown"
+            onclick="togglePdfDropdown(event)">
             <span class="material-symbols-outlined" style="font-size: 1.15rem;">picture_as_pdf</span>
             <span>{% trans "Export PDF" %}</span>
             <span class="material-symbols-outlined" style="font-size: 1.1rem; margin-left: -2px;">expand_more</span>
@@ -1202,10 +1211,12 @@
 
   <!-- Main Dashboard Tabs Navigation -->
   <div class="dash-main-tabs-nav">
-    <button type="button" class="dash-main-tab-btn {% if active_tab != 'records' %}active{% endif %}" id="mainTabBtnOverview" onclick="switchMainTab('overview')">
+    <button type="button" class="dash-main-tab-btn {% if active_tab != 'records' %}active{% endif %}"
+      id="mainTabBtnOverview" onclick="switchMainTab('overview')">
       <span>{% trans "Analytics & Overview" %}</span>
     </button>
-    <button type="button" class="dash-main-tab-btn {% if active_tab == 'records' %}active{% endif %}" id="mainTabBtnRecords" onclick="switchMainTab('records')">
+    <button type="button" class="dash-main-tab-btn {% if active_tab == 'records' %}active{% endif %}"
+      id="mainTabBtnRecords" onclick="switchMainTab('records')">
       <span>{% trans "Scholarships & Applicants" %}</span>
     </button>
   </div>
@@ -1341,7 +1352,8 @@
       <div class="tcard">
         <div class="tcard-head">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
-            <span class="material-symbols-outlined" style="color: #f43f5e; font-size: 1.35rem;">notification_important</span>
+            <span class="material-symbols-outlined"
+              style="color: #f43f5e; font-size: 1.35rem;">notification_important</span>
             <span class="tcard-title">{% trans "Upcoming Deadlines" %}</span>
           </div>
           <a href="{% url 'admin_dashboard' %}" class="tcard-link">{% trans "Manage in Admin Console" %} →</a>
@@ -1405,11 +1417,13 @@
         <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
           <!-- View Toggle Sub-Tabs -->
           <div class="filtered-view-tabs">
-            <button type="button" class="view-tab-btn {% if active_subtab != 'apps' %}active{% endif %}" id="tabBtnSch" onclick="switchFilteredTab('sch')">
+            <button type="button" class="view-tab-btn {% if active_subtab != 'apps' %}active{% endif %}" id="tabBtnSch"
+              onclick="switchFilteredTab('sch')">
               <span class="material-symbols-outlined" style="font-size: 1.05rem;">school</span>
               <span>{% trans "Scholarships" %} ({{ total_scholarships }})</span>
             </button>
-            <button type="button" class="view-tab-btn {% if active_subtab == 'apps' %}active{% endif %}" id="tabBtnApps" onclick="switchFilteredTab('apps')">
+            <button type="button" class="view-tab-btn {% if active_subtab == 'apps' %}active{% endif %}" id="tabBtnApps"
+              onclick="switchFilteredTab('apps')">
               <span class="material-symbols-outlined" style="font-size: 1.05rem;">group</span>
               <span>{% trans "Student Applicants" %} ({{ total_applications }})</span>
             </button>
@@ -1437,9 +1451,11 @@
             <tbody>
               {% for s in filtered_scholarships %}
               <tr>
-                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_scholarships.start_index }}</td>
+                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_scholarships.start_index
+                  }}</td>
                 <td>
-                  <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank" title="{% trans 'View details' %}">
+                  <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank"
+                    title="{% trans 'View details' %}">
                     {{ s.title }}
                   </a>
                 </td>
@@ -1478,11 +1494,13 @@
         {% if filtered_scholarships.has_other_pages %}
         <div class="dash-pagination-wrap">
           <div class="dash-pagination-info">
-            {% trans "Showing" %} <strong>{{ filtered_scholarships.start_index }}</strong>–<strong>{{ filtered_scholarships.end_index }}</strong> {% trans "of" %} <strong>{{ total_scholarships }}</strong> {% trans "scholarships" %}
+            {% trans "Showing" %} <strong>{{ filtered_scholarships.start_index }}</strong>–<strong>{{
+              filtered_scholarships.end_index }}</strong> {% trans "of" %} <strong>{{ total_scholarships }}</strong> {% trans "scholarships" %}
           </div>
           <div class="dash-pagination-nav">
             {% if filtered_scholarships.has_previous %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ filtered_scholarships.previous_page_number }}&page_app={{ filtered_applications.number }}" class="dash-page-btn" title="{% trans 'Previous' %}">
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ filtered_scholarships.previous_page_number }}&page_app={{ filtered_applications.number }}"
+              class="dash-page-btn" title="{% trans 'Previous' %}">
               <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
               <span>{% trans "Previous" %}</span>
             </a>
@@ -1494,17 +1512,19 @@
             {% endif %}
 
             {% for p in sch_page_range %}
-              {% if p == filtered_scholarships.number %}
-                <span class="dash-page-num active">{{ p }}</span>
-              {% elif p == filtered_scholarships.paginator.ELLIPSIS %}
-                <span class="dash-page-ellipsis">…</span>
-              {% else %}
-                <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ p }}&page_app={{ filtered_applications.number }}" class="dash-page-num">{{ p }}</a>
-              {% endif %}
+            {% if p == filtered_scholarships.number %}
+            <span class="dash-page-num active">{{ p }}</span>
+            {% elif p == filtered_scholarships.paginator.ELLIPSIS %}
+            <span class="dash-page-ellipsis">…</span>
+            {% else %}
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ p }}&page_app={{ filtered_applications.number }}"
+              class="dash-page-num">{{ p }}</a>
+            {% endif %}
             {% endfor %}
 
             {% if filtered_scholarships.has_next %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ filtered_scholarships.next_page_number }}&page_app={{ filtered_applications.number }}" class="dash-page-btn" title="{% trans 'Next' %}">
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ filtered_scholarships.next_page_number }}&page_app={{ filtered_applications.number }}"
+              class="dash-page-btn" title="{% trans 'Next' %}">
               <span>{% trans "Next" %}</span>
               <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
             </a>
@@ -1523,7 +1543,8 @@
           <span class="material-symbols-outlined empty-icon">search_off</span>
           <div class="empty-title">{% trans "No scholarships found" %}</div>
           <p class="empty-desc">{% trans "There are no scholarships matching the selected semester, month, or year filter." %}</p>
-          <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab=records&subtab=sch" class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
+          <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab=records&subtab=sch"
+            class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
             <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
             {% trans "Clear Filter & View All" %}
           </a>
@@ -1551,16 +1572,20 @@
             <tbody>
               {% for app in filtered_applications %}
               <tr>
-                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_applications.start_index }}</td>
+                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_applications.start_index
+                  }}</td>
                 <td><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
                 <td><strong style="color: #1e293b;">{{ app.student.full_name }}</strong></td>
                 <td>
                   <span style="color: #334155; font-size: 0.85rem;">{{ app.student.get_faculty_display }}</span>
-                  {% if app.student.major %}<div style="color: #94a3b8; font-size: 0.76rem;">{{ app.student.major }}</div>{% endif %}
+                  {% if app.student.major %}<div style="color: #94a3b8; font-size: 0.76rem;">{{ app.student.major }}
+                  </div>{% endif %}
                 </td>
-                <td style="text-align: center; font-weight: 700; color: #0263b8;">{{ app.student.gpax|floatformat:2 }}</td>
+                <td style="text-align: center; font-weight: 700; color: #0263b8;">{{ app.student.gpax|floatformat:2 }}
+                </td>
                 <td>
-                  <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="sch-title-link" target="_blank" title="{% trans 'View scholarship' %}">
+                  <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="sch-title-link" target="_blank"
+                    title="{% trans 'View scholarship' %}">
                     {{ app.scholarship.title }}
                   </a>
                 </td>
@@ -1577,11 +1602,13 @@
         {% if filtered_applications.has_other_pages %}
         <div class="dash-pagination-wrap">
           <div class="dash-pagination-info">
-            {% trans "Showing" %} <strong>{{ filtered_applications.start_index }}</strong>–<strong>{{ filtered_applications.end_index }}</strong> {% trans "of" %} <strong>{{ total_applications }}</strong> {% trans "applicants" %}
+            {% trans "Showing" %} <strong>{{ filtered_applications.start_index }}</strong>–<strong>{{
+              filtered_applications.end_index }}</strong> {% trans "of" %} <strong>{{ total_applications }}</strong> {% trans "applicants" %}
           </div>
           <div class="dash-pagination-nav">
             {% if filtered_applications.has_previous %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ filtered_applications.previous_page_number }}" class="dash-page-btn" title="{% trans 'Previous' %}">
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ filtered_applications.previous_page_number }}"
+              class="dash-page-btn" title="{% trans 'Previous' %}">
               <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
               <span>{% trans "Previous" %}</span>
             </a>
@@ -1593,17 +1620,19 @@
             {% endif %}
 
             {% for p in app_page_range %}
-              {% if p == filtered_applications.number %}
-                <span class="dash-page-num active">{{ p }}</span>
-              {% elif p == filtered_applications.paginator.ELLIPSIS %}
-                <span class="dash-page-ellipsis">…</span>
-              {% else %}
-                <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ p }}" class="dash-page-num">{{ p }}</a>
-              {% endif %}
+            {% if p == filtered_applications.number %}
+            <span class="dash-page-num active">{{ p }}</span>
+            {% elif p == filtered_applications.paginator.ELLIPSIS %}
+            <span class="dash-page-ellipsis">…</span>
+            {% else %}
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ p }}"
+              class="dash-page-num">{{ p }}</a>
+            {% endif %}
             {% endfor %}
 
             {% if filtered_applications.has_next %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ filtered_applications.next_page_number }}" class="dash-page-btn" title="{% trans 'Next' %}">
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ filtered_applications.next_page_number }}"
+              class="dash-page-btn" title="{% trans 'Next' %}">
               <span>{% trans "Next" %}</span>
               <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
             </a>
@@ -1622,7 +1651,8 @@
           <span class="material-symbols-outlined empty-icon">person_search</span>
           <div class="empty-title">{% trans "No student applications found" %}</div>
           <p class="empty-desc">{% trans "There are no student applicants for the scholarships matching the selected filter." %}</p>
-          <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab=records&subtab=apps" class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
+          <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab=records&subtab=apps"
+            class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
             <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
             {% trans "Clear Filter & View All" %}
           </a>
@@ -1770,8 +1800,8 @@
     }]
   });
 
-  // ===== Main Dashboard Tabs Switching =====
-  function switchMainTab(tab) {
+  / / ===== Main Dashboard Tabs Switching =====
+   function switchMainTab(tab) {
     const tabOverview = document.getElementById('mainTabOverview');
     const tabRecords = document.getElementById('mainTabRecords');
     const btnOverview = document.getElementById('mainTabBtnOverview');
@@ -1792,8 +1822,7 @@
     } else {
       if (tabOverview) tabOverview.style.display = 'none';
       if (tabRecords) tabRecords.style.display = 'block';
-      if (btnOverview) btnOverview.classList.remove('active');
-      if (btnRecords) btnRecords.classList.add('active');
+     ew) btnOverview.classList.remove    if (btnRecords) btnRecords.classList.add('active');
     }
 
     try {
