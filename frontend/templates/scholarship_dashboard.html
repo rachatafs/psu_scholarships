@@ -1796,8 +1796,8 @@
     }]
   });
 
-  / / ===== Main Dashboard Tabs Switching =====
-   function switchMainTab(tab) {
+  // ===== Main Dashboard Tabs Switching =====
+  function switchMainTab(tab) {
     const tabOverview = document.getElementById('mainTabOverview');
     const tabRecords = document.getElementById('mainTabRecords');
     const btnOverview = document.getElementById('mainTabBtnOverview');
@@ -1818,7 +1818,8 @@
     } else {
       if (tabOverview) tabOverview.style.display = 'none';
       if (tabRecords) tabRecords.style.display = 'block';
-     ew) btnOverview.classList.remove    if (btnRecords) btnRecords.classList.add('active');
+      if (btnOverview) btnOverview.classList.remove('active');
+      if (btnRecords) btnRecords.classList.add('active');
     }
 
     try {
