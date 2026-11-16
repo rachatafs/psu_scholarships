@@ -1,0 +1,705 @@
+{% load i18n humanize %}<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% trans "Scholarship & Student Applicant Report" %} - PSU Phuket</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Sarabun', sans-serif;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      line-height: 1.5;
+      font-size: 13px;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    /* Top Control Bar (Screen only) */
+    .top-control-bar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: #002b49;
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .top-control-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 600;
+      padding: 0.45rem 0.85rem;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      transition: all 0.2s ease;
+    }
+
+    .btn-back:hover {
+      background: rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+    }
+
+    .scope-switcher {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .scope-btn {
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .scope-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
+    .scope-btn.active {
+      background: #0263b8;
+      color: #ffffff;
+    }
+
+    .top-control-right {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-print {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #e11d48;
+      color: #ffffff;
+      border: none;
+      padding: 0.55rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: 'Sarabun', sans-serif;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(225, 29, 72, 0.35);
+      transition: all 0.2s ease;
+    }
+
+    .btn-print:hover {
+      background: #be123c;
+      transform: translateY(-1px);
+    }
+
+    /* Page Canvas */
+    .report-sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 1.5rem auto 3rem auto;
+      background: #ffffff;
+      padding: 16mm 18mm 18mm 18mm;
+      border-radius: 4px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    /* Report Official Header */
+    .report-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid #002b49;
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      gap: 1.25rem;
+    }
+
+    .header-branding {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .psu-crest-wrap {
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #002b49;
+      color: #ffffff;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .psu-crest-wrap svg {
+      width: 42px;
+      height: 42px;
+      fill: #ffffff;
+    }
+
+    .header-text h1 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #002b49;
+      line-height: 1.25;
+    }
+
+    .header-text h2 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #0263b8;
+      margin-top: 2px;
+    }
+
+    .header-text .report-doc-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #334155;
+      margin-top: 4px;
+    }
+
+    .header-doc-meta {
+      text-align: right;
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+
+    .header-doc-meta strong {
+      color: #1e293b;
+    }
+
+    /* Filter Scope Banner */
+    .filter-summary-card {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.85rem 1.15rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .filter-summary-left {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .filter-summary-left .meta-icon {
+      color: #0263b8;
+      font-size: 1.4rem;
+    }
+
+    .scope-highlight {
+      font-size: 1.02rem;
+      font-weight: 800;
+      color: #002b49;
+    }
+
+    .filter-summary-right {
+      font-size: 0.82rem;
+      color: #475569;
+    }
+
+    /* KPI Summary Cards */
+    .kpi-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.35rem;
+    }
+
+    .kpi-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 0.75rem 0.95rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .kpi-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .kpi-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #002b49;
+      margin-top: 0.2rem;
+    }
+
+    .kpi-card.kpi-blue { border-left: 4px solid #0263b8; }
+    .kpi-card.kpi-green { border-left: 4px solid #16a34a; }
+    .kpi-card.kpi-purple { border-left: 4px solid #9333ea; }
+    .kpi-card.kpi-amber { border-left: 4px solid #d97706; }
+
+    /* Section Titles */
+    .report-section {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5px solid #e2e8f0;
+      padding-bottom: 0.45rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-head-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      color: #002b49;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .section-head-badge {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.15rem 0.55rem;
+      background: #e0f2fe;
+      color: #0263b8;
+      border-radius: 9999px;
+      border: 1px solid #bae6fd;
+    }
+
+    /* Clean Printable Tables */
+    .report-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .report-table th,
+    .report-table td {
+      padding: 0.5rem 0.65rem;
+      text-align: left;
+      border: 1px solid #cbd5e1;
+      vertical-align: middle;
+    }
+
+    .report-table th {
+      background: #f1f5f9;
+      color: #1e293b;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .report-table tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    .report-table .text-center { text-align: center; }
+    .report-table .text-right { text-align: right; }
+
+    /* Badges */
+    .status-badge {
+      display: inline-block;
+      padding: 0.18rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .status-approved { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
+    .status-in_progress, .status-interview { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+    .status-pending { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+    .status-rejected { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+    .status-completed { background: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+    .status-cancelled { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+
+    .category-badge {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #334155;
+    }
+
+    /* Signature Block */
+    .signature-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      page-break-inside: avoid;
+    }
+
+    .signature-box {
+      width: 45%;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #334155;
+      line-height: 1.6;
+    }
+
+    .signature-line {
+      border-bottom: 1px dotted #64748b;
+      margin: 2.2rem 1.5rem 0.6rem 1.5rem;
+    }
+
+    /* Print Media Query */
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        font-size: 11pt !important;
+      }
+
+      .report-sheet {
+        width: 100% !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+
+      .report-table th {
+        background: #e2e8f0 !important;
+        color: #000000 !important;
+      }
+
+      .report-table td,
+      .report-table th {
+        border-color: #94a3b8 !important;
+      }
+
+      .kpi-card {
+        border: 1px solid #94a3b8 !important;
+      }
+
+      .page-break {
+        page-break-before: always;
+      }
+
+      tr {
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Control Bar (Screen Only) -->
+  <div class="top-control-bar no-print">
+    <div class="top-control-left">
+      <a href="{% url 'scholarship_dashboard' %}" class="btn-back">
+        <span class="material-symbols-outlined" style="font-size: 1.15rem;">arrow_back</span>
+        {% trans "Back to Dashboard" %}
+      </a>
+      <div class="scope-switcher">
+        <a href="{% url 'export_dashboard_pdf' %}?scope=all" class="scope-btn {% if is_all_scope %}active{% endif %}">
+          {% trans "All Semesters (ทั้งหมด)" %}
+        </a>
+        <a href="{% url 'export_dashboard_pdf' %}?term=1&year={{ filter_year }}" class="scope-btn {% if filter_term == '1' %}active{% endif %}">
+          {% trans "Semester 1" %}
+        </a>
+        <a href="{% url 'export_dashboard_pdf' %}?term=2&year={{ filter_year }}" class="scope-btn {% if filter_term == '2' %}active{% endif %}">
+          {% trans "Semester 2" %}
+        </a>
+        <a href="{% url 'export_dashboard_pdf' %}?term=3&year={{ filter_year }}" class="scope-btn {% if filter_term == '3' %}active{% endif %}">
+          {% trans "Summer" %}
+        </a>
+      </div>
+    </div>
+    <div class="top-control-right">
+      <button onclick="window.print()" class="btn-print">
+        <span class="material-symbols-outlined" style="font-size: 1.25rem;">print</span>
+        {% trans "Print / Save as PDF" %}
+      </button>
+    </div>
+  </div>
+
+  <!-- Printable A4 Report Document -->
+  <div class="report-sheet">
+
+    <!-- Official Document Header -->
+    <header class="report-header">
+      <div class="header-branding">
+        <div class="psu-crest-wrap">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div class="header-text">
+          <h1>มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต</h1>
+          <h2>Prince of Songkla University, Phuket Campus</h2>
+          <div class="report-doc-title">{% trans "Scholarship & Student Applicant Analytics Report" %}</div>
+        </div>
+      </div>
+      <div class="header-doc-meta">
+        <div><strong>{% trans "Report Date" %}:</strong> {{ generated_at|date:"j F Y H:i" }} น.</div>
+        <div><strong>{% trans "Issued By" %}:</strong> {{ generated_by.get_full_name|default:generated_by.username }}</div>
+        <div><strong>{% trans "Reference" %}:</strong> PSU-SCH-{{ generated_at|date:"YmdHis" }}</div>
+      </div>
+    </header>
+
+    <!-- Scope & Period Banner -->
+    <div class="filter-summary-card">
+      <div class="filter-summary-left">
+        <span class="material-symbols-outlined meta-icon">tune</span>
+        <div>
+          <div style="font-size: 0.78rem; color: #64748b; font-weight: 600;">{% trans "Report Filter Scope" %}:</div>
+          <div class="scope-highlight">
+            {% if is_all_scope %}
+            {% trans "All Semesters & Academic Periods (ข้อมูลทุนการศึกษาและผู้สมัครทั้งหมด)" %}
+            {% elif filter_term_name %}
+            {{ filter_term_name }} {% if filter_month_name %}({{ filter_month_name }}){% endif %} {% trans "Year" %} {{ thai_year }} ({{ filter_year }})
+            {% elif filter_month_name %}
+            {% trans "Month" %} {{ filter_month_name }} {% trans "Year" %} {{ thai_year }} ({{ filter_year }})
+            {% else %}
+            {% trans "Academic Year" %} {{ thai_year }} ({{ filter_year }})
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="filter-summary-right">
+        <span>{% trans "Total Scholarships" %}: <strong>{{ total_scholarships }}</strong></span> |
+        <span>{% trans "Total Student Applicants" %}: <strong>{{ total_applications }}</strong></span>
+      </div>
+    </div>
+
+    <!-- Executive KPI Summary Cards -->
+    <div class="kpi-summary-grid">
+      <div class="kpi-card kpi-blue">
+        <span class="kpi-label">{% trans "Total Scholarships" %}</span>
+        <span class="kpi-val">{{ total_scholarships }} <small style="font-size: 0.75rem; font-weight: 500; color: #64748b;">{% trans "ทุน" %}</small></span>
+      </div>
+      <div class="kpi-card kpi-green">
+        <span class="kpi-label">{% trans "Total Fund Value" %}</span>
+        <span class="kpi-val">฿ {{ total_value|floatformat:0|intcomma }}</span>
+      </div>
+      <div class="kpi-card kpi-purple">
+        <span class="kpi-label">{% trans "Total Applications" %}</span>
+        <span class="kpi-val">{{ total_applications }} <small style="font-size: 0.75rem; font-weight: 500; color: #64748b;">{% trans "คน" %}</small></span>
+      </div>
+      <div class="kpi-card kpi-amber">
+        <span class="kpi-label">{% trans "Approved Recipients" %}</span>
+        <span class="kpi-val" style="color: #16a34a;">{{ approved_applications }} <small style="font-size: 0.75rem; font-weight: 500; color: #64748b;">{% trans "คน" %}</small></span>
+      </div>
+    </div>
+
+    <!-- Section 1: Scholarships Summary Table -->
+    <div class="report-section">
+      <div class="section-head">
+        <div class="section-head-title">
+          <span class="material-symbols-outlined" style="font-size: 1.15rem; color: #0263b8;">school</span>
+          {% trans "1. Scholarships Overview" %}
+        </div>
+        <span class="section-head-badge">{{ total_scholarships }} {% trans "scholarships" %}</span>
+      </div>
+
+      {% if filtered_scholarships %}
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th class="text-center" style="width: 35px;">#</th>
+            <th>{% trans "Scholarship Title" %}</th>
+            <th style="width: 110px;">{% trans "Category" %}</th>
+            <th class="text-right" style="width: 95px;">{% trans "Amount / Sem" %}</th>
+            <th class="text-center" style="width: 75px;">{% trans "Quota" %}</th>
+            <th class="text-center" style="width: 75px;">{% trans "Applicants" %}</th>
+            <th class="text-center" style="width: 70px;">{% trans "Status" %}</th>
+            <th style="width: 115px;">{% trans "Period" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for s in filtered_scholarships %}
+          <tr>
+            <td class="text-center" style="color: #64748b; font-weight: 600;">{{ forloop.counter }}</td>
+            <td><strong>{{ s.title }}</strong></td>
+            <td>
+              <span class="category-badge">
+                {% if s.category == 'general' %}{% trans "General" %}
+                {% elif s.category == 'exchange' %}{% trans "Exchange" %}
+                {% elif s.category == 'fee_waiver' %}{% trans "Fee Waiver" %}
+                {% else %}{% trans "Lunch" %}{% endif %}
+              </span>
+            </td>
+            <td class="text-right" style="font-weight: 700; color: #002b49;">
+              ฿ {{ s.amount_per_semester|floatformat:0|intcomma }}
+            </td>
+            <td class="text-center">{{ s.capacity }}</td>
+            <td class="text-center" style="font-weight: 700; color: #0263b8;">{{ s.applications.count }}</td>
+            <td class="text-center">
+              {% if s.status == 'active' %}<span class="status-badge status-approved">Active</span>
+              {% elif s.status == 'closed' %}<span class="status-badge status-cancelled">Closed</span>
+              {% else %}<span class="status-badge status-pending">Draft</span>{% endif %}
+            </td>
+            <td style="font-size: 0.76rem; color: #475569;">
+              {{ s.start_date|date:"j M Y" }} - {{ s.end_date|date:"j M Y" }}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div style="text-align: center; padding: 1.5rem; color: #64748b; font-size: 0.88rem; border: 1px dashed #cbd5e1; border-radius: 6px;">
+        {% trans "No scholarships found for the selected filter." %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Section 2: Student Applicants Detail Table (MUST HAVE STUDENT NAMES) -->
+    <div class="report-section" style="margin-top: 1.75rem;">
+      <div class="section-head">
+        <div class="section-head-title">
+          <span class="material-symbols-outlined" style="font-size: 1.15rem; color: #0263b8;">group</span>
+          {% trans "2. Student Applicants List (รายชื่อนักศึกษาผู้สมัครทุน)" %}
+        </div>
+        <span class="section-head-badge">{{ total_applications }} {% trans "applicants" %}</span>
+      </div>
+
+      {% if filtered_applications %}
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th class="text-center" style="width: 35px;">#</th>
+            <th style="width: 95px;">{% trans "Student ID" %}</th>
+            <th style="width: 140px;">{% trans "Student Name" %}</th>
+            <th style="width: 120px;">{% trans "Faculty / Major" %}</th>
+            <th class="text-center" style="width: 50px;">GPAX</th>
+            <th>{% trans "Applied Scholarship" %}</th>
+            <th style="width: 85px;">{% trans "Date Applied" %}</th>
+            <th class="text-center" style="width: 85px;">{% trans "Status" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for app in filtered_applications %}
+          <tr>
+            <td class="text-center" style="color: #64748b; font-weight: 600;">{{ forloop.counter }}</td>
+            <td><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
+            <td><strong style="color: #0f172a;">{{ app.student.full_name }}</strong></td>
+            <td style="font-size: 0.76rem; color: #334155;">
+              <div>{{ app.student.get_faculty_display }}</div>
+              {% if app.student.major %}<div style="color: #64748b; font-size: 0.72rem;">{{ app.student.major }}</div>{% endif %}
+            </td>
+            <td class="text-center" style="font-weight: 700; color: #0263b8;">
+              {{ app.student.gpax|floatformat:2 }}
+            </td>
+            <td style="font-size: 0.78rem;">
+              {{ app.scholarship.title }}
+            </td>
+            <td style="font-size: 0.74rem; color: #475569;">
+              {{ app.submitted_at|date:"j M Y" }}
+            </td>
+            <td class="text-center">
+              {% if app.status == 'approved' %}
+              <span class="status-badge status-approved">Approve</span>
+              {% elif app.status == 'in_progress' %}
+              <span class="status-badge status-in_progress">In Progress</span>
+              {% elif app.status == 'interview' %}
+              <span class="status-badge status-interview">Interview</span>
+              {% elif app.status == 'pending' %}
+              <span class="status-badge status-pending">Pending</span>
+              {% elif app.status == 'rejected' %}
+              <span class="status-badge status-rejected">Reject</span>
+              {% elif app.status == 'completed' %}
+              <span class="status-badge status-completed">Complete</span>
+              {% elif app.status == 'cancelled' %}
+              <span class="status-badge status-cancelled">Cancel</span>
+              {% else %}
+              <span class="status-badge">{{ app.get_status_display }}</span>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div style="text-align: center; padding: 2rem; color: #64748b; font-size: 0.88rem; border: 1px dashed #cbd5e1; border-radius: 6px;">
+        {% trans "No student applicant records found matching this semester or query." %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Official University Sign-off Section -->
+    <div class="signature-row">
+      <div class="signature-box">
+        <div>ลงชื่อ ................................................................ ผู้จัดทำรายงาน</div>
+        <div class="signature-line"></div>
+        <div>( {{ generated_by.get_full_name|default:generated_by.username }} )</div>
+        <div style="font-size: 0.75rem; color: #64748b;">เจ้าหน้าที่งานพัฒนานักศึกษาและทุนการศึกษา</div>
+        <div style="font-size: 0.75rem; color: #64748b;">วันที่ {{ generated_at|date:"j F Y" }}</div>
+      </div>
+      <div class="signature-box">
+        <div>ลงชื่อ ................................................................ ผู้รับรองรายงาน</div>
+        <div class="signature-line"></div>
+        <div>( ................................................................ )</div>
+        <div style="font-size: 0.75rem; color: #64748b;">หัวหน้างานกิจการนักศึกษา / ผู้บริหารฝ่ายวิชาการ</div>
+        <div style="font-size: 0.75rem; color: #64748b;">มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต</div>
+      </div>
+    </div>
+
+  </div>
+
+  {% if auto_print %}
+  <script>
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        window.print();
+      }, 500);
+    });
+  </script>
+  {% endif %}
+
+</body>
+</html>

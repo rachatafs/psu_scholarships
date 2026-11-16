@@ -157,41 +157,54 @@ def update_application(request, pk):
             
     return redirect('admin_dashboard')
 
-@staff_member_required
-def scholarship_dashboard(request):
+def _get_dashboard_analytics_data(request):
     now = timezone.now().date()
-    
-    # Get filters
-    filter_year = request.GET.get('year', str(now.year))
-    filter_month = request.GET.get('month', '')
-    filter_term = request.GET.get('term', '')
 
-    thai_year = int(filter_year) + 543 if filter_year.isdigit() else now.year + 543
+    # Scope & Filter flags
+    scope = request.GET.get('scope', '').strip()
+    is_all_scope = (scope == 'all' or request.GET.get('all') == '1')
+
+    filter_term = '' if is_all_scope else request.GET.get('term', '').strip()
+    filter_month = '' if is_all_scope else request.GET.get('month', '').strip()
+
+    raw_year = request.GET.get('year')
+    if is_all_scope:
+        filter_year = 'all'
+    elif raw_year is not None:
+        filter_year = raw_year.strip()
+    else:
+        filter_year = str(now.year)
 
     # Base QuerySets
     s_qs = Scholarship.objects.all()
-    a_qs = Application.objects.all()
 
     # Apply Year Filter
     if filter_year.isdigit():
         s_qs = s_qs.filter(created_at__year=filter_year)
-        a_qs = a_qs.filter(submitted_at__year=filter_year)
+        thai_year = int(filter_year) + 543
+    else:
+        filter_year = 'all'
+        thai_year = now.year + 543
 
     # Apply Month Filter
     if filter_month.isdigit():
         s_qs = s_qs.filter(created_at__month=filter_month)
-        a_qs = a_qs.filter(submitted_at__month=filter_month)
 
     # Apply Term Filter (Term 1: 8-12, Term 2: 1-5, Summer: 6-7)
     if filter_term == '1':
         s_qs = s_qs.filter(created_at__month__in=[8, 9, 10, 11, 12])
-        a_qs = a_qs.filter(submitted_at__month__in=[8, 9, 10, 11, 12])
     elif filter_term == '2':
         s_qs = s_qs.filter(created_at__month__in=[1, 2, 3, 4, 5])
-        a_qs = a_qs.filter(submitted_at__month__in=[1, 2, 3, 4, 5])
     elif filter_term == '3':
         s_qs = s_qs.filter(created_at__month__in=[6, 7])
-        a_qs = a_qs.filter(submitted_at__month__in=[6, 7])
+
+    filtered_scholarships = s_qs.order_by('-created_at')
+
+    # Filter applications for the filtered scholarships (includes student profile info)
+    a_qs = Application.objects.filter(scholarship__in=s_qs).select_related(
+        'student', 'scholarship', 'student__user'
+    ).order_by('-submitted_at')
+    filtered_applications = a_qs
 
     total_scholarships = s_qs.count()
     total_value = s_qs.aggregate(
@@ -201,20 +214,18 @@ def scholarship_dashboard(request):
         status='active', end_date__gte=now
     ).count()
 
-    total_applications    = a_qs.count()
-    pending_applications  = a_qs.filter(status='pending').count()
+    total_applications = a_qs.count()
+    pending_applications = a_qs.filter(status='pending').count()
     in_progress_applications = a_qs.filter(status__in=['in_progress', 'interview']).count()
     approved_applications = a_qs.filter(status='approved').count()
     rejected_applications = a_qs.filter(status='rejected').count()
     completed_applications = a_qs.filter(status='completed').count()
     cancelled_applications = a_qs.filter(status='cancelled').count()
 
-    general_count  = s_qs.filter(category='general').count()
+    general_count = s_qs.filter(category='general').count()
     exchange_count = s_qs.filter(category='exchange').count()
-    waiver_count   = s_qs.filter(category='fee_waiver').count()
-    lunch_count    = s_qs.filter(category='lunch').count()
-
-    filtered_scholarships = s_qs.order_by('-created_at')
+    waiver_count = s_qs.filter(category='fee_waiver').count()
+    lunch_count = s_qs.filter(category='lunch').count()
 
     month_names = {
         '1': _('January'), '2': _('February'), '3': _('March'), '4': _('April'),
@@ -232,41 +243,53 @@ def scholarship_dashboard(request):
 
     has_active_filter = bool(filter_term or filter_month or (filter_year and filter_year != str(now.year)))
 
-    recent_scholarships = s_qs.order_by('-id')[:5]
-
     deadline_soon = Scholarship.objects.filter(
         status='active',
         end_date__gte=now
     ).order_by('end_date')[:5]
 
-    context = {
-        'thai_year':             thai_year,
-        'total_scholarships':    total_scholarships,
-        'total_value':           total_value,
-        'open_scholarships':     open_scholarships,
-        'total_applications':    total_applications,
-        'pending_applications':  pending_applications,
+    return {
+        'thai_year': thai_year,
+        'total_scholarships': total_scholarships,
+        'total_value': total_value,
+        'open_scholarships': open_scholarships,
+        'total_applications': total_applications,
+        'pending_applications': pending_applications,
         'in_progress_applications': in_progress_applications,
         'approved_applications': approved_applications,
         'rejected_applications': rejected_applications,
         'completed_applications': completed_applications,
         'cancelled_applications': cancelled_applications,
-        'general_count':         general_count,
-        'exchange_count':        exchange_count,
-        'waiver_count':          waiver_count,
-        'lunch_count':           lunch_count,
+        'general_count': general_count,
+        'exchange_count': exchange_count,
+        'waiver_count': waiver_count,
+        'lunch_count': lunch_count,
         'filtered_scholarships': filtered_scholarships,
-        'recent_scholarships':   recent_scholarships,
-        'deadline_soon':         deadline_soon,
-        'today':                 now,
-        'filter_year':           filter_year,
-        'filter_month':          filter_month,
-        'filter_month_name':     filter_month_name,
-        'filter_term':           filter_term,
-        'filter_term_name':      filter_term_name,
-        'has_active_filter':     has_active_filter,
+        'filtered_applications': filtered_applications,
+        'deadline_soon': deadline_soon,
+        'today': now,
+        'filter_year': filter_year,
+        'filter_month': filter_month,
+        'filter_month_name': filter_month_name,
+        'filter_term': filter_term,
+        'filter_term_name': filter_term_name,
+        'has_active_filter': has_active_filter,
+        'is_all_scope': is_all_scope or (filter_year == 'all' and not filter_term and not filter_month),
     }
-    return render(request, 'scholarship_dashboard.html', context)
+
+@staff_member_required
+def scholarship_dashboard(request):
+    data = _get_dashboard_analytics_data(request)
+    data['recent_scholarships'] = data['filtered_scholarships'][:5]
+    return render(request, 'scholarship_dashboard.html', data)
+
+@staff_member_required
+def export_dashboard_pdf(request):
+    data = _get_dashboard_analytics_data(request)
+    data['auto_print'] = (request.GET.get('auto_print') == '1')
+    data['generated_by'] = request.user
+    data['generated_at'] = timezone.now()
+    return render(request, 'scholarship_export_pdf.html', data)
 
 @staff_member_required
 def delete_scholarship(request, pk):
