@@ -4,7 +4,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.http import JsonResponse
 from django.utils import timezone
-from django.db.models import Sum, Q, Count
+from django.db.models import Sum, Count
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application

@@ -500,8 +500,8 @@
                     <input type="text" id="schSearchInput" placeholder="{% trans " Search scholarship title, category, GPAX..." %}" class="admin-search-field" autocomplete="off">
                 </div>
 
-                <div class="admin-result-counter">
-                    {% trans "Showing" %} <strong>{{ scholarships_list.start_index }}–{{ scholarships_list.end_index }}</strong> {% trans "of" %} <strong>{{ sch_cat_counts.all }}</strong> {% trans "scholarships" %}
+                <div class="admin-result-counter" id="schResultCounter">
+                    {% trans "Showing" %} <strong>1–10</strong> {% trans "of" %} <strong>{{ sch_cat_counts.all }}</strong> {% trans "scholarships" %}
                 </div>
             </div>
 

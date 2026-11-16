@@ -283,7 +283,7 @@ function initAdminDashboard() {
     // 2. Scholarships Table Live Filtering & Pagination
     const schSearchInput = document.getElementById('schSearchInput');
     const schRows = document.querySelectorAll('.sch-row');
-    const schVisibleCount = document.getElementById('schVisibleCount');
+    const schResultCounter = document.getElementById('schResultCounter');
     const noSchMatchesRow = document.getElementById('noSchMatchesRow');
     const schCategoryTabs = document.querySelectorAll('#schCategoryTabs .admin-cat-tab');
     const schPaginationWrap = document.getElementById('schPaginationWrap');
@@ -330,13 +330,13 @@ function initAdminDashboard() {
 
         if (totalMatches === 0) {
             if (noSchMatchesRow) noSchMatchesRow.style.display = '';
-            if (schVisibleCount) schVisibleCount.innerHTML = `Showing <strong>0</strong> of <strong>0</strong> scholarships`;
+            if (schResultCounter) schResultCounter.innerHTML = `Showing <strong>0</strong> of <strong>0</strong> scholarships`;
             if (schPaginationInfo) schPaginationInfo.innerHTML = `Showing <strong>0</strong> of <strong>0</strong> scholarships`;
             if (schPaginationWrap) schPaginationWrap.style.display = 'none';
         } else {
             if (noSchMatchesRow) noSchMatchesRow.style.display = 'none';
             const infoText = `Showing <strong>${startIndex + 1}–${endIndex}</strong> of <strong>${totalMatches}</strong> scholarships`;
-            if (schVisibleCount) schVisibleCount.innerHTML = infoText;
+            if (schResultCounter) schResultCounter.innerHTML = infoText;
             if (schPaginationInfo) schPaginationInfo.innerHTML = infoText;
             if (schPaginationWrap) schPaginationWrap.style.display = (totalPages > 1) ? 'flex' : 'none';
         }
