@@ -108,6 +108,51 @@ def admin_dashboard(request):
         'lunch': len([s for s in active_scholarships if s.category == 'lunch']),
     }
 
+    # 2. Paginate Active Scholarships (10 per page)
+    sch_paginator = Paginator(active_scholarships, 10)
+    page_sch_num = request.GET.get('page_sch', 1)
+    try:
+        sch_page = sch_paginator.page(page_sch_num)
+    except PageNotAnInteger:
+        sch_page = sch_paginator.page(1)
+    except EmptyPage:
+        sch_page = sch_paginator.page(sch_paginator.num_pages)
+    sch_page_range = _get_standard_page_range(sch_page.number, sch_paginator.num_pages)
+
+    # 3. Paginate Expired Scholarships (10 per page)
+    hist_paginator = Paginator(expired_scholarships, 10)
+    page_hist_num = request.GET.get('page_hist', 1)
+    try:
+        hist_page = hist_paginator.page(page_hist_num)
+    except PageNotAnInteger:
+        hist_page = hist_paginator.page(1)
+    except EmptyPage:
+        hist_page = hist_paginator.page(hist_paginator.num_pages)
+    hist_page_range = _get_standard_page_range(hist_page.number, hist_paginator.num_pages)
+
+    # Active admin tab logic based on requested pagination parameter
+    if 'page_sch' in request.GET:
+        active_admin_tab = 'scholarships'
+    elif 'page_hist' in request.GET:
+        active_admin_tab = 'history'
+    else:
+        active_admin_tab = 'apps'
+
+    # Build extra_query parts across tabs
+    sch_extra_query_parts = []
+    if page_num and str(page_num) != '1':
+        sch_extra_query_parts.append(f"page={page_num}")
+    if page_hist_num and str(page_hist_num) != '1':
+        sch_extra_query_parts.append(f"page_hist={page_hist_num}")
+    sch_extra_query = "&".join(sch_extra_query_parts)
+
+    hist_extra_query_parts = []
+    if page_num and str(page_num) != '1':
+        hist_extra_query_parts.append(f"page={page_num}")
+    if page_sch_num and str(page_sch_num) != '1':
+        hist_extra_query_parts.append(f"page_sch={page_sch_num}")
+    hist_extra_query = "&".join(hist_extra_query_parts)
+
     context = {
         'total_scholarships': total_scholarships,
         'total_applications': total_applications,
@@ -121,8 +166,14 @@ def admin_dashboard(request):
         'filtered_apps_count': filtered_apps_count,
         'app_page_range': app_page_range,
         'extra_query': extra_query,
-        'scholarships_list': active_scholarships,
-        'expired_scholarships': expired_scholarships,
+        'scholarships_list': sch_page,
+        'sch_page_range': sch_page_range,
+        'sch_extra_query': sch_extra_query,
+        'expired_scholarships': hist_page,
+        'expired_scholarships_count': len(expired_scholarships),
+        'hist_page_range': hist_page_range,
+        'hist_extra_query': hist_extra_query,
+        'active_admin_tab': active_admin_tab,
         'q': q,
         'selected_category': category,
         'selected_status': status_filter,

@@ -45,7 +45,7 @@
 
         <!-- Main Mode Switcher Tabs -->
         <div class="admin-main-nav-tabs">
-            <button type="button" class="admin-nav-tab-btn active" id="tabBtnApps" onclick="switchAdminTab('apps')">
+            <button type="button" class="admin-nav-tab-btn {% if active_admin_tab == 'apps' or not active_admin_tab %}active{% endif %}" id="tabBtnApps" onclick="switchAdminTab('apps')">
                 <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
                     stroke-width="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -58,28 +58,28 @@
                 <span class="tab-badge-pill" id="totalAppsBadge">{{ total_applications }}</span>
             </button>
 
-            <button type="button" class="admin-nav-tab-btn" id="tabBtnSch" onclick="switchAdminTab('scholarships')">
+            <button type="button" class="admin-nav-tab-btn {% if active_admin_tab == 'scholarships' %}active{% endif %}" id="tabBtnSch" onclick="switchAdminTab('scholarships')">
                 <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
                     stroke-width="2">
                     <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
                 </svg>
                 <span>{% trans "Manage Scholarships" %}</span>
-                <span class="tab-badge-pill">{{ scholarships_list|length }}</span>
+                <span class="tab-badge-pill">{{ sch_cat_counts.all }}</span>
             </button>
 
-            <button type="button" class="admin-nav-tab-btn" id="tabBtnHistory" onclick="switchAdminTab('history')">
+            <button type="button" class="admin-nav-tab-btn {% if active_admin_tab == 'history' %}active{% endif %}" id="tabBtnHistory" onclick="switchAdminTab('history')">
                 <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
                     stroke-width="2">
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
                 <span>{% trans "Scholarship History" %}</span>
-                <span class="tab-badge-pill">{{ expired_scholarships|length }}</span>
+                <span class="tab-badge-pill">{{ expired_scholarships_count }}</span>
             </button>
         </div>
 
         <!-- ================= SECTION 1: APPLICATIONS MANAGEMENT ================= -->
-        <div class="admin-table-container-card" id="sectionApps">
+        <div class="admin-table-container-card" id="sectionApps" style="{% if active_admin_tab and active_admin_tab != 'apps' %}display:none;{% endif %}">
             <div class="table-header-bar">
                 <div>
                     <h2 class="table-main-title">{% trans "Student Applications & Screening" %}</h2>
@@ -326,11 +326,11 @@
                     </tbody>
                 </table>
             </div>
-            {% include 'components/pagination.html' with page_obj=applications page_range=app_page_range total_count=filtered_apps_count item_name=_('applications') extra_query=extra_query anchor='applicationsTable' %}
+            {% include 'components/pagination.html' with page_obj=applications page_range=app_page_range total_count=filtered_apps_count item_name=_('applications') extra_query=extra_query anchor='apps' %}
         </div>
 
         <!-- ================= SECTION 2: SCHOLARSHIPS MANAGEMENT ================= -->
-        <div class="admin-table-container-card" id="sectionScholarships" style="display:none;">
+        <div class="admin-table-container-card" id="sectionScholarships" style="{% if active_admin_tab != 'scholarships' %}display:none;{% endif %}">
             <div class="table-header-bar">
                 <div>
                     <h2 class="table-main-title">{% trans "All Scholarships in System" %} ({{ total_scholarships }})
@@ -385,7 +385,7 @@
                 </div>
 
                 <div class="admin-result-counter">
-                    {% trans "Showing" %} <strong id="schVisibleCount">{{ scholarships_list|length }}</strong> {% trans "scholarships" %}
+                    {% trans "Showing" %} <strong>{{ scholarships_list.start_index }}–{{ scholarships_list.end_index }}</strong> {% trans "of" %} <strong>{{ sch_cat_counts.all }}</strong> {% trans "scholarships" %}
                 </div>
             </div>
 
@@ -486,13 +486,14 @@
                     </tbody>
                 </table>
             </div>
+            {% include 'components/pagination.html' with page_obj=scholarships_list page_range=sch_page_range page_param='page_sch' total_count=sch_cat_counts.all item_name=_('scholarships') extra_query=sch_extra_query anchor='scholarships' %}
         </div>
 
         <!-- ================= SECTION 3: HISTORY (EXPIRED SCHOLARSHIPS) ================= -->
-        <div class="admin-table-container-card" id="sectionHistory" style="display:none;">
+        <div class="admin-table-container-card" id="sectionHistory" style="{% if active_admin_tab != 'history' %}display:none;{% endif %}">
             <div class="table-header-bar">
                 <div>
-                    <h2 class="table-main-title">{% trans "Past Scholarship History" %} ({{ expired_scholarships|length }})</h2>
+                    <h2 class="table-main-title">{% trans "Past Scholarship History" %} ({{ expired_scholarships_count }})</h2>
                     <p class="table-sub-desc">{% trans "List of expired or closed scholarships." %}</p>
                 </div>
             </div>
@@ -590,6 +591,7 @@
                     </tbody>
                 </table>
             </div>
+            {% include 'components/pagination.html' with page_obj=expired_scholarships page_range=hist_page_range page_param='page_hist' total_count=expired_scholarships_count item_name=_('scholarships') extra_query=hist_extra_query anchor='history' %}
         </div>
     </div>
 </div>
