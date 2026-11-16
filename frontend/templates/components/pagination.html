@@ -1,5 +1,113 @@
 {% load i18n %}
 {% if page_obj.has_other_pages %}
+<style>
+  .dash-pagination-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 1.25rem 0.5rem 0.5rem !important;
+    margin-top: 1.25rem !important;
+    border-top: 1px solid #e2e8f0 !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .dash-pagination-info {
+    font-size: 0.88rem !important;
+    color: #64748b !important;
+    line-height: 1.5 !important;
+  }
+  .dash-pagination-info strong {
+    color: #002b49 !important;
+    font-weight: 700 !important;
+  }
+  .dash-pagination-nav {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    flex-wrap: nowrap !important;
+  }
+  .dash-page-num {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    border-radius: 8px !important;
+    font-family: 'Prompt', 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    color: #334155 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    transition: all 0.15s ease !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+  }
+  .dash-page-num:hover {
+    color: #0263b8 !important;
+    background: #eff6ff !important;
+    border-color: #93c5fd !important;
+  }
+  .dash-page-num.active {
+    background: #0263b8 !important;
+    color: #ffffff !important;
+    border-color: #0263b8 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 6px rgba(2, 99, 184, 0.25) !important;
+    cursor: default !important;
+  }
+  .dash-page-ellipsis {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 28px !important;
+    height: 38px !important;
+    font-size: 1rem !important;
+    color: #94a3b8 !important;
+    font-weight: 700 !important;
+    user-select: none !important;
+  }
+  .dash-page-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    height: 38px !important;
+    padding: 0 0.95rem !important;
+    border-radius: 8px !important;
+    font-family: 'Prompt', 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    color: #334155 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    transition: all 0.15s ease !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+  }
+  .dash-page-btn:hover {
+    color: #0263b8 !important;
+    background: #eff6ff !important;
+    border-color: #93c5fd !important;
+  }
+  .dash-page-btn.disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+    color: #94a3b8 !important;
+  }
+  .dash-page-btn svg {
+    flex-shrink: 0;
+  }
+</style>
 <div class="dash-pagination-wrap">
   <div class="dash-pagination-info">
     {% trans "Showing" %} <strong>{{ page_obj.start_index }}</strong>–<strong>{{ page_obj.end_index }}</strong> {% trans "of" %} <strong>{{ total_count|default:page_obj.paginator.count }}</strong> {% if item_name %}{{ item_name }}{% else %}{% trans "items" %}{% endif %}
@@ -7,12 +115,12 @@
   <div class="dash-pagination-nav">
     {% if page_obj.has_previous %}
     <a href="?{{ page_param|default:'page' }}={{ page_obj.previous_page_number }}{% if extra_query %}&{{ extra_query }}{% endif %}" class="dash-page-btn" title="{% trans 'Previous' %}">
-      <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       <span>{% trans "Previous" %}</span>
     </a>
     {% else %}
     <span class="dash-page-btn disabled">
-      <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       <span>{% trans "Previous" %}</span>
     </span>
     {% endif %}
@@ -30,12 +138,12 @@
     {% if page_obj.has_next %}
     <a href="?{{ page_param|default:'page' }}={{ page_obj.next_page_number }}{% if extra_query %}&{{ extra_query }}{% endif %}" class="dash-page-btn" title="{% trans 'Next' %}">
       <span>{% trans "Next" %}</span>
-      <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </a>
     {% else %}
     <span class="dash-page-btn disabled">
       <span>{% trans "Next" %}</span>
-      <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </span>
     {% endif %}
   </div>
