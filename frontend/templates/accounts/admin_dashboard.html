@@ -5,6 +5,111 @@
 {% block title %}{% trans "Admin Management" %} | PSU Phuket Scholarships{% endblock %}
 
 {% block dashboard_content %}
+<style>
+  .dash-pagination-wrap {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 1.25rem 0.5rem 0.5rem !important;
+    margin-top: 1.25rem !important;
+    border-top: 1px solid #e2e8f0 !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .dash-pagination-info {
+    font-size: 0.88rem !important;
+    color: #64748b !important;
+    line-height: 1.5 !important;
+  }
+  .dash-pagination-info strong {
+    color: #002b49 !important;
+    font-weight: 700 !important;
+  }
+  .dash-pagination-nav {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    flex-wrap: nowrap !important;
+  }
+  .dash-page-num {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    border-radius: 8px !important;
+    font-family: 'Prompt', 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    color: #334155 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    transition: all 0.15s ease !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+  }
+  .dash-page-num:hover {
+    color: #0263b8 !important;
+    background: #eff6ff !important;
+    border-color: #93c5fd !important;
+  }
+  .dash-page-num.active {
+    background: #0263b8 !important;
+    color: #ffffff !important;
+    border-color: #0263b8 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 6px rgba(2, 99, 184, 0.25) !important;
+    cursor: default !important;
+  }
+  .dash-page-ellipsis {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 28px !important;
+    height: 38px !important;
+    font-size: 1rem !important;
+    color: #94a3b8 !important;
+    font-weight: 700 !important;
+    user-select: none !important;
+  }
+  .dash-page-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+    height: 38px !important;
+    padding: 0 0.95rem !important;
+    border-radius: 8px !important;
+    font-family: 'Prompt', 'Sarabun', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    color: #334155 !important;
+    background: #ffffff !important;
+    border: 1.5px solid #cbd5e1 !important;
+    transition: all 0.15s ease !important;
+    box-sizing: border-box !important;
+    white-space: nowrap !important;
+    cursor: pointer !important;
+  }
+  .dash-page-btn:hover {
+    color: #0263b8 !important;
+    background: #eff6ff !important;
+    border-color: #93c5fd !important;
+  }
+  .dash-page-btn.disabled {
+    opacity: 0.45 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
+    color: #94a3b8 !important;
+  }
+</style>
 <div class="admin-management-page">
     <div class="container-default">
         <!-- Header -->
@@ -45,7 +150,7 @@
 
         <!-- Main Mode Switcher Tabs -->
         <div class="admin-main-nav-tabs">
-            <button type="button" class="admin-nav-tab-btn active" id="tabBtnApps" onclick="switchAdminTab('apps')">
+            <button type="button" class="admin-nav-tab-btn {% if active_admin_tab == 'apps' or not active_admin_tab %}active{% endif %}" id="tabBtnApps" onclick="switchAdminTab('apps')">
                 <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
                     stroke-width="2">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -58,28 +163,28 @@
                 <span class="tab-badge-pill" id="totalAppsBadge">{{ total_applications }}</span>
             </button>
 
-            <button type="button" class="admin-nav-tab-btn" id="tabBtnSch" onclick="switchAdminTab('scholarships')">
+            <button type="button" class="admin-nav-tab-btn {% if active_admin_tab == 'scholarships' %}active{% endif %}" id="tabBtnSch" onclick="switchAdminTab('scholarships')">
                 <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
                     stroke-width="2">
                     <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
                 </svg>
                 <span>{% trans "Manage Scholarships" %}</span>
-                <span class="tab-badge-pill">{{ scholarships_list|length }}</span>
+                <span class="tab-badge-pill">{{ sch_cat_counts.all }}</span>
             </button>
 
-            <button type="button" class="admin-nav-tab-btn" id="tabBtnHistory" onclick="switchAdminTab('history')">
+            <button type="button" class="admin-nav-tab-btn {% if active_admin_tab == 'history' %}active{% endif %}" id="tabBtnHistory" onclick="switchAdminTab('history')">
                 <svg class="tab-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor"
                     stroke-width="2">
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
                 <span>{% trans "Scholarship History" %}</span>
-                <span class="tab-badge-pill">{{ expired_scholarships|length }}</span>
+                <span class="tab-badge-pill">{{ expired_scholarships_count }}</span>
             </button>
         </div>
 
         <!-- ================= SECTION 1: APPLICATIONS MANAGEMENT ================= -->
-        <div class="admin-table-container-card" id="sectionApps">
+        <div class="admin-table-container-card" id="sectionApps" style="{% if active_admin_tab and active_admin_tab != 'apps' %}display:none;{% endif %}">
             <div class="table-header-bar">
                 <div>
                     <h2 class="table-main-title">{% trans "Student Applications & Screening" %}</h2>
@@ -110,32 +215,23 @@
 
             <!-- Category Filter Tabs (หมวดหมู่ทุน) -->
             <div class="admin-cat-tabs-row" id="categoryTabs">
-                <a href="?category=all&status={{ selected_status }}&q={{ q }}"
-                    class="admin-cat-tab {% if selected_category == 'all' or not selected_category %}active{% endif %}"
-                    data-category="all">
+                <a href="#apps" class="admin-cat-tab active" data-category="all">
                     <span>{% trans "All" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.all }}</span>
                 </a>
-                <a href="?category=general&status={{ selected_status }}&q={{ q }}"
-                    class="admin-cat-tab {% if selected_category == 'general' %}active{% endif %}"
-                    data-category="general">
+                <a href="#apps" class="admin-cat-tab" data-category="general">
                     <span>{% trans "General" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.general }}</span>
                 </a>
-                <a href="?category=exchange&status={{ selected_status }}&q={{ q }}"
-                    class="admin-cat-tab {% if selected_category == 'exchange' %}active{% endif %}"
-                    data-category="exchange">
+                <a href="#apps" class="admin-cat-tab" data-category="exchange">
                     <span>{% trans "Exchange" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.exchange }}</span>
                 </a>
-                <a href="?category=fee_waiver&status={{ selected_status }}&q={{ q }}"
-                    class="admin-cat-tab {% if selected_category == 'fee_waiver' %}active{% endif %}"
-                    data-category="fee_waiver">
+                <a href="#apps" class="admin-cat-tab" data-category="fee_waiver">
                     <span>{% trans "Fee Waiver" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.fee_waiver }}</span>
                 </a>
-                <a href="?category=lunch&status={{ selected_status }}&q={{ q }}"
-                    class="admin-cat-tab {% if selected_category == 'lunch' %}active{% endif %}" data-category="lunch">
+                <a href="#apps" class="admin-cat-tab" data-category="lunch">
                     <span>{% trans "Lunch" %}</span>
                     <span class="cat-count-pill">{{ cat_counts.lunch }}</span>
                 </a>
@@ -143,7 +239,7 @@
 
             <!-- Search & Status Filter Toolbar -->
             <form method="GET" action="" class="admin-filter-toolbar" id="adminFilterForm">
-                <input type="hidden" name="category" id="hiddenCategory" value="{{ selected_category|default:'all' }}">
+                <input type="hidden" name="category" id="hiddenCategory" value="all">
 
                 <div class="admin-search-wrapper">
                     <svg class="admin-search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none"
@@ -151,23 +247,23 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" id="adminSearchInput" name="q" value="{{ q }}" placeholder="{% trans " Search applicant name, student ID, scholarship title..." %}" class="admin-search-field"
+                    <input type="text" id="adminSearchInput" name="q" value="" placeholder="{% trans " Search applicant name, student ID, scholarship title..." %}" class="admin-search-field"
                         autocomplete="off">
                 </div>
 
                 <div class="admin-filter-right">
                     <select name="status" id="adminStatusSelect" class="admin-filter-select">
-                        <option value="all" {% if selected_status == 'all' or not selected_status %}selected{% endif %}>{% trans "All Statuses" %} ({{ total_applications }})</option>
-                        <option value="pending" {% if selected_status == 'pending' %}selected{% endif %}>{% trans "Pending" %} ({{ pending_applications }})</option>
-                        <option value="in_progress" {% if selected_status == 'in_progress' %}selected{% endif %}>{% trans "In Progress" %}</option>
-                        <option value="approved" {% if selected_status == 'approved' %}selected{% endif %}>{% trans "Approve" %} ({{ approved_applications }})</option>
-                        <option value="rejected" {% if selected_status == 'rejected' %}selected{% endif %}>{% trans "Reject" %} ({{ rejected_applications }})</option>
-                        <option value="completed" {% if selected_status == 'completed' %}selected{% endif %}>{% trans "Complete" %}</option>
-                        <option value="cancelled" {% if selected_status == 'cancelled' %}selected{% endif %}>{% trans "Cancel" %}</option>
+                        <option value="all" selected>{% trans "All Statuses" %} ({{ total_applications }})</option>
+                        <option value="pending">{% trans "Pending" %} ({{ pending_applications }})</option>
+                        <option value="in_progress">{% trans "In Progress" %}</option>
+                        <option value="approved">{% trans "Approve" %} ({{ approved_applications }})</option>
+                        <option value="rejected">{% trans "Reject" %} ({{ rejected_applications }})</option>
+                        <option value="completed">{% trans "Complete" %}</option>
+                        <option value="cancelled">{% trans "Cancel" %}</option>
                     </select>
 
-                    <div class="admin-result-counter">
-                        {% trans "Showing" %} <strong id="visibleCount">{{ applications|length }}</strong> {% trans "items" %}
+                    <div class="admin-result-counter" id="adminResultCounter">
+                        {% trans "Showing" %} <strong>1–10</strong> {% trans "of" %} <strong>{{ total_applications }}</strong> {% trans "items" %}
                     </div>
                 </div>
             </form>
@@ -326,10 +422,31 @@
                     </tbody>
                 </table>
             </div>
+            <div class="dash-pagination-wrap" id="appsPaginationWrap" {% if total_applications <= 10 %}style="display:none;"{% endif %}>
+                <div class="dash-pagination-info" id="appsPaginationInfo">
+                    {% trans "Showing" %} <strong>1–10</strong> {% trans "of" %} <strong>{{ total_applications }}</strong> {% trans "applications" %}
+                </div>
+                <div class="dash-pagination-nav" id="appsPaginationNav">
+                    <span class="dash-page-btn disabled">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <span>{% trans "Previous" %}</span>
+                    </span>
+                    <span class="dash-page-num active">1</span>
+                    <button type="button" class="dash-page-num" data-page="2">2</button>
+                    <button type="button" class="dash-page-num" data-page="3">3</button>
+                    <button type="button" class="dash-page-num" data-page="4">4</button>
+                    <span class="dash-page-ellipsis">…</span>
+                    <button type="button" class="dash-page-num" data-page="7">7</button>
+                    <button type="button" class="dash-page-btn" data-page="2" title="{% trans 'Next' %}">
+                        <span>{% trans "Next" %}</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- ================= SECTION 2: SCHOLARSHIPS MANAGEMENT ================= -->
-        <div class="admin-table-container-card" id="sectionScholarships" style="display:none;">
+        <div class="admin-table-container-card" id="sectionScholarships" style="{% if active_admin_tab != 'scholarships' %}display:none;{% endif %}">
             <div class="table-header-bar">
                 <div>
                     <h2 class="table-main-title">{% trans "All Scholarships in System" %} ({{ total_scholarships }})
@@ -383,8 +500,8 @@
                     <input type="text" id="schSearchInput" placeholder="{% trans " Search scholarship title, category, GPAX..." %}" class="admin-search-field" autocomplete="off">
                 </div>
 
-                <div class="admin-result-counter">
-                    {% trans "Showing" %} <strong id="schVisibleCount">{{ scholarships_list|length }}</strong> {% trans "scholarships" %}
+                <div class="admin-result-counter" id="schResultCounter">
+                    {% trans "Showing" %} <strong>1–10</strong> {% trans "of" %} <strong>{{ sch_cat_counts.all }}</strong> {% trans "scholarships" %}
                 </div>
             </div>
 
@@ -485,14 +602,32 @@
                     </tbody>
                 </table>
             </div>
+            <div class="dash-pagination-wrap" id="schPaginationWrap" {% if sch_cat_counts.all <= 10 %}style="display:none;"{% endif %}>
+                <div class="dash-pagination-info" id="schPaginationInfo">
+                    {% trans "Showing" %} <strong>1–10</strong> {% trans "of" %} <strong>{{ sch_cat_counts.all }}</strong> {% trans "scholarships" %}
+                </div>
+                <div class="dash-pagination-nav" id="schPaginationNav">
+                    <span class="dash-page-btn disabled">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <span>{% trans "Previous" %}</span>
+                    </span>
+                    <span class="dash-page-num active">1</span>
+                    <button type="button" class="dash-page-num" data-page="2">2</button>
+                    <button type="button" class="dash-page-num" data-page="3">3</button>
+                    <button type="button" class="dash-page-num" data-page="4">4</button>
+                    <button type="button" class="dash-page-btn" data-page="2" title="{% trans 'Next' %}">
+                        <span>{% trans "Next" %}</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <!-- ================= SECTION 3: HISTORY (EXPIRED SCHOLARSHIPS) ================= -->
-        <div class="admin-table-container-card" id="sectionHistory" style="display:none;">
+        <div class="admin-table-container-card" id="sectionHistory" style="{% if active_admin_tab != 'history' %}display:none;{% endif %}">
             <div class="table-header-bar">
                 <div>
-                    <h2 class="table-main-title">{% trans "Past Scholarship History" %} ({{ expired_scholarships|length
-                        }})</h2>
+                    <h2 class="table-main-title">{% trans "Past Scholarship History" %} ({{ expired_scholarships_count }})</h2>
                     <p class="table-sub-desc">{% trans "List of expired or closed scholarships." %}</p>
                 </div>
             </div>
@@ -590,6 +725,23 @@
                     </tbody>
                 </table>
             </div>
+            <div class="dash-pagination-wrap" id="histPaginationWrap" {% if expired_scholarships_count <= 10 %}style="display:none;"{% endif %}>
+                <div class="dash-pagination-info" id="histPaginationInfo">
+                    {% trans "Showing" %} <strong>1–10</strong> {% trans "of" %} <strong>{{ expired_scholarships_count }}</strong> {% trans "scholarships" %}
+                </div>
+                <div class="dash-pagination-nav" id="histPaginationNav">
+                    <span class="dash-page-btn disabled">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                        <span>{% trans "Previous" %}</span>
+                    </span>
+                    <span class="dash-page-num active">1</span>
+                    <button type="button" class="dash-page-num" data-page="2">2</button>
+                    <button type="button" class="dash-page-btn" data-page="2" title="{% trans 'Next' %}">
+                        <span>{% trans "Next" %}</span>
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -598,7 +750,7 @@
 <div class="modal-overlay" id="statusEmailModal" onclick="handleStatusModalBackdrop(event)">
     <div class="modal-card email-modal-card"
         style="max-width: 680px; width: 92%; max-height: 90vh; overflow-y: auto; padding: 28px; border-radius: 16px;">
-        <button type="button" class="modal-close" onclick="closeStatusEmailModal()" aria-label="Close">✕</button>
+        <button type="button" class="modal-close" onclick="closeStatusEmailModal()" aria-label="Close">&times;</button>
 
         <div
             style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1.25rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 1rem;">
@@ -748,5 +900,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/admin_dashboard.js' %}?v=13"></script>
+<script src="{% static 'js/admin_dashboard.js' %}?v=20261116-v3"></script>
 {% endblock %}

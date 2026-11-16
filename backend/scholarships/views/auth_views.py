@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.http import JsonResponse
 from django.utils.translation import gettext as _
 from ..models import StudentProfile, Application

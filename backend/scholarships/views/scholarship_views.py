@@ -3,17 +3,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils import timezone
 from django.utils.translation import gettext as _
-from django.db.models import Sum
-from ..models import Scholarship, Application, StudentProfile, Document
+from django.http import JsonResponse
+from ..models import Scholarship, Application, StudentProfile, Document, FavoriteScholarship
 from .utils import enrich_scholarships, CATEGORY_LABELS
 
 def home(request):
     today = timezone.now().date()
-    scholarships_qs = Scholarship.objects.filter(status='active', end_date__gte=today).order_by('-id')[:6]
-    scholarships = enrich_scholarships(scholarships_qs, request.user)
-    total_count = Scholarship.objects.filter(status='active', end_date__gte=today).count()
-    active_count = total_count
-    total_value = Scholarship.objects.filter(status='active', end_date__gte=today).aggregate(total=Sum('amount_per_semester'))['total'] or 0
     categories = [
         {
             'code': 'general',
@@ -44,21 +39,17 @@ def home(request):
             'count': Scholarship.objects.filter(category='lunch', status='active', end_date__gte=today).count(),
         },
     ]
-    
+
     expiring_qs = Scholarship.objects.filter(
-        status='active', 
+        status='active',
         end_date__gte=today,
         end_date__month=today.month,
         end_date__year=today.year
     ).order_by('end_date')[:6]
     expiring_soon = enrich_scholarships(expiring_qs, request.user)
-    
+
     return render(request, 'index.html', {
-        'featured_scholarships': scholarships,
         'expiring_soon': expiring_soon,
-        'total_count': total_count,
-        'active_count': active_count,
-        'total_value': total_value,
         'categories': categories,
     })
 
@@ -201,34 +192,30 @@ def apply_success(request, pk):
 
 @login_required
 def toggle_favorite(request, pk):
-    from django.http import JsonResponse
     scholarship = get_object_or_404(Scholarship, pk=pk)
-    from ..models import FavoriteScholarship
-    
+
     favorite, created = FavoriteScholarship.objects.get_or_create(
-        user=request.user, 
+        user=request.user,
         scholarship=scholarship
     )
-    
+
     if not created:
         favorite.delete()
         is_favorited = False
     else:
         is_favorited = True
-        
+
     if request.headers.get('x-requested-with') == 'XMLHttpRequest':
         return JsonResponse({'status': 'success', 'is_favorited': is_favorited})
-    
+
     return redirect(request.META.get('HTTP_REFERER', 'home'))
 
 @login_required
 def my_favorites(request):
-    from ..models import FavoriteScholarship
     favorite_ids = FavoriteScholarship.objects.filter(user=request.user).values_list('scholarship_id', flat=True)
-    today = timezone.now().date()
     qs = Scholarship.objects.filter(id__in=favorite_ids).order_by('end_date')
     favorites = enrich_scholarships(qs, request.user)
-    
+
     return render(request, 'scholarships/favorites.html', {
         'favorites': favorites,
     })
