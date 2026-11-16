@@ -9,6 +9,13 @@ from django.utils.translation import gettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application
 
+def _get_chunked_page_range(current_page, num_pages, chunk_size=5):
+    if num_pages <= chunk_size:
+        return list(range(1, num_pages + 1))
+    start_page = ((current_page - 1) // chunk_size) * chunk_size + 1
+    end_page = min(start_page + chunk_size - 1, num_pages)
+    return list(range(start_page, end_page + 1))
+
 def admin_dashboard(request):
     if not request.user.is_authenticated:
         return redirect('login')
@@ -36,6 +43,29 @@ def admin_dashboard(request):
 
     if status_filter and status_filter != 'all':
         apps = apps.filter(status=status_filter)
+
+    filtered_apps_count = apps.count()
+
+    # Paginate applications (15 per page)
+    paginator = Paginator(apps, 15)
+    page_num = request.GET.get('page', 1)
+    try:
+        app_page = paginator.page(page_num)
+    except PageNotAnInteger:
+        app_page = paginator.page(1)
+    except EmptyPage:
+        app_page = paginator.page(paginator.num_pages)
+
+    app_page_range = _get_chunked_page_range(app_page.number, paginator.num_pages, 5)
+
+    extra_query_parts = []
+    if q:
+        extra_query_parts.append(f"q={q}")
+    if category and category != 'all':
+        extra_query_parts.append(f"category={category}")
+    if status_filter and status_filter != 'all':
+        extra_query_parts.append(f"status={status_filter}")
+    extra_query = "&".join(extra_query_parts)
 
     total_scholarships = Scholarship.objects.count()
     total_applications = Application.objects.count()
@@ -78,7 +108,10 @@ def admin_dashboard(request):
         'rejected_applications': rejected_applications,
         'completed_applications': completed_applications,
         'cancelled_applications': cancelled_applications,
-        'applications': apps,
+        'applications': app_page,
+        'filtered_apps_count': filtered_apps_count,
+        'app_page_range': app_page_range,
+        'extra_query': extra_query,
         'scholarships_list': active_scholarships,
         'expired_scholarships': expired_scholarships,
         'q': q,
@@ -277,13 +310,6 @@ def _get_dashboard_analytics_data(request):
         'has_active_filter': has_active_filter,
         'is_all_scope': is_all_scope or (filter_year == 'all' and not filter_term and not filter_month),
     }
-
-def _get_chunked_page_range(current_page, num_pages, chunk_size=5):
-    if num_pages <= chunk_size:
-        return list(range(1, num_pages + 1))
-    start_page = ((current_page - 1) // chunk_size) * chunk_size + 1
-    end_page = min(start_page + chunk_size - 1, num_pages)
-    return list(range(start_page, end_page + 1))
 
 @staff_member_required
 def scholarship_dashboard(request):

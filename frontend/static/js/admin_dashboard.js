@@ -153,23 +153,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     if (searchInput) searchInput.addEventListener('input', applyAppFilters);
-    if (statusSelect) statusSelect.addEventListener('change', applyAppFilters);
+    if (statusSelect) {
+        statusSelect.addEventListener('change', function() {
+            const form = document.getElementById('adminFilterForm');
+            if (form) form.submit();
+        });
+    }
 
     categoryTabs.forEach(tab => {
         tab.addEventListener('click', function (e) {
-            e.preventDefault();
-            categoryTabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            currentCategory = this.getAttribute('data-category') || 'all';
-            if (hiddenCategory) hiddenCategory.value = currentCategory;
-            applyAppFilters();
-
-            const url = new URL(window.location);
-            url.searchParams.set('category', currentCategory);
-            if (statusSelect) url.searchParams.set('status', statusSelect.value);
-            if (searchInput && searchInput.value) url.searchParams.set('q', searchInput.value);
-            else url.searchParams.delete('q');
-            window.history.replaceState({}, '', url);
+            const targetUrl = this.getAttribute('href');
+            if (targetUrl && targetUrl !== '#') {
+                window.location.href = targetUrl;
+            }
         });
     });
 
