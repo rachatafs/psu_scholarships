@@ -929,6 +929,130 @@
     font-size: 0.88rem;
     margin-bottom: 1rem;
   }
+
+  /* Main Dashboard Tabs */
+  .dash-main-tabs-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dash-main-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.8rem 1.4rem;
+    font-family: 'Sarabun', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #64748b;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 10px 10px 0 0;
+    white-space: nowrap;
+  }
+
+  .dash-main-tab-btn:hover {
+    color: #0263b8;
+    background: rgba(2, 99, 184, 0.04);
+  }
+
+  .dash-main-tab-btn.active {
+    color: #0263b8;
+    font-weight: 700;
+    border-bottom-color: #0263b8;
+    background: rgba(2, 99, 184, 0.06);
+  }
+
+  .dash-main-tab-badge {
+    background: #e2e8f0;
+    color: #475569;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+    transition: all 0.2s ease;
+  }
+
+  .dash-main-tab-btn.active .dash-main-tab-badge {
+    background: #0263b8;
+    color: #ffffff;
+  }
+
+  /* Pagination */
+  .dash-pagination-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 0.25rem 0.25rem;
+    margin-top: 1.15rem;
+    border-top: 1px solid #f1f5f9;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .dash-pagination-info {
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+
+  .dash-pagination-info strong {
+    color: #002b49;
+  }
+
+  .dash-pagination-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .dash-page-btn, .dash-page-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #475569;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    transition: all 0.15s ease;
+  }
+
+  .dash-page-btn:hover, .dash-page-num:hover {
+    color: #0263b8;
+    background: #eff6ff;
+    border-color: #bfdbfe;
+  }
+
+  .dash-page-num.active {
+    background: #0263b8;
+    color: #ffffff;
+    border-color: #0263b8;
+    font-weight: 700;
+    box-shadow: 0 2px 6px rgba(2, 99, 184, 0.25);
+  }
+
+  .dash-page-btn.disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+    background: #f1f5f9;
+  }
 </style>
 
 <!-- Chart.js CDN -->
@@ -947,6 +1071,9 @@
   <!-- Redesigned Search Toolbar Card -->
   <div class="dash-filter-card">
     <form method="get" action="{% url 'scholarship_dashboard' %}" class="dash-filter-form" id="dashboardFilterForm">
+      <input type="hidden" name="tab" id="activeTabInput" value="{{ active_tab|default:'overview' }}">
+      <input type="hidden" name="subtab" id="activeSubtabInput" value="{{ active_subtab|default:'sch' }}">
+
       <div class="search-inputs-grid">
         <!-- Semester Select -->
         <div class="search-field">
@@ -1009,7 +1136,7 @@
         </button>
 
         <!-- Reset Button -->
-        <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all" class="btn-dash-action btn-dash-reset" title="{% trans 'Reset all filters to view all records' %}">
+        <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab={{ active_tab|default:'overview' }}&subtab={{ active_subtab|default:'sch' }}" class="btn-dash-action btn-dash-reset" title="{% trans 'Reset all filters to view all records' %}">
           <span class="material-symbols-outlined" style="font-size: 1.15rem;">restart_alt</span>
           <span>{% trans "Reset" %}</span>
         </a>
@@ -1045,333 +1172,434 @@
     </form>
   </div>
 
-  <!-- Main Stats -->
-  <div class="stats-grid">
-    <div class="stat-card stat-blue">
-      <div>
-        <div class="stat-label">{% trans "Total Scholarships" %}</div>
-        <div class="stat-value">{{ total_scholarships }}</div>
-        <div class="stat-unit">{% trans "scholarships" %}</div>
-      </div>
-      <div class="stat-icon"><span class="material-symbols-outlined">school</span></div>
-    </div>
-    <div class="stat-card stat-green">
-      <div>
-        <div class="stat-label">{% trans "Total Fund Value" %}</div>
-        <div class="stat-value">฿ {{ total_value|floatformat:0|intcomma }}</div>
-        <div class="stat-unit">THB</div>
-      </div>
-      <div class="stat-icon"><span class="material-symbols-outlined">payments</span></div>
-    </div>
-    <div class="stat-card stat-amber">
-      <div>
-        <div class="stat-label">{% trans "Currently Open" %}</div>
-        <div class="stat-value">{{ open_scholarships }}</div>
-        <div class="stat-unit">{% trans "scholarships" %}</div>
-      </div>
-      <div class="stat-icon"><span class="material-symbols-outlined">content_paste</span></div>
-    </div>
+  <!-- Main Dashboard Tabs Navigation -->
+  <div class="dash-main-tabs-nav">
+    <button type="button" class="dash-main-tab-btn {% if active_tab != 'records' %}active{% endif %}" id="mainTabBtnOverview" onclick="switchMainTab('overview')">
+      <span class="material-symbols-outlined" style="font-size: 1.25rem;">insights</span>
+      <span>{% trans "Analytics & Overview" %}</span>
+    </button>
+    <button type="button" class="dash-main-tab-btn {% if active_tab == 'records' %}active{% endif %}" id="mainTabBtnRecords" onclick="switchMainTab('records')">
+      <span class="material-symbols-outlined" style="font-size: 1.25rem;">table_chart</span>
+      <span>{% trans "Scholarships & Applicants" %}</span>
+      <span class="dash-main-tab-badge">{{ total_scholarships }} / {{ total_applications }}</span>
+    </button>
   </div>
 
-  <!-- App Stats -->
-  <div class="app-grid">
-    <div class="app-card">
-      <div class="dot dot-gray"></div>
-      <div>
-        <div class="app-label">{% trans "Total Applications" %}</div>
-        <div class="app-num">{{ total_applications }}</div>
-      </div>
-    </div>
-    <div class="app-card">
-      <div class="dot dot-orange"></div>
-      <div>
-        <div class="app-label">Pending</div>
-        <div class="app-num">{{ pending_applications }}</div>
-      </div>
-    </div>
-    <div class="app-card">
-      <div class="dot" style="background:#0284c7;"></div>
-      <div>
-        <div class="app-label">In Progress</div>
-        <div class="app-num">{{ in_progress_applications }}</div>
-      </div>
-    </div>
-    <div class="app-card">
-      <div class="dot dot-green"></div>
-      <div>
-        <div class="app-label">Approve</div>
-        <div class="app-num">{{ approved_applications }}</div>
-      </div>
-    </div>
-    <div class="app-card">
-      <div class="dot" style="background:#7e22ce;"></div>
-      <div>
-        <div class="app-label">Complete</div>
-        <div class="app-num">{{ completed_applications }}</div>
-      </div>
-    </div>
-    <div class="app-card">
-      <div class="dot dot-red"></div>
-      <div>
-        <div class="app-label">Reject</div>
-        <div class="app-num">{{ rejected_applications }}</div>
-      </div>
-    </div>
-    <div class="app-card">
-      <div class="dot" style="background:#64748b;"></div>
-      <div>
-        <div class="app-label">Cancel</div>
-        <div class="app-num">{{ cancelled_applications }}</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Filtered Data Section: Scholarships & Student Applicants -->
-  <div class="filtered-sch-card" id="filteredScholarshipsSection">
-    <div class="filtered-sch-head">
-      <div class="filtered-sch-title-group">
-        <span class="material-symbols-outlined title-icon">analytics</span>
+  <!-- TAB 1: Analytics & Overview -->
+  <div id="mainTabOverview" style="{% if active_tab == 'records' %}display: none;{% endif %}">
+    <!-- Main Stats -->
+    <div class="stats-grid">
+      <div class="stat-card stat-blue">
         <div>
-          <h2 class="filtered-sch-title">
-            {% if has_active_filter %}
-            {% trans "Data Matching Current Filter" %}
-            {% else %}
-            {% trans "All Scholarship & Applicant Records" %}
-            {% endif %}
-          </h2>
-          <div style="font-size: 0.8rem; color: #64748b; margin-top: 2px;">
-            {% trans "Detailed records included in the current analytics period" %}
+          <div class="stat-label">{% trans "Total Scholarships" %}</div>
+          <div class="stat-value">{{ total_scholarships }}</div>
+          <div class="stat-unit">{% trans "scholarships" %}</div>
+        </div>
+        <div class="stat-icon"><span class="material-symbols-outlined">school</span></div>
+      </div>
+      <div class="stat-card stat-green">
+        <div>
+          <div class="stat-label">{% trans "Total Fund Value" %}</div>
+          <div class="stat-value">฿ {{ total_value|floatformat:0|intcomma }}</div>
+          <div class="stat-unit">THB</div>
+        </div>
+        <div class="stat-icon"><span class="material-symbols-outlined">payments</span></div>
+      </div>
+      <div class="stat-card stat-amber">
+        <div>
+          <div class="stat-label">{% trans "Currently Open" %}</div>
+          <div class="stat-value">{{ open_scholarships }}</div>
+          <div class="stat-unit">{% trans "scholarships" %}</div>
+        </div>
+        <div class="stat-icon"><span class="material-symbols-outlined">content_paste</span></div>
+      </div>
+    </div>
+
+    <!-- App Stats -->
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="dot dot-gray"></div>
+        <div>
+          <div class="app-label">{% trans "Total Applications" %}</div>
+          <div class="app-num">{{ total_applications }}</div>
+        </div>
+      </div>
+      <div class="app-card">
+        <div class="dot dot-orange"></div>
+        <div>
+          <div class="app-label">Pending</div>
+          <div class="app-num">{{ pending_applications }}</div>
+        </div>
+      </div>
+      <div class="app-card">
+        <div class="dot" style="background:#0284c7;"></div>
+        <div>
+          <div class="app-label">In Progress</div>
+          <div class="app-num">{{ in_progress_applications }}</div>
+        </div>
+      </div>
+      <div class="app-card">
+        <div class="dot dot-green"></div>
+        <div>
+          <div class="app-label">Approve</div>
+          <div class="app-num">{{ approved_applications }}</div>
+        </div>
+      </div>
+      <div class="app-card">
+        <div class="dot" style="background:#7e22ce;"></div>
+        <div>
+          <div class="app-label">Complete</div>
+          <div class="app-num">{{ completed_applications }}</div>
+        </div>
+      </div>
+      <div class="app-card">
+        <div class="dot dot-red"></div>
+        <div>
+          <div class="app-label">Reject</div>
+          <div class="app-num">{{ rejected_applications }}</div>
+        </div>
+      </div>
+      <div class="app-card">
+        <div class="dot" style="background:#64748b;"></div>
+        <div>
+          <div class="app-label">Cancel</div>
+          <div class="app-num">{{ cancelled_applications }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Charts -->
+    <div class="charts-grid">
+      <!-- Bar Chart: Applications by Category -->
+      <div class="chart-card">
+        <div class="chart-head">
+          <div>
+            <div class="chart-title">{% trans "Applications by Status" %}</div>
+            <div class="chart-sub">{% trans "Overall breakdown of application stages" %}</div>
+          </div>
+        </div>
+        <div class="chart-body">
+          <canvas id="barChart" height="200"></canvas>
+        </div>
+      </div>
+
+      <!-- Donut Chart: Scholarship Categories -->
+      <div class="chart-card">
+        <div class="chart-head">
+          <div>
+            <div class="chart-title">{% trans "Scholarship Distribution" %}</div>
+            <div class="chart-sub">{% trans "Categorized by scholarship type" %}</div>
+          </div>
+        </div>
+        <div class="chart-body" style="display:flex;flex-direction:column;align-items:center;">
+          <canvas id="donutChart" height="220" style="max-width:220px;"></canvas>
+          <div class="chart-legend" style="justify-content:center;margin-top:1rem;">
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#1565c0"></div> {% trans "General" %}
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#f57c00"></div> {% trans "Exchange" %}
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#7b1fa2"></div> {% trans "Fee Waiver" %}
+            </div>
+            <div class="legend-item">
+              <div class="legend-dot" style="background:#2e7d32"></div> {% trans "Lunch" %}
+            </div>
           </div>
         </div>
       </div>
-      <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
-        <!-- View Toggle Tabs -->
-        <div class="filtered-view-tabs">
-          <button type="button" class="view-tab-btn active" id="tabBtnSch" onclick="switchFilteredTab('sch')">
-            <span class="material-symbols-outlined" style="font-size: 1.05rem;">school</span>
-            <span>{% trans "Scholarships" %} ({{ total_scholarships }})</span>
-          </button>
-          <button type="button" class="view-tab-btn" id="tabBtnApps" onclick="switchFilteredTab('apps')">
-            <span class="material-symbols-outlined" style="font-size: 1.05rem;">group</span>
-            <span>{% trans "Student Applicants" %} ({{ total_applications }})</span>
-          </button>
-        </div>
-      </div>
     </div>
 
-    <!-- Tab 1: Scholarships Table -->
-    <div id="tabContentScholarships">
-      {% if filtered_scholarships %}
-      <div class="table-responsive-wrapper">
-        <table class="dtable modern-filtered-table">
+    <!-- Upcoming Deadlines Table -->
+    <div class="tables-grid" style="grid-template-columns: 1fr;">
+      <div class="tcard">
+        <div class="tcard-head">
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span class="material-symbols-outlined" style="color: #f43f5e; font-size: 1.35rem;">notification_important</span>
+            <span class="tcard-title">{% trans "Upcoming Deadlines" %}</span>
+          </div>
+          <a href="{% url 'admin_dashboard' %}" class="tcard-link">{% trans "Manage in Admin Console" %} →</a>
+        </div>
+        {% if deadline_soon %}
+        <table class="dtable">
           <thead>
             <tr>
-              <th style="width: 50px;">#</th>
-              <th>{% trans "Scholarship Title" %}</th>
+              <th>{% trans "Scholarship" %}</th>
               <th>{% trans "Category" %}</th>
-              <th>{% trans "Amount / Semester" %}</th>
-              <th>{% trans "Quota & Applicants" %}</th>
-              <th>{% trans "Status" %}</th>
-              <th>{% trans "Application Period" %}</th>
-              <th style="text-align: right;">{% trans "Action" %}</th>
+              <th>{% trans "Amount" %}</th>
+              <th>{% trans "Deadline" %}</th>
+              <th>{% trans "Applications" %}</th>
             </tr>
           </thead>
           <tbody>
-            {% for s in filtered_scholarships %}
+            {% for s in deadline_soon %}
             <tr>
-              <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter }}</td>
               <td>
-                <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank" title="{% trans 'View details' %}">
-                  {{ s.title }}
+                <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank">
+                  <strong>{{ s.title }}</strong>
                 </a>
               </td>
               <td>
                 {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
               </td>
-              <td>
-                <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
-              </td>
-              <td>
-                <span style="font-weight: 600; color: #334155;">{{ s.applications.count }}</span>
-                <span style="color: #94a3b8;">/ {{ s.capacity }}</span>
-              </td>
-              <td>
-                {% if s.status == 'active' %}<span class="badge badge-open">{% trans "Active" %}</span>
-                {% elif s.status == 'closed' %}<span class="badge badge-closed">{% trans "Closed" %}</span>
-                {% else %}<span class="badge badge-draft">{% trans "Draft" %}</span>{% endif %}
-              </td>
-              <td>
-                <span style="font-size: 0.8rem; color: #475569;">
-                  {{ s.start_date|date:"j M Y" }} – {{ s.end_date|date:"j M Y" }}
-                </span>
-              </td>
-              <td style="text-align: right;">
-                <a href="{% url 'scholarship_detail' s.pk %}" class="btn-table-view" target="_blank">
-                  <span>{% trans "View" %}</span>
-                  <span class="material-symbols-outlined" style="font-size: 0.95rem;">arrow_outward</span>
-                </a>
-              </td>
+              <td>฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</td>
+              <td class="urgent">{{ s.end_date|date:"j M y" }}</td>
+              <td>{{ s.applications.count }} {% trans "applicant(s)" %}</td>
             </tr>
             {% endfor %}
           </tbody>
         </table>
+        {% else %}
+        <div class="empty">{% trans "No open scholarships nearing deadline." %}</div>
+        {% endif %}
       </div>
-      {% else %}
-      <div class="empty-state-box">
-        <span class="material-symbols-outlined empty-icon">search_off</span>
-        <div class="empty-title">{% trans "No scholarships found" %}</div>
-        <p class="empty-desc">{% trans "There are no scholarships matching the selected semester, month, or year filter." %}</p>
-        <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all" class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
-          <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
-          {% trans "Clear Filter & View All" %}
-        </a>
-      </div>
-      {% endif %}
     </div>
+  </div>
 
-    <!-- Tab 2: Student Applicants Table (WITH STUDENT NAMES) -->
-    <div id="tabContentApplicants" style="display: none;">
-      {% if filtered_applications %}
-      <div class="table-responsive-wrapper">
-        <table class="dtable modern-filtered-table">
-          <thead>
-            <tr>
-              <th style="width: 50px;">#</th>
-              <th style="width: 120px;">{% trans "Student ID" %}</th>
-              <th>{% trans "Student Name" %}</th>
-              <th>{% trans "Faculty & Major" %}</th>
-              <th style="text-align: center; width: 80px;">GPAX</th>
-              <th>{% trans "Applied Scholarship" %}</th>
-              <th style="width: 120px;">{% trans "Submitted Date" %}</th>
-              <th style="text-align: center; width: 110px;">{% trans "Status" %}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for app in filtered_applications %}
-            <tr>
-              <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter }}</td>
-              <td><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
-              <td><strong style="color: #1e293b;">{{ app.student.full_name }}</strong></td>
-              <td>
-                <span style="color: #334155; font-size: 0.85rem;">{{ app.student.get_faculty_display }}</span>
-                {% if app.student.major %}<div style="color: #94a3b8; font-size: 0.76rem;">{{ app.student.major }}</div>{% endif %}
-              </td>
-              <td style="text-align: center; font-weight: 700; color: #0263b8;">{{ app.student.gpax|floatformat:2 }}</td>
-              <td>
-                <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="sch-title-link" target="_blank" title="{% trans 'View scholarship' %}">
-                  {{ app.scholarship.title }}
-                </a>
-              </td>
-              <td style="font-size: 0.8rem; color: #475569;">{{ app.submitted_at|date:"j M Y" }}</td>
-              <td style="text-align: center;">
-                {% include 'components/app_status_indicator.html' with status=app.status %}
-              </td>
-            </tr>
+  <!-- TAB 2: Scholarships & Applicants Records -->
+  <div id="mainTabRecords" style="{% if active_tab != 'records' %}display: none;{% endif %}">
+    <!-- Filtered Data Section: Scholarships & Student Applicants -->
+    <div class="filtered-sch-card" id="filteredScholarshipsSection">
+      <div class="filtered-sch-head">
+        <div class="filtered-sch-title-group">
+          <span class="material-symbols-outlined title-icon">analytics</span>
+          <div>
+            <h2 class="filtered-sch-title">
+              {% if has_active_filter %}
+              {% trans "Data Matching Current Filter" %}
+              {% else %}
+              {% trans "All Scholarship & Applicant Records" %}
+              {% endif %}
+            </h2>
+            <div style="font-size: 0.8rem; color: #64748b; margin-top: 2px;">
+              {% trans "Detailed records included in the current analytics period" %}
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;">
+          <!-- View Toggle Sub-Tabs -->
+          <div class="filtered-view-tabs">
+            <button type="button" class="view-tab-btn {% if active_subtab != 'apps' %}active{% endif %}" id="tabBtnSch" onclick="switchFilteredTab('sch')">
+              <span class="material-symbols-outlined" style="font-size: 1.05rem;">school</span>
+              <span>{% trans "Scholarships" %} ({{ total_scholarships }})</span>
+            </button>
+            <button type="button" class="view-tab-btn {% if active_subtab == 'apps' %}active{% endif %}" id="tabBtnApps" onclick="switchFilteredTab('apps')">
+              <span class="material-symbols-outlined" style="font-size: 1.05rem;">group</span>
+              <span>{% trans "Student Applicants" %} ({{ total_applications }})</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sub-Tab 1: Scholarships Table -->
+      <div id="tabContentScholarships" style="{% if active_subtab == 'apps' %}display: none;{% endif %}">
+        {% if filtered_scholarships %}
+        <div class="table-responsive-wrapper">
+          <table class="dtable modern-filtered-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">#</th>
+                <th>{% trans "Scholarship Title" %}</th>
+                <th>{% trans "Category" %}</th>
+                <th>{% trans "Amount / Semester" %}</th>
+                <th>{% trans "Quota & Applicants" %}</th>
+                <th>{% trans "Status" %}</th>
+                <th>{% trans "Application Period" %}</th>
+                <th style="text-align: right;">{% trans "Action" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for s in filtered_scholarships %}
+              <tr>
+                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_scholarships.start_index }}</td>
+                <td>
+                  <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank" title="{% trans 'View details' %}">
+                    {{ s.title }}
+                  </a>
+                </td>
+                <td>
+                  {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
+                </td>
+                <td>
+                  <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
+                </td>
+                <td>
+                  <span style="font-weight: 600; color: #334155;">{{ s.applications.count }}</span>
+                  <span style="color: #94a3b8;">/ {{ s.capacity }}</span>
+                </td>
+                <td>
+                  {% if s.status == 'active' %}<span class="badge badge-open">{% trans "Active" %}</span>
+                  {% elif s.status == 'closed' %}<span class="badge badge-closed">{% trans "Closed" %}</span>
+                  {% else %}<span class="badge badge-draft">{% trans "Draft" %}</span>{% endif %}
+                </td>
+                <td>
+                  <span style="font-size: 0.8rem; color: #475569;">
+                    {{ s.start_date|date:"j M Y" }} – {{ s.end_date|date:"j M Y" }}
+                  </span>
+                </td>
+                <td style="text-align: right;">
+                  <a href="{% url 'scholarship_detail' s.pk %}" class="btn-table-view" target="_blank">
+                    <span>{% trans "View" %}</span>
+                    <span class="material-symbols-outlined" style="font-size: 0.95rem;">arrow_outward</span>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        {% if filtered_scholarships.has_other_pages %}
+        <div class="dash-pagination-wrap">
+          <div class="dash-pagination-info">
+            {% trans "Showing" %} <strong>{{ filtered_scholarships.start_index }}</strong>–<strong>{{ filtered_scholarships.end_index }}</strong> {% trans "of" %} <strong>{{ total_scholarships }}</strong> {% trans "scholarships" %}
+          </div>
+          <div class="dash-pagination-nav">
+            {% if filtered_scholarships.has_previous %}
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ filtered_scholarships.previous_page_number }}&page_app={{ filtered_applications.number }}" class="dash-page-btn" title="{% trans 'Previous' %}">
+              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
+              <span>{% trans "Previous" %}</span>
+            </a>
+            {% else %}
+            <span class="dash-page-btn disabled">
+              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
+              <span>{% trans "Previous" %}</span>
+            </span>
+            {% endif %}
+
+            {% for p in filtered_scholarships.paginator.page_range %}
+              {% if p == filtered_scholarships.number %}
+                <span class="dash-page-num active">{{ p }}</span>
+              {% elif p >= filtered_scholarships.number|add:"-2" and p <= filtered_scholarships.number|add:"2" %}
+                <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ p }}&page_app={{ filtered_applications.number }}" class="dash-page-num">{{ p }}</a>
+              {% endif %}
             {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      {% else %}
-      <div class="empty-state-box">
-        <span class="material-symbols-outlined empty-icon">person_search</span>
-        <div class="empty-title">{% trans "No student applications found" %}</div>
-        <p class="empty-desc">{% trans "There are no student applicants for the scholarships matching the selected filter." %}</p>
-        <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all" class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
-          <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
-          {% trans "Clear Filter & View All" %}
-        </a>
-      </div>
-      {% endif %}
-    </div>
-  </div>
 
-  <!-- Charts -->
-  <div class="charts-grid">
-
-    <!-- Bar Chart: Applications by Category -->
-    <div class="chart-card">
-      <div class="chart-head">
-        <div>
-          <div class="chart-title">{% trans "Applications by Status" %}</div>
-          <div class="chart-sub">{% trans "Overall breakdown of application stages" %}</div>
-        </div>
-      </div>
-      <div class="chart-body">
-        <canvas id="barChart" height="200"></canvas>
-      </div>
-    </div>
-
-    <!-- Donut Chart: Scholarship Categories -->
-    <div class="chart-card">
-      <div class="chart-head">
-        <div>
-          <div class="chart-title">{% trans "Scholarship Distribution" %}</div>
-          <div class="chart-sub">{% trans "Categorized by scholarship type" %}</div>
-        </div>
-      </div>
-      <div class="chart-body" style="display:flex;flex-direction:column;align-items:center;">
-        <canvas id="donutChart" height="220" style="max-width:220px;"></canvas>
-        <div class="chart-legend" style="justify-content:center;margin-top:1rem;">
-          <div class="legend-item">
-            <div class="legend-dot" style="background:#1565c0"></div> {% trans "General" %}
-          </div>
-          <div class="legend-item">
-            <div class="legend-dot" style="background:#f57c00"></div> {% trans "Exchange" %}
-          </div>
-          <div class="legend-item">
-            <div class="legend-dot" style="background:#7b1fa2"></div> {% trans "Fee Waiver" %}
-          </div>
-          <div class="legend-item">
-            <div class="legend-dot" style="background:#2e7d32"></div> {% trans "Lunch" %}
+            {% if filtered_scholarships.has_next %}
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ filtered_scholarships.next_page_number }}&page_app={{ filtered_applications.number }}" class="dash-page-btn" title="{% trans 'Next' %}">
+              <span>{% trans "Next" %}</span>
+              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
+            </a>
+            {% else %}
+            <span class="dash-page-btn disabled">
+              <span>{% trans "Next" %}</span>
+              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
+            </span>
+            {% endif %}
           </div>
         </div>
-      </div>
-    </div>
+        {% endif %}
 
-  </div>
-
-  <!-- Upcoming Deadlines Table -->
-  <div class="tables-grid" style="grid-template-columns: 1fr;">
-    <div class="tcard">
-      <div class="tcard-head">
-        <div style="display: flex; align-items: center; gap: 0.5rem;">
-          <span class="material-symbols-outlined" style="color: #f43f5e; font-size: 1.35rem;">notification_important</span>
-          <span class="tcard-title">{% trans "Upcoming Deadlines" %}</span>
+        {% else %}
+        <div class="empty-state-box">
+          <span class="material-symbols-outlined empty-icon">search_off</span>
+          <div class="empty-title">{% trans "No scholarships found" %}</div>
+          <p class="empty-desc">{% trans "There are no scholarships matching the selected semester, month, or year filter." %}</p>
+          <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab=records&subtab=sch" class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
+            {% trans "Clear Filter & View All" %}
+          </a>
         </div>
-        <a href="{% url 'admin_dashboard' %}" class="tcard-link">{% trans "Manage in Admin Console" %} →</a>
+        {% endif %}
       </div>
-      {% if deadline_soon %}
-      <table class="dtable">
-        <thead>
-          <tr>
-            <th>{% trans "Scholarship" %}</th>
-            <th>{% trans "Category" %}</th>
-            <th>{% trans "Amount" %}</th>
-            <th>{% trans "Deadline" %}</th>
-            <th>{% trans "Applications" %}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for s in deadline_soon %}
-          <tr>
-            <td>
-              <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank">
-                <strong>{{ s.title }}</strong>
-              </a>
-            </td>
-            <td>
-              {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
-            </td>
-            <td>฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</td>
-            <td class="urgent">{{ s.end_date|date:"j M y" }}</td>
-            <td>{{ s.applications.count }} {% trans "applicant(s)" %}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-      {% else %}
-      <div class="empty">{% trans "No open scholarships nearing deadline." %}</div>
-      {% endif %}
+
+      <!-- Sub-Tab 2: Student Applicants Table (WITH STUDENT NAMES) -->
+      <div id="tabContentApplicants" style="{% if active_subtab != 'apps' %}display: none;{% endif %}">
+        {% if filtered_applications %}
+        <div class="table-responsive-wrapper">
+          <table class="dtable modern-filtered-table">
+            <thead>
+              <tr>
+                <th style="width: 50px;">#</th>
+                <th style="width: 120px;">{% trans "Student ID" %}</th>
+                <th>{% trans "Student Name" %}</th>
+                <th>{% trans "Faculty & Major" %}</th>
+                <th style="text-align: center; width: 80px;">GPAX</th>
+                <th>{% trans "Applied Scholarship" %}</th>
+                <th style="width: 120px;">{% trans "Submitted Date" %}</th>
+                <th style="text-align: center; width: 110px;">{% trans "Status" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for app in filtered_applications %}
+              <tr>
+                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_applications.start_index }}</td>
+                <td><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
+                <td><strong style="color: #1e293b;">{{ app.student.full_name }}</strong></td>
+                <td>
+                  <span style="color: #334155; font-size: 0.85rem;">{{ app.student.get_faculty_display }}</span>
+                  {% if app.student.major %}<div style="color: #94a3b8; font-size: 0.76rem;">{{ app.student.major }}</div>{% endif %}
+                </td>
+                <td style="text-align: center; font-weight: 700; color: #0263b8;">{{ app.student.gpax|floatformat:2 }}</td>
+                <td>
+                  <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="sch-title-link" target="_blank" title="{% trans 'View scholarship' %}">
+                    {{ app.scholarship.title }}
+                  </a>
+                </td>
+                <td style="font-size: 0.8rem; color: #475569;">{{ app.submitted_at|date:"j M Y" }}</td>
+                <td style="text-align: center;">
+                  {% include 'components/app_status_indicator.html' with status=app.status %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+        {% if filtered_applications.has_other_pages %}
+        <div class="dash-pagination-wrap">
+          <div class="dash-pagination-info">
+            {% trans "Showing" %} <strong>{{ filtered_applications.start_index }}</strong>–<strong>{{ filtered_applications.end_index }}</strong> {% trans "of" %} <strong>{{ total_applications }}</strong> {% trans "applicants" %}
+          </div>
+          <div class="dash-pagination-nav">
+            {% if filtered_applications.has_previous %}
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ filtered_applications.previous_page_number }}" class="dash-page-btn" title="{% trans 'Previous' %}">
+              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
+              <span>{% trans "Previous" %}</span>
+            </a>
+            {% else %}
+            <span class="dash-page-btn disabled">
+              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
+              <span>{% trans "Previous" %}</span>
+            </span>
+            {% endif %}
+
+            {% for p in filtered_applications.paginator.page_range %}
+              {% if p == filtered_applications.number %}
+                <span class="dash-page-num active">{{ p }}</span>
+              {% elif p >= filtered_applications.number|add:"-2" and p <= filtered_applications.number|add:"2" %}
+                <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ p }}" class="dash-page-num">{{ p }}</a>
+              {% endif %}
+            {% endfor %}
+
+            {% if filtered_applications.has_next %}
+            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ filtered_applications.next_page_number }}" class="dash-page-btn" title="{% trans 'Next' %}">
+              <span>{% trans "Next" %}</span>
+              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
+            </a>
+            {% else %}
+            <span class="dash-page-btn disabled">
+              <span>{% trans "Next" %}</span>
+              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
+            </span>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% else %}
+        <div class="empty-state-box">
+          <span class="material-symbols-outlined empty-icon">person_search</span>
+          <div class="empty-title">{% trans "No student applications found" %}</div>
+          <p class="empty-desc">{% trans "There are no student applicants for the scholarships matching the selected filter." %}</p>
+          <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab=records&subtab=apps" class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
+            <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
+            {% trans "Clear Filter & View All" %}
+          </a>
+        </div>
+        {% endif %}
+      </div>
     </div>
   </div>
 </div>
@@ -1397,7 +1625,7 @@
 
   // ===== Bar Chart =====
   const barCtx = document.getElementById('barChart').getContext('2d');
-  new Chart(barCtx, {
+  window.barChartInstance = new Chart(barCtx, {
     type: 'bar',
     data: {
       labels: ['Pending', 'In Progress', 'Approve', 'Complete', 'Reject', 'Cancel'],
@@ -1463,7 +1691,7 @@
   const donutData = [generalCount, exchangeCount, waiverCount, lunchCount];
   const donutTotal = donutData.reduce((a, b) => a + b, 0);
 
-  new Chart(donutCtx, {
+  window.donutChartInstance = new Chart(donutCtx, {
     type: 'doughnut',
     data: {
       labels: ['ทุนทั่วไป', 'แลกเปลี่ยน', 'ยกเว้นค่าธรรมเนียม', 'อาหารกลางวัน'],
@@ -1513,6 +1741,39 @@
     }]
   });
 
+  // ===== Main Dashboard Tabs Switching =====
+  function switchMainTab(tab) {
+    const tabOverview = document.getElementById('mainTabOverview');
+    const tabRecords = document.getElementById('mainTabRecords');
+    const btnOverview = document.getElementById('mainTabBtnOverview');
+    const btnRecords = document.getElementById('mainTabBtnRecords');
+    const activeTabInput = document.getElementById('activeTabInput');
+
+    if (activeTabInput) activeTabInput.value = tab;
+
+    if (tab === 'overview') {
+      if (tabOverview) tabOverview.style.display = 'block';
+      if (tabRecords) tabRecords.style.display = 'none';
+      if (btnOverview) btnOverview.classList.add('active');
+      if (btnRecords) btnRecords.classList.remove('active');
+      setTimeout(function() {
+        if (window.barChartInstance) window.barChartInstance.resize();
+        if (window.donutChartInstance) window.donutChartInstance.resize();
+      }, 50);
+    } else {
+      if (tabOverview) tabOverview.style.display = 'none';
+      if (tabRecords) tabRecords.style.display = 'block';
+      if (btnOverview) btnOverview.classList.remove('active');
+      if (btnRecords) btnRecords.classList.add('active');
+    }
+
+    try {
+      const url = new URL(window.location);
+      url.searchParams.set('tab', tab);
+      window.history.replaceState({}, '', url);
+    } catch (e) {}
+  }
+
   // ===== PDF Export Dropdown Logic =====
   function togglePdfDropdown(event) {
     if (event) event.stopPropagation();
@@ -1531,12 +1792,15 @@
     }
   });
 
-  // ===== Tab Switching: Scholarships vs Student Applicants =====
+  // ===== Sub-Tab Switching: Scholarships vs Student Applicants =====
   function switchFilteredTab(tab) {
     const tabSch = document.getElementById('tabContentScholarships');
     const tabApps = document.getElementById('tabContentApplicants');
     const btnSch = document.getElementById('tabBtnSch');
     const btnApps = document.getElementById('tabBtnApps');
+    const activeSubtabInput = document.getElementById('activeSubtabInput');
+
+    if (activeSubtabInput) activeSubtabInput.value = tab;
 
     if (tab === 'sch') {
       if (tabSch) tabSch.style.display = 'block';
@@ -1549,6 +1813,12 @@
       if (btnSch) btnSch.classList.remove('active');
       if (btnApps) btnApps.classList.add('active');
     }
+
+    try {
+      const url = new URL(window.location);
+      url.searchParams.set('subtab', tab);
+      window.history.replaceState({}, '', url);
+    } catch (e) {}
   }
 </script>
 

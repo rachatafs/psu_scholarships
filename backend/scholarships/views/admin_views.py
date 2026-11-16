@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from django.utils import timezone
 from django.db.models import Sum, Q, Count
 from django.utils.translation import gettext as _
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application
 
 def admin_dashboard(request):
@@ -280,6 +281,39 @@ def _get_dashboard_analytics_data(request):
 @staff_member_required
 def scholarship_dashboard(request):
     data = _get_dashboard_analytics_data(request)
+
+    active_tab = request.GET.get('tab', 'overview')
+    active_subtab = request.GET.get('subtab', 'sch')
+    if 'page_sch' in request.GET or 'page_app' in request.GET:
+        active_tab = 'records'
+        if 'page_app' in request.GET:
+            active_subtab = 'apps'
+
+    # Paginate Scholarships (10 per page)
+    sch_paginator = Paginator(data['filtered_scholarships'], 10)
+    page_sch = request.GET.get('page_sch', 1)
+    try:
+        sch_page = sch_paginator.page(page_sch)
+    except PageNotAnInteger:
+        sch_page = sch_paginator.page(1)
+    except EmptyPage:
+        sch_page = sch_paginator.page(sch_paginator.num_pages)
+
+    # Paginate Applications (15 per page)
+    app_paginator = Paginator(data['filtered_applications'], 15)
+    page_app = request.GET.get('page_app', 1)
+    try:
+        app_page = app_paginator.page(page_app)
+    except PageNotAnInteger:
+        app_page = app_paginator.page(1)
+    except EmptyPage:
+        app_page = app_paginator.page(app_paginator.num_pages)
+
+    data['filtered_scholarships'] = sch_page
+    data['filtered_applications'] = app_page
+    data['active_tab'] = active_tab
+    data['active_subtab'] = active_subtab
+
     return render(request, 'scholarship_dashboard.html', data)
 
 @staff_member_required
