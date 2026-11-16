@@ -46,8 +46,8 @@ def admin_dashboard(request):
 
     filtered_apps_count = apps.count()
 
-    # Paginate applications (15 per page)
-    paginator = Paginator(apps, 15)
+    # Paginate applications (10 per page)
+    paginator = Paginator(apps, 10)
     page_num = request.GET.get('page', 1)
     try:
         app_page = paginator.page(page_num)
@@ -332,8 +332,8 @@ def scholarship_dashboard(request):
     except EmptyPage:
         sch_page = sch_paginator.page(sch_paginator.num_pages)
 
-    # Paginate Applications (15 per page)
-    app_paginator = Paginator(data['filtered_applications'], 15)
+    # Paginate Applications (10 per page)
+    app_paginator = Paginator(data['filtered_applications'], 10)
     page_app = request.GET.get('page_app', 1)
     try:
         app_page = app_paginator.page(page_app)
