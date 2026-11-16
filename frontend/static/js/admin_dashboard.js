@@ -109,21 +109,93 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // 1. Applications Live Filtering
+    // Helper function to calculate pagination buttons (Compact 1 2 3 4 ... format)
+    function getAdminPageNumbers(currentPage, totalPages) {
+        if (totalPages <= 5) {
+            const res = [];
+            for (let i = 1; i <= totalPages; i++) res.push(i);
+            return res;
+        }
+        if (currentPage <= 3) {
+            return [1, 2, 3, 4, '…', totalPages];
+        } else if (currentPage >= totalPages - 2) {
+            return [1, '…', totalPages - 3, totalPages - 2, totalPages - 1, totalPages];
+        } else {
+            return [1, '…', currentPage - 1, currentPage, currentPage + 1, '…', totalPages];
+        }
+    }
+
+    function renderAdminPaginationNav(container, currentPage, totalPages, onPageChange) {
+        if (!container) return;
+        if (totalPages <= 1) {
+            container.innerHTML = '';
+            return;
+        }
+
+        const prevSvg = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>`;
+        const nextSvg = `<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>`;
+
+        let html = '';
+
+        // Previous Button
+        if (currentPage > 1) {
+            html += `<button type="button" class="dash-page-btn" data-page="${currentPage - 1}" title="Previous">${prevSvg}<span>Previous</span></button>`;
+        } else {
+            html += `<span class="dash-page-btn disabled">${prevSvg}<span>Previous</span></span>`;
+        }
+
+        // Page Numbers
+        const pages = getAdminPageNumbers(currentPage, totalPages);
+        pages.forEach(p => {
+            if (p === '…') {
+                html += `<span class="dash-page-ellipsis">…</span>`;
+            } else if (p === currentPage) {
+                html += `<span class="dash-page-num active">${p}</span>`;
+            } else {
+                html += `<button type="button" class="dash-page-num" data-page="${p}">${p}</button>`;
+            }
+        });
+
+        // Next Button
+        if (currentPage < totalPages) {
+            html += `<button type="button" class="dash-page-btn" data-page="${currentPage + 1}" title="Next"><span>Next</span>${nextSvg}</button>`;
+        } else {
+            html += `<span class="dash-page-btn disabled"><span>Next</span>${nextSvg}</span>`;
+        }
+
+        container.innerHTML = html;
+
+        container.querySelectorAll('button[data-page]').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetPage = parseInt(this.getAttribute('data-page'), 10);
+                if (!isNaN(targetPage)) {
+                    onPageChange(targetPage);
+                }
+            });
+        });
+    }
+
+    // 1. Applications Live Filtering & Pagination
     const searchInput = document.getElementById('adminSearchInput');
     const statusSelect = document.getElementById('adminStatusSelect');
     const categoryTabs = document.querySelectorAll('#categoryTabs .admin-cat-tab');
     const hiddenCategory = document.getElementById('hiddenCategory');
     const appRows = document.querySelectorAll('.app-row');
-    const visibleCountEl = document.getElementById('visibleCount');
+    const adminResultCounter = document.getElementById('adminResultCounter');
     const noMatchesRow = document.getElementById('noMatchesRow');
+    const appsPaginationWrap = document.getElementById('appsPaginationWrap');
+    const appsPaginationInfo = document.getElementById('appsPaginationInfo');
+    const appsPaginationNav = document.getElementById('appsPaginationNav');
 
-    let currentCategory = hiddenCategory ? (hiddenCategory.value || 'all') : 'all';
+    let currentCategory = 'all';
+    let appCurrentPage = 1;
+    const appPageSize = 10;
 
     function applyAppFilters() {
         const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
         const selectedStatus = statusSelect ? statusSelect.value : 'all';
-        let matchCount = 0;
+        const matchedRows = [];
 
         appRows.forEach(row => {
             const name = row.getAttribute('data-name') || '';
@@ -132,57 +204,99 @@ document.addEventListener('DOMContentLoaded', function () {
             const rowCat = row.getAttribute('data-category') || '';
             const rowStatus = row.getAttribute('data-status') || '';
 
-            const matchesQuery = !query || 
-                name.includes(query) || 
-                studentId.includes(query) || 
-                schTitle.includes(query);
-
+            const matchesQuery = !query || name.includes(query) || studentId.includes(query) || schTitle.includes(query);
             const matchesCat = (currentCategory === 'all') || (rowCat === currentCategory);
             const matchesStatus = (selectedStatus === 'all') || (rowStatus === selectedStatus);
 
             if (matchesQuery && matchesCat && matchesStatus) {
-                row.style.display = '';
-                matchCount++;
+                matchedRows.push(row);
             } else {
                 row.style.display = 'none';
             }
         });
 
-        if (visibleCountEl) visibleCountEl.textContent = matchCount;
-        if (noMatchesRow) noMatchesRow.style.display = (matchCount === 0 && appRows.length > 0) ? '' : 'none';
+        const totalMatches = matchedRows.length;
+        const totalPages = Math.ceil(totalMatches / appPageSize) || 1;
+        if (appCurrentPage > totalPages) appCurrentPage = 1;
+
+        const startIndex = (appCurrentPage - 1) * appPageSize;
+        const endIndex = Math.min(startIndex + appPageSize, totalMatches);
+
+        matchedRows.forEach((row, idx) => {
+            if (idx >= startIndex && idx < endIndex) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        if (totalMatches === 0) {
+            if (noMatchesRow) noMatchesRow.style.display = '';
+            if (adminResultCounter) adminResultCounter.innerHTML = `Showing <strong>0</strong> of <strong>0</strong> items`;
+            if (appsPaginationInfo) appsPaginationInfo.innerHTML = `Showing <strong>0</strong> of <strong>0</strong> applications`;
+            if (appsPaginationWrap) appsPaginationWrap.style.display = 'none';
+        } else {
+            if (noMatchesRow) noMatchesRow.style.display = 'none';
+            const infoText = `Showing <strong>${startIndex + 1}–${endIndex}</strong> of <strong>${totalMatches}</strong> applications`;
+            const counterText = `Showing <strong>${startIndex + 1}–${endIndex}</strong> of <strong>${totalMatches}</strong> items`;
+            if (adminResultCounter) adminResultCounter.innerHTML = counterText;
+            if (appsPaginationInfo) appsPaginationInfo.innerHTML = infoText;
+            if (appsPaginationWrap) appsPaginationWrap.style.display = (totalPages > 1) ? 'flex' : 'none';
+        }
+
+        renderAdminPaginationNav(appsPaginationNav, appCurrentPage, totalPages, function(newPage) {
+            appCurrentPage = newPage;
+            applyAppFilters();
+            const tableEl = document.getElementById('applicationsTable');
+            if (tableEl) tableEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
     }
 
-    if (searchInput) searchInput.addEventListener('input', applyAppFilters);
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            appCurrentPage = 1;
+            applyAppFilters();
+        });
+    }
+
     if (statusSelect) {
         statusSelect.addEventListener('change', function() {
-            const form = document.getElementById('adminFilterForm');
-            if (form) form.submit();
+            appCurrentPage = 1;
+            applyAppFilters();
         });
     }
 
     categoryTabs.forEach(tab => {
         tab.addEventListener('click', function (e) {
-            const targetUrl = this.getAttribute('href');
-            if (targetUrl && targetUrl !== '#') {
-                window.location.href = targetUrl;
-            }
+            e.preventDefault();
+            categoryTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            currentCategory = this.getAttribute('data-category') || 'all';
+            if (hiddenCategory) hiddenCategory.value = currentCategory;
+            appCurrentPage = 1;
+            applyAppFilters();
         });
     });
 
     applyAppFilters();
 
-    // 2. Scholarships Table Live Filtering
+    // 2. Scholarships Table Live Filtering & Pagination
     const schSearchInput = document.getElementById('schSearchInput');
     const schRows = document.querySelectorAll('.sch-row');
     const schVisibleCount = document.getElementById('schVisibleCount');
     const noSchMatchesRow = document.getElementById('noSchMatchesRow');
     const schCategoryTabs = document.querySelectorAll('#schCategoryTabs .admin-cat-tab');
+    const schPaginationWrap = document.getElementById('schPaginationWrap');
+    const schPaginationInfo = document.getElementById('schPaginationInfo');
+    const schPaginationNav = document.getElementById('schPaginationNav');
 
     let currentSchCategory = 'all';
+    let schCurrentPage = 1;
+    const schPageSize = 10;
 
     function applySchFilters() {
         const query = schSearchInput ? schSearchInput.value.trim().toLowerCase() : '';
-        let matchCount = 0;
+        const matchedRows = [];
 
         schRows.forEach(row => {
             const title = row.getAttribute('data-sch-title') || '';
@@ -193,19 +307,53 @@ document.addEventListener('DOMContentLoaded', function () {
             const matchesCat = (currentSchCategory === 'all') || (cat === currentSchCategory);
 
             if (matchesQuery && matchesCat) {
-                row.style.display = '';
-                matchCount++;
+                matchedRows.push(row);
             } else {
                 row.style.display = 'none';
             }
         });
 
-        if (schVisibleCount) schVisibleCount.textContent = matchCount;
-        if (noSchMatchesRow) noSchMatchesRow.style.display = (matchCount === 0 && schRows.length > 0) ? '' : 'none';
+        const totalMatches = matchedRows.length;
+        const totalPages = Math.ceil(totalMatches / schPageSize) || 1;
+        if (schCurrentPage > totalPages) schCurrentPage = 1;
+
+        const startIndex = (schCurrentPage - 1) * schPageSize;
+        const endIndex = Math.min(startIndex + schPageSize, totalMatches);
+
+        matchedRows.forEach((row, idx) => {
+            if (idx >= startIndex && idx < endIndex) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        if (totalMatches === 0) {
+            if (noSchMatchesRow) noSchMatchesRow.style.display = '';
+            if (schVisibleCount) schVisibleCount.innerHTML = `Showing <strong>0</strong> of <strong>0</strong> scholarships`;
+            if (schPaginationInfo) schPaginationInfo.innerHTML = `Showing <strong>0</strong> of <strong>0</strong> scholarships`;
+            if (schPaginationWrap) schPaginationWrap.style.display = 'none';
+        } else {
+            if (noSchMatchesRow) noSchMatchesRow.style.display = 'none';
+            const infoText = `Showing <strong>${startIndex + 1}–${endIndex}</strong> of <strong>${totalMatches}</strong> scholarships`;
+            if (schVisibleCount) schVisibleCount.innerHTML = infoText;
+            if (schPaginationInfo) schPaginationInfo.innerHTML = infoText;
+            if (schPaginationWrap) schPaginationWrap.style.display = (totalPages > 1) ? 'flex' : 'none';
+        }
+
+        renderAdminPaginationNav(schPaginationNav, schCurrentPage, totalPages, function(newPage) {
+            schCurrentPage = newPage;
+            applySchFilters();
+            const tableEl = document.getElementById('scholarshipsTable');
+            if (tableEl) tableEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
     }
 
     if (schSearchInput) {
-        schSearchInput.addEventListener('input', applySchFilters);
+        schSearchInput.addEventListener('input', function() {
+            schCurrentPage = 1;
+            applySchFilters();
+        });
     }
 
     if (schCategoryTabs) {
@@ -215,19 +363,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 schCategoryTabs.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
                 currentSchCategory = this.getAttribute('data-sch-cat-filter') || 'all';
+                schCurrentPage = 1;
                 applySchFilters();
             });
         });
     }
 
-    // 2.5 History Table Live Filtering
+    applySchFilters();
+
+    // 2.5 History Table Live Filtering & Pagination
     const histSearchInput = document.getElementById('histSearchInput');
     const histRows = document.querySelectorAll('.hist-row');
     const noHistMatchesRow = document.getElementById('noHistMatchesRow');
+    const histPaginationWrap = document.getElementById('histPaginationWrap');
+    const histPaginationInfo = document.getElementById('histPaginationInfo');
+    const histPaginationNav = document.getElementById('histPaginationNav');
+
+    let histCurrentPage = 1;
+    const histPageSize = 10;
 
     function applyHistFilters() {
         const query = histSearchInput ? histSearchInput.value.trim().toLowerCase() : '';
-        let matchCount = 0;
+        const matchedRows = [];
 
         histRows.forEach(row => {
             const title = row.getAttribute('data-hist-title') || '';
@@ -237,19 +394,54 @@ document.addEventListener('DOMContentLoaded', function () {
             const matchesQuery = !query || title.includes(query) || cat.includes(query) || desc.includes(query);
 
             if (matchesQuery) {
-                row.style.display = '';
-                matchCount++;
+                matchedRows.push(row);
             } else {
                 row.style.display = 'none';
             }
         });
 
-        if (noHistMatchesRow) noHistMatchesRow.style.display = (matchCount === 0 && histRows.length > 0) ? '' : 'none';
+        const totalMatches = matchedRows.length;
+        const totalPages = Math.ceil(totalMatches / histPageSize) || 1;
+        if (histCurrentPage > totalPages) histCurrentPage = 1;
+
+        const startIndex = (histCurrentPage - 1) * histPageSize;
+        const endIndex = Math.min(startIndex + histPageSize, totalMatches);
+
+        matchedRows.forEach((row, idx) => {
+            if (idx >= startIndex && idx < endIndex) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        if (totalMatches === 0) {
+            if (noHistMatchesRow) noHistMatchesRow.style.display = '';
+            if (histPaginationInfo) histPaginationInfo.innerHTML = `Showing <strong>0</strong> of <strong>0</strong> scholarships`;
+            if (histPaginationWrap) histPaginationWrap.style.display = 'none';
+        } else {
+            if (noHistMatchesRow) noHistMatchesRow.style.display = 'none';
+            const infoText = `Showing <strong>${startIndex + 1}–${endIndex}</strong> of <strong>${totalMatches}</strong> scholarships`;
+            if (histPaginationInfo) histPaginationInfo.innerHTML = infoText;
+            if (histPaginationWrap) histPaginationWrap.style.display = (totalPages > 1) ? 'flex' : 'none';
+        }
+
+        renderAdminPaginationNav(histPaginationNav, histCurrentPage, totalPages, function(newPage) {
+            histCurrentPage = newPage;
+            applyHistFilters();
+            const tableEl = document.getElementById('historyTable');
+            if (tableEl) tableEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
     }
 
     if (histSearchInput) {
-        histSearchInput.addEventListener('input', applyHistFilters);
+        histSearchInput.addEventListener('input', function() {
+            histCurrentPage = 1;
+            applyHistFilters();
+        });
     }
+
+    applyHistFilters();
 
     // ===== MODAL EMAIL & STATUS CUSTOMIZATION LOGIC =====
     const statusModal = document.getElementById('statusEmailModal');

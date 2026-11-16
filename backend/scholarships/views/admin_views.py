@@ -31,53 +31,12 @@ def admin_dashboard(request):
     if not (request.user.is_staff or request.user.is_superuser):
         return redirect('home')
 
-    q = request.GET.get('q', '').strip()
-    category = request.GET.get('category', 'all')
-    status_filter = request.GET.get('status', 'all')
-
     apps = Application.objects.select_related(
         'student', 'scholarship', 'student__user'
     ).prefetch_related('documents').order_by('-submitted_at')
 
-    if q:
-        apps = apps.filter(
-            Q(student__full_name__icontains=q) |
-            Q(student__student_id__icontains=q) |
-            Q(scholarship__title__icontains=q) |
-            Q(student__major__icontains=q)
-        )
-
-    if category and category != 'all':
-        apps = apps.filter(scholarship__category=category)
-
-    if status_filter and status_filter != 'all':
-        apps = apps.filter(status=status_filter)
-
-    filtered_apps_count = apps.count()
-
-    # Paginate applications (10 per page)
-    paginator = Paginator(apps, 10)
-    page_num = request.GET.get('page', 1)
-    try:
-        app_page = paginator.page(page_num)
-    except PageNotAnInteger:
-        app_page = paginator.page(1)
-    except EmptyPage:
-        app_page = paginator.page(paginator.num_pages)
-
-    app_page_range = _get_standard_page_range(app_page.number, paginator.num_pages)
-
-    extra_query_parts = []
-    if q:
-        extra_query_parts.append(f"q={q}")
-    if category and category != 'all':
-        extra_query_parts.append(f"category={category}")
-    if status_filter and status_filter != 'all':
-        extra_query_parts.append(f"status={status_filter}")
-    extra_query = "&".join(extra_query_parts)
-
     total_scholarships = Scholarship.objects.count()
-    total_applications = Application.objects.count()
+    total_applications = apps.count()
     pending_applications = Application.objects.filter(status='pending').count()
     in_progress_applications = Application.objects.filter(status__in=['in_progress', 'interview']).count()
     approved_applications = Application.objects.filter(status='approved').count()
@@ -86,7 +45,7 @@ def admin_dashboard(request):
     cancelled_applications = Application.objects.filter(status='cancelled').count()
 
     cat_counts = {
-        'all': Application.objects.count(),
+        'all': total_applications,
         'general': Application.objects.filter(scholarship__category='general').count(),
         'exchange': Application.objects.filter(scholarship__category='exchange').count(),
         'fee_waiver': Application.objects.filter(scholarship__category='fee_waiver').count(),
@@ -108,51 +67,6 @@ def admin_dashboard(request):
         'lunch': len([s for s in active_scholarships if s.category == 'lunch']),
     }
 
-    # 2. Paginate Active Scholarships (10 per page)
-    sch_paginator = Paginator(active_scholarships, 10)
-    page_sch_num = request.GET.get('page_sch', 1)
-    try:
-        sch_page = sch_paginator.page(page_sch_num)
-    except PageNotAnInteger:
-        sch_page = sch_paginator.page(1)
-    except EmptyPage:
-        sch_page = sch_paginator.page(sch_paginator.num_pages)
-    sch_page_range = _get_standard_page_range(sch_page.number, sch_paginator.num_pages)
-
-    # 3. Paginate Expired Scholarships (10 per page)
-    hist_paginator = Paginator(expired_scholarships, 10)
-    page_hist_num = request.GET.get('page_hist', 1)
-    try:
-        hist_page = hist_paginator.page(page_hist_num)
-    except PageNotAnInteger:
-        hist_page = hist_paginator.page(1)
-    except EmptyPage:
-        hist_page = hist_paginator.page(hist_paginator.num_pages)
-    hist_page_range = _get_standard_page_range(hist_page.number, hist_paginator.num_pages)
-
-    # Active admin tab logic based on requested pagination parameter
-    if 'page_sch' in request.GET:
-        active_admin_tab = 'scholarships'
-    elif 'page_hist' in request.GET:
-        active_admin_tab = 'history'
-    else:
-        active_admin_tab = 'apps'
-
-    # Build extra_query parts across tabs
-    sch_extra_query_parts = []
-    if page_num and str(page_num) != '1':
-        sch_extra_query_parts.append(f"page={page_num}")
-    if page_hist_num and str(page_hist_num) != '1':
-        sch_extra_query_parts.append(f"page_hist={page_hist_num}")
-    sch_extra_query = "&".join(sch_extra_query_parts)
-
-    hist_extra_query_parts = []
-    if page_num and str(page_num) != '1':
-        hist_extra_query_parts.append(f"page={page_num}")
-    if page_sch_num and str(page_sch_num) != '1':
-        hist_extra_query_parts.append(f"page_sch={page_sch_num}")
-    hist_extra_query = "&".join(hist_extra_query_parts)
-
     context = {
         'total_scholarships': total_scholarships,
         'total_applications': total_applications,
@@ -162,21 +76,11 @@ def admin_dashboard(request):
         'rejected_applications': rejected_applications,
         'completed_applications': completed_applications,
         'cancelled_applications': cancelled_applications,
-        'applications': app_page,
-        'filtered_apps_count': filtered_apps_count,
-        'app_page_range': app_page_range,
-        'extra_query': extra_query,
-        'scholarships_list': sch_page,
-        'sch_page_range': sch_page_range,
-        'sch_extra_query': sch_extra_query,
-        'expired_scholarships': hist_page,
+        'applications': apps,
+        'filtered_apps_count': total_applications,
+        'scholarships_list': active_scholarships,
+        'expired_scholarships': expired_scholarships,
         'expired_scholarships_count': len(expired_scholarships),
-        'hist_page_range': hist_page_range,
-        'hist_extra_query': hist_extra_query,
-        'active_admin_tab': active_admin_tab,
-        'q': q,
-        'selected_category': category,
-        'selected_status': status_filter,
         'cat_counts': cat_counts,
         'sch_cat_counts': sch_cat_counts,
     }
