@@ -1490,51 +1490,7 @@
           </table>
         </div>
 
-        {% if filtered_scholarships.has_other_pages %}
-        <div class="dash-pagination-wrap">
-          <div class="dash-pagination-info">
-            {% trans "Showing" %} <strong>{{ filtered_scholarships.start_index }}</strong>–<strong>{{ filtered_scholarships.end_index }}</strong> {% trans "of" %} <strong>{{ total_scholarships }}</strong> {% trans "scholarships" %}
-          </div>
-          <div class="dash-pagination-nav">
-            {% if filtered_scholarships.has_previous %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ filtered_scholarships.previous_page_number }}&page_app={{ filtered_applications.number }}"
-              class="dash-page-btn" title="{% trans 'Previous' %}">
-              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
-              <span>{% trans "Previous" %}</span>
-            </a>
-            {% else %}
-            <span class="dash-page-btn disabled">
-              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
-              <span>{% trans "Previous" %}</span>
-            </span>
-            {% endif %}
-
-            {% for p in sch_page_range %}
-            {% if p == filtered_scholarships.number %}
-            <span class="dash-page-num active">{{ p }}</span>
-            {% elif p == filtered_scholarships.paginator.ELLIPSIS %}
-            <span class="dash-page-ellipsis">…</span>
-            {% else %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ p }}&page_app={{ filtered_applications.number }}"
-              class="dash-page-num">{{ p }}</a>
-            {% endif %}
-            {% endfor %}
-
-            {% if filtered_scholarships.has_next %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=sch&page_sch={{ filtered_scholarships.next_page_number }}&page_app={{ filtered_applications.number }}"
-              class="dash-page-btn" title="{% trans 'Next' %}">
-              <span>{% trans "Next" %}</span>
-              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
-            </a>
-            {% else %}
-            <span class="dash-page-btn disabled">
-              <span>{% trans "Next" %}</span>
-              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
-            </span>
-            {% endif %}
-          </div>
-        </div>
-        {% endif %}
+        {% include 'components/pagination.html' with page_obj=filtered_scholarships page_range=sch_page_range page_param='page_sch' total_count=total_scholarships item_name=_('scholarships') extra_query=sch_extra_query %}
 
         {% else %}
         <div class="empty-state-box">
@@ -1596,51 +1552,7 @@
           </table>
         </div>
 
-        {% if filtered_applications.has_other_pages %}
-        <div class="dash-pagination-wrap">
-          <div class="dash-pagination-info">
-            {% trans "Showing" %} <strong>{{ filtered_applications.start_index }}</strong>–<strong>{{ filtered_applications.end_index }}</strong> {% trans "of" %} <strong>{{ total_applications }}</strong> {% trans "applicants" %}
-          </div>
-          <div class="dash-pagination-nav">
-            {% if filtered_applications.has_previous %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ filtered_applications.previous_page_number }}"
-              class="dash-page-btn" title="{% trans 'Previous' %}">
-              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
-              <span>{% trans "Previous" %}</span>
-            </a>
-            {% else %}
-            <span class="dash-page-btn disabled">
-              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
-              <span>{% trans "Previous" %}</span>
-            </span>
-            {% endif %}
-
-            {% for p in app_page_range %}
-            {% if p == filtered_applications.number %}
-            <span class="dash-page-num active">{{ p }}</span>
-            {% elif p == filtered_applications.paginator.ELLIPSIS %}
-            <span class="dash-page-ellipsis">…</span>
-            {% else %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ p }}"
-              class="dash-page-num">{{ p }}</a>
-            {% endif %}
-            {% endfor %}
-
-            {% if filtered_applications.has_next %}
-            <a href="?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps&page_sch={{ filtered_scholarships.number }}&page_app={{ filtered_applications.next_page_number }}"
-              class="dash-page-btn" title="{% trans 'Next' %}">
-              <span>{% trans "Next" %}</span>
-              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
-            </a>
-            {% else %}
-            <span class="dash-page-btn disabled">
-              <span>{% trans "Next" %}</span>
-              <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
-            </span>
-            {% endif %}
-          </div>
-        </div>
-        {% endif %}
+        {% include 'components/pagination.html' with page_obj=filtered_applications page_range=app_page_range page_param='page_app' total_count=total_applications item_name=_('applicants') extra_query=app_extra_query %}
 
         {% else %}
         <div class="empty-state-box">

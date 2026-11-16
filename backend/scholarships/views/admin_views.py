@@ -319,10 +319,16 @@ def scholarship_dashboard(request):
     sch_page_range = _get_chunked_page_range(sch_page.number, sch_paginator.num_pages, 5)
     app_page_range = _get_chunked_page_range(app_page.number, app_paginator.num_pages, 5)
 
+    filter_term = data.get('filter_term', '')
+    filter_month = data.get('filter_month', '')
+    filter_year = data.get('filter_year', '')
+
     data['filtered_scholarships'] = sch_page
     data['filtered_applications'] = app_page
     data['sch_page_range'] = sch_page_range
     data['app_page_range'] = app_page_range
+    data['sch_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}&tab=records&subtab=sch&page_app={app_page.number}"
+    data['app_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}&tab=records&subtab=apps&page_sch={sch_page.number}"
     data['active_tab'] = active_tab
     data['active_subtab'] = active_subtab
 

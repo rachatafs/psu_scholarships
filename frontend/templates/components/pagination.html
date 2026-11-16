@@ -1,0 +1,43 @@
+{% load i18n %}
+{% if page_obj.has_other_pages %}
+<div class="dash-pagination-wrap">
+  <div class="dash-pagination-info">
+    {% trans "Showing" %} <strong>{{ page_obj.start_index }}</strong>–<strong>{{ page_obj.end_index }}</strong> {% trans "of" %} <strong>{{ total_count|default:page_obj.paginator.count }}</strong> {% if item_name %}{{ item_name }}{% else %}{% trans "items" %}{% endif %}
+  </div>
+  <div class="dash-pagination-nav">
+    {% if page_obj.has_previous %}
+    <a href="?{{ page_param|default:'page' }}={{ page_obj.previous_page_number }}{% if extra_query %}&{{ extra_query }}{% endif %}" class="dash-page-btn" title="{% trans 'Previous' %}">
+      <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
+      <span>{% trans "Previous" %}</span>
+    </a>
+    {% else %}
+    <span class="dash-page-btn disabled">
+      <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_left</span>
+      <span>{% trans "Previous" %}</span>
+    </span>
+    {% endif %}
+
+    {% for p in page_range|default:page_obj.paginator.page_range %}
+      {% if p == page_obj.number %}
+        <span class="dash-page-num active">{{ p }}</span>
+      {% elif p == page_obj.paginator.ELLIPSIS or p == '…' %}
+        <span class="dash-page-ellipsis">…</span>
+      {% else %}
+        <a href="?{{ page_param|default:'page' }}={{ p }}{% if extra_query %}&{{ extra_query }}{% endif %}" class="dash-page-num">{{ p }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+    <a href="?{{ page_param|default:'page' }}={{ page_obj.next_page_number }}{% if extra_query %}&{{ extra_query }}{% endif %}" class="dash-page-btn" title="{% trans 'Next' %}">
+      <span>{% trans "Next" %}</span>
+      <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
+    </a>
+    {% else %}
+    <span class="dash-page-btn disabled">
+      <span>{% trans "Next" %}</span>
+      <span class="material-symbols-outlined" style="font-size: 1.1rem;">chevron_right</span>
+    </span>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
