@@ -1490,7 +1490,7 @@
           </table>
         </div>
 
-        {% include 'components/pagination.html' with page_obj=filtered_scholarships page_range=sch_page_range page_param='page_sch' total_count=total_scholarships item_name=_('scholarships') extra_query=sch_extra_query %}
+        {% include 'components/pagination.html' with page_obj=filtered_scholarships page_range=sch_page_range page_param='page_sch' total_count=total_scholarships item_name=_('scholarships') extra_query=sch_extra_query anchor='tabContentScholarships' %}
 
         {% else %}
         <div class="empty-state-box">
@@ -1552,7 +1552,7 @@
           </table>
         </div>
 
-        {% include 'components/pagination.html' with page_obj=filtered_applications page_range=app_page_range page_param='page_app' total_count=total_applications item_name=_('applicants') extra_query=app_extra_query %}
+        {% include 'components/pagination.html' with page_obj=filtered_applications page_range=app_page_range page_param='page_app' total_count=total_applications item_name=_('applicants') extra_query=app_extra_query anchor='tabContentApplicants' %}
 
         {% else %}
         <div class="empty-state-box">

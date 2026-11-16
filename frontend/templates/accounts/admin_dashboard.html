@@ -326,7 +326,7 @@
                     </tbody>
                 </table>
             </div>
-            {% include 'components/pagination.html' with page_obj=applications page_range=app_page_range total_count=filtered_apps_count item_name=_('applications') extra_query=extra_query %}
+            {% include 'components/pagination.html' with page_obj=applications page_range=app_page_range total_count=filtered_apps_count item_name=_('applications') extra_query=extra_query anchor='applicationsTable' %}
         </div>
 
         <!-- ================= SECTION 2: SCHOLARSHIPS MANAGEMENT ================= -->

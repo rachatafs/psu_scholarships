@@ -107,6 +107,30 @@
   .dash-page-btn svg {
     flex-shrink: 0;
   }
+  @media (max-width: 640px) {
+    .dash-pagination-wrap {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 0.75rem !important;
+      text-align: center !important;
+    }
+    .dash-pagination-nav {
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 0.25rem !important;
+    }
+    .dash-page-num {
+      width: 34px !important;
+      height: 34px !important;
+      min-width: 34px !important;
+      font-size: 0.82rem !important;
+    }
+    .dash-page-btn {
+      height: 34px !important;
+      padding: 0 0.75rem !important;
+      font-size: 0.82rem !important;
+    }
+  }
 </style>
 <div class="dash-pagination-wrap">
   <div class="dash-pagination-info">
@@ -114,7 +138,7 @@
   </div>
   <div class="dash-pagination-nav">
     {% if page_obj.has_previous %}
-    <a href="?{{ page_param|default:'page' }}={{ page_obj.previous_page_number }}{% if extra_query %}&{{ extra_query }}{% endif %}" class="dash-page-btn" title="{% trans 'Previous' %}">
+    <a href="?{{ page_param|default:'page' }}={{ page_obj.previous_page_number }}{% if extra_query %}&{{ extra_query }}{% endif %}{% if anchor %}#{{ anchor }}{% endif %}" class="dash-page-btn" title="{% trans 'Previous' %}">
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
       <span>{% trans "Previous" %}</span>
     </a>
@@ -131,12 +155,12 @@
       {% elif p == page_obj.paginator.ELLIPSIS or p == '…' %}
         <span class="dash-page-ellipsis">…</span>
       {% else %}
-        <a href="?{{ page_param|default:'page' }}={{ p }}{% if extra_query %}&{{ extra_query }}{% endif %}" class="dash-page-num">{{ p }}</a>
+        <a href="?{{ page_param|default:'page' }}={{ p }}{% if extra_query %}&{{ extra_query }}{% endif %}{% if anchor %}#{{ anchor }}{% endif %}" class="dash-page-num">{{ p }}</a>
       {% endif %}
     {% endfor %}
 
     {% if page_obj.has_next %}
-    <a href="?{{ page_param|default:'page' }}={{ page_obj.next_page_number }}{% if extra_query %}&{{ extra_query }}{% endif %}" class="dash-page-btn" title="{% trans 'Next' %}">
+    <a href="?{{ page_param|default:'page' }}={{ page_obj.next_page_number }}{% if extra_query %}&{{ extra_query }}{% endif %}{% if anchor %}#{{ anchor }}{% endif %}" class="dash-page-btn" title="{% trans 'Next' %}">
       <span>{% trans "Next" %}</span>
       <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
     </a>

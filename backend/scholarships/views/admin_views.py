@@ -9,12 +9,20 @@ from django.utils.translation import gettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application
 
-def _get_chunked_page_range(current_page, num_pages, chunk_size=5):
-    if num_pages <= chunk_size:
+def _get_standard_page_range(current_page, num_pages):
+    """
+    Standard website pagination (elided):
+    - Shows all pages if num_pages <= 7.
+    - If num_pages > 7, shows 1, sliding window around current page, and last page with ellipsis '…'.
+    """
+    if num_pages <= 7:
         return list(range(1, num_pages + 1))
-    start_page = ((current_page - 1) // chunk_size) * chunk_size + 1
-    end_page = min(start_page + chunk_size - 1, num_pages)
-    return list(range(start_page, end_page + 1))
+    if current_page <= 4:
+        return [1, 2, 3, 4, 5, '…', num_pages]
+    elif current_page >= num_pages - 3:
+        return [1, '…', num_pages - 4, num_pages - 3, num_pages - 2, num_pages - 1, num_pages]
+    else:
+        return [1, '…', current_page - 1, current_page, current_page + 1, '…', num_pages]
 
 def admin_dashboard(request):
     if not request.user.is_authenticated:
@@ -56,7 +64,7 @@ def admin_dashboard(request):
     except EmptyPage:
         app_page = paginator.page(paginator.num_pages)
 
-    app_page_range = _get_chunked_page_range(app_page.number, paginator.num_pages, 5)
+    app_page_range = _get_standard_page_range(app_page.number, paginator.num_pages)
 
     extra_query_parts = []
     if q:
@@ -342,8 +350,8 @@ def scholarship_dashboard(request):
     except EmptyPage:
         app_page = app_paginator.page(app_paginator.num_pages)
 
-    sch_page_range = _get_chunked_page_range(sch_page.number, sch_paginator.num_pages, 5)
-    app_page_range = _get_chunked_page_range(app_page.number, app_paginator.num_pages, 5)
+    sch_page_range = _get_standard_page_range(sch_page.number, sch_paginator.num_pages)
+    app_page_range = _get_standard_page_range(app_page.number, app_paginator.num_pages)
 
     filter_term = data.get('filter_term', '')
     filter_month = data.get('filter_month', '')
