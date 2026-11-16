@@ -11,16 +11,17 @@ from ..models import Scholarship, Application
 
 def _get_standard_page_range(current_page, num_pages):
     """
-    Standard website pagination (elided):
-    - Shows all pages if num_pages <= 7.
-    - If num_pages > 7, shows 1, sliding window around current page, and last page with ellipsis '…'.
+    Standard compact pagination (elided):
+    - Shows all pages if num_pages <= 5.
+    - If num_pages > 5, shows 1 2 3 4 … [last] near start,
+      and sliding window with ellipsis in middle/end.
     """
-    if num_pages <= 7:
+    if num_pages <= 5:
         return list(range(1, num_pages + 1))
-    if current_page <= 4:
-        return [1, 2, 3, 4, 5, '…', num_pages]
-    elif current_page >= num_pages - 3:
-        return [1, '…', num_pages - 4, num_pages - 3, num_pages - 2, num_pages - 1, num_pages]
+    if current_page <= 3:
+        return [1, 2, 3, 4, '…', num_pages]
+    elif current_page >= num_pages - 2:
+        return [1, '…', num_pages - 3, num_pages - 2, num_pages - 1, num_pages]
     else:
         return [1, '…', current_page - 1, current_page, current_page + 1, '…', num_pages]
 
