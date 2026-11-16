@@ -1451,8 +1451,7 @@
             <tbody>
               {% for s in filtered_scholarships %}
               <tr>
-                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_scholarships.start_index
-                  }}</td>
+                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_scholarships.start_index }}</td>
                 <td>
                   <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank"
                     title="{% trans 'View details' %}">
@@ -1494,8 +1493,7 @@
         {% if filtered_scholarships.has_other_pages %}
         <div class="dash-pagination-wrap">
           <div class="dash-pagination-info">
-            {% trans "Showing" %} <strong>{{ filtered_scholarships.start_index }}</strong>–<strong>{{
-              filtered_scholarships.end_index }}</strong> {% trans "of" %} <strong>{{ total_scholarships }}</strong> {% trans "scholarships" %}
+            {% trans "Showing" %} <strong>{{ filtered_scholarships.start_index }}</strong>–<strong>{{ filtered_scholarships.end_index }}</strong> {% trans "of" %} <strong>{{ total_scholarships }}</strong> {% trans "scholarships" %}
           </div>
           <div class="dash-pagination-nav">
             {% if filtered_scholarships.has_previous %}
@@ -1572,8 +1570,7 @@
             <tbody>
               {% for app in filtered_applications %}
               <tr>
-                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_applications.start_index
-                  }}</td>
+                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_applications.start_index }}</td>
                 <td><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
                 <td><strong style="color: #1e293b;">{{ app.student.full_name }}</strong></td>
                 <td>
@@ -1602,8 +1599,7 @@
         {% if filtered_applications.has_other_pages %}
         <div class="dash-pagination-wrap">
           <div class="dash-pagination-info">
-            {% trans "Showing" %} <strong>{{ filtered_applications.start_index }}</strong>–<strong>{{
-              filtered_applications.end_index }}</strong> {% trans "of" %} <strong>{{ total_applications }}</strong> {% trans "applicants" %}
+            {% trans "Showing" %} <strong>{{ filtered_applications.start_index }}</strong>–<strong>{{ filtered_applications.end_index }}</strong> {% trans "of" %} <strong>{{ total_applications }}</strong> {% trans "applicants" %}
           </div>
           <div class="dash-pagination-nav">
             {% if filtered_applications.has_previous %}
