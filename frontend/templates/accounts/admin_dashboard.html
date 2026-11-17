@@ -110,6 +110,29 @@
     color: #94a3b8 !important;
   }
 
+  .td-sch-cell .sch-meta-box {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: flex-start;
+  }
+  .td-sch-cell .sch-card-title-link {
+    font-weight: 700;
+    color: #002b49;
+    text-decoration: none;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    transition: color 0.15s ease;
+  }
+  .td-sch-cell .sch-card-title-link:hover {
+    color: #0263b8;
+    text-decoration: underline;
+  }
+  .td-sch-cell .sch-card-badge-row {
+    display: inline-flex;
+    align-items: center;
+  }
+
   /* Mobile Responsive Pagination (compact on <= 640px) */
   @media (max-width: 640px) {
     .dash-pagination-wrap {
@@ -225,6 +248,56 @@
       line-height: 1.45 !important;
       color: #002b49 !important;
       white-space: normal !important;
+    }
+    .modern-data-table td.td-sch-cell {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.45rem !important;
+      padding: 0.75rem 0.85rem !important;
+      background: #f8fafc !important;
+      border: 1px solid #e2e8f0 !important;
+      border-radius: 12px !important;
+      margin: 0.25rem 0 !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+      text-align: left !important;
+    }
+    .modern-data-table td.td-sch-cell::before {
+      font-size: 0.7rem !important;
+      font-weight: 700 !important;
+      color: #0263b8 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.5px !important;
+      margin-right: 0 !important;
+      margin-bottom: 0.1rem !important;
+    }
+    .modern-data-table td.td-sch-cell .sch-meta-box {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.45rem !important;
+      width: 100% !important;
+      text-align: left !important;
+    }
+    .modern-data-table td.td-sch-cell .sch-card-title-link {
+      font-size: 0.96rem !important;
+      font-weight: 700 !important;
+      color: #002b49 !important;
+      line-height: 1.45 !important;
+      text-align: left !important;
+      text-decoration: none !important;
+      display: block !important;
+      word-break: break-word !important;
+    }
+    .modern-data-table td.td-sch-cell .sch-card-title-link:hover {
+      color: #0263b8 !important;
+      text-decoration: underline !important;
+    }
+    .modern-data-table td.td-sch-cell .sch-card-badge-row {
+      display: flex !important;
+      align-items: center !important;
+      margin-top: 0.15rem !important;
     }
     .modern-data-table td.td-action-cell {
       display: block !important;
@@ -476,9 +549,15 @@
                                 <span class="id-badge">{{ app.student.student_id }}</span>
                             </td>
 
-                            <td data-label="{% trans 'Scholarship' %}">
-                                <div class="table-sch-title">{{ app.scholarship.title }}</div>
-                                {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
+                            <td data-label="{% trans 'Scholarship' %}" class="td-sch-cell">
+                                <div class="sch-meta-box">
+                                    <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="sch-card-title-link" target="_blank" title="{% trans 'View scholarship details' %}">
+                                        {{ app.scholarship.title }}
+                                    </a>
+                                    <div class="sch-card-badge-row">
+                                        {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
+                                    </div>
+                                </div>
                             </td>
                             <td data-label="{% trans 'Submitted Date' %}">{{ app.submitted_at|date:"d M Y" }}</td>
                             <td data-label="{% trans 'Documents' %}">
