@@ -1034,33 +1034,160 @@
   /* Responsive layout for mobile / tablet */
   @media (max-width: 768px) {
     .dash-filter-card {
-      padding: 1.1rem 1.2rem;
+      padding: 1rem !important;
+      border-radius: 14px !important;
     }
-    .filter-row-top {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0.75rem;
+    .filter-dropdowns-row {
+      flex-direction: column !important;
+      gap: 0.75rem !important;
+      align-items: stretch !important;
     }
-    .filter-search-box {
-      min-width: 100%;
+    .filter-select-item {
+      width: 100% !important;
+      min-width: 100% !important;
     }
-    .filter-actions-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      width: 100%;
-      gap: 0.5rem;
+    .filter-search-actions-row {
+      flex-direction: column !important;
+      align-items: stretch !important;
+      gap: 0.75rem !important;
     }
-    .filter-actions-group .export-pdf-dropdown-wrap {
-      grid-column: span 2;
-      width: 100%;
+    .filter-search-wrap {
+      width: 100% !important;
+      min-width: 100% !important;
     }
-    .filter-actions-group .btn-dash-action,
-    .filter-actions-group .export-pdf-dropdown-wrap .btn-dash-pdf {
-      width: 100%;
+    .filter-actions-wrap {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      width: 100% !important;
+      gap: 0.5rem !important;
     }
-    .filter-row-bottom {
-      grid-template-columns: 1fr !important;
-      gap: 0.75rem;
+    .filter-actions-wrap .btn-dash-action,
+    .filter-actions-wrap .export-pdf-dropdown-wrap {
+      flex: 1 1 calc(50% - 0.25rem) !important;
+    }
+    .filter-actions-wrap .export-pdf-dropdown-wrap .btn-dash-pdf {
+      width: 100% !important;
+    }
+    .filtered-sch-card {
+      padding: 1rem 0.85rem !important;
+      border-radius: 14px !important;
+    }
+    .filtered-sch-head {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.85rem !important;
+    }
+    .filtered-view-tabs {
+      width: 100% !important;
+      display: flex !important;
+    }
+    .filtered-view-tabs .view-tab-btn {
+      flex: 1 !important;
+      justify-content: center !important;
+      font-size: 0.78rem !important;
+      padding: 0.55rem 0.5rem !important;
+    }
+
+    /* Mobile Card Layout for Scholarship and Applicant Tables */
+    .table-responsive-wrapper {
+      overflow-x: visible !important;
+    }
+    .modern-filtered-table {
+      display: block !important;
+      width: 100% !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+    }
+    .modern-filtered-table thead {
+      display: none !important;
+    }
+    .modern-filtered-table tbody {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.85rem !important;
+      width: 100% !important;
+    }
+    .modern-filtered-table tbody tr {
+      display: flex !important;
+      flex-direction: column !important;
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      border-radius: 14px !important;
+      padding: 1.1rem !important;
+      box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04) !important;
+      gap: 0.65rem !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .modern-filtered-table tbody tr:hover td {
+      background: transparent !important;
+    }
+    .modern-filtered-table td {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 !important;
+      border: none !important;
+      font-size: 0.88rem !important;
+      text-align: right !important;
+      white-space: normal !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .modern-filtered-table td::before {
+      content: attr(data-label);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      flex-shrink: 0;
+      text-align: left;
+      margin-right: 0.75rem;
+    }
+    .modern-filtered-table td.td-title-cell {
+      display: block !important;
+      text-align: left !important;
+      padding-bottom: 0.55rem !important;
+      border-bottom: 1px solid #f1f5f9 !important;
+      margin-bottom: 0.2rem !important;
+    }
+    .modern-filtered-table td.td-title-cell::before {
+      display: none !important;
+    }
+    .modern-filtered-table td.td-title-cell .sch-title-link {
+      font-size: 0.98rem !important;
+      font-weight: 700 !important;
+      line-height: 1.45 !important;
+      display: block !important;
+      color: #002b49 !important;
+    }
+    .modern-filtered-table td.td-index-cell {
+      display: none !important;
+    }
+    .modern-filtered-table td.td-action-cell {
+      display: block !important;
+      padding-top: 0.65rem !important;
+      border-top: 1px solid #f1f5f9 !important;
+      margin-top: 0.2rem !important;
+      width: 100% !important;
+    }
+    .modern-filtered-table td.td-action-cell::before {
+      display: none !important;
+    }
+    .modern-filtered-table .table-actions-cell {
+      width: 100% !important;
+      display: flex !important;
+      gap: 0.5rem !important;
+    }
+    .modern-filtered-table .table-actions-cell .btn-table-applicants,
+    .modern-filtered-table .table-actions-cell .btn-table-view {
+      flex: 1 !important;
+      height: 38px !important;
+      justify-content: center !important;
+      font-size: 0.86rem !important;
+      border-radius: 8px !important;
     }
   }
 
@@ -1630,34 +1757,36 @@
           <a href="{% url 'admin_dashboard' %}" class="tcard-link">{% trans "Manage in Admin Console" %} →</a>
         </div>
         {% if deadline_soon %}
-        <table class="dtable">
-          <thead>
-            <tr>
-              <th>{% trans "Scholarship" %}</th>
-              <th>{% trans "Category" %}</th>
-              <th>{% trans "Amount" %}</th>
-              <th>{% trans "Deadline" %}</th>
-              <th>{% trans "Applications" %}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for s in deadline_soon %}
-            <tr>
-              <td>
-                <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank">
-                  <strong>{{ s.title }}</strong>
-                </a>
-              </td>
-              <td>
-                {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
-              </td>
-              <td>฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</td>
-              <td class="urgent">{{ s.end_date|date:"j M y" }}</td>
-              <td>{{ s.applications.count }} {% trans "applicant(s)" %}</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+        <div class="table-responsive-wrapper">
+          <table class="dtable">
+            <thead>
+              <tr>
+                <th>{% trans "Scholarship" %}</th>
+                <th>{% trans "Category" %}</th>
+                <th>{% trans "Amount" %}</th>
+                <th>{% trans "Deadline" %}</th>
+                <th>{% trans "Applications" %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for s in deadline_soon %}
+              <tr>
+                <td>
+                  <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank">
+                    <strong>{{ s.title }}</strong>
+                  </a>
+                </td>
+                <td>
+                  {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
+                </td>
+                <td>฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</td>
+                <td class="urgent">{{ s.end_date|date:"j M y" }}</td>
+                <td>{{ s.applications.count }} {% trans "applicant(s)" %}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
         {% else %}
         <div class="empty">{% trans "No open scholarships nearing deadline." %}</div>
         {% endif %}
@@ -1722,36 +1851,36 @@
             <tbody>
               {% for s in filtered_scholarships %}
               <tr>
-                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_scholarships.start_index }}</td>
-                <td>
+                <td class="td-index-cell" style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_scholarships.start_index }}</td>
+                <td class="td-title-cell" data-label="{% trans 'Scholarship' %}">
                   <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank"
                     title="{% trans 'View details' %}">
                     {{ s.title }}
                   </a>
                 </td>
-                <td>
+                <td data-label="{% trans 'Category' %}">
                   {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
                 </td>
-                <td>
+                <td data-label="{% trans 'Amount / Semester' %}">
                   <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
                 </td>
-                <td>
+                <td data-label="{% trans 'Quota & Applicants' %}">
                   <a href="?scholarship={{ s.pk }}&tab=records&subtab=apps" class="applicant-count-link" title="{% trans 'View student applicants for this scholarship' %}">
                     <span style="font-weight: 700; color: #0263b8; text-decoration: underline;">{{ s.applications.count }}</span>
                     <span style="color: #94a3b8;">/ {{ s.capacity }}</span>
                   </a>
                 </td>
-                <td>
+                <td data-label="{% trans 'Status' %}">
                   {% if s.status == 'active' %}<span class="badge badge-open">{% trans "Active" %}</span>
                   {% elif s.status == 'closed' %}<span class="badge badge-closed">{% trans "Closed" %}</span>
                   {% else %}<span class="badge badge-draft">{% trans "Draft" %}</span>{% endif %}
                 </td>
-                <td>
+                <td data-label="{% trans 'Application Period' %}">
                   <span style="font-size: 0.8rem; color: #475569;">
                     {{ s.start_date|date:"j M Y" }} – {{ s.end_date|date:"j M Y" }}
                   </span>
                 </td>
-                <td style="text-align: center; white-space: nowrap;">
+                <td class="td-action-cell" style="text-align: center; white-space: nowrap;">
                   <div class="table-actions-cell">
                     <a href="?scholarship={{ s.pk }}&tab=records&subtab=apps" class="btn-table-applicants" title="{% trans 'View and export student applicants for this scholarship' %}">
                       <span class="material-symbols-outlined btn-act-icon">group</span>
@@ -1830,24 +1959,30 @@
             <tbody>
               {% for app in filtered_applications %}
               <tr>
-                <td style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_applications.start_index }}</td>
-                <td><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
-                <td><strong style="color: #1e293b;">{{ app.student.full_name }}</strong></td>
-                <td>
-                  <span style="color: #334155; font-size: 0.85rem;">{{ app.student.get_faculty_display }}</span>
-                  {% if app.student.major %}<div style="color: #94a3b8; font-size: 0.76rem;">{{ app.student.major }}
-                  </div>{% endif %}
+                <td class="td-index-cell" style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_applications.start_index }}</td>
+                <td data-label="{% trans 'Student ID' %}"><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
+                <td class="td-title-cell" data-label="{% trans 'Student Name' %}">
+                  <strong style="color: #1e293b; font-size: 0.95rem;">{{ app.student.full_name }}</strong>
                 </td>
-                <td style="text-align: center; font-weight: 700; color: #0263b8;">{{ app.student.gpax|floatformat:2 }}
+                <td data-label="{% trans 'Faculty & Major' %}">
+                  <div style="text-align: right;">
+                    <span style="color: #334155; font-size: 0.85rem;">{{ app.student.get_faculty_display }}</span>
+                    {% if app.student.major %}<div style="color: #94a3b8; font-size: 0.76rem;">{{ app.student.major }}</div>{% endif %}
+                  </div>
                 </td>
-                <td>
+                <td data-label="GPAX" style="text-align: right; font-weight: 700; color: #0263b8;">
+                  {{ app.student.gpax|floatformat:2 }}
+                </td>
+                <td data-label="{% trans 'Applied Scholarship' %}">
                   <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="sch-title-link" target="_blank"
                     title="{% trans 'View scholarship' %}">
                     {{ app.scholarship.title }}
                   </a>
                 </td>
-                <td style="font-size: 0.8rem; color: #475569;">{{ app.submitted_at|date:"j M Y" }}</td>
-                <td style="text-align: center;">
+                <td data-label="{% trans 'Submitted Date' %}" style="font-size: 0.8rem; color: #475569;">
+                  {{ app.submitted_at|date:"j M Y" }}
+                </td>
+                <td data-label="{% trans 'Status' %}" style="text-align: right;">
                   {% include 'components/app_status_indicator.html' with status=app.status %}
                 </td>
               </tr>

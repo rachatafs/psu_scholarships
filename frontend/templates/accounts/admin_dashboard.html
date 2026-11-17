@@ -109,6 +109,174 @@
     border-color: #e2e8f0 !important;
     color: #94a3b8 !important;
   }
+
+  /* Mobile Responsive Pagination (compact on <= 640px) */
+  @media (max-width: 640px) {
+    .dash-pagination-wrap {
+      flex-direction: column !important;
+      align-items: center !important;
+      text-align: center !important;
+      gap: 0.75rem !important;
+    }
+    .dash-pagination-nav {
+      display: inline-flex !important;
+      flex-wrap: nowrap !important;
+      gap: 0.25rem !important;
+      justify-content: center !important;
+      max-width: 100% !important;
+      overflow-x: auto !important;
+    }
+    .dash-page-num {
+      width: 32px !important;
+      height: 32px !important;
+      min-width: 32px !important;
+      font-size: 0.8rem !important;
+    }
+    .dash-page-btn {
+      height: 32px !important;
+      width: 32px !important;
+      min-width: 32px !important;
+      padding: 0 !important;
+    }
+    .dash-page-btn span {
+      display: none !important;
+    }
+  }
+
+  /* Responsive Mobile Card Layout for Admin Tables (<= 768px) */
+  @media (max-width: 768px) {
+    .modern-table-responsive {
+      overflow-x: visible !important;
+      border: none !important;
+    }
+    .modern-data-table {
+      min-width: 0 !important;
+      display: block !important;
+      width: 100% !important;
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+    }
+    .modern-data-table thead {
+      display: none !important;
+    }
+    .modern-data-table tbody {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 0.85rem !important;
+      width: 100% !important;
+    }
+    .modern-data-table tbody tr {
+      display: flex !important;
+      flex-direction: column !important;
+      background: #ffffff !important;
+      border: 1.5px solid #e2e8f0 !important;
+      border-radius: 14px !important;
+      padding: 1.1rem !important;
+      box-shadow: 0 2px 8px rgba(0, 43, 73, 0.04) !important;
+      gap: 0.65rem !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .modern-data-table tbody tr:hover td {
+      background: transparent !important;
+    }
+    .modern-data-table td {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 !important;
+      border: none !important;
+      font-size: 0.88rem !important;
+      text-align: right !important;
+      white-space: normal !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .modern-data-table td::before {
+      content: attr(data-label);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      flex-shrink: 0;
+      text-align: left;
+      margin-right: 0.75rem;
+    }
+    .modern-data-table td.td-title-cell {
+      display: block !important;
+      text-align: left !important;
+      padding-bottom: 0.55rem !important;
+      border-bottom: 1px solid #f1f5f9 !important;
+      margin-bottom: 0.2rem !important;
+    }
+    .modern-data-table td.td-title-cell::before {
+      display: none !important;
+    }
+    .modern-data-table td.td-title-cell .table-sch-title {
+      font-size: 1rem !important;
+      font-weight: 700 !important;
+      line-height: 1.45 !important;
+      color: #002b49 !important;
+      white-space: normal !important;
+    }
+    .modern-data-table td.td-action-cell {
+      display: block !important;
+      padding-top: 0.65rem !important;
+      border-top: 1px solid #f1f5f9 !important;
+      margin-top: 0.2rem !important;
+      width: 100% !important;
+    }
+    .modern-data-table td.td-action-cell::before {
+      display: none !important;
+    }
+    .modern-data-table .action-btn-group {
+      width: 100% !important;
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 0.5rem !important;
+    }
+    .modern-data-table .action-btn-group form {
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      margin: 0 !important;
+    }
+    .modern-data-table .action-btn-group .btn-table-action {
+      width: 100% !important;
+      height: 38px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 0.82rem !important;
+      font-weight: 600 !important;
+    }
+    .modern-data-table .action-btn-group .btn-act-notice {
+      grid-column: span 2 !important;
+    }
+    .modern-data-table .sch-actions-cell {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 0.5rem !important;
+      width: 100% !important;
+      justify-content: stretch !important;
+    }
+    .modern-data-table .sch-actions-cell .btn-sch-action,
+    .modern-data-table .sch-actions-cell form {
+      flex: 1 1 calc(50% - 0.25rem) !important;
+      text-align: center !important;
+      margin: 0 !important;
+      height: 38px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-sizing: border-box !important;
+    }
+    .modern-data-table .sch-actions-cell form .btn-sch-action {
+      width: 100% !important;
+      height: 100% !important;
+    }
+  }
 </style>
 <div class="admin-management-page">
     <div class="container-default">
@@ -292,23 +460,23 @@
                             data-student-email="{{ app.student.user.email }}"
                             data-sch-title="{{ app.scholarship.title }}" data-note="{{ app.note|default:'' }}"
                             data-app-id="{{ app.pk }}">
-                            <td>
+                            <td class="td-title-cell" data-label="{% trans 'Applicant' %}">
                                 <div class="font-bold">{{ app.student.full_name }}</div>
                                 <div class="sub-meta-text">
                                     {{ app.student.get_faculty_display|default:app.student.faculty }}
                                     {% if app.student.major %} • {{ app.student.major }}{% endif %}
                                 </div>
                             </td>
-                            <td>
+                            <td data-label="{% trans 'Student ID' %}">
                                 <span class="id-badge">{{ app.student.student_id }}</span>
                             </td>
 
-                            <td>
+                            <td data-label="{% trans 'Scholarship' %}">
                                 <div class="table-sch-title">{{ app.scholarship.title }}</div>
                                 {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
                             </td>
-                            <td>{{ app.submitted_at|date:"d M Y" }}</td>
-                            <td>
+                            <td data-label="{% trans 'Submitted Date' %}">{{ app.submitted_at|date:"d M Y" }}</td>
+                            <td data-label="{% trans 'Documents' %}">
                                 {% if app.documents.all %}
                                 <div style="display: flex; flex-direction: column; gap: 4px;">
                                     {% for doc in app.documents.all %}
@@ -329,10 +497,10 @@
                                 <span style="color: #94a3b8; font-size: 0.85rem;">{% trans "No documents" %}</span>
                                 {% endif %}
                             </td>
-                            <td>
+                            <td data-label="{% trans 'Status' %}">
                                 {% include 'components/app_status_indicator.html' with status=app.status %}
                             </td>
-                            <td style="text-align:center;">
+                            <td class="td-action-cell" style="text-align:center;">
                                 <div class="action-btn-group">
                                     {% if app.status == 'pending' %}
                                     <form method="post" action="{% url 'update_application' app.pk %}">
@@ -523,30 +691,30 @@
                         {% for s in scholarships_list %}
                         <tr class="sch-row" data-sch-title="{{ s.title|lower }}" data-sch-cat="{{ s.category }}"
                             data-sch-desc="{{ s.description|lower }}">
-                            <td>
+                            <td class="td-title-cell" data-label="{% trans 'Scholarship Name' %}">
                                 <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title"
                                     style="text-decoration:none; color:var(--psu-blue-600);">
                                     {{ s.title }}
                                 </a>
                             </td>
-                            <td>
+                            <td data-label="{% trans 'Category' %}">
                                 {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
                             </td>
-                            <td><strong>฿{{ s.amount_per_semester|floatformat:0 }}</strong></td>
+                            <td data-label="{% trans 'Value' %}"><strong>฿{{ s.amount_per_semester|floatformat:0 }}</strong></td>
 
-                            <td style="text-align:center;">
+                            <td data-label="{% trans 'Applicants / Quota' %}" style="text-align:center;">
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                                     <span class="quota-pill">
                                         <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} {% trans "Grants" %}
                                     </span>
                                 </div>
                             </td>
-                            <td>
+                            <td data-label="{% trans 'Deadline' %}">
                                 <span class="{% if s.is_expired %}text-danger font-bold{% endif %}">
                                     {{ s.end_date|date:"d M Y" }}
                                 </span>
                             </td>
-                            <td>
+                            <td data-label="{% trans 'Status' %}">
                                 {% if s.status == 'active' and not s.is_expired %}
                                 <span class="status-pill status-open" style="font-size:0.75rem; padding:2px 8px;">
                                     <span class="dot-live"></span> {% trans "Open" %}
@@ -557,8 +725,8 @@
                                 </span>
                                 {% endif %}
                             </td>
-                            <td style="text-align:center;">
-                                <div style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
+                            <td class="td-action-cell" style="text-align:center;">
+                                <div class="sch-actions-cell" style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
                                     {% if s.apps_count > 0 %}
                                     <a href="?q={{ s.title|urlencode }}#apps" target="_blank"
                                         class="btn-sch-action btn-sch-view" title="{% trans " View Applicants" %}">
@@ -663,36 +831,36 @@
                         {% for s in expired_scholarships %}
                         <tr class="hist-row" data-hist-title="{{ s.title|lower }}" data-hist-cat="{{ s.category }}"
                             data-hist-desc="{{ s.description|lower }}">
-                            <td>
+                            <td class="td-title-cell" data-label="{% trans 'Scholarship Name' %}">
                                 <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title"
                                     style="text-decoration:none; color:var(--psu-blue-600);">
                                     {{ s.title }}
                                 </a>
                             </td>
-                            <td>
+                            <td data-label="{% trans 'Category' %}">
                                 {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
                             </td>
-                            <td><strong>฿{{ s.amount_per_semester|floatformat:0 }}</strong></td>
+                            <td data-label="{% trans 'Value' %}"><strong>฿{{ s.amount_per_semester|floatformat:0 }}</strong></td>
 
-                            <td style="text-align:center;">
+                            <td data-label="{% trans 'Applicants / Quota' %}" style="text-align:center;">
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                                     <span class="quota-pill">
                                         <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} {% trans "Grants" %}
                                     </span>
                                 </div>
                             </td>
-                            <td>
+                            <td data-label="{% trans 'Deadline' %}">
                                 <span class="text-danger font-bold">
                                     {{ s.end_date|date:"d M Y" }}
                                 </span>
                             </td>
-                            <td>
+                            <td data-label="{% trans 'Status' %}">
                                 <span class="status-pill status-closed" style="font-size:0.75rem; padding:2px 8px;">
                                     {% trans "Closed" %}
                                 </span>
                             </td>
-                            <td style="text-align:center;">
-                                <div style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
+                            <td class="td-action-cell" style="text-align:center;">
+                                <div class="sch-actions-cell" style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
                                     {% if s.apps_count > 0 %}
                                     <a href="?q={{ s.title|urlencode }}#apps" target="_blank"
                                         class="btn-sch-action btn-sch-view" title="{% trans " View Applicants" %}">
