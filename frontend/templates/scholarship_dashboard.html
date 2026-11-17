@@ -964,25 +964,62 @@
     transform: translateY(-1px);
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
   }
-  .btn-table-applicants {
+  .table-actions-cell {
     display: inline-flex;
     align-items: center;
-    gap: 0.3rem;
-    padding: 0.35rem 0.75rem;
-    background: #eff6ff;
-    color: #0263b8;
-    border: 1.5px solid #bfdbfe;
+    justify-content: center;
+    gap: 0.45rem;
+    vertical-align: middle;
+  }
+  .btn-table-applicants,
+  .btn-table-view {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    height: 32px;
+    padding: 0 0.8rem;
     border-radius: 8px;
+    font-family: 'Sarabun', sans-serif;
     font-size: 0.82rem;
-    font-weight: 700;
+    font-weight: 600;
+    line-height: 1;
     text-decoration: none;
+    box-sizing: border-box;
     transition: all 0.15s ease;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .btn-table-applicants {
+    background: #0263b8;
+    color: #ffffff !important;
+    border: 1.5px solid #0263b8;
+    box-shadow: 0 1px 3px rgba(2, 99, 184, 0.2);
   }
   .btn-table-applicants:hover {
-    background: #0263b8;
-    color: #ffffff;
-    border-color: #0263b8;
-    box-shadow: 0 2px 6px rgba(2, 99, 184, 0.2);
+    background: #004b87;
+    border-color: #004b87;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(2, 99, 184, 0.3);
+  }
+  .btn-table-view {
+    background: #eff6ff;
+    color: #0263b8 !important;
+    border: 1.5px solid #bfdbfe;
+  }
+  .btn-table-view:hover {
+    background: #dbeafe;
+    border-color: #93c5fd;
+    color: #004b87 !important;
+    transform: translateY(-1px);
+  }
+  .btn-act-icon {
+    font-size: 1rem !important;
+    line-height: 1 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .applicant-count-link {
     text-decoration: none;
@@ -1093,26 +1130,6 @@
     text-decoration: underline;
   }
 
-  .btn-table-view {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.35rem 0.75rem;
-    background: #eff6ff;
-    color: #0263b8;
-    border: 1px solid #bfdbfe;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s ease;
-  }
-
-  .btn-table-view:hover {
-    background: #0263b8;
-    color: #ffffff;
-    border-color: #0263b8;
-  }
 
   .badge-draft {
     background: #fef3c7;
@@ -1699,7 +1716,7 @@
                 <th>{% trans "Quota & Applicants" %}</th>
                 <th>{% trans "Status" %}</th>
                 <th>{% trans "Application Period" %}</th>
-                <th style="text-align: right;">{% trans "Action" %}</th>
+                <th style="text-align: center; width: 190px;">{% trans "Action" %}</th>
               </tr>
             </thead>
             <tbody>
@@ -1734,15 +1751,17 @@
                     {{ s.start_date|date:"j M Y" }} – {{ s.end_date|date:"j M Y" }}
                   </span>
                 </td>
-                <td style="text-align: right; white-space: nowrap;">
-                  <a href="?scholarship={{ s.pk }}&tab=records&subtab=apps" class="btn-table-applicants" title="{% trans 'View and export student applicants for this scholarship' %}">
-                    <span class="material-symbols-outlined" style="font-size: 0.95rem;">group</span>
-                    <span>{% trans "Applicants" %}</span>
-                  </a>
-                  <a href="{% url 'scholarship_detail' s.pk %}" class="btn-table-view" target="_blank">
-                    <span>{% trans "View" %}</span>
-                    <span class="material-symbols-outlined" style="font-size: 0.95rem;">arrow_outward</span>
-                  </a>
+                <td style="text-align: center; white-space: nowrap;">
+                  <div class="table-actions-cell">
+                    <a href="?scholarship={{ s.pk }}&tab=records&subtab=apps" class="btn-table-applicants" title="{% trans 'View and export student applicants for this scholarship' %}">
+                      <span class="material-symbols-outlined btn-act-icon">group</span>
+                      <span>{% trans "Applicants" %}</span>
+                    </a>
+                    <a href="{% url 'scholarship_detail' s.pk %}" class="btn-table-view" target="_blank" title="{% trans 'View details' %}">
+                      <span>{% trans "View" %}</span>
+                      <span class="material-symbols-outlined btn-act-icon">arrow_outward</span>
+                    </a>
+                  </div>
                 </td>
               </tr>
               {% endfor %}
@@ -1757,11 +1776,6 @@
           <span class="material-symbols-outlined empty-icon">search_off</span>
           <div class="empty-title">{% trans "No scholarships found" %}</div>
           <p class="empty-desc">{% trans "There are no scholarships matching the selected semester, month, or year filter." %}</p>
-          <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&scholarship=&q=&tab=records&subtab=sch"
-            class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
-            <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
-            {% trans "Clear Filter & View All" %}
-          </a>
         </div>
         {% endif %}
       </div>
@@ -1849,11 +1863,6 @@
           <span class="material-symbols-outlined empty-icon">person_search</span>
           <div class="empty-title">{% trans "No student applications found" %}</div>
           <p class="empty-desc">{% trans "There are no student applicants for the scholarships matching the selected filter." %}</p>
-          <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&scholarship=&q=&tab=records&subtab=apps"
-            class="btn-reset-filters" style="margin: 0 auto; display: inline-flex;">
-            <span class="material-symbols-outlined" style="font-size: 1rem;">restart_alt</span>
-            {% trans "Clear Filter & View All" %}
-          </a>
         </div>
         {% endif %}
       </div>
