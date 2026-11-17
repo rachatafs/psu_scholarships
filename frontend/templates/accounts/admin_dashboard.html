@@ -493,7 +493,7 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" id="adminSearchInput" name="q" value="" placeholder="{% trans " Search applicant name, student ID, scholarship title..." %}" class="admin-search-field"
+                    <input type="text" id="adminSearchInput" name="q" value="" placeholder="{% trans 'Search applicant name, student ID, scholarship title...' %}" class="admin-search-field"
                         autocomplete="off">
                 </div>
 
@@ -749,7 +749,7 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" id="schSearchInput" placeholder="{% trans " Search scholarship title, category, GPAX..." %}" class="admin-search-field" autocomplete="off">
+                    <input type="text" id="schSearchInput" placeholder="{% trans 'Search scholarship title, category, GPAX...' %}" class="admin-search-field" autocomplete="off">
                 </div>
 
                 <div class="admin-result-counter" id="schResultCounter">
@@ -813,7 +813,7 @@
                                 <div class="sch-actions-cell" style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
                                     {% if s.apps_count > 0 %}
                                     <a href="?q={{ s.title|urlencode }}#apps" target="_blank"
-                                        class="btn-sch-action btn-sch-view" title="{% trans " View Applicants" %}">
+                                        class="btn-sch-action btn-sch-view" title="{% trans 'View Applicants' %}">
                                         {% trans "View Applicants" %}
                                     </a>
                                     {% else %}
@@ -822,17 +822,17 @@
                                     </span>
                                     {% endif %}
                                     <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view"
-                                        target="_blank" title="{% trans " View Page" %}">
+                                        target="_blank" title="{% trans 'View Page' %}">
                                         {% trans "View Page" %}
                                     </a>
                                     <a href="/admin/scholarships/scholarship/{{ s.pk }}/change/"
-                                        class="btn-sch-action btn-sch-edit" target="_blank" title="{% trans " Edit" %}">
+                                        class="btn-sch-action btn-sch-edit" target="_blank" title="{% trans 'Edit' %}">
                                         {% trans "Edit" %}
                                     </a>
                                     <form method="post" action="{% url 'delete_scholarship' s.pk %}"
-                                        style="display:inline; margin:0;" onsubmit="return confirm('{% trans " Are you sure you want to delete this scholarship?" %}');">
+                                        style="display:inline; margin:0;" onsubmit="return confirm('{% trans 'Are you sure you want to delete this scholarship?' %}');">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn-sch-action btn-sch-del" title="{% trans " Delete" %}">
+                                        <button type="submit" class="btn-sch-action btn-sch-del" title="{% trans 'Delete' %}">
                                             {% trans "Delete" %}
                                         </button>
                                     </form>
@@ -892,7 +892,7 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" id="histSearchInput" placeholder="{% trans " Search past scholarships..." %}"
+                    <input type="text" id="histSearchInput" placeholder="{% trans 'Search past scholarships...' %}"
                         class="admin-search-field" autocomplete="off">
                 </div>
             </div>
@@ -947,7 +947,7 @@
                                 <div class="sch-actions-cell" style="display:flex; gap:6px; justify-content:center; flex-wrap: nowrap;">
                                     {% if s.apps_count > 0 %}
                                     <a href="?q={{ s.title|urlencode }}#apps" target="_blank"
-                                        class="btn-sch-action btn-sch-view" title="{% trans " View Applicants" %}">
+                                        class="btn-sch-action btn-sch-view" title="{% trans 'View Applicants' %}">
                                         {% trans "View Applicants" %}
                                     </a>
                                     {% else %}
@@ -956,7 +956,7 @@
                                     </span>
                                     {% endif %}
                                     <a href="{% url 'scholarship_detail' s.pk %}" class="btn-sch-action btn-sch-view"
-                                        target="_blank" title="{% trans " View Page" %}">
+                                        target="_blank" title="{% trans 'View Page' %}">
                                         {% trans "View Page" %}
                                     </a>
                                 </div>
