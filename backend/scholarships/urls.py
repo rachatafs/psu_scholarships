@@ -26,7 +26,6 @@ urlpatterns = [
     path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('dashboard/', views.scholarship_dashboard, name='scholarship_dashboard'),
     path('dashboard/export-pdf/', views.export_dashboard_pdf, name='export_dashboard_pdf'),
-    path('dashboard/export-csv/', views.export_dashboard_csv, name='export_dashboard_csv'),
     path('application/<int:pk>/update/', views.update_application, name='update_application'),
     path('scholarship/<int:pk>/delete/', views.delete_scholarship, name='delete_scholarship'),
 

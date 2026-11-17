@@ -1,11 +1,11 @@
-import csv
+from urllib.parse import quote
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.utils import timezone
-from django.db.models import Sum, Count
+from django.db.models import Sum, Count, Q
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application
@@ -208,6 +208,18 @@ def _get_dashboard_analytics_data(request):
     elif filter_term == '3':
         s_qs = s_qs.filter(created_at__month__in=[6, 7])
 
+    # Search Query Filter (ค้นหาทั้งชื่อทุน รายละเอียด คุณสมบัติ รหัสนักศึกษา ชื่อนักศึกษา สาขาวิชา คณะ)
+    search_query = request.GET.get('q', '').strip()
+    if search_query:
+        s_qs = s_qs.filter(
+            Q(title__icontains=search_query) |
+            Q(description__icontains=search_query) |
+            Q(requirements__icontains=search_query) |
+            Q(applications__student__student_id__icontains=search_query) |
+            Q(applications__student__full_name__icontains=search_query) |
+            Q(applications__student__major__icontains=search_query)
+        ).distinct()
+
     filtered_scholarships = s_qs.order_by('-created_at')
 
     # Filter applications (if selected_scholarship is chosen, focus on that scholarship's applicants)
@@ -219,6 +231,15 @@ def _get_dashboard_analytics_data(request):
         a_qs = Application.objects.filter(scholarship__in=s_qs).select_related(
             'student', 'scholarship', 'student__user'
         ).order_by('-submitted_at')
+
+    if search_query:
+        a_qs = a_qs.filter(
+            Q(student__student_id__icontains=search_query) |
+            Q(student__full_name__icontains=search_query) |
+            Q(student__faculty__icontains=search_query) |
+            Q(student__major__icontains=search_query) |
+            Q(scholarship__title__icontains=search_query)
+        ).distinct()
 
     filtered_applications = a_qs
 
@@ -257,7 +278,7 @@ def _get_dashboard_analytics_data(request):
     }
     filter_term_name = term_names.get(filter_term, '')
 
-    has_active_filter = bool(filter_term or filter_month or (filter_year and filter_year != str(now.year)) or selected_scholarship)
+    has_active_filter = bool(filter_term or filter_month or (filter_year and filter_year != str(now.year)) or selected_scholarship or search_query)
 
     deadline_soon = Scholarship.objects.filter(
         status='active',
@@ -290,10 +311,11 @@ def _get_dashboard_analytics_data(request):
         'filter_term': filter_term,
         'filter_term_name': filter_term_name,
         'has_active_filter': has_active_filter,
-        'is_all_scope': is_all_scope or (filter_year == 'all' and not filter_term and not filter_month and not selected_scholarship),
+        'is_all_scope': is_all_scope or (filter_year == 'all' and not filter_term and not filter_month and not selected_scholarship and not search_query),
         'selected_scholarship': selected_scholarship,
         'selected_scholarship_id': str(selected_scholarship.pk) if selected_scholarship else '',
         'all_system_scholarships': all_system_scholarships,
+        'search_query': search_query,
     }
 
 @staff_member_required
@@ -303,10 +325,19 @@ def scholarship_dashboard(request):
     active_tab = request.GET.get('tab', 'overview')
     active_subtab = request.GET.get('subtab', 'sch')
     selected_scholarship = data.get('selected_scholarship')
+    search_query = data.get('search_query', '')
 
     if selected_scholarship and 'subtab' not in request.GET and 'tab' not in request.GET:
         active_tab = 'records'
         active_subtab = 'apps'
+    elif search_query and 'subtab' not in request.GET and 'tab' not in request.GET:
+        # If searching for student ID or student info, or if scholarships match 0 but applicants match > 0
+        if any(c.isdigit() for c in search_query) or (data['total_scholarships'] == 0 and data['total_applications'] > 0):
+            active_tab = 'records'
+            active_subtab = 'apps'
+        else:
+            active_tab = 'records'
+            active_subtab = 'sch'
     elif 'page_sch' in request.GET and 'page_app' not in request.GET:
         active_tab = 'records'
         active_subtab = 'sch'
@@ -349,13 +380,14 @@ def scholarship_dashboard(request):
     filter_month = data.get('filter_month', '')
     filter_year = data.get('filter_year', '')
     sch_param = f"&scholarship={selected_scholarship.pk}" if selected_scholarship else ""
+    q_param = f"&q={quote(search_query)}" if search_query else ""
 
     data['filtered_scholarships'] = sch_page
     data['filtered_applications'] = app_page
     data['sch_page_range'] = sch_page_range
     data['app_page_range'] = app_page_range
-    data['sch_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}{sch_param}&tab=records&subtab=sch"
-    data['app_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}{sch_param}&tab=records&subtab=apps"
+    data['sch_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}{sch_param}{q_param}&tab=records&subtab=sch"
+    data['app_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}{sch_param}{q_param}&tab=records&subtab=apps"
     data['active_tab'] = active_tab
     data['active_subtab'] = active_subtab
 
@@ -368,98 +400,6 @@ def export_dashboard_pdf(request):
     data['generated_by'] = request.user
     data['generated_at'] = timezone.now()
     return render(request, 'scholarship_export_pdf.html', data)
-
-@staff_member_required
-def export_dashboard_csv(request):
-    data = _get_dashboard_analytics_data(request)
-    selected_scholarship = data.get('selected_scholarship')
-    applications = data.get('filtered_applications')
-
-    timestamp = timezone.now().strftime('%Y%m%d_%H%M')
-    if selected_scholarship:
-        safe_title = "".join(c for c in selected_scholarship.title if c.isalnum() or c in (' ', '_', '-')).strip()
-        filename = f"applicants_{selected_scholarship.pk}_{timestamp}.csv"
-    else:
-        filename = f"scholarship_applicants_{timestamp}.csv"
-
-    response = HttpResponse(content_type='text/csv; charset=utf-8-sig')
-    response['Content-Disposition'] = f'attachment; filename="{filename}"'
-
-    writer = csv.writer(response)
-
-    if selected_scholarship:
-        writer.writerow(['รายงานรายชื่อนักศึกษาผู้สมัครรับทุนการศึกษา'])
-        writer.writerow(['ชื่อทุนการศึกษา', selected_scholarship.title])
-        writer.writerow(['ประเภททุน', selected_scholarship.get_category_display()])
-        writer.writerow(['มูลค่าทุนต่อภาคการศึกษา (บาท)', f"{selected_scholarship.amount_per_semester:,.2f}"])
-        writer.writerow(['จำนวนที่เปิดรับ (โควตา)', selected_scholarship.capacity])
-        writer.writerow(['จำนวนผู้สมัครทั้งหมด (คน)', applications.count()])
-        writer.writerow(['วันที่ส่งออกรายงาน', timezone.now().strftime('%Y-%m-%d %H:%M:%S')])
-        writer.writerow([])
-
-        writer.writerow([
-            'ลำดับ',
-            'รหัสนักศึกษา',
-            'ชื่อ-นามสกุล',
-            'คณะ',
-            'สาขาวิชา',
-            'GPAX',
-            'เบอร์โทรศัพท์',
-            'อีเมล',
-            'วันที่ยื่นสมัคร',
-            'สถานะการพิจารณา',
-            'หมายเหตุ'
-        ])
-
-        for idx, app in enumerate(applications, 1):
-            writer.writerow([
-                idx,
-                app.student.student_id,
-                app.student.full_name,
-                app.student.get_faculty_display(),
-                app.student.major,
-                f"{app.student.gpax:.2f}",
-                app.student.phone_number,
-                app.student.user.email if app.student and app.student.user else '',
-                app.submitted_at.strftime('%Y-%m-%d %H:%M'),
-                app.get_status_display(),
-                app.note or ''
-            ])
-    else:
-        writer.writerow([
-            'ลำดับ',
-            'รหัสนักศึกษา',
-            'ชื่อ-นามสกุล',
-            'คณะ',
-            'สาขาวิชา',
-            'GPAX',
-            'เบอร์โทรศัพท์',
-            'อีเมล',
-            'ทุนการศึกษาที่สมัคร',
-            'ประเภททุน',
-            'วันที่ยื่นสมัคร',
-            'สถานะการพิจารณา',
-            'หมายเหตุ'
-        ])
-
-        for idx, app in enumerate(applications, 1):
-            writer.writerow([
-                idx,
-                app.student.student_id,
-                app.student.full_name,
-                app.student.get_faculty_display(),
-                app.student.major,
-                f"{app.student.gpax:.2f}",
-                app.student.phone_number,
-                app.student.user.email if app.student and app.student.user else '',
-                app.scholarship.title,
-                app.scholarship.get_category_display(),
-                app.submitted_at.strftime('%Y-%m-%d %H:%M'),
-                app.get_status_display(),
-                app.note or ''
-            ])
-
-    return response
 
 @staff_member_required
 def delete_scholarship(request, pk):
