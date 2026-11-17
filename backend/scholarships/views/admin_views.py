@@ -172,8 +172,6 @@ def _get_dashboard_analytics_data(request):
         except Scholarship.DoesNotExist:
             selected_scholarship = None
 
-    all_system_scholarships = Scholarship.objects.all().order_by('-created_at')
-
     filter_term = '' if is_all_scope else request.GET.get('term', '').strip()
     filter_month = '' if is_all_scope else request.GET.get('month', '').strip()
 
@@ -314,7 +312,6 @@ def _get_dashboard_analytics_data(request):
         'is_all_scope': is_all_scope or (filter_year == 'all' and not filter_term and not filter_month and not selected_scholarship and not search_query),
         'selected_scholarship': selected_scholarship,
         'selected_scholarship_id': str(selected_scholarship.pk) if selected_scholarship else '',
-        'all_system_scholarships': all_system_scholarships,
         'search_query': search_query,
     }
 
