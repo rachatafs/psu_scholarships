@@ -1,10 +1,11 @@
+from urllib.parse import quote
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.http import JsonResponse
 from django.utils import timezone
-from django.db.models import Sum, Count
+from django.db.models import Sum, Count, Q
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application
@@ -162,11 +163,20 @@ def _get_dashboard_analytics_data(request):
     scope = request.GET.get('scope', '').strip()
     is_all_scope = (scope == 'all' or request.GET.get('all') == '1')
 
+    # Specific Scholarship Filter (เลือก 1 ทุนเพื่อดูรายชื่อนักศึกษาผู้สมัครทั้งหมดและ Export)
+    raw_sch = request.GET.get('scholarship', '').strip()
+    selected_scholarship = None
+    if raw_sch.isdigit():
+        try:
+            selected_scholarship = Scholarship.objects.get(pk=int(raw_sch))
+        except Scholarship.DoesNotExist:
+            selected_scholarship = None
+
     filter_term = '' if is_all_scope else request.GET.get('term', '').strip()
     filter_month = '' if is_all_scope else request.GET.get('month', '').strip()
 
     raw_year = request.GET.get('year')
-    if is_all_scope:
+    if is_all_scope or (selected_scholarship and raw_year is None):
         filter_year = 'all'
     elif raw_year is not None:
         filter_year = raw_year.strip()
@@ -196,12 +206,39 @@ def _get_dashboard_analytics_data(request):
     elif filter_term == '3':
         s_qs = s_qs.filter(created_at__month__in=[6, 7])
 
+    # Search Query Filter (ค้นหาทั้งชื่อทุน รายละเอียด คุณสมบัติ รหัสนักศึกษา ชื่อนักศึกษา สาขาวิชา คณะ)
+    search_query = request.GET.get('q', '').strip()
+    if search_query:
+        s_qs = s_qs.filter(
+            Q(title__icontains=search_query) |
+            Q(description__icontains=search_query) |
+            Q(requirements__icontains=search_query) |
+            Q(applications__student__student_id__icontains=search_query) |
+            Q(applications__student__full_name__icontains=search_query) |
+            Q(applications__student__major__icontains=search_query)
+        ).distinct()
+
     filtered_scholarships = s_qs.order_by('-created_at')
 
-    # Filter applications for the filtered scholarships (includes student profile info)
-    a_qs = Application.objects.filter(scholarship__in=s_qs).select_related(
-        'student', 'scholarship', 'student__user'
-    ).order_by('-submitted_at')
+    # Filter applications (if selected_scholarship is chosen, focus on that scholarship's applicants)
+    if selected_scholarship:
+        a_qs = Application.objects.filter(scholarship=selected_scholarship).select_related(
+            'student', 'scholarship', 'student__user'
+        ).order_by('-submitted_at')
+    else:
+        a_qs = Application.objects.filter(scholarship__in=s_qs).select_related(
+            'student', 'scholarship', 'student__user'
+        ).order_by('-submitted_at')
+
+    if search_query:
+        a_qs = a_qs.filter(
+            Q(student__student_id__icontains=search_query) |
+            Q(student__full_name__icontains=search_query) |
+            Q(student__faculty__icontains=search_query) |
+            Q(student__major__icontains=search_query) |
+            Q(scholarship__title__icontains=search_query)
+        ).distinct()
+
     filtered_applications = a_qs
 
     total_scholarships = s_qs.count()
@@ -239,7 +276,7 @@ def _get_dashboard_analytics_data(request):
     }
     filter_term_name = term_names.get(filter_term, '')
 
-    has_active_filter = bool(filter_term or filter_month or (filter_year and filter_year != str(now.year)))
+    has_active_filter = bool(filter_term or filter_month or (filter_year and filter_year != str(now.year)) or selected_scholarship or search_query)
 
     deadline_soon = Scholarship.objects.filter(
         status='active',
@@ -272,7 +309,10 @@ def _get_dashboard_analytics_data(request):
         'filter_term': filter_term,
         'filter_term_name': filter_term_name,
         'has_active_filter': has_active_filter,
-        'is_all_scope': is_all_scope or (filter_year == 'all' and not filter_term and not filter_month),
+        'is_all_scope': is_all_scope or (filter_year == 'all' and not filter_term and not filter_month and not selected_scholarship and not search_query),
+        'selected_scholarship': selected_scholarship,
+        'selected_scholarship_id': str(selected_scholarship.pk) if selected_scholarship else '',
+        'search_query': search_query,
     }
 
 @staff_member_required
@@ -281,8 +321,21 @@ def scholarship_dashboard(request):
 
     active_tab = request.GET.get('tab', 'overview')
     active_subtab = request.GET.get('subtab', 'sch')
+    selected_scholarship = data.get('selected_scholarship')
+    search_query = data.get('search_query', '')
 
-    if 'page_sch' in request.GET and 'page_app' not in request.GET:
+    if selected_scholarship and 'subtab' not in request.GET and 'tab' not in request.GET:
+        active_tab = 'records'
+        active_subtab = 'apps'
+    elif search_query and 'subtab' not in request.GET and 'tab' not in request.GET:
+        # If searching for student ID or student info, or if scholarships match 0 but applicants match > 0
+        if any(c.isdigit() for c in search_query) or (data['total_scholarships'] == 0 and data['total_applications'] > 0):
+            active_tab = 'records'
+            active_subtab = 'apps'
+        else:
+            active_tab = 'records'
+            active_subtab = 'sch'
+    elif 'page_sch' in request.GET and 'page_app' not in request.GET:
         active_tab = 'records'
         active_subtab = 'sch'
     elif 'page_app' in request.GET and 'page_sch' not in request.GET:
@@ -323,13 +376,15 @@ def scholarship_dashboard(request):
     filter_term = data.get('filter_term', '')
     filter_month = data.get('filter_month', '')
     filter_year = data.get('filter_year', '')
+    sch_param = f"&scholarship={selected_scholarship.pk}" if selected_scholarship else ""
+    q_param = f"&q={quote(search_query)}" if search_query else ""
 
     data['filtered_scholarships'] = sch_page
     data['filtered_applications'] = app_page
     data['sch_page_range'] = sch_page_range
     data['app_page_range'] = app_page_range
-    data['sch_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}&tab=records&subtab=sch"
-    data['app_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}&tab=records&subtab=apps"
+    data['sch_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}{sch_param}{q_param}&tab=records&subtab=sch"
+    data['app_extra_query'] = f"term={filter_term}&month={filter_month}&year={filter_year}{sch_param}{q_param}&tab=records&subtab=apps"
     data['active_tab'] = active_tab
     data['active_subtab'] = active_subtab
 

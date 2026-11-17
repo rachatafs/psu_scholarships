@@ -2,40 +2,40 @@ function switchAdminTab(tabName, autoStatusFilter = null) {
     const tabBtnApps = document.getElementById('tabBtnApps');
     const tabBtnSch = document.getElementById('tabBtnSch');
     const tabBtnHistory = document.getElementById('tabBtnHistory');
-    
+
     const sectionApps = document.getElementById('sectionApps');
     const sectionScholarships = document.getElementById('sectionScholarships');
     const sectionHistory = document.getElementById('sectionHistory');
-    
+
     const statusSelect = document.getElementById('adminStatusSelect');
 
     // Reset all tabs
-    if(tabBtnApps) tabBtnApps.classList.remove('active');
-    if(tabBtnSch) tabBtnSch.classList.remove('active');
-    if(tabBtnHistory) tabBtnHistory.classList.remove('active');
-    
-    if(sectionApps) sectionApps.style.display = 'none';
-    if(sectionScholarships) sectionScholarships.style.display = 'none';
-    if(sectionHistory) sectionHistory.style.display = 'none';
+    if (tabBtnApps) tabBtnApps.classList.remove('active');
+    if (tabBtnSch) tabBtnSch.classList.remove('active');
+    if (tabBtnHistory) tabBtnHistory.classList.remove('active');
+
+    if (sectionApps) sectionApps.style.display = 'none';
+    if (sectionScholarships) sectionScholarships.style.display = 'none';
+    if (sectionHistory) sectionHistory.style.display = 'none';
 
     if (tabName === 'scholarships') {
-        if(tabBtnSch) tabBtnSch.classList.add('active');
-        if(sectionScholarships) sectionScholarships.style.display = 'block';
-        
+        if (tabBtnSch) tabBtnSch.classList.add('active');
+        if (sectionScholarships) sectionScholarships.style.display = 'block';
+
         const url = new URL(window.location);
         url.hash = 'scholarships';
         window.history.replaceState(null, '', url);
     } else if (tabName === 'history') {
-        if(tabBtnHistory) tabBtnHistory.classList.add('active');
-        if(sectionHistory) sectionHistory.style.display = 'block';
-        
+        if (tabBtnHistory) tabBtnHistory.classList.add('active');
+        if (sectionHistory) sectionHistory.style.display = 'block';
+
         const url = new URL(window.location);
         url.hash = 'history';
         window.history.replaceState(null, '', url);
     } else {
-        if(tabBtnApps) tabBtnApps.classList.add('active');
-        if(sectionApps) sectionApps.style.display = 'block';
-        
+        if (tabBtnApps) tabBtnApps.classList.add('active');
+        if (sectionApps) sectionApps.style.display = 'block';
+
         const url = new URL(window.location);
         url.hash = 'apps';
         window.history.replaceState(null, '', url);
@@ -48,12 +48,12 @@ function switchAdminTab(tabName, autoStatusFilter = null) {
 }
 
 // Global function to easily jump from Scholarship tab to Applications tab and filter
-window.viewApplicantsForSch = function(schTitle) {
+window.viewApplicantsForSch = function (schTitle) {
     // Set search input to scholarship title
     const searchInput = document.getElementById('adminSearchInput');
     if (searchInput) {
         searchInput.value = schTitle;
-        
+
         // Push state so the Back button works
         const url = new URL(window.location);
         url.hash = 'apps';
@@ -62,21 +62,21 @@ window.viewApplicantsForSch = function(schTitle) {
         url.searchParams.set('category', 'all');
         url.searchParams.set('status', 'all');
         window.history.pushState(null, '', url);
-        
+
         // Make sure we are on apps tab
         switchAdminTab('apps');
-        
+
         // Trigger filter
         searchInput.dispatchEvent(new Event('input'));
-        
+
         // Also update the hidden category and tabs visually
         const categoryTabs = document.querySelectorAll('#categoryTabs .admin-cat-tab');
         categoryTabs.forEach(t => t.classList.remove('active'));
         const allTab = document.querySelector('#categoryTabs .admin-cat-tab[data-category="all"]');
-        if(allTab) allTab.classList.add('active');
-        
+        if (allTab) allTab.classList.add('active');
+
         const statusSelect = document.getElementById('adminStatusSelect');
-        if(statusSelect) statusSelect.value = 'all';
+        if (statusSelect) statusSelect.value = 'all';
     }
 }
 
@@ -91,7 +91,7 @@ function initAdminDashboard() {
     }
 
     // Handle browser Back/Forward buttons properly
-    window.addEventListener('popstate', function() {
+    window.addEventListener('popstate', function () {
         if (window.location.hash.startsWith('#scholarships')) {
             switchAdminTab('scholarships');
         } else if (window.location.hash.startsWith('#history')) {
@@ -99,7 +99,7 @@ function initAdminDashboard() {
         } else {
             switchAdminTab('apps');
         }
-        
+
         // Sync search input with URL
         const urlParams = new URLSearchParams(window.location.search);
         const searchInput = document.getElementById('adminSearchInput');
@@ -166,7 +166,7 @@ function initAdminDashboard() {
         container.innerHTML = html;
 
         container.querySelectorAll('button[data-page]').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function (e) {
                 e.preventDefault();
                 const targetPage = parseInt(this.getAttribute('data-page'), 10);
                 if (!isNaN(targetPage)) {
@@ -211,7 +211,8 @@ function initAdminDashboard() {
             if (matchesQuery && matchesCat && matchesStatus) {
                 matchedRows.push(row);
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -224,9 +225,12 @@ function initAdminDashboard() {
 
         matchedRows.forEach((row, idx) => {
             if (idx >= startIndex && idx < endIndex) {
+                row.classList.remove('row-hidden');
+                row.style.removeProperty('display');
                 row.style.display = '';
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -244,7 +248,7 @@ function initAdminDashboard() {
             if (appsPaginationWrap) appsPaginationWrap.style.display = (totalPages > 1) ? 'flex' : 'none';
         }
 
-        renderAdminPaginationNav(appsPaginationNav, appCurrentPage, totalPages, function(newPage) {
+        renderAdminPaginationNav(appsPaginationNav, appCurrentPage, totalPages, function (newPage) {
             appCurrentPage = newPage;
             applyAppFilters();
             const tableEl = document.getElementById('applicationsTable');
@@ -253,14 +257,14 @@ function initAdminDashboard() {
     }
 
     if (searchInput) {
-        searchInput.addEventListener('input', function() {
+        searchInput.addEventListener('input', function () {
             appCurrentPage = 1;
             applyAppFilters();
         });
     }
 
     if (statusSelect) {
-        statusSelect.addEventListener('change', function() {
+        statusSelect.addEventListener('change', function () {
             appCurrentPage = 1;
             applyAppFilters();
         });
@@ -309,7 +313,8 @@ function initAdminDashboard() {
             if (matchesQuery && matchesCat) {
                 matchedRows.push(row);
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -322,9 +327,12 @@ function initAdminDashboard() {
 
         matchedRows.forEach((row, idx) => {
             if (idx >= startIndex && idx < endIndex) {
+                row.classList.remove('row-hidden');
+                row.style.removeProperty('display');
                 row.style.display = '';
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -341,7 +349,7 @@ function initAdminDashboard() {
             if (schPaginationWrap) schPaginationWrap.style.display = (totalPages > 1) ? 'flex' : 'none';
         }
 
-        renderAdminPaginationNav(schPaginationNav, schCurrentPage, totalPages, function(newPage) {
+        renderAdminPaginationNav(schPaginationNav, schCurrentPage, totalPages, function (newPage) {
             schCurrentPage = newPage;
             applySchFilters();
             const tableEl = document.getElementById('scholarshipsTable');
@@ -350,7 +358,7 @@ function initAdminDashboard() {
     }
 
     if (schSearchInput) {
-        schSearchInput.addEventListener('input', function() {
+        schSearchInput.addEventListener('input', function () {
             schCurrentPage = 1;
             applySchFilters();
         });
@@ -358,7 +366,7 @@ function initAdminDashboard() {
 
     if (schCategoryTabs) {
         schCategoryTabs.forEach(tab => {
-            tab.addEventListener('click', function(e) {
+            tab.addEventListener('click', function (e) {
                 e.preventDefault();
                 schCategoryTabs.forEach(t => t.classList.remove('active'));
                 this.classList.add('active');
@@ -396,7 +404,8 @@ function initAdminDashboard() {
             if (matchesQuery) {
                 matchedRows.push(row);
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -409,9 +418,12 @@ function initAdminDashboard() {
 
         matchedRows.forEach((row, idx) => {
             if (idx >= startIndex && idx < endIndex) {
+                row.classList.remove('row-hidden');
+                row.style.removeProperty('display');
                 row.style.display = '';
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -426,7 +438,7 @@ function initAdminDashboard() {
             if (histPaginationWrap) histPaginationWrap.style.display = (totalPages > 1) ? 'flex' : 'none';
         }
 
-        renderAdminPaginationNav(histPaginationNav, histCurrentPage, totalPages, function(newPage) {
+        renderAdminPaginationNav(histPaginationNav, histCurrentPage, totalPages, function (newPage) {
             histCurrentPage = newPage;
             applyHistFilters();
             const tableEl = document.getElementById('historyTable');
@@ -435,7 +447,7 @@ function initAdminDashboard() {
     }
 
     if (histSearchInput) {
-        histSearchInput.addEventListener('input', function() {
+        histSearchInput.addEventListener('input', function () {
             histCurrentPage = 1;
             applyHistFilters();
         });
@@ -468,7 +480,7 @@ function initAdminDashboard() {
 
     // Toggle email editor when checkbox changes
     if (modalSendEmailCheck) {
-        modalSendEmailCheck.addEventListener('change', function() {
+        modalSendEmailCheck.addEventListener('change', function () {
             if (emailEditorSection) {
                 emailEditorSection.style.display = this.checked ? 'block' : 'none';
             }
@@ -479,7 +491,7 @@ function initAdminDashboard() {
     }
 
     // Template selector change event
-    window.onTemplateSelectChange = function(key) {
+    window.onTemplateSelectChange = function (key) {
         if (!currentActionContext) return;
         const studentName = currentActionContext.studentName;
         const schTitle = currentActionContext.schTitle;
@@ -519,7 +531,7 @@ function initAdminDashboard() {
         if (message && modalEmailMessage) modalEmailMessage.value = message;
     };
 
-    window.resetEmailTemplate = function() {
+    window.resetEmailTemplate = function () {
         if (!currentActionContext) return;
         const currentKey = modalTemplateSelector ? modalTemplateSelector.value : 'custom';
         if (currentKey && currentKey !== 'custom') {
@@ -530,7 +542,7 @@ function initAdminDashboard() {
         }
     };
 
-    window.openStatusEmailModal = function(context) {
+    window.openStatusEmailModal = function (context) {
         currentActionContext = context;
         if (statusForm) statusForm.action = context.actionUrl;
         if (modalTargetStatus) modalTargetStatus.value = context.targetStatus || 'keep';
@@ -604,7 +616,7 @@ function initAdminDashboard() {
     };
 
     // Open direct notice modal from button
-    window.openDirectNoticeModal = function(btn) {
+    window.openDirectNoticeModal = function (btn) {
         const row = btn.closest('tr.app-row');
         if (!row) return;
 
@@ -641,28 +653,28 @@ function initAdminDashboard() {
         });
     };
 
-    window.closeStatusEmailModal = function() {
+    window.closeStatusEmailModal = function () {
         if (statusModal) {
             statusModal.classList.remove('open', 'active');
             document.body.style.overflow = '';
         }
     };
 
-    window.handleStatusModalBackdrop = function(e) {
+    window.handleStatusModalBackdrop = function (e) {
         if (e.target === statusModal) {
             closeStatusEmailModal();
         }
     };
 
     // Close on Escape key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && statusModal && statusModal.classList.contains('active')) {
             closeStatusEmailModal();
         }
     });
 
     // Handle Click on Action Buttons in Application Table
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         const btn = e.target.closest('.action-btn-group button');
         if (!btn) return;
 
@@ -701,19 +713,19 @@ function initAdminDashboard() {
                     'X-Requested-With': 'XMLHttpRequest'
                 }
             })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    row.setAttribute('data-status', 'pending');
-                    const statusCell = row.cells ? row.cells[5] : row.querySelector('td:nth-child(6)');
-                    if (statusCell) {
-                        statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #d97706;"></span><span style="color: #b45309;">Pending</span></div>';
-                    }
-                    const btnGroup = form.closest('.action-btn-group');
-                    const csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
-                    const actionUrl = form.action;
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        row.setAttribute('data-status', 'pending');
+                        const statusCell = row.cells ? row.cells[5] : row.querySelector('td:nth-child(6)');
+                        if (statusCell) {
+                            statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #d97706;"></span><span style="color: #b45309;">Pending</span></div>';
+                        }
+                        const btnGroup = form.closest('.action-btn-group');
+                        const csrfToken = form.querySelector('input[name="csrfmiddlewaretoken"]').value;
+                        const actionUrl = form.action;
 
-                    btnGroup.innerHTML = `
+                        btnGroup.innerHTML = `
                         <form method="post" action="${actionUrl}">
                             <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                             <input type="hidden" name="status" value="in_progress">
@@ -738,14 +750,14 @@ function initAdminDashboard() {
                             Additional Docs
                         </button>
                     `;
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                btn.innerHTML = originalBtnText;
-                btn.disabled = false;
-                alert('Error resetting application status.');
-            });
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    btn.innerHTML = originalBtnText;
+                    btn.disabled = false;
+                    alert('Error resetting application status.');
+                });
             return;
         }
 
@@ -786,7 +798,7 @@ function initAdminDashboard() {
 
     // Handle Modal Form Submission via AJAX
     if (statusForm) {
-        statusForm.addEventListener('submit', function(e) {
+        statusForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const submitBtn = document.getElementById('btnConfirmStatusSubmit');
             const submitText = document.getElementById('btnSubmitText');
@@ -805,51 +817,51 @@ function initAdminDashboard() {
                     'X-Requested-With': 'XMLHttpRequest'
                 }
             })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    closeStatusEmailModal();
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        closeStatusEmailModal();
 
-                    if (currentActionContext && currentActionContext.rowElement) {
-                        const row = currentActionContext.rowElement;
-                        if (data.note) row.setAttribute('data-note', data.note);
+                        if (currentActionContext && currentActionContext.rowElement) {
+                            const row = currentActionContext.rowElement;
+                            if (data.note) row.setAttribute('data-note', data.note);
 
-                        // If status actually changed, update row visual state
-                        if (data.status_changed) {
-                            row.setAttribute('data-status', data.status);
+                            // If status actually changed, update row visual state
+                            if (data.status_changed) {
+                                row.setAttribute('data-status', data.status);
 
-                            // Update Status Badge cell (column 6)
-                            const statusCell = row.cells ? row.cells[5] : row.querySelector('td:nth-child(6)');
-                            if (statusCell) {
-                                if (data.status === 'pending') {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #d97706;"></span><span style="color: #b45309;">Pending</span></div>';
-                                } else if (data.status === 'in_progress' || data.status === 'interview') {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #0284c7;"></span><span style="color: #0369a1;">In Progress</span></div>';
-                                } else if (data.status === 'approved') {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #059669;"></span><span style="color: #047857;">Approve</span></div>';
-                                } else if (data.status === 'completed') {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #7e22ce;"></span><span style="color: #6b21a8;">Complete</span></div>';
-                                } else if (data.status === 'cancelled') {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #64748b;"></span><span style="color: #475569;">Cancel</span></div>';
-                                } else {
-                                    statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #dc2626;"></span><span style="color: #b91c1c;">Reject</span></div>';
+                                // Update Status Badge cell (column 6)
+                                const statusCell = row.cells ? row.cells[5] : row.querySelector('td:nth-child(6)');
+                                if (statusCell) {
+                                    if (data.status === 'pending') {
+                                        statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #d97706;"></span><span style="color: #b45309;">Pending</span></div>';
+                                    } else if (data.status === 'in_progress' || data.status === 'interview') {
+                                        statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #0284c7;"></span><span style="color: #0369a1;">In Progress</span></div>';
+                                    } else if (data.status === 'approved') {
+                                        statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #059669;"></span><span style="color: #047857;">Approve</span></div>';
+                                    } else if (data.status === 'completed') {
+                                        statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #7e22ce;"></span><span style="color: #6b21a8;">Complete</span></div>';
+                                    } else if (data.status === 'cancelled') {
+                                        statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #64748b;"></span><span style="color: #475569;">Cancel</span></div>';
+                                    } else {
+                                        statusCell.innerHTML = '<div style="display: flex; align-items: center; gap: 6px; font-size: 0.85rem; font-weight: 600;"><span class="dot-live" style="background: #dc2626;"></span><span style="color: #b91c1c;">Reject</span></div>';
+                                    }
                                 }
-                            }
 
-                            // Update Action Buttons
-                            const btnGroup = row.querySelector('.action-btn-group');
-                            const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
-                            const actionUrl = statusForm.action;
+                                // Update Action Buttons
+                                const btnGroup = row.querySelector('.action-btn-group');
+                                const csrfToken = document.querySelector('input[name="csrfmiddlewaretoken"]').value;
+                                const actionUrl = statusForm.action;
 
-                            const noticeBtnHtml = `
+                                const noticeBtnHtml = `
                                 <button type="button" class="btn-table-action btn-act-notice" title="Send notice / Request additional documents" onclick="openDirectNoticeModal(this)">
                                     Additional Docs
                                 </button>
                             `;
 
-                            let newButtons = '';
-                            if (data.status === 'pending') {
-                                newButtons += `
+                                let newButtons = '';
+                                if (data.status === 'pending') {
+                                    newButtons += `
                                     <form method="post" action="${actionUrl}">
                                         <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                                         <input type="hidden" name="status" value="in_progress">
@@ -871,8 +883,8 @@ function initAdminDashboard() {
                                         <button type="submit" class="btn-table-action btn-act-cancel" title="Cancel application">Cancel</button>
                                     </form>
                                 `;
-                            } else if (data.status === 'in_progress' || data.status === 'interview') {
-                                newButtons += `
+                                } else if (data.status === 'in_progress' || data.status === 'interview') {
+                                    newButtons += `
                                     <form method="post" action="${actionUrl}">
                                         <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                                         <input type="hidden" name="status" value="approved">
@@ -889,8 +901,8 @@ function initAdminDashboard() {
                                         <button type="submit" class="btn-table-action btn-act-cancel" title="Cancel application">Cancel</button>
                                     </form>
                                 `;
-                            } else if (data.status === 'approved') {
-                                newButtons += `
+                                } else if (data.status === 'approved') {
+                                    newButtons += `
                                     <form method="post" action="${actionUrl}">
                                         <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                                         <input type="hidden" name="status" value="completed">
@@ -902,49 +914,49 @@ function initAdminDashboard() {
                                         <button type="submit" class="btn-table-action btn-act-reset" title="Reset status to Pending">Reset to Pending</button>
                                     </form>
                                 `;
-                            } else if (data.status === 'completed') {
-                                newButtons += `
+                                } else if (data.status === 'completed') {
+                                    newButtons += `
                                     <form method="post" action="${actionUrl}">
                                         <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                                         <input type="hidden" name="status" value="pending">
                                         <button type="submit" class="btn-table-action btn-act-reset" title="Reset status to Pending">Reset to Pending</button>
                                     </form>
                                 `;
-                            } else if (data.status === 'rejected' || data.status === 'cancelled') {
-                                newButtons += `
+                                } else if (data.status === 'rejected' || data.status === 'cancelled') {
+                                    newButtons += `
                                     <form method="post" action="${actionUrl}">
                                         <input type="hidden" name="csrfmiddlewaretoken" value="${csrfToken}">
                                         <input type="hidden" name="status" value="pending">
                                         <button type="submit" class="btn-table-action btn-act-reset" title="Reset status to Pending">Reset to Pending</button>
                                     </form>
                                 `;
-                            }
+                                }
 
-                            if (btnGroup) {
-                                btnGroup.innerHTML = newButtons + noticeBtnHtml;
+                                if (btnGroup) {
+                                    btnGroup.innerHTML = newButtons + noticeBtnHtml;
+                                }
                             }
                         }
-                    }
 
-                    if (data.email_sent) {
-                        alert('Operation completed and notification email sent successfully.');
-                    } else if (data.email_error) {
-                        alert('Data saved successfully (Email error: ' + data.email_error + ')');
+                        if (data.email_sent) {
+                            alert('Operation completed and notification email sent successfully.');
+                        } else if (data.email_error) {
+                            alert('Data saved successfully (Email error: ' + data.email_error + ')');
+                        } else {
+                            alert('Data saved successfully in system.');
+                        }
                     } else {
-                        alert('Data saved successfully in system.');
+                        alert('Error updating application data.');
                     }
-                } else {
-                    alert('Error updating application data.');
-                }
-            })
-            .catch(err => {
-                console.error(err);
-                alert('Server connection error.');
-            })
-            .finally(() => {
-                if (submitBtn) submitBtn.disabled = false;
-                if (submitText) submitText.textContent = originalText;
-            });
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Server connection error.');
+                })
+                .finally(() => {
+                    if (submitBtn) submitBtn.disabled = false;
+                    if (submitText) submitText.textContent = originalText;
+                });
         });
     }
 }

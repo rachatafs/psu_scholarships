@@ -482,7 +482,12 @@
         <div class="header-text">
           <h1>มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต</h1>
           <h2>Prince of Songkla University, Phuket Campus</h2>
+          {% if selected_scholarship %}
+          <div class="report-doc-title">{% trans "รายงานรายชื่อนักศึกษาผู้สมัครรับทุนการศึกษา" %}</div>
+          <div style="font-size: 1.15rem; color: #0263b8; font-weight: 800; margin-top: 3px;">{{ selected_scholarship.title }}</div>
+          {% else %}
           <div class="report-doc-title">{% trans "Scholarship & Student Applicant Analytics Report" %}</div>
+          {% endif %}
         </div>
       </div>
       <div class="header-doc-meta">
@@ -493,6 +498,85 @@
     </header>
 
     <!-- Scope & Period Banner -->
+    {% if selected_scholarship %}
+    <div class="filter-summary-card" style="border-left: 4px solid #0263b8;">
+      <div class="filter-summary-left">
+        <span class="material-symbols-outlined meta-icon" style="color: #0263b8;">school</span>
+        <div>
+          <div style="font-size: 0.78rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">{% trans "Scholarship Information (ข้อมูลทุนการศึกษา)" %}:</div>
+          <div class="scope-highlight" style="font-size: 1.05rem; color: #002b49;">{{ selected_scholarship.title }}</div>
+          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px; display: flex; gap: 12px; flex-wrap: wrap;">
+            <span>{% trans "Category" %}: <strong>{{ selected_scholarship.get_category_display }}</strong></span>
+            <span>{% trans "Value" %}: <strong>฿ {{ selected_scholarship.amount_per_semester|floatformat:0|intcomma }}</strong> / {% trans "semester" %}</span>
+            <span>{% trans "Quota" %}: <strong>{{ selected_scholarship.capacity }}</strong> {% trans "seats" %}</span>
+            <span>{% trans "Status" %}: <strong>{{ selected_scholarship.get_status_display }}</strong></span>
+          </div>
+        </div>
+      </div>
+      <div class="filter-summary-right">
+        <span>{% trans "Total Applicants" %}: <strong style="font-size: 1.25rem; color: #0263b8;">{{ total_applications }}</strong> {% trans "คน" %}</span>
+      </div>
+    </div>
+
+    <!-- Section: Student Applicants Detail Table for this Scholarship -->
+    <div class="report-section" style="margin-top: 1.5rem;">
+      <div class="section-head">
+        <div class="section-head-title">
+          <span class="material-symbols-outlined" style="font-size: 1.15rem; color: #0263b8;">group</span>
+          <span>{% trans "รายชื่อนักศึกษาผู้สมัครรับทุนการศึกษาทั้งหมด" %}</span>
+        </div>
+        <span class="section-head-badge">{{ total_applications }} {% trans "applicants" %}</span>
+      </div>
+
+      {% if filtered_applications %}
+      <table class="report-table">
+        <thead>
+          <tr>
+            <th class="text-center" style="width: 35px;">#</th>
+            <th style="width: 105px;">{% trans "Student ID" %}</th>
+            <th style="width: 165px;">{% trans "Student Name" %}</th>
+            <th>{% trans "Faculty / Major" %}</th>
+            <th class="text-center" style="width: 60px;">GPAX</th>
+            <th style="width: 110px;">{% trans "Phone Number" %}</th>
+            <th style="width: 95px;">{% trans "Date Applied" %}</th>
+            <th class="text-center" style="width: 95px;">{% trans "Status" %}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for app in filtered_applications %}
+          <tr>
+            <td class="text-center" style="color: #64748b; font-weight: 600;">{{ forloop.counter }}</td>
+            <td><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
+            <td><strong style="color: #0f172a;">{{ app.student.full_name }}</strong></td>
+            <td style="font-size: 0.78rem; color: #334155;">
+              <div>{{ app.student.get_faculty_display }}</div>
+              {% if app.student.major %}<div style="color: #64748b; font-size: 0.73rem;">{{ app.student.major }}</div>{% endif %}
+            </td>
+            <td class="text-center" style="font-weight: 700; color: #0263b8;">
+              {{ app.student.gpax|floatformat:2 }}
+            </td>
+            <td style="font-size: 0.78rem; color: #475569;">
+              {{ app.student.phone_number|default:"-" }}
+            </td>
+            <td style="font-size: 0.75rem; color: #475569;">
+              {{ app.submitted_at|date:"j M Y" }}
+            </td>
+            <td class="text-center">
+              {% include 'components/app_status_indicator.html' with status=app.status %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <div style="text-align: center; padding: 2.5rem; color: #64748b; font-size: 0.95rem; border: 1px dashed #cbd5e1; border-radius: 8px;">
+        {% trans "ยังไม่มีนักศึกษายื่นสมัครทุนการศึกษานี้" %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% else %}
+
     <div class="filter-summary-card">
       <div class="filter-summary-left">
         <span class="material-symbols-outlined meta-icon">tune</span>
@@ -507,6 +591,11 @@
             {% trans "Month" %} {{ filter_month_name }} {% trans "Year" %} {{ thai_year }} ({{ filter_year }})
             {% else %}
             {% trans "Academic Year" %} {{ thai_year }} ({{ filter_year }})
+            {% endif %}
+            {% if search_query %}
+            <span style="display: inline-block; margin-left: 8px; padding: 2px 8px; background: #e0f2fe; color: #0263b8; border-radius: 4px; font-size: 0.82rem; font-weight: 700;">
+              {% trans "Search" %}: "{{ search_query }}"
+            </span>
             {% endif %}
           </div>
         </div>
@@ -649,6 +738,8 @@
       </div>
       {% endif %}
     </div>
+
+    {% endif %}
 
     <!-- Official University Sign-off Section -->
     <div class="signature-row">
