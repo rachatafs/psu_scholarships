@@ -556,7 +556,7 @@
 
   .search-inputs-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(140px, 1fr));
+    grid-template-columns: repeat(4, minmax(130px, 1fr));
     gap: 0.85rem;
     flex: 1;
     min-width: 320px;
@@ -787,6 +787,165 @@
     background: #ffffff;
     color: #002b49;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+
+  @media (max-width: 1100px) and (min-width: 769px) {
+    .search-inputs-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  /* Single Scholarship Focus & Export Banner */
+  .sch-applicant-focus-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    padding: 1.15rem 1.4rem;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e0f2fe 100%);
+    border: 1.5px solid #93c5fd;
+    border-radius: 14px;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 14px rgba(2, 99, 184, 0.08);
+    flex-wrap: wrap;
+  }
+  .focus-banner-left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    flex: 1;
+    min-width: 280px;
+  }
+  .focus-badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: #0263b8;
+    color: #ffffff;
+    font-size: 0.76rem;
+    font-weight: 700;
+    padding: 0.2rem 0.65rem;
+    border-radius: 9999px;
+    width: fit-content;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .focus-sch-title {
+    font-size: 1.18rem;
+    font-weight: 800;
+    color: #002b49;
+    margin: 0;
+    line-height: 1.35;
+  }
+  .focus-sch-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    font-size: 0.86rem;
+    color: #475569;
+  }
+  .focus-meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .focus-meta-item strong {
+    color: #002b49;
+  }
+  .focus-banner-right {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+  .btn-export-sch-pdf {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 1.1rem;
+    background: #e11d48;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 0.88rem;
+    border-radius: 9px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(225, 29, 72, 0.25);
+    transition: all 0.2s ease;
+  }
+  .btn-export-sch-pdf:hover {
+    background: #be123c;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.35);
+  }
+  .btn-export-sch-csv {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 1.1rem;
+    background: #16a34a;
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 0.88rem;
+    border-radius: 9px;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(22, 163, 74, 0.25);
+    transition: all 0.2s ease;
+  }
+  .btn-export-sch-csv:hover {
+    background: #15803d;
+    color: #ffffff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+  }
+  .btn-clear-sch-focus {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.55rem 0.95rem;
+    background: #ffffff;
+    color: #475569 !important;
+    border: 1.5px solid #cbd5e1;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-radius: 9px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .btn-clear-sch-focus:hover {
+    background: #f8fafc;
+    color: #0f172a !important;
+    border-color: #94a3b8;
+  }
+  .btn-table-applicants {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.35rem 0.75rem;
+    background: #eff6ff;
+    color: #0263b8;
+    border: 1.5px solid #bfdbfe;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+  .btn-table-applicants:hover {
+    background: #0263b8;
+    color: #ffffff;
+    border-color: #0263b8;
+    box-shadow: 0 2px 6px rgba(2, 99, 184, 0.2);
+  }
+  .applicant-count-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .applicant-count-link:hover span:first-child {
+    text-decoration: underline;
   }
 
   /* Responsive layout for mobile / tablet */
@@ -1160,6 +1319,22 @@
             </select>
           </div>
         </div>
+
+        <!-- Scholarship Select (Filter by Specific Scholarship) -->
+        <div class="search-field">
+          <label for="filterScholarship" class="search-field-label">{% trans "Scholarship" %}</label>
+          <div class="search-select-box">
+            <span class="material-symbols-outlined select-icon">school</span>
+            <select id="filterScholarship" name="scholarship" class="search-select" onchange="const sub = document.getElementById('activeSubtabInput'); if(sub) sub.value='apps'; this.form.submit();">
+              <option value="">{% trans "All Scholarships (ทุกทุน)" %}</option>
+              {% for s in all_system_scholarships %}
+              <option value="{{ s.pk }}" {% if selected_scholarship_id == s.pk|stringformat:"s" %}selected{% endif %}>
+                {{ s.title }} ({{ s.applications.count }} {% trans "คน" %})
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
       </div>
 
       <!-- Action Buttons: Search, Reset, Export PDF -->
@@ -1171,25 +1346,42 @@
         </button>
 
         <!-- Reset Button -->
-        <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&tab={{ active_tab|default:'overview' }}&subtab={{ active_subtab|default:'sch' }}"
+        <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&scholarship=&tab={{ active_tab|default:'overview' }}&subtab={{ active_subtab|default:'sch' }}"
           class="btn-dash-action btn-dash-reset" title="{% trans 'Reset all filters to view all records' %}">
           <span class="material-symbols-outlined" style="font-size: 1.15rem;">restart_alt</span>
           <span>{% trans "Reset" %}</span>
         </a>
 
-        <!-- Export PDF Dropdown Button -->
+        <!-- Export PDF & Data Dropdown Button -->
         <div class="export-pdf-dropdown-wrap">
           <button type="button" class="btn-dash-action btn-dash-pdf" id="btnExportPdfDropdown"
             onclick="togglePdfDropdown(event)">
-            <span class="material-symbols-outlined" style="font-size: 1.15rem;">picture_as_pdf</span>
-            <span>{% trans "Export PDF" %}</span>
+            <span class="material-symbols-outlined" style="font-size: 1.15rem;">download</span>
+            <span>{% trans "Export" %}</span>
             <span class="material-symbols-outlined" style="font-size: 1.1rem; margin-left: -2px;">expand_more</span>
           </button>
           <div class="pdf-dropdown-menu" id="pdfDropdownMenu">
-            <a href="{% url 'export_dashboard_pdf' %}?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&auto_print=1" target="_blank" class="pdf-dropdown-item">
-              <span class="material-symbols-outlined pdf-item-icon">filter_list</span>
+            {% if selected_scholarship %}
+            <a href="{% url 'export_dashboard_pdf' %}?scholarship={{ selected_scholarship.pk }}&auto_print=1" target="_blank" class="pdf-dropdown-item" style="background: #eff6ff;">
+              <span class="material-symbols-outlined pdf-item-icon" style="color: #0263b8;">assignment_ind</span>
               <div class="pdf-item-text">
-                <strong>{% trans "Export Current Filter" %}</strong>
+                <strong style="color: #0263b8;">{% trans "Export This Scholarship (PDF)" %}</strong>
+                <span>{{ selected_scholarship.title|truncatechars:36 }} ({% trans "Student List" %})</span>
+              </div>
+            </a>
+            <a href="{% url 'export_dashboard_csv' %}?scholarship={{ selected_scholarship.pk }}" class="pdf-dropdown-item">
+              <span class="material-symbols-outlined pdf-item-icon" style="color: #16a34a;">table_view</span>
+              <div class="pdf-item-text">
+                <strong>{% trans "Export This Scholarship (Excel / CSV)" %}</strong>
+                <span>{% trans "Download student applicants spreadsheet" %}</span>
+              </div>
+            </a>
+            <div style="border-top: 1px solid #e2e8f0; margin: 4px 0;"></div>
+            {% endif %}
+            <a href="{% url 'export_dashboard_pdf' %}?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&auto_print=1" target="_blank" class="pdf-dropdown-item">
+              <span class="material-symbols-outlined pdf-item-icon">picture_as_pdf</span>
+              <div class="pdf-item-text">
+                <strong>{% trans "Export Current Filter (PDF)" %}</strong>
                 <span>
                   {% if filter_term_name %}{{ filter_term_name }}{% else %}{% trans "Active filtered period" %}{% endif %}
                   ({% trans "With Student Names" %})
@@ -1199,8 +1391,15 @@
             <a href="{% url 'export_dashboard_pdf' %}?scope=all&auto_print=1" target="_blank" class="pdf-dropdown-item">
               <span class="material-symbols-outlined pdf-item-icon">select_all</span>
               <div class="pdf-item-text">
-                <strong>{% trans "Export All Records" %}</strong>
+                <strong>{% trans "Export All Records (PDF)" %}</strong>
                 <span>{% trans "All semesters & all student applicants" %}</span>
+              </div>
+            </a>
+            <a href="{% url 'export_dashboard_csv' %}" class="pdf-dropdown-item">
+              <span class="material-symbols-outlined pdf-item-icon" style="color: #16a34a;">table_view</span>
+              <div class="pdf-item-text">
+                <strong>{% trans "Export All Applicants (Excel / CSV)" %}</strong>
+                <span>{% trans "Download all applicants spreadsheet" %}</span>
               </div>
             </a>
           </div>
@@ -1465,8 +1664,10 @@
                   <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
                 </td>
                 <td>
-                  <span style="font-weight: 600; color: #334155;">{{ s.applications.count }}</span>
-                  <span style="color: #94a3b8;">/ {{ s.capacity }}</span>
+                  <a href="?scholarship={{ s.pk }}&tab=records&subtab=apps" class="applicant-count-link" title="{% trans 'View student applicants for this scholarship' %}">
+                    <span style="font-weight: 700; color: #0263b8; text-decoration: underline;">{{ s.applications.count }}</span>
+                    <span style="color: #94a3b8;">/ {{ s.capacity }}</span>
+                  </a>
                 </td>
                 <td>
                   {% if s.status == 'active' %}<span class="badge badge-open">{% trans "Active" %}</span>
@@ -1478,7 +1679,11 @@
                     {{ s.start_date|date:"j M Y" }} – {{ s.end_date|date:"j M Y" }}
                   </span>
                 </td>
-                <td style="text-align: right;">
+                <td style="text-align: right; white-space: nowrap;">
+                  <a href="?scholarship={{ s.pk }}&tab=records&subtab=apps" class="btn-table-applicants" title="{% trans 'View and export student applicants for this scholarship' %}">
+                    <span class="material-symbols-outlined" style="font-size: 0.95rem;">group</span>
+                    <span>{% trans "Applicants" %}</span>
+                  </a>
                   <a href="{% url 'scholarship_detail' s.pk %}" class="btn-table-view" target="_blank">
                     <span>{% trans "View" %}</span>
                     <span class="material-symbols-outlined" style="font-size: 0.95rem;">arrow_outward</span>
@@ -1508,6 +1713,44 @@
 
       <!-- Sub-Tab 2: Student Applicants Table (WITH STUDENT NAMES) -->
       <div id="tabContentApplicants" style="{% if active_subtab != 'apps' %}display: none;{% endif %}">
+        {% if selected_scholarship %}
+        <div class="sch-applicant-focus-banner">
+          <div class="focus-banner-left">
+            <div class="focus-badge-pill">
+              <span class="material-symbols-outlined" style="font-size: 1rem;">school</span>
+              <span>{% trans "Selected Scholarship" %}</span>
+            </div>
+            <h3 class="focus-sch-title">{{ selected_scholarship.title }}</h3>
+            <div class="focus-sch-meta">
+              {% include 'components/category_badge.html' with category=selected_scholarship.category category_display=selected_scholarship.get_category_display %}
+              <span class="focus-meta-item">
+                {% trans "Value" %}: <strong>฿ {{ selected_scholarship.amount_per_semester|floatformat:0|intcomma }}</strong> / {% trans "semester" %}
+              </span>
+              <span class="focus-meta-item">
+                {% trans "Quota" %}: <strong>{{ selected_scholarship.capacity }}</strong> {% trans "seats" %}
+              </span>
+              <span class="focus-meta-item">
+                {% trans "Total Applicants" %}: <strong style="color: #0263b8;">{{ total_applications }}</strong> {% trans "applicants" %}
+              </span>
+            </div>
+          </div>
+          <div class="focus-banner-right">
+            <a href="{% url 'export_dashboard_pdf' %}?scholarship={{ selected_scholarship.pk }}&auto_print=1" target="_blank" class="btn-export-sch-pdf" title="{% trans 'Print / Save as PDF' %}">
+              <span class="material-symbols-outlined" style="font-size: 1.15rem;">picture_as_pdf</span>
+              <span>{% trans "Export Applicants (PDF)" %}</span>
+            </a>
+            <a href="{% url 'export_dashboard_csv' %}?scholarship={{ selected_scholarship.pk }}" class="btn-export-sch-csv" title="{% trans 'Download Excel Spreadsheet' %}">
+              <span class="material-symbols-outlined" style="font-size: 1.15rem;">table_view</span>
+              <span>{% trans "Export (Excel / CSV)" %}</span>
+            </a>
+            <a href="{% url 'scholarship_dashboard' %}?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}&tab=records&subtab=apps" class="btn-clear-sch-focus" title="{% trans 'View all applicants from all scholarships' %}">
+              <span class="material-symbols-outlined" style="font-size: 1.05rem;">close</span>
+              <span>{% trans "Show All Scholarships" %}</span>
+            </a>
+          </div>
+        </div>
+        {% endif %}
+
         {% if filtered_applications %}
         <div class="table-responsive-wrapper">
           <table class="dtable modern-filtered-table">
