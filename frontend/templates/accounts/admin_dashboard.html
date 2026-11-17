@@ -167,8 +167,8 @@
       width: 100% !important;
     }
     .modern-data-table tbody tr {
-      display: flex !important;
-      flex-direction: column !important;
+      display: flex;
+      flex-direction: column;
       background: #ffffff !important;
       border: 1.5px solid #e2e8f0 !important;
       border-radius: 14px !important;
@@ -177,6 +177,11 @@
       gap: 0.65rem !important;
       width: 100% !important;
       box-sizing: border-box !important;
+    }
+    .modern-data-table tbody tr[style*="display: none"],
+    .modern-data-table tbody tr[style*="display:none"],
+    .modern-data-table tbody tr.row-hidden {
+      display: none !important;
     }
     .modern-data-table tbody tr:hover td {
       background: transparent !important;
@@ -1068,5 +1073,5 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/admin_dashboard.js' %}?v=20261116-v3"></script>
+<script src="{% static 'js/admin_dashboard.js' %}?v=20261118-v2"></script>
 {% endblock %}

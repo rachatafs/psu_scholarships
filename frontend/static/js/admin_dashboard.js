@@ -211,7 +211,8 @@ function initAdminDashboard() {
             if (matchesQuery && matchesCat && matchesStatus) {
                 matchedRows.push(row);
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -224,9 +225,12 @@ function initAdminDashboard() {
 
         matchedRows.forEach((row, idx) => {
             if (idx >= startIndex && idx < endIndex) {
+                row.classList.remove('row-hidden');
+                row.style.removeProperty('display');
                 row.style.display = '';
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -309,7 +313,8 @@ function initAdminDashboard() {
             if (matchesQuery && matchesCat) {
                 matchedRows.push(row);
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -322,9 +327,12 @@ function initAdminDashboard() {
 
         matchedRows.forEach((row, idx) => {
             if (idx >= startIndex && idx < endIndex) {
+                row.classList.remove('row-hidden');
+                row.style.removeProperty('display');
                 row.style.display = '';
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -396,7 +404,8 @@ function initAdminDashboard() {
             if (matchesQuery) {
                 matchedRows.push(row);
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 
@@ -409,9 +418,12 @@ function initAdminDashboard() {
 
         matchedRows.forEach((row, idx) => {
             if (idx >= startIndex && idx < endIndex) {
+                row.classList.remove('row-hidden');
+                row.style.removeProperty('display');
                 row.style.display = '';
             } else {
-                row.style.display = 'none';
+                row.classList.add('row-hidden');
+                row.style.setProperty('display', 'none', 'important');
             }
         });
 

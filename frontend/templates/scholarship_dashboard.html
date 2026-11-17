@@ -1090,27 +1090,33 @@
 
     /* Mobile Card Layout for Scholarship and Applicant Tables */
     .table-responsive-wrapper {
-      overflow-x: visible !important;
+      overflow-x: auto !important;
+      -webkit-overflow-scrolling: touch !important;
+      width: 100% !important;
     }
-    .modern-filtered-table {
+    .modern-filtered-table,
+    .tcard table.dtable {
       display: block !important;
       width: 100% !important;
       border: none !important;
       box-shadow: none !important;
       background: transparent !important;
     }
-    .modern-filtered-table thead {
+    .modern-filtered-table thead,
+    .tcard table.dtable thead {
       display: none !important;
     }
-    .modern-filtered-table tbody {
+    .modern-filtered-table tbody,
+    .tcard table.dtable tbody {
       display: flex !important;
       flex-direction: column !important;
       gap: 0.85rem !important;
       width: 100% !important;
     }
-    .modern-filtered-table tbody tr {
-      display: flex !important;
-      flex-direction: column !important;
+    .modern-filtered-table tbody tr,
+    .tcard table.dtable tbody tr {
+      display: flex;
+      flex-direction: column;
       background: #ffffff !important;
       border: 1.5px solid #e2e8f0 !important;
       border-radius: 14px !important;
@@ -1120,10 +1126,20 @@
       width: 100% !important;
       box-sizing: border-box !important;
     }
-    .modern-filtered-table tbody tr:hover td {
+    .modern-filtered-table tbody tr[style*="display: none"],
+    .modern-filtered-table tbody tr[style*="display:none"],
+    .modern-filtered-table tbody tr.row-hidden,
+    .tcard table.dtable tbody tr[style*="display: none"],
+    .tcard table.dtable tbody tr[style*="display:none"],
+    .tcard table.dtable tbody tr.row-hidden {
+      display: none !important;
+    }
+    .modern-filtered-table tbody tr:hover td,
+    .tcard table.dtable tbody tr:hover td {
       background: transparent !important;
     }
-    .modern-filtered-table td {
+    .modern-filtered-table td,
+    .tcard table.dtable td {
       display: flex !important;
       align-items: center !important;
       justify-content: space-between !important;
@@ -1135,7 +1151,8 @@
       width: 100% !important;
       box-sizing: border-box !important;
     }
-    .modern-filtered-table td::before {
+    .modern-filtered-table td::before,
+    .tcard table.dtable td::before {
       content: attr(data-label);
       font-size: 0.72rem;
       font-weight: 700;
@@ -1146,17 +1163,20 @@
       text-align: left;
       margin-right: 0.75rem;
     }
-    .modern-filtered-table td.td-title-cell {
+    .modern-filtered-table td.td-title-cell,
+    .tcard table.dtable td.td-title-cell {
       display: block !important;
       text-align: left !important;
       padding-bottom: 0.55rem !important;
       border-bottom: 1px solid #f1f5f9 !important;
       margin-bottom: 0.2rem !important;
     }
-    .modern-filtered-table td.td-title-cell::before {
+    .modern-filtered-table td.td-title-cell::before,
+    .tcard table.dtable td.td-title-cell::before {
       display: none !important;
     }
-    .modern-filtered-table td.td-title-cell .sch-title-link {
+    .modern-filtered-table td.td-title-cell .sch-title-link,
+    .tcard table.dtable td.td-title-cell .sch-title-link {
       font-size: 0.98rem !important;
       font-weight: 700 !important;
       line-height: 1.45 !important;
@@ -1758,7 +1778,7 @@
         </div>
         {% if deadline_soon %}
         <div class="table-responsive-wrapper">
-          <table class="dtable">
+          <table class="dtable modern-filtered-table">
             <thead>
               <tr>
                 <th>{% trans "Scholarship" %}</th>
@@ -1771,17 +1791,19 @@
             <tbody>
               {% for s in deadline_soon %}
               <tr>
-                <td>
+                <td class="td-title-cell" data-label="{% trans 'Scholarship' %}">
                   <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank">
                     <strong>{{ s.title }}</strong>
                   </a>
                 </td>
-                <td>
+                <td data-label="{% trans 'Category' %}">
                   {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
                 </td>
-                <td>฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</td>
-                <td class="urgent">{{ s.end_date|date:"j M y" }}</td>
-                <td>{{ s.applications.count }} {% trans "applicant(s)" %}</td>
+                <td data-label="{% trans 'Amount' %}">
+                  <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
+                </td>
+                <td data-label="{% trans 'Deadline' %}" class="urgent">{{ s.end_date|date:"j M Y" }}</td>
+                <td data-label="{% trans 'Applications' %}">{{ s.applications.count }} {% trans "applicant(s)" %}</td>
               </tr>
               {% endfor %}
             </tbody>
