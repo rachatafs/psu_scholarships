@@ -1600,7 +1600,7 @@ msgstr "04. การควบคุมโควตาและความจ�
 
 #: frontend/templates/guide/admin_guide.html:178
 msgid ""
-"Each scholarship defines a capacity quota ('Grants'). The system "
+"Each scholarship defines a capacity quota ('Scholarships'). The system "
 "automatically protects and manages quotas as follows:"
 msgstr ""
 "ทุนการศึกษาแต่ละรายการจะระบุจำนวนโควตาสูงสุดไว้ "
