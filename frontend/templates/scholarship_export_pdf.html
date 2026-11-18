@@ -832,7 +832,7 @@
     <div class="report-title-section">
       {% if selected_scholarship %}
       <h2 class="doc-main-title">{% if report_lang == 'th' %}รายงานรายชื่อนักศึกษาผู้สมัครรับทุนการศึกษา{% else %}Scholarship Applicant Roster Report{% endif %}</h2>
-      <div class="doc-scholarship-name">{{ selected_scholarship.title }}</div>
+      <div class="doc-scholarship-name">{{ selected_scholarship.localized_title }}</div>
       {% else %}
       <h2 class="doc-main-title">{% if report_lang == 'th' %}รายงานสถิติข้อมูลทุนการศึกษาและผู้สมัครรับทุน{% else %}Scholarship &amp; Applicant Analytics Report{% endif %}</h2>
       <div class="doc-scholarship-name">
@@ -1061,7 +1061,7 @@
           {% for s in filtered_scholarships %}
           <tr>
             <td class="text-center" style="color: #64748b; font-weight: 600;">{{ forloop.counter }}</td>
-            <td><strong>{{ s.title }}</strong></td>
+            <td><strong>{{ s.localized_title }}</strong></td>
             <td>
               {% if report_lang == 'th' %}
                 {% if s.category == 'general' %}<span class="category-pill-tag">ทุนทั่วไป</span>
@@ -1152,7 +1152,7 @@
               {{ app.student.gpax|floatformat:2 }}
             </td>
             <td style="font-size: 0.78rem;">
-              {{ app.scholarship.title }}
+              {{ app.scholarship.localized_title }}
             </td>
             <td class="text-center" style="font-size: 0.74rem; color: #475569;">
               {% if report_lang == 'th' %}{{ app.submitted_at|date:"j M Y" }}{% else %}{{ app.submitted_at|date:"d M Y" }}{% endif %}

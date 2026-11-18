@@ -9,8 +9,9 @@
     <div class="container-default">
         <!-- Breadcrumb & Back -->
         <div class="apply-top-nav">
-            <a href="{% url 'scholarship_detail' scholarship.pk %}" class="btn-back-clean">
-                ← {% trans "Back to Scholarship Details" %}
+            <a href="{% url 'scholarship_detail' scholarship.pk %}" class="btn-back-nav">
+                <span class="material-symbols-outlined icon-back">arrow_back</span>
+                <span>{% trans "Back to Scholarship Details" %}</span>
             </a>
         </div>
 
@@ -21,8 +22,8 @@
                 <div class="apply-badge-tag">APPLICATION FORM</div>
                 <h1 class="apply-headline">{% trans "Scholarship Application Form" %}</h1>
                 <div class="applying-for-box">
-                    <span class="apply-label-sub">{% trans "Applying for" %}:</span>
-                    <strong class="apply-sch-name">{{ scholarship.title }}</strong>
+                    <span class="apply-label-sub">{% trans "Applying for:" %}</span>
+                    <strong class="apply-sch-name">{{ scholarship.localized_title }}</strong>
                     <span class="amount-mini-badge">฿{{ scholarship.amount_per_semester|floatformat:0 }} / {% trans "semester" %}</span>
                 </div>
 

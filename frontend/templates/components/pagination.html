@@ -1,5 +1,5 @@
 {% load i18n %}
-{% if page_obj.has_other_pages %}
+{% if page_obj.has_other_pages or always_show %}
 <style>
   .dash-pagination-wrap {
     display: flex !important;

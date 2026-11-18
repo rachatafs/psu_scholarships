@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}ติดต่อเรา | งานพัฒนานักศึกษา ม.อ. ภูเก็ต{% endblock %}
+{% block title %}{% trans "Contact Us | Student Development PSU Phuket" %}{% endblock %}
 
 {% block content %}
 <div class="contact-page-modern">
@@ -10,16 +10,16 @@
     <div class="contact-header-banner">
         <div class="container-default">
             <div class="breadcrumb-nav">
-                <a href="{% url 'home' %}">หน้าแรก</a>
+                <a href="{% url 'home' %}">{% trans "Home" %}</a>
                 <span class="breadcrumb-sep">/</span>
-                <span class="breadcrumb-current">ติดต่อเรา</span>
+                <span class="breadcrumb-current">{% trans "Contact Us" %}</span>
             </div>
             <div class="contact-header-content">
                 <span class="contact-tag-badge">STUDENT DEVELOPMENT &amp; RELATIONS</span>
-                <h1 class="contact-main-title">ติดต่อฝ่ายทุนการศึกษา ม.อ. ภูเก็ต</h1>
+                <h1 class="contact-main-title">{% trans "Contact PSU Phuket Scholarship Office" %}</h1>
                 <p class="contact-subtitle">
-                    งานพัฒนานักศึกษาและศิษย์เก่าสัมพันธ์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต<br>
-                    พร้อมให้คำปรึกษา แนะนำข้อมูลทุนการศึกษา และช่วยเหลือขั้นตอนการยื่นเอกสาร
+                    {% trans "Student Development and Alumni Relations, Prince of Songkla University, Phuket Campus" %}<br>
+                    {% trans "Ready to provide consultation, scholarship information, and application assistance." %}
                 </p>
             </div>
         </div>
@@ -36,15 +36,15 @@
                         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                     </svg>
                 </div>
-                <h3 class="contact-card-title">โทรศัพท์ติดต่อ</h3>
-                <p class="contact-card-desc">สอบถามข้อมูลทุนการศึกษาและขั้นตอนการสมัคร</p>
+                <h3 class="contact-card-title">{% trans "Phone Contact" %}</h3>
+                <p class="contact-card-desc">{% trans "Inquire about scholarship details and application procedures" %}</p>
                 <div class="contact-item-detail">
-                    <div class="detail-label">เบอร์โทรศัพท์ตรง:</div>
+                    <div class="detail-label">{% trans "Direct Phone Number:" %}</div>
                     <a href="tel:076276047" class="detail-highlight-link">0 7627 6047</a>
                 </div>
                 <div class="contact-item-detail">
-                    <div class="detail-label">เบอร์โทรศัพท์กลางวิทยาเขต:</div>
-                    <span class="detail-text">076-276-000 ต่อ 6047, 6050</span>
+                    <div class="detail-label">{% trans "Campus Central Number:" %}</div>
+                    <span class="detail-text">076-276-000 {% trans "ext. 6047, 6050" %}</span>
                 </div>
             </div>
 
@@ -56,17 +56,17 @@
                         <polyline points="22,6 12,13 2,6"></polyline>
                     </svg>
                 </div>
-                <h3 class="contact-card-title">อีเมลติดต่อ</h3>
-                <p class="contact-card-desc">ส่งคำถาม เอกสาร หรือข้อสงสัยทางอีเมลทางการ</p>
+                <h3 class="contact-card-title">{% trans "Email Contact" %}</h3>
+                <p class="contact-card-desc">{% trans "Send inquiries, documents, or questions via official email" %}</p>
                 <div class="contact-item-detail">
-                    <div class="detail-label">อีเมลงานพัฒนานักศึกษา:</div>
+                    <div class="detail-label">{% trans "Student Development Email:" %}</div>
                     <a href="mailto:student-alumni@phuket.psu.ac.th" class="detail-highlight-link">
                         student-alumni@phuket.psu.ac.th
                     </a>
                 </div>
                 <div class="contact-item-detail">
-                    <div class="detail-label">การตอบกลับ:</div>
-                    <span class="detail-text">เจ้าหน้าที่ตอบกลับภายใน 1-2 วันทำการ</span>
+                    <div class="detail-label">{% trans "Response Time:" %}</div>
+                    <span class="detail-text">{% trans "Officers will respond within 1-2 business days" %}</span>
                 </div>
             </div>
 
@@ -78,19 +78,19 @@
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                 </div>
-                <h3 class="contact-card-title">วันและเวลาทำการ</h3>
-                <p class="contact-card-desc">เวลาเปิดให้บริการติดต่อด้วยตนเอง</p>
+                <h3 class="contact-card-title">{% trans "Office Hours" %}</h3>
+                <p class="contact-card-desc">{% trans "Opening hours for in-person visits" %}</p>
                 <div class="contact-item-detail">
-                    <div class="detail-label">วันเปิดทำการ:</div>
-                    <span class="detail-text font-bold">วันจันทร์ – วันศุกร์</span>
+                    <div class="detail-label">{% trans "Business Days:" %}</div>
+                    <span class="detail-text font-bold">{% trans "Monday – Friday" %}</span>
                 </div>
                 <div class="contact-item-detail">
-                    <div class="detail-label">เวลาให้บริการ:</div>
-                    <span class="detail-highlight">08:30 – 16:30 น.</span>
+                    <div class="detail-label">{% trans "Service Hours:" %}</div>
+                    <span class="detail-highlight">08:30 – 16:30</span>
                 </div>
                 <div class="contact-item-detail">
-                    <div class="detail-label">วันหยุด:</div>
-                    <span class="detail-text text-muted">ปิดทำการวันเสาร์ - อาทิตย์ และวันหยุดนักขัตฤกษ์</span>
+                    <div class="detail-label">{% trans "Holidays:" %}</div>
+                    <span class="detail-text text-muted">{% trans "Closed on weekends and public holidays" %}</span>
                 </div>
             </div>
 
@@ -106,33 +106,33 @@
                     </svg>
                 </div>
                 <div>
-                    <h2 class="location-title">สถานที่ติดต่อด้วยตนเอง</h2>
-                    <p class="location-subtitle">งานพัฒนานักศึกษาและศิษย์เก่าสัมพันธ์ วิทยาเขตภูเก็ต</p>
+                    <h2 class="location-title">{% trans "In-Person Office Location" %}</h2>
+                    <p class="location-subtitle">{% trans "Student Development and Alumni Relations, Phuket Campus" %}</p>
                 </div>
             </div>
 
             <div class="location-details-grid">
                 <div class="loc-detail-box">
-                    <div class="loc-label">ห้องทำงาน / อาคาร:</div>
-                    <div class="loc-value">ห้อง 7102 อาคาร 7 ชั้น 1 (อาคารสำนักงานอธิการบดี)</div>
+                    <div class="loc-label">{% trans "Room / Building:" %}</div>
+                    <div class="loc-value">{% trans "Room 7102, Building 7, 1st Floor (President's Office Building)" %}</div>
                 </div>
                 <div class="loc-detail-box">
-                    <div class="loc-label">ที่อยู่ไปรษณีย์:</div>
+                    <div class="loc-label">{% trans "Postal Address:" %}</div>
                     <div class="loc-value">
-                        มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต<br>
-                        80 หมู่ 1 ถนนวิชิตสงคราม ตำบลกะทู้ อำเภอกะทู้ จังหวัดภูเก็ต 83120
+                        {% trans "Prince of Songkla University, Phuket Campus" %}<br>
+                        {% trans "80 Moo 1, Vichitsongkram Road, Kathu Sub-district, Kathu District, Phuket 83120" %}
                     </div>
                 </div>
                 <div class="loc-detail-box">
-                    <div class="loc-label">จุดสังเกต:</div>
+                    <div class="loc-label">{% trans "Landmark:" %}</div>
                     <div class="loc-value">
-                        เข้าทางประตูด้านหน้าวิทยาเขต มุ่งตรงมายังอาคาร 7 (ด้านหน้ามีพระราชานุสาวรีย์สมเด็จพระบรมราชชนก)
+                        {% trans "Enter via the main campus entrance, proceed directly to Building 7 (in front of the Prince Father Royal Monument)" %}
                     </div>
                 </div>
             </div>
 
             <div class="location-footer-note">
-                นักศึกษาที่ต้องการส่งเอกสารตัวจริง หรือขอคำปรึกษาเรื่องทุน สามารถเดินทางมาติดต่อได้ที่ห้อง 7102 ในวันและเวลาทำการ
+                {% trans "Students who need to submit original physical documents or seek scholarship counseling can visit Room 7102 during business hours." %}
             </div>
         </div>
     </div>

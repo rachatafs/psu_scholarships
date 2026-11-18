@@ -38,11 +38,11 @@
     </div>
 
     <h3 class="card-scholarship-title">
-        <a href="{% url 'scholarship_detail' s.pk %}">{{ s.title }}</a>
+        <a href="{% url 'scholarship_detail' s.pk %}">{{ s.localized_title }}</a>
     </h3>
 
     <p class="card-scholarship-desc">
-        {{ s.description|truncatewords:18 }}
+        {{ s.localized_description|truncatewords:18 }}
     </p>
 
     <div class="card-meta-list">
@@ -59,7 +59,7 @@
         {% endif %}
         <div class="meta-row">
             <span class="meta-label">{% trans "Quota" %}:</span>
-            <strong class="meta-value">{{ s.capacity }} {% trans "Grants" %}</strong>
+            <strong class="meta-value">{{ s.capacity }} {% trans "Students" %}</strong>
         </div>
         {% if not show_urgent and s.end_date %}
         <div class="meta-row">

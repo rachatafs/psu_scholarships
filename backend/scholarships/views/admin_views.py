@@ -1,3 +1,4 @@
+import logging
 from urllib.parse import quote
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -10,6 +11,8 @@ from django.utils.translation import gettext as _
 from django.utils import translation
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application
+
+logger = logging.getLogger(__name__)
 
 def _get_standard_page_range(current_page, num_pages):
     """
@@ -133,7 +136,7 @@ def update_application(request, pk):
                 email_sent = True
             except Exception as e:
                 email_error = str(e)
-                print(f"Failed to send email to {app.student.user.email}: {e}")
+                logger.error("Failed to send email to %s: %s", app.student.user.email, e)
                 
         # Check if AJAX / JSON request
         if request.headers.get('Accept') == 'application/json' or request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -212,8 +215,11 @@ def _get_dashboard_analytics_data(request):
     if search_query:
         s_qs = s_qs.filter(
             Q(title__icontains=search_query) |
+            Q(title_en__icontains=search_query) |
             Q(description__icontains=search_query) |
+            Q(description_en__icontains=search_query) |
             Q(requirements__icontains=search_query) |
+            Q(requirements_en__icontains=search_query) |
             Q(applications__student__student_id__icontains=search_query) |
             Q(applications__student__full_name__icontains=search_query) |
             Q(applications__student__major__icontains=search_query)
@@ -237,7 +243,8 @@ def _get_dashboard_analytics_data(request):
             Q(student__full_name__icontains=search_query) |
             Q(student__faculty__icontains=search_query) |
             Q(student__major__icontains=search_query) |
-            Q(scholarship__title__icontains=search_query)
+            Q(scholarship__title__icontains=search_query) |
+            Q(scholarship__title_en__icontains=search_query)
         ).distinct()
 
     filtered_applications = a_qs
@@ -393,9 +400,10 @@ def scholarship_dashboard(request):
 
 @staff_member_required
 def export_dashboard_pdf(request):
-    report_lang = request.GET.get('lang', 'en').lower()
+    current_lang = (translation.get_language() or 'en')[:2].lower()
+    report_lang = request.GET.get('lang', current_lang).lower()
     if report_lang not in ['th', 'en']:
-        report_lang = 'en'
+        report_lang = current_lang if current_lang in ['th', 'en'] else 'en'
     translation.activate(report_lang)
     data = _get_dashboard_analytics_data(request)
     data['auto_print'] = (request.GET.get('auto_print') == '1')

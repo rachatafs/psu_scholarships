@@ -437,7 +437,7 @@
                     <p class="table-sub-desc">{% trans "Search, verify GPAX eligibility, and update application review statuses." %}</p>
                 </div>
                 <div>
-                    <a href="/admin/scholarships/scholarship/add/" class="btn-create-sch-link" target="_blank">
+                    <a href="{% url 'admin:scholarships_scholarship_add' %}" class="btn-create-sch-link" target="_blank">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
                             stroke-width="2.5">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -531,12 +531,12 @@
                     <tbody>
                         {% for app in applications %}
                         <tr class="app-row" data-name="{{ app.student.full_name|lower }}"
-                            data-id="{{ app.student.student_id }}" data-sch="{{ app.scholarship.title|lower }}"
+                            data-id="{{ app.student.student_id }}" data-sch="{{ app.scholarship.localized_title|lower }}"
                             data-category="{{ app.scholarship.category }}" data-status="{{ app.status }}"
                             data-student-name="{{ app.student.full_name }}"
                             data-student-id="{{ app.student.student_id }}"
                             data-student-email="{{ app.student.user.email }}"
-                            data-sch-title="{{ app.scholarship.title }}" data-note="{{ app.note|default:'' }}"
+                            data-sch-title="{{ app.scholarship.localized_title }}" data-note="{{ app.note|default:'' }}"
                             data-app-id="{{ app.pk }}">
                             <td class="td-title-cell" data-label="{% trans 'Applicant' %}">
                                 <div class="font-bold">{{ app.student.full_name }}</div>
@@ -552,7 +552,7 @@
                             <td data-label="{% trans 'Scholarship' %}" class="td-sch-cell">
                                 <div class="sch-meta-box">
                                     <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="sch-card-title-link" target="_blank" title="{% trans 'View scholarship details' %}">
-                                        {{ app.scholarship.title }}
+                                        {{ app.scholarship.localized_title }}
                                     </a>
                                     <div class="sch-card-badge-row">
                                         {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
@@ -706,7 +706,7 @@
                     <p class="table-sub-desc">{% trans "Manage listings, view applicant counts, quotas, and scholarship statuses." %}</p>
                 </div>
                 <div>
-                    <a href="/admin/scholarships/scholarship/add/" class="btn-create-sch-link" target="_blank">
+                    <a href="{% url 'admin:scholarships_scholarship_add' %}" class="btn-create-sch-link" target="_blank">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor"
                             stroke-width="2.5">
                             <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -773,12 +773,12 @@
                     </thead>
                     <tbody>
                         {% for s in scholarships_list %}
-                        <tr class="sch-row" data-sch-title="{{ s.title|lower }}" data-sch-cat="{{ s.category }}"
-                            data-sch-desc="{{ s.description|lower }}">
+                        <tr class="sch-row" data-sch-title="{{ s.localized_title|lower }}" data-sch-cat="{{ s.category }}"
+                            data-sch-desc="{{ s.localized_description|lower }}">
                             <td class="td-title-cell" data-label="{% trans 'Scholarship Name' %}">
                                 <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title"
                                     style="text-decoration:none; color:var(--psu-blue-600);">
-                                    {{ s.title }}
+                                    {{ s.localized_title }}
                                 </a>
                             </td>
                             <td data-label="{% trans 'Category' %}">
@@ -789,7 +789,7 @@
                             <td data-label="{% trans 'Applicants / Quota' %}" style="text-align:center;">
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                                     <span class="quota-pill">
-                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} {% trans "Grants" %}
+                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} {% trans "Students" %}
                                     </span>
                                 </div>
                             </td>
@@ -825,7 +825,7 @@
                                         target="_blank" title="{% trans 'View Page' %}">
                                         {% trans "View Page" %}
                                     </a>
-                                    <a href="/admin/scholarships/scholarship/{{ s.pk }}/change/"
+                                    <a href="{% url 'admin:scholarships_scholarship_change' s.pk %}"
                                         class="btn-sch-action btn-sch-edit" target="_blank" title="{% trans 'Edit' %}">
                                         {% trans "Edit" %}
                                     </a>
@@ -913,12 +913,12 @@
                     </thead>
                     <tbody>
                         {% for s in expired_scholarships %}
-                        <tr class="hist-row" data-hist-title="{{ s.title|lower }}" data-hist-cat="{{ s.category }}"
-                            data-hist-desc="{{ s.description|lower }}">
+                        <tr class="hist-row" data-hist-title="{{ s.localized_title|lower }}" data-hist-cat="{{ s.category }}"
+                            data-hist-desc="{{ s.localized_description|lower }}">
                             <td class="td-title-cell" data-label="{% trans 'Scholarship Name' %}">
                                 <a href="{% url 'scholarship_detail' s.pk %}" class="table-sch-title"
                                     style="text-decoration:none; color:var(--psu-blue-600);">
-                                    {{ s.title }}
+                                    {{ s.localized_title }}
                                 </a>
                             </td>
                             <td data-label="{% trans 'Category' %}">
@@ -929,7 +929,7 @@
                             <td data-label="{% trans 'Applicants / Quota' %}" style="text-align:center;">
                                 <div style="display: flex; flex-direction: column; align-items: center; gap: 6px;">
                                     <span class="quota-pill">
-                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} {% trans "Grants" %}
+                                        <strong>{{ s.apps_count }}</strong> / {{ s.capacity }} {% trans "Students" %}
                                     </span>
                                 </div>
                             </td>

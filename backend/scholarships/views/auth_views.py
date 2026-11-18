@@ -4,6 +4,8 @@ from django.contrib.auth.views import LoginView
 from django.contrib import messages
 from django.http import JsonResponse
 from django.utils.translation import gettext as _
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Count, Q
 from ..models import StudentProfile, Application
 
 class CustomLoginView(LoginView):
@@ -91,12 +93,86 @@ def profile(request):
         return redirect('profile')
 
     app_list = []
+    status_counts = {
+        'all': 0,
+        'pending': 0,
+        'in_progress': 0,
+        'approved': 0,
+        'completed': 0,
+        'rejected': 0,
+        'cancelled': 0,
+    }
+    selected_status = request.GET.get('status', 'all').strip().lower()
+    page_obj = None
+    page_range = None
+    extra_query = ''
+
     if student_profile:
-        app_list = Application.objects.filter(
-            student=student_profile).select_related('scholarship').order_by('-submitted_at')
+        all_apps = Application.objects.filter(
+            student=student_profile
+        ).select_related('scholarship').order_by('-submitted_at')
+
+        total_count = all_apps.count()
+        agg_counts = all_apps.aggregate(
+            pending=Count('id', filter=Q(status='pending')),
+            in_progress=Count('id', filter=Q(status__in=['in_progress', 'interview'])),
+            approved=Count('id', filter=Q(status='approved')),
+            completed=Count('id', filter=Q(status='completed')),
+            rejected=Count('id', filter=Q(status='rejected')),
+            cancelled=Count('id', filter=Q(status='cancelled')),
+        )
+        status_counts = {
+            'all': total_count,
+            'pending': agg_counts['pending'] or 0,
+            'in_progress': agg_counts['in_progress'] or 0,
+            'approved': agg_counts['approved'] or 0,
+            'completed': agg_counts['completed'] or 0,
+            'rejected': agg_counts['rejected'] or 0,
+            'cancelled': agg_counts['cancelled'] or 0,
+        }
+
+        # Filter by selected status
+        filtered_apps = all_apps
+        if selected_status and selected_status != 'all':
+            if selected_status == 'in_progress':
+                filtered_apps = all_apps.filter(status__in=['in_progress', 'interview'])
+            elif selected_status in ['pending', 'approved', 'completed', 'rejected', 'cancelled']:
+                filtered_apps = all_apps.filter(status=selected_status)
+            else:
+                selected_status = 'all'
+
+        if selected_status != 'all':
+            extra_query = f"status={selected_status}"
+
+        # Pagination: 10 applications per page
+        paginator = Paginator(filtered_apps, 10)
+        page_number = request.GET.get('page', 1)
+        try:
+            page_obj = paginator.page(page_number)
+        except (PageNotAnInteger, EmptyPage):
+            page_obj = paginator.page(1)
+
+        page_range = paginator.get_elided_page_range(page_obj.number, on_each_side=1, on_ends=1)
+        app_list = page_obj
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' or request.GET.get('ajax') == '1':
+        return render(request, 'accounts/partials/history_list.html', {
+            'student_profile': student_profile,
+            'applications': app_list,
+            'page_obj': page_obj,
+            'page_range': page_range,
+            'status_counts': status_counts,
+            'selected_status': selected_status,
+            'extra_query': extra_query,
+        })
 
     return render(request, 'accounts/profile.html', {
         'student_profile': student_profile,
         'applications': app_list,
+        'page_obj': page_obj,
+        'page_range': page_range,
+        'status_counts': status_counts,
+        'selected_status': selected_status,
+        'extra_query': extra_query,
     })
 

@@ -90,40 +90,40 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="status-name-cell">Pending</td>
+                                <td class="status-name-cell">{% trans "Pending" %}</td>
                                 <td>{% include 'components/app_status_indicator.html' with status='pending' %}</td>
                                 <td>{% trans "New submission awaiting committee screening queue." %}</td>
-                                <td>In Progress, Reject, Cancel</td>
+                                <td>{% trans "In Progress, Reject, Cancel" %}</td>
                             </tr>
                             <tr>
-                                <td class="status-name-cell">In Progress</td>
+                                <td class="status-name-cell">{% trans "In Progress" %}</td>
                                 <td>{% include 'components/app_status_indicator.html' with status='in_progress' %}</td>
                                 <td>{% trans "Active review, interviews, or awaiting additional documents." %}</td>
-                                <td>Approve, Reject, Cancel</td>
+                                <td>{% trans "Approve, Reject, Cancel" %}</td>
                             </tr>
                             <tr>
-                                <td class="status-name-cell status-text-success">Approve</td>
+                                <td class="status-name-cell status-text-success">{% trans "Approve" %}</td>
                                 <td>{% include 'components/app_status_indicator.html' with status='approved' %}</td>
                                 <td>{% trans "Applicant has met all criteria and is awarded the scholarship." %}</td>
-                                <td>Complete, Cancel</td>
+                                <td>{% trans "Complete, Cancel" %}</td>
                             </tr>
                             <tr>
-                                <td class="status-name-cell status-text-danger">Reject</td>
+                                <td class="status-name-cell status-text-danger">{% trans "Reject" %}</td>
                                 <td>{% include 'components/app_status_indicator.html' with status='rejected' %}</td>
                                 <td>{% trans "Ineligible, missing mandatory criteria, or quota filled." %}</td>
-                                <td>Reset to Pending</td>
+                                <td>{% trans "Reset to Pending" %}</td>
                             </tr>
                             <tr>
-                                <td class="status-name-cell status-text-purple">Complete</td>
+                                <td class="status-name-cell status-text-purple">{% trans "Complete" %}</td>
                                 <td>{% include 'components/app_status_indicator.html' with status='completed' %}</td>
                                 <td>{% trans "Scholarship disbursement and onboarding completed." %}</td>
-                                <td>Final State</td>
+                                <td>{% trans "Final State" %}</td>
                             </tr>
                             <tr>
-                                <td class="status-name-cell status-text-muted">Cancel</td>
+                                <td class="status-name-cell status-text-muted">{% trans "Cancel" %}</td>
                                 <td>{% include 'components/app_status_indicator.html' with status='cancelled' %}</td>
                                 <td>{% trans "Application retracted by student or disqualified." %}</td>
-                                <td>Reset to Pending</td>
+                                <td>{% trans "Reset to Pending" %}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -175,7 +175,7 @@
                 </div>
                 <div class="guide-quota-content">
                     <p class="guide-quota-intro">
-                        {% trans "Each scholarship defines a capacity quota ('Grants'). The system automatically protects and manages quotas as follows:" %}
+                        {% trans "Each scholarship defines a capacity quota ('Scholarships'). The system automatically protects and manages quotas as follows:" %}
                     </p>
                     <ul class="guide-quota-list">
                         <li><strong>{% trans "Automatic Closure" %}:</strong> {% trans "When the count of approved and in-progress applicants equals the quota, the scholarship closes automatically to new applicants." %}</li>
