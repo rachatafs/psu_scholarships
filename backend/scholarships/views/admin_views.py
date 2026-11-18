@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.utils import timezone
 from django.db.models import Sum, Count, Q
 from django.utils.translation import gettext as _
+from django.utils import translation
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application
 
@@ -392,10 +393,15 @@ def scholarship_dashboard(request):
 
 @staff_member_required
 def export_dashboard_pdf(request):
+    report_lang = request.GET.get('lang', 'en').lower()
+    if report_lang not in ['th', 'en']:
+        report_lang = 'en'
+    translation.activate(report_lang)
     data = _get_dashboard_analytics_data(request)
     data['auto_print'] = (request.GET.get('auto_print') == '1')
     data['generated_by'] = request.user
     data['generated_at'] = timezone.now()
+    data['report_lang'] = report_lang
     return render(request, 'scholarship_export_pdf.html', data)
 
 @staff_member_required

@@ -1,4 +1,4 @@
-{% load i18n humanize %}<!DOCTYPE html>
+{% load static i18n humanize %}<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
@@ -75,23 +75,75 @@
     }
 
     .scope-btn {
-      padding: 0.35rem 0.8rem;
+      padding: 0.38rem 0.85rem;
       border-radius: 6px;
       font-size: 0.82rem;
       font-weight: 600;
-      color: #e2e8f0;
+      color: #cbd5e1;
       text-decoration: none;
+      background: transparent;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       transition: all 0.2s ease;
+      line-height: 1.4;
+      outline: none;
     }
 
     .scope-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.16);
       color: #ffffff;
     }
 
     .scope-btn.active {
       background: #0263b8;
       color: #ffffff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Dedicated Language Switcher on Top Bar */
+    .top-lang-switcher {
+      display: inline-flex;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 8px;
+      padding: 3px;
+      gap: 3px;
+    }
+
+    .top-lang-btn {
+      padding: 0.38rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      background: transparent;
+      border: none;
+      font-family: 'Sarabun', sans-serif;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      line-height: 1.4;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .top-lang-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .top-lang-btn.active {
+      background: #0263b8;
+      color: #ffffff;
+      box-shadow: 0 1px 5px rgba(2, 99, 184, 0.4);
     }
 
     .top-control-right {
@@ -103,23 +155,27 @@
     .btn-print {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.35rem;
       background: #e11d48;
       color: #ffffff;
       border: none;
-      padding: 0.55rem 1.25rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
+      padding: 0.38rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.82rem;
       font-weight: 700;
       font-family: 'Sarabun', sans-serif;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(225, 29, 72, 0.35);
+      box-shadow: 0 1px 4px rgba(225, 29, 72, 0.3);
       transition: all 0.2s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+      line-height: 1.4;
     }
 
     .btn-print:hover {
       background: #be123c;
       transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(225, 29, 72, 0.4);
     }
 
     /* Page Canvas */
@@ -137,69 +193,146 @@
     /* Report Official Header */
     .report-header {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: space-between;
       border-bottom: 2px solid #002b49;
-      padding-bottom: 1rem;
-      margin-bottom: 1.25rem;
-      gap: 1.25rem;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      gap: 1rem;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .header-branding {
       display: flex;
       align-items: center;
       gap: 1rem;
+      min-width: 0;
+      flex: 1 1 auto;
     }
 
     .psu-crest-wrap {
-      width: 58px;
-      height: 58px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #002b49;
-      color: #ffffff;
-      border-radius: 12px;
       flex-shrink: 0;
     }
 
-    .psu-crest-wrap svg {
-      width: 42px;
-      height: 42px;
-      fill: #ffffff;
+    .psu-logo-img {
+      height: 48px;
+      width: auto;
+      max-width: 110px;
+      object-fit: contain;
+      display: block;
     }
 
-    .header-text h1 {
-      font-size: 1.2rem;
+    .header-text {
+      min-width: 0;
+    }
+
+    .header-text .univ-th {
+      font-size: 1.08rem;
       font-weight: 800;
       color: #002b49;
       line-height: 1.25;
+      white-space: normal;
     }
 
-    .header-text h2 {
-      font-size: 0.95rem;
+    .header-text .univ-en {
+      font-size: 0.78rem;
       font-weight: 600;
-      color: #0263b8;
+      color: #64748b;
       margin-top: 2px;
+      line-height: 1.3;
     }
 
-    .header-text .report-doc-title {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #334155;
-      margin-top: 4px;
+    .header-text .univ-dept {
+      font-size: 0.74rem;
+      color: #64748b;
+      margin-top: 2px;
     }
 
     .header-doc-meta {
       text-align: right;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       color: #64748b;
-      line-height: 1.4;
+      line-height: 1.45;
       flex-shrink: 0;
+      background: #f8fafc;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      white-space: nowrap;
     }
 
     .header-doc-meta strong {
       color: #1e293b;
+    }
+
+    /* Document Title Block */
+    .report-title-section {
+      text-align: center;
+      margin-bottom: 1.15rem;
+    }
+
+    .doc-main-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #002b49;
+      margin-bottom: 3px;
+    }
+
+    .doc-scholarship-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0263b8;
+    }
+
+    /* Scholarship 4-col Summary Box */
+    .sch-summary-box {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.25rem;
+      gap: 0.75rem;
+    }
+
+    .summary-col {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .summary-col .col-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .summary-col .col-value {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .summary-col .col-value.price {
+      color: #0263b8;
+    }
+
+    .summary-col .col-value.price .unit {
+      font-size: 0.74rem;
+      font-weight: 500;
+      color: #64748b;
+    }
+
+    .summary-col .col-value.highlight {
+      color: #0263b8;
+      font-size: 1.05rem;
     }
 
     /* Filter Scope Banner */
@@ -341,7 +474,7 @@
     .report-table .text-center { text-align: center; }
     .report-table .text-right { text-align: right; }
 
-    /* Badges */
+    /* Badges & Status Tags */
     .status-badge {
       display: inline-block;
       padding: 0.18rem 0.5rem;
@@ -352,8 +485,29 @@
       white-space: nowrap;
     }
 
+    .status-cell-tag {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+      line-height: 1.3;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+
+    .status-cell-tag.status-approved { color: #16a34a; }
+    .status-cell-tag.status-inprogress,
+    .status-cell-tag.status-in_progress,
+    .status-cell-tag.status-interview { color: #0284c7; }
+    .status-cell-tag.status-pending { color: #d97706; }
+    .status-cell-tag.status-rejected { color: #dc2626; }
+    .status-cell-tag.status-completed { color: #7e22ce; }
+    .status-cell-tag.status-cancelled { color: #64748b; }
+
     .status-approved { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-    .status-in_progress, .status-interview { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+    .status-inprogress, .status-in_progress, .status-interview { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
     .status-pending { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
     .status-rejected { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
     .status-completed { background: #f3e8ff; color: #7e22ce; border: 1px solid #e9d5ff; }
@@ -373,28 +527,200 @@
     .signature-row {
       display: flex;
       justify-content: space-between;
-      margin-top: 2.5rem;
+      margin-top: 3.5rem;
       padding-top: 1rem;
       page-break-inside: avoid;
+      width: 100%;
+      box-sizing: border-box;
     }
 
-    .signature-box {
-      width: 45%;
+    .signature-col {
+      width: 46%;
+      max-width: 46%;
       text-align: center;
-      font-size: 0.82rem;
-      color: #334155;
-      line-height: 1.6;
+      font-size: 0.85rem;
+      color: #1e293b;
+      line-height: 1.8;
+      box-sizing: border-box;
+      overflow: hidden;
     }
 
-    .signature-line {
-      border-bottom: 1px dotted #64748b;
-      margin: 2.2rem 1.5rem 0.6rem 1.5rem;
+    .sig-line {
+      margin-bottom: 6px;
+      white-space: nowrap;
+      font-size: 0.82rem;
+    }
+
+    .sig-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+      font-size: 0.85rem;
+    }
+
+    .sig-role, .sig-date {
+      font-size: 0.78rem;
+      color: #475569;
+      line-height: 1.4;
+    }
+
+    .report-table-scroll {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive Mobile Screen Styles (Screen only, never affects Print) */
+    @media screen and (max-width: 820px) {
+      .top-control-bar {
+        padding: 0.6rem 0.75rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
+      }
+
+      .top-control-left {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        width: 100%;
+      }
+
+      .btn-back {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      .scope-switcher {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        max-width: calc(100% - 110px);
+      }
+
+      .scope-switcher::-webkit-scrollbar {
+        display: none;
+      }
+
+      .scope-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.76rem;
+        white-space: nowrap;
+      }
+
+      .top-control-right {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.5rem;
+      }
+
+      .top-lang-switcher {
+        flex-shrink: 0;
+      }
+
+      .top-lang-btn {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.78rem;
+      }
+
+      .btn-print {
+        padding: 0.38rem 0.85rem;
+        font-size: 0.82rem;
+        flex: 1;
+        justify-content: center;
+      }
+
+      .report-sheet {
+        width: 100% !important;
+        min-height: auto;
+        margin: 0.5rem 0 2rem 0;
+        padding: 1.25rem 0.85rem;
+        border-radius: 0;
+        box-shadow: none;
+        border-left: none;
+        border-right: none;
+        box-sizing: border-box;
+      }
+
+      .report-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .header-branding {
+        width: 100%;
+        gap: 0.75rem;
+      }
+
+      .psu-logo-img {
+        height: 42px;
+        max-width: 95px;
+      }
+
+      .header-text .univ-th {
+        font-size: 1rem;
+      }
+
+      .header-text .univ-en {
+        font-size: 0.74rem;
+      }
+
+      .header-doc-meta {
+        width: 100%;
+        text-align: left;
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem 0.85rem;
+        font-size: 0.72rem;
+        padding: 0.45rem 0.65rem;
+      }
+
+      .doc-main-title {
+        font-size: 1.1rem;
+      }
+
+      .doc-scholarship-name {
+        font-size: 0.95rem;
+      }
+
+      .sch-summary-box {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+        padding: 0.65rem 0.75rem;
+      }
+
+      .kpi-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+      }
+
+      .signature-row {
+        flex-direction: column;
+        gap: 1.75rem;
+        margin-top: 2rem;
+      }
+
+      .signature-col {
+        width: 100%;
+      }
     }
 
     /* Print Media Query */
     @media print {
       .no-print {
         display: none !important;
+      }
+
+      .report-table-scroll {
+        overflow: visible !important;
       }
 
       body {
@@ -446,24 +772,32 @@
         {% trans "Back to Dashboard" %}
       </a>
       <div class="scope-switcher">
-        <a href="{% url 'export_dashboard_pdf' %}?scope=all" class="scope-btn {% if is_all_scope %}active{% endif %}">
-          {% trans "All Semesters (ทั้งหมด)" %}
+        <a href="{% url 'export_dashboard_pdf' %}?scope=all&lang={{ report_lang }}" class="scope-btn {% if is_all_scope %}active{% endif %}">
+          {% if report_lang == 'th' %}ทั้งหมด (ทุกเทอม){% else %}All Semesters{% endif %}
         </a>
-        <a href="{% url 'export_dashboard_pdf' %}?term=1&year={{ filter_year }}" class="scope-btn {% if filter_term == '1' %}active{% endif %}">
-          {% trans "Semester 1" %}
+        <a href="{% url 'export_dashboard_pdf' %}?term=1&year={{ filter_year }}&lang={{ report_lang }}" class="scope-btn {% if filter_term == '1' %}active{% endif %}">
+          {% if report_lang == 'th' %}ภาคเรียนที่ 1{% else %}Semester 1{% endif %}
         </a>
-        <a href="{% url 'export_dashboard_pdf' %}?term=2&year={{ filter_year }}" class="scope-btn {% if filter_term == '2' %}active{% endif %}">
-          {% trans "Semester 2" %}
+        <a href="{% url 'export_dashboard_pdf' %}?term=2&year={{ filter_year }}&lang={{ report_lang }}" class="scope-btn {% if filter_term == '2' %}active{% endif %}">
+          {% if report_lang == 'th' %}ภาคเรียนที่ 2{% else %}Semester 2{% endif %}
         </a>
-        <a href="{% url 'export_dashboard_pdf' %}?term=3&year={{ filter_year }}" class="scope-btn {% if filter_term == '3' %}active{% endif %}">
-          {% trans "Summer" %}
+        <a href="{% url 'export_dashboard_pdf' %}?term=3&year={{ filter_year }}&lang={{ report_lang }}" class="scope-btn {% if filter_term == '3' %}active{% endif %}">
+          {% if report_lang == 'th' %}ภาคฤดูร้อน{% else %}Summer{% endif %}
         </a>
       </div>
     </div>
     <div class="top-control-right">
+      <div class="top-lang-switcher" style="margin-right: 0.35rem;">
+        <button type="button" onclick="switchReportLang('en')" class="top-lang-btn {% if report_lang != 'th' %}active{% endif %}">
+          EN (English)
+        </button>
+        <button type="button" onclick="switchReportLang('th')" class="top-lang-btn {% if report_lang == 'th' %}active{% endif %}">
+          TH (ภาษาไทย)
+        </button>
+      </div>
       <button onclick="window.print()" class="btn-print">
-        <span class="material-symbols-outlined" style="font-size: 1.25rem;">print</span>
-        {% trans "Print / Save as PDF" %}
+        <span class="material-symbols-outlined" style="font-size: 1.1rem;">print</span>
+        <span>{% if report_lang == 'th' %}พิมพ์ / บันทึก PDF{% else %}Print / Save PDF{% endif %}</span>
       </button>
     </div>
   </div>
@@ -475,102 +809,174 @@
     <header class="report-header">
       <div class="header-branding">
         <div class="psu-crest-wrap">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-          </svg>
+          <img src="{% static 'images/PSU_Logo.png' %}" alt="PSU Phuket Logo" class="psu-logo-img">
         </div>
         <div class="header-text">
-          <h1>มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต</h1>
-          <h2>Prince of Songkla University, Phuket Campus</h2>
-          {% if selected_scholarship %}
-          <div class="report-doc-title">{% trans "รายงานรายชื่อนักศึกษาผู้สมัครรับทุนการศึกษา" %}</div>
-          <div style="font-size: 1.15rem; color: #0263b8; font-weight: 800; margin-top: 3px;">{{ selected_scholarship.title }}</div>
+          {% if report_lang == 'th' %}
+          <h1 class="univ-th">มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต</h1>
+          <h2 class="univ-en">งานบริการและสวัสดิการนักศึกษา กองพัฒนานักศึกษา</h2>
           {% else %}
-          <div class="report-doc-title">{% trans "Scholarship & Student Applicant Analytics Report" %}</div>
+          <h1 class="univ-th">Prince of Songkla University, Phuket Campus</h1>
+          <h2 class="univ-en">Student Services &amp; Welfare, Student Affairs Division</h2>
           {% endif %}
         </div>
       </div>
       <div class="header-doc-meta">
-        <div><strong>{% trans "Report Date" %}:</strong> {{ generated_at|date:"j F Y H:i" }} น.</div>
-        <div><strong>{% trans "Issued By" %}:</strong> {{ generated_by.get_full_name|default:generated_by.username }}</div>
-        <div><strong>{% trans "Reference" %}:</strong> PSU-SCH-{{ generated_at|date:"YmdHis" }}</div>
+        <div><strong>{% if report_lang == 'th' %}วันที่ออกเอกสาร:{% else %}Date:{% endif %}</strong> {% if report_lang == 'th' %}{{ generated_at|date:"j F Y" }}{% else %}{{ generated_at|date:"d M Y" }}{% endif %}</div>
+        <div><strong>{% if report_lang == 'th' %}ผู้ออกรายงาน:{% else %}Issued By:{% endif %}</strong> {{ generated_by.get_full_name|default:generated_by.username }}</div>
+        <div><strong>{% if report_lang == 'th' %}เลขอ้างอิง:{% else %}Ref No:{% endif %}</strong> PSU-SCH-{{ generated_at|date:"YmdHis" }}</div>
       </div>
     </header>
 
-    <!-- Scope & Period Banner -->
-    {% if selected_scholarship %}
-    <div class="filter-summary-card" style="border-left: 4px solid #0263b8;">
-      <div class="filter-summary-left">
-        <span class="material-symbols-outlined meta-icon" style="color: #0263b8;">school</span>
-        <div>
-          <div style="font-size: 0.78rem; color: #64748b; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">{% trans "Scholarship Information (ข้อมูลทุนการศึกษา)" %}:</div>
-          <div class="scope-highlight" style="font-size: 1.05rem; color: #002b49;">{{ selected_scholarship.title }}</div>
-          <div style="font-size: 0.82rem; color: #475569; margin-top: 4px; display: flex; gap: 12px; flex-wrap: wrap;">
-            <span>{% trans "Category" %}: <strong>{{ selected_scholarship.get_category_display }}</strong></span>
-            <span>{% trans "Value" %}: <strong>฿ {{ selected_scholarship.amount_per_semester|floatformat:0|intcomma }}</strong> / {% trans "semester" %}</span>
-            <span>{% trans "Quota" %}: <strong>{{ selected_scholarship.capacity }}</strong> {% trans "seats" %}</span>
-            <span>{% trans "Status" %}: <strong>{{ selected_scholarship.get_status_display }}</strong></span>
-          </div>
-        </div>
+    <!-- Document Main Title (Prominent & Official) -->
+    <div class="report-title-section">
+      {% if selected_scholarship %}
+      <h2 class="doc-main-title">{% if report_lang == 'th' %}รายงานรายชื่อนักศึกษาผู้สมัครรับทุนการศึกษา{% else %}Scholarship Applicant Roster Report{% endif %}</h2>
+      <div class="doc-scholarship-name">{{ selected_scholarship.title }}</div>
+      {% else %}
+      <h2 class="doc-main-title">{% if report_lang == 'th' %}รายงานสถิติข้อมูลทุนการศึกษาและผู้สมัครรับทุน{% else %}Scholarship &amp; Applicant Analytics Report{% endif %}</h2>
+      <div class="doc-scholarship-name">
+        {% if is_all_scope %}
+        {% if report_lang == 'th' %}ข้อมูลทุกภาคการศึกษาและปีการศึกษาทั้งหมด{% else %}All Semesters &amp; Academic Periods{% endif %}
+        {% elif filter_term_name %}
+        {{ filter_term_name }} {% if filter_month_name %}({{ filter_month_name }}){% endif %} {% if report_lang == 'th' %}ปีการศึกษา {{ thai_year }}{% else %}Academic Year {{ filter_year }}{% endif %}
+        {% elif filter_month_name %}
+        {% if report_lang == 'th' %}เดือน {{ filter_month_name }} ปีการศึกษา {{ thai_year }}{% else %}{{ filter_month_name }} Academic Year {{ filter_year }}{% endif %}
+        {% else %}
+        {% if report_lang == 'th' %}ปีการศึกษา {{ thai_year }}{% else %}Academic Year {{ filter_year }}{% endif %}
+        {% endif %}
       </div>
-      <div class="filter-summary-right">
-        <span>{% trans "Total Applicants" %}: <strong style="font-size: 1.25rem; color: #0263b8;">{{ total_applications }}</strong> {% trans "คน" %}</span>
+      {% endif %}
+    </div>
+
+    <!-- Scope & Period Banner / Scholarship 4-col Summary -->
+    {% if selected_scholarship %}
+    <div class="sch-summary-box">
+      <div class="summary-col">
+        <span class="col-label">{% if report_lang == 'th' %}ประเภททุน{% else %}Category{% endif %}</span>
+        <strong class="col-value">
+          {% if report_lang == 'th' %}
+            {% if selected_scholarship.category == 'general' %}ทุนการศึกษาทั่วไป
+            {% elif selected_scholarship.category == 'exchange' %}ทุนแลกเปลี่ยน
+            {% elif selected_scholarship.category == 'fee_waiver' %}ทุนยกเว้นค่าธรรมเนียม
+            {% elif selected_scholarship.category == 'lunch' %}ทุนอาหารกลางวัน
+            {% else %}{{ selected_scholarship.get_category_display }}{% endif %}
+          {% else %}
+            {% if selected_scholarship.category == 'general' %}General Scholarship
+            {% elif selected_scholarship.category == 'exchange' %}Exchange Scholarship
+            {% elif selected_scholarship.category == 'fee_waiver' %}Fee Waiver Scholarship
+            {% elif selected_scholarship.category == 'lunch' %}Lunch Scholarship
+            {% else %}{{ selected_scholarship.get_category_display }}{% endif %}
+          {% endif %}
+        </strong>
+      </div>
+      <div class="summary-col">
+        <span class="col-label">{% if report_lang == 'th' %}มูลค่าทุน{% else %}Award Value{% endif %}</span>
+        <strong class="col-value price">฿{{ selected_scholarship.amount_per_semester|floatformat:0|intcomma }} <span class="unit">{% if report_lang == 'th' %}/ ภาคการศึกษา{% else %}/ semester{% endif %}</span></strong>
+      </div>
+      <div class="summary-col">
+        <span class="col-label">{% if report_lang == 'th' %}จำนวนที่เปิดรับ{% else %}Quota{% endif %}</span>
+        <strong class="col-value">{{ selected_scholarship.capacity }} {% if report_lang == 'th' %}ที่นั่ง{% else %}seats{% endif %}</strong>
+      </div>
+      <div class="summary-col">
+        <span class="col-label">{% if report_lang == 'th' %}ผู้สมัครทั้งหมด{% else %}Total Applicants{% endif %}</span>
+        <strong class="col-value highlight">{{ total_applications }} {% if report_lang == 'th' %}คน{% else %}applicants{% endif %}</strong>
       </div>
     </div>
 
     <!-- Section: Student Applicants Detail Table for this Scholarship -->
-    <div class="report-section" style="margin-top: 1.5rem;">
+    <div class="report-section" style="margin-top: 1rem;">
       <div class="section-head">
         <div class="section-head-title">
-          <span class="material-symbols-outlined" style="font-size: 1.15rem; color: #0263b8;">group</span>
-          <span>{% trans "รายชื่อนักศึกษาผู้สมัครรับทุนการศึกษาทั้งหมด" %}</span>
+          <span>{% if report_lang == 'th' %}รายชื่อนักศึกษาผู้สมัครรับทุนการศึกษา{% else %}Student Applicant List{% endif %}</span>
         </div>
-        <span class="section-head-badge">{{ total_applications }} {% trans "applicants" %}</span>
+        <span class="section-head-badge">{{ total_applications }} {% if report_lang == 'th' %}คน{% else %}applicants{% endif %}</span>
       </div>
 
       {% if filtered_applications %}
+      <div class="report-table-scroll">
       <table class="report-table">
         <thead>
           <tr>
             <th class="text-center" style="width: 35px;">#</th>
-            <th style="width: 105px;">{% trans "Student ID" %}</th>
-            <th style="width: 165px;">{% trans "Student Name" %}</th>
-            <th>{% trans "Faculty / Major" %}</th>
-            <th class="text-center" style="width: 60px;">GPAX</th>
-            <th style="width: 110px;">{% trans "Phone Number" %}</th>
-            <th style="width: 95px;">{% trans "Date Applied" %}</th>
-            <th class="text-center" style="width: 95px;">{% trans "Status" %}</th>
+            <th class="text-center" style="width: 95px;">{% if report_lang == 'th' %}รหัสนักศึกษา{% else %}Student ID{% endif %}</th>
+            <th style="width: 145px;">{% if report_lang == 'th' %}ชื่อ - สกุล{% else %}Student Name{% endif %}</th>
+            <th>{% if report_lang == 'th' %}คณะ / สาขาวิชา{% else %}Faculty / Major{% endif %}</th>
+            <th class="text-center" style="width: 50px;">GPAX</th>
+            <th class="text-center" style="width: 95px;">{% if report_lang == 'th' %}เบอร์โทรศัพท์{% else %}Phone Number{% endif %}</th>
+            <th class="text-center" style="width: 85px;">{% if report_lang == 'th' %}วันที่สมัคร{% else %}Date Applied{% endif %}</th>
+            <th class="text-center" style="width: 95px;">{% if report_lang == 'th' %}สถานะ{% else %}Status{% endif %}</th>
           </tr>
         </thead>
         <tbody>
           {% for app in filtered_applications %}
           <tr>
             <td class="text-center" style="color: #64748b; font-weight: 600;">{{ forloop.counter }}</td>
-            <td><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
+            <td class="text-center"><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
             <td><strong style="color: #0f172a;">{{ app.student.full_name }}</strong></td>
             <td style="font-size: 0.78rem; color: #334155;">
-              <div>{{ app.student.get_faculty_display }}</div>
+              <div style="font-weight: 600;">
+                {% if report_lang == 'th' %}
+                  {{ app.student.get_faculty_display }}
+                {% else %}
+                  {% if app.student.faculty == 'computing' %}College of Computing
+                  {% elif app.student.faculty == 'engineering' %}Faculty of Engineering
+                  {% elif app.student.faculty == 'science' %}Faculty of Technology &amp; Environment
+                  {% elif app.student.faculty == 'management' %}Faculty of Hospitality &amp; Tourism
+                  {% elif app.student.faculty == 'other' %}Faculty of International Studies
+                  {% else %}{{ app.student.get_faculty_display }}{% endif %}
+                {% endif %}
+              </div>
               {% if app.student.major %}<div style="color: #64748b; font-size: 0.73rem;">{{ app.student.major }}</div>{% endif %}
             </td>
             <td class="text-center" style="font-weight: 700; color: #0263b8;">
               {{ app.student.gpax|floatformat:2 }}
             </td>
-            <td style="font-size: 0.78rem; color: #475569;">
+            <td class="text-center" style="font-size: 0.78rem; color: #475569;">
               {{ app.student.phone_number|default:"-" }}
             </td>
-            <td style="font-size: 0.75rem; color: #475569;">
-              {{ app.submitted_at|date:"j M Y" }}
+            <td class="text-center" style="font-size: 0.75rem; color: #475569;">
+              {% if report_lang == 'th' %}{{ app.submitted_at|date:"j M Y" }}{% else %}{{ app.submitted_at|date:"d M Y" }}{% endif %}
             </td>
-            <td class="text-center">
-              {% include 'components/app_status_indicator.html' with status=app.status %}
+            <td class="text-center" style="width: 110px; white-space: nowrap;">
+              {% if report_lang == 'th' %}
+                {% if app.status == 'in_progress' or app.status == 'interview' %}
+                  <span class="status-cell-tag status-inprogress">กำลังพิจารณา</span>
+                {% elif app.status == 'approved' %}
+                  <span class="status-cell-tag status-approved">อนุมัติแล้ว</span>
+                {% elif app.status == 'completed' %}
+                  <span class="status-cell-tag status-completed">เสร็จสมบูรณ์</span>
+                {% elif app.status == 'rejected' %}
+                  <span class="status-cell-tag status-rejected">ไม่ผ่าน</span>
+                {% elif app.status == 'cancelled' %}
+                  <span class="status-cell-tag status-cancelled">ยกเลิก</span>
+                {% else %}
+                  <span class="status-cell-tag status-pending">รอพิจารณา</span>
+                {% endif %}
+              {% else %}
+                {% if app.status == 'in_progress' or app.status == 'interview' %}
+                  <span class="status-cell-tag status-inprogress">In Progress</span>
+                {% elif app.status == 'approved' %}
+                  <span class="status-cell-tag status-approved">Approve</span>
+                {% elif app.status == 'completed' %}
+                  <span class="status-cell-tag status-completed">Complete</span>
+                {% elif app.status == 'rejected' %}
+                  <span class="status-cell-tag status-rejected">Reject</span>
+                {% elif app.status == 'cancelled' %}
+                  <span class="status-cell-tag status-cancelled">Cancel</span>
+                {% else %}
+                  <span class="status-cell-tag status-pending">Pending</span>
+                {% endif %}
+              {% endif %}
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
+      </div>
       {% else %}
       <div style="text-align: center; padding: 2.5rem; color: #64748b; font-size: 0.95rem; border: 1px dashed #cbd5e1; border-radius: 8px;">
-        {% trans "ยังไม่มีนักศึกษายื่นสมัครทุนการศึกษานี้" %}
+        {% if report_lang == 'th' %}ยังไม่มีข้อมูลผู้สมัครทุนการศึกษานี้ในระบบ{% else %}No student applicants have applied for this scholarship yet.{% endif %}
       </div>
       {% endif %}
     </div>
@@ -581,48 +987,48 @@
       <div class="filter-summary-left">
         <span class="material-symbols-outlined meta-icon">tune</span>
         <div>
-          <div style="font-size: 0.78rem; color: #64748b; font-weight: 600;">{% trans "Report Filter Scope" %}:</div>
+          <div style="font-size: 0.78rem; color: #64748b; font-weight: 600;">{% if report_lang == 'th' %}ขอบเขตรายงาน:{% else %}Report Filter Scope:{% endif %}</div>
           <div class="scope-highlight">
             {% if is_all_scope %}
-            {% trans "All Semesters & Academic Periods (ข้อมูลทุนการศึกษาและผู้สมัครทั้งหมด)" %}
+              {% if report_lang == 'th' %}ข้อมูลทุกภาคการศึกษาและปีการศึกษาทั้งหมด{% else %}All Semesters &amp; Academic Periods{% endif %}
             {% elif filter_term_name %}
-            {{ filter_term_name }} {% if filter_month_name %}({{ filter_month_name }}){% endif %} {% trans "Year" %} {{ thai_year }} ({{ filter_year }})
+              {{ filter_term_name }} {% if filter_month_name %}({{ filter_month_name }}){% endif %} {% if report_lang == 'th' %}ปีการศึกษา {{ thai_year }}{% else %}Academic Year {{ filter_year }}{% endif %}
             {% elif filter_month_name %}
-            {% trans "Month" %} {{ filter_month_name }} {% trans "Year" %} {{ thai_year }} ({{ filter_year }})
+              {% if report_lang == 'th' %}เดือน {{ filter_month_name }} ปีการศึกษา {{ thai_year }}{% else %}{{ filter_month_name }} Academic Year {{ filter_year }}{% endif %}
             {% else %}
-            {% trans "Academic Year" %} {{ thai_year }} ({{ filter_year }})
+              {% if report_lang == 'th' %}ปีการศึกษา {{ thai_year }}{% else %}Academic Year {{ filter_year }}{% endif %}
             {% endif %}
             {% if search_query %}
             <span style="display: inline-block; margin-left: 8px; padding: 2px 8px; background: #e0f2fe; color: #0263b8; border-radius: 4px; font-size: 0.82rem; font-weight: 700;">
-              {% trans "Search" %}: "{{ search_query }}"
+              {% if report_lang == 'th' %}ค้นหา:{% else %}Search:{% endif %} "{{ search_query }}"
             </span>
             {% endif %}
           </div>
         </div>
       </div>
       <div class="filter-summary-right">
-        <span>{% trans "Total Scholarships" %}: <strong>{{ total_scholarships }}</strong></span> |
-        <span>{% trans "Total Student Applicants" %}: <strong>{{ total_applications }}</strong></span>
+        <span>{% if report_lang == 'th' %}ทุนทั้งหมด:{% else %}Total Scholarships:{% endif %} <strong>{{ total_scholarships }}</strong></span> |
+        <span>{% if report_lang == 'th' %}ผู้สมัครทั้งหมด:{% else %}Total Student Applicants:{% endif %} <strong>{{ total_applications }}</strong></span>
       </div>
     </div>
 
     <!-- Executive KPI Summary Cards -->
     <div class="kpi-summary-grid">
       <div class="kpi-card kpi-blue">
-        <span class="kpi-label">{% trans "Total Scholarships" %}</span>
-        <span class="kpi-val">{{ total_scholarships }} <small style="font-size: 0.75rem; font-weight: 500; color: #64748b;">{% trans "ทุน" %}</small></span>
+        <span class="kpi-label">{% if report_lang == 'th' %}ทุนการศึกษาทั้งหมด{% else %}Total Scholarships{% endif %}</span>
+        <span class="kpi-val">{{ total_scholarships }} <small style="font-size: 0.75rem; font-weight: 500; color: #64748b;">{% if report_lang == 'th' %}ทุน{% else %}awards{% endif %}</small></span>
       </div>
       <div class="kpi-card kpi-green">
-        <span class="kpi-label">{% trans "Total Fund Value" %}</span>
+        <span class="kpi-label">{% if report_lang == 'th' %}งบประมาณรวม{% else %}Total Fund Value{% endif %}</span>
         <span class="kpi-val">฿ {{ total_value|floatformat:0|intcomma }}</span>
       </div>
       <div class="kpi-card kpi-purple">
-        <span class="kpi-label">{% trans "Total Applications" %}</span>
-        <span class="kpi-val">{{ total_applications }} <small style="font-size: 0.75rem; font-weight: 500; color: #64748b;">{% trans "คน" %}</small></span>
+        <span class="kpi-label">{% if report_lang == 'th' %}จำนวนผู้สมัครทั้งหมด{% else %}Total Applications{% endif %}</span>
+        <span class="kpi-val">{{ total_applications }} <small style="font-size: 0.75rem; font-weight: 500; color: #64748b;">{% if report_lang == 'th' %}คน{% else %}applicants{% endif %}</small></span>
       </div>
       <div class="kpi-card kpi-amber">
-        <span class="kpi-label">{% trans "Approved Recipients" %}</span>
-        <span class="kpi-val" style="color: #16a34a;">{{ approved_applications }} <small style="font-size: 0.75rem; font-weight: 500; color: #64748b;">{% trans "คน" %}</small></span>
+        <span class="kpi-label">{% if report_lang == 'th' %}ผู้ผ่านการอนุมัติ{% else %}Approved Recipients{% endif %}</span>
+        <span class="kpi-val" style="color: #16a34a;">{{ approved_applications }} <small style="font-size: 0.75rem; font-weight: 500; color: #64748b;">{% if report_lang == 'th' %}คน{% else %}recipients{% endif %}</small></span>
       </div>
     </div>
 
@@ -631,23 +1037,24 @@
       <div class="section-head">
         <div class="section-head-title">
           <span class="material-symbols-outlined" style="font-size: 1.15rem; color: #0263b8;">school</span>
-          {% trans "1. Scholarships Overview" %}
+          {% if report_lang == 'th' %}1. ภาพรวมทุนการศึกษา{% else %}1. Scholarships Overview{% endif %}
         </div>
-        <span class="section-head-badge">{{ total_scholarships }} {% trans "scholarships" %}</span>
+        <span class="section-head-badge">{{ total_scholarships }} {% if report_lang == 'th' %}ทุน{% else %}scholarships{% endif %}</span>
       </div>
 
       {% if filtered_scholarships %}
+      <div class="report-table-scroll">
       <table class="report-table">
         <thead>
           <tr>
             <th class="text-center" style="width: 35px;">#</th>
-            <th>{% trans "Scholarship Title" %}</th>
-            <th style="width: 110px;">{% trans "Category" %}</th>
-            <th class="text-right" style="width: 95px;">{% trans "Amount / Sem" %}</th>
-            <th class="text-center" style="width: 75px;">{% trans "Quota" %}</th>
-            <th class="text-center" style="width: 75px;">{% trans "Applicants" %}</th>
-            <th class="text-center" style="width: 70px;">{% trans "Status" %}</th>
-            <th style="width: 115px;">{% trans "Period" %}</th>
+            <th>{% if report_lang == 'th' %}ชื่อทุนการศึกษา{% else %}Scholarship Title{% endif %}</th>
+            <th style="width: 110px;">{% if report_lang == 'th' %}ประเภท{% else %}Category{% endif %}</th>
+            <th class="text-right" style="width: 95px;">{% if report_lang == 'th' %}จำนวนเงิน / เทอม{% else %}Amount / Sem{% endif %}</th>
+            <th class="text-center" style="width: 75px;">{% if report_lang == 'th' %}จำนวนรับ{% else %}Quota{% endif %}</th>
+            <th class="text-center" style="width: 75px;">{% if report_lang == 'th' %}ผู้สมัคร{% else %}Applicants{% endif %}</th>
+            <th class="text-center" style="width: 70px;">{% if report_lang == 'th' %}สถานะ{% else %}Status{% endif %}</th>
+            <th style="width: 115px;">{% if report_lang == 'th' %}ระยะเวลารับสมัคร{% else %}Period{% endif %}</th>
           </tr>
         </thead>
         <tbody>
@@ -656,7 +1063,19 @@
             <td class="text-center" style="color: #64748b; font-weight: 600;">{{ forloop.counter }}</td>
             <td><strong>{{ s.title }}</strong></td>
             <td>
-              {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
+              {% if report_lang == 'th' %}
+                {% if s.category == 'general' %}<span class="category-pill-tag">ทุนทั่วไป</span>
+                {% elif s.category == 'exchange' %}<span class="category-pill-tag">ทุนแลกเปลี่ยน</span>
+                {% elif s.category == 'fee_waiver' %}<span class="category-pill-tag">ทุนยกเว้นค่าธรรมเนียม</span>
+                {% elif s.category == 'lunch' %}<span class="category-pill-tag">ทุนอาหารกลางวัน</span>
+                {% else %}<span class="category-pill-tag">{{ s.get_category_display }}</span>{% endif %}
+              {% else %}
+                {% if s.category == 'general' %}<span class="category-pill-tag">General</span>
+                {% elif s.category == 'exchange' %}<span class="category-pill-tag">Exchange</span>
+                {% elif s.category == 'fee_waiver' %}<span class="category-pill-tag">Fee Waiver</span>
+                {% elif s.category == 'lunch' %}<span class="category-pill-tag">Lunch</span>
+                {% else %}<span class="category-pill-tag">{{ s.get_category_display }}</span>{% endif %}
+              {% endif %}
             </td>
             <td class="text-right" style="font-weight: 700; color: #002b49;">
               ฿ {{ s.amount_per_semester|floatformat:0|intcomma }}
@@ -664,20 +1083,21 @@
             <td class="text-center">{{ s.capacity }}</td>
             <td class="text-center" style="font-weight: 700; color: #0263b8;">{{ s.applications.count }}</td>
             <td class="text-center">
-              {% if s.status == 'active' %}<span class="status-badge status-approved">Active</span>
-              {% elif s.status == 'closed' %}<span class="status-badge status-cancelled">Closed</span>
-              {% else %}<span class="status-badge status-pending">Draft</span>{% endif %}
+              {% if s.status == 'active' %}<span class="status-badge status-approved">{% if report_lang == 'th' %}เปิดรับสมัคร{% else %}Active{% endif %}</span>
+              {% elif s.status == 'closed' %}<span class="status-badge status-cancelled">{% if report_lang == 'th' %}ปิดรับสมัคร{% else %}Closed{% endif %}</span>
+              {% else %}<span class="status-badge status-pending">{% if report_lang == 'th' %}แบบร่าง{% else %}Draft{% endif %}</span>{% endif %}
             </td>
             <td style="font-size: 0.76rem; color: #475569;">
-              {{ s.start_date|date:"j M Y" }} - {{ s.end_date|date:"j M Y" }}
+              {% if report_lang == 'th' %}{{ s.start_date|date:"j M Y" }} - {{ s.end_date|date:"j M Y" }}{% else %}{{ s.start_date|date:"d M Y" }} - {{ s.end_date|date:"d M Y" }}{% endif %}
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
+      </div>
       {% else %}
       <div style="text-align: center; padding: 1.5rem; color: #64748b; font-size: 0.88rem; border: 1px dashed #cbd5e1; border-radius: 6px;">
-        {% trans "No scholarships found for the selected filter." %}
+        {% if report_lang == 'th' %}ไม่พบข้อมูลทุนการศึกษาสำหรับเงื่อนไขที่เลือก{% else %}No scholarships found for the selected filter.{% endif %}
       </div>
       {% endif %}
     </div>
@@ -687,33 +1107,45 @@
       <div class="section-head">
         <div class="section-head-title">
           <span class="material-symbols-outlined" style="font-size: 1.15rem; color: #0263b8;">group</span>
-          {% trans "2. Student Applicants List (รายชื่อนักศึกษาผู้สมัครทุน)" %}
+          {% if report_lang == 'th' %}2. รายชื่อนักศึกษาผู้สมัครรับทุนการศึกษา{% else %}2. Student Applicants List{% endif %}
         </div>
-        <span class="section-head-badge">{{ total_applications }} {% trans "applicants" %}</span>
+        <span class="section-head-badge">{{ total_applications }} {% if report_lang == 'th' %}คน{% else %}applicants{% endif %}</span>
       </div>
 
       {% if filtered_applications %}
+      <div class="report-table-scroll">
       <table class="report-table">
         <thead>
           <tr>
             <th class="text-center" style="width: 35px;">#</th>
-            <th style="width: 95px;">{% trans "Student ID" %}</th>
-            <th style="width: 140px;">{% trans "Student Name" %}</th>
-            <th style="width: 120px;">{% trans "Faculty / Major" %}</th>
+            <th class="text-center" style="width: 100px;">{% if report_lang == 'th' %}รหัสนักศึกษา{% else %}Student ID{% endif %}</th>
+            <th style="width: 140px;">{% if report_lang == 'th' %}ชื่อ - สกุล{% else %}Student Name{% endif %}</th>
+            <th style="width: 120px;">{% if report_lang == 'th' %}คณะ / สาขาวิชา{% else %}Faculty / Major{% endif %}</th>
             <th class="text-center" style="width: 50px;">GPAX</th>
-            <th>{% trans "Applied Scholarship" %}</th>
-            <th style="width: 85px;">{% trans "Date Applied" %}</th>
-            <th class="text-center" style="width: 85px;">{% trans "Status" %}</th>
+            <th>{% if report_lang == 'th' %}ทุนการศึกษาที่สมัคร{% else %}Applied Scholarship{% endif %}</th>
+            <th class="text-center" style="width: 90px;">{% if report_lang == 'th' %}วันที่สมัคร{% else %}Date Applied{% endif %}</th>
+            <th class="text-center" style="width: 110px;">{% if report_lang == 'th' %}สถานะ{% else %}Status{% endif %}</th>
           </tr>
         </thead>
         <tbody>
           {% for app in filtered_applications %}
           <tr>
             <td class="text-center" style="color: #64748b; font-weight: 600;">{{ forloop.counter }}</td>
-            <td><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
+            <td class="text-center"><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
             <td><strong style="color: #0f172a;">{{ app.student.full_name }}</strong></td>
             <td style="font-size: 0.76rem; color: #334155;">
-              <div>{{ app.student.get_faculty_display }}</div>
+              <div style="font-weight: 600;">
+                {% if report_lang == 'th' %}
+                  {{ app.student.get_faculty_display }}
+                {% else %}
+                  {% if app.student.faculty == 'computing' %}College of Computing
+                  {% elif app.student.faculty == 'engineering' %}Faculty of Engineering
+                  {% elif app.student.faculty == 'science' %}Faculty of Technology &amp; Environment
+                  {% elif app.student.faculty == 'management' %}Faculty of Hospitality &amp; Tourism
+                  {% elif app.student.faculty == 'other' %}Faculty of International Studies
+                  {% else %}{{ app.student.get_faculty_display }}{% endif %}
+                {% endif %}
+              </div>
               {% if app.student.major %}<div style="color: #64748b; font-size: 0.72rem;">{{ app.student.major }}</div>{% endif %}
             </td>
             <td class="text-center" style="font-weight: 700; color: #0263b8;">
@@ -722,19 +1154,48 @@
             <td style="font-size: 0.78rem;">
               {{ app.scholarship.title }}
             </td>
-            <td style="font-size: 0.74rem; color: #475569;">
-              {{ app.submitted_at|date:"j M Y" }}
+            <td class="text-center" style="font-size: 0.74rem; color: #475569;">
+              {% if report_lang == 'th' %}{{ app.submitted_at|date:"j M Y" }}{% else %}{{ app.submitted_at|date:"d M Y" }}{% endif %}
             </td>
-            <td class="text-center">
-              {% include 'components/app_status_indicator.html' with status=app.status %}
+            <td class="text-center" style="width: 110px; white-space: nowrap;">
+              {% if report_lang == 'th' %}
+                {% if app.status == 'in_progress' or app.status == 'interview' %}
+                  <span class="status-cell-tag status-inprogress">กำลังพิจารณา</span>
+                {% elif app.status == 'approved' %}
+                  <span class="status-cell-tag status-approved">อนุมัติแล้ว</span>
+                {% elif app.status == 'completed' %}
+                  <span class="status-cell-tag status-completed">เสร็จสมบูรณ์</span>
+                {% elif app.status == 'rejected' %}
+                  <span class="status-cell-tag status-rejected">ไม่ผ่าน</span>
+                {% elif app.status == 'cancelled' %}
+                  <span class="status-cell-tag status-cancelled">ยกเลิก</span>
+                {% else %}
+                  <span class="status-cell-tag status-pending">รอพิจารณา</span>
+                {% endif %}
+              {% else %}
+                {% if app.status == 'in_progress' or app.status == 'interview' %}
+                  <span class="status-cell-tag status-inprogress">In Progress</span>
+                {% elif app.status == 'approved' %}
+                  <span class="status-cell-tag status-approved">Approve</span>
+                {% elif app.status == 'completed' %}
+                  <span class="status-cell-tag status-completed">Complete</span>
+                {% elif app.status == 'rejected' %}
+                  <span class="status-cell-tag status-rejected">Reject</span>
+                {% elif app.status == 'cancelled' %}
+                  <span class="status-cell-tag status-cancelled">Cancel</span>
+                {% else %}
+                  <span class="status-cell-tag status-pending">Pending</span>
+                {% endif %}
+              {% endif %}
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
+      </div>
       {% else %}
       <div style="text-align: center; padding: 2rem; color: #64748b; font-size: 0.88rem; border: 1px dashed #cbd5e1; border-radius: 6px;">
-        {% trans "No student applicant records found matching this semester or query." %}
+        {% if report_lang == 'th' %}ไม่พบข้อมูลการสมัครทุนในช่วงเวลาที่เลือก{% else %}No student applicant records found matching this semester or query.{% endif %}
       </div>
       {% endif %}
     </div>
@@ -743,33 +1204,73 @@
 
     <!-- Official University Sign-off Section -->
     <div class="signature-row">
-      <div class="signature-box">
-        <div>ลงชื่อ ................................................................ ผู้จัดทำรายงาน</div>
-        <div class="signature-line"></div>
-        <div>( {{ generated_by.get_full_name|default:generated_by.username }} )</div>
-        <div style="font-size: 0.75rem; color: #64748b;">เจ้าหน้าที่งานพัฒนานักศึกษาและทุนการศึกษา</div>
-        <div style="font-size: 0.75rem; color: #64748b;">วันที่ {{ generated_at|date:"j F Y" }}</div>
+      <div class="signature-col">
+        <div class="sig-line">
+          {% if report_lang == 'th' %}
+          ลงชื่อ .................................... ผู้จัดทำรายงาน
+          {% else %}
+          Prepared by: ....................................
+          {% endif %}
+        </div>
+        <div class="sig-name">( {{ generated_by.get_full_name|default:generated_by.username }} )</div>
+        <div class="sig-role">
+          {% if report_lang == 'th' %}
+          เจ้าหน้าที่งานพัฒนานักศึกษาและทุนการศึกษา
+          {% else %}
+          Student Development &amp; Scholarship Officer
+          {% endif %}
+        </div>
+        <div class="sig-date">
+          {% if report_lang == 'th' %}
+          วันที่ {{ generated_at|date:"j F Y" }}
+          {% else %}
+          Date: {{ generated_at|date:"d M Y" }}
+          {% endif %}
+        </div>
       </div>
-      <div class="signature-box">
-        <div>ลงชื่อ ................................................................ ผู้รับรองรายงาน</div>
-        <div class="signature-line"></div>
-        <div>( ................................................................ )</div>
-        <div style="font-size: 0.75rem; color: #64748b;">หัวหน้างานกิจการนักศึกษา / ผู้บริหารฝ่ายวิชาการ</div>
-        <div style="font-size: 0.75rem; color: #64748b;">มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต</div>
+      <div class="signature-col">
+        <div class="sig-line">
+          {% if report_lang == 'th' %}
+          ลงชื่อ .................................... ผู้รับรองรายงาน
+          {% else %}
+          Approved by: ....................................
+          {% endif %}
+        </div>
+        <div class="sig-name">( .................................... )</div>
+        <div class="sig-role">
+          {% if report_lang == 'th' %}
+          หัวหน้างานกิจการนักศึกษาและทุนการศึกษา
+          {% else %}
+          Head of Student Affairs &amp; Scholarships
+          {% endif %}
+        </div>
+        <div class="sig-date">
+          {% if report_lang == 'th' %}
+          มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต
+          {% else %}
+          Prince of Songkla University, Phuket Campus
+          {% endif %}
+        </div>
       </div>
     </div>
 
   </div>
 
-  {% if auto_print %}
   <script>
+    function switchReportLang(lang) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', lang);
+      window.location.href = url.toString();
+    }
+
+    {% if auto_print %}
     window.addEventListener('load', function() {
       setTimeout(function() {
         window.print();
       }, 500);
     });
+    {% endif %}
   </script>
-  {% endif %}
 
 </body>
 </html>
