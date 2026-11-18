@@ -2768,6 +2768,12 @@ msgstr ""
 msgid "Back to Categories"
 msgstr "กลับสู่หน้าหมวดหมู่"
 
+#: frontend/templates/components/scholarship_card.html:62
+#: frontend/templates/scholarships/detail.html:107
+#: frontend/templates/accounts/admin_dashboard.html:792
+msgid "Students"
+msgstr "คน"
+
 #~ msgid "Dashboard Menu"
 #~ msgstr "เมนูจัดการระบบ"
 
