@@ -144,8 +144,8 @@ def profile(request):
         if selected_status != 'all':
             extra_query = f"status={selected_status}"
 
-        # Pagination: 2 applications per page to ensure pagination in every filter
-        paginator = Paginator(filtered_apps, 2)
+        # Pagination: 10 applications per page
+        paginator = Paginator(filtered_apps, 10)
         page_number = request.GET.get('page', 1)
         try:
             page_obj = paginator.page(page_number)
