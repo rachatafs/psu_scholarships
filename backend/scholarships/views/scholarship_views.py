@@ -66,7 +66,13 @@ def scholarship_list(request, category):
         items = Scholarship.objects.filter(category=category, status='active', end_date__gte=today).order_by('-id')
 
     if query:
-        items = items.filter(title__icontains=query)
+        from django.db.models import Q
+        items = items.filter(
+            Q(title__icontains=query) |
+            Q(title_en__icontains=query) |
+            Q(description__icontains=query) |
+            Q(description_en__icontains=query)
+        )
 
     items = enrich_scholarships(items, request.user)
 

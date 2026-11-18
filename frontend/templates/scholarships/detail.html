@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{{ scholarship.title }} | PSU Phuket Scholarships{% endblock %}
+{% block title %}{{ scholarship.localized_title }} | PSU Phuket Scholarships{% endblock %}
 
 {% block content %}
 <div class="detail-page-modern">
@@ -14,7 +14,7 @@
                 <span class="breadcrumb-sep">/</span>
                 <a href="{% url 'scholarships' %}">{% trans "Scholarship Categories" %}</a>
                 <span class="breadcrumb-sep">/</span>
-                <span class="breadcrumb-current">{{ scholarship.title }}</span>
+                <span class="breadcrumb-current">{{ scholarship.localized_title }}</span>
             </div>
 
             <div class="detail-title-area">
@@ -34,7 +34,7 @@
                     {% endif %}
                     {% include 'components/category_badge.html' with category=scholarship.category category_display=scholarship.get_category_display %}
                 </div>
-                <h1 class="detail-main-title">{{ scholarship.title }}</h1>
+                <h1 class="detail-main-title">{{ scholarship.localized_title }}</h1>
             </div>
         </div>
     </div>
@@ -51,7 +51,7 @@
                     <h2>{% trans "Scholarship Details" %}</h2>
                 </div>
                 <div class="card-rich-text">
-                    <p>{{ scholarship.description|linebreaks }}</p>
+                    <p>{{ scholarship.localized_description|linebreaks }}</p>
                 </div>
             </div>
 
@@ -61,7 +61,7 @@
                     <h2>{% trans "Eligibility & Requirements" %}</h2>
                 </div>
                 <div class="card-rich-text requirements-box">
-                    <p>{{ scholarship.requirements|linebreaks }}</p>
+                    <p>{{ scholarship.localized_requirements|linebreaks }}</p>
                 </div>
             </div>
 
@@ -195,7 +195,7 @@
                 <div class="admin-control-box">
                     <div class="admin-box-title">{% trans "Admin Controls" %}</div>
                     <div class="admin-btn-row">
-                        <a href="/admin/scholarships/scholarship/{{ scholarship.pk }}/change/" class="btn-admin-edit">
+                        <a href="{% url 'admin:scholarships_scholarship_change' scholarship.pk %}" class="btn-admin-edit">
                             {% trans "Edit Scholarship" %}
                         </a>
                             <form method="post" action="{% url 'delete_scholarship' scholarship.pk %}"

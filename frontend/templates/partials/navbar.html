@@ -195,10 +195,14 @@
         const passwordInput = form.querySelector('input[name="password"]');
         const originalBtnText = submitBtn ? submitBtn.textContent : 'Sign In';
 
+        const txtChecking = "{% trans 'Checking...' %}";
+        const txtSuccess = "{% trans 'Success!' %}";
+        const txtInvalid = "{% trans 'Invalid username or password. Please try again.' %}";
+
         if (errorBox) errorBox.style.display = 'none';
         if (submitBtn) {
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Checking...';
+            submitBtn.textContent = txtChecking;
         }
 
         const formData = new FormData(form);
@@ -218,7 +222,7 @@
             })
             .then(function (result) {
                 if (result.ok && result.data.success) {
-                    if (submitBtn) submitBtn.textContent = 'Success!';
+                    if (submitBtn) submitBtn.textContent = txtSuccess;
                     window.location.href = result.data.redirect_url || '/';
                 } else {
                     if (submitBtn) {
@@ -226,7 +230,7 @@
                         submitBtn.textContent = originalBtnText;
                     }
                     if (errorBox) {
-                        errorBox.textContent = result.data.message || 'Invalid username or password. Please try again.';
+                        errorBox.textContent = result.data.message || txtInvalid;
                         errorBox.style.display = 'block';
                     }
                     if (passwordInput) {
@@ -241,7 +245,7 @@
                     submitBtn.textContent = originalBtnText;
                 }
                 if (errorBox) {
-                    errorBox.textContent = 'Invalid username or password. Please try again.';
+                    errorBox.textContent = txtInvalid;
                     errorBox.style.display = 'block';
                 }
             });

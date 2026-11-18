@@ -154,7 +154,7 @@
                                 <span class="app-amount-pill">฿{{ app.scholarship.amount_per_semester|floatformat:0 }} / {% trans "semester" %}</span>
                             </div>
                             <h3 class="app-sch-title">
-                                <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="app-title-link">{{ app.scholarship.title }}</a>
+                                <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="app-title-link">{{ app.scholarship.localized_title }}</a>
                             </h3>
                         </div>
 

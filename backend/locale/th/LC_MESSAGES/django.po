@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 11:41+0700\n"
+"POT-Creation-Date: 2026-11-18 13:28+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,2475 +18,1973 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: backend/myproject/settings.py:87
+#: backend/myproject/settings.py:87 backend/scholarships/models.py:17
 msgid "English"
-msgstr ""
+msgstr "English (ภาษาอังกฤษ)"
 
-#: backend/myproject/settings.py:88
+#: backend/myproject/settings.py:88 backend/scholarships/models.py:16
 msgid "Thai"
-msgstr ""
-
-#: backend/scholarships/admin.py:14
-msgid "Personal info"
-msgstr ""
+msgstr "ภาษาไทย"
 
 #: backend/scholarships/admin.py:15
+msgid "Personal info"
+msgstr "ข้อมูลส่วนตัว"
+
+#: backend/scholarships/admin.py:16
 msgid "Permissions"
-msgstr ""
+msgstr "สิทธิ์การเข้าถึง"
 
-#: backend/scholarships/admin.py:18
+#: backend/scholarships/admin.py:19
 msgid "Important dates"
-msgstr ""
+msgstr "วันสำคัญของระบบ"
 
-#: backend/scholarships/views/admin_views.py:151
-msgid "Notification email sent to student successfully."
-msgstr ""
+#: backend/scholarships/admin.py:29
+msgid "English Translation"
+msgstr "ฉบับภาษาอังกฤษ"
 
-#: backend/scholarships/views/admin_views.py:151
-#, python-format
-msgid "Status updated to %(status)s and notification email sent."
-msgstr ""
+#: backend/scholarships/admin.py:34
+msgid "Has English Translation"
+msgstr "มีคำแปลภาษาอังกฤษแล้ว"
 
-#: backend/scholarships/views/admin_views.py:154
-#, python-format
-msgid "Saved successfully (Email error: %(error)s)"
-msgstr ""
+#: backend/scholarships/admin.py:35
+msgid "Missing English Translation"
+msgstr "ยังไม่มีคำแปลภาษาอังกฤษ"
 
-#: backend/scholarships/views/admin_views.py:156
-msgid "Updated successfully."
-msgstr ""
+#: backend/scholarships/admin.py:52
+msgid "Primary Info (Thai / Default)"
+msgstr "ข้อมูลหลัก (ภาษาไทย / ค่าเริ่มต้น)"
 
-#: backend/scholarships/views/admin_views.py:255
-#, python-format
-msgid "Scholarship \"%(title)s\" has been deleted."
-msgstr ""
+#: backend/scholarships/admin.py:55
+msgid "English Translation (Optional / Recommended)"
+msgstr "คำแปลภาษาอังกฤษ (แนะนำสำหรับนักศึกษาต่างชาติ)"
 
-#: backend/scholarships/views/auth_views.py:27
-#: frontend/templates/accounts/login.html:19
-msgid "Invalid username or password. Please check and try again."
+#: backend/scholarships/admin.py:57
+msgid ""
+"Enter the English version of title, description, and requirements for "
+"international students."
 msgstr ""
+"ระบุชื่อทุน รายละเอียด "
+"และคุณสมบัติเป็นภาษาอังกฤษเพื่อรองรับนักศึกษาต่างชาติและผู้ใช้ภาษาอังกฤษ"
 
-#: backend/scholarships/views/auth_views.py:92
-msgid "Profile updated successfully!"
-msgstr ""
+#: backend/scholarships/admin.py:59
+msgid "Schedule & Award Details"
+msgstr "กำหนดการและมูลค่าทุน"
 
-#: backend/scholarships/views/scholarship_views.py:20
+#: backend/scholarships/admin.py:64
+msgid "EN Translation"
+msgstr "แปลภาษาอังกฤษ"
+
+#: backend/scholarships/models.py:8
+msgid "College of Computing"
+msgstr "วิทยาลัยการคอมพิวเตอร์"
+
+#: backend/scholarships/models.py:9
+msgid "Faculty of Engineering"
+msgstr "คณะวิศวกรรมศาสตร์"
+
+#: backend/scholarships/models.py:10
+msgid "Faculty of Science"
+msgstr "คณะวิทยาศาสตร์และเทคโนโลยีอุตสาหกรรม"
+
+#: backend/scholarships/models.py:11
+msgid "Faculty of Management Sciences"
+msgstr "คณะวิทยาการจัดการ"
+
+#: backend/scholarships/models.py:12 backend/scholarships/models.py:124
+#: frontend/templates/accounts/admin_dashboard.html:576
+msgid "Other"
+msgstr "อื่นๆ"
+
+#: backend/scholarships/models.py:37
+#: backend/scholarships/views/scholarship_views.py:15
 #: backend/scholarships/views/utils.py:6
+#: frontend/templates/guide/student_guide.html:56
 #: frontend/templates/partials/navbar.html:31
 #: frontend/templates/scholarships/category.html:42
 msgid "General Scholarships"
-msgstr ""
+msgstr "ทุนการศึกษาทั่วไป"
 
+#: backend/scholarships/models.py:38
 #: backend/scholarships/views/scholarship_views.py:22
-msgid ""
-"Financial support for general students, academic excellence, and need-based "
-"aid."
-msgstr ""
-
-#: backend/scholarships/views/scholarship_views.py:27
 #: backend/scholarships/views/utils.py:7
+#: frontend/templates/guide/student_guide.html:57
 #: frontend/templates/partials/navbar.html:32
 #: frontend/templates/scholarships/category.html:55
 msgid "Exchange Scholarships"
-msgstr ""
+msgstr "ทุนแลกเปลี่ยนต่างประเทศ"
 
+#: backend/scholarships/models.py:39
 #: backend/scholarships/views/scholarship_views.py:29
-msgid ""
-"Support for international student exchange programs and overseas internships."
-msgstr ""
-
-#: backend/scholarships/views/scholarship_views.py:34
 #: backend/scholarships/views/utils.py:8
+#: frontend/templates/guide/student_guide.html:58
 #: frontend/templates/partials/navbar.html:33
 #: frontend/templates/scholarships/category.html:68
 msgid "Fee Waiver Scholarships"
-msgstr ""
+msgstr "ทุนยกเว้นค่าธรรมเนียมการศึกษา"
 
+#: backend/scholarships/models.py:40
 #: backend/scholarships/views/scholarship_views.py:36
-msgid ""
-"Tuition fee discounts or exemptions for students with exceptional "
-"achievements."
-msgstr ""
-
-#: backend/scholarships/views/scholarship_views.py:41
 #: backend/scholarships/views/utils.py:9
+#: frontend/templates/guide/student_guide.html:59
 #: frontend/templates/partials/navbar.html:34
 #: frontend/templates/scholarships/category.html:81
 msgid "Lunch Scholarships"
-msgstr ""
-
-#: backend/scholarships/views/scholarship_views.py:43
-msgid ""
-"Meal welfare subsidies to support campus well-being and alleviate living "
-"expenses."
-msgstr ""
-
-#: backend/scholarships/views/scholarship_views.py:84
-#: frontend/templates/partials/navbar.html:24
-msgid "Scholarships"
-msgstr ""
-
-#: backend/scholarships/views/scholarship_views.py:117
-msgid "Sorry, this scholarship is closed or has expired."
-msgstr ""
-
-#: backend/scholarships/views/scholarship_views.py:125
-msgid "Sorry, this scholarship has reached maximum applicant capacity."
-msgstr ""
-
-#: backend/scholarships/views/scholarship_views.py:136
-msgid "You have already applied for this scholarship."
-msgstr ""
-
-#: backend/scholarships/views/utils.py:5
-#: frontend/templates/scholarships/category.html:29
-msgid "All Scholarships"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/contrib/messages/apps.py:16
-#: backend/venv/lib/python3.14/site-packages/django/contrib/messages/apps.py:16
-msgid "Messages"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/contrib/sitemaps/apps.py:8
-#: backend/venv/lib/python3.14/site-packages/django/contrib/sitemaps/apps.py:8
-msgid "Site Maps"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/contrib/staticfiles/apps.py:9
-#: backend/venv/lib/python3.14/site-packages/django/contrib/staticfiles/apps.py:9
-msgid "Static Files"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/contrib/syndication/apps.py:7
-#: backend/venv/lib/python3.14/site-packages/django/contrib/syndication/apps.py:7
-msgid "Syndication"
-msgstr ""
-
-#. Translators: String used to replace omitted page numbers in elided page
-#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
-#: backend/venv/lib/python3.13/site-packages/django/core/paginator.py:33
-#: backend/venv/lib/python3.14/site-packages/django/core/paginator.py:33
-msgid "…"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/paginator.py:35
-#: backend/venv/lib/python3.14/site-packages/django/core/paginator.py:35
-msgid "That page number is not an integer"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/paginator.py:36
-#: backend/venv/lib/python3.14/site-packages/django/core/paginator.py:36
-msgid "That page number is less than 1"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/paginator.py:37
-#: backend/venv/lib/python3.14/site-packages/django/core/paginator.py:37
-msgid "That page contains no results"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:22
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:22
-msgid "Enter a valid value."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:70
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:70
-msgid "Enter a valid domain name."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:153
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:774
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:153
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:773
-msgid "Enter a valid URL."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:200
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:200
-msgid "Enter a valid integer."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:211
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:211
-msgid "Enter a valid email address."
-msgstr ""
-
-#. Translators: "letters" means latin letters: a-z and A-Z.
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:289
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:289
-msgid ""
-"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:297
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:297
-msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:309
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:318
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:332
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2220
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:309
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:318
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:332
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2220
-#, python-format
-msgid "Enter a valid %(protocol)s address."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:311
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:311
-msgid "IPv4"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:320
-#: backend/venv/lib/python3.13/site-packages/django/utils/ipv6.py:43
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:320
-#: backend/venv/lib/python3.14/site-packages/django/utils/ipv6.py:43
-msgid "IPv6"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:334
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:334
-msgid "IPv4 or IPv6"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:375
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:375
-msgid "Enter only digits separated by commas."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:381
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:381
-#, python-format
-msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:416
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:416
-#, python-format
-msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:425
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:425
-#, python-format
-msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:434
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:434
-#, python-format
-msgid "Ensure this value is a multiple of step size %(limit_value)s."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:441
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:441
-#, python-format
-msgid ""
-"Ensure this value is a multiple of step size %(limit_value)s, starting from "
-"%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:473
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:473
-#, python-format
-msgid ""
-"Ensure this value has at least %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at least %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:491
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:491
-#, python-format
-msgid ""
-"Ensure this value has at most %(limit_value)d character (it has "
-"%(show_value)d)."
-msgid_plural ""
-"Ensure this value has at most %(limit_value)d characters (it has "
-"%(show_value)d)."
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:514
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:365
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:404
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:514
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:364
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:403
-msgid "Enter a number."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:516
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:516
-#, python-format
-msgid "Ensure that there are no more than %(max)s digit in total."
-msgid_plural "Ensure that there are no more than %(max)s digits in total."
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:521
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:521
-#, python-format
-msgid "Ensure that there are no more than %(max)s decimal place."
-msgid_plural "Ensure that there are no more than %(max)s decimal places."
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:526
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:526
-#, python-format
-msgid ""
-"Ensure that there are no more than %(max)s digit before the decimal point."
-msgid_plural ""
-"Ensure that there are no more than %(max)s digits before the decimal point."
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:597
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:597
-#, python-format
-msgid ""
-"File extension “%(extension)s” is not allowed. Allowed extensions are: "
-"%(allowed_extensions)s."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/core/validators.py:659
-#: backend/venv/lib/python3.14/site-packages/django/core/validators.py:659
-msgid "Null characters are not allowed."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/base.py:1633
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:932
-#: backend/venv/lib/python3.14/site-packages/django/db/models/base.py:1633
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:932
-msgid "and"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/base.py:1635
-#: backend/venv/lib/python3.14/site-packages/django/db/models/base.py:1635
-#, python-format
-msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/constraints.py:20
-#: backend/venv/lib/python3.14/site-packages/django/db/models/constraints.py:20
-#, python-format
-msgid "Constraint “%(name)s” is violated."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:134
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:134
-#, python-format
-msgid "Value %(value)r is not a valid choice."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:135
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:135
-msgid "This field cannot be null."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:136
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:136
-msgid "This field cannot be blank."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:137
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:137
-#, python-format
-msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr ""
-
-#. Translators: The 'lookup_type' is one of 'date', 'year' or
-#. 'month'. Eg: "Title must be unique for pub_date year"
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:141
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:141
-#, python-format
-msgid ""
-"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:180
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:180
-#, python-format
-msgid "Field of type: %(field_type)s"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1161
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1161
-#, python-format
-msgid "“%(value)s” value must be either True or False."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1162
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1162
-#, python-format
-msgid "“%(value)s” value must be either True, False, or None."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1164
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1164
-msgid "Boolean (Either True or False)"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1214
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1214
-#, python-format
-msgid "String (up to %(max_length)s)"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1216
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1216
-msgid "String (unlimited)"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1325
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1325
-msgid "Comma-separated integers"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1426
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1426
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
-"format."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1430
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1565
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1430
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1565
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
-"date."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1434
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1434
-msgid "Date (without time)"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1561
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1561
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
-"HH:MM[:ss[.uuuuuu]][TZ] format."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1569
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1569
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1574
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1574
-msgid "Date (with time)"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1701
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1701
-#, python-format
-msgid "“%(value)s” value must be a decimal number."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1703
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1703
-msgid "Decimal number"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1864
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1864
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] "
-"[[HH:]MM:]ss[.uuuuuu] format."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1868
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1868
-msgid "Duration"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1920
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1920
-msgid "Email address"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:1945
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:1945
-msgid "File path"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2023
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2023
-#, python-format
-msgid "“%(value)s” value must be a float."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2025
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2025
-msgid "Floating point number"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2065
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2065
-#, python-format
-msgid "“%(value)s” value must be an integer."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2067
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2067
-msgid "Integer"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2163
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2163
-msgid "Big (8 byte) integer"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2180
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2180
-msgid "Small integer"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2188
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2188
-msgid "IPv4 address"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2219
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2219
-msgid "IP address"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2310
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2311
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2310
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2311
-#, python-format
-msgid "“%(value)s” value must be either None, True or False."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2313
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2313
-msgid "Boolean (Either True, False or None)"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2364
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2364
-msgid "Positive big integer"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2379
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2379
-msgid "Positive integer"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2394
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2394
-msgid "Positive small integer"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2410
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2410
-#, python-format
-msgid "Slug (up to %(max_length)s)"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2446
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2446
-msgid "Text"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2526
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2526
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
-"format."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2530
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2530
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
-"invalid time."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2534
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2534
-msgid "Time"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2642
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2642
-msgid "URL"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2666
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2666
-msgid "Raw binary data"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2731
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2731
-#, python-format
-msgid "“%(value)s” is not a valid UUID."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/__init__.py:2733
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/__init__.py:2733
-msgid "Universally unique identifier"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/files.py:244
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/files.py:244
-msgid "File"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/files.py:420
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/files.py:420
-msgid "Image"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/json.py:24
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/json.py:24
-msgid "A JSON object"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/json.py:26
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/json.py:26
-msgid "Value must be valid JSON."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:978
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:974
-#, python-format
-msgid "%(model)s instance with %(field)s %(value)r is not a valid choice."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:981
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:977
-msgid "Foreign Key (type determined by related field)"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:1275
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:1271
-msgid "One-to-one relationship"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:1332
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:1328
-#, python-format
-msgid "%(from)s-%(to)s relationship"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:1334
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:1330
-#, python-format
-msgid "%(from)s-%(to)s relationships"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/db/models/fields/related.py:1382
-#: backend/venv/lib/python3.14/site-packages/django/db/models/fields/related.py:1378
-msgid "Many-to-many relationship"
-msgstr ""
-
-#. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to
-#. the label
-#: backend/venv/lib/python3.13/site-packages/django/forms/boundfield.py:188
-#: backend/venv/lib/python3.14/site-packages/django/forms/boundfield.py:188
-msgid ":?.!"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:92
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:91
-msgid "This field is required."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:314
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:313
-msgid "Enter a whole number."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:485
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1251
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:484
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1241
-msgid "Enter a valid date."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:508
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1252
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:507
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1242
-msgid "Enter a valid time."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:535
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:534
-msgid "Enter a valid date/time."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:569
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:568
-msgid "Enter a valid duration."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:570
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:569
-#, python-brace-format
-msgid "The number of days must be between {min_days} and {max_days}."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:639
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:638
-msgid "No file was submitted. Check the encoding type on the form."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:640
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:639
-msgid "No file was submitted."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:641
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:640
-msgid "The submitted file is empty."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:643
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:642
-#, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
-msgid_plural ""
-"Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:648
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:647
-msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:716
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:715
-msgid ""
-"Upload a valid image. The file you uploaded was either not an image or a "
-"corrupted image."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:872
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:959
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1621
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:862
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:949
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1621
-#, python-format
-msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:961
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1080
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1619
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:951
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1070
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1619
-msgid "Enter a list of values."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1081
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1071
-msgid "Enter a complete value."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1323
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1313
-msgid "Enter a valid UUID."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/fields.py:1353
-#: backend/venv/lib/python3.14/site-packages/django/forms/fields.py:1343
-msgid "Enter a valid JSON."
-msgstr ""
-
-#. Translators: This is the default suffix added to form field labels
-#: backend/venv/lib/python3.13/site-packages/django/forms/forms.py:97
-#: backend/venv/lib/python3.14/site-packages/django/forms/forms.py:97
-msgid ":"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/forms.py:239
-#: backend/venv/lib/python3.14/site-packages/django/forms/forms.py:239
-#, python-format
-msgid "(Hidden field %(name)s) %(error)s"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:61
-#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:61
-#, python-format
-msgid ""
-"ManagementForm data is missing or has been tampered with. Missing fields: "
-"%(field_names)s. You may need to file a bug report if the issue persists."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:65
-#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:65
-#, python-format
-msgid "Please submit at most %(num)d form."
-msgid_plural "Please submit at most %(num)d forms."
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:70
-#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:70
-#, python-format
-msgid "Please submit at least %(num)d form."
-msgid_plural "Please submit at least %(num)d forms."
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:484
-#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:491
-#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:484
-#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:491
-msgid "Order"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/formsets.py:499
-#: backend/venv/lib/python3.14/site-packages/django/forms/formsets.py:499
-#: frontend/templates/accounts/admin_dashboard.html:440
-#: frontend/templates/accounts/admin_dashboard.html:441
-msgid "Delete"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:925
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:925
-#, python-format
-msgid "Please correct the duplicate data for %(field)s."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:930
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:930
-#, python-format
-msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:937
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:937
-#, python-format
-msgid ""
-"Please correct the duplicate data for %(field_name)s which must be unique "
-"for the %(lookup)s in %(date_field)s."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:946
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:946
-msgid "Please correct the duplicate values below."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1383
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1383
-msgid "The inline value did not match the parent instance."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1474
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1474
-msgid "Select a valid choice. That choice is not one of the available choices."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/models.py:1623
-#: backend/venv/lib/python3.14/site-packages/django/forms/models.py:1623
-#, python-format
-msgid "“%(pk)s” is not a valid value."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/utils.py:229
-#: backend/venv/lib/python3.14/site-packages/django/forms/utils.py:229
-#, python-format
-msgid ""
-"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
-"may be ambiguous or it may not exist."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:528
-#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:528
-#: frontend/templates/scholarships/list.html:55
-msgid "Clear"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:529
-#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:529
-msgid "Currently"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:530
-#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:530
-#: frontend/templates/admin/index.html:28
-msgid "Change"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:869
-#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:869
-msgid "Unknown"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:870
-#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:870
-msgid "Yes"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/forms/widgets.py:871
-#: backend/venv/lib/python3.14/site-packages/django/forms/widgets.py:871
-msgid "No"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/tasks/base.py:34
-#: backend/venv/lib/python3.14/site-packages/django/tasks/base.py:34
-msgctxt "Task"
-msgid "Ready"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/tasks/base.py:36
-#: backend/venv/lib/python3.14/site-packages/django/tasks/base.py:36
-msgctxt "Task"
-msgid "Running"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/tasks/base.py:38
-#: backend/venv/lib/python3.14/site-packages/django/tasks/base.py:38
-msgctxt "Task"
-msgid "Failed"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/tasks/base.py:40
-#: backend/venv/lib/python3.14/site-packages/django/tasks/base.py:40
-msgctxt "Task"
-msgid "Successful"
-msgstr ""
-
-#. Translators: Please do not add spaces around commas.
-#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:878
-#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:878
-msgid "yes,no,maybe"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:908
-#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:925
-#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:908
-#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:925
-#, python-format
-msgid "%(size)d byte"
-msgid_plural "%(size)d bytes"
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:927
-#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:927
-#, python-format
-msgid "%s KB"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:929
-#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:929
-#, python-format
-msgid "%s MB"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:931
-#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:931
-#, python-format
-msgid "%s GB"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:933
-#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:933
-#, python-format
-msgid "%s TB"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/template/defaultfilters.py:935
-#: backend/venv/lib/python3.14/site-packages/django/template/defaultfilters.py:935
-#, python-format
-msgid "%s PB"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:74
-#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:74
-msgid "p.m."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:75
-#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:75
-msgid "a.m."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:80
-#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:80
-msgid "PM"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:81
-#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:81
-msgid "AM"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:153
-#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:153
-msgid "midnight"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dateformat.py:155
-#: backend/venv/lib/python3.14/site-packages/django/utils/dateformat.py:155
-msgid "noon"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:7
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:7
-msgid "Monday"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:8
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:8
-msgid "Tuesday"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:9
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:9
-msgid "Wednesday"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:10
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:10
-msgid "Thursday"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:11
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:11
-msgid "Friday"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:12
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:12
-msgid "Saturday"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:13
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:13
-msgid "Sunday"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:16
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:16
-msgid "Mon"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:17
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:17
-msgid "Tue"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:18
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:18
-msgid "Wed"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:19
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:19
-msgid "Thu"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:20
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:20
-msgid "Fri"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:21
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:21
-msgid "Sat"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:22
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:22
-msgid "Sun"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:25
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:25
-#: frontend/templates/scholarship_dashboard.html:539
-msgid "January"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:26
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:26
-#: frontend/templates/scholarship_dashboard.html:540
-msgid "February"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:27
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:27
-#: frontend/templates/scholarship_dashboard.html:541
-msgid "March"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:28
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:28
-#: frontend/templates/scholarship_dashboard.html:542
-msgid "April"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:29
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:29
-#: frontend/templates/scholarship_dashboard.html:543
-msgid "May"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:30
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:30
-#: frontend/templates/scholarship_dashboard.html:544
-msgid "June"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:31
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:31
-#: frontend/templates/scholarship_dashboard.html:545
-msgid "July"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:32
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:32
-#: frontend/templates/scholarship_dashboard.html:546
-msgid "August"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:33
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:33
-#: frontend/templates/scholarship_dashboard.html:547
-msgid "September"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:34
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:34
-#: frontend/templates/scholarship_dashboard.html:548
-msgid "October"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:35
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:35
-#: frontend/templates/scholarship_dashboard.html:549
-msgid "November"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:36
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:36
-#: frontend/templates/scholarship_dashboard.html:550
-msgid "December"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:39
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:39
-msgid "jan"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:40
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:40
-msgid "feb"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:41
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:41
-msgid "mar"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:42
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:42
-msgid "apr"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:43
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:43
-msgid "may"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:44
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:44
-msgid "jun"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:45
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:45
-msgid "jul"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:46
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:46
-msgid "aug"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:47
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:47
-msgid "sep"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:48
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:48
-msgid "oct"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:49
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:49
-msgid "nov"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:50
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:50
-msgid "dec"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:53
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:53
-msgctxt "abbrev. month"
-msgid "Jan."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:54
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:54
-msgctxt "abbrev. month"
-msgid "Feb."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:55
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:55
-msgctxt "abbrev. month"
-msgid "March"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:56
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:56
-msgctxt "abbrev. month"
-msgid "April"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:57
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:57
-msgctxt "abbrev. month"
-msgid "May"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:58
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:58
-msgctxt "abbrev. month"
-msgid "June"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:59
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:59
-msgctxt "abbrev. month"
-msgid "July"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:60
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:60
-msgctxt "abbrev. month"
-msgid "Aug."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:61
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:61
-msgctxt "abbrev. month"
-msgid "Sept."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:62
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:62
-msgctxt "abbrev. month"
-msgid "Oct."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:63
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:63
-msgctxt "abbrev. month"
-msgid "Nov."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:64
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:64
-msgctxt "abbrev. month"
-msgid "Dec."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:67
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:67
-msgctxt "alt. month"
-msgid "January"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:68
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:68
-msgctxt "alt. month"
-msgid "February"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:69
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:69
-msgctxt "alt. month"
-msgid "March"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:70
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:70
-msgctxt "alt. month"
-msgid "April"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:71
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:71
-msgctxt "alt. month"
-msgid "May"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:72
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:72
-msgctxt "alt. month"
-msgid "June"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:73
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:73
-msgctxt "alt. month"
-msgid "July"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:74
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:74
-msgctxt "alt. month"
-msgid "August"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:75
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:75
-msgctxt "alt. month"
-msgid "September"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:76
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:76
-msgctxt "alt. month"
-msgid "October"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:77
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:77
-msgctxt "alt. month"
-msgid "November"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/dates.py:78
-#: backend/venv/lib/python3.14/site-packages/django/utils/dates.py:78
-msgctxt "alt. month"
-msgid "December"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/ipv6.py:20
-#: backend/venv/lib/python3.14/site-packages/django/utils/ipv6.py:20
-msgid "This is not a valid IPv6 address."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/text.py:76
-#: backend/venv/lib/python3.14/site-packages/django/utils/text.py:76
-#, python-format
-msgctxt "String to return when truncating text"
-msgid "%(truncated_text)s…"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/text.py:288
-#: backend/venv/lib/python3.14/site-packages/django/utils/text.py:282
-msgid "or"
-msgstr ""
-
-#. Translators: This string is used as a separator between list elements
-#: backend/venv/lib/python3.13/site-packages/django/utils/text.py:307
-#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:135
-#: backend/venv/lib/python3.14/site-packages/django/utils/text.py:301
-#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:135
-msgid ", "
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:8
-#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:8
-#, python-format
-msgid "%(num)d year"
-msgid_plural "%(num)d years"
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:9
-#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:9
-#, python-format
-msgid "%(num)d month"
-msgid_plural "%(num)d months"
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:10
-#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:10
-#, python-format
-msgid "%(num)d week"
-msgid_plural "%(num)d weeks"
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:11
-#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:11
-#, python-format
-msgid "%(num)d day"
-msgid_plural "%(num)d days"
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:12
-#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:12
-#, python-format
-msgid "%(num)d hour"
-msgid_plural "%(num)d hours"
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/utils/timesince.py:13
-#: backend/venv/lib/python3.14/site-packages/django/utils/timesince.py:13
-#, python-format
-msgid "%(num)d minute"
-msgid_plural "%(num)d minutes"
-msgstr[0] ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:29
-#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:29
-msgid "Forbidden"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:30
-#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:30
-msgid "CSRF verification failed. Request aborted."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:34
-#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:34
-msgid ""
-"You are seeing this message because this HTTPS site requires a “Referer "
-"header” to be sent by your web browser, but none was sent. This header is "
-"required for security reasons, to ensure that your browser is not being "
-"hijacked by third parties."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:40
-#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:40
-msgid ""
-"If you have configured your browser to disable “Referer” headers, please re-"
-"enable them, at least for this site, or for HTTPS connections, or for “same-"
-"origin” requests."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:45
-#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:45
-msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a "
-"rel=\"noreferrer\" …> for links to third-party sites."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:54
-#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:54
-msgid ""
-"You are seeing this message because this site requires a CSRF cookie when "
-"submitting forms. This cookie is required for security reasons, to ensure "
-"that your browser is not being hijacked by third parties."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:60
-#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:60
-msgid ""
-"If you have configured your browser to disable cookies, please re-enable "
-"them, at least for this site, or for “same-origin” requests."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/csrf.py:66
-#: backend/venv/lib/python3.14/site-packages/django/views/csrf.py:66
-msgid "More information is available with DEBUG=True."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:44
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:44
-msgid "No year specified"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:64
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:115
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:214
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:64
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:115
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:214
-msgid "Date out of range"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:94
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:94
-msgid "No month specified"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:147
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:147
-msgid "No day specified"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:194
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:194
-msgid "No week specified"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:353
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:384
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:353
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:384
-#, python-format
-msgid "No %(verbose_name_plural)s available"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:680
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:680
-#, python-format
-msgid ""
-"Future %(verbose_name_plural)s not available because "
-"%(class_name)s.allow_future is False."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/dates.py:720
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/dates.py:720
-#, python-format
-msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/detail.py:56
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/detail.py:56
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/list.py:70
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/list.py:70
-msgid "Page is not “last”, nor can it be converted to an int."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/list.py:77
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/list.py:77
-#, python-format
-msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/generic/list.py:173
-#: backend/venv/lib/python3.14/site-packages/django/views/generic/list.py:173
-#, python-format
-msgid "Empty list and “%(class_name)s.allow_empty” is False."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/static.py:49
-#: backend/venv/lib/python3.14/site-packages/django/views/static.py:49
-msgid "Directory indexes are not allowed here."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/static.py:51
-#: backend/venv/lib/python3.14/site-packages/django/views/static.py:51
-#, python-format
-msgid "“%(path)s” does not exist"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/static.py:68
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/directory_index.html:8
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/directory_index.html:11
-#: backend/venv/lib/python3.14/site-packages/django/views/static.py:68
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/directory_index.html:8
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/directory_index.html:11
-#, python-format
-msgid "Index of %(directory)s"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:7
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:204
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:7
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:204
-msgid "The install worked successfully! Congratulations!"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:206
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:206
-#, python-format
-msgid ""
-"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:208
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:208
-#, python-format
-msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" "
-"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
-"configured any URLs."
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:217
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:217
-msgid "Django Documentation"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:218
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:218
-msgid "Topics, references, &amp; how-to’s"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:226
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:226
-msgid "Tutorial: A Polling App"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:227
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:227
-msgid "Get started with Django"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:235
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:235
-msgid "Django Community"
-msgstr ""
-
-#: backend/venv/lib/python3.13/site-packages/django/views/templates/default_urlconf.html:236
-#: backend/venv/lib/python3.14/site-packages/django/views/templates/default_urlconf.html:236
-msgid "Connect, get help, or contribute"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:5
-msgid "Admin Management"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:14
-msgid "Admin Management Dashboard"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:15
-msgid "Welcome Administrator"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:21
-msgid "Click to view all scholarships"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:23
-#: frontend/templates/scholarship_dashboard.html:573
-msgid "Total Scholarships"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:26
-msgid "Click to view all applications"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:28
-#: frontend/templates/scholarship_dashboard.html:602
-msgid "Total Applications"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:31
-msgid "Click to view pending applications"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:33
-msgid "Pending Review"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:36
-msgid "Click to view approved applications"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:38
-msgid "Approved"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:52
-msgid "Manage Student Applications"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:60
-msgid "Manage Scholarships"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:69
-msgid "Scholarship History"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:78
-msgid "Student Applications & Screening"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:79
-msgid ""
-"Search, verify GPAX eligibility, and update application review statuses."
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:86
-msgid "Create New Scholarship"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:97
-msgid "Note"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:97
-msgid ""
-"This view displays active student applications. To manage scholarship "
-"listings without applications, use the Manage Scholarships tab."
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:106
-#: frontend/templates/accounts/admin_dashboard.html:328
-#: frontend/templates/scholarships/list.html:26
-msgid "All"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:112
-#: frontend/templates/accounts/admin_dashboard.html:332
-#: frontend/templates/components/category_badge.html:3
-#: frontend/templates/scholarship_dashboard.html:678
-#: frontend/templates/scholarship_dashboard.html:719
-#: frontend/templates/scholarships/category.html:40
-#: frontend/templates/scholarships/list.html:28
-msgid "General"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:118
-#: frontend/templates/accounts/admin_dashboard.html:336
-#: frontend/templates/components/category_badge.html:4
-#: frontend/templates/scholarship_dashboard.html:681
-#: frontend/templates/scholarship_dashboard.html:720
-#: frontend/templates/scholarships/category.html:53
-#: frontend/templates/scholarships/list.html:30
-msgid "Exchange"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:124
-#: frontend/templates/accounts/admin_dashboard.html:340
-#: frontend/templates/components/category_badge.html:5
-#: frontend/templates/scholarship_dashboard.html:684
-#: frontend/templates/scholarship_dashboard.html:721
-#: frontend/templates/scholarships/list.html:32
-msgid "Fee Waiver"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:130
-#: frontend/templates/accounts/admin_dashboard.html:344
-#: frontend/templates/components/category_badge.html:6
-#: frontend/templates/scholarship_dashboard.html:687
-#: frontend/templates/scholarship_dashboard.html:722
-#: frontend/templates/scholarships/list.html:34
-msgid "Lunch"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:148
-msgid "Search applicant name, student ID, scholarship title..."
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:155
-msgid "All Statuses"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:156
-#: frontend/templates/components/app_status_indicator.html:5
-#: frontend/templates/components/status_badge.html:3
-msgid "Pending"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:157
-#: frontend/templates/components/app_status_indicator.html:8
-#: frontend/templates/components/status_badge.html:5
-msgid "In Progress"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:158
-#: frontend/templates/components/app_status_indicator.html:11
-#: frontend/templates/components/status_badge.html:7
-msgid "Approve"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:159
-#: frontend/templates/components/app_status_indicator.html:20
-#: frontend/templates/components/status_badge.html:13
-msgid "Reject"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:160
-#: frontend/templates/accounts/profile.html:113
-#: frontend/templates/components/app_status_indicator.html:14
-#: frontend/templates/components/status_badge.html:9
-msgid "Complete"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:161
-#: frontend/templates/accounts/admin_dashboard.html:701
-#: frontend/templates/components/app_status_indicator.html:17
-#: frontend/templates/components/status_badge.html:11
-#: frontend/templates/scholarships/apply.html:162
-msgid "Cancel"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:165
-#: frontend/templates/accounts/admin_dashboard.html:364
-msgid "Showing"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:165
-msgid "items"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:175
-#: frontend/templates/scholarships/apply_success.html:26
-msgid "Applicant"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:176
-#: frontend/templates/accounts/profile.html:46
-#: frontend/templates/accounts/profile.html:58
-#: frontend/templates/accounts/profile.html:59
-#: frontend/templates/scholarships/apply.html:67
-#: frontend/templates/scholarships/apply_success.html:30
-msgid "Student ID"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:177
-#: frontend/templates/accounts/admin_dashboard.html:629
-#: frontend/templates/scholarship_dashboard.html:707
-#: frontend/templates/scholarships/apply_success.html:34
-msgid "Scholarship"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:178
-#: frontend/templates/scholarships/apply_success.html:38
-msgid "Submitted Date"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:179
-msgid "Attached Documents"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:180
-msgid "Current Status"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:181
-#: frontend/templates/accounts/admin_dashboard.html:379
-#: frontend/templates/accounts/admin_dashboard.html:499
-msgid "Actions"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:223
-msgid "Transcript"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:224
-msgid "Recommendation"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:225
-msgid "Other"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:230
-msgid "No documents"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:242
-msgid "Change to In Progress"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:247
-#: frontend/templates/accounts/admin_dashboard.html:263
-msgid "Approve application"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:252
-#: frontend/templates/accounts/admin_dashboard.html:268
-msgid "Reject application"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:257
-#: frontend/templates/accounts/admin_dashboard.html:273
-msgid "Cancel application"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:279
-msgid "Complete scholarship process"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:284
-#: frontend/templates/accounts/admin_dashboard.html:290
-msgid "Reset status to Pending"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:284
-#: frontend/templates/accounts/admin_dashboard.html:290
-msgid "Reset to Pending"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:293
-msgid "Send notice / Request additional documents"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:294
-msgid "Additional Docs"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:302
-#: frontend/templates/accounts/admin_dashboard.html:308
-msgid "No applications match the search criteria"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:320
-msgid "All Scholarships in System"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:321
-msgid ""
-"Manage listings, view applicant counts, quotas, and scholarship statuses."
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:358
-msgid "Search scholarship title, category, GPAX..."
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:364
-#: frontend/templates/scholarship_dashboard.html:575
-#: frontend/templates/scholarship_dashboard.html:591
-msgid "scholarships"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:373
-#: frontend/templates/accounts/admin_dashboard.html:493
-msgid "Scholarship Name"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:374
-#: frontend/templates/accounts/admin_dashboard.html:494
-#: frontend/templates/scholarship_dashboard.html:708
-msgid "Category"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:375
-#: frontend/templates/accounts/admin_dashboard.html:495
-msgid "Value"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:376
-#: frontend/templates/accounts/admin_dashboard.html:496
-msgid "Applicants / Quota"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:377
-#: frontend/templates/accounts/admin_dashboard.html:497
-#: frontend/templates/components/scholarship_card.html:66
-#: frontend/templates/scholarship_dashboard.html:711
-msgid "Deadline"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:378
-#: frontend/templates/accounts/admin_dashboard.html:498
-#: frontend/templates/scholarship_dashboard.html:710
-msgid "Status"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:401
-#: frontend/templates/accounts/admin_dashboard.html:521
-#: frontend/templates/components/scholarship_card.html:62
-#: frontend/templates/scholarships/detail.html:107
-msgid "Grants"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:413
-#: frontend/templates/components/scholarship_card.html:22
-#: frontend/templates/index.html:53
-#: frontend/templates/scholarships/detail.html:32
-#: frontend/templates/scholarships/list.html:71
-msgid "Open"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:417
-#: frontend/templates/accounts/admin_dashboard.html:532
+msgstr "ทุนอาหารกลางวัน"
+
+#: backend/scholarships/models.py:43
+#: frontend/templates/scholarship_dashboard.html:2123
+msgid "Active"
+msgstr "เปิดรับสมัคร"
+
+#: backend/scholarships/models.py:44
+#: frontend/templates/accounts/admin_dashboard.html:808
+#: frontend/templates/accounts/admin_dashboard.html:943
 #: frontend/templates/components/scholarship_card.html:10
+#: frontend/templates/scholarship_dashboard.html:2124
 #: frontend/templates/scholarships/detail.html:24
 #: frontend/templates/scholarships/detail.html:131
 #: frontend/templates/scholarships/detail.html:139
 #: frontend/templates/scholarships/detail.html:143
 msgid "Closed"
-msgstr ""
+msgstr "ปิดรับสมัคร"
 
-#: frontend/templates/accounts/admin_dashboard.html:424
-#: frontend/templates/accounts/admin_dashboard.html:425
-#: frontend/templates/accounts/admin_dashboard.html:429
-#: frontend/templates/accounts/admin_dashboard.html:538
-#: frontend/templates/accounts/admin_dashboard.html:539
-#: frontend/templates/accounts/admin_dashboard.html:543
-msgid "View Applicants"
-msgstr ""
+#: backend/scholarships/models.py:45
+#: frontend/templates/scholarship_dashboard.html:2125
+msgid "Draft"
+msgstr "ฉบับร่าง"
 
-#: frontend/templates/accounts/admin_dashboard.html:432
-#: frontend/templates/accounts/admin_dashboard.html:433
-#: frontend/templates/accounts/admin_dashboard.html:546
-#: frontend/templates/accounts/admin_dashboard.html:547
-msgid "View Page"
-msgstr ""
+#: backend/scholarships/models.py:98
+#: frontend/templates/accounts/admin_dashboard.html:503
+#: frontend/templates/accounts/profile.html:203
+#: frontend/templates/components/app_status_indicator.html:5
+#: frontend/templates/components/status_badge.html:3
+#: frontend/templates/guide/admin_guide.html:93
+msgid "Pending"
+msgstr "รอการตรวจสอบ"
 
-#: frontend/templates/accounts/admin_dashboard.html:435
+#: backend/scholarships/models.py:99
+#: frontend/templates/accounts/admin_dashboard.html:504
+#: frontend/templates/accounts/profile.html:197
+#: frontend/templates/components/app_status_indicator.html:8
+#: frontend/templates/components/status_badge.html:5
+#: frontend/templates/guide/admin_guide.html:99
+msgid "In Progress"
+msgstr "อยู่ระหว่างพิจารณา"
+
+#: backend/scholarships/models.py:100
+msgid "Interview"
+msgstr "นัดสัมภาษณ์"
+
+#: backend/scholarships/models.py:101
+#: frontend/templates/accounts/admin_dashboard.html:505
+#: frontend/templates/components/app_status_indicator.html:11
+#: frontend/templates/components/status_badge.html:7
+#: frontend/templates/guide/admin_guide.html:105
+msgid "Approve"
+msgstr "อนุมัติทุน"
+
+#: backend/scholarships/models.py:102
+#: frontend/templates/accounts/admin_dashboard.html:506
+#: frontend/templates/components/app_status_indicator.html:20
+#: frontend/templates/components/status_badge.html:13
+#: frontend/templates/guide/admin_guide.html:111
+msgid "Reject"
+msgstr "ไม่ผ่านการพิจารณา"
+
+#: backend/scholarships/models.py:103
+#: frontend/templates/accounts/admin_dashboard.html:507
+#: frontend/templates/accounts/profile.html:113
+#: frontend/templates/components/app_status_indicator.html:14
+#: frontend/templates/components/status_badge.html:9
+#: frontend/templates/guide/admin_guide.html:117
+msgid "Complete"
+msgstr "เสร็จสมบูรณ์"
+
+#: backend/scholarships/models.py:104
+#: frontend/templates/accounts/admin_dashboard.html:508
+#: frontend/templates/accounts/admin_dashboard.html:1137
+#: frontend/templates/components/app_status_indicator.html:17
+#: frontend/templates/components/status_badge.html:11
+#: frontend/templates/guide/admin_guide.html:123
+#: frontend/templates/scholarships/apply.html:162
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#: backend/scholarships/models.py:122
+msgid "Academic Transcript"
+msgstr "ใบแสดงผลการเรียน (Transcript)"
+
+#: backend/scholarships/models.py:123
+msgid "Recommendation Letter"
+msgstr "หนังสือรับรอง / จดหมายแนะนำ"
+
+#: backend/scholarships/views/admin_views.py:151
+msgid "Notification email sent to student successfully."
+msgstr "ส่งอีเมลแจ้งเตือนไปยังนักศึกษาเรียบร้อยแล้ว"
+
+#: backend/scholarships/views/admin_views.py:151
+#, python-format
+msgid "Status updated to %(status)s and notification email sent."
+msgstr "อัปเดตสถานะเป็น %(status)s และส่งอีเมลแจ้งเตือนเรียบร้อยแล้ว"
+
+#: backend/scholarships/views/admin_views.py:154
+#, python-format
+msgid "Saved successfully (Email error: %(error)s)"
+msgstr "บันทึกข้อมูลเรียบร้อยแล้ว (เกิดข้อผิดพลาดในการส่งอีเมล: %(error)s)"
+
+#: backend/scholarships/views/admin_views.py:156
+msgid "Updated successfully."
+msgstr "อัปเดตข้อมูลเรียบร้อยแล้ว"
+
+#: backend/scholarships/views/admin_views.py:271
+#: frontend/templates/scholarship_dashboard.html:1727
+msgid "January"
+msgstr "มกราคม"
+
+#: backend/scholarships/views/admin_views.py:271
+#: frontend/templates/scholarship_dashboard.html:1728
+msgid "February"
+msgstr "กุมภาพันธ์"
+
+#: backend/scholarships/views/admin_views.py:271
+#: frontend/templates/scholarship_dashboard.html:1729
+msgid "March"
+msgstr "มีนาคม"
+
+#: backend/scholarships/views/admin_views.py:271
+#: frontend/templates/scholarship_dashboard.html:1730
+msgid "April"
+msgstr "เมษายน"
+
+#: backend/scholarships/views/admin_views.py:272
+#: frontend/templates/scholarship_dashboard.html:1731
+msgid "May"
+msgstr "พฤษภาคม"
+
+#: backend/scholarships/views/admin_views.py:272
+#: frontend/templates/scholarship_dashboard.html:1732
+msgid "June"
+msgstr "มิถุนายน"
+
+#: backend/scholarships/views/admin_views.py:272
+#: frontend/templates/scholarship_dashboard.html:1733
+msgid "July"
+msgstr "กรกฎาคม"
+
+#: backend/scholarships/views/admin_views.py:272
+#: frontend/templates/scholarship_dashboard.html:1734
+msgid "August"
+msgstr "สิงหาคม"
+
+#: backend/scholarships/views/admin_views.py:273
+#: frontend/templates/scholarship_dashboard.html:1735
+msgid "September"
+msgstr "กันยายน"
+
+#: backend/scholarships/views/admin_views.py:273
+#: frontend/templates/scholarship_dashboard.html:1736
+msgid "October"
+msgstr "ตุลาคม"
+
+#: backend/scholarships/views/admin_views.py:273
+#: frontend/templates/scholarship_dashboard.html:1737
+msgid "November"
+msgstr "พฤศจิกายน"
+
+#: backend/scholarships/views/admin_views.py:273
+#: frontend/templates/scholarship_dashboard.html:1738
+msgid "December"
+msgstr "ธันวาคม"
+
+#: backend/scholarships/views/admin_views.py:278
+#: frontend/templates/scholarship_dashboard.html:1711
+msgid "Semester 1 (Aug-Dec)"
+msgstr "ภาคการศึกษาที่ 1 (ส.ค. - ธ.ค.)"
+
+#: backend/scholarships/views/admin_views.py:279
+#: frontend/templates/scholarship_dashboard.html:1712
+msgid "Semester 2 (Jan-May)"
+msgstr "ภาคการศึกษาที่ 2 (ม.ค. - พ.ค.)"
+
+#: backend/scholarships/views/admin_views.py:280
+#: frontend/templates/scholarship_dashboard.html:1713
+msgid "Summer (Jun-Jul)"
+msgstr "ภาคฤดูร้อน (มิ.ย. - ก.ค.)"
+
+#: backend/scholarships/views/admin_views.py:418
+#, python-format
+msgid "Scholarship \"%(title)s\" has been deleted."
+msgstr "ลบทุนการศึกษา \"%(title)s\" ออกจากระบบเรียบร้อยแล้ว"
+
+#: backend/scholarships/views/auth_views.py:25
+#: frontend/templates/accounts/login.html:19
+msgid "Invalid username or password. Please check and try again."
+msgstr "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง โปรดตรวจสอบแล้วลองอีกครั้ง"
+
+#: backend/scholarships/views/auth_views.py:90
+msgid "Profile updated successfully!"
+msgstr "อัปเดตข้อมูลโปรไฟล์เรียบร้อยแล้ว"
+
+#: backend/scholarships/views/guide_views.py:11
+msgid "Student Guide & Manual"
+msgstr "คู่มือและขั้นตอนการสมัครทุนสำหรับนักศึกษา"
+
+#: backend/scholarships/views/guide_views.py:24
+msgid "Access denied. Administrator guide is restricted to staff members."
+msgstr ""
+"ปฏิเสธการเข้าถึง: คู่มือผู้ดูแลระบบสำหรับเจ้าหน้าที่และอาจารย์เท่านั้น"
+
+#: backend/scholarships/views/guide_views.py:28
+msgid "Administrator System Guide"
+msgstr "คู่มือการใช้งานระบบสำหรับผู้ดูแลและคณะกรรมการ"
+
+#: backend/scholarships/views/scholarship_views.py:17
+msgid ""
+"Financial support for general students, academic excellence, and need-based "
+"aid."
+msgstr ""
+"ทุนสนับสนุนค่าครองชีพและเสริมสร้างโอกาสทางการศึกษาสำหรับนักศึกษาทั่วไปและนักศึกษาที่มีผลการเรียนดี"
+
+#: backend/scholarships/views/scholarship_views.py:24
+msgid ""
+"Support for international student exchange programs and overseas "
+"internships."
+msgstr ""
+"ทุนส่งเสริมประสบการณ์สากล การแลกเปลี่ยนทางการศึกษา และการฝึกงานในต่างประเทศ"
+
+#: backend/scholarships/views/scholarship_views.py:31
+msgid ""
+"Tuition fee discounts or exemptions for students with exceptional "
+"achievements."
+msgstr ""
+"การยกเว้นหรือลดหย่อนค่าธรรมเนียมการศึกษาแก่นักศึกษาที่มีผลงานโดดเด่น "
+"ผู้นำกิจกรรม และนักกีฬา"
+
+#: backend/scholarships/views/scholarship_views.py:38
+msgid ""
+"Meal welfare subsidies to support campus well-being and alleviate living "
+"expenses."
+msgstr ""
+"เงินอุดหนุนค่าอาหารเพื่อสวัสดิการ สุขภาวะ "
+"และแบ่งเบาภาระค่าครองชีพของนักศึกษา"
+
+#: backend/scholarships/views/scholarship_views.py:81
+#: frontend/templates/partials/navbar.html:24
+#: frontend/templates/scholarship_dashboard.html:2068
+msgid "Scholarships"
+msgstr "ทุนการศึกษา"
+
+#: backend/scholarships/views/scholarship_views.py:114
+msgid "Sorry, this scholarship is closed or has expired."
+msgstr "ขออภัย ทุนการศึกษานี้ปิดรับสมัครหรือหมดเขตแล้ว"
+
+#: backend/scholarships/views/scholarship_views.py:122
+msgid "Sorry, this scholarship has reached maximum applicant capacity."
+msgstr "ขออภัย ทุนการศึกษานี้มีผู้สมัครครบตามโควตาสูงสุดแล้ว"
+
+#: backend/scholarships/views/scholarship_views.py:133
+msgid "You have already applied for this scholarship."
+msgstr "คุณได้ยื่นสมัครทุนการศึกษานี้ไปแล้ว"
+
+#: backend/scholarships/views/utils.py:5
+#: frontend/templates/scholarships/category.html:29
+msgid "All Scholarships"
+msgstr "ทุนการศึกษาทั้งหมด"
+
+#: frontend/templates/about/contact.html:5
+msgid "Contact Us | Student Development PSU Phuket"
+msgstr "ติดต่อเรา | งานพัฒนานักศึกษา ม.อ. ภูเก็ต"
+
+#: frontend/templates/about/contact.html:13
+#: frontend/templates/guide/student_guide.html:13
+msgid "Home"
+msgstr "หน้าแรก"
+
+#: frontend/templates/about/contact.html:15
+#: frontend/templates/accounts/profile.html:123
+#: frontend/templates/partials/navbar.html:38
+msgid "Contact Us"
+msgstr "ติดต่อเรา"
+
+#: frontend/templates/about/contact.html:19
+msgid "Contact PSU Phuket Scholarship Office"
+msgstr "ติดต่อฝ่ายทุนการศึกษา ม.อ. ภูเก็ต"
+
+#: frontend/templates/about/contact.html:21
+msgid ""
+"Student Development and Alumni Relations, Prince of Songkla University, "
+"Phuket Campus"
+msgstr ""
+"งานพัฒนานักศึกษาและศิษย์เก่าสัมพันธ์ มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต"
+
+#: frontend/templates/about/contact.html:22
+msgid ""
+"Ready to provide consultation, scholarship information, and application "
+"assistance."
+msgstr ""
+"พร้อมให้คำปรึกษา แนะนำข้อมูลทุนการศึกษา และช่วยเหลือขั้นตอนการยื่นเอกสาร"
+
+#: frontend/templates/about/contact.html:39
+msgid "Phone Contact"
+msgstr "โทรศัพท์ติดต่อ"
+
+#: frontend/templates/about/contact.html:40
+msgid "Inquire about scholarship details and application procedures"
+msgstr "สอบถามข้อมูลทุนการศึกษาและขั้นตอนการสมัคร"
+
+#: frontend/templates/about/contact.html:42
+msgid "Direct Phone Number:"
+msgstr "เบอร์โทรศัพท์ตรง:"
+
+#: frontend/templates/about/contact.html:46
+msgid "Campus Central Number:"
+msgstr "เบอร์โทรศัพท์กลางวิทยาเขต:"
+
+#: frontend/templates/about/contact.html:47
+msgid "ext. 6047, 6050"
+msgstr "ต่อ 6047, 6050"
+
+#: frontend/templates/about/contact.html:59
+msgid "Email Contact"
+msgstr "อีเมลติดต่อ"
+
+#: frontend/templates/about/contact.html:60
+msgid "Send inquiries, documents, or questions via official email"
+msgstr "ส่งคำถาม เอกสาร หรือข้อสงสัยทางอีเมลทางการ"
+
+#: frontend/templates/about/contact.html:62
+msgid "Student Development Email:"
+msgstr "อีเมลงานพัฒนานักศึกษา:"
+
+#: frontend/templates/about/contact.html:68
+msgid "Response Time:"
+msgstr "ระยะเวลาตอบกลับ:"
+
+#: frontend/templates/about/contact.html:69
+msgid "Officers will respond within 1-2 business days"
+msgstr "เจ้าหน้าที่จะตอบกลับภายใน 1-2 วันทำการ"
+
+#: frontend/templates/about/contact.html:81
+msgid "Office Hours"
+msgstr "วันและเวลาทำการ"
+
+#: frontend/templates/about/contact.html:82
+msgid "Opening hours for in-person visits"
+msgstr "เวลาเปิดให้บริการติดต่อด้วยตนเอง"
+
+#: frontend/templates/about/contact.html:84
+msgid "Business Days:"
+msgstr "วันเปิดทำการ:"
+
+#: frontend/templates/about/contact.html:85
+msgid "Monday – Friday"
+msgstr "วันจันทร์ – วันศุกร์"
+
+#: frontend/templates/about/contact.html:88
+msgid "Service Hours:"
+msgstr "เวลาให้บริการ:"
+
+#: frontend/templates/about/contact.html:92
+msgid "Holidays:"
+msgstr "วันหยุด:"
+
+#: frontend/templates/about/contact.html:93
+msgid "Closed on weekends and public holidays"
+msgstr "ปิดทำการวันเสาร์ - อาทิตย์ และวันหยุดนักขัตฤกษ์"
+
+#: frontend/templates/about/contact.html:109
+msgid "In-Person Office Location"
+msgstr "สถานที่ติดต่อด้วยตนเอง"
+
+#: frontend/templates/about/contact.html:110
+msgid "Student Development and Alumni Relations, Phuket Campus"
+msgstr "งานพัฒนานักศึกษาและศิษย์เก่าสัมพันธ์ วิทยาเขตภูเก็ต"
+
+#: frontend/templates/about/contact.html:116
+msgid "Room / Building:"
+msgstr "ห้องทำงาน / อาคาร:"
+
+#: frontend/templates/about/contact.html:117
+msgid "Room 7102, Building 7, 1st Floor (President's Office Building)"
+msgstr "ห้อง 7102 อาคาร 7 ชั้น 1 (อาคารสำนักงานอธิการบดี)"
+
+#: frontend/templates/about/contact.html:120
+msgid "Postal Address:"
+msgstr "ที่อยู่ไปรษณีย์:"
+
+#: frontend/templates/about/contact.html:122
+#: frontend/templates/partials/navbar.html:8
+#: frontend/templates/partials/navbar.html:126
+msgid "Prince of Songkla University, Phuket Campus"
+msgstr "มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต"
+
+#: frontend/templates/about/contact.html:123
+msgid ""
+"80 Moo 1, Vichitsongkram Road, Kathu Sub-district, Kathu District, Phuket "
+"83120"
+msgstr "80 หมู่ 1 ถนนวิชิตสงคราม ตำบลกะทู้ อำเภอกะทู้ จังหวัดภูเก็ต 83120"
+
+#: frontend/templates/about/contact.html:127
+msgid "Landmark:"
+msgstr "จุดสังเกต:"
+
+#: frontend/templates/about/contact.html:129
+msgid ""
+"Enter via the main campus entrance, proceed directly to Building 7 (in front"
+" of the Prince Father Royal Monument)"
+msgstr ""
+"เข้าทางประตูด้านหน้าวิทยาเขต มุ่งตรงมายังอาคาร 7 "
+"(ด้านหน้ามีพระราชานุสาวรีย์สมเด็จพระบรมราชชนก)"
+
+#: frontend/templates/about/contact.html:135
+msgid ""
+"Students who need to submit original physical documents or seek scholarship "
+"counseling can visit Room 7102 during business hours."
+msgstr ""
+"นักศึกษาที่ต้องการส่งเอกสารตัวจริง หรือขอคำปรึกษาเรื่องทุน "
+"สามารถเดินทางมาติดต่อได้ที่ห้อง 7102 ในวันและเวลาทำการ"
+
+#: frontend/templates/accounts/admin_dashboard.html:5
+msgid "Admin Management"
+msgstr "ระบบจัดการสำหรับผู้ดูแล"
+
+#: frontend/templates/accounts/admin_dashboard.html:365
+msgid "Admin Management Dashboard"
+msgstr "แดชบอร์ดบริหารจัดการทุนการศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:366
+msgid "Welcome Administrator"
+msgstr "ยินดีต้อนรับ ผู้ดูแลระบบ"
+
+#: frontend/templates/accounts/admin_dashboard.html:373
+msgid "Click to view all scholarships"
+msgstr "คลิกเพื่อดูทุนการศึกษาทั้งหมด"
+
+#: frontend/templates/accounts/admin_dashboard.html:375
+#: frontend/templates/scholarship_dashboard.html:1870
+msgid "Total Scholarships"
+msgstr "จำนวนทุนการศึกษาทั้งหมด"
+
+#: frontend/templates/accounts/admin_dashboard.html:379
+msgid "Click to view all applications"
+msgstr "คลิกเพื่อดูใบสมัครทั้งหมด"
+
+#: frontend/templates/accounts/admin_dashboard.html:381
+#: frontend/templates/scholarship_dashboard.html:1899
+msgid "Total Applications"
+msgstr "จำนวนใบสมัครทั้งหมด"
+
+#: frontend/templates/accounts/admin_dashboard.html:385
+msgid "Click to view pending applications"
+msgstr "คลิกเพื่อดูใบสมัครที่รอตรวจสอบ"
+
+#: frontend/templates/accounts/admin_dashboard.html:387
+msgid "Pending Review"
+msgstr "รอการตรวจสอบ"
+
+#: frontend/templates/accounts/admin_dashboard.html:391
+msgid "Click to view approved applications"
+msgstr "คลิกเพื่อดูใบสมัครที่ได้รับการอนุมัติ"
+
+#: frontend/templates/accounts/admin_dashboard.html:393
+#: frontend/templates/accounts/profile.html:231
+msgid "Approved"
+msgstr "อนุมัติแล้ว"
+
+#: frontend/templates/accounts/admin_dashboard.html:408
+msgid "Manage Student Applications"
+msgstr "จัดการและตรวจสอบใบสมัครนักศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:417
+msgid "Manage Scholarships"
+msgstr "จัดการข้อมูลทุนการศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:427
+msgid "Scholarship History"
+msgstr "ประวัติทุนการศึกษา"
+
 #: frontend/templates/accounts/admin_dashboard.html:436
-msgid "Edit"
-msgstr ""
+msgid "Student Applications & Screening"
+msgstr "รายชื่อผู้สมัครและการตรวจสอบคุณสมบัติ"
 
-#: frontend/templates/accounts/admin_dashboard.html:438
-msgid "Are you sure you want to delete this scholarship?"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:437
+msgid ""
+"Search, verify GPAX eligibility, and update application review statuses."
+msgstr "ค้นหา ตรวจสอบเกรดเฉลี่ย GPAX และปรับสถานะผลการพิจารณาใบสมัคร"
 
-#: frontend/templates/accounts/admin_dashboard.html:450
-msgid "No scholarships in the system"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:446
+#: frontend/templates/accounts/admin_dashboard.html:715
+msgid "Create New Scholarship"
+msgstr "สร้างทุนการศึกษาใหม่"
 
-#: frontend/templates/accounts/admin_dashboard.html:456
-msgid "No scholarships match search criteria"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:458
+msgid "Note"
+msgstr "หมายเหตุ"
 
-#: frontend/templates/accounts/admin_dashboard.html:468
-msgid "Past Scholarship History"
+#: frontend/templates/accounts/admin_dashboard.html:458
+msgid ""
+"This view displays active student applications. To manage scholarship "
+"listings without applications, use the Manage Scholarships tab."
 msgstr ""
+"หน้านี้แสดงเฉพาะรายการที่มีการยื่นใบสมัครเข้ามา "
+"หากต้องการจัดการรายการทุนที่ยังไม่มีผู้สมัคร ให้ไปที่แท็บ "
+"'จัดการข้อมูลทุนการศึกษา'"
+
+#: frontend/templates/accounts/admin_dashboard.html:465
+#: frontend/templates/accounts/admin_dashboard.html:723
+#: frontend/templates/scholarships/list.html:26
+msgid "All"
+msgstr "ทั้งหมด"
 
 #: frontend/templates/accounts/admin_dashboard.html:469
-msgid "List of expired or closed scholarships."
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:727
+#: frontend/templates/components/category_badge.html:3
+#: frontend/templates/guide/student_guide.html:56
+#: frontend/templates/scholarship_dashboard.html:1974
+#: frontend/templates/scholarships/category.html:40
+#: frontend/templates/scholarships/list.html:28
+msgid "General"
+msgstr "ทั่วไป"
 
-#: frontend/templates/accounts/admin_dashboard.html:482
-msgid "Search past scholarships..."
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:473
+#: frontend/templates/accounts/admin_dashboard.html:731
+#: frontend/templates/components/category_badge.html:4
+#: frontend/templates/guide/student_guide.html:57
+#: frontend/templates/scholarship_dashboard.html:1977
+#: frontend/templates/scholarships/category.html:53
+#: frontend/templates/scholarships/list.html:30
+msgid "Exchange"
+msgstr "แลกเปลี่ยน"
 
-#: frontend/templates/accounts/admin_dashboard.html:555
-msgid "No past scholarship history"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:477
+#: frontend/templates/accounts/admin_dashboard.html:735
+#: frontend/templates/components/category_badge.html:5
+#: frontend/templates/guide/student_guide.html:58
+#: frontend/templates/scholarship_dashboard.html:1980
+#: frontend/templates/scholarships/list.html:32
+msgid "Fee Waiver"
+msgstr "ยกเว้นค่าเล่าเรียน"
 
-#: frontend/templates/accounts/admin_dashboard.html:561
-msgid "No past scholarships match search criteria"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:481
+#: frontend/templates/accounts/admin_dashboard.html:739
+#: frontend/templates/components/category_badge.html:6
+#: frontend/templates/guide/student_guide.html:59
+#: frontend/templates/scholarship_dashboard.html:1983
+#: frontend/templates/scholarships/list.html:34
+msgid "Lunch"
+msgstr "อาหารกลางวัน"
 
-#: frontend/templates/accounts/admin_dashboard.html:576
-msgid "Access the core database to manage users, permissions, and all models."
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:496
+msgid "Search applicant name, student ID, scholarship title..."
+msgstr "ค้นหาชื่อนักศึกษา, รหัสนักศึกษา, ชื่อทุนการศึกษา..."
+
+#: frontend/templates/accounts/admin_dashboard.html:502
+msgid "All Statuses"
+msgstr "ทุกสถานะ"
+
+#: frontend/templates/accounts/admin_dashboard.html:512
+#: frontend/templates/accounts/admin_dashboard.html:679
+#: frontend/templates/accounts/admin_dashboard.html:756
+#: frontend/templates/accounts/admin_dashboard.html:859
+#: frontend/templates/accounts/admin_dashboard.html:982
+#: frontend/templates/components/pagination.html:154
+msgid "Showing"
+msgstr "กำลังแสดง"
+
+#: frontend/templates/accounts/admin_dashboard.html:512
+#: frontend/templates/accounts/admin_dashboard.html:679
+#: frontend/templates/accounts/admin_dashboard.html:756
+#: frontend/templates/accounts/admin_dashboard.html:859
+#: frontend/templates/accounts/admin_dashboard.html:982
+#: frontend/templates/components/pagination.html:154
+msgid "of"
+msgstr "จากทั้งหมด"
+
+#: frontend/templates/accounts/admin_dashboard.html:512
+#: frontend/templates/components/pagination.html:154
+msgid "items"
+msgstr "รายการ"
+
+#: frontend/templates/accounts/admin_dashboard.html:522
+#: frontend/templates/accounts/admin_dashboard.html:541
+#: frontend/templates/scholarships/apply_success.html:26
+msgid "Applicant"
+msgstr "ผู้สมัคร"
+
+#: frontend/templates/accounts/admin_dashboard.html:523
+#: frontend/templates/accounts/admin_dashboard.html:548
+#: frontend/templates/accounts/profile.html:46
+#: frontend/templates/accounts/profile.html:58
+#: frontend/templates/accounts/profile.html:59
+#: frontend/templates/scholarship_dashboard.html:2208
+#: frontend/templates/scholarship_dashboard.html:2222
+#: frontend/templates/scholarships/apply.html:67
+#: frontend/templates/scholarships/apply_success.html:30
+msgid "Student ID"
+msgstr "รหัสนักศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:524
+#: frontend/templates/accounts/admin_dashboard.html:552
+#: frontend/templates/accounts/admin_dashboard.html:1048
+#: frontend/templates/scholarship_dashboard.html:2006
+#: frontend/templates/scholarship_dashboard.html:2016
+#: frontend/templates/scholarship_dashboard.html:2101
+#: frontend/templates/scholarships/apply_success.html:34
+msgid "Scholarship"
+msgstr "ทุนการศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:525
+#: frontend/templates/accounts/admin_dashboard.html:562
+#: frontend/templates/scholarship_dashboard.html:2213
+#: frontend/templates/scholarship_dashboard.html:2249
+#: frontend/templates/scholarships/apply_success.html:38
+msgid "Submitted Date"
+msgstr "วันที่ยื่นใบสมัคร"
+
+#: frontend/templates/accounts/admin_dashboard.html:526
+msgid "Attached Documents"
+msgstr "เอกสารแนบ"
+
+#: frontend/templates/accounts/admin_dashboard.html:527
+msgid "Current Status"
+msgstr "สถานะปัจจุบัน"
+
+#: frontend/templates/accounts/admin_dashboard.html:528
+#: frontend/templates/accounts/admin_dashboard.html:771
+#: frontend/templates/accounts/admin_dashboard.html:911
+msgid "Actions"
+msgstr "การดำเนินการ"
+
+#: frontend/templates/accounts/admin_dashboard.html:554
+#| msgid "Scholarship Title"
+msgid "View scholarship details"
+msgstr "ดูรายละเอียดทุนการศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:563
+msgid "Documents"
+msgstr "เอกสารประกอบ"
+
+#: frontend/templates/accounts/admin_dashboard.html:574
+msgid "Transcript"
+msgstr "Transcript"
+
+#: frontend/templates/accounts/admin_dashboard.html:575
+msgid "Recommendation"
+msgstr "จดหมายแนะนำ"
 
 #: frontend/templates/accounts/admin_dashboard.html:581
-msgid "Explore Scholarship Categories"
-msgstr ""
+msgid "No documents"
+msgstr "ไม่มีเอกสารแนบ"
 
 #: frontend/templates/accounts/admin_dashboard.html:584
-msgid "View the student catalog across all 4 major scholarship categories."
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:770
+#: frontend/templates/accounts/admin_dashboard.html:801
+#: frontend/templates/accounts/admin_dashboard.html:910
+#: frontend/templates/accounts/admin_dashboard.html:941
+#: frontend/templates/guide/admin_guide.html:85
+#: frontend/templates/scholarship_dashboard.html:2091
+#: frontend/templates/scholarship_dashboard.html:2122
+#: frontend/templates/scholarship_dashboard.html:2214
+#: frontend/templates/scholarship_dashboard.html:2252
+msgid "Status"
+msgstr "สถานะ"
 
-#: frontend/templates/accounts/admin_dashboard.html:603
-msgid "Update Status & Customize Email"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:594
+msgid "Change to In Progress"
+msgstr "เปลี่ยนเป็นอยู่ระหว่างพิจารณา"
 
-#: frontend/templates/accounts/admin_dashboard.html:604
-msgid "Review or compose additional notes to be sent to the student."
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:600
+#: frontend/templates/accounts/admin_dashboard.html:619
+msgid "Approve application"
+msgstr "อนุมัติใบสมัคร"
 
-#: frontend/templates/accounts/admin_dashboard.html:618
-msgid "Student Name"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:606
+#: frontend/templates/accounts/admin_dashboard.html:625
+msgid "Reject application"
+msgstr "ปฏิเสธใบสมัคร"
 
-#: frontend/templates/accounts/admin_dashboard.html:623
-msgid "Notification Email"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:612
+#: frontend/templates/accounts/admin_dashboard.html:631
+msgid "Cancel application"
+msgstr "ยกเลิกใบสมัคร"
 
-#: frontend/templates/accounts/admin_dashboard.html:633
-msgid "Change status to"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:638
+msgid "Complete scholarship process"
+msgstr "ดำเนินการมอบทุนเสร็จสมบูรณ์"
 
-#: frontend/templates/accounts/admin_dashboard.html:643
-msgid "Send notification email to student immediately"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:644
+#: frontend/templates/accounts/admin_dashboard.html:651
+msgid "Reset status to Pending"
+msgstr "รีเซ็ตสถานะเป็นรอการตรวจสอบ"
 
-#: frontend/templates/accounts/admin_dashboard.html:652
-msgid "Select Message Template:"
-msgstr ""
+#: frontend/templates/accounts/admin_dashboard.html:644
+#: frontend/templates/accounts/admin_dashboard.html:651
+#: frontend/templates/guide/admin_guide.html:114
+#: frontend/templates/guide/admin_guide.html:126
+msgid "Reset to Pending"
+msgstr "รีเซ็ตเป็นรอตรวจสอบ"
 
 #: frontend/templates/accounts/admin_dashboard.html:655
-msgid "Select Message Template"
-msgstr ""
-
-#: frontend/templates/accounts/admin_dashboard.html:656
-msgid "Request Additional Docs"
-msgstr ""
+msgid "Send notice / Request additional documents"
+msgstr "ส่งข้อความแจ้งเตือน / ขอเอกสารเพิ่มเติม"
 
 #: frontend/templates/accounts/admin_dashboard.html:657
+msgid "Additional Docs"
+msgstr "ขอเอกสารเพิ่ม"
+
+#: frontend/templates/accounts/admin_dashboard.html:665
+#: frontend/templates/accounts/admin_dashboard.html:671
+msgid "No applications match the search criteria"
+msgstr "ไม่พบใบสมัครที่ตรงตามเงื่อนไขการค้นหา"
+
+#: frontend/templates/accounts/admin_dashboard.html:679
+#| msgid "applicant(s)"
+msgid "applications"
+msgstr "ใบสมัคร"
+
+#: frontend/templates/accounts/admin_dashboard.html:684
+#: frontend/templates/accounts/admin_dashboard.html:864
+#: frontend/templates/accounts/admin_dashboard.html:987
+#: frontend/templates/components/pagination.html:158
+#: frontend/templates/components/pagination.html:160
+#: frontend/templates/components/pagination.html:165
+msgid "Previous"
+msgstr "ก่อนหน้า"
+
+#: frontend/templates/accounts/admin_dashboard.html:692
+#: frontend/templates/accounts/admin_dashboard.html:693
+#: frontend/templates/accounts/admin_dashboard.html:870
+#: frontend/templates/accounts/admin_dashboard.html:871
+#: frontend/templates/accounts/admin_dashboard.html:991
+#: frontend/templates/accounts/admin_dashboard.html:992
+#: frontend/templates/components/pagination.html:180
+#: frontend/templates/components/pagination.html:181
+#: frontend/templates/components/pagination.html:186
+msgid "Next"
+msgstr "ถัดไป"
+
+#: frontend/templates/accounts/admin_dashboard.html:704
+msgid "All Scholarships in System"
+msgstr "ทุนการศึกษาทั้งหมดในระบบ"
+
+#: frontend/templates/accounts/admin_dashboard.html:706
+msgid ""
+"Manage listings, view applicant counts, quotas, and scholarship statuses."
+msgstr "จัดการรายการทุน ดูจำนวนผู้สมัคร ติดตามโควตา และสถานะทุนการศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:752
+msgid "Search scholarship title, category, GPAX..."
+msgstr "ค้นหาชื่อทุน, หมวดหมู่, เกรดเฉลี่ย..."
+
+#: frontend/templates/accounts/admin_dashboard.html:756
+#: frontend/templates/accounts/admin_dashboard.html:859
+#: frontend/templates/accounts/admin_dashboard.html:982
+#: frontend/templates/scholarship_dashboard.html:1872
+#: frontend/templates/scholarship_dashboard.html:1888
+msgid "scholarships"
+msgstr "ทุน"
+
+#: frontend/templates/accounts/admin_dashboard.html:765
+#: frontend/templates/accounts/admin_dashboard.html:778
+#: frontend/templates/accounts/admin_dashboard.html:905
+#: frontend/templates/accounts/admin_dashboard.html:918
+msgid "Scholarship Name"
+msgstr "ชื่อทุนการศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:766
+#: frontend/templates/accounts/admin_dashboard.html:784
+#: frontend/templates/accounts/admin_dashboard.html:906
+#: frontend/templates/accounts/admin_dashboard.html:924
+#: frontend/templates/scholarship_dashboard.html:2007
+#: frontend/templates/scholarship_dashboard.html:2021
+#: frontend/templates/scholarship_dashboard.html:2088
+#: frontend/templates/scholarship_dashboard.html:2107
+msgid "Category"
+msgstr "หมวดหมู่"
+
+#: frontend/templates/accounts/admin_dashboard.html:767
+#: frontend/templates/accounts/admin_dashboard.html:787
+#: frontend/templates/accounts/admin_dashboard.html:907
+#: frontend/templates/accounts/admin_dashboard.html:927
+#: frontend/templates/scholarship_dashboard.html:2180
+msgid "Value"
+msgstr "มูลค่า"
+
+#: frontend/templates/accounts/admin_dashboard.html:768
+#: frontend/templates/accounts/admin_dashboard.html:789
+#: frontend/templates/accounts/admin_dashboard.html:908
+#: frontend/templates/accounts/admin_dashboard.html:929
+msgid "Applicants / Quota"
+msgstr "ผู้สมัคร / โควตาทุน"
+
+#: frontend/templates/accounts/admin_dashboard.html:769
+#: frontend/templates/accounts/admin_dashboard.html:796
+#: frontend/templates/accounts/admin_dashboard.html:909
+#: frontend/templates/accounts/admin_dashboard.html:936
+#: frontend/templates/components/scholarship_card.html:66
+#: frontend/templates/scholarship_dashboard.html:2009
+#: frontend/templates/scholarship_dashboard.html:2028
+msgid "Deadline"
+msgstr "กำหนดปิดรับสมัคร"
+
+#: frontend/templates/accounts/admin_dashboard.html:792
+#: frontend/templates/accounts/admin_dashboard.html:932
+#: frontend/templates/components/scholarship_card.html:62
+#: frontend/templates/scholarships/detail.html:107
+msgid "Grants"
+msgstr "ทุน"
+
+#: frontend/templates/accounts/admin_dashboard.html:804
+#: frontend/templates/components/scholarship_card.html:22
+#: frontend/templates/index.html:53
+#: frontend/templates/scholarships/detail.html:32
+#: frontend/templates/scholarships/list.html:71
+msgid "Open"
+msgstr "เปิดรับสมัคร"
+
+#: frontend/templates/accounts/admin_dashboard.html:816
+#: frontend/templates/accounts/admin_dashboard.html:817
+#: frontend/templates/accounts/admin_dashboard.html:821
+#: frontend/templates/accounts/admin_dashboard.html:950
+#: frontend/templates/accounts/admin_dashboard.html:951
+#: frontend/templates/accounts/admin_dashboard.html:955
+msgid "View Applicants"
+msgstr "ดูรายชื่อผู้สมัคร"
+
+#: frontend/templates/accounts/admin_dashboard.html:825
+#: frontend/templates/accounts/admin_dashboard.html:826
+#: frontend/templates/accounts/admin_dashboard.html:959
+#: frontend/templates/accounts/admin_dashboard.html:960
+msgid "View Page"
+msgstr "เปิดดูหน้านี้"
+
+#: frontend/templates/accounts/admin_dashboard.html:829
+#: frontend/templates/accounts/admin_dashboard.html:830
+msgid "Edit"
+msgstr "แก้ไข"
+
+#: frontend/templates/accounts/admin_dashboard.html:833
+msgid "Are you sure you want to delete this scholarship?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบทุนการศึกษานี้ออกจากระบบ?"
+
+#: frontend/templates/accounts/admin_dashboard.html:835
+#: frontend/templates/accounts/admin_dashboard.html:836
+msgid "Delete"
+msgstr "ลบ"
+
+#: frontend/templates/accounts/admin_dashboard.html:845
+msgid "No scholarships in the system"
+msgstr "ไม่มีรายการทุนการศึกษาในระบบ"
+
+#: frontend/templates/accounts/admin_dashboard.html:851
+msgid "No scholarships match search criteria"
+msgstr "ไม่พบรายการทุนที่ตรงตามเงื่อนไข"
+
+#: frontend/templates/accounts/admin_dashboard.html:882
+msgid "Past Scholarship History"
+msgstr "ประวัติทุนการศึกษาในอดีต"
+
+#: frontend/templates/accounts/admin_dashboard.html:883
+msgid "List of expired or closed scholarships."
+msgstr "รายการทุนการศึกษาที่ปิดรับสมัครหรือหมดเขตแล้ว"
+
+#: frontend/templates/accounts/admin_dashboard.html:895
+msgid "Search past scholarships..."
+msgstr "ค้นหาประวัติทุนการศึกษา..."
+
+#: frontend/templates/accounts/admin_dashboard.html:968
+msgid "No past scholarship history"
+msgstr "ไม่มีประวัติทุนการศึกษาในอดีต"
+
+#: frontend/templates/accounts/admin_dashboard.html:974
+msgid "No past scholarships match search criteria"
+msgstr "ไม่พบประวัติทุนที่ตรงตามเงื่อนไขการค้นหา"
+
+#: frontend/templates/accounts/admin_dashboard.html:1019
+msgid "Update Status & Customize Email"
+msgstr "ปรับปรุงสถานะและปรับแต่งข้อความอีเมล"
+
+#: frontend/templates/accounts/admin_dashboard.html:1020
+msgid "Review or compose additional notes to be sent to the student."
+msgstr "ตรวจสอบหรือเขียนข้อความเพิ่มเติมเพื่อส่งแจ้งเตือนไปยังนักศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:1035
+#: frontend/templates/scholarship_dashboard.html:2209
+#: frontend/templates/scholarship_dashboard.html:2224
+msgid "Student Name"
+msgstr "ชื่อ - นามสกุล นักศึกษา"
+
+#: frontend/templates/accounts/admin_dashboard.html:1040
+msgid "Notification Email"
+msgstr "อีเมลแจ้งเตือน"
+
+#: frontend/templates/accounts/admin_dashboard.html:1052
+msgid "Change status to"
+msgstr "เปลี่ยนสถานะเป็น"
+
+#: frontend/templates/accounts/admin_dashboard.html:1067
+msgid "Send notification email to student immediately"
+msgstr "ส่งอีเมลแจ้งเตือนนักศึกษาทันที"
+
+#: frontend/templates/accounts/admin_dashboard.html:1077
+msgid "Select Message Template:"
+msgstr "เลือกข้อความตัวอย่าง (Template):"
+
+#: frontend/templates/accounts/admin_dashboard.html:1081
+msgid "Select Message Template"
+msgstr "เลือกข้อความตัวอย่าง"
+
+#: frontend/templates/accounts/admin_dashboard.html:1082
+msgid "Request Additional Docs"
+msgstr "ขอเอกสารเพิ่มเติม"
+
+#: frontend/templates/accounts/admin_dashboard.html:1083
 msgid "Interview Invitation"
-msgstr ""
+msgstr "นัดหมายสัมภาษณ์"
 
-#: frontend/templates/accounts/admin_dashboard.html:658
+#: frontend/templates/accounts/admin_dashboard.html:1084
 msgid "Reschedule Interview"
-msgstr ""
+msgstr "เลื่อนกำหนดการสัมภาษณ์"
 
-#: frontend/templates/accounts/admin_dashboard.html:659
+#: frontend/templates/accounts/admin_dashboard.html:1085
 msgid "Scholarship Approved"
-msgstr ""
+msgstr "อนุมัติทุนการศึกษา"
 
-#: frontend/templates/accounts/admin_dashboard.html:660
+#: frontend/templates/accounts/admin_dashboard.html:1086
 msgid "Scholarship Rejected"
-msgstr ""
+msgstr "ไม่ผ่านการพิจารณา"
 
-#: frontend/templates/accounts/admin_dashboard.html:661
+#: frontend/templates/accounts/admin_dashboard.html:1087
 msgid "General Notification"
-msgstr ""
+msgstr "ข้อความแจ้งเตือนทั่วไป"
 
-#: frontend/templates/accounts/admin_dashboard.html:668
+#: frontend/templates/accounts/admin_dashboard.html:1095
 msgid "Email Subject:"
-msgstr ""
+msgstr "หัวข้ออีเมล:"
 
-#: frontend/templates/accounts/admin_dashboard.html:677
+#: frontend/templates/accounts/admin_dashboard.html:1106
 msgid "Email Message (Customize as needed):"
-msgstr ""
+msgstr "เนื้อหาอีเมล (สามารถแก้ไขเพิ่มเติมได้):"
 
-#: frontend/templates/accounts/admin_dashboard.html:680
+#: frontend/templates/accounts/admin_dashboard.html:1110
 msgid "Reset to Default Template"
-msgstr ""
+msgstr "คืนค่าข้อความเริ่มต้น"
 
-#: frontend/templates/accounts/admin_dashboard.html:685
+#: frontend/templates/accounts/admin_dashboard.html:1116
 msgid ""
 "You can specify date, time, location, online meeting link, or instructions "
 "in this box."
 msgstr ""
+"คุณสามารถระบุ วัน เวลา สถานที่ ลิงก์สัมภาษณ์ออนไลน์ "
+"หรือข้อกำหนดเพิ่มเติมในช่องนี้"
 
-#: frontend/templates/accounts/admin_dashboard.html:693
+#: frontend/templates/accounts/admin_dashboard.html:1125
 msgid "Internal Note (Staff only):"
-msgstr ""
+msgstr "บันทึกภายใน (เฉพาะเจ้าหน้าที่):"
 
-#: frontend/templates/accounts/admin_dashboard.html:695
+#: frontend/templates/accounts/admin_dashboard.html:1128
 msgid "e.g. Interview Room 5204 or Passed round 1..."
-msgstr ""
+msgstr "เช่น สัมภาษณ์ที่ห้อง 5204 หรือ ผ่านรอบเอกสาร..."
 
-#: frontend/templates/accounts/admin_dashboard.html:708
+#: frontend/templates/accounts/admin_dashboard.html:1146
 msgid "Save and Send Email"
-msgstr ""
+msgstr "บันทึกและส่งอีเมล"
 
 #: frontend/templates/accounts/login.html:5
 #: frontend/templates/accounts/login.html:49
-#: frontend/templates/partials/navbar.html:70
-#: frontend/templates/partials/navbar.html:130
+#: frontend/templates/partials/navbar.html:74
+#: frontend/templates/partials/navbar.html:151
 msgid "Sign In"
-msgstr ""
+msgstr "เข้าสู่ระบบ"
 
 #: frontend/templates/accounts/login.html:31
-#: frontend/templates/partials/navbar.html:121
+#: frontend/templates/partials/navbar.html:142
 msgid "Username"
-msgstr ""
+msgstr "ชื่อผู้ใช้"
 
 #: frontend/templates/accounts/login.html:33
-#: frontend/templates/partials/navbar.html:122
+#: frontend/templates/partials/navbar.html:143
 msgid "Enter username"
-msgstr ""
+msgstr "ระบุชื่อผู้ใช้ (PSU Passport)"
 
 #: frontend/templates/accounts/login.html:41
-#: frontend/templates/partials/navbar.html:126
+#: frontend/templates/partials/navbar.html:147
 msgid "Password"
-msgstr ""
+msgstr "รหัสผ่าน"
 
 #: frontend/templates/accounts/login.html:43
-#: frontend/templates/partials/navbar.html:127
+#: frontend/templates/partials/navbar.html:148
 msgid "Enter password"
-msgstr ""
+msgstr "ระบุรหัสผ่าน"
 
 #: frontend/templates/accounts/login.html:57
 msgid "or sign in with"
-msgstr ""
+msgstr "หรือเข้าสู่ระบบด้วย"
 
 #: frontend/templates/accounts/login.html:84
 msgid "*Please sign in with university email (@phuket.psu.ac.th)"
-msgstr ""
+msgstr "*กรุณาเข้าสู่ระบบด้วยอีเมลมหาวิทยาลัย (@phuket.psu.ac.th)"
 
 #: frontend/templates/accounts/profile.html:5
 msgid "Profile & Applications"
-msgstr ""
-
-#: frontend/templates/accounts/profile.html:12 frontend/templates/index.html:5
-#: frontend/templates/partials/navbar.html:21
-#: frontend/templates/scholarships/category.html:12
-#: frontend/templates/scholarships/detail.html:13
-#: frontend/templates/scholarships/list.html:13
-msgid "Home"
-msgstr "Home"
+msgstr "ข้อมูลส่วนตัวและประวัติการสมัคร"
 
 #: frontend/templates/accounts/profile.html:14
 msgid "Profile & Application History"
-msgstr ""
+msgstr "ข้อมูลส่วนตัวและประวัติการสมัครรับทุน"
 
 #: frontend/templates/accounts/profile.html:32
 msgid "Click to change photo"
-msgstr ""
+msgstr "คลิกเพื่อเปลี่ยนรูปโปรไฟล์"
 
 #: frontend/templates/accounts/profile.html:33
 msgid "Change Photo"
-msgstr ""
+msgstr "เปลี่ยนรูปโปรไฟล์"
 
 #: frontend/templates/accounts/profile.html:40
 msgid "Staff / Admin"
-msgstr ""
+msgstr "เจ้าหน้าที่ / ผู้ดูแลระบบ"
 
 #: frontend/templates/accounts/profile.html:40
 msgid "Student Account"
-msgstr ""
+msgstr "บัญชีนักศึกษา"
 
 #: frontend/templates/accounts/profile.html:53
 #: frontend/templates/accounts/profile.html:54
 #: frontend/templates/scholarships/apply.html:60
 msgid "Full Name"
-msgstr ""
+msgstr "ชื่อ - นามสกุล"
 
 #: frontend/templates/accounts/profile.html:63
 msgid "Faculty"
-msgstr ""
+msgstr "คณะ"
 
 #: frontend/templates/accounts/profile.html:65
 msgid "Select Faculty"
-msgstr ""
+msgstr "เลือกคณะ / วิทยาลัย"
 
 #: frontend/templates/accounts/profile.html:75
 msgid "Major"
-msgstr ""
+msgstr "สาขาวิชา"
 
 #: frontend/templates/accounts/profile.html:76
 msgid "e.g., Digital Engineering (DE)"
-msgstr ""
+msgstr "เช่น วิศวกรรมดิจิทัล (DE)"
 
 #: frontend/templates/accounts/profile.html:80
 #: frontend/templates/scholarships/apply.html:82
 msgid "Phone Number"
-msgstr ""
+msgstr "เบอร์โทรศัพท์"
 
 #: frontend/templates/accounts/profile.html:85
 msgid "University Email (PSU Passport)"
-msgstr ""
+msgstr "อีเมลมหาวิทยาลัย (PSU Passport)"
 
 #: frontend/templates/accounts/profile.html:87
 msgid "Connected automatically, cannot be edited."
-msgstr ""
+msgstr "เชื่อมโยงอัตโนมัติ ไม่สามารถแก้ไขได้"
 
 #: frontend/templates/accounts/profile.html:93
 msgid "Save Changes"
-msgstr ""
+msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: frontend/templates/accounts/profile.html:103
 msgid "Overview"
-msgstr ""
+msgstr "ภาพรวม"
 
 #: frontend/templates/accounts/profile.html:107
 msgid "Applications Submitted"
-msgstr ""
+msgstr "ใบสมัครที่ยื่นแล้ว"
 
 #: frontend/templates/accounts/profile.html:108
 msgid "item(s)"
-msgstr ""
+msgstr "รายการ"
 
 #: frontend/templates/accounts/profile.html:112
 msgid "Account Status"
-msgstr ""
+msgstr "สถานะบัญชีผู้ใช้"
 
 #: frontend/templates/accounts/profile.html:119
 msgid "Need Assistance?"
-msgstr ""
+msgstr "ต้องการความช่วยเหลือ?"
 
 #: frontend/templates/accounts/profile.html:120
 msgid ""
 "If you need to update documents after submitting your application, please "
 "contact the Student Affairs Office at Room 7102."
 msgstr ""
+"หากต้องการแก้ไขเอกสารหลังจากกดยื่นใบสมัครแล้ว กรุณาติดต่อหน่วยกิจการนักศึกษา"
+" ห้อง 7102 อาคาร 7"
 
-#: frontend/templates/accounts/profile.html:121
-#: frontend/templates/partials/navbar.html:38
-msgid "Contact Us"
-msgstr ""
+#: frontend/templates/accounts/profile.html:128
+msgid "Read Student Guide"
+msgstr "อ่านคู่มือนักศึกษา"
 
-#: frontend/templates/accounts/profile.html:130
+#: frontend/templates/accounts/profile.html:140
 msgid "Application History & Status"
-msgstr ""
+msgstr "ประวัติการสมัครและสถานะการพิจารณา"
 
-#: frontend/templates/accounts/profile.html:131
+#: frontend/templates/accounts/profile.html:141
 msgid "Track the progress and review updates for your submitted applications."
-msgstr ""
+msgstr "ติดตามความคืบหน้าและผลการพิจารณาสำหรับทุกใบสมัครที่คุณยื่นไว้"
 
-#: frontend/templates/accounts/profile.html:134
-msgid "Browse Scholarships"
-msgstr ""
-
-#: frontend/templates/accounts/profile.html:157
-msgid "Submitted"
-msgstr ""
-
-#: frontend/templates/accounts/profile.html:197
-#: frontend/templates/components/scholarship_card.html:50
-#: frontend/templates/scholarship_dashboard.html:709
-msgid "Amount"
-msgstr ""
-
-#: frontend/templates/accounts/profile.html:197
+#: frontend/templates/accounts/profile.html:154
 #: frontend/templates/components/scholarship_card.html:52
+#: frontend/templates/scholarship_dashboard.html:2181
 #: frontend/templates/scholarships/apply.html:26
 msgid "semester"
-msgstr ""
+msgstr "ภาคการศึกษา"
 
-#: frontend/templates/accounts/profile.html:198
+#: frontend/templates/accounts/profile.html:174
+msgid "Submitted"
+msgstr "ยื่นแล้ว"
+
+#: frontend/templates/accounts/profile.html:194
+msgid "Review"
+msgstr "กำลังพิจารณา"
+
+#: frontend/templates/accounts/profile.html:199
+#: frontend/templates/accounts/profile.html:229
+msgid "Completed"
+msgstr "เสร็จสมบูรณ์"
+
+#: frontend/templates/accounts/profile.html:201
+#: frontend/templates/accounts/profile.html:235
+msgid "Cancelled"
+msgstr "ยกเลิกแล้ว"
+
+#: frontend/templates/accounts/profile.html:226
+msgid "Result"
+msgstr "ผลการพิจารณา"
+
+#: frontend/templates/accounts/profile.html:233
+msgid "Not Selected"
+msgstr "ไม่ผ่านการคัดเลือก"
+
+#: frontend/templates/accounts/profile.html:237
+msgid "Awaiting Result"
+msgstr "รอประกาศผล"
+
+#: frontend/templates/accounts/profile.html:248
 msgid "Submitted on"
-msgstr ""
+msgstr "ยื่นเมื่อวันที่"
 
-#: frontend/templates/accounts/profile.html:200
+#: frontend/templates/accounts/profile.html:251
 #: frontend/templates/components/scholarship_card.html:78
 msgid "View Details"
-msgstr ""
+msgstr "ดูรายละเอียด"
 
-#: frontend/templates/accounts/profile.html:208
+#: frontend/templates/accounts/profile.html:260
 msgid "You haven't submitted any scholarship applications yet."
-msgstr ""
+msgstr "คุณยังไม่เคยยื่นสมัครทุนการศึกษาใดๆ ในระบบ"
 
-#: frontend/templates/accounts/profile.html:209
+#: frontend/templates/accounts/profile.html:261
 msgid "Browse available scholarships and apply online today."
-msgstr ""
+msgstr "เลือกดูทุนการศึกษาที่เปิดรับและสมัครออนไลน์ได้แล้ววันนี้"
 
-#: frontend/templates/accounts/profile.html:210
+#: frontend/templates/accounts/profile.html:262
 msgid "Explore Open Scholarships"
-msgstr ""
+msgstr "ค้นหาทุนที่เปิดรับสมัคร"
 
 #: frontend/templates/admin/index.html:11
 #, python-format
 msgid "Models in the %(name)s application"
-msgstr ""
+msgstr "ตารางข้อมูลในระบบ %(name)s"
 
 #: frontend/templates/admin/index.html:22
 msgid "Add"
-msgstr ""
+msgstr "เพิ่มข้อมูล"
+
+#: frontend/templates/admin/index.html:28
+msgid "Change"
+msgstr "แก้ไขข้อมูล"
 
 #: frontend/templates/admin/index.html:38
 msgid "You don't have permission to view or edit anything."
-msgstr ""
+msgstr "คุณไม่มีสิทธิ์ในการเข้าถึงหรือแก้ไขข้อมูลในส่วนนี้"
 
 #: frontend/templates/components/scholarship_card.html:6
 msgid "Urgent! Deadline"
-msgstr ""
+msgstr "ด่วน! กำหนดปิดรับสมัคร"
 
 #: frontend/templates/components/scholarship_card.html:14
 msgid "GPAX Unmet"
-msgstr ""
+msgstr "เกรดเฉลี่ยไม่ผ่านเกณฑ์"
 
 #: frontend/templates/components/scholarship_card.html:14
 msgid "Requires"
-msgstr ""
+msgstr "ต้องการขั้นต่ำ"
 
 #: frontend/templates/components/scholarship_card.html:18
 #: frontend/templates/scholarships/detail.html:28
 msgid "Applied"
-msgstr ""
+msgstr "สมัครแล้ว"
 
 #: frontend/templates/components/scholarship_card.html:31
 #: frontend/templates/scholarships/detail.html:178
 msgid "Save"
-msgstr ""
+msgstr "บันทึก"
+
+#: frontend/templates/components/scholarship_card.html:50
+#: frontend/templates/scholarship_dashboard.html:2008
+#: frontend/templates/scholarship_dashboard.html:2025
+msgid "Amount"
+msgstr "มูลค่าทุน"
 
 #: frontend/templates/components/scholarship_card.html:56
 msgid "Minimum GPAX"
-msgstr ""
+msgstr "เกรดเฉลี่ยขั้นต่ำ (GPAX)"
 
 #: frontend/templates/components/scholarship_card.html:61
+#: frontend/templates/scholarship_dashboard.html:2184
 #: frontend/templates/scholarships/detail.html:106
 msgid "Quota"
-msgstr ""
+msgstr "จำนวนที่เปิดรับ"
 
 #: frontend/templates/components/scholarship_card.html:69
 #: frontend/templates/scholarships/detail.html:118
 msgid "Expired"
-msgstr ""
+msgstr "หมดเขตรับสมัคร"
 
 #: frontend/templates/components/scholarship_card.html:82
 msgid "View Status"
-msgstr ""
+msgstr "ตรวจสอบสถานะ"
 
 #: frontend/templates/components/scholarship_card.html:86
 msgid "View Details (GPAX Unmet)"
-msgstr ""
+msgstr "ดูรายละเอียด (เกรดไม่ถึงเกณฑ์)"
 
 #: frontend/templates/components/scholarship_card.html:90
 msgid "View Details & Apply"
-msgstr ""
+msgstr "ดูรายละเอียดและสมัคร"
 
-#: frontend/templates/dashboard_base.html:196
+#: frontend/templates/dashboard_base.html:476
+#: frontend/templates/dashboard_base.html:481
+#: frontend/templates/dashboard_base.html:543
 msgid "Management Menu"
 msgstr "เมนูจัดการระบบ"
 
-#: frontend/templates/dashboard_base.html:198
+#: frontend/templates/dashboard_base.html:484
 msgid "Close menu"
 msgstr "ปิดเมนู"
 
-#: frontend/templates/dashboard_base.html:201
-#: frontend/templates/partials/navbar.html:55
-#: frontend/templates/scholarship_dashboard.html:525
-msgid "Analytics Dashboard"
-msgstr "แดชบอร์ดสถิติ"
-
-#: frontend/templates/dashboard_base.html:202
-msgid "Admin Console"
-msgstr "แผงควบคุมแอดมิน"
-
-#: frontend/templates/dashboard_base.html:203
-msgid "Advanced Database"
-msgstr "ฐานข้อมูลขั้นสูง"
-
-#: frontend/templates/dashboard_base.html:209
-#: frontend/templates/partials/navbar.html:63
-msgid "Logout"
-msgstr "ออกจากระบบ"
-
-#: frontend/templates/dashboard_base.html:221
-msgid "Dashboard Menu"
-msgstr "เมนูจัดการระบบ"
-
+#: frontend/templates/dashboard_base.html:494
 msgid "Admin Portal"
 msgstr "พอร์ทัลผู้ดูแลระบบ"
 
-msgid "Back to Main Site"
-msgstr "กลับสู่หน้าหลัก"
-
+#: frontend/templates/dashboard_base.html:500
 msgid "Navigation"
 msgstr "การนำทาง"
 
+#: frontend/templates/dashboard_base.html:507
+#: frontend/templates/partials/navbar.html:57
+#: frontend/templates/scholarship_dashboard.html:1684
+msgid "Analytics Dashboard"
+msgstr "แดชบอร์ดสถิติ"
+
+#: frontend/templates/dashboard_base.html:515
+msgid "Admin Console"
+msgstr "แผงควบคุมแอดมิน"
+
+#: frontend/templates/dashboard_base.html:522
+#: frontend/templates/guide/admin_guide.html:4
+#: frontend/templates/partials/navbar.html:58
+msgid "Admin Guide"
+msgstr "คู่มือผู้ดูแลระบบ"
+
+#: frontend/templates/dashboard_base.html:529
+msgid "Advanced Database"
+msgstr "ฐานข้อมูลขั้นสูง"
+
+#: frontend/templates/dashboard_base.html:541
+#| msgid "Management Menu"
+msgid "Open Management Menu"
+msgstr "เปิดเมนูจัดการระบบ"
+
+#: frontend/templates/guide/admin_guide.html:15
+msgid "Scholarship Review & Administration Manual"
+msgstr "คู่มือการพิจารณาและบริหารจัดการทุนการศึกษา"
+
+#: frontend/templates/guide/admin_guide.html:18
+msgid ""
+"Standard operational procedures for scholarship committee members: document "
+"verification, review lifecycle transitions, additional document notices, and"
+" quota management."
+msgstr ""
+"แนวปฏิบัติและขั้นตอนมาตรฐานสำหรับคณะกรรมการและเจ้าหน้าที่ทุน: "
+"การตรวจสอบเอกสาร การเปลี่ยนสถานะใบสมัคร การแจ้งเตือนเอกสารเพิ่มเติม "
+"และการควบคุมโควตา"
+
+#: frontend/templates/guide/admin_guide.html:25
+msgid "Quick Review Decision Rules"
+msgstr "เกณฑ์การตัดสินใจอย่างรวดเร็ว (Quick Decision Rules)"
+
+#: frontend/templates/guide/admin_guide.html:29
+msgid "Criteria Fully Met"
+msgstr "คุณสมบัติและเอกสารครบถ้วน"
+
+#: frontend/templates/guide/admin_guide.html:30
+msgid "Advance status to 'In Progress' for interview, then 'Approve'."
+msgstr ""
+"ปรับสถานะเป็น 'อยู่ระหว่างพิจารณา' เพื่อนัดสัมภาษณ์ และปรับเป็น 'อนุมัติทุน'"
+" เมื่อผ่านเกณฑ์"
+
+#: frontend/templates/guide/admin_guide.html:34
+msgid "Disqualified / Unmet Criteria"
+msgstr "ไม่ผ่านเกณฑ์ หรือขาดคุณสมบัติ"
+
+#: frontend/templates/guide/admin_guide.html:35
+msgid "Set status to 'Reject'. Student can re-apply to other open grants."
+msgstr ""
+"ปรับสถานะเป็น 'ไม่ผ่านการพิจารณา' "
+"นักศึกษาสามารถยื่นสมัครทุนอื่นที่เปิดรับได้"
+
+#: frontend/templates/guide/admin_guide.html:39
+msgid "File Unclear / Missing Signature"
+msgstr "เอกสารไม่ชัดเจน / ขาดลายเซ็น"
+
+#: frontend/templates/guide/admin_guide.html:40
+msgid "Click 'Additional Docs' to dispatch notification email."
+msgstr "คลิกปุ่ม 'ขอเอกสารเพิ่มเติม' เพื่อส่งอีเมลแจ้งเตือนนักศึกษาโดยตรง"
+
+#: frontend/templates/guide/admin_guide.html:44
+msgid "Accidental Button Click"
+msgstr "กดยืนยันสถานะผิดพลาด"
+
+#: frontend/templates/guide/admin_guide.html:45
+msgid "Click 'Reset to Pending' to revert row to unreviewed queue."
+msgstr "คลิกปุ่ม 'รีเซ็ตเป็นรอตรวจสอบ' เพื่อนำใบสมัครกลับเข้าสู่คิวรอพิจารณา"
+
+#: frontend/templates/guide/admin_guide.html:58
+msgid "01. Application Verification & Review Workflow"
+msgstr "01. ขั้นตอนการตรวจสอบและประเมินใบสมัคร"
+
+#: frontend/templates/guide/admin_guide.html:63
+msgid "Access Uploaded Documents"
+msgstr "เปิดตรวจสอบเอกสารแนบ"
+
+#: frontend/templates/guide/admin_guide.html:63
+msgid ""
+"Click document badges in the row (e.g. 'Transcript', 'Recommendation') to "
+"view submitted files directly."
+msgstr ""
+"คลิกที่ป้ายชื่อเอกสารในแถวตาราง (เช่น 'Transcript', 'Recommendation') "
+"เพื่อเปิดดูไฟล์แนบของนักศึกษา"
+
+#: frontend/templates/guide/admin_guide.html:66
+msgid "Verify Academic Standing"
+msgstr "ตรวจสอบสถานะการศึกษาและผลการเรียน"
+
+#: frontend/templates/guide/admin_guide.html:66
+msgid ""
+"Compare the student's cumulative GPAX and active enrolled semester status "
+"against scholarship requirements."
+msgstr ""
+"ตรวจสอบเกรดเฉลี่ยสะสม (GPAX) "
+"และสถานภาพการลงทะเบียนเรียนเทียบกับเกณฑ์คุณสมบัติของทุน"
+
+#: frontend/templates/guide/admin_guide.html:69
+msgid "Progress Review State"
+msgstr "ปรับเปลี่ยนสถานะการพิจารณา"
+
+#: frontend/templates/guide/admin_guide.html:69
+msgid ""
+"Click 'In Progress' to signify the application is actively undergoing "
+"committee review or interview scheduling."
+msgstr ""
+"คลิกปุ่ม 'อยู่ระหว่างพิจารณา' "
+"เพื่อระบุว่าใบสมัครอยู่ในขั้นตอนการสัมภาษณ์หรือประเมินโดยคณะกรรมการ"
+
+#: frontend/templates/guide/admin_guide.html:78
+msgid "02. Status Transition Matrix"
+msgstr "02. ตารางวงจรสถานะใบสมัคร (Status Transition Matrix)"
+
+#: frontend/templates/guide/admin_guide.html:86
+msgid "Indicator"
+msgstr "ตัวบ่งชี้"
+
+#: frontend/templates/guide/admin_guide.html:87
+msgid "Operational Meaning"
+msgstr "ความหมายในการปฏิบัติงาน"
+
+#: frontend/templates/guide/admin_guide.html:88
+msgid "Permitted Action"
+msgstr "การดำเนินการที่อนุญาต"
+
+#: frontend/templates/guide/admin_guide.html:95
+msgid "New submission awaiting committee screening queue."
+msgstr "ใบสมัครส่งเข้ามาใหม่ อยู่ในคิวรอการตรวจสอบคุณสมบัติเบื้องต้น"
+
+#: frontend/templates/guide/admin_guide.html:96
+msgid "In Progress, Reject, Cancel"
+msgstr "อยู่ระหว่างพิจารณา, ไม่ผ่าน, ยกเลิก"
+
+#: frontend/templates/guide/admin_guide.html:101
+msgid "Active review, interviews, or awaiting additional documents."
+msgstr ""
+"อยู่ระหว่างการสัมภาษณ์ พิจารณาอย่างละเอียด หรือรอนักศึกษาส่งเอกสารเพิ่ม"
+
+#: frontend/templates/guide/admin_guide.html:102
+msgid "Approve, Reject, Cancel"
+msgstr "อนุมัติทุน, ไม่ผ่าน, ยกเลิก"
+
+#: frontend/templates/guide/admin_guide.html:107
+msgid "Applicant has met all criteria and is awarded the scholarship."
+msgstr "ผู้สมัครผ่านเกณฑ์การคัดเลือกและได้รับการอนุมัติทุนการศึกษา"
+
+#: frontend/templates/guide/admin_guide.html:108
+msgid "Complete, Cancel"
+msgstr "เสร็จสมบูรณ์, ยกเลิก"
+
+#: frontend/templates/guide/admin_guide.html:113
+msgid "Ineligible, missing mandatory criteria, or quota filled."
+msgstr "คุณสมบัติไม่ผ่าน ขาดเอกสารสำคัญ หรือโควตาทุนเต็มแล้ว"
+
+#: frontend/templates/guide/admin_guide.html:119
+msgid "Scholarship disbursement and onboarding completed."
+msgstr "ดำเนินการเบิกจ่ายเงินทุนหรือลดหย่อนค่าเล่าเรียนเสร็จสมบูรณ์แล้ว"
+
+#: frontend/templates/guide/admin_guide.html:120
+msgid "Final State"
+msgstr "สถานะสิ้นสุด"
+
+#: frontend/templates/guide/admin_guide.html:125
+msgid "Application retracted by student or disqualified."
+msgstr "ใบสมัครถูกถอนคำขอโดยนักศึกษา หรือถูกตัดสิทธิ์"
+
+#: frontend/templates/guide/admin_guide.html:137
+msgid "03. Additional Docs Requests & Status Reset"
+msgstr "03. การขอเอกสารเพิ่มเติมและการรีเซ็ตสถานะ"
+
+#: frontend/templates/guide/admin_guide.html:143
+msgid "Requesting 'Additional Docs'"
+msgstr "การส่งคำขอ 'เอกสารเพิ่มเติม'"
+
+#: frontend/templates/guide/admin_guide.html:146
+msgid ""
+"When a student's file is illegible, incomplete, or requires clarification, "
+"click 'Additional Docs' in the table row."
+msgstr ""
+"เมื่อพบว่าเอกสารของนักศึกษาไม่ชัดเจน ไม่ครบถ้วน หรือต้องการหลักฐานเพิ่ม "
+"ให้คลิกปุ่ม 'ขอเอกสารเพิ่ม'"
+
+#: frontend/templates/guide/admin_guide.html:149
+msgid "Sends automated email with instructions to student"
+msgstr "ระบบจะส่งอีเมลแจ้งรายละเอียดแก่นักศึกษาโดยอัตโนมัติ"
+
+#: frontend/templates/guide/admin_guide.html:150
+msgid "Maintains the record in 'In Progress' queue"
+msgstr "รักษาสถานะใบสมัครไว้ในกลุ่ม 'อยู่ระหว่างพิจารณา'"
+
+#: frontend/templates/guide/admin_guide.html:156
+msgid "Using 'Reset to Pending'"
+msgstr "การใช้งาน 'รีเซ็ตเป็นรอตรวจสอบ'"
+
+#: frontend/templates/guide/admin_guide.html:159
+msgid ""
+"If a reviewer mistakenly marked an application, click 'Reset' to restore the"
+" row to unreviewed Pending state."
+msgstr ""
+"หากกรรมการกดเปลี่ยนสถานะผิดพลาด ให้คลิกปุ่ม 'รีเซ็ต' "
+"เพื่อนำกลับมาเป็นสถานะรอตรวจสอบ"
+
+#: frontend/templates/guide/admin_guide.html:162
+msgid "Restores standard review buttons for the row"
+msgstr "กู้คืนปุ่มการพิจารณามาตรฐานกลับมาให้ใช้งานได้อีกครั้ง"
+
+#: frontend/templates/guide/admin_guide.html:163
+msgid "Prevents locked states from accidental selections"
+msgstr "ช่วยป้องกันข้อผิดพลาดจากการกดเลือกสถานะโดยไม่ตั้งใจ"
+
+#: frontend/templates/guide/admin_guide.html:173
+msgid "04. Scholarship Quotas & Capacity Controls"
+msgstr "04. การควบคุมโควตาและความจุของทุน"
+
+#: frontend/templates/guide/admin_guide.html:178
+msgid ""
+"Each scholarship defines a capacity quota ('Grants'). The system "
+"automatically protects and manages quotas as follows:"
+msgstr ""
+"ทุนการศึกษาแต่ละรายการจะระบุจำนวนโควตาสูงสุดไว้ "
+"โดยระบบมีกลไกควบคุมโควตาอัตโนมัติดังนี้:"
+
+#: frontend/templates/guide/admin_guide.html:181
+msgid "Automatic Closure"
+msgstr "การปิดรับสมัครอัตโนมัติ"
+
+#: frontend/templates/guide/admin_guide.html:181
+msgid ""
+"When the count of approved and in-progress applicants equals the quota, the "
+"scholarship closes automatically to new applicants."
+msgstr ""
+"เมื่อจำนวนผู้ได้รับอนุมัติทุนครบตามโควตาที่กำหนด "
+"ระบบจะปิดรับสมัครโดยอัตโนมัติ"
+
+#: frontend/templates/guide/admin_guide.html:182
+msgid "Deadline Enforcement"
+msgstr "การปิดรับตามกำหนดเวลา"
+
+#: frontend/templates/guide/admin_guide.html:182
+msgid ""
+"When the deadline passes, scholarship cards display 'Expired' and the "
+"application form disables submission."
+msgstr ""
+"เมื่อพ้นกำหนดวันปิดรับสมัคร การ์ดทุนจะแสดงสถานะ 'หมดเขตรับสมัคร' "
+"และปิดการยื่นแบบฟอร์มทันที"
+
+#: frontend/templates/guide/admin_guide.html:190
+msgid "05. Data Privacy & Compliance"
+msgstr "05. การคุ้มครองข้อมูลส่วนบุคคลและความเป็นส่วนตัว (PDPA)"
+
+#: frontend/templates/guide/admin_guide.html:193
+msgid ""
+"Applicant transcripts and personal records must be processed strictly for "
+"scholarship evaluation under Prince of Songkla University regulations and "
+"Thailand's PDPA. Unauthorized dissemination of applicant records is strictly"
+" prohibited."
+msgstr ""
+"ข้อมูลส่วนตัว เอกสารผลการเรียน "
+"และหลักฐานของผู้สมัครทุกฉบับถือเป็นข้อมูลความลับตาม พ.ร.บ. "
+"คุ้มครองข้อมูลส่วนบุคคล (PDPA) และระเบียบ ม.อ. ห้ามเผยแพร่ ส่งต่อ "
+"หรือนำไปใช้นอกเหนือจากการพิจารณาทุนการศึกษาโดยเด็ดขาด"
+
+#: frontend/templates/guide/student_guide.html:4
+#: frontend/templates/guide/student_guide.html:15
+msgid "Student Guide"
+msgstr "คู่มือสำหรับนักศึกษา"
+
+#: frontend/templates/guide/student_guide.html:18
+msgid "Student Manual"
+msgstr "คู่มือสำหรับนักศึกษา"
+
+#: frontend/templates/guide/student_guide.html:21
+msgid "Scholarship Application Guide for Students"
+msgstr "คู่มือขั้นตอนการสมัครขอรับทุนการศึกษาสำหรับนักศึกษา"
+
+#: frontend/templates/guide/student_guide.html:24
+msgid ""
+"A clear step-by-step handbook on verifying eligibility, preparing electronic"
+" files, submitting applications online, and monitoring committee evaluation "
+"updates."
+msgstr ""
+"คู่มือฉบับสมบูรณ์อธิบายขั้นตอนการตรวจสอบคุณสมบัติ การเตรียมเอกสาร "
+"การยื่นคำขอออนไลน์ และการติดตามผลการพิจารณาของคณะกรรมการ"
+
+#: frontend/templates/guide/student_guide.html:30
+msgid "Step 1"
+msgstr "ขั้นตอนที่ 1"
+
+#: frontend/templates/guide/student_guide.html:30
+msgid "Find & Verify Criteria"
+msgstr "ค้นหา & เช็คคุณสมบัติ"
+
+#: frontend/templates/guide/student_guide.html:31
+msgid "Step 2"
+msgstr "ขั้นตอนที่ 2"
+
+#: frontend/templates/guide/student_guide.html:31
+#: frontend/templates/scholarships/apply.html:38
+msgid "Upload Documents"
+msgstr "แนบเอกสารออนไลน์"
+
+#: frontend/templates/guide/student_guide.html:32
+msgid "Step 3"
+msgstr "ขั้นตอนที่ 3"
+
+#: frontend/templates/guide/student_guide.html:32
+msgid "Track Review Status"
+msgstr "ติดตามผลการพิจารณา"
+
+#: frontend/templates/guide/student_guide.html:33
+msgid "Step 4"
+msgstr "ขั้นตอนที่ 4"
+
+#: frontend/templates/guide/student_guide.html:33
+msgid "Receive Funding"
+msgstr "รับเงินสนับสนุน / ค่าเล่าเรียน"
+
+#: frontend/templates/guide/student_guide.html:47
+msgid "01. Scholarship Categories & Eligibility"
+msgstr "01. หมวดหมู่ทุนและคุณสมบัติผู้สมัคร"
+
+#: frontend/templates/guide/student_guide.html:52
+msgid ""
+"Review the 4 primary scholarship classifications available to PSU Phuket "
+"undergraduate students:"
+msgstr ""
+"ประเภททุนการศึกษาหลัก 4 หมวดหมู่ที่เปิดรับสำหรับนักศึกษาระดับปริญญาตรี ม.อ. "
+"ภูเก็ต:"
+
+#: frontend/templates/guide/student_guide.html:56
+msgid ""
+"Merit-based and need-based financial aid for full-time enrolled students."
+msgstr ""
+"ทุนช่วยเหลือค่าครองชีพสำหรับนักศึกษาภาคปกติที่มีผลการเรียนดีหรือขาดแคลนทุนทรัพย์"
+
+#: frontend/templates/guide/student_guide.html:57
+msgid "Funding for international student exchange and overseas internships."
+msgstr "ทุนสนับสนุนเพื่อการแลกเปลี่ยนทางการศึกษาและสหกิจศึกษาในต่างประเทศ"
+
+#: frontend/templates/guide/student_guide.html:58
+msgid ""
+"Tuition exemptions (50% or 100%) for recognized student leaders and "
+"athletes."
+msgstr ""
+"การยกเว้นค่าธรรมเนียมการศึกษา 50% หรือ 100% "
+"สำหรับผู้นำกิจกรรมและนักกีฬาดีเด่น"
+
+#: frontend/templates/guide/student_guide.html:59
+msgid "Living cost meal vouchers to support campus welfare and health."
+msgstr ""
+"คูปองและเงินช่วยเหลือค่าอาหารกลางวันเพื่อสุขภาวะและสวัสดิการในมหาวิทยาลัย"
+
+#: frontend/templates/guide/student_guide.html:63
+msgid "GPAX Check"
+msgstr "การตรวจสอบเกรดเฉลี่ย (GPAX)"
+
+#: frontend/templates/guide/student_guide.html:63
+msgid ""
+"When signed in, the system compares your current GPAX with the scholarship "
+"requirement. Cards indicate if your GPAX qualifies automatically."
+msgstr ""
+"เมื่อเข้าสู่ระบบ "
+"ระบบจะเปรียบเทียบเกรดเฉลี่ยสะสมของคุณกับเกณฑ์ของทุนอัตโนมัติ "
+"โดยจะแสดงแถบระบุทันทีว่าคุณมีคุณสมบัติผ่านเกณฑ์หรือไม่"
+
+#: frontend/templates/guide/student_guide.html:71
+msgid "02. Required Application Documents Checklist"
+msgstr "02. รายการเอกสารที่ต้องจัดเตรียม"
+
+#: frontend/templates/guide/student_guide.html:76
+msgid "Prepare electronic copies before starting the application form:"
+msgstr "กรุณาจัดเตรียมเอกสารในรูปแบบไฟล์ดิจิทัลให้พร้อมก่อนยื่นใบสมัคร:"
+
+#: frontend/templates/guide/student_guide.html:84
+msgid "1. Academic Transcript (Mandatory)"
+msgstr "1. ใบแสดงผลการเรียน (Transcript - บังคับ)"
+
+#: frontend/templates/guide/student_guide.html:88
+msgid ""
+"Official grade report or registrar portal export showing cumulative GPAX and"
+" total credits earned."
+msgstr ""
+"เอกสารแสดงผลการเรียนทางการหรือไฟล์ดาวน์โหลดจากระบบทะเบียนที่แสดงเกรดเฉลี่ยและหน่วยกิตครบถ้วน"
+
+#: frontend/templates/guide/student_guide.html:96
+msgid "2. Recommendation Letter (If applicable)"
+msgstr "2. หนังสือรับรอง / จดหมายแนะนำ (ถ้ามี)"
+
+#: frontend/templates/guide/student_guide.html:100
+msgid ""
+"Signed endorsement from your academic advisor or faculty department head."
+msgstr "จดหมายรับรองที่ลงนามโดยอาจารย์ที่ปรึกษาหรือหัวหน้าสาขาวิชา"
+
+#: frontend/templates/guide/student_guide.html:106
+msgid "File Standards"
+msgstr "มาตรฐานไฟล์เอกสาร"
+
+#: frontend/templates/guide/student_guide.html:106
+msgid ""
+"Format: PDF, JPG, PNG | Maximum file size: 5 MB per document | Ensure all "
+"text and seal stamps are legible."
+msgstr ""
+"รูปแบบที่รองรับ: PDF, JPG, PNG | ขนาดไฟล์สูงสุด: ไม่เกิน 5 MB ต่อไฟล์ | "
+"ตรวจสอบให้แน่ใจว่าตัวอักษรและตราประทับมีความคมชัด"
+
+#: frontend/templates/guide/student_guide.html:114
+msgid "03. Application Status Cheat Sheet"
+msgstr "03. ตารางความหมายของสถานะใบสมัคร"
+
+#: frontend/templates/guide/student_guide.html:119
+msgid ""
+"Each application displays one of six standardized review states in your "
+"Profile tracking panel:"
+msgstr "ใบสมัครของคุณจะแสดงหนึ่งในสถานะมาตรฐานต่อไปนี้ในหน้าข้อมูลส่วนตัว:"
+
+#: frontend/templates/guide/student_guide.html:123
+msgid ""
+"Application successfully submitted; awaiting committee pre-screening queue."
+msgstr ""
+"ยื่นใบสมัครเรียบร้อยแล้ว "
+"อยู่ในคิวรอการตรวจสอบคุณสมบัติเบื้องต้นจากเจ้าหน้าที่"
+
+#: frontend/templates/guide/student_guide.html:123
+msgid "Action: None (Awaiting)"
+msgstr "สิ่งที่ต้องทำ: ไม่ต้องดำเนินการใดๆ (รอคอยผล)"
+
+#: frontend/templates/guide/student_guide.html:124
+msgid ""
+"Under evaluation by faculty committee or scheduled for applicant interview."
+msgstr ""
+"อยู่ระหว่างการพิจารณาโดยคณะกรรมการประจำคณะ "
+"หรือนัดหมายเพื่อเข้ารับการสัมภาษณ์"
+
+#: frontend/templates/guide/student_guide.html:124
+msgid "Action: Check Email"
+msgstr "สิ่งที่ต้องทำ: ติดตามอีเมลแจ้งนัดหมาย"
+
+#: frontend/templates/guide/student_guide.html:125
+msgid ""
+"Approved by committee. Follow award notification guidelines for "
+"disbursement."
+msgstr ""
+"ผ่านการอนุมัติรับทุนการศึกษา กรุณาปฏิบัติตามคำแนะนำเพื่อดำเนินการรับทุน"
+
+#: frontend/templates/guide/student_guide.html:125
+msgid "Action: Completed"
+msgstr "สิ่งที่ต้องทำ: ดำเนินการรับทุนตามขั้นตอน"
+
+#: frontend/templates/guide/student_guide.html:126
+msgid ""
+"Requirements or quota filled for this cycle. Students may apply for other "
+"open scholarships."
+msgstr ""
+"คุณสมบัติไม่ผ่านเกณฑ์หรือมีผู้ได้รับทุนเต็มโควตาแล้ว "
+"นักศึกษาสามารถสมัครทุนอื่นที่เปิดรับได้"
+
+#: frontend/templates/guide/student_guide.html:126
+msgid "Action: Try Other Grants"
+msgstr "สิ่งที่ต้องทำ: ค้นหาและสมัครทุนประเภทอื่น"
+
+#: frontend/templates/guide/student_guide.html:127
+msgid "Fund disbursement or tuition waiver credit has been fully processed."
+msgstr ""
+"กระบวนการโอนเงินทุนหรือบันทึกลดหย่อนค่าเล่าเรียนในระบบทะเบียนเสร็จสิ้นเรียบร้อยแล้ว"
+
+#: frontend/templates/guide/student_guide.html:127
+msgid "Action: Finalized"
+msgstr "สิ่งที่ต้องทำ: ดำเนินการเสร็จสิ้น"
+
+#: frontend/templates/guide/student_guide.html:128
+msgid ""
+"Application cancelled by student request or administratively withdrawn."
+msgstr "ใบสมัครถูกยกเลิกตามคำขอของนักศึกษา หรือยกเลิกโดยฝ่ายบริหารจัดการทุน"
+
+#: frontend/templates/guide/student_guide.html:128
+msgid "Action: Cancelled"
+msgstr "สิ่งที่ต้องทำ: คำขอถูกยกเลิกแล้ว"
+
+#: frontend/templates/guide/student_guide.html:136
+msgid "04. Handling 'Additional Documents' Requests"
+msgstr "04. กรณีได้รับการร้องขอเอกสารเพิ่มเติม"
+
+#: frontend/templates/guide/student_guide.html:141
+msgid ""
+"If committee pre-screening requires clearer documentation, an email alert "
+"will be dispatched to your student address."
+msgstr ""
+"หากเจ้าหน้าที่หรือคณะกรรมการตรวจพบเอกสารไม่สมบูรณ์ "
+"ระบบจะส่งอีเมลแจ้งเตือนไปยังอีเมลนักศึกษาของคุณ"
+
+#: frontend/templates/guide/student_guide.html:145
+msgid "Required Actions"
+msgstr "สิ่งที่ต้องปฏิบัติ"
+
+#: frontend/templates/guide/student_guide.html:147
+msgid "Read the specific missing document listed in the notification email."
+msgstr "อ่านรายละเอียดรายการเอกสารที่ขาดหรือต้องแก้ไขในอีเมลแจ้งเตือน"
+
+#: frontend/templates/guide/student_guide.html:148
+msgid "Scan or export a clear copy in PDF or JPG format."
+msgstr "สแกนหรือบันทึกไฟล์ฉบับสมบูรณ์ที่มีความคมชัดในรูปแบบ PDF หรือ JPG"
+
+#: frontend/templates/guide/student_guide.html:149
+msgid ""
+"Deliver the files as instructed in the email or submit directly at Student "
+"Affairs (Room 7102)."
+msgstr ""
+"ส่งไฟล์เอกสารตามวิธีที่ระบุในอีเมล หรือนำส่งด้วยตนเองที่งานพัฒนานักศึกษา "
+"(ห้อง 7102)"
+
+#: frontend/templates/guide/student_guide.html:158
+msgid "05. Frequently Asked Questions"
+msgstr "05. คำถามที่พบบ่อย (FAQ)"
+
+#: frontend/templates/guide/student_guide.html:165
+msgid "Can I apply for more than one scholarship concurrently?"
+msgstr "สามารถสมัครขอรับทุนมากกว่า 1 ทุนในเวลาเดียวกันได้หรือไม่?"
+
+#: frontend/templates/guide/student_guide.html:168
+msgid ""
+"Yes, you can apply for multiple open scholarships. If awarded more than one,"
+" university rules dictate whether funding can be combined or if a choice "
+"must be made."
+msgstr ""
+"ได้ นักศึกษาสามารถยื่นสมัครได้หลายทุนพร้อมกัน "
+"หากได้รับคัดเลือกมากกว่าหนึ่งทุน "
+"เกณฑ์ของมหาวิทยาลัยจะพิจารณาว่าสามารถรับซ้ำซ้อนได้หรือไม่ "
+"หรือต้องเลือกรับเพียงทุนใดทุนหนึ่ง"
+
+#: frontend/templates/guide/student_guide.html:174
+msgid "What if my GPAX is below the minimum threshold?"
+msgstr "หากเกรดเฉลี่ยสะสม (GPAX) ไม่ถึงเกณฑ์ขั้นต่ำ จะสมัครได้หรือไม่?"
+
+#: frontend/templates/guide/student_guide.html:177
+msgid ""
+"Merit-based scholarships require meeting the stated cutoff. Need-based or "
+"emergency welfare grants (e.g. Lunch Grants) may allow exceptions based on "
+"special recommendation."
+msgstr ""
+"สำหรับทุนที่เน้นผลการเรียน ผู้สมัครจำเป็นต้องผ่านเกณฑ์ขั้นต่ำอย่างเคร่งครัด "
+"แต่สำหรับทุนสนับสนุนค่าครองชีพหรือสวัสดิการอาหารกลางวัน "
+"อาจมีการพิจารณาเป็นกรณีพิเศษตามคำแนะนำของอาจารย์ที่ปรึกษา"
+
+#: frontend/templates/guide/student_guide.html:183
+msgid "Can I update my documents after pressing submit?"
+msgstr "หลังจากกดยื่นใบสมัครแล้ว สามารถแก้ไขหรืออัปโหลดเอกสารใหม่ได้หรือไม่?"
+
+#: frontend/templates/guide/student_guide.html:186
+msgid ""
+"Submitted files are locked to preserve audit integrity. If you made an "
+"error, visit Room 7102 with your student ID card to request an "
+"administrative re-upload."
+msgstr ""
+"เอกสารที่ยื่นแล้วจะถูกล็อคเพื่อความถูกต้องของระบบ หากแนบเอกสารผิด "
+"กรุณานำบัตรนักศึกษามาติดต่อที่ห้อง 7102 เพื่อขอความช่วยเหลือจากเจ้าหน้าที่"
+
+#: frontend/templates/guide/student_guide.html:196
+msgid "06. Student Affairs & Scholarship Division"
+msgstr "06. ข้อมูลติดต่อหน่วยกิจการนักศึกษาและทุนการศึกษา"
+
+#: frontend/templates/guide/student_guide.html:200
+msgid ""
+"For technical questions regarding application submissions or document "
+"requirements, visit or contact our office:"
+msgstr ""
+"หากมีข้อสงสัยเกี่ยวกับระบบการสมัคร หรือเกณฑ์การขอรับทุนการศึกษา "
+"ติดต่อเราได้ที่:"
+
+#: frontend/templates/guide/student_guide.html:205
+msgid "Room 7102, Building 7, PSU Phuket"
+msgstr "ห้อง 7102 อาคาร 7 ม.อ. ภูเก็ต"
+
+#: frontend/templates/guide/student_guide.html:209
+msgid "Monday – Friday, 08:30 – 16:30"
+msgstr "วันจันทร์ – วันศุกร์, 08:30 – 16:30 น."
+
 #: frontend/templates/index.html:18
 msgid "Scholarship Application & Tracking System, PSU Phuket"
-msgstr ""
+msgstr "ระบบรับสมัครและติดตามทุนการศึกษา ม.อ. ภูเก็ต"
 
 #: frontend/templates/index.html:22
 msgid "The Right Scholarship"
-msgstr ""
+msgstr "ทุนการศึกษาที่ตอบโจทย์"
 
 #: frontend/templates/index.html:23
 msgid "For a Brighter Future at PSU Phuket"
-msgstr ""
+msgstr "เพื่ออนาคตที่สดใส ณ ม.อ. ภูเก็ต"
 
 #: frontend/templates/index.html:27
 msgid ""
 "Scholarship and welfare information center for all PSU Phuket students. "
 "Convenient, fast, apply and track online seamlessly."
 msgstr ""
+"ศูนย์รวมข้อมูลทุนการศึกษาและสวัสดิการสำหรับนักศึกษา ม.อ. ภูเก็ต สะดวก "
+"รวดเร็ว สมัครและติดตามผลออนไลน์ได้ในที่เดียว"
 
 #: frontend/templates/index.html:33
 msgid "View All Open Scholarships"
-msgstr ""
+msgstr "ดูทุนการศึกษาที่เปิดรับทั้งหมด"
 
 #: frontend/templates/index.html:44
 #: frontend/templates/scholarships/category.html:5
@@ -2494,235 +1992,449 @@ msgstr ""
 #: frontend/templates/scholarships/detail.html:15
 #: frontend/templates/scholarships/list.html:15
 msgid "Scholarship Categories"
-msgstr ""
+msgstr "หมวดหมู่ทุนการศึกษา"
 
 #: frontend/templates/index.html:45
 msgid "Choose a category that aligns with your educational goals"
-msgstr ""
+msgstr "เลือกประเภททุนที่ตรงกับเป้าหมายทางการศึกษาของคุณ"
 
 #: frontend/templates/index.html:58
 msgid "Explore Category"
-msgstr ""
+msgstr "เลือกดูหมวดหมู่นี้"
 
 #: frontend/templates/index.html:73
 msgid "Expiring Soon"
-msgstr ""
+msgstr "ทุนที่ใกล้ปิดรับสมัคร"
 
 #: frontend/templates/index.html:74
 msgid "Check your eligibility and apply before the deadline"
-msgstr ""
+msgstr "ตรวจสอบคุณสมบัติและยื่นสมัครก่อนหมดเขต"
 
 #: frontend/templates/index.html:91
 msgid "How to Apply"
-msgstr ""
+msgstr "ขั้นตอนการสมัครรับทุน"
 
 #: frontend/templates/index.html:92
 msgid "End-to-end online system: simple, fast, and transparent."
-msgstr ""
+msgstr "ระบบออนไลน์ครบวงจร: ใช้งานง่าย รวดเร็ว และโปร่งใสตรวจสอบได้"
 
 #: frontend/templates/index.html:98
 msgid "Search & Choose"
-msgstr ""
+msgstr "ค้นหาและเลือกทุน"
 
 #: frontend/templates/index.html:99
 msgid ""
 "Select scholarships matching your profile and check GPAX and faculty "
 "requirements."
 msgstr ""
+"เลือกทุนการศึกษาที่ตรงกับคุณสมบัติ ตรวจสอบเกณฑ์เกรดเฉลี่ย (GPAX) "
+"และคณะที่เปิดรับ"
 
 #: frontend/templates/index.html:104
 msgid "Fill In & Upload Documents"
-msgstr ""
+msgstr "กรอกข้อมูลและแนบเอกสาร"
 
 #: frontend/templates/index.html:105
 msgid ""
 "Sign in, complete your information, and upload required documents online "
 "without paper submissions."
 msgstr ""
+"เข้าสู่ระบบ กรอกข้อมูล "
+"และแนบไฟล์เอกสารผ่านระบบออนไลน์ได้ทันทีโดยไม่ต้องส่งเอกสารกระดาษ"
 
 #: frontend/templates/index.html:110
 msgid "Track Application Status"
-msgstr ""
+msgstr "ติดตามผลการพิจารณา"
 
 #: frontend/templates/index.html:111
 msgid ""
 "Track your application status in real time from your Profile page until "
 "final approval."
 msgstr ""
-
-#: frontend/templates/partials/navbar.html:8
-#: frontend/templates/partials/navbar.html:107
-msgid "Prince of Songkla University, Phuket Campus"
-msgstr ""
+"ติดตามความคืบหน้าของใบสมัครได้แบบเรียลไทม์ผ่านหน้าข้อมูลส่วนตัวจนถึงขั้นตอนอนุมัติรับทุน"
 
 #: frontend/templates/partials/navbar.html:28
 msgid "Scholarship Info"
-msgstr ""
+msgstr "ข้อมูลทุนการศึกษา"
 
-#: frontend/templates/partials/navbar.html:57
+#: frontend/templates/partials/navbar.html:54
 msgid "Profile"
-msgstr ""
+msgstr "ข้อมูลส่วนตัว"
 
-#: frontend/templates/partials/navbar.html:58
+#: frontend/templates/partials/navbar.html:55
 #: frontend/templates/scholarships/favorites.html:5
 msgid "Saved Scholarships"
-msgstr ""
+msgstr "ทุนการศึกษาที่บันทึกไว้"
 
-#: frontend/templates/partials/navbar.html:114
+#: frontend/templates/partials/navbar.html:60
+msgid "User Guide"
+msgstr "คู่มือการใช้งาน"
+
+#: frontend/templates/partials/navbar.html:68
+#: frontend/templates/partials/navbar.html:70
+#: frontend/templates/partials/navbar.html:84
+msgid "Logout"
+msgstr "ออกจากระบบ"
+
+#: frontend/templates/partials/navbar.html:134
+#: frontend/templates/partials/navbar.html:200
 msgid "Invalid username or password. Please try again."
-msgstr ""
+msgstr "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง โปรดลองอีกครั้ง"
 
-#: frontend/templates/partials/navbar.html:136
+#: frontend/templates/partials/navbar.html:158
 msgid "Or sign in with"
-msgstr ""
+msgstr "หรือเข้าสู่ระบบด้วย"
 
-#: frontend/templates/partials/navbar.html:154
+#: frontend/templates/partials/navbar.html:184
 msgid "*For PSU students (@phuket.psu.ac.th)"
-msgstr ""
+msgstr "*สำหรับนักศึกษา ม.อ. ภูเก็ต (@phuket.psu.ac.th)"
 
-#: frontend/templates/scholarship_dashboard.html:525
+#: frontend/templates/partials/navbar.html:198
+msgid "Checking..."
+msgstr "กำลังตรวจสอบ..."
+
+#: frontend/templates/partials/navbar.html:199
+msgid "Success!"
+msgstr "เข้าสู่ระบบสำเร็จ!"
+
+#: frontend/templates/scholarship_dashboard.html:1684
 msgid "PSU Phuket Scholarships"
-msgstr ""
+msgstr "ระบบทุนการศึกษา ม.อ. ภูเก็ต"
 
-#: frontend/templates/scholarship_dashboard.html:531
+#: frontend/templates/scholarship_dashboard.html:1706
+#| msgid "All Semesters"
+msgid "Semester"
+msgstr "ภาคการศึกษา"
+
+#: frontend/templates/scholarship_dashboard.html:1710
 msgid "All Semesters"
 msgstr "ทุกภาคการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:532
-msgid "Semester 1 (Aug-Dec)"
-msgstr "ภาคการศึกษา 1 (ส.ค.-ธ.ค.)"
+#: frontend/templates/scholarship_dashboard.html:1722
+msgid "Month"
+msgstr "เดือน"
 
-#: frontend/templates/scholarship_dashboard.html:533
-msgid "Semester 2 (Jan-May)"
-msgstr "ภาคการศึกษา 2 (ม.ค.-พ.ค.)"
-
-#: frontend/templates/scholarship_dashboard.html:534
-msgid "Summer (Jun-Jul)"
-msgstr ""
-
-#: frontend/templates/scholarship_dashboard.html:538
+#: frontend/templates/scholarship_dashboard.html:1726
 msgid "All Months"
-msgstr ""
+msgstr "ทุกเดือน"
 
-#: frontend/templates/scholarship_dashboard.html:554
+#: frontend/templates/scholarship_dashboard.html:1747
+msgid "Academic Year"
+msgstr "ปีการศึกษา"
+
+#: frontend/templates/scholarship_dashboard.html:1751
 msgid "All Years"
-msgstr ""
+msgstr "ทุกปีการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:560
-msgid "Filter"
-msgstr ""
+#: frontend/templates/scholarship_dashboard.html:1765
+msgid "Search by scholarship title, applicant name, student ID, major..."
+msgstr "ค้นหาจากชื่อทุน, ชื่อนักศึกษา, รหัสนักศึกษา, สาขาวิชา..."
 
-#: frontend/templates/scholarship_dashboard.html:581
+#: frontend/templates/scholarship_dashboard.html:1769
+msgid "Clear search"
+msgstr "ล้างการค้นหา"
+
+#: frontend/templates/scholarship_dashboard.html:1778
+#: frontend/templates/scholarships/list.html:59
+msgid "Search"
+msgstr "ค้นหา"
+
+#: frontend/templates/scholarship_dashboard.html:1783
+msgid "Reset all filters to view all records"
+msgstr "ล้างตัวกรองทั้งหมดเพื่อแสดงข้อมูลทั้งหมด"
+
+#: frontend/templates/scholarship_dashboard.html:1785
+msgid "Reset"
+msgstr "ล้างตัวกรอง"
+
+#: frontend/templates/scholarship_dashboard.html:1793
+msgid "Export PDF"
+msgstr "ส่งออก PDF"
+
+#: frontend/templates/scholarship_dashboard.html:1800
+msgid "Language"
+msgstr "ภาษา"
+
+#: frontend/templates/scholarship_dashboard.html:1816
+msgid "Export This Scholarship (PDF)"
+msgstr "ส่งออกรายงานเฉพาะทุนนี้ (PDF)"
+
+#: frontend/templates/scholarship_dashboard.html:1817
+msgid "Student List"
+msgstr "รายชื่อนักศึกษา"
+
+#: frontend/templates/scholarship_dashboard.html:1826
+msgid "Export Current Filter (PDF)"
+msgstr "ส่งออกรายงานตามเงื่อนไขที่เลือก (PDF)"
+
+#: frontend/templates/scholarship_dashboard.html:1828
+msgid "Active filtered period"
+msgstr "ช่วงเวลาที่เลือกในตัวกรอง"
+
+#: frontend/templates/scholarship_dashboard.html:1829
+msgid "With Student Names"
+msgstr "พร้อมรายชื่อผู้สมัคร"
+
+#: frontend/templates/scholarship_dashboard.html:1837
+msgid "Export All Records (PDF)"
+msgstr "ส่งออกรายงานทุนและผู้สมัครทั้งหมด (PDF)"
+
+#: frontend/templates/scholarship_dashboard.html:1838
+msgid "All semesters & all student applicants"
+msgstr "ทุกภาคการศึกษาและผู้สมัครทุกคน"
+
+#: frontend/templates/scholarship_dashboard.html:1852
+msgid "Analytics & Overview"
+msgstr "สถิติและภาพรวม"
+
+#: frontend/templates/scholarship_dashboard.html:1856
+#| msgid "Quota & Applicants"
+msgid "Scholarships & Applicants"
+msgstr "ทุนการศึกษา & รายชื่อผู้สมัคร"
+
+#: frontend/templates/scholarship_dashboard.html:1878
 msgid "Total Fund Value"
-msgstr ""
+msgstr "มูลค่าทุนรวม"
 
-#: frontend/templates/scholarship_dashboard.html:589
+#: frontend/templates/scholarship_dashboard.html:1886
 msgid "Currently Open"
-msgstr ""
+msgstr "กำลังเปิดรับสมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:657
+#: frontend/templates/scholarship_dashboard.html:1953
 msgid "Applications by Status"
-msgstr ""
+msgstr "สถิติใบสมัครแยกตามสถานะ"
 
-#: frontend/templates/scholarship_dashboard.html:658
+#: frontend/templates/scholarship_dashboard.html:1954
 msgid "Overall breakdown of application stages"
-msgstr ""
+msgstr "ภาพรวมการพิจารณาใบสมัครในแต่ละขั้นตอน"
 
-#: frontend/templates/scholarship_dashboard.html:670
+#: frontend/templates/scholarship_dashboard.html:1966
 msgid "Scholarship Distribution"
-msgstr ""
+msgstr "สัดส่วนทุนการศึกษาแยกตามหมวดหมู่"
 
-#: frontend/templates/scholarship_dashboard.html:671
+#: frontend/templates/scholarship_dashboard.html:1967
 msgid "Categorized by scholarship type"
-msgstr ""
+msgstr "จำแนกตามประเภทของทุนการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:700
-msgid "Recent Scholarships"
-msgstr ""
+#: frontend/templates/scholarship_dashboard.html:1997
+msgid "Upcoming Deadlines"
+msgstr "ทุนที่ใกล้หมดเขตที่สุด"
 
-#: frontend/templates/scholarship_dashboard.html:701
-msgid "View all"
-msgstr ""
+#: frontend/templates/scholarship_dashboard.html:1999
+msgid "Manage in Admin Console"
+msgstr "จัดการในคอนโซลแอดมิน"
+
+#: frontend/templates/scholarship_dashboard.html:2010
+#: frontend/templates/scholarship_dashboard.html:2029
+#| msgid "Application Period"
+msgid "Applications"
+msgstr "ใบสมัคร"
+
+#: frontend/templates/scholarship_dashboard.html:2029
+msgid "applicant(s)"
+msgstr "คน"
+
+#: frontend/templates/scholarship_dashboard.html:2036
+msgid "No open scholarships nearing deadline."
+msgstr "ไม่มีทุนที่ใกล้หมดเขตในขณะนี้"
+
+#: frontend/templates/scholarship_dashboard.html:2052
+#| msgid "Scholarships Matching Current Filter"
+msgid "Data Matching Current Filter"
+msgstr "ข้อมูลตามเงื่อนไขที่เลือก"
+
+#: frontend/templates/scholarship_dashboard.html:2054
+#| msgid "All Scholarships in Period"
+msgid "All Scholarship & Applicant Records"
+msgstr "ข้อมูลทุนการศึกษาและผู้สมัครทั้งหมด"
+
+#: frontend/templates/scholarship_dashboard.html:2058
+#| msgid ""
+#| "Detailed list of all scholarships included in the statistics above"
+msgid "Detailed records included in the current analytics period"
+msgstr "รายละเอียดข้อมูลที่นำมาประมวลผลสถิติตามเงื่อนไขที่เลือก"
+
+#: frontend/templates/scholarship_dashboard.html:2073
+#| msgid "Quota & Applicants"
+msgid "Student Applicants"
+msgstr "รายชื่อนักศึกษาผู้สมัคร"
+
+#: frontend/templates/scholarship_dashboard.html:2087
+msgid "Scholarship Title"
+msgstr "ชื่อทุนการศึกษา"
+
+#: frontend/templates/scholarship_dashboard.html:2089
+#: frontend/templates/scholarship_dashboard.html:2111
+msgid "Amount / Semester"
+msgstr "มูลค่าทุน / เทอม"
+
+#: frontend/templates/scholarship_dashboard.html:2090
+#: frontend/templates/scholarship_dashboard.html:2114
+msgid "Quota & Applicants"
+msgstr "โควตา & ผู้สมัคร"
+
+#: frontend/templates/scholarship_dashboard.html:2092
+#: frontend/templates/scholarship_dashboard.html:2127
+msgid "Application Period"
+msgstr "ช่วงเวลารับสมัคร"
+
+#: frontend/templates/scholarship_dashboard.html:2093
+msgid "Action"
+msgstr "การดำเนินการ"
+
+#: frontend/templates/scholarship_dashboard.html:2103
+#: frontend/templates/scholarship_dashboard.html:2140
+msgid "View details"
+msgstr "ดูรายละเอียด"
+
+#: frontend/templates/scholarship_dashboard.html:2116
+msgid "View student applicants for this scholarship"
+msgstr "ดูรายชื่อนักศึกษาที่สมัครรับทุนนี้"
+
+#: frontend/templates/scholarship_dashboard.html:2135
+msgid "View and export student applicants for this scholarship"
+msgstr "ดูและส่งออกรายชื่อผู้สมัครรับทุนนี้"
+
+#: frontend/templates/scholarship_dashboard.html:2137
+#| msgid "applicant(s)"
+msgid "Applicants"
+msgstr "ผู้สมัคร"
+
+#: frontend/templates/scholarship_dashboard.html:2141
+msgid "View"
+msgstr "เปิดดู"
+
+#: frontend/templates/scholarship_dashboard.html:2159
+#| msgid "scholarship(s) found"
+msgid "No scholarships found"
+msgstr "ไม่พบทุนการศึกษาตามเงื่อนไขที่ค้นหา"
+
+#: frontend/templates/scholarship_dashboard.html:2173
+msgid "Selected Scholarship"
+msgstr "ทุนการศึกษาที่เลือก"
+
+#: frontend/templates/scholarship_dashboard.html:2184
+msgid "seats"
+msgstr "ที่นั่ง"
+
+#: frontend/templates/scholarship_dashboard.html:2187
+#| msgid "Quota & Applicants"
+msgid "Total Applicants"
+msgstr "จำนวนผู้สมัครทั้งหมด"
+
+#: frontend/templates/scholarship_dashboard.html:2194
+msgid "View all applicants from all scholarships"
+msgstr "ดูรายชื่อผู้สมัครจากทุกทุนการศึกษา"
+
+#: frontend/templates/scholarship_dashboard.html:2196
+#| msgid "All Scholarships in Period"
+msgid "Show All Scholarships"
+msgstr "แสดงทุนการศึกษาทั้งหมด"
+
+#: frontend/templates/scholarship_dashboard.html:2210
+#: frontend/templates/scholarship_dashboard.html:2227
+msgid "Faculty & Major"
+msgstr "คณะ & สาขาวิชา"
+
+#: frontend/templates/scholarship_dashboard.html:2212
+#: frontend/templates/scholarship_dashboard.html:2237
+#| msgid "All Scholarships in Period"
+msgid "Applied Scholarship"
+msgstr "ทุนการศึกษาที่สมัคร"
+
+#: frontend/templates/scholarship_dashboard.html:2240
+#| msgid "scholarship(s) found"
+msgid "View scholarship"
+msgstr "ดูรายละเอียดทุน"
+
+#: frontend/templates/scholarship_dashboard.html:2268
+msgid "No student applications found"
+msgstr "ไม่พบข้อมูลการสมัครของนักศึกษา"
+
+#: frontend/templates/scholarship_export_pdf.html:6
+msgid "Scholarship & Student Applicant Report"
+msgstr "รายงานข้อมูลทุนการศึกษาและรายชื่อผู้สมัคร"
+
+#: frontend/templates/scholarship_export_pdf.html:772
+#| msgid "Analytics Dashboard"
+msgid "Back to Dashboard"
+msgstr "กลับสู่แดชบอร์ด"
 
 #: frontend/templates/scholarships/apply.html:5
 msgid "Application Form"
-msgstr ""
+msgstr "แบบฟอร์มการสมัคร"
 
 #: frontend/templates/scholarships/apply.html:13
 msgid "Back to Scholarship Details"
-msgstr ""
+msgstr "กลับไปยังหน้ารายละเอียดทุน"
 
 #: frontend/templates/scholarships/apply.html:22
 msgid "Scholarship Application Form"
-msgstr ""
+msgstr "แบบฟอร์มยื่นความประสงค์ขอรับทุนการศึกษา"
 
 #: frontend/templates/scholarships/apply.html:24
 msgid "Applying for"
-msgstr ""
+msgstr "กำลังสมัครรับทุน:"
 
 #: frontend/templates/scholarships/apply.html:33
 msgid "Applicant Info"
-msgstr ""
-
-#: frontend/templates/scholarships/apply.html:38
-msgid "Upload Documents"
-msgstr ""
+msgstr "ข้อมูลผู้สมัคร"
 
 #: frontend/templates/scholarships/apply.html:43
 msgid "Review & Decision"
-msgstr ""
+msgstr "พิจารณาและกำหนดผล"
 
 #: frontend/templates/scholarships/apply.html:56
 msgid "Applicant Information"
-msgstr ""
+msgstr "ข้อมูลนักศึกษาผู้สมัคร"
 
 #: frontend/templates/scholarships/apply.html:63
 msgid "As indicated on official ID or passport"
-msgstr ""
+msgstr "ตามบัตรประชาชนหรือหนังสือเดินทาง"
 
 #: frontend/templates/scholarships/apply.html:74
 msgid "Faculty / Major"
-msgstr ""
+msgstr "คณะ / สาขาวิชา"
 
 #: frontend/templates/scholarships/apply.html:86
 msgid "Phone number reachable directly"
-msgstr ""
+msgstr "เบอร์โทรศัพท์ที่ติดต่อได้สะดวก"
 
 #: frontend/templates/scholarships/apply.html:93
 msgid "Supporting Documents"
-msgstr ""
+msgstr "เอกสารประกอบการสมัคร"
 
 #: frontend/templates/scholarships/apply.html:106
 #: frontend/templates/scholarships/apply.html:132
 msgid "Click to select file"
-msgstr ""
+msgstr "คลิกเพื่อเลือกไฟล์"
 
 #: frontend/templates/scholarships/apply.html:106
 msgid "or drag & drop here"
-msgstr ""
+msgstr "หรือลากไฟล์มาวางที่นี่"
 
 #: frontend/templates/scholarships/apply.html:108
 #: frontend/templates/scholarships/detail.html:77
 msgid "Official Transcript / Academic Record"
-msgstr ""
+msgstr "ใบแสดงผลการเรียน (Transcript)"
 
 #: frontend/templates/scholarships/apply.html:109
 #: frontend/templates/scholarships/apply.html:135
 msgid "Supported formats: PDF, JPG, PNG (Max 10MB)"
-msgstr ""
+msgstr "รองรับไฟล์: PDF, JPG, PNG (ขนาดไม่เกิน 10MB)"
 
 #: frontend/templates/scholarships/apply.html:115
 #: frontend/templates/scholarships/apply.html:141
 msgid "Click to replace file"
-msgstr ""
+msgstr "คลิกเพื่อเปลี่ยนไฟล์ใหม่"
 
 #: frontend/templates/scholarships/apply.html:132
 msgid "Optional"
-msgstr ""
+msgstr "ไม่บังคับ"
 
 #: frontend/templates/scholarships/apply.html:134
 msgid "Recommendation Letters or Other Supporting Documents"
-msgstr ""
+msgstr "หนังสือแนะนำหรือเอกสารประกอบอื่นๆ เพิ่มเติม"
 
 #: frontend/templates/scholarships/apply.html:153
 msgid ""
@@ -2730,346 +2442,332 @@ msgid ""
 "and true. If any discrepancies or false statements are found, I accept "
 "immediate disqualification from the scholarship."
 msgstr ""
+"ข้าพเจ้าขอรับรองว่าข้อมูลและเอกสารหลักฐานทั้งหมดที่ยื่นเป็นความจริงทุกประการ"
+" หากตรวจพบว่าข้อมูลเป็นเท็จ ข้าพเจ้ายินยอมให้ตัดสิทธิ์การรับทุนทันที"
 
 #: frontend/templates/scholarships/apply.html:164
 msgid "Submit Application"
-msgstr ""
+msgstr "ยืนยันและส่งใบสมัคร"
 
 #: frontend/templates/scholarships/apply_success.html:5
 #: frontend/templates/scholarships/apply_success.html:19
 msgid "Application Submitted Successfully"
-msgstr ""
+msgstr "ยื่นใบสมัครรับทุนการศึกษาเรียบร้อยแล้ว"
 
 #: frontend/templates/scholarships/apply_success.html:20
 msgid "Your application for"
-msgstr ""
+msgstr "ใบสมัครของคุณสำหรับทุน"
 
 #: frontend/templates/scholarships/apply_success.html:20
 msgid "has been received and is being processed."
-msgstr ""
+msgstr "ได้รับการบันทึกเข้าสู่ระบบแล้ว และกำลังอยู่ระหว่างการตรวจสอบ"
 
 #: frontend/templates/scholarships/apply_success.html:24
 msgid "Application Details"
-msgstr ""
+msgstr "รายละเอียดการสมัคร"
 
 #: frontend/templates/scholarships/apply_success.html:45
 msgid "You can track your application review progress in your Profile page."
-msgstr ""
+msgstr "คุณสามารถติดตามความคืบหน้าการพิจารณาใบสมัครได้ที่หน้าข้อมูลส่วนตัว"
 
 #: frontend/templates/scholarships/apply_success.html:49
 msgid "View Status in Profile"
-msgstr ""
+msgstr "ดูสถานะในหน้าโปรไฟล์"
 
 #: frontend/templates/scholarships/apply_success.html:50
 msgid "Back to Home"
-msgstr ""
+msgstr "กลับสู่หน้าแรก"
 
 #: frontend/templates/scholarships/category.html:16
 msgid "PSU Phuket Scholarship Categories"
-msgstr ""
+msgstr "หมวดหมู่ทุนการศึกษา ม.อ. ภูเก็ต"
 
 #: frontend/templates/scholarships/category.html:17
 msgid ""
 "Choose a category that aligns with your educational goals, or browse all "
 "available opportunities."
 msgstr ""
+"เลือกหมวดหมู่ทุนที่ตรงกับเป้าหมายทางการศึกษาของคุณ "
+"หรือเลือกดูทุนการศึกษาทั้งหมดที่เปิดรับ"
 
 #: frontend/templates/scholarships/category.html:27
 msgid "View All"
-msgstr ""
+msgstr "ดูทั้งหมด"
 
 #: frontend/templates/scholarships/category.html:30
 msgid ""
 "Explore all scholarship opportunities currently accepting applications with "
 "condition filters."
-msgstr ""
+msgstr "ค้นหาทุนการศึกษาทุกประเภทที่กำลังเปิดรับสมัคร พร้อมระบบกรองเงื่อนไข"
 
 #: frontend/templates/scholarships/category.html:32
 msgid "Explore All Scholarships"
-msgstr ""
+msgstr "ดูทุนการศึกษาทั้งหมด"
 
 #: frontend/templates/scholarships/category.html:43
 msgid ""
-"Financial support for general students, academic excellence, need-based aid, "
-"and talent development."
+"Financial support for general students, academic excellence, need-based aid,"
+" and talent development."
 msgstr ""
+"ทุนสนับสนุนค่าครองชีพ ทุนเรียนดี ทุนช่วยเหลือผู้ขาดแคลน "
+"และผู้มีความสามารถพิเศษ"
 
 #: frontend/templates/scholarships/category.html:45
 msgid "View General"
-msgstr ""
+msgstr "ดูทุนทั่วไป"
 
 #: frontend/templates/scholarships/category.html:56
 msgid ""
 "Support for international student exchange programs, overseas internships, "
 "and global academic seminars."
 msgstr ""
+"ทุนสนับสนุนการไปแลกเปลี่ยน การฝึกงานในต่างประเทศ และการสัมมนาระดับนานาชาติ"
 
 #: frontend/templates/scholarships/category.html:58
 msgid "View Exchange"
-msgstr ""
+msgstr "ดูทุนแลกเปลี่ยน"
 
 #: frontend/templates/scholarships/category.html:66
 msgid "Welfare"
-msgstr ""
+msgstr "สวัสดิการ"
 
 #: frontend/templates/scholarships/category.html:69
 msgid ""
 "Tuition fee discounts or exemptions for students with exceptional academic "
 "or extracurricular achievements."
 msgstr ""
+"การยกเว้นหรือลดหย่อนค่าธรรมเนียมการศึกษา "
+"สำหรับนักศึกษาที่มีผลงานทางวิชาการหรือกิจกรรมดีเด่น"
 
 #: frontend/templates/scholarships/category.html:71
 msgid "View Fee Waiver"
-msgstr ""
+msgstr "ดูทุนยกเว้นค่าเล่าเรียน"
 
 #: frontend/templates/scholarships/category.html:79
 msgid "Living Aid"
-msgstr ""
+msgstr "ทุนค่าครองชีพ"
 
 #: frontend/templates/scholarships/category.html:82
 msgid ""
 "Meal welfare subsidies to support campus well-being and alleviate living "
 "expenses for students."
 msgstr ""
+"เงินอุดหนุนค่าอาหารเพื่อสวัสดิการ สุขภาวะ "
+"และแบ่งเบาภาระค่าใช้จ่ายของนักศึกษา"
 
 #: frontend/templates/scholarships/category.html:84
 msgid "View Lunch"
-msgstr ""
+msgstr "ดูทุนอาหารกลางวัน"
 
 #: frontend/templates/scholarships/detail.html:51
 msgid "Scholarship Details"
-msgstr ""
+msgstr "รายละเอียดทุนการศึกษา"
 
 #: frontend/templates/scholarships/detail.html:61
 msgid "Eligibility & Requirements"
-msgstr ""
+msgstr "คุณสมบัติและเงื่อนไขของผู้สมัคร"
 
 #: frontend/templates/scholarships/detail.html:71
 msgid "Required Documents"
-msgstr ""
+msgstr "เอกสารที่ต้องใช้ประกอบการสมัคร"
 
 #: frontend/templates/scholarships/detail.html:78
 msgid "Official grade report or transcript from the registration system."
-msgstr ""
+msgstr "ใบแสดงผลการเรียนหรือหนังสือรับรองผลการเรียนจากระบบงานทะเบียน"
 
 #: frontend/templates/scholarships/detail.html:84
 msgid "Recommendation Letters or Supporting Documents (If any)"
-msgstr ""
+msgstr "หนังสือแนะนำหรือเอกสารรับรองเพิ่มเติม (ถ้ามี)"
 
 #: frontend/templates/scholarships/detail.html:85
 msgid ""
 "Letter of recommendation from academic advisor or parent income certificate."
-msgstr ""
+msgstr "หนังสือรับรองจากอาจารย์ที่ปรึกษา หรือหนังสือรับรองรายได้ผู้ปกครอง"
 
 #: frontend/templates/scholarships/detail.html:96
 msgid "Scholarship Value"
-msgstr ""
+msgstr "มูลค่าทุนการศึกษา"
 
 #: frontend/templates/scholarships/detail.html:101
 msgid "per semester"
-msgstr ""
+msgstr "ต่อภาคการศึกษา"
 
 #: frontend/templates/scholarships/detail.html:111
 msgid "Opening Date"
-msgstr ""
+msgstr "วันที่เปิดรับสมัคร"
 
 #: frontend/templates/scholarships/detail.html:115
 msgid "Closing Date"
-msgstr ""
+msgstr "วันที่ปิดรับสมัคร"
 
 #: frontend/templates/scholarships/detail.html:122
 msgid "Campus"
-msgstr ""
+msgstr "วิทยาเขต"
 
 #: frontend/templates/scholarships/detail.html:123
 msgid "PSU Phuket"
-msgstr ""
+msgstr "ม.อ. ภูเก็ต"
 
 #: frontend/templates/scholarships/detail.html:132
 msgid "Application period ended on"
-msgstr ""
+msgstr "สิ้นสุดระยะเวลารับสมัครเมื่อวันที่"
 
 #: frontend/templates/scholarships/detail.html:135
 msgid "This scholarship has expired"
-msgstr ""
+msgstr "ทุนการศึกษานี้หมดเขตรับสมัครแล้ว"
 
 #: frontend/templates/scholarships/detail.html:140
 msgid "This scholarship is not accepting applications at this time."
-msgstr ""
+msgstr "ทุนการศึกษานี้ยังไม่เปิดรับสมัครในขณะนี้"
 
 #: frontend/templates/scholarships/detail.html:152
 msgid "You have applied for this scholarship"
-msgstr ""
+msgstr "คุณได้ยื่นใบสมัครทุนนี้เรียบร้อยแล้ว"
 
 #: frontend/templates/scholarships/detail.html:153
 msgid "Your application is currently being processed."
-msgstr ""
+msgstr "ใบสมัครของคุณอยู่ระหว่างการตรวจสอบและดำเนินการ"
 
 #: frontend/templates/scholarships/detail.html:157
 msgid "View application status in Profile"
-msgstr ""
+msgstr "ตรวจสอบสถานะใบสมัครได้ที่หน้าข้อมูลส่วนตัว"
 
 #: frontend/templates/scholarships/detail.html:161
 msgid "Apply for Scholarship"
-msgstr ""
+msgstr "ยื่นใบสมัครรับทุนการศึกษา"
 
 #: frontend/templates/scholarships/detail.html:166
 msgid "Sign In to Apply"
-msgstr ""
+msgstr "เข้าสู่ระบบเพื่อสมัครทุน"
 
 #: frontend/templates/scholarships/detail.html:168
 msgid "You must sign in before submitting an application."
-msgstr ""
+msgstr "กรุณาเข้าสู่ระบบด้วย PSU Passport ก่อนทำการสมัครทุน"
 
 #: frontend/templates/scholarships/detail.html:183
 msgid "Remove from Favorites"
-msgstr ""
+msgstr "ลบออกจากรายการโปรด"
 
 #: frontend/templates/scholarships/detail.html:183
 msgid "Save to Favorites"
-msgstr ""
+msgstr "บันทึกไว้ในรายการโปรด"
 
 #: frontend/templates/scholarships/detail.html:189
 msgid "Back"
-msgstr ""
+msgstr "ย้อนกลับ"
 
 #: frontend/templates/scholarships/detail.html:196
 msgid "Admin Controls"
-msgstr ""
+msgstr "ส่วนควบคุมสำหรับผู้ดูแลระบบ"
 
 #: frontend/templates/scholarships/detail.html:199
 msgid "Edit Scholarship"
-msgstr ""
+msgstr "แก้ไขข้อมูลทุน"
 
 #: frontend/templates/scholarships/detail.html:202
 msgid ""
-" Are you sure you want to delete this scholarship? Related applications will "
-"also be deleted."
+" Are you sure you want to delete this scholarship? Related applications will"
+" also be deleted."
 msgstr ""
+"คุณแน่ใจหรือไม่ว่าต้องการลบทุนการศึกษานี้? "
+"ข้อมูลใบสมัครที่เกี่ยวข้องทั้งหมดจะถูกลบไปด้วย"
 
 #: frontend/templates/scholarships/detail.html:205
 msgid "Delete Scholarship"
-msgstr ""
+msgstr "ลบทุนการศึกษา"
 
 #: frontend/templates/scholarships/detail.html:214
 msgid "Application assistance: Contact 076-276-000 ext. 6050"
-msgstr ""
+msgstr "ต้องการความช่วยเหลือเรื่องการสมัครทุน ติดต่อ: 076-276-000 ต่อ 6050"
 
 #: frontend/templates/scholarships/favorites.html:11
 msgid "My Saved Scholarships"
-msgstr ""
+msgstr "ทุนการศึกษาที่บันทึกไว้"
 
 #: frontend/templates/scholarships/favorites.html:12
 msgid ""
 "Manage scholarships you are interested in so you don't miss important "
 "opportunities."
-msgstr ""
+msgstr "จัดการและติดตามทุนที่คุณสนใจเพื่อไม่ให้พลาดโอกาสสำคัญ"
 
 #: frontend/templates/scholarships/favorites.html:29
 msgid "No saved scholarships yet"
-msgstr ""
+msgstr "ยังไม่มีทุนการศึกษาที่บันทึกไว้"
 
 #: frontend/templates/scholarships/favorites.html:30
 msgid "Click the favorite icon on any scholarship card to save it for later."
-msgstr ""
+msgstr "คลิกไอคอนรูปหัวใจบนการ์ดทุนเพื่อบันทึกไว้ในรายการโปรด"
 
 #: frontend/templates/scholarships/favorites.html:31
 msgid "Explore Scholarships"
-msgstr ""
+msgstr "ค้นหาทุนการศึกษา"
 
 #: frontend/templates/scholarships/list.html:22
-msgid "Browse available scholarships, search, and verify eligibility criteria."
-msgstr ""
+msgid ""
+"Browse available scholarships, search, and verify eligibility criteria."
+msgstr "เลือกดูทุนการศึกษาที่เปิดรับ ค้นหา และตรวจสอบเกณฑ์คุณสมบัติ"
 
 #: frontend/templates/scholarships/list.html:52
 msgid "Search scholarships by title, keyword..."
-msgstr ""
+msgstr "ค้นหาทุนการศึกษาจากชื่อทุน, คำสำคัญ..."
 
-#: frontend/templates/scholarships/list.html:59
-msgid "Search"
-msgstr ""
+#: frontend/templates/scholarships/list.html:55
+msgid "Clear"
+msgstr "ล้างค่า"
 
 #: frontend/templates/scholarships/list.html:66
 msgid "Search results for"
-msgstr ""
+msgstr "ผลการค้นหาสำหรับ"
 
 #: frontend/templates/scholarships/list.html:66
 msgid "found"
-msgstr ""
+msgstr "พบ"
 
 #: frontend/templates/scholarships/list.html:66
 msgid "scholarship(s)"
-msgstr ""
+msgstr "ทุนการศึกษา"
 
 #: frontend/templates/scholarships/list.html:68
 msgid "Total available scholarships"
-msgstr ""
+msgstr "จำนวนทุนการศึกษาที่เปิดรับทั้งหมด"
 
 #: frontend/templates/scholarships/list.html:78
 msgid "No scholarships found matching"
-msgstr ""
+msgstr "ไม่พบทุนการศึกษาที่ตรงกับคำค้นหา"
 
 #: frontend/templates/scholarships/list.html:79
 msgid "Try searching with different keywords or browse all categories."
-msgstr ""
+msgstr "ลองค้นหาด้วยคำสำคัญอื่น หรือเลือกดูทุนการศึกษาตามหมวดหมู่"
 
 #: frontend/templates/scholarships/list.html:80
 msgid "Clear Search"
-msgstr ""
+msgstr "ล้างคำค้นหา"
 
 #: frontend/templates/scholarships/list.html:88
 msgid "No scholarships available in this category"
-msgstr ""
+msgstr "ยังไม่มีทุนการศึกษาเปิดรับสมัครในหมวดหมู่นี้"
 
 #: frontend/templates/scholarships/list.html:89
 msgid "New scholarships are being prepared. You can explore other categories."
 msgstr ""
+"ทางมหาวิทยาลัยกำลังเตรียมเปิดรับทุนโครงการใหม่ "
+"คุณสามารถเลือกดูทุนในหมวดหมู่อื่นได้"
 
 #: frontend/templates/scholarships/list.html:90
 msgid "Back to Categories"
-msgstr ""
+msgstr "กลับสู่หน้าหมวดหมู่"
 
-msgid "Scholarships Matching Current Filter"
-msgstr "รายชื่อทุนการศึกษาตามเงื่อนไขที่เลือก"
+#~ msgid "Dashboard Menu"
+#~ msgstr "เมนูจัดการระบบ"
 
-msgid "All Scholarships in Period"
-msgstr "รายชื่อทุนการศึกษาทั้งหมดในรอบนี้"
+#~ msgid "Back to Main Site"
+#~ msgstr "กลับสู่หน้าหลัก"
 
-msgid "Detailed list of all scholarships included in the statistics above"
-msgstr "รายละเอียดทุนการศึกษาทั้งหมดที่ถูกคำนวณในสถิติด้านบน"
+#~ msgid "Reset Filter"
+#~ msgstr "รีเซ็ตตัวกรอง"
 
-msgid "Scholarship Title"
-msgstr "ชื่อทุนการศึกษา"
+#~ msgid "Clear Filter & View All"
+#~ msgstr "ล้างตัวกรองและดูทั้งหมด"
 
-msgid "Amount / Semester"
-msgstr "มูลค่าทุน / เทอม"
-
-msgid "Quota & Applicants"
-msgstr "โควตา & ผู้สมัคร"
-
-msgid "Application Period"
-msgstr "ช่วงเวลาเปิดรับสมัคร"
-
-msgid "Reset Filter"
-msgstr "รีเซ็ตตัวกรอง"
-
-msgid "Clear Filter & View All"
-msgstr "ล้างตัวกรองและดูทั้งหมด"
-
-msgid "Filtered Results"
-msgstr "ผลการกรอง"
-
-msgid "scholarship(s) found"
-msgstr "ทุนที่พบ"
-
-msgid "Upcoming Deadlines"
-msgstr "ทุนที่ใกล้หมดเขตที่สุด"
-
-msgid "Manage in Admin Console"
-msgstr "จัดการในคอนโซลแอดมิน"
-
-msgid "No open scholarships nearing deadline."
-msgstr "ไม่มีทุนที่ใกล้หมดเขตในขณะนี้"
-
-msgid "applicant(s)"
-msgstr "คน"
+#~ msgid "Filtered Results"
+#~ msgstr "ผลการกรอง"

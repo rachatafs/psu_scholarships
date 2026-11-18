@@ -38,11 +38,11 @@
     </div>
 
     <h3 class="card-scholarship-title">
-        <a href="{% url 'scholarship_detail' s.pk %}">{{ s.title }}</a>
+        <a href="{% url 'scholarship_detail' s.pk %}">{{ s.localized_title }}</a>
     </h3>
 
     <p class="card-scholarship-desc">
-        {{ s.description|truncatewords:18 }}
+        {{ s.localized_description|truncatewords:18 }}
     </p>
 
     <div class="card-meta-list">

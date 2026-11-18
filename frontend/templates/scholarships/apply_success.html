@@ -17,7 +17,7 @@
             </div>
 
             <h1 class="success-title">{% trans "Application Submitted Successfully" %}</h1>
-            <p class="success-subtitle">{% trans "Your application for" %} {{ scholarship.title }} {% trans "has been received and is being processed." %}</p>
+            <p class="success-subtitle">{% trans "Your application for" %} {{ scholarship.localized_title }} {% trans "has been received and is being processed." %}</p>
 
             {% if application %}
             <div class="success-details-box">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="detail-line-item">
                     <span class="label">{% trans "Scholarship" %}:</span>
-                    <span class="val">{{ scholarship.title }} ({{ scholarship.get_category_display }})</span>
+                    <span class="val">{{ scholarship.localized_title }} ({{ scholarship.get_category_display }})</span>
                 </div>
                 <div class="detail-line-item">
                     <span class="label">{% trans "Submitted Date" %}:</span>

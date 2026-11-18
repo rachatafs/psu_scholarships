@@ -10,7 +10,7 @@
     <header class="guide-hero-banner">
         <div class="container-default">
             <div class="guide-breadcrumb">
-                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'home' %}">{% trans "Home" %}</a>
                 <span class="guide-breadcrumb-sep">/</span>
                 <span class="guide-breadcrumb-current">{% trans "Student Guide" %}</span>
             </div>
@@ -202,11 +202,11 @@
                 <div class="guide-contact-grid">
                     <div class="guide-contact-item">
                         <span class="material-symbols-outlined guide-contact-icon">location_on</span>
-                        <span>Room 7102, Building 7, PSU Phuket</span>
+                        <span>{% trans "Room 7102, Building 7, PSU Phuket" %}</span>
                     </div>
                     <div class="guide-contact-item">
                         <span class="material-symbols-outlined guide-contact-icon">schedule</span>
-                        <span>Monday – Friday, 08:30 – 16:30</span>
+                        <span>{% trans "Monday – Friday, 08:30 – 16:30" %}</span>
                     </div>
                     <div class="guide-contact-item">
                         <span class="material-symbols-outlined guide-contact-icon">mail</span>

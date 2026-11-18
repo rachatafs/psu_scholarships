@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-09-25 13:06+0700\n"
+"POT-Creation-Date: 2026-11-18 13:28+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,47 +17,1248 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: backend/myproject/settings.py:87
-msgid "Thai"
-msgstr "Thai"
-
-#: backend/myproject/settings.py:88
+#: backend/myproject/settings.py:87 backend/scholarships/models.py:17
 msgid "English"
 msgstr "English"
 
-#: backend/scholarships/views/scholarship_views.py:18
-msgid "ทุนการศึกษาทั่วไป"
-msgstr "General Scholarships"
+#: backend/myproject/settings.py:88 backend/scholarships/models.py:16
+msgid "Thai"
+msgstr "Thai"
 
-#: backend/scholarships/views/scholarship_views.py:18
-msgid "ทุนสนับสนุนการศึกษาสำหรับนักศึกษาทั่วไป ทุนขาดแคลนทุนทรัพย์"
-msgstr "Financial support for general students and those in need."
+#: backend/scholarships/admin.py:15
+msgid "Personal info"
+msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:19
-msgid "ทุนศึกษาแลกเปลี่ยน"
-msgstr "Exchange Scholarships"
+#: backend/scholarships/admin.py:16
+msgid "Permissions"
+msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:19
-msgid "ทุนสนับสนุนการแลกเปลี่ยนต่างประเทศและโครงการระดับนานาชาติ"
-msgstr "Support for international exchange and global programs."
+#: backend/scholarships/admin.py:19
+msgid "Important dates"
+msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:20
+#: backend/scholarships/admin.py:29
+msgid "English Translation"
+msgstr ""
+
+#: backend/scholarships/admin.py:34
+msgid "Has English Translation"
+msgstr ""
+
+#: backend/scholarships/admin.py:35
+msgid "Missing English Translation"
+msgstr ""
+
+#: backend/scholarships/admin.py:52
+msgid "Primary Info (Thai / Default)"
+msgstr ""
+
+#: backend/scholarships/admin.py:55
+msgid "English Translation (Optional / Recommended)"
+msgstr ""
+
+#: backend/scholarships/admin.py:57
+msgid ""
+"Enter the English version of title, description, and requirements for "
+"international students."
+msgstr ""
+
+#: backend/scholarships/admin.py:59
+msgid "Schedule & Award Details"
+msgstr ""
+
+#: backend/scholarships/admin.py:64
+msgid "EN Translation"
+msgstr ""
+
+#: backend/scholarships/models.py:8
+msgid "College of Computing"
+msgstr ""
+
+#: backend/scholarships/models.py:9
+msgid "Faculty of Engineering"
+msgstr ""
+
+#: backend/scholarships/models.py:10
+msgid "Faculty of Science"
+msgstr ""
+
+#: backend/scholarships/models.py:11
+msgid "Faculty of Management Sciences"
+msgstr ""
+
+#: backend/scholarships/models.py:12 backend/scholarships/models.py:124
+#: frontend/templates/accounts/admin_dashboard.html:576
+msgid "Other"
+msgstr ""
+
+#: backend/scholarships/models.py:37
+#: backend/scholarships/views/scholarship_views.py:15
+#: backend/scholarships/views/utils.py:6
+#: frontend/templates/guide/student_guide.html:56
+#: frontend/templates/partials/navbar.html:31
+#: frontend/templates/scholarships/category.html:42
+msgid "General Scholarships"
+msgstr ""
+
+#: backend/scholarships/models.py:38
+#: backend/scholarships/views/scholarship_views.py:22
+#: backend/scholarships/views/utils.py:7
+#: frontend/templates/guide/student_guide.html:57
+#: frontend/templates/partials/navbar.html:32
+#: frontend/templates/scholarships/category.html:55
+msgid "Exchange Scholarships"
+msgstr ""
+
+#: backend/scholarships/models.py:39
+#: backend/scholarships/views/scholarship_views.py:29
+#: backend/scholarships/views/utils.py:8
+#: frontend/templates/guide/student_guide.html:58
 #: frontend/templates/partials/navbar.html:33
-msgid "ทุนยกเว้นค่าธรรมเนียม"
-msgstr "Fee Waiver Scholarships"
+#: frontend/templates/scholarships/category.html:68
+msgid "Fee Waiver Scholarships"
+msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:20
-msgid "ทุนยกเว้นค่าธรรมเนียมการศึกษาตามเกณฑ์ผลการเรียนและกิจกรรม"
-msgstr "Tuition fee waivers based on academic and extracurricular performance."
-
-#: backend/scholarships/views/scholarship_views.py:21
+#: backend/scholarships/models.py:40
+#: backend/scholarships/views/scholarship_views.py:36
+#: backend/scholarships/views/utils.py:9
+#: frontend/templates/guide/student_guide.html:59
 #: frontend/templates/partials/navbar.html:34
-msgid "ทุนอาหารกลางวัน"
-msgstr "Lunch Scholarships"
+#: frontend/templates/scholarships/category.html:81
+msgid "Lunch Scholarships"
+msgstr ""
 
-#: backend/scholarships/views/scholarship_views.py:21
-msgid "ทุนสวัสดิการอาหารกลางวันเพื่อสุขภาวะและการใช้ชีวิตในรั้วมหาวิทยาลัย"
-msgstr "Lunch welfare for student well-being on campus."
+#: backend/scholarships/models.py:43
+#: frontend/templates/scholarship_dashboard.html:2123
+msgid "Active"
+msgstr ""
+
+#: backend/scholarships/models.py:44
+#: frontend/templates/accounts/admin_dashboard.html:808
+#: frontend/templates/accounts/admin_dashboard.html:943
+#: frontend/templates/components/scholarship_card.html:10
+#: frontend/templates/scholarship_dashboard.html:2124
+#: frontend/templates/scholarships/detail.html:24
+#: frontend/templates/scholarships/detail.html:131
+#: frontend/templates/scholarships/detail.html:139
+#: frontend/templates/scholarships/detail.html:143
+msgid "Closed"
+msgstr ""
+
+#: backend/scholarships/models.py:45
+#: frontend/templates/scholarship_dashboard.html:2125
+msgid "Draft"
+msgstr ""
+
+#: backend/scholarships/models.py:98
+#: frontend/templates/accounts/admin_dashboard.html:503
+#: frontend/templates/accounts/profile.html:203
+#: frontend/templates/components/app_status_indicator.html:5
+#: frontend/templates/components/status_badge.html:3
+#: frontend/templates/guide/admin_guide.html:93
+msgid "Pending"
+msgstr ""
+
+#: backend/scholarships/models.py:99
+#: frontend/templates/accounts/admin_dashboard.html:504
+#: frontend/templates/accounts/profile.html:197
+#: frontend/templates/components/app_status_indicator.html:8
+#: frontend/templates/components/status_badge.html:5
+#: frontend/templates/guide/admin_guide.html:99
+msgid "In Progress"
+msgstr ""
+
+#: backend/scholarships/models.py:100
+msgid "Interview"
+msgstr ""
+
+#: backend/scholarships/models.py:101
+#: frontend/templates/accounts/admin_dashboard.html:505
+#: frontend/templates/components/app_status_indicator.html:11
+#: frontend/templates/components/status_badge.html:7
+#: frontend/templates/guide/admin_guide.html:105
+msgid "Approve"
+msgstr ""
+
+#: backend/scholarships/models.py:102
+#: frontend/templates/accounts/admin_dashboard.html:506
+#: frontend/templates/components/app_status_indicator.html:20
+#: frontend/templates/components/status_badge.html:13
+#: frontend/templates/guide/admin_guide.html:111
+msgid "Reject"
+msgstr ""
+
+#: backend/scholarships/models.py:103
+#: frontend/templates/accounts/admin_dashboard.html:507
+#: frontend/templates/accounts/profile.html:113
+#: frontend/templates/components/app_status_indicator.html:14
+#: frontend/templates/components/status_badge.html:9
+#: frontend/templates/guide/admin_guide.html:117
+msgid "Complete"
+msgstr ""
+
+#: backend/scholarships/models.py:104
+#: frontend/templates/accounts/admin_dashboard.html:508
+#: frontend/templates/accounts/admin_dashboard.html:1137
+#: frontend/templates/components/app_status_indicator.html:17
+#: frontend/templates/components/status_badge.html:11
+#: frontend/templates/guide/admin_guide.html:123
+#: frontend/templates/scholarships/apply.html:162
+msgid "Cancel"
+msgstr ""
+
+#: backend/scholarships/models.py:122
+msgid "Academic Transcript"
+msgstr ""
+
+#: backend/scholarships/models.py:123
+msgid "Recommendation Letter"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:151
+msgid "Notification email sent to student successfully."
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:151
+#, python-format
+msgid "Status updated to %(status)s and notification email sent."
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:154
+#, python-format
+msgid "Saved successfully (Email error: %(error)s)"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:156
+msgid "Updated successfully."
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:271
+#: frontend/templates/scholarship_dashboard.html:1727
+msgid "January"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:271
+#: frontend/templates/scholarship_dashboard.html:1728
+msgid "February"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:271
+#: frontend/templates/scholarship_dashboard.html:1729
+msgid "March"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:271
+#: frontend/templates/scholarship_dashboard.html:1730
+msgid "April"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:272
+#: frontend/templates/scholarship_dashboard.html:1731
+msgid "May"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:272
+#: frontend/templates/scholarship_dashboard.html:1732
+msgid "June"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:272
+#: frontend/templates/scholarship_dashboard.html:1733
+msgid "July"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:272
+#: frontend/templates/scholarship_dashboard.html:1734
+msgid "August"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:273
+#: frontend/templates/scholarship_dashboard.html:1735
+msgid "September"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:273
+#: frontend/templates/scholarship_dashboard.html:1736
+msgid "October"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:273
+#: frontend/templates/scholarship_dashboard.html:1737
+msgid "November"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:273
+#: frontend/templates/scholarship_dashboard.html:1738
+msgid "December"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:278
+#: frontend/templates/scholarship_dashboard.html:1711
+msgid "Semester 1 (Aug-Dec)"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:279
+#: frontend/templates/scholarship_dashboard.html:1712
+msgid "Semester 2 (Jan-May)"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:280
+#: frontend/templates/scholarship_dashboard.html:1713
+msgid "Summer (Jun-Jul)"
+msgstr ""
+
+#: backend/scholarships/views/admin_views.py:418
+#, python-format
+msgid "Scholarship \"%(title)s\" has been deleted."
+msgstr ""
+
+#: backend/scholarships/views/auth_views.py:25
+#: frontend/templates/accounts/login.html:19
+msgid "Invalid username or password. Please check and try again."
+msgstr ""
+
+#: backend/scholarships/views/auth_views.py:90
+msgid "Profile updated successfully!"
+msgstr ""
+
+#: backend/scholarships/views/guide_views.py:11
+msgid "Student Guide & Manual"
+msgstr ""
+
+#: backend/scholarships/views/guide_views.py:24
+msgid "Access denied. Administrator guide is restricted to staff members."
+msgstr ""
+
+#: backend/scholarships/views/guide_views.py:28
+msgid "Administrator System Guide"
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:17
+msgid ""
+"Financial support for general students, academic excellence, and need-based "
+"aid."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:24
+msgid ""
+"Support for international student exchange programs and overseas internships."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:31
+msgid ""
+"Tuition fee discounts or exemptions for students with exceptional "
+"achievements."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:38
+msgid ""
+"Meal welfare subsidies to support campus well-being and alleviate living "
+"expenses."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:81
+#: frontend/templates/partials/navbar.html:24
+#: frontend/templates/scholarship_dashboard.html:2068
+msgid "Scholarships"
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:114
+msgid "Sorry, this scholarship is closed or has expired."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:122
+msgid "Sorry, this scholarship has reached maximum applicant capacity."
+msgstr ""
+
+#: backend/scholarships/views/scholarship_views.py:133
+msgid "You have already applied for this scholarship."
+msgstr ""
+
+#: backend/scholarships/views/utils.py:5
+#: frontend/templates/scholarships/category.html:29
+msgid "All Scholarships"
+msgstr ""
+
+#: frontend/templates/about/contact.html:5
+msgid "Contact Us | Student Development PSU Phuket"
+msgstr ""
+
+#: frontend/templates/about/contact.html:13
+#: frontend/templates/guide/student_guide.html:13
+msgid "Home"
+msgstr ""
+
+#: frontend/templates/about/contact.html:15
+#: frontend/templates/accounts/profile.html:123
+#: frontend/templates/partials/navbar.html:38
+msgid "Contact Us"
+msgstr ""
+
+#: frontend/templates/about/contact.html:19
+msgid "Contact PSU Phuket Scholarship Office"
+msgstr ""
+
+#: frontend/templates/about/contact.html:21
+msgid ""
+"Student Development and Alumni Relations, Prince of Songkla University, "
+"Phuket Campus"
+msgstr ""
+
+#: frontend/templates/about/contact.html:22
+msgid ""
+"Ready to provide consultation, scholarship information, and application "
+"assistance."
+msgstr ""
+
+#: frontend/templates/about/contact.html:39
+msgid "Phone Contact"
+msgstr ""
+
+#: frontend/templates/about/contact.html:40
+msgid "Inquire about scholarship details and application procedures"
+msgstr ""
+
+#: frontend/templates/about/contact.html:42
+msgid "Direct Phone Number:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:46
+msgid "Campus Central Number:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:47
+msgid "ext. 6047, 6050"
+msgstr ""
+
+#: frontend/templates/about/contact.html:59
+msgid "Email Contact"
+msgstr ""
+
+#: frontend/templates/about/contact.html:60
+msgid "Send inquiries, documents, or questions via official email"
+msgstr ""
+
+#: frontend/templates/about/contact.html:62
+msgid "Student Development Email:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:68
+msgid "Response Time:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:69
+msgid "Officers will respond within 1-2 business days"
+msgstr ""
+
+#: frontend/templates/about/contact.html:81
+msgid "Office Hours"
+msgstr ""
+
+#: frontend/templates/about/contact.html:82
+msgid "Opening hours for in-person visits"
+msgstr ""
+
+#: frontend/templates/about/contact.html:84
+msgid "Business Days:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:85
+msgid "Monday – Friday"
+msgstr ""
+
+#: frontend/templates/about/contact.html:88
+msgid "Service Hours:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:92
+msgid "Holidays:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:93
+msgid "Closed on weekends and public holidays"
+msgstr ""
+
+#: frontend/templates/about/contact.html:109
+msgid "In-Person Office Location"
+msgstr ""
+
+#: frontend/templates/about/contact.html:110
+msgid "Student Development and Alumni Relations, Phuket Campus"
+msgstr ""
+
+#: frontend/templates/about/contact.html:116
+msgid "Room / Building:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:117
+msgid "Room 7102, Building 7, 1st Floor (President's Office Building)"
+msgstr ""
+
+#: frontend/templates/about/contact.html:120
+msgid "Postal Address:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:122
+#: frontend/templates/partials/navbar.html:8
+#: frontend/templates/partials/navbar.html:126
+msgid "Prince of Songkla University, Phuket Campus"
+msgstr ""
+
+#: frontend/templates/about/contact.html:123
+msgid ""
+"80 Moo 1, Vichitsongkram Road, Kathu Sub-district, Kathu District, Phuket "
+"83120"
+msgstr ""
+
+#: frontend/templates/about/contact.html:127
+msgid "Landmark:"
+msgstr ""
+
+#: frontend/templates/about/contact.html:129
+msgid ""
+"Enter via the main campus entrance, proceed directly to Building 7 (in front "
+"of the Prince Father Royal Monument)"
+msgstr ""
+
+#: frontend/templates/about/contact.html:135
+msgid ""
+"Students who need to submit original physical documents or seek scholarship "
+"counseling can visit Room 7102 during business hours."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:5
+msgid "Admin Management"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:365
+msgid "Admin Management Dashboard"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:366
+msgid "Welcome Administrator"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:373
+msgid "Click to view all scholarships"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:375
+#: frontend/templates/scholarship_dashboard.html:1870
+msgid "Total Scholarships"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:379
+msgid "Click to view all applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:381
+#: frontend/templates/scholarship_dashboard.html:1899
+msgid "Total Applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:385
+msgid "Click to view pending applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:387
+msgid "Pending Review"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:391
+msgid "Click to view approved applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:393
+#: frontend/templates/accounts/profile.html:231
+msgid "Approved"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:408
+msgid "Manage Student Applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:417
+msgid "Manage Scholarships"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:427
+msgid "Scholarship History"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:436
+msgid "Student Applications & Screening"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:437
+msgid ""
+"Search, verify GPAX eligibility, and update application review statuses."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:446
+#: frontend/templates/accounts/admin_dashboard.html:715
+msgid "Create New Scholarship"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:458
+msgid "Note"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:458
+msgid ""
+"This view displays active student applications. To manage scholarship "
+"listings without applications, use the Manage Scholarships tab."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:465
+#: frontend/templates/accounts/admin_dashboard.html:723
+#: frontend/templates/scholarships/list.html:26
+msgid "All"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:469
+#: frontend/templates/accounts/admin_dashboard.html:727
+#: frontend/templates/components/category_badge.html:3
+#: frontend/templates/guide/student_guide.html:56
+#: frontend/templates/scholarship_dashboard.html:1974
+#: frontend/templates/scholarships/category.html:40
+#: frontend/templates/scholarships/list.html:28
+msgid "General"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:473
+#: frontend/templates/accounts/admin_dashboard.html:731
+#: frontend/templates/components/category_badge.html:4
+#: frontend/templates/guide/student_guide.html:57
+#: frontend/templates/scholarship_dashboard.html:1977
+#: frontend/templates/scholarships/category.html:53
+#: frontend/templates/scholarships/list.html:30
+msgid "Exchange"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:477
+#: frontend/templates/accounts/admin_dashboard.html:735
+#: frontend/templates/components/category_badge.html:5
+#: frontend/templates/guide/student_guide.html:58
+#: frontend/templates/scholarship_dashboard.html:1980
+#: frontend/templates/scholarships/list.html:32
+msgid "Fee Waiver"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:481
+#: frontend/templates/accounts/admin_dashboard.html:739
+#: frontend/templates/components/category_badge.html:6
+#: frontend/templates/guide/student_guide.html:59
+#: frontend/templates/scholarship_dashboard.html:1983
+#: frontend/templates/scholarships/list.html:34
+msgid "Lunch"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:496
+msgid "Search applicant name, student ID, scholarship title..."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:502
+msgid "All Statuses"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:512
+#: frontend/templates/accounts/admin_dashboard.html:679
+#: frontend/templates/accounts/admin_dashboard.html:756
+#: frontend/templates/accounts/admin_dashboard.html:859
+#: frontend/templates/accounts/admin_dashboard.html:982
+#: frontend/templates/components/pagination.html:154
+msgid "Showing"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:512
+#: frontend/templates/accounts/admin_dashboard.html:679
+#: frontend/templates/accounts/admin_dashboard.html:756
+#: frontend/templates/accounts/admin_dashboard.html:859
+#: frontend/templates/accounts/admin_dashboard.html:982
+#: frontend/templates/components/pagination.html:154
+msgid "of"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:512
+#: frontend/templates/components/pagination.html:154
+msgid "items"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:522
+#: frontend/templates/accounts/admin_dashboard.html:541
+#: frontend/templates/scholarships/apply_success.html:26
+msgid "Applicant"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:523
+#: frontend/templates/accounts/admin_dashboard.html:548
+#: frontend/templates/accounts/profile.html:46
+#: frontend/templates/accounts/profile.html:58
+#: frontend/templates/accounts/profile.html:59
+#: frontend/templates/scholarship_dashboard.html:2208
+#: frontend/templates/scholarship_dashboard.html:2222
+#: frontend/templates/scholarships/apply.html:67
+#: frontend/templates/scholarships/apply_success.html:30
+msgid "Student ID"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:524
+#: frontend/templates/accounts/admin_dashboard.html:552
+#: frontend/templates/accounts/admin_dashboard.html:1048
+#: frontend/templates/scholarship_dashboard.html:2006
+#: frontend/templates/scholarship_dashboard.html:2016
+#: frontend/templates/scholarship_dashboard.html:2101
+#: frontend/templates/scholarships/apply_success.html:34
+msgid "Scholarship"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:525
+#: frontend/templates/accounts/admin_dashboard.html:562
+#: frontend/templates/scholarship_dashboard.html:2213
+#: frontend/templates/scholarship_dashboard.html:2249
+#: frontend/templates/scholarships/apply_success.html:38
+msgid "Submitted Date"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:526
+msgid "Attached Documents"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:527
+msgid "Current Status"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:528
+#: frontend/templates/accounts/admin_dashboard.html:771
+#: frontend/templates/accounts/admin_dashboard.html:911
+msgid "Actions"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:554
+msgid "View scholarship details"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:563
+msgid "Documents"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:574
+msgid "Transcript"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:575
+msgid "Recommendation"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:581
+msgid "No documents"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:584
+#: frontend/templates/accounts/admin_dashboard.html:770
+#: frontend/templates/accounts/admin_dashboard.html:801
+#: frontend/templates/accounts/admin_dashboard.html:910
+#: frontend/templates/accounts/admin_dashboard.html:941
+#: frontend/templates/guide/admin_guide.html:85
+#: frontend/templates/scholarship_dashboard.html:2091
+#: frontend/templates/scholarship_dashboard.html:2122
+#: frontend/templates/scholarship_dashboard.html:2214
+#: frontend/templates/scholarship_dashboard.html:2252
+msgid "Status"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:594
+msgid "Change to In Progress"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:600
+#: frontend/templates/accounts/admin_dashboard.html:619
+msgid "Approve application"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:606
+#: frontend/templates/accounts/admin_dashboard.html:625
+msgid "Reject application"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:612
+#: frontend/templates/accounts/admin_dashboard.html:631
+msgid "Cancel application"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:638
+msgid "Complete scholarship process"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:644
+#: frontend/templates/accounts/admin_dashboard.html:651
+msgid "Reset status to Pending"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:644
+#: frontend/templates/accounts/admin_dashboard.html:651
+#: frontend/templates/guide/admin_guide.html:114
+#: frontend/templates/guide/admin_guide.html:126
+msgid "Reset to Pending"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:655
+msgid "Send notice / Request additional documents"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:657
+msgid "Additional Docs"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:665
+#: frontend/templates/accounts/admin_dashboard.html:671
+msgid "No applications match the search criteria"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:679
+msgid "applications"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:684
+#: frontend/templates/accounts/admin_dashboard.html:864
+#: frontend/templates/accounts/admin_dashboard.html:987
+#: frontend/templates/components/pagination.html:158
+#: frontend/templates/components/pagination.html:160
+#: frontend/templates/components/pagination.html:165
+msgid "Previous"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:692
+#: frontend/templates/accounts/admin_dashboard.html:693
+#: frontend/templates/accounts/admin_dashboard.html:870
+#: frontend/templates/accounts/admin_dashboard.html:871
+#: frontend/templates/accounts/admin_dashboard.html:991
+#: frontend/templates/accounts/admin_dashboard.html:992
+#: frontend/templates/components/pagination.html:180
+#: frontend/templates/components/pagination.html:181
+#: frontend/templates/components/pagination.html:186
+msgid "Next"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:704
+msgid "All Scholarships in System"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:706
+msgid ""
+"Manage listings, view applicant counts, quotas, and scholarship statuses."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:752
+msgid "Search scholarship title, category, GPAX..."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:756
+#: frontend/templates/accounts/admin_dashboard.html:859
+#: frontend/templates/accounts/admin_dashboard.html:982
+#: frontend/templates/scholarship_dashboard.html:1872
+#: frontend/templates/scholarship_dashboard.html:1888
+msgid "scholarships"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:765
+#: frontend/templates/accounts/admin_dashboard.html:778
+#: frontend/templates/accounts/admin_dashboard.html:905
+#: frontend/templates/accounts/admin_dashboard.html:918
+msgid "Scholarship Name"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:766
+#: frontend/templates/accounts/admin_dashboard.html:784
+#: frontend/templates/accounts/admin_dashboard.html:906
+#: frontend/templates/accounts/admin_dashboard.html:924
+#: frontend/templates/scholarship_dashboard.html:2007
+#: frontend/templates/scholarship_dashboard.html:2021
+#: frontend/templates/scholarship_dashboard.html:2088
+#: frontend/templates/scholarship_dashboard.html:2107
+msgid "Category"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:767
+#: frontend/templates/accounts/admin_dashboard.html:787
+#: frontend/templates/accounts/admin_dashboard.html:907
+#: frontend/templates/accounts/admin_dashboard.html:927
+#: frontend/templates/scholarship_dashboard.html:2180
+msgid "Value"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:768
+#: frontend/templates/accounts/admin_dashboard.html:789
+#: frontend/templates/accounts/admin_dashboard.html:908
+#: frontend/templates/accounts/admin_dashboard.html:929
+msgid "Applicants / Quota"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:769
+#: frontend/templates/accounts/admin_dashboard.html:796
+#: frontend/templates/accounts/admin_dashboard.html:909
+#: frontend/templates/accounts/admin_dashboard.html:936
+#: frontend/templates/components/scholarship_card.html:66
+#: frontend/templates/scholarship_dashboard.html:2009
+#: frontend/templates/scholarship_dashboard.html:2028
+msgid "Deadline"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:792
+#: frontend/templates/accounts/admin_dashboard.html:932
+#: frontend/templates/components/scholarship_card.html:62
+#: frontend/templates/scholarships/detail.html:107
+msgid "Grants"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:804
+#: frontend/templates/components/scholarship_card.html:22
+#: frontend/templates/index.html:53
+#: frontend/templates/scholarships/detail.html:32
+#: frontend/templates/scholarships/list.html:71
+msgid "Open"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:816
+#: frontend/templates/accounts/admin_dashboard.html:817
+#: frontend/templates/accounts/admin_dashboard.html:821
+#: frontend/templates/accounts/admin_dashboard.html:950
+#: frontend/templates/accounts/admin_dashboard.html:951
+#: frontend/templates/accounts/admin_dashboard.html:955
+msgid "View Applicants"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:825
+#: frontend/templates/accounts/admin_dashboard.html:826
+#: frontend/templates/accounts/admin_dashboard.html:959
+#: frontend/templates/accounts/admin_dashboard.html:960
+msgid "View Page"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:829
+#: frontend/templates/accounts/admin_dashboard.html:830
+msgid "Edit"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:833
+msgid "Are you sure you want to delete this scholarship?"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:835
+#: frontend/templates/accounts/admin_dashboard.html:836
+msgid "Delete"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:845
+msgid "No scholarships in the system"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:851
+msgid "No scholarships match search criteria"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:882
+msgid "Past Scholarship History"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:883
+msgid "List of expired or closed scholarships."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:895
+msgid "Search past scholarships..."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:968
+msgid "No past scholarship history"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:974
+msgid "No past scholarships match search criteria"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1019
+msgid "Update Status & Customize Email"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1020
+msgid "Review or compose additional notes to be sent to the student."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1035
+#: frontend/templates/scholarship_dashboard.html:2209
+#: frontend/templates/scholarship_dashboard.html:2224
+msgid "Student Name"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1040
+msgid "Notification Email"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1052
+msgid "Change status to"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1067
+msgid "Send notification email to student immediately"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1077
+msgid "Select Message Template:"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1081
+msgid "Select Message Template"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1082
+msgid "Request Additional Docs"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1083
+msgid "Interview Invitation"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1084
+msgid "Reschedule Interview"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1085
+msgid "Scholarship Approved"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1086
+msgid "Scholarship Rejected"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1087
+msgid "General Notification"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1095
+msgid "Email Subject:"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1106
+msgid "Email Message (Customize as needed):"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1110
+msgid "Reset to Default Template"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1116
+msgid ""
+"You can specify date, time, location, online meeting link, or instructions "
+"in this box."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1125
+msgid "Internal Note (Staff only):"
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1128
+msgid "e.g. Interview Room 5204 or Passed round 1..."
+msgstr ""
+
+#: frontend/templates/accounts/admin_dashboard.html:1146
+msgid "Save and Send Email"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:5
+#: frontend/templates/accounts/login.html:49
+#: frontend/templates/partials/navbar.html:74
+#: frontend/templates/partials/navbar.html:151
+msgid "Sign In"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:31
+#: frontend/templates/partials/navbar.html:142
+msgid "Username"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:33
+#: frontend/templates/partials/navbar.html:143
+msgid "Enter username"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:41
+#: frontend/templates/partials/navbar.html:147
+msgid "Password"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:43
+#: frontend/templates/partials/navbar.html:148
+msgid "Enter password"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:57
+msgid "or sign in with"
+msgstr ""
+
+#: frontend/templates/accounts/login.html:84
+msgid "*Please sign in with university email (@phuket.psu.ac.th)"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:5
+msgid "Profile & Applications"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:14
+msgid "Profile & Application History"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:32
+msgid "Click to change photo"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:33
+msgid "Change Photo"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:40
+msgid "Staff / Admin"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:40
+msgid "Student Account"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:53
+#: frontend/templates/accounts/profile.html:54
+#: frontend/templates/scholarships/apply.html:60
+msgid "Full Name"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:63
+msgid "Faculty"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:65
+msgid "Select Faculty"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:75
+msgid "Major"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:76
+msgid "e.g., Digital Engineering (DE)"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:80
+#: frontend/templates/scholarships/apply.html:82
+msgid "Phone Number"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:85
+msgid "University Email (PSU Passport)"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:87
+msgid "Connected automatically, cannot be edited."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:93
+msgid "Save Changes"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:103
+msgid "Overview"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:107
+msgid "Applications Submitted"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:108
+msgid "item(s)"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:112
+msgid "Account Status"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:119
+msgid "Need Assistance?"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:120
+msgid ""
+"If you need to update documents after submitting your application, please "
+"contact the Student Affairs Office at Room 7102."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:128
+msgid "Read Student Guide"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:140
+msgid "Application History & Status"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:141
+msgid "Track the progress and review updates for your submitted applications."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:154
+#: frontend/templates/components/scholarship_card.html:52
+#: frontend/templates/scholarship_dashboard.html:2181
+#: frontend/templates/scholarships/apply.html:26
+msgid "semester"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:174
+msgid "Submitted"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:194
+msgid "Review"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:199
+#: frontend/templates/accounts/profile.html:229
+msgid "Completed"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:201
+#: frontend/templates/accounts/profile.html:235
+msgid "Cancelled"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:226
+msgid "Result"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:233
+msgid "Not Selected"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:237
+msgid "Awaiting Result"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:248
+msgid "Submitted on"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:251
+#: frontend/templates/components/scholarship_card.html:78
+msgid "View Details"
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:260
+msgid "You haven't submitted any scholarship applications yet."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:261
+msgid "Browse available scholarships and apply online today."
+msgstr ""
+
+#: frontend/templates/accounts/profile.html:262
+msgid "Explore Open Scholarships"
+msgstr ""
 
 #: frontend/templates/admin/index.html:11
 #, python-format
@@ -76,107 +1277,1454 @@ msgstr ""
 msgid "You don't have permission to view or edit anything."
 msgstr ""
 
-#: frontend/templates/index.html:5 frontend/templates/partials/navbar.html:21
-msgid "หน้าแรก"
-msgstr "Home"
+#: frontend/templates/components/scholarship_card.html:6
+msgid "Urgent! Deadline"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:14
+msgid "GPAX Unmet"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:14
+msgid "Requires"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:18
+#: frontend/templates/scholarships/detail.html:28
+msgid "Applied"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:31
+#: frontend/templates/scholarships/detail.html:178
+msgid "Save"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:50
+#: frontend/templates/scholarship_dashboard.html:2008
+#: frontend/templates/scholarship_dashboard.html:2025
+msgid "Amount"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:56
+msgid "Minimum GPAX"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:61
+#: frontend/templates/scholarship_dashboard.html:2184
+#: frontend/templates/scholarships/detail.html:106
+msgid "Quota"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:69
+#: frontend/templates/scholarships/detail.html:118
+msgid "Expired"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:82
+msgid "View Status"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:86
+msgid "View Details (GPAX Unmet)"
+msgstr ""
+
+#: frontend/templates/components/scholarship_card.html:90
+msgid "View Details & Apply"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:476
+#: frontend/templates/dashboard_base.html:481
+#: frontend/templates/dashboard_base.html:543
+msgid "Management Menu"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:484
+msgid "Close menu"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:494
+msgid "Admin Portal"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:500
+msgid "Navigation"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:507
+#: frontend/templates/partials/navbar.html:57
+#: frontend/templates/scholarship_dashboard.html:1684
+msgid "Analytics Dashboard"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:515
+msgid "Admin Console"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:522
+#: frontend/templates/guide/admin_guide.html:4
+#: frontend/templates/partials/navbar.html:58
+msgid "Admin Guide"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:529
+msgid "Advanced Database"
+msgstr ""
+
+#: frontend/templates/dashboard_base.html:541
+msgid "Open Management Menu"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:15
+msgid "Scholarship Review & Administration Manual"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:18
+msgid ""
+"Standard operational procedures for scholarship committee members: document "
+"verification, review lifecycle transitions, additional document notices, and "
+"quota management."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:25
+msgid "Quick Review Decision Rules"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:29
+msgid "Criteria Fully Met"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:30
+msgid "Advance status to 'In Progress' for interview, then 'Approve'."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:34
+msgid "Disqualified / Unmet Criteria"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:35
+msgid "Set status to 'Reject'. Student can re-apply to other open grants."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:39
+msgid "File Unclear / Missing Signature"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:40
+msgid "Click 'Additional Docs' to dispatch notification email."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:44
+msgid "Accidental Button Click"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:45
+msgid "Click 'Reset to Pending' to revert row to unreviewed queue."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:58
+msgid "01. Application Verification & Review Workflow"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:63
+msgid "Access Uploaded Documents"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:63
+msgid ""
+"Click document badges in the row (e.g. 'Transcript', 'Recommendation') to "
+"view submitted files directly."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:66
+msgid "Verify Academic Standing"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:66
+msgid ""
+"Compare the student's cumulative GPAX and active enrolled semester status "
+"against scholarship requirements."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:69
+msgid "Progress Review State"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:69
+msgid ""
+"Click 'In Progress' to signify the application is actively undergoing "
+"committee review or interview scheduling."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:78
+msgid "02. Status Transition Matrix"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:86
+msgid "Indicator"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:87
+msgid "Operational Meaning"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:88
+msgid "Permitted Action"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:95
+msgid "New submission awaiting committee screening queue."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:96
+msgid "In Progress, Reject, Cancel"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:101
+msgid "Active review, interviews, or awaiting additional documents."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:102
+msgid "Approve, Reject, Cancel"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:107
+msgid "Applicant has met all criteria and is awarded the scholarship."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:108
+msgid "Complete, Cancel"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:113
+msgid "Ineligible, missing mandatory criteria, or quota filled."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:119
+msgid "Scholarship disbursement and onboarding completed."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:120
+msgid "Final State"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:125
+msgid "Application retracted by student or disqualified."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:137
+msgid "03. Additional Docs Requests & Status Reset"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:143
+msgid "Requesting 'Additional Docs'"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:146
+msgid ""
+"When a student's file is illegible, incomplete, or requires clarification, "
+"click 'Additional Docs' in the table row."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:149
+msgid "Sends automated email with instructions to student"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:150
+msgid "Maintains the record in 'In Progress' queue"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:156
+msgid "Using 'Reset to Pending'"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:159
+msgid ""
+"If a reviewer mistakenly marked an application, click 'Reset' to restore the "
+"row to unreviewed Pending state."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:162
+msgid "Restores standard review buttons for the row"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:163
+msgid "Prevents locked states from accidental selections"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:173
+msgid "04. Scholarship Quotas & Capacity Controls"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:178
+msgid ""
+"Each scholarship defines a capacity quota ('Grants'). The system "
+"automatically protects and manages quotas as follows:"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:181
+msgid "Automatic Closure"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:181
+msgid ""
+"When the count of approved and in-progress applicants equals the quota, the "
+"scholarship closes automatically to new applicants."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:182
+msgid "Deadline Enforcement"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:182
+msgid ""
+"When the deadline passes, scholarship cards display 'Expired' and the "
+"application form disables submission."
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:190
+msgid "05. Data Privacy & Compliance"
+msgstr ""
+
+#: frontend/templates/guide/admin_guide.html:193
+msgid ""
+"Applicant transcripts and personal records must be processed strictly for "
+"scholarship evaluation under Prince of Songkla University regulations and "
+"Thailand's PDPA. Unauthorized dissemination of applicant records is strictly "
+"prohibited."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:4
+#: frontend/templates/guide/student_guide.html:15
+msgid "Student Guide"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:18
+msgid "Student Manual"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:21
+msgid "Scholarship Application Guide for Students"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:24
+msgid ""
+"A clear step-by-step handbook on verifying eligibility, preparing electronic "
+"files, submitting applications online, and monitoring committee evaluation "
+"updates."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:30
+msgid "Step 1"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:30
+msgid "Find & Verify Criteria"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:31
+msgid "Step 2"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:31
+#: frontend/templates/scholarships/apply.html:38
+msgid "Upload Documents"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:32
+msgid "Step 3"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:32
+msgid "Track Review Status"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:33
+msgid "Step 4"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:33
+msgid "Receive Funding"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:47
+msgid "01. Scholarship Categories & Eligibility"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:52
+msgid ""
+"Review the 4 primary scholarship classifications available to PSU Phuket "
+"undergraduate students:"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:56
+msgid ""
+"Merit-based and need-based financial aid for full-time enrolled students."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:57
+msgid "Funding for international student exchange and overseas internships."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:58
+msgid ""
+"Tuition exemptions (50% or 100%) for recognized student leaders and athletes."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:59
+msgid "Living cost meal vouchers to support campus welfare and health."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:63
+msgid "GPAX Check"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:63
+msgid ""
+"When signed in, the system compares your current GPAX with the scholarship "
+"requirement. Cards indicate if your GPAX qualifies automatically."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:71
+msgid "02. Required Application Documents Checklist"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:76
+msgid "Prepare electronic copies before starting the application form:"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:84
+msgid "1. Academic Transcript (Mandatory)"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:88
+msgid ""
+"Official grade report or registrar portal export showing cumulative GPAX and "
+"total credits earned."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:96
+msgid "2. Recommendation Letter (If applicable)"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:100
+msgid ""
+"Signed endorsement from your academic advisor or faculty department head."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:106
+msgid "File Standards"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:106
+msgid ""
+"Format: PDF, JPG, PNG | Maximum file size: 5 MB per document | Ensure all "
+"text and seal stamps are legible."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:114
+msgid "03. Application Status Cheat Sheet"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:119
+msgid ""
+"Each application displays one of six standardized review states in your "
+"Profile tracking panel:"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:123
+msgid ""
+"Application successfully submitted; awaiting committee pre-screening queue."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:123
+msgid "Action: None (Awaiting)"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:124
+msgid ""
+"Under evaluation by faculty committee or scheduled for applicant interview."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:124
+msgid "Action: Check Email"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:125
+msgid ""
+"Approved by committee. Follow award notification guidelines for disbursement."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:125
+msgid "Action: Completed"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:126
+msgid ""
+"Requirements or quota filled for this cycle. Students may apply for other "
+"open scholarships."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:126
+msgid "Action: Try Other Grants"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:127
+msgid "Fund disbursement or tuition waiver credit has been fully processed."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:127
+msgid "Action: Finalized"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:128
+msgid "Application cancelled by student request or administratively withdrawn."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:128
+msgid "Action: Cancelled"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:136
+msgid "04. Handling 'Additional Documents' Requests"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:141
+msgid ""
+"If committee pre-screening requires clearer documentation, an email alert "
+"will be dispatched to your student address."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:145
+msgid "Required Actions"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:147
+msgid "Read the specific missing document listed in the notification email."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:148
+msgid "Scan or export a clear copy in PDF or JPG format."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:149
+msgid ""
+"Deliver the files as instructed in the email or submit directly at Student "
+"Affairs (Room 7102)."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:158
+msgid "05. Frequently Asked Questions"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:165
+msgid "Can I apply for more than one scholarship concurrently?"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:168
+msgid ""
+"Yes, you can apply for multiple open scholarships. If awarded more than one, "
+"university rules dictate whether funding can be combined or if a choice must "
+"be made."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:174
+msgid "What if my GPAX is below the minimum threshold?"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:177
+msgid ""
+"Merit-based scholarships require meeting the stated cutoff. Need-based or "
+"emergency welfare grants (e.g. Lunch Grants) may allow exceptions based on "
+"special recommendation."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:183
+msgid "Can I update my documents after pressing submit?"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:186
+msgid ""
+"Submitted files are locked to preserve audit integrity. If you made an "
+"error, visit Room 7102 with your student ID card to request an "
+"administrative re-upload."
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:196
+msgid "06. Student Affairs & Scholarship Division"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:200
+msgid ""
+"For technical questions regarding application submissions or document "
+"requirements, visit or contact our office:"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:205
+msgid "Room 7102, Building 7, PSU Phuket"
+msgstr ""
+
+#: frontend/templates/guide/student_guide.html:209
+msgid "Monday – Friday, 08:30 – 16:30"
+msgstr ""
 
 #: frontend/templates/index.html:18
-msgid "ระบบรับสมัครและติดตามทุนการศึกษา มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต"
-msgstr "Scholarship Application System, PSU Phuket"
+msgid "Scholarship Application & Tracking System, PSU Phuket"
+msgstr ""
 
 #: frontend/templates/index.html:22
-msgid "ทุนการศึกษาที่ใช่"
-msgstr "The Right Scholarship"
+msgid "The Right Scholarship"
+msgstr ""
 
 #: frontend/templates/index.html:23
-msgid "เพื่ออนาคตที่ไกลกว่า ณ ม.อ. ภูเก็ต"
-msgstr "For a brighter future at PSU Phuket"
+msgid "For a Brighter Future at PSU Phuket"
+msgstr ""
 
 #: frontend/templates/index.html:27
 msgid ""
-"ศูนย์รวมข้อมูลทุนการศึกษาและสวัสดิการ สำหรับนักศึกษา ม.อ. ทุกคณะ สะดวก รวดเร็ว "
-"สมัครและติดตามผลแบบครบวงจรผ่านระบบออนไลน์"
-msgstr "Scholarship and welfare information center for all PSU students"
+"Scholarship and welfare information center for all PSU Phuket students. "
+"Convenient, fast, apply and track online seamlessly."
+msgstr ""
 
 #: frontend/templates/index.html:33
-msgid "ดูทุนการศึกษาที่เปิดรับทั้งหมด"
-msgstr "View All Open Scholarships"
+msgid "View All Open Scholarships"
+msgstr ""
+
+#: frontend/templates/index.html:44
+#: frontend/templates/scholarships/category.html:5
+#: frontend/templates/scholarships/category.html:14
+#: frontend/templates/scholarships/detail.html:15
+#: frontend/templates/scholarships/list.html:15
+msgid "Scholarship Categories"
+msgstr ""
 
 #: frontend/templates/index.html:45
-msgid "หมวดหมู่ทุนการศึกษา"
-msgstr "Scholarship Categories"
+msgid "Choose a category that aligns with your educational goals"
+msgstr ""
 
-#: frontend/templates/index.html:46
-msgid "เลือกประเภททุนที่ตรงกับเกณฑ์และเป้าหมายของคุณ"
-msgstr "Choose the scholarship type that fits your goals and criteria"
+#: frontend/templates/index.html:58
+msgid "Explore Category"
+msgstr ""
 
-#: frontend/templates/index.html:54
-msgid "ทุนเปิดรับ"
-msgstr "Open Scholarships"
-
-#: frontend/templates/index.html:59
-msgid "ค้นหาทุนหมวดนี้"
-msgstr "Explore this category"
+#: frontend/templates/index.html:73
+msgid "Expiring Soon"
+msgstr ""
 
 #: frontend/templates/index.html:74
-msgid "ทุนที่ใกล้หมดเขต"
-msgstr "Expiring Soon"
+msgid "Check your eligibility and apply before the deadline"
+msgstr ""
 
-#: frontend/templates/index.html:75
-msgid "รีบตรวจสอบคุณสมบัติและส่งใบสมัครก่อนหมดเขต"
-msgstr "Check your eligibility and apply before the deadline"
+#: frontend/templates/index.html:91
+msgid "How to Apply"
+msgstr ""
 
-#: frontend/templates/index.html:84
-msgid "ด่วน! หมดเขต"
-msgstr "Urgent! Deadline"
+#: frontend/templates/index.html:92
+msgid "End-to-end online system: simple, fast, and transparent."
+msgstr ""
 
-#: frontend/templates/partials/navbar.html:24
-msgid "ทุนการศึกษา"
-msgstr "Scholarships"
+#: frontend/templates/index.html:98
+msgid "Search & Choose"
+msgstr ""
+
+#: frontend/templates/index.html:99
+msgid ""
+"Select scholarships matching your profile and check GPAX and faculty "
+"requirements."
+msgstr ""
+
+#: frontend/templates/index.html:104
+msgid "Fill In & Upload Documents"
+msgstr ""
+
+#: frontend/templates/index.html:105
+msgid ""
+"Sign in, complete your information, and upload required documents online "
+"without paper submissions."
+msgstr ""
+
+#: frontend/templates/index.html:110
+msgid "Track Application Status"
+msgstr ""
+
+#: frontend/templates/index.html:111
+msgid ""
+"Track your application status in real time from your Profile page until "
+"final approval."
+msgstr ""
 
 #: frontend/templates/partials/navbar.html:28
-msgid "ข้อมูลทุน"
-msgstr "Scholarship Info"
+msgid "Scholarship Info"
+msgstr ""
 
-#: frontend/templates/partials/navbar.html:31
-msgid "ทุนทั่วไป"
-msgstr "General"
-
-#: frontend/templates/partials/navbar.html:32
-msgid "ทุนแลกเปลี่ยน"
-msgstr "Exchange"
-
-#: frontend/templates/partials/navbar.html:38
-msgid "ติดต่อเรา"
-msgstr "Contact Us"
+#: frontend/templates/partials/navbar.html:54
+msgid "Profile"
+msgstr ""
 
 #: frontend/templates/partials/navbar.html:55
-msgid "แดชบอร์ดสถิติ"
-msgstr "Analytics"
+#: frontend/templates/scholarships/favorites.html:5
+msgid "Saved Scholarships"
+msgstr ""
 
-#: frontend/templates/partials/navbar.html:57
-msgid "ข้อมูลส่วนตัว"
-msgstr "Profile"
+#: frontend/templates/partials/navbar.html:60
+msgid "User Guide"
+msgstr ""
 
-#: frontend/templates/partials/navbar.html:58
-msgid "ทุนที่บันทึกไว้"
-msgstr "Favorites"
-
-#: frontend/templates/partials/navbar.html:63
-msgid "ออกจากระบบ"
-msgstr "Logout"
-
+#: frontend/templates/partials/navbar.html:68
 #: frontend/templates/partials/navbar.html:70
-msgid "ลงชื่อเข้าใช้"
-msgstr "Login"
+#: frontend/templates/partials/navbar.html:84
+msgid "Logout"
+msgstr ""
 
-#: frontend/templates/partials/navbar.html:110
-msgid "เข้าสู่ระบบ"
-msgstr "Login"
+#: frontend/templates/partials/navbar.html:134
+#: frontend/templates/partials/navbar.html:200
+msgid "Invalid username or password. Please try again."
+msgstr ""
 
-#: frontend/templates/partials/navbar.html:113
-msgid "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
-msgstr "Invalid username or password"
+#: frontend/templates/partials/navbar.html:158
+msgid "Or sign in with"
+msgstr ""
+
+#: frontend/templates/partials/navbar.html:184
+msgid "*For PSU students (@phuket.psu.ac.th)"
+msgstr ""
+
+#: frontend/templates/partials/navbar.html:198
+msgid "Checking..."
+msgstr ""
+
+#: frontend/templates/partials/navbar.html:199
+msgid "Success!"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1684
+msgid "PSU Phuket Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1706
+msgid "Semester"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1710
+msgid "All Semesters"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1722
+msgid "Month"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1726
+msgid "All Months"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1747
+msgid "Academic Year"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1751
+msgid "All Years"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1765
+msgid "Search by scholarship title, applicant name, student ID, major..."
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1769
+msgid "Clear search"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1778
+#: frontend/templates/scholarships/list.html:59
+msgid "Search"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1783
+msgid "Reset all filters to view all records"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1785
+msgid "Reset"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1793
+msgid "Export PDF"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1800
+msgid "Language"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1816
+msgid "Export This Scholarship (PDF)"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1817
+msgid "Student List"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1826
+msgid "Export Current Filter (PDF)"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1828
+msgid "Active filtered period"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1829
+msgid "With Student Names"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1837
+msgid "Export All Records (PDF)"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1838
+msgid "All semesters & all student applicants"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1852
+msgid "Analytics & Overview"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1856
+msgid "Scholarships & Applicants"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1878
+msgid "Total Fund Value"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1886
+msgid "Currently Open"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1953
+msgid "Applications by Status"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1954
+msgid "Overall breakdown of application stages"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1966
+msgid "Scholarship Distribution"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1967
+msgid "Categorized by scholarship type"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1997
+msgid "Upcoming Deadlines"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:1999
+msgid "Manage in Admin Console"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2010
+#: frontend/templates/scholarship_dashboard.html:2029
+msgid "Applications"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2029
+msgid "applicant(s)"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2036
+msgid "No open scholarships nearing deadline."
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2052
+msgid "Data Matching Current Filter"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2054
+msgid "All Scholarship & Applicant Records"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2058
+msgid "Detailed records included in the current analytics period"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2073
+msgid "Student Applicants"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2087
+msgid "Scholarship Title"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2089
+#: frontend/templates/scholarship_dashboard.html:2111
+msgid "Amount / Semester"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2090
+#: frontend/templates/scholarship_dashboard.html:2114
+msgid "Quota & Applicants"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2092
+#: frontend/templates/scholarship_dashboard.html:2127
+msgid "Application Period"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2093
+msgid "Action"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2103
+#: frontend/templates/scholarship_dashboard.html:2140
+msgid "View details"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2116
+msgid "View student applicants for this scholarship"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2135
+msgid "View and export student applicants for this scholarship"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2137
+msgid "Applicants"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2141
+msgid "View"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2159
+msgid "No scholarships found"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2173
+msgid "Selected Scholarship"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2184
+msgid "seats"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2187
+msgid "Total Applicants"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2194
+msgid "View all applicants from all scholarships"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2196
+msgid "Show All Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2210
+#: frontend/templates/scholarship_dashboard.html:2227
+msgid "Faculty & Major"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2212
+#: frontend/templates/scholarship_dashboard.html:2237
+msgid "Applied Scholarship"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2240
+msgid "View scholarship"
+msgstr ""
+
+#: frontend/templates/scholarship_dashboard.html:2268
+msgid "No student applications found"
+msgstr ""
+
+#: frontend/templates/scholarship_export_pdf.html:6
+msgid "Scholarship & Student Applicant Report"
+msgstr ""
+
+#: frontend/templates/scholarship_export_pdf.html:772
+msgid "Back to Dashboard"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:5
+msgid "Application Form"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:13
+msgid "Back to Scholarship Details"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:22
+msgid "Scholarship Application Form"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:24
+msgid "Applying for"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:33
+msgid "Applicant Info"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:43
+msgid "Review & Decision"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:56
+msgid "Applicant Information"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:63
+msgid "As indicated on official ID or passport"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:74
+msgid "Faculty / Major"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:86
+msgid "Phone number reachable directly"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:93
+msgid "Supporting Documents"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:106
+#: frontend/templates/scholarships/apply.html:132
+msgid "Click to select file"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:106
+msgid "or drag & drop here"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:108
+#: frontend/templates/scholarships/detail.html:77
+msgid "Official Transcript / Academic Record"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:109
+#: frontend/templates/scholarships/apply.html:135
+msgid "Supported formats: PDF, JPG, PNG (Max 10MB)"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:115
+#: frontend/templates/scholarships/apply.html:141
+msgid "Click to replace file"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:132
+msgid "Optional"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:134
+msgid "Recommendation Letters or Other Supporting Documents"
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:153
+msgid ""
+"I hereby certify that all information and documents provided are accurate "
+"and true. If any discrepancies or false statements are found, I accept "
+"immediate disqualification from the scholarship."
+msgstr ""
+
+#: frontend/templates/scholarships/apply.html:164
+msgid "Submit Application"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:5
+#: frontend/templates/scholarships/apply_success.html:19
+msgid "Application Submitted Successfully"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:20
+msgid "Your application for"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:20
+msgid "has been received and is being processed."
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:24
+msgid "Application Details"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:45
+msgid "You can track your application review progress in your Profile page."
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:49
+msgid "View Status in Profile"
+msgstr ""
+
+#: frontend/templates/scholarships/apply_success.html:50
+msgid "Back to Home"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:16
+msgid "PSU Phuket Scholarship Categories"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:17
+msgid ""
+"Choose a category that aligns with your educational goals, or browse all "
+"available opportunities."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:27
+msgid "View All"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:30
+msgid ""
+"Explore all scholarship opportunities currently accepting applications with "
+"condition filters."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:32
+msgid "Explore All Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:43
+msgid ""
+"Financial support for general students, academic excellence, need-based aid, "
+"and talent development."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:45
+msgid "View General"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:56
+msgid ""
+"Support for international student exchange programs, overseas internships, "
+"and global academic seminars."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:58
+msgid "View Exchange"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:66
+msgid "Welfare"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:69
+msgid ""
+"Tuition fee discounts or exemptions for students with exceptional academic "
+"or extracurricular achievements."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:71
+msgid "View Fee Waiver"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:79
+msgid "Living Aid"
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:82
+msgid ""
+"Meal welfare subsidies to support campus well-being and alleviate living "
+"expenses for students."
+msgstr ""
+
+#: frontend/templates/scholarships/category.html:84
+msgid "View Lunch"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:51
+msgid "Scholarship Details"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:61
+msgid "Eligibility & Requirements"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:71
+msgid "Required Documents"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:78
+msgid "Official grade report or transcript from the registration system."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:84
+msgid "Recommendation Letters or Supporting Documents (If any)"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:85
+msgid ""
+"Letter of recommendation from academic advisor or parent income certificate."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:96
+msgid "Scholarship Value"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:101
+msgid "per semester"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:111
+msgid "Opening Date"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:115
+msgid "Closing Date"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:122
+msgid "Campus"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:123
+msgid "PSU Phuket"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:132
+msgid "Application period ended on"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:135
+msgid "This scholarship has expired"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:140
+msgid "This scholarship is not accepting applications at this time."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:152
+msgid "You have applied for this scholarship"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:153
+msgid "Your application is currently being processed."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:157
+msgid "View application status in Profile"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:161
+msgid "Apply for Scholarship"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:166
+msgid "Sign In to Apply"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:168
+msgid "You must sign in before submitting an application."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:183
+msgid "Remove from Favorites"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:183
+msgid "Save to Favorites"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:189
+msgid "Back"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:196
+msgid "Admin Controls"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:199
+msgid "Edit Scholarship"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:202
+msgid ""
+" Are you sure you want to delete this scholarship? Related applications will "
+"also be deleted."
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:205
+msgid "Delete Scholarship"
+msgstr ""
+
+#: frontend/templates/scholarships/detail.html:214
+msgid "Application assistance: Contact 076-276-000 ext. 6050"
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:11
+msgid "My Saved Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:12
+msgid ""
+"Manage scholarships you are interested in so you don't miss important "
+"opportunities."
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:29
+msgid "No saved scholarships yet"
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:30
+msgid "Click the favorite icon on any scholarship card to save it for later."
+msgstr ""
+
+#: frontend/templates/scholarships/favorites.html:31
+msgid "Explore Scholarships"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:22
+msgid "Browse available scholarships, search, and verify eligibility criteria."
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:52
+msgid "Search scholarships by title, keyword..."
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:55
+msgid "Clear"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:66
+msgid "Search results for"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:66
+msgid "found"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:66
+msgid "scholarship(s)"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:68
+msgid "Total available scholarships"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:78
+msgid "No scholarships found matching"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:79
+msgid "Try searching with different keywords or browse all categories."
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:80
+msgid "Clear Search"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:88
+msgid "No scholarships available in this category"
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:89
+msgid "New scholarships are being prepared. You can explore other categories."
+msgstr ""
+
+#: frontend/templates/scholarships/list.html:90
+msgid "Back to Categories"
+msgstr ""
+
+#~ msgid "ทุนการศึกษาทั่วไป"
+#~ msgstr "General Scholarships"
+
+#~ msgid "ทุนสนับสนุนการศึกษาสำหรับนักศึกษาทั่วไป ทุนขาดแคลนทุนทรัพย์"
+#~ msgstr "Financial support for general students and those in need."
+
+#~ msgid "ทุนศึกษาแลกเปลี่ยน"
+#~ msgstr "Exchange Scholarships"
+
+#~ msgid "ทุนสนับสนุนการแลกเปลี่ยนต่างประเทศและโครงการระดับนานาชาติ"
+#~ msgstr "Support for international exchange and global programs."
+
+#~ msgid "ทุนยกเว้นค่าธรรมเนียม"
+#~ msgstr "Fee Waiver Scholarships"
+
+#~ msgid "ทุนยกเว้นค่าธรรมเนียมการศึกษาตามเกณฑ์ผลการเรียนและกิจกรรม"
+#~ msgstr ""
+#~ "Tuition fee waivers based on academic and extracurricular performance."
+
+#~ msgid "ทุนอาหารกลางวัน"
+#~ msgstr "Lunch Scholarships"
+
+#~ msgid "ทุนสวัสดิการอาหารกลางวันเพื่อสุขภาวะและการใช้ชีวิตในรั้วมหาวิทยาลัย"
+#~ msgstr "Lunch welfare for student well-being on campus."
+
+#~ msgid "หน้าแรก"
+#~ msgstr "Home"
+
+#~ msgid "ระบบรับสมัครและติดตามทุนการศึกษา มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต"
+#~ msgstr "Scholarship Application System, PSU Phuket"
+
+#~ msgid "ทุนการศึกษาที่ใช่"
+#~ msgstr "The Right Scholarship"
+
+#~ msgid "เพื่ออนาคตที่ไกลกว่า ณ ม.อ. ภูเก็ต"
+#~ msgstr "For a brighter future at PSU Phuket"
+
+#~ msgid ""
+#~ "ศูนย์รวมข้อมูลทุนการศึกษาและสวัสดิการ สำหรับนักศึกษา ม.อ. ทุกคณะ สะดวก รวดเร็ว "
+#~ "สมัครและติดตามผลแบบครบวงจรผ่านระบบออนไลน์"
+#~ msgstr "Scholarship and welfare information center for all PSU students"
+
+#~ msgid "ดูทุนการศึกษาที่เปิดรับทั้งหมด"
+#~ msgstr "View All Open Scholarships"
+
+#~ msgid "หมวดหมู่ทุนการศึกษา"
+#~ msgstr "Scholarship Categories"
+
+#~ msgid "เลือกประเภททุนที่ตรงกับเกณฑ์และเป้าหมายของคุณ"
+#~ msgstr "Choose the scholarship type that fits your goals and criteria"
+
+#~ msgid "ทุนเปิดรับ"
+#~ msgstr "Open Scholarships"
+
+#~ msgid "ค้นหาทุนหมวดนี้"
+#~ msgstr "Explore this category"
+
+#~ msgid "ทุนที่ใกล้หมดเขต"
+#~ msgstr "Expiring Soon"
+
+#~ msgid "รีบตรวจสอบคุณสมบัติและส่งใบสมัครก่อนหมดเขต"
+#~ msgstr "Check your eligibility and apply before the deadline"
+
+#~ msgid "ด่วน! หมดเขต"
+#~ msgstr "Urgent! Deadline"
+
+#~ msgid "ทุนการศึกษา"
+#~ msgstr "Scholarships"
+
+#~ msgid "ข้อมูลทุน"
+#~ msgstr "Scholarship Info"
+
+#~ msgid "ทุนทั่วไป"
+#~ msgstr "General"
+
+#~ msgid "ทุนแลกเปลี่ยน"
+#~ msgstr "Exchange"
+
+#~ msgid "ติดต่อเรา"
+#~ msgstr "Contact Us"
+
+#~ msgid "แดชบอร์ดสถิติ"
+#~ msgstr "Analytics"
+
+#~ msgid "ข้อมูลส่วนตัว"
+#~ msgstr "Profile"
+
+#~ msgid "ทุนที่บันทึกไว้"
+#~ msgstr "Favorites"
+
+#~ msgid "ออกจากระบบ"
+#~ msgstr "Logout"
+
+#~ msgid "ลงชื่อเข้าใช้"
+#~ msgstr "Login"
+
+#~ msgid "เข้าสู่ระบบ"
+#~ msgstr "Login"
+
+#~ msgid "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง"
+#~ msgstr "Invalid username or password"
 
 #~ msgid "จัดการระบบ"
 #~ msgstr "Admin Panel"
@@ -184,41 +2732,32 @@ msgstr "Invalid username or password"
 #~ msgid "โปรไฟล์"
 #~ msgstr "Profile"
 
-#: frontend/templates/partials/navbar.html:114
-msgid "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง"
-msgstr "Incorrect username or password. Please check and try again."
+#~ msgid "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณาตรวจสอบและลองใหม่อีกครั้ง"
+#~ msgstr "Incorrect username or password. Please check and try again."
 
-#: frontend/templates/partials/navbar.html:8
-msgid "มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต"
-msgstr "Prince of Songkla University, Phuket Campus"
+#~ msgid "มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตภูเก็ต"
+#~ msgstr "Prince of Songkla University, Phuket Campus"
 
-#: frontend/templates/partials/navbar.html:121
-msgid "ชื่อผู้ใช้"
-msgstr "Username"
+#~ msgid "ชื่อผู้ใช้"
+#~ msgstr "Username"
 
-#: frontend/templates/partials/navbar.html:122
-msgid "กรอกชื่อผู้ใช้"
-msgstr "Enter username"
+#~ msgid "กรอกชื่อผู้ใช้"
+#~ msgstr "Enter username"
 
-#: frontend/templates/partials/navbar.html:126
-msgid "รหัสผ่าน"
-msgstr "Password"
+#~ msgid "รหัสผ่าน"
+#~ msgstr "Password"
 
-#: frontend/templates/partials/navbar.html:127
-msgid "กรอกรหัสผ่าน"
-msgstr "Enter password"
+#~ msgid "กรอกรหัสผ่าน"
+#~ msgstr "Enter password"
 
-#: frontend/templates/partials/navbar.html:136
-msgid "หรือเข้าสู่ระบบด้วย"
-msgstr "Or sign in with"
+#~ msgid "หรือเข้าสู่ระบบด้วย"
+#~ msgstr "Or sign in with"
 
-#: frontend/templates/partials/navbar.html:153
-msgid "*สำหรับนักศึกษา (@phuket.psu.ac.th)"
-msgstr "*For PSU students (@phuket.psu.ac.th)"
+#~ msgid "*สำหรับนักศึกษา (@phuket.psu.ac.th)"
+#~ msgstr "*For PSU students (@phuket.psu.ac.th)"
 
-#: frontend/templates/accounts/login.html:84
-msgid "*กรุณาเข้าสู่ระบบด้วยอีเมลมหาวิทยาลัย (@phuket.psu.ac.th)"
-msgstr "*Please sign in with your university email (@phuket.psu.ac.th)"
+#~ msgid "*กรุณาเข้าสู่ระบบด้วยอีเมลมหาวิทยาลัย (@phuket.psu.ac.th)"
+#~ msgstr "*Please sign in with your university email (@phuket.psu.ac.th)"
 
-msgid "ทุนการศึกษาทั้งหมด"
-msgstr "All Scholarships"
+#~ msgid "ทุนการศึกษาทั้งหมด"
+#~ msgstr "All Scholarships"
