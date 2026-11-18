@@ -2562,10 +2562,40 @@ textarea {
     margin-bottom: 14px;
 }
 
-.btn-side-contact {
-    font-size: 0.9rem;
+.quick-help-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.btn-side-contact,
+.btn-side-guide {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.88rem;
     font-weight: 600;
+    text-decoration: none;
+    transition: all 0.15s ease;
+}
+
+.btn-side-contact {
     color: var(--psu-blue-600);
+}
+
+.btn-side-contact:hover {
+    color: var(--psu-blue-700);
+    transform: translateX(2px);
+}
+
+.btn-side-guide {
+    color: var(--text-sub);
+}
+
+.btn-side-guide:hover {
+    color: var(--psu-blue-600);
+    transform: translateX(2px);
 }
 
 /* Applications Tracker Section */
@@ -2600,20 +2630,6 @@ textarea {
     margin-top: 4px;
 }
 
-.btn-find-more {
-    background: #e0f2fe;
-    color: var(--psu-blue-600);
-    padding: 8px 18px;
-    border-radius: var(--radius-full);
-    font-weight: 600;
-    font-size: 0.88rem;
-}
-
-.btn-find-more:hover {
-    background: var(--psu-blue-600);
-    color: white;
-}
-
 .application-items-list {
     display: flex;
     flex-direction: column;
@@ -2621,33 +2637,68 @@ textarea {
 }
 
 .app-tracking-card {
-    background: var(--bg-card);
-    border-radius: var(--radius-lg);
-    border: 1.5px solid var(--border-subtle);
-    padding: 24px;
-    box-shadow: var(--shadow-xs);
-    transition: all 0.2s ease;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    padding: 20px 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .app-tracking-card:hover {
-    border-color: var(--psu-blue-500);
-    box-shadow: var(--shadow-md);
+    border-color: #93c5fd;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.08);
 }
 
 .app-card-top-bar {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     flex-wrap: wrap;
     gap: 12px;
 }
 
+.app-card-info-group {
+    flex: 1;
+    min-width: 240px;
+}
+
+.app-card-meta-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.app-amount-pill {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #047857;
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    padding: 2px 8px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+}
+
 .app-sch-title {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 700;
-    color: var(--psu-navy-800);
-    margin-top: 6px;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.app-title-link {
+    color: #0f172a;
+    text-decoration: none;
+    transition: color 0.15s ease;
+}
+
+.app-title-link:hover {
+    color: #0284c7;
 }
 
 .app-status-badge {
@@ -2687,94 +2738,175 @@ textarea {
     color: #475569;
 }
 
-.app-stepper-visual {
+/* Minimal Stage Tracker Component */
+.app-stage-tracker {
     display: flex;
     align-items: center;
-    margin: 20px 0 24px;
+    justify-content: space-between;
+    background: #f8fafc;
+    border: 1px solid #f1f5f9;
+    border-radius: 12px;
     padding: 14px 20px;
-    background: var(--bg-card-muted);
-    border-radius: var(--radius-md);
-}
-
-.step-point {
-    text-align: center;
-    flex: 1;
+    margin: 16px 0 16px;
     position: relative;
 }
 
-.point-circle {
-    width: 32px;
-    height: 32px;
+.stage-step {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 2;
+    position: relative;
+}
+
+.stage-circle {
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
-    margin: 0 auto 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-size: 0.85rem;
-    background: #e2e8f0;
-    color: var(--text-sub);
-}
-
-.step-point.done .point-circle {
-    background: var(--psu-blue-600);
-    color: white;
-}
-
-.step-point.current .point-circle {
-    background: #f59e0b;
-    color: white;
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
-}
-
-.step-point.done-success .point-circle {
-    background: var(--psu-emerald);
-    color: white;
-}
-
-.step-point.done-fail .point-circle {
-    background: var(--psu-rose);
-    color: white;
-}
-
-.point-text {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-main);
-}
-
-.point-date {
     font-size: 0.75rem;
-    color: var(--text-sub);
+    font-weight: 700;
+    background: #e2e8f0;
+    color: #64748b;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.stage-circle .material-symbols-outlined {
+    font-size: 1rem;
+}
+
+.stage-step.is-complete .stage-circle {
+    background: #0284c7;
+    color: #ffffff;
+}
+
+.stage-step.is-current .stage-circle {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    color: #b45309;
+}
+
+.stage-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f59e0b;
+    display: inline-block;
+    animation: pulseDot 1.8s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+    0%, 100% {
+        transform: scale(0.85);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.25);
+        opacity: 1;
+    }
+}
+
+.stage-step.is-success .stage-circle {
+    background: #10b981;
+    color: #ffffff;
+}
+
+.stage-step.is-rejected .stage-circle {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+.stage-step.is-cancelled .stage-circle {
+    background: #94a3b8;
+    color: #ffffff;
+}
+
+.stage-step.is-pending .stage-circle,
+.stage-step.is-waiting .stage-circle {
+    background: #f1f5f9;
+    border: 1.5px dashed #cbd5e1;
+    color: #94a3b8;
+}
+
+.stage-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.stage-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #1e293b;
+    line-height: 1.25;
+}
+
+.stage-sub {
+    font-size: 0.72rem;
+    color: #64748b;
+    line-height: 1.2;
     margin-top: 2px;
 }
 
-.point-line {
+.stage-track-line {
     flex: 1;
-    height: 3px;
-    background: #cbd5e1;
-    margin-top: -24px;
+    height: 2px;
+    background: #e2e8f0;
+    margin: 0 12px;
+    z-index: 1;
+    border-radius: 1px;
 }
 
-.point-line.active {
-    background: var(--psu-blue-600);
+.stage-track-line.is-active {
+    background: #0284c7;
+}
+
+.stage-track-line.is-rejected {
+    background: #fca5a5;
 }
 
 .app-card-details-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    font-size: 0.88rem;
-    color: var(--text-sub);
-    border-top: 1px solid var(--border-subtle);
-    padding-top: 14px;
+    font-size: 0.84rem;
+    color: #64748b;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 12px;
     flex-wrap: wrap;
     gap: 10px;
 }
 
+.app-submitted-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: #64748b;
+}
+
+.app-submitted-time .material-symbols-outlined {
+    font-size: 1rem;
+    color: #94a3b8;
+}
+
 .link-view-details {
-    color: var(--psu-blue-600);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #0284c7;
     font-weight: 600;
+    text-decoration: none;
+    font-size: 0.84rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+}
+
+.link-view-details:hover {
+    background: #f0f9ff;
+    color: #0369a1;
 }
 
 /* --- 16. Alert Boxes & Modals --- */
@@ -3260,15 +3392,53 @@ textarea {
         display: none;
     }
 
-    .app-stepper-visual {
-        flex-direction: column;
-        gap: 14px;
+    .app-stage-tracker {
+        padding: 10px 12px;
+        margin: 12px 0 14px;
     }
 
-    .point-line {
-        width: 2px;
-        height: 20px;
-        margin: 0;
+    .stage-step {
+        gap: 6px;
+    }
+
+    .stage-circle {
+        width: 22px;
+        height: 22px;
+        font-size: 0.7rem;
+    }
+
+    .stage-circle .material-symbols-outlined {
+        font-size: 0.88rem;
+    }
+
+    .stage-title {
+        font-size: 0.74rem;
+    }
+
+    .stage-sub {
+        font-size: 0.65rem;
+    }
+
+    .stage-track-line {
+        margin: 0 6px;
+    }
+
+    .app-tracking-card {
+        padding: 16px;
+        border-radius: 14px;
+    }
+
+    .app-card-details-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .link-view-details {
+        justify-content: center;
+        background: #f0f9ff;
+        padding: 8px 12px;
+        border-radius: 8px;
     }
 
     .apply-wrapper-card {

@@ -823,6 +823,51 @@
     background: #f8fafc;
   }
 
+  .pdf-lang-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.35rem 0.65rem 0.45rem 0.65rem;
+  }
+
+  .pdf-lang-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .pdf-lang-toggle {
+    display: inline-flex;
+    background: #f1f5f9;
+    border-radius: 6px;
+    padding: 2px;
+    gap: 2px;
+    border: 1px solid #e2e8f0;
+  }
+
+  .pdf-lang-btn {
+    border: none;
+    background: transparent;
+    padding: 2px 9px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .pdf-lang-btn.active {
+    background: #0263b8;
+    color: #ffffff;
+    box-shadow: 0 1px 3px rgba(2, 99, 184, 0.25);
+  }
+
   .pdf-dropdown-item .pdf-item-icon {
     color: #e11d48;
     font-size: 1.25rem;
@@ -1084,9 +1129,12 @@
       width: 100% !important;
       gap: 0.5rem !important;
     }
-    .filter-actions-wrap .btn-dash-action,
-    .filter-actions-wrap .export-pdf-dropdown-wrap {
+    .filter-actions-wrap .btn-dash-action {
       flex: 1 1 calc(50% - 0.25rem) !important;
+    }
+    .filter-actions-wrap .export-pdf-dropdown-wrap {
+      flex: 1 1 100% !important;
+      width: 100% !important;
     }
     .filter-actions-wrap .export-pdf-dropdown-wrap .btn-dash-pdf {
       width: 100% !important;
@@ -1112,6 +1160,36 @@
     }
 
     /* Mobile Card Layout for Scholarship and Applicant Tables */
+    .tables-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 1rem !important;
+    }
+    .tables-grid .tcard {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      overflow: visible !important;
+    }
+    .tables-grid .tcard-head {
+      padding: 0 0.25rem 0.75rem 0.25rem !important;
+      border-bottom: none !important;
+    }
+    .tables-grid .tcard-title {
+      font-size: 0.95rem !important;
+      font-weight: 700 !important;
+      color: #002b49 !important;
+    }
+    .tables-grid .tcard-link {
+      font-size: 0.8rem !important;
+      font-weight: 600 !important;
+      color: #0263b8 !important;
+    }
+    .tables-grid .table-responsive-wrapper {
+      padding: 0 !important;
+      overflow: visible !important;
+    }
     .table-responsive-wrapper {
       overflow-x: auto !important;
       -webkit-overflow-scrolling: touch !important;
@@ -1638,13 +1716,11 @@
           </button>
 
           <!-- Reset Filter Button -->
-          {% if has_active_filter %}
           <a href="{% url 'scholarship_dashboard' %}?term=&month=&year=all&scholarship=&q=&tab={{ active_tab|default:'overview' }}&subtab={{ active_subtab|default:'sch' }}"
             class="btn-dash-action btn-dash-reset" title="{% trans 'Reset all filters to view all records' %}">
             <span class="material-symbols-outlined" style="font-size: 1.15rem;">restart_alt</span>
             <span>{% trans "Reset" %}</span>
           </a>
-          {% endif %}
 
           <!-- Export PDF Dropdown Button (Single Export Button) -->
           <div class="export-pdf-dropdown-wrap">
@@ -1655,8 +1731,20 @@
               <span class="material-symbols-outlined" style="font-size: 1.1rem; margin-left: -2px;">expand_more</span>
             </button>
             <div class="pdf-dropdown-menu" id="pdfDropdownMenu">
+              <div class="pdf-lang-header">
+                <span class="pdf-lang-title">
+                  <span class="material-symbols-outlined" style="font-size: 0.95rem;">translate</span>
+                  {% trans "Language" %}
+                </span>
+                <div class="pdf-lang-toggle">
+                  <button type="button" class="pdf-lang-btn active" id="btnDashLangEn" onclick="setDashExportLang('en', event)">EN</button>
+                  <button type="button" class="pdf-lang-btn" id="btnDashLangTh" onclick="setDashExportLang('th', event)">TH</button>
+                </div>
+              </div>
+              <div style="border-top: 1px solid #f1f5f9; margin: 3px 0 6px 0;"></div>
+
               {% if selected_scholarship %}
-              <a href="{% url 'export_dashboard_pdf' %}?scholarship={{ selected_scholarship.pk }}{% if search_query %}&q={{ search_query }}{% endif %}&auto_print=1" target="_blank" class="pdf-dropdown-item" style="background: #eff6ff;">
+              <a href="{% url 'export_dashboard_pdf' %}?scholarship={{ selected_scholarship.pk }}{% if search_query %}&q={{ search_query }}{% endif %}&lang=en&auto_print=1" target="_blank" class="pdf-dropdown-item" style="background: #eff6ff;">
                 <span class="material-symbols-outlined pdf-item-icon" style="color: #0263b8;">assignment_ind</span>
                 <div class="pdf-item-text">
                   <strong style="color: #0263b8;">{% trans "Export This Scholarship (PDF)" %}</strong>
@@ -1665,7 +1753,7 @@
               </a>
               <div style="border-top: 1px solid #e2e8f0; margin: 4px 0;"></div>
               {% endif %}
-              <a href="{% url 'export_dashboard_pdf' %}?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}{% if search_query %}&q={{ search_query }}{% endif %}&auto_print=1" target="_blank" class="pdf-dropdown-item">
+              <a href="{% url 'export_dashboard_pdf' %}?term={{ filter_term }}&month={{ filter_month }}&year={{ filter_year }}{% if search_query %}&q={{ search_query }}{% endif %}&lang=en&auto_print=1" target="_blank" class="pdf-dropdown-item">
                 <span class="material-symbols-outlined pdf-item-icon">picture_as_pdf</span>
                 <div class="pdf-item-text">
                   <strong>{% trans "Export Current Filter (PDF)" %}</strong>
@@ -1675,7 +1763,7 @@
                   </span>
                 </div>
               </a>
-              <a href="{% url 'export_dashboard_pdf' %}?scope=all{% if search_query %}&q={{ search_query }}{% endif %}&auto_print=1" target="_blank" class="pdf-dropdown-item">
+              <a href="{% url 'export_dashboard_pdf' %}?scope=all{% if search_query %}&q={{ search_query }}{% endif %}&lang=en&auto_print=1" target="_blank" class="pdf-dropdown-item">
                 <span class="material-symbols-outlined pdf-item-icon">select_all</span>
                 <div class="pdf-item-text">
                   <strong>{% trans "Export All Records (PDF)" %}</strong>
@@ -2486,6 +2574,32 @@
   }
 
   // ===== PDF Export Dropdown Logic =====
+  let currentDashPdfLang = 'en';
+  function setDashExportLang(lang, event) {
+    if (event) {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+    currentDashPdfLang = lang;
+    const btnEn = document.getElementById('btnDashLangEn');
+    const btnTh = document.getElementById('btnDashLangTh');
+    if (btnEn) btnEn.classList.toggle('active', lang === 'en');
+    if (btnTh) btnTh.classList.toggle('active', lang === 'th');
+
+    const menu = document.getElementById('pdfDropdownMenu');
+    if (menu) {
+      const items = menu.querySelectorAll('.pdf-dropdown-item');
+      items.forEach(function(item) {
+        let href = item.getAttribute('href');
+        if (href) {
+          const u = new URL(href, window.location.origin);
+          u.searchParams.set('lang', lang);
+          item.setAttribute('href', u.pathname + u.search);
+        }
+      });
+    }
+  }
+
   function togglePdfDropdown(event) {
     if (event) event.stopPropagation();
     const menu = document.getElementById('pdfDropdownMenu');

@@ -118,8 +118,17 @@
                 <div class="side-info-card quick-help-card">
                     <h4>{% trans "Need Assistance?" %}</h4>
                     <p>{% trans "If you need to update documents after submitting your application, please contact the Student Affairs Office at Room 7102." %}</p>
-                    <a href="{% url 'contact' %}" class="btn-side-contact">{% trans "Contact Us" %} →</a>
-                    <a href="{% url 'student_guide' %}" style="display: inline-flex; align-items: center; gap: 4px; margin-top: 10px; font-size: 0.85rem; color: #0284c7; text-decoration: none; font-weight: 600;"><span class="material-symbols-outlined" style="font-size: 1rem;">menu_book</span> {% trans "Read Student Guide" %} →</a>
+                    <div class="quick-help-links">
+                        <a href="{% url 'contact' %}" class="btn-side-contact">
+                            <span>{% trans "Contact Us" %}</span>
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
+                        </a>
+                        <a href="{% url 'student_guide' %}" class="btn-side-guide">
+                            <span class="material-symbols-outlined" style="font-size: 1.05rem; color: #0284c7;">menu_book</span>
+                            <span>{% trans "Read Student Guide" %}</span>
+                            <span class="material-symbols-outlined" style="font-size: 1rem;">arrow_forward</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -131,24 +140,22 @@
                     <h2 class="tracker-title">{% trans "Application History & Status" %}</h2>
                     <p class="tracker-subtitle">{% trans "Track the progress and review updates for your submitted applications." %}</p>
                 </div>
-                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                    <a href="{% url 'student_guide' %}#section-statuses" style="background: #ffffff; border: 1.5px solid #cbd5e1; color: #334155; padding: 8px 14px; border-radius: 8px; text-decoration: none; font-size: 0.88rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;">
-                        <span class="material-symbols-outlined" style="font-size: 1.1rem; color: #0284c7;">help</span> {% trans "Status Guide" %}
-                    </a>
-                    <a href="{% url 'scholarships' %}" class="btn-find-more">
-                        {% trans "Browse Scholarships" %}
-                    </a>
-                </div>
             </div>
 
             {% if applications %}
             <div class="application-items-list">
                 {% for app in applications %}
                 <div class="app-tracking-card">
+                    <!-- Top header: Category, Amount, Title, Status badge -->
                     <div class="app-card-top-bar">
-                        <div>
-                            {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
-                            <h3 class="app-sch-title">{{ app.scholarship.title }}</h3>
+                        <div class="app-card-info-group">
+                            <div class="app-card-meta-line">
+                                {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
+                                <span class="app-amount-pill">฿{{ app.scholarship.amount_per_semester|floatformat:0 }} / {% trans "semester" %}</span>
+                            </div>
+                            <h3 class="app-sch-title">
+                                <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="app-title-link">{{ app.scholarship.title }}</a>
+                            </h3>
                         </div>
 
                         <div class="app-status-badge-wrap">
@@ -156,54 +163,93 @@
                         </div>
                     </div>
 
-                    <!-- Visual Stepper for Application -->
-                    <div class="app-stepper-visual">
-                        <div class="step-point done">
-                            <div class="point-circle">1</div>
-                            <div class="point-text">{% trans "Submitted" %}</div>
-                            <div class="point-date">{{ app.submitted_at|date:"d M Y" }}</div>
+                    <!-- Minimal Clean Stage Tracker -->
+                    <div class="app-stage-tracker">
+                        <!-- Step 1: Submitted -->
+                        <div class="stage-step is-complete">
+                            <div class="stage-circle">
+                                <span class="material-symbols-outlined">check</span>
+                            </div>
+                            <div class="stage-details">
+                                <span class="stage-title">{% trans "Submitted" %}</span>
+                                <span class="stage-sub">{{ app.submitted_at|date:"d M Y" }}</span>
+                            </div>
                         </div>
-                        <div class="point-line {% if app.status != 'cancelled' %}active{% endif %}"></div>
 
-                        <div class="step-point {% if app.status == 'pending' or app.status == 'in_progress' or app.status == 'interview' %}current{% elif app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}done{% endif %}">
-                            <div class="point-circle">2</div>
-                            <div class="point-text">
-                                {% if app.status == 'in_progress' or app.status == 'interview' %}
-                                In Progress
+                        <!-- Connector 1 -->
+                        <div class="stage-track-line {% if app.status != 'cancelled' %}is-active{% endif %}"></div>
+
+                        <!-- Step 2: Committee Review -->
+                        <div class="stage-step {% if app.status == 'in_progress' or app.status == 'interview' %}is-current{% elif app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}is-complete{% else %}is-pending{% endif %}">
+                            <div class="stage-circle">
+                                {% if app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}
+                                    <span class="material-symbols-outlined">check</span>
+                                {% elif app.status == 'in_progress' or app.status == 'interview' %}
+                                    <span class="stage-pulse"></span>
                                 {% else %}
-                                Committee Review
+                                    <span class="stage-num">2</span>
                                 {% endif %}
                             </div>
-                            <div class="point-date">
-                                {% if app.status == 'pending' %}Pending{% elif app.status == 'in_progress' or app.status == 'interview' %}Processing{% elif app.status == 'cancelled' %}Cancelled{% else %}Completed{% endif %}
+                            <div class="stage-details">
+                                <span class="stage-title">{% trans "Review" %}</span>
+                                <span class="stage-sub">
+                                    {% if app.status == 'in_progress' or app.status == 'interview' %}
+                                        {% trans "In Progress" %}
+                                    {% elif app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}
+                                        {% trans "Completed" %}
+                                    {% elif app.status == 'cancelled' %}
+                                        {% trans "Cancelled" %}
+                                    {% else %}
+                                        {% trans "Pending" %}
+                                    {% endif %}
+                                </span>
                             </div>
                         </div>
-                        <div class="point-line {% if app.status == 'approved' or app.status == 'completed' %}active{% endif %}"></div>
 
-                        <div class="step-point {% if app.status == 'completed' %}done-success{% elif app.status == 'approved' %}done-success{% elif app.status == 'rejected' or app.status == 'cancelled' %}done-fail{% else %}waiting{% endif %}">
-                            <div class="point-circle">3</div>
-                            <div class="point-text">
-                                {% if app.status == 'completed' %}Complete
-                                {% elif app.status == 'approved' %}Approve
-                                {% elif app.status == 'rejected' %}Reject
-                                {% elif app.status == 'cancelled' %}Cancel
-                                {% else %}Official Announcement{% endif %}
+                        <!-- Connector 2 -->
+                        <div class="stage-track-line {% if app.status == 'approved' or app.status == 'completed' %}is-active{% elif app.status == 'rejected' %}is-rejected{% endif %}"></div>
+
+                        <!-- Step 3: Result / Announcement -->
+                        <div class="stage-step {% if app.status == 'completed' or app.status == 'approved' %}is-success{% elif app.status == 'rejected' %}is-rejected{% elif app.status == 'cancelled' %}is-cancelled{% else %}is-waiting{% endif %}">
+                            <div class="stage-circle">
+                                {% if app.status == 'completed' or app.status == 'approved' %}
+                                    <span class="material-symbols-outlined">check</span>
+                                {% elif app.status == 'rejected' %}
+                                    <span class="material-symbols-outlined">close</span>
+                                {% elif app.status == 'cancelled' %}
+                                    <span class="material-symbols-outlined">remove</span>
+                                {% else %}
+                                    <span class="stage-num">3</span>
+                                {% endif %}
                             </div>
-                            <div class="point-date">
-                                {% if app.status == 'completed' %}Completed
-                                {% elif app.status == 'approved' %}Approved
-                                {% elif app.status == 'rejected' %}Rejected
-                                {% elif app.status == 'cancelled' %}Cancelled
-                                {% else %}Pending Announcement{% endif %}
+                            <div class="stage-details">
+                                <span class="stage-title">{% trans "Result" %}</span>
+                                <span class="stage-sub">
+                                    {% if app.status == 'completed' %}
+                                        {% trans "Completed" %}
+                                    {% elif app.status == 'approved' %}
+                                        {% trans "Approved" %}
+                                    {% elif app.status == 'rejected' %}
+                                        {% trans "Not Selected" %}
+                                    {% elif app.status == 'cancelled' %}
+                                        {% trans "Cancelled" %}
+                                    {% else %}
+                                        {% trans "Awaiting Result" %}
+                                    {% endif %}
+                                </span>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Clean Minimal Details Row -->
                     <div class="app-card-details-row">
-                        <span>{% trans "Amount" %}: <strong>฿{{ app.scholarship.amount_per_semester|floatformat:0 }}</strong> / {% trans "semester" %}</span>
-                        <span>{% trans "Submitted on" %}: <strong>{{ app.submitted_at|date:"d M Y H:i" }}</strong></span>
+                        <div class="app-submitted-time">
+                            <span class="material-symbols-outlined">schedule</span>
+                            <span>{% trans "Submitted on" %}: <strong>{{ app.submitted_at|date:"d M Y, H:i" }}</strong></span>
+                        </div>
                         <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="link-view-details">
-                            {% trans "View Details" %} →
+                            {% trans "View Details" %}
+                            <span class="material-symbols-outlined">arrow_forward</span>
                         </a>
                     </div>
                 </div>
