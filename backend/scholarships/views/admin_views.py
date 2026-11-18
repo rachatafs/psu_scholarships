@@ -1,3 +1,4 @@
+import logging
 from urllib.parse import quote
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -10,6 +11,8 @@ from django.utils.translation import gettext as _
 from django.utils import translation
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application
+
+logger = logging.getLogger(__name__)
 
 def _get_standard_page_range(current_page, num_pages):
     """
@@ -133,7 +136,7 @@ def update_application(request, pk):
                 email_sent = True
             except Exception as e:
                 email_error = str(e)
-                print(f"Failed to send email to {app.student.user.email}: {e}")
+                logger.error("Failed to send email to %s: %s", app.student.user.email, e)
                 
         # Check if AJAX / JSON request
         if request.headers.get('Accept') == 'application/json' or request.headers.get('X-Requested-With') == 'XMLHttpRequest':

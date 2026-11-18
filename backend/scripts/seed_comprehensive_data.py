@@ -1,7 +1,7 @@
 import os
 import sys
 import random
-from datetime import date, datetime, timedelta
+from datetime import timedelta
 
 # Setup Django environment
 sys.path.append(os.path.join(os.path.dirname(__file__), '..'))

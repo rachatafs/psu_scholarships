@@ -1,3 +1,4 @@
+import logging
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -6,6 +7,8 @@ from django.utils.translation import gettext as _
 from django.http import JsonResponse
 from ..models import Scholarship, Application, StudentProfile, Document, FavoriteScholarship
 from .utils import enrich_scholarships, CATEGORY_LABELS
+
+logger = logging.getLogger(__name__)
 
 def home(request):
     today = timezone.now().date()
@@ -173,7 +176,7 @@ def apply_form(request, pk):
             send_application_received_email(application)
         except Exception as e:
             # We don't want the application process to fail if email fails
-            print(f"Failed to send email: {e}")
+            logger.error("Failed to send application confirmation email: %s", e)
 
         return redirect('apply_success', pk=pk)
 
