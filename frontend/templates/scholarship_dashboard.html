@@ -2094,8 +2094,7 @@
             <tbody>
               {% for s in filtered_scholarships %}
               <tr>
-                <td class="td-index-cell" style="color: #94a3b8; font-weight: 600;">{{
-                  forloop.counter0|add:filtered_scholarships.start_index }}</td>
+                <td class="td-index-cell" style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_scholarships.start_index }}</td>
                 <td class="td-title-cell" data-label="{% trans 'Scholarship' %}">
                   <a href="{% url 'scholarship_detail' s.pk %}" class="sch-title-link" target="_blank"
                     title="{% trans 'View details' %}">
@@ -2111,8 +2110,7 @@
                 <td data-label="{% trans 'Quota & Applicants' %}">
                   <a href="?scholarship={{ s.pk }}&tab=records&subtab=apps" class="applicant-count-link"
                     title="{% trans 'View student applicants for this scholarship' %}">
-                    <span style="font-weight: 700; color: #0263b8; text-decoration: underline;">{{ s.applications.count
-                      }}</span>
+                    <span style="font-weight: 700; color: #0263b8; text-decoration: underline;">{{ s.applications.count }}</span>
                     <span style="color: #94a3b8;">/ {{ s.capacity }}</span>
                   </a>
                 </td>
@@ -2170,8 +2168,7 @@
             <div class="focus-sch-meta">
               {% include 'components/category_badge.html' with category=selected_scholarship.category category_display=selected_scholarship.get_category_display %}
               <span class="focus-meta-item">
-                {% trans "Value" %}: <strong>฿ {{ selected_scholarship.amount_per_semester|floatformat:0|intcomma
-                  }}</strong> / {% trans "semester" %}
+                {% trans "Value" %}: <strong>฿ {{ selected_scholarship.amount_per_semester|floatformat:0|intcomma }}</strong> / {% trans "semester" %}
               </span>
               <span class="focus-meta-item">
                 {% trans "Quota" %}: <strong>{{ selected_scholarship.capacity }}</strong> {% trans "seats" %}
@@ -2209,10 +2206,8 @@
             <tbody>
               {% for app in filtered_applications %}
               <tr>
-                <td class="td-index-cell" style="color: #94a3b8; font-weight: 600;">{{
-                  forloop.counter0|add:filtered_applications.start_index }}</td>
-                <td data-label="{% trans 'Student ID' %}"><strong style="color: #002b49;">{{ app.student.student_id
-                    }}</strong></td>
+                <td class="td-index-cell" style="color: #94a3b8; font-weight: 600;">{{ forloop.counter0|add:filtered_applications.start_index }}</td>
+                <td data-label="{% trans 'Student ID' %}"><strong style="color: #002b49;">{{ app.student.student_id }}</strong></td>
                 <td class="td-title-cell" data-label="{% trans 'Student Name' %}">
                   <strong style="color: #1e293b; font-size: 0.95rem;">{{ app.student.full_name }}</strong>
                 </td>
