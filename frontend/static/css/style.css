@@ -2690,6 +2690,118 @@ textarea {
     margin-top: 4px;
 }
 
+/* History Status Filter Bar */
+.history-filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+    padding-bottom: 4px;
+}
+
+.history-filter-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    border-radius: 9999px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-sub, #475569);
+    background: #ffffff;
+    border: 1.5px solid #e2e8f0;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.history-filter-pill:hover {
+    color: var(--psu-navy-800, #002b49);
+    border-color: #cbd5e1;
+    background: #f8fafc;
+    transform: translateY(-1px);
+}
+
+.history-filter-pill.active {
+    background: var(--psu-blue-600, #0263b8);
+    border-color: var(--psu-blue-600, #0263b8);
+    color: #ffffff;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(2, 99, 184, 0.25);
+}
+
+.history-filter-pill .count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #f1f5f9;
+    color: #475569;
+    line-height: 1;
+    transition: all 0.2s ease;
+}
+
+.history-filter-pill.active .count-badge {
+    background: rgba(255, 255, 255, 0.28);
+    color: #ffffff;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.status-dot.dot-pending {
+    background-color: #f59e0b;
+}
+
+.status-dot.dot-inprogress {
+    background-color: #0284c7;
+}
+
+.status-dot.dot-approved {
+    background-color: #10b981;
+}
+
+.status-dot.dot-completed {
+    background-color: #6366f1;
+}
+
+.status-dot.dot-rejected {
+    background-color: #ef4444;
+}
+
+.status-dot.dot-cancelled {
+    background-color: #94a3b8;
+}
+
+@media (max-width: 640px) {
+    .history-filter-bar {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+        margin-right: -12px;
+        margin-left: -12px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .history-filter-pill {
+        font-size: 0.82rem;
+        padding: 6px 12px;
+    }
+}
+
 .application-items-list {
     display: flex;
     flex-direction: column;

@@ -2788,3 +2788,16 @@ msgstr "คน"
 
 #~ msgid "Filtered Results"
 #~ msgstr "ผลการกรอง"
+
+msgid "No applications found with this status."
+msgstr "ไม่พบประวัติการสมัครในสถานะนี้"
+
+msgid "Try choosing a different status filter above to see your applications."
+msgstr "ลองเลือกตัวกรองสถานะอื่นด้านบนเพื่อดูประวัติการสมัครของคุณ"
+
+msgid "Show All Applications"
+msgstr "แสดงใบสมัครทั้งหมด"
+
+msgid "Rejected"
+msgstr "ไม่ผ่านการพิจารณา"
+

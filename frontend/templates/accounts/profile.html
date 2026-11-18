@@ -134,13 +134,55 @@
         </div>
 
         <!-- Bottom: Applications History Tracker -->
-        <div class="applications-tracker-section">
+        <div class="applications-tracker-section" id="history">
             <div class="tracker-header-row">
                 <div>
                     <h2 class="tracker-title">{% trans "Application History & Status" %}</h2>
                     <p class="tracker-subtitle">{% trans "Track the progress and review updates for your submitted applications." %}</p>
                 </div>
             </div>
+
+            {% if status_counts.all > 0 %}
+            <!-- Status Filter Bar -->
+            <div class="history-filter-bar">
+                <a href="?status=all#history" class="history-filter-pill {% if selected_status == 'all' %}active{% endif %}">
+                    <span>{% trans "All" %}</span>
+                    <span class="count-badge">{{ status_counts.all }}</span>
+                </a>
+                <a href="?status=pending#history" class="history-filter-pill {% if selected_status == 'pending' %}active{% endif %}">
+                    <span class="status-dot dot-pending"></span>
+                    <span>{% trans "Pending" %}</span>
+                    <span class="count-badge">{{ status_counts.pending }}</span>
+                </a>
+                <a href="?status=in_progress#history" class="history-filter-pill {% if selected_status == 'in_progress' %}active{% endif %}">
+                    <span class="status-dot dot-inprogress"></span>
+                    <span>{% trans "In Progress" %}</span>
+                    <span class="count-badge">{{ status_counts.in_progress }}</span>
+                </a>
+                <a href="?status=approved#history" class="history-filter-pill {% if selected_status == 'approved' %}active{% endif %}">
+                    <span class="status-dot dot-approved"></span>
+                    <span>{% trans "Approve" %}</span>
+                    <span class="count-badge">{{ status_counts.approved }}</span>
+                </a>
+                <a href="?status=completed#history" class="history-filter-pill {% if selected_status == 'completed' %}active{% endif %}">
+                    <span class="status-dot dot-completed"></span>
+                    <span>{% trans "Complete" %}</span>
+                    <span class="count-badge">{{ status_counts.completed }}</span>
+                </a>
+                <a href="?status=rejected#history" class="history-filter-pill {% if selected_status == 'rejected' %}active{% endif %}">
+                    <span class="status-dot dot-rejected"></span>
+                    <span>{% trans "Reject" %}</span>
+                    <span class="count-badge">{{ status_counts.rejected }}</span>
+                </a>
+                {% if status_counts.cancelled > 0 %}
+                <a href="?status=cancelled#history" class="history-filter-pill {% if selected_status == 'cancelled' %}active{% endif %}">
+                    <span class="status-dot dot-cancelled"></span>
+                    <span>{% trans "Cancel" %}</span>
+                    <span class="count-badge">{{ status_counts.cancelled }}</span>
+                </a>
+                {% endif %}
+            </div>
+            {% endif %}
 
             {% if applications %}
             <div class="application-items-list">
@@ -254,6 +296,18 @@
                     </div>
                 </div>
                 {% endfor %}
+
+                {% include 'components/pagination.html' with page_obj=page_obj page_range=page_range page_param='page' total_count=page_obj.paginator.count item_name=_('applications') extra_query=extra_query anchor='history' %}
+            </div>
+            {% elif status_counts.all > 0 %}
+            <div class="modern-empty-state">
+                <span class="material-symbols-outlined empty-icon-big" style="font-size: 3rem; color: #94a3b8; margin-bottom: 12px; display: inline-block;">filter_list_off</span>
+                <h3 class="empty-title">{% trans "No applications found with this status." %}</h3>
+                <p class="empty-subtitle">{% trans "Try choosing a different status filter above to see your applications." %}</p>
+                <a href="?status=all#history" class="btn-empty-reset" style="margin-top: 14px; display: inline-flex; align-items: center; gap: 6px;">
+                    <span class="material-symbols-outlined" style="font-size: 1.15rem;">restart_alt</span>
+                    {% trans "Show All Applications" %}
+                </a>
             </div>
             {% else %}
             <div class="modern-empty-state">
