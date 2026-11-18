@@ -2384,8 +2384,8 @@ msgid "Scholarship Application Form"
 msgstr "แบบฟอร์มยื่นความประสงค์ขอรับทุนการศึกษา"
 
 #: frontend/templates/scholarships/apply.html:24
-msgid "Applying for"
-msgstr "กำลังสมัครรับทุน:"
+msgid "Applying for:"
+msgstr "ทุนการศึกษาที่สมัคร:"
 
 #: frontend/templates/scholarships/apply.html:33
 msgid "Applicant Info"

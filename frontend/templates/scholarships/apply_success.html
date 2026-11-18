@@ -22,21 +22,23 @@
             {% if application %}
             <div class="success-details-box">
                 <div class="detail-header-sub">{% trans "Application Details" %}</div>
-                <div class="detail-line-item">
-                    <span class="label">{% trans "Applicant" %}:</span>
-                    <span class="val">{{ application.student.full_name }}</span>
-                </div>
-                <div class="detail-line-item">
-                    <span class="label">{% trans "Student ID" %}:</span>
-                    <span class="val">{{ application.student.student_id }}</span>
-                </div>
-                <div class="detail-line-item">
-                    <span class="label">{% trans "Scholarship" %}:</span>
-                    <span class="val">{{ scholarship.localized_title }} ({{ scholarship.get_category_display }})</span>
-                </div>
-                <div class="detail-line-item">
-                    <span class="label">{% trans "Submitted Date" %}:</span>
-                    <span class="val">{{ application.submitted_at|date:"d F Y" }}</span>
+                <div class="success-info-grid">
+                    <div class="info-row">
+                        <span class="info-label">{% trans "Applicant" %}:</span>
+                        <span class="info-val">{{ application.student.full_name }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">{% trans "Student ID" %}:</span>
+                        <span class="info-val id-code">{{ application.student.student_id }}</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">{% trans "Scholarship" %}:</span>
+                        <span class="info-val sch-name">{{ scholarship.localized_title }} <span class="sch-cat-sub">({{ scholarship.get_category_display }})</span></span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">{% trans "Submitted Date" %}:</span>
+                        <span class="info-val">{{ application.submitted_at|date:"d F Y" }}</span>
+                    </div>
                 </div>
             </div>
             {% endif %}
