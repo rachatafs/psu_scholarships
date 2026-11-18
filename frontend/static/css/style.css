@@ -2802,6 +2802,11 @@ textarea {
     }
 }
 
+.history-content-area {
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 200px;
+}
+
 .application-items-list {
     display: flex;
     flex-direction: column;

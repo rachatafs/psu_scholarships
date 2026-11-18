@@ -1,0 +1,133 @@
+{% load i18n %}
+{% if applications %}
+<div class="application-items-list">
+    {% for app in applications %}
+    <div class="app-tracking-card">
+        <!-- Top header: Category, Amount, Title, Status badge -->
+        <div class="app-card-top-bar">
+            <div class="app-card-info-group">
+                <div class="app-card-meta-line">
+                    {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
+                    <span class="app-amount-pill">฿{{ app.scholarship.amount_per_semester|floatformat:0 }} / {% trans "semester" %}</span>
+                </div>
+                <h3 class="app-sch-title">
+                    <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="app-title-link">{{ app.scholarship.localized_title }}</a>
+                </h3>
+            </div>
+
+            <div class="app-status-badge-wrap">
+                {% include 'components/status_badge.html' with status=app.status %}
+            </div>
+        </div>
+
+        <!-- Minimal Clean Stage Tracker -->
+        <div class="app-stage-tracker">
+            <!-- Step 1: Submitted -->
+            <div class="stage-step is-complete">
+                <div class="stage-circle">
+                    <span class="material-symbols-outlined">check</span>
+                </div>
+                <div class="stage-details">
+                    <span class="stage-title">{% trans "Submitted" %}</span>
+                    <span class="stage-sub">{{ app.submitted_at|date:"d M Y" }}</span>
+                </div>
+            </div>
+
+            <!-- Connector 1 -->
+            <div class="stage-track-line {% if app.status != 'cancelled' %}is-active{% endif %}"></div>
+
+            <!-- Step 2: Committee Review -->
+            <div class="stage-step {% if app.status == 'in_progress' or app.status == 'interview' %}is-current{% elif app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}is-complete{% else %}is-pending{% endif %}">
+                <div class="stage-circle">
+                    {% if app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}
+                        <span class="material-symbols-outlined">check</span>
+                    {% elif app.status == 'in_progress' or app.status == 'interview' %}
+                        <span class="stage-pulse"></span>
+                    {% else %}
+                        <span class="stage-num">2</span>
+                    {% endif %}
+                </div>
+                <div class="stage-details">
+                    <span class="stage-title">{% trans "Review" %}</span>
+                    <span class="stage-sub">
+                        {% if app.status == 'in_progress' or app.status == 'interview' %}
+                            {% trans "In Progress" %}
+                        {% elif app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}
+                            {% trans "Completed" %}
+                        {% elif app.status == 'cancelled' %}
+                            {% trans "Cancelled" %}
+                        {% else %}
+                            {% trans "Pending" %}
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+
+            <!-- Connector 2 -->
+            <div class="stage-track-line {% if app.status == 'approved' or app.status == 'completed' %}is-active{% endif %}"></div>
+
+            <!-- Step 3: Result / Announcement -->
+            <div class="stage-step {% if app.status == 'completed' or app.status == 'approved' %}is-success{% elif app.status == 'rejected' %}is-rejected{% elif app.status == 'cancelled' %}is-cancelled{% else %}is-waiting{% endif %}">
+                <div class="stage-circle">
+                    {% if app.status == 'completed' or app.status == 'approved' %}
+                        <span class="material-symbols-outlined">check</span>
+                    {% elif app.status == 'rejected' %}
+                        <span class="material-symbols-outlined">close</span>
+                    {% elif app.status == 'cancelled' %}
+                        <span class="material-symbols-outlined">remove</span>
+                    {% else %}
+                        <span class="stage-num">3</span>
+                    {% endif %}
+                </div>
+                <div class="stage-details">
+                    <span class="stage-title">{% trans "Result" %}</span>
+                    <span class="stage-sub">
+                        {% if app.status == 'completed' %}
+                            {% trans "Completed" %}
+                        {% elif app.status == 'approved' %}
+                            {% trans "Approved" %}
+                        {% elif app.status == 'rejected' %}
+                            {% trans "Rejected" %}
+                        {% elif app.status == 'cancelled' %}
+                            {% trans "Cancelled" %}
+                        {% else %}
+                            {% trans "Awaiting Result" %}
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clean Minimal Details Row -->
+        <div class="app-card-details-row">
+            <div class="app-submitted-time">
+                <span class="material-symbols-outlined">schedule</span>
+                <span>{% trans "Submitted on" %}: <strong>{{ app.submitted_at|date:"d M Y, H:i" }}</strong></span>
+            </div>
+            <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="link-view-details">
+                {% trans "View Details" %}
+                <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% include 'components/pagination.html' with page_obj=page_obj page_range=page_range page_param='page' total_count=page_obj.paginator.count item_name=_('applications') extra_query=extra_query anchor='history' always_show=True %}
+</div>
+{% elif status_counts.all > 0 %}
+<div class="modern-empty-state">
+    <span class="material-symbols-outlined empty-icon-big" style="font-size: 3rem; color: #94a3b8; margin-bottom: 12px; display: inline-block;">filter_list_off</span>
+    <h3 class="empty-title">{% trans "No applications found with this status." %}</h3>
+    <p class="empty-subtitle">{% trans "Try choosing a different status filter above to see your applications." %}</p>
+    <a href="?status=all#history" data-status="all" class="btn-empty-reset" style="margin-top: 14px; display: inline-flex; align-items: center; gap: 6px;">
+        <span class="material-symbols-outlined" style="font-size: 1.15rem;">restart_alt</span>
+        {% trans "Show All Applications" %}
+    </a>
+</div>
+{% else %}
+<div class="modern-empty-state">
+    <h3 class="empty-title">{% trans "You haven't submitted any scholarship applications yet." %}</h3>
+    <p class="empty-subtitle">{% trans "Browse available scholarships and apply online today." %}</p>
+    <a href="{% url 'scholarships' %}" class="btn-empty-reset">{% trans "Explore Open Scholarships" %}</a>
+</div>
+{% endif %}

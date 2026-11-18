@@ -144,38 +144,38 @@
 
             {% if status_counts.all > 0 %}
             <!-- Status Filter Bar -->
-            <div class="history-filter-bar">
-                <a href="?status=all#history" class="history-filter-pill {% if selected_status == 'all' %}active{% endif %}">
+            <div class="history-filter-bar" id="historyFilterBar">
+                <a href="?status=all#history" data-status="all" class="history-filter-pill {% if selected_status == 'all' %}active{% endif %}">
                     <span>{% trans "All" %}</span>
                     <span class="count-badge">{{ status_counts.all }}</span>
                 </a>
-                <a href="?status=pending#history" class="history-filter-pill {% if selected_status == 'pending' %}active{% endif %}">
+                <a href="?status=pending#history" data-status="pending" class="history-filter-pill {% if selected_status == 'pending' %}active{% endif %}">
                     <span class="status-dot dot-pending"></span>
                     <span>{% trans "Pending" %}</span>
                     <span class="count-badge">{{ status_counts.pending }}</span>
                 </a>
-                <a href="?status=in_progress#history" class="history-filter-pill {% if selected_status == 'in_progress' %}active{% endif %}">
+                <a href="?status=in_progress#history" data-status="in_progress" class="history-filter-pill {% if selected_status == 'in_progress' %}active{% endif %}">
                     <span class="status-dot dot-inprogress"></span>
                     <span>{% trans "In Progress" %}</span>
                     <span class="count-badge">{{ status_counts.in_progress }}</span>
                 </a>
-                <a href="?status=approved#history" class="history-filter-pill {% if selected_status == 'approved' %}active{% endif %}">
+                <a href="?status=approved#history" data-status="approved" class="history-filter-pill {% if selected_status == 'approved' %}active{% endif %}">
                     <span class="status-dot dot-approved"></span>
                     <span>{% trans "Approve" %}</span>
                     <span class="count-badge">{{ status_counts.approved }}</span>
                 </a>
-                <a href="?status=completed#history" class="history-filter-pill {% if selected_status == 'completed' %}active{% endif %}">
+                <a href="?status=completed#history" data-status="completed" class="history-filter-pill {% if selected_status == 'completed' %}active{% endif %}">
                     <span class="status-dot dot-completed"></span>
                     <span>{% trans "Complete" %}</span>
                     <span class="count-badge">{{ status_counts.completed }}</span>
                 </a>
-                <a href="?status=rejected#history" class="history-filter-pill {% if selected_status == 'rejected' %}active{% endif %}">
+                <a href="?status=rejected#history" data-status="rejected" class="history-filter-pill {% if selected_status == 'rejected' %}active{% endif %}">
                     <span class="status-dot dot-rejected"></span>
                     <span>{% trans "Reject" %}</span>
                     <span class="count-badge">{{ status_counts.rejected }}</span>
                 </a>
                 {% if status_counts.cancelled > 0 %}
-                <a href="?status=cancelled#history" class="history-filter-pill {% if selected_status == 'cancelled' %}active{% endif %}">
+                <a href="?status=cancelled#history" data-status="cancelled" class="history-filter-pill {% if selected_status == 'cancelled' %}active{% endif %}">
                     <span class="status-dot dot-cancelled"></span>
                     <span>{% trans "Cancel" %}</span>
                     <span class="count-badge">{{ status_counts.cancelled }}</span>
@@ -184,138 +184,10 @@
             </div>
             {% endif %}
 
-            {% if applications %}
-            <div class="application-items-list">
-                {% for app in applications %}
-                <div class="app-tracking-card">
-                    <!-- Top header: Category, Amount, Title, Status badge -->
-                    <div class="app-card-top-bar">
-                        <div class="app-card-info-group">
-                            <div class="app-card-meta-line">
-                                {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
-                                <span class="app-amount-pill">฿{{ app.scholarship.amount_per_semester|floatformat:0 }} / {% trans "semester" %}</span>
-                            </div>
-                            <h3 class="app-sch-title">
-                                <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="app-title-link">{{ app.scholarship.localized_title }}</a>
-                            </h3>
-                        </div>
-
-                        <div class="app-status-badge-wrap">
-                            {% include 'components/status_badge.html' with status=app.status %}
-                        </div>
-                    </div>
-
-                    <!-- Minimal Clean Stage Tracker -->
-                    <div class="app-stage-tracker">
-                        <!-- Step 1: Submitted -->
-                        <div class="stage-step is-complete">
-                            <div class="stage-circle">
-                                <span class="material-symbols-outlined">check</span>
-                            </div>
-                            <div class="stage-details">
-                                <span class="stage-title">{% trans "Submitted" %}</span>
-                                <span class="stage-sub">{{ app.submitted_at|date:"d M Y" }}</span>
-                            </div>
-                        </div>
-
-                        <!-- Connector 1 -->
-                        <div class="stage-track-line {% if app.status != 'cancelled' %}is-active{% endif %}"></div>
-
-                        <!-- Step 2: Committee Review -->
-                        <div class="stage-step {% if app.status == 'in_progress' or app.status == 'interview' %}is-current{% elif app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}is-complete{% else %}is-pending{% endif %}">
-                            <div class="stage-circle">
-                                {% if app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}
-                                    <span class="material-symbols-outlined">check</span>
-                                {% elif app.status == 'in_progress' or app.status == 'interview' %}
-                                    <span class="stage-pulse"></span>
-                                {% else %}
-                                    <span class="stage-num">2</span>
-                                {% endif %}
-                            </div>
-                            <div class="stage-details">
-                                <span class="stage-title">{% trans "Review" %}</span>
-                                <span class="stage-sub">
-                                    {% if app.status == 'in_progress' or app.status == 'interview' %}
-                                        {% trans "In Progress" %}
-                                    {% elif app.status == 'approved' or app.status == 'completed' or app.status == 'rejected' %}
-                                        {% trans "Completed" %}
-                                    {% elif app.status == 'cancelled' %}
-                                        {% trans "Cancelled" %}
-                                    {% else %}
-                                        {% trans "Pending" %}
-                                    {% endif %}
-                                </span>
-                            </div>
-                        </div>
-
-                        <!-- Connector 2 -->
-                        <div class="stage-track-line {% if app.status == 'approved' or app.status == 'completed' %}is-active{% elif app.status == 'rejected' %}is-rejected{% endif %}"></div>
-
-                        <!-- Step 3: Result / Announcement -->
-                        <div class="stage-step {% if app.status == 'completed' or app.status == 'approved' %}is-success{% elif app.status == 'rejected' %}is-rejected{% elif app.status == 'cancelled' %}is-cancelled{% else %}is-waiting{% endif %}">
-                            <div class="stage-circle">
-                                {% if app.status == 'completed' or app.status == 'approved' %}
-                                    <span class="material-symbols-outlined">check</span>
-                                {% elif app.status == 'rejected' %}
-                                    <span class="material-symbols-outlined">close</span>
-                                {% elif app.status == 'cancelled' %}
-                                    <span class="material-symbols-outlined">remove</span>
-                                {% else %}
-                                    <span class="stage-num">3</span>
-                                {% endif %}
-                            </div>
-                            <div class="stage-details">
-                                <span class="stage-title">{% trans "Result" %}</span>
-                                <span class="stage-sub">
-                                    {% if app.status == 'completed' %}
-                                        {% trans "Completed" %}
-                                    {% elif app.status == 'approved' %}
-                                        {% trans "Approved" %}
-                                    {% elif app.status == 'rejected' %}
-                                        {% trans "Not Selected" %}
-                                    {% elif app.status == 'cancelled' %}
-                                        {% trans "Cancelled" %}
-                                    {% else %}
-                                        {% trans "Awaiting Result" %}
-                                    {% endif %}
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Clean Minimal Details Row -->
-                    <div class="app-card-details-row">
-                        <div class="app-submitted-time">
-                            <span class="material-symbols-outlined">schedule</span>
-                            <span>{% trans "Submitted on" %}: <strong>{{ app.submitted_at|date:"d M Y, H:i" }}</strong></span>
-                        </div>
-                        <a href="{% url 'scholarship_detail' app.scholarship.pk %}" class="link-view-details">
-                            {% trans "View Details" %}
-                            <span class="material-symbols-outlined">arrow_forward</span>
-                        </a>
-                    </div>
-                </div>
-                {% endfor %}
-
-                {% include 'components/pagination.html' with page_obj=page_obj page_range=page_range page_param='page' total_count=page_obj.paginator.count item_name=_('applications') extra_query=extra_query anchor='history' %}
+            <!-- Dynamic Content Container (AJAX Loaded) -->
+            <div id="historyContentArea" class="history-content-area">
+                {% include 'accounts/partials/history_list.html' %}
             </div>
-            {% elif status_counts.all > 0 %}
-            <div class="modern-empty-state">
-                <span class="material-symbols-outlined empty-icon-big" style="font-size: 3rem; color: #94a3b8; margin-bottom: 12px; display: inline-block;">filter_list_off</span>
-                <h3 class="empty-title">{% trans "No applications found with this status." %}</h3>
-                <p class="empty-subtitle">{% trans "Try choosing a different status filter above to see your applications." %}</p>
-                <a href="?status=all#history" class="btn-empty-reset" style="margin-top: 14px; display: inline-flex; align-items: center; gap: 6px;">
-                    <span class="material-symbols-outlined" style="font-size: 1.15rem;">restart_alt</span>
-                    {% trans "Show All Applications" %}
-                </a>
-            </div>
-            {% else %}
-            <div class="modern-empty-state">
-                <h3 class="empty-title">{% trans "You haven't submitted any scholarship applications yet." %}</h3>
-                <p class="empty-subtitle">{% trans "Browse available scholarships and apply online today." %}</p>
-                <a href="{% url 'scholarships' %}" class="btn-empty-reset">{% trans "Explore Open Scholarships" %}</a>
-            </div>
-            {% endif %}
         </div>
     </div>
 </div>
@@ -330,5 +202,80 @@
             reader.readAsDataURL(input.files[0]);
         }
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterBar = document.getElementById('historyFilterBar');
+        const contentArea = document.getElementById('historyContentArea');
+
+        if (!filterBar || !contentArea) return;
+
+        async function loadHistory(url, pushState = true) {
+            contentArea.style.opacity = '0.45';
+            contentArea.style.pointerEvents = 'none';
+
+            try {
+                const resp = await fetch(url, {
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+                if (resp.ok) {
+                    const html = await resp.text();
+                    contentArea.innerHTML = html;
+                    if (pushState) {
+                        window.history.pushState(null, '', url);
+                    }
+
+                    // Sync active filter pill state
+                    const parsedUrl = new URL(url, window.location.origin);
+                    const currentStatus = parsedUrl.searchParams.get('status') || 'all';
+                    filterBar.querySelectorAll('.history-filter-pill').forEach(pill => {
+                        if (pill.getAttribute('data-status') === currentStatus) {
+                            pill.classList.add('active');
+                        } else {
+                            pill.classList.remove('active');
+                        }
+                    });
+                }
+            } catch (err) {
+                console.error('Failed to load history:', err);
+            } finally {
+                contentArea.style.opacity = '1';
+                contentArea.style.pointerEvents = '';
+            }
+        }
+
+        // Filter pill click event
+        filterBar.addEventListener('click', function (e) {
+            const pill = e.target.closest('.history-filter-pill');
+            if (pill && pill.href) {
+                e.preventDefault();
+                filterBar.querySelectorAll('.history-filter-pill').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                loadHistory(pill.href);
+            }
+        });
+
+        // Pagination and Reset button clicks inside content area
+        contentArea.addEventListener('click', function (e) {
+            const pageBtn = e.target.closest('.dash-page-num, .dash-page-btn, .btn-empty-reset');
+            if (pageBtn && pageBtn.tagName === 'A' && pageBtn.href) {
+                const href = pageBtn.getAttribute('href');
+                if (href && (href.startsWith('?') || href.includes('#history'))) {
+                    e.preventDefault();
+                    loadHistory(pageBtn.href);
+                    const histSection = document.getElementById('history');
+                    if (histSection) {
+                        histSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }
+            }
+        });
+
+        // Handle browser Back / Forward buttons
+        window.addEventListener('popstate', function () {
+            loadHistory(window.location.href, false);
+        });
+    });
 </script>
 {% endblock %}

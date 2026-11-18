@@ -144,8 +144,8 @@ def profile(request):
         if selected_status != 'all':
             extra_query = f"status={selected_status}"
 
-        # Pagination: 5 applications per page
-        paginator = Paginator(filtered_apps, 5)
+        # Pagination: 2 applications per page to ensure pagination in every filter
+        paginator = Paginator(filtered_apps, 2)
         page_number = request.GET.get('page', 1)
         try:
             page_obj = paginator.page(page_number)
@@ -154,6 +154,17 @@ def profile(request):
 
         page_range = paginator.get_elided_page_range(page_obj.number, on_each_side=1, on_ends=1)
         app_list = page_obj
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest' or request.GET.get('ajax') == '1':
+        return render(request, 'accounts/partials/history_list.html', {
+            'student_profile': student_profile,
+            'applications': app_list,
+            'page_obj': page_obj,
+            'page_range': page_range,
+            'status_counts': status_counts,
+            'selected_status': selected_status,
+            'extra_query': extra_query,
+        })
 
     return render(request, 'accounts/profile.html', {
         'student_profile': student_profile,
