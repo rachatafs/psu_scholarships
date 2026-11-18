@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-18 13:28+0700\n"
+"POT-Creation-Date: 2026-11-18 13:43+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -132,7 +132,7 @@ msgid "Lunch Scholarships"
 msgstr "ทุนอาหารกลางวัน"
 
 #: backend/scholarships/models.py:43
-#: frontend/templates/scholarship_dashboard.html:2123
+#: frontend/templates/scholarship_dashboard.html:2120
 msgid "Active"
 msgstr "เปิดรับสมัคร"
 
@@ -140,7 +140,7 @@ msgstr "เปิดรับสมัคร"
 #: frontend/templates/accounts/admin_dashboard.html:808
 #: frontend/templates/accounts/admin_dashboard.html:943
 #: frontend/templates/components/scholarship_card.html:10
-#: frontend/templates/scholarship_dashboard.html:2124
+#: frontend/templates/scholarship_dashboard.html:2121
 #: frontend/templates/scholarships/detail.html:24
 #: frontend/templates/scholarships/detail.html:131
 #: frontend/templates/scholarships/detail.html:139
@@ -149,7 +149,7 @@ msgid "Closed"
 msgstr "ปิดรับสมัคร"
 
 #: backend/scholarships/models.py:45
-#: frontend/templates/scholarship_dashboard.html:2125
+#: frontend/templates/scholarship_dashboard.html:2122
 msgid "Draft"
 msgstr "ฉบับร่าง"
 
@@ -237,77 +237,77 @@ msgid "Updated successfully."
 msgstr "อัปเดตข้อมูลเรียบร้อยแล้ว"
 
 #: backend/scholarships/views/admin_views.py:271
-#: frontend/templates/scholarship_dashboard.html:1727
+#: frontend/templates/scholarship_dashboard.html:1726
 msgid "January"
 msgstr "มกราคม"
 
 #: backend/scholarships/views/admin_views.py:271
-#: frontend/templates/scholarship_dashboard.html:1728
+#: frontend/templates/scholarship_dashboard.html:1727
 msgid "February"
 msgstr "กุมภาพันธ์"
 
 #: backend/scholarships/views/admin_views.py:271
-#: frontend/templates/scholarship_dashboard.html:1729
+#: frontend/templates/scholarship_dashboard.html:1728
 msgid "March"
 msgstr "มีนาคม"
 
 #: backend/scholarships/views/admin_views.py:271
-#: frontend/templates/scholarship_dashboard.html:1730
+#: frontend/templates/scholarship_dashboard.html:1729
 msgid "April"
 msgstr "เมษายน"
 
 #: backend/scholarships/views/admin_views.py:272
-#: frontend/templates/scholarship_dashboard.html:1731
+#: frontend/templates/scholarship_dashboard.html:1730
 msgid "May"
 msgstr "พฤษภาคม"
 
 #: backend/scholarships/views/admin_views.py:272
-#: frontend/templates/scholarship_dashboard.html:1732
+#: frontend/templates/scholarship_dashboard.html:1731
 msgid "June"
 msgstr "มิถุนายน"
 
 #: backend/scholarships/views/admin_views.py:272
-#: frontend/templates/scholarship_dashboard.html:1733
+#: frontend/templates/scholarship_dashboard.html:1732
 msgid "July"
 msgstr "กรกฎาคม"
 
 #: backend/scholarships/views/admin_views.py:272
-#: frontend/templates/scholarship_dashboard.html:1734
+#: frontend/templates/scholarship_dashboard.html:1733
 msgid "August"
 msgstr "สิงหาคม"
 
 #: backend/scholarships/views/admin_views.py:273
-#: frontend/templates/scholarship_dashboard.html:1735
+#: frontend/templates/scholarship_dashboard.html:1734
 msgid "September"
 msgstr "กันยายน"
 
 #: backend/scholarships/views/admin_views.py:273
-#: frontend/templates/scholarship_dashboard.html:1736
+#: frontend/templates/scholarship_dashboard.html:1735
 msgid "October"
 msgstr "ตุลาคม"
 
 #: backend/scholarships/views/admin_views.py:273
-#: frontend/templates/scholarship_dashboard.html:1737
+#: frontend/templates/scholarship_dashboard.html:1736
 msgid "November"
 msgstr "พฤศจิกายน"
 
 #: backend/scholarships/views/admin_views.py:273
-#: frontend/templates/scholarship_dashboard.html:1738
+#: frontend/templates/scholarship_dashboard.html:1737
 msgid "December"
 msgstr "ธันวาคม"
 
 #: backend/scholarships/views/admin_views.py:278
-#: frontend/templates/scholarship_dashboard.html:1711
+#: frontend/templates/scholarship_dashboard.html:1710
 msgid "Semester 1 (Aug-Dec)"
 msgstr "ภาคการศึกษาที่ 1 (ส.ค. - ธ.ค.)"
 
 #: backend/scholarships/views/admin_views.py:279
-#: frontend/templates/scholarship_dashboard.html:1712
+#: frontend/templates/scholarship_dashboard.html:1711
 msgid "Semester 2 (Jan-May)"
 msgstr "ภาคการศึกษาที่ 2 (ม.ค. - พ.ค.)"
 
 #: backend/scholarships/views/admin_views.py:280
-#: frontend/templates/scholarship_dashboard.html:1713
+#: frontend/templates/scholarship_dashboard.html:1712
 msgid "Summer (Jun-Jul)"
 msgstr "ภาคฤดูร้อน (มิ.ย. - ก.ค.)"
 
@@ -370,7 +370,7 @@ msgstr ""
 
 #: backend/scholarships/views/scholarship_views.py:81
 #: frontend/templates/partials/navbar.html:24
-#: frontend/templates/scholarship_dashboard.html:2068
+#: frontend/templates/scholarship_dashboard.html:2066
 msgid "Scholarships"
 msgstr "ทุนการศึกษา"
 
@@ -561,7 +561,7 @@ msgid "Click to view all scholarships"
 msgstr "คลิกเพื่อดูทุนการศึกษาทั้งหมด"
 
 #: frontend/templates/accounts/admin_dashboard.html:375
-#: frontend/templates/scholarship_dashboard.html:1870
+#: frontend/templates/scholarship_dashboard.html:1869
 msgid "Total Scholarships"
 msgstr "จำนวนทุนการศึกษาทั้งหมด"
 
@@ -570,7 +570,7 @@ msgid "Click to view all applications"
 msgstr "คลิกเพื่อดูใบสมัครทั้งหมด"
 
 #: frontend/templates/accounts/admin_dashboard.html:381
-#: frontend/templates/scholarship_dashboard.html:1899
+#: frontend/templates/scholarship_dashboard.html:1898
 msgid "Total Applications"
 msgstr "จำนวนใบสมัครทั้งหมด"
 
@@ -640,7 +640,7 @@ msgstr "ทั้งหมด"
 #: frontend/templates/accounts/admin_dashboard.html:727
 #: frontend/templates/components/category_badge.html:3
 #: frontend/templates/guide/student_guide.html:56
-#: frontend/templates/scholarship_dashboard.html:1974
+#: frontend/templates/scholarship_dashboard.html:1973
 #: frontend/templates/scholarships/category.html:40
 #: frontend/templates/scholarships/list.html:28
 msgid "General"
@@ -650,7 +650,7 @@ msgstr "ทั่วไป"
 #: frontend/templates/accounts/admin_dashboard.html:731
 #: frontend/templates/components/category_badge.html:4
 #: frontend/templates/guide/student_guide.html:57
-#: frontend/templates/scholarship_dashboard.html:1977
+#: frontend/templates/scholarship_dashboard.html:1976
 #: frontend/templates/scholarships/category.html:53
 #: frontend/templates/scholarships/list.html:30
 msgid "Exchange"
@@ -660,7 +660,7 @@ msgstr "แลกเปลี่ยน"
 #: frontend/templates/accounts/admin_dashboard.html:735
 #: frontend/templates/components/category_badge.html:5
 #: frontend/templates/guide/student_guide.html:58
-#: frontend/templates/scholarship_dashboard.html:1980
+#: frontend/templates/scholarship_dashboard.html:1979
 #: frontend/templates/scholarships/list.html:32
 msgid "Fee Waiver"
 msgstr "ยกเว้นค่าเล่าเรียน"
@@ -669,7 +669,7 @@ msgstr "ยกเว้นค่าเล่าเรียน"
 #: frontend/templates/accounts/admin_dashboard.html:739
 #: frontend/templates/components/category_badge.html:6
 #: frontend/templates/guide/student_guide.html:59
-#: frontend/templates/scholarship_dashboard.html:1983
+#: frontend/templates/scholarship_dashboard.html:1982
 #: frontend/templates/scholarships/list.html:34
 msgid "Lunch"
 msgstr "อาหารกลางวัน"
@@ -716,8 +716,8 @@ msgstr "ผู้สมัคร"
 #: frontend/templates/accounts/profile.html:46
 #: frontend/templates/accounts/profile.html:58
 #: frontend/templates/accounts/profile.html:59
-#: frontend/templates/scholarship_dashboard.html:2208
-#: frontend/templates/scholarship_dashboard.html:2222
+#: frontend/templates/scholarship_dashboard.html:2200
+#: frontend/templates/scholarship_dashboard.html:2214
 #: frontend/templates/scholarships/apply.html:67
 #: frontend/templates/scholarships/apply_success.html:30
 msgid "Student ID"
@@ -726,17 +726,17 @@ msgstr "รหัสนักศึกษา"
 #: frontend/templates/accounts/admin_dashboard.html:524
 #: frontend/templates/accounts/admin_dashboard.html:552
 #: frontend/templates/accounts/admin_dashboard.html:1048
-#: frontend/templates/scholarship_dashboard.html:2006
-#: frontend/templates/scholarship_dashboard.html:2016
-#: frontend/templates/scholarship_dashboard.html:2101
+#: frontend/templates/scholarship_dashboard.html:2005
+#: frontend/templates/scholarship_dashboard.html:2015
+#: frontend/templates/scholarship_dashboard.html:2099
 #: frontend/templates/scholarships/apply_success.html:34
 msgid "Scholarship"
 msgstr "ทุนการศึกษา"
 
 #: frontend/templates/accounts/admin_dashboard.html:525
 #: frontend/templates/accounts/admin_dashboard.html:562
-#: frontend/templates/scholarship_dashboard.html:2213
-#: frontend/templates/scholarship_dashboard.html:2249
+#: frontend/templates/scholarship_dashboard.html:2205
+#: frontend/templates/scholarship_dashboard.html:2240
 #: frontend/templates/scholarships/apply_success.html:38
 msgid "Submitted Date"
 msgstr "วันที่ยื่นใบสมัคร"
@@ -756,7 +756,6 @@ msgid "Actions"
 msgstr "การดำเนินการ"
 
 #: frontend/templates/accounts/admin_dashboard.html:554
-#| msgid "Scholarship Title"
 msgid "View scholarship details"
 msgstr "ดูรายละเอียดทุนการศึกษา"
 
@@ -782,10 +781,10 @@ msgstr "ไม่มีเอกสารแนบ"
 #: frontend/templates/accounts/admin_dashboard.html:910
 #: frontend/templates/accounts/admin_dashboard.html:941
 #: frontend/templates/guide/admin_guide.html:85
-#: frontend/templates/scholarship_dashboard.html:2091
-#: frontend/templates/scholarship_dashboard.html:2122
-#: frontend/templates/scholarship_dashboard.html:2214
-#: frontend/templates/scholarship_dashboard.html:2252
+#: frontend/templates/scholarship_dashboard.html:2089
+#: frontend/templates/scholarship_dashboard.html:2119
+#: frontend/templates/scholarship_dashboard.html:2206
+#: frontend/templates/scholarship_dashboard.html:2243
 msgid "Status"
 msgstr "สถานะ"
 
@@ -838,7 +837,6 @@ msgid "No applications match the search criteria"
 msgstr "ไม่พบใบสมัครที่ตรงตามเงื่อนไขการค้นหา"
 
 #: frontend/templates/accounts/admin_dashboard.html:679
-#| msgid "applicant(s)"
 msgid "applications"
 msgstr "ใบสมัคร"
 
@@ -879,8 +877,9 @@ msgstr "ค้นหาชื่อทุน, หมวดหมู่, เก�
 #: frontend/templates/accounts/admin_dashboard.html:756
 #: frontend/templates/accounts/admin_dashboard.html:859
 #: frontend/templates/accounts/admin_dashboard.html:982
-#: frontend/templates/scholarship_dashboard.html:1872
-#: frontend/templates/scholarship_dashboard.html:1888
+#: frontend/templates/scholarship_dashboard.html:1871
+#: frontend/templates/scholarship_dashboard.html:1887
+#: frontend/templates/scholarship_dashboard.html:2149
 msgid "scholarships"
 msgstr "ทุน"
 
@@ -895,10 +894,10 @@ msgstr "ชื่อทุนการศึกษา"
 #: frontend/templates/accounts/admin_dashboard.html:784
 #: frontend/templates/accounts/admin_dashboard.html:906
 #: frontend/templates/accounts/admin_dashboard.html:924
-#: frontend/templates/scholarship_dashboard.html:2007
-#: frontend/templates/scholarship_dashboard.html:2021
-#: frontend/templates/scholarship_dashboard.html:2088
-#: frontend/templates/scholarship_dashboard.html:2107
+#: frontend/templates/scholarship_dashboard.html:2006
+#: frontend/templates/scholarship_dashboard.html:2020
+#: frontend/templates/scholarship_dashboard.html:2086
+#: frontend/templates/scholarship_dashboard.html:2105
 msgid "Category"
 msgstr "หมวดหมู่"
 
@@ -906,7 +905,7 @@ msgstr "หมวดหมู่"
 #: frontend/templates/accounts/admin_dashboard.html:787
 #: frontend/templates/accounts/admin_dashboard.html:907
 #: frontend/templates/accounts/admin_dashboard.html:927
-#: frontend/templates/scholarship_dashboard.html:2180
+#: frontend/templates/scholarship_dashboard.html:2173
 msgid "Value"
 msgstr "มูลค่า"
 
@@ -922,8 +921,8 @@ msgstr "ผู้สมัคร / โควตาทุน"
 #: frontend/templates/accounts/admin_dashboard.html:909
 #: frontend/templates/accounts/admin_dashboard.html:936
 #: frontend/templates/components/scholarship_card.html:66
-#: frontend/templates/scholarship_dashboard.html:2009
-#: frontend/templates/scholarship_dashboard.html:2028
+#: frontend/templates/scholarship_dashboard.html:2008
+#: frontend/templates/scholarship_dashboard.html:2026
 msgid "Deadline"
 msgstr "กำหนดปิดรับสมัคร"
 
@@ -1009,8 +1008,8 @@ msgid "Review or compose additional notes to be sent to the student."
 msgstr "ตรวจสอบหรือเขียนข้อความเพิ่มเติมเพื่อส่งแจ้งเตือนไปยังนักศึกษา"
 
 #: frontend/templates/accounts/admin_dashboard.html:1035
-#: frontend/templates/scholarship_dashboard.html:2209
-#: frontend/templates/scholarship_dashboard.html:2224
+#: frontend/templates/scholarship_dashboard.html:2201
+#: frontend/templates/scholarship_dashboard.html:2216
 msgid "Student Name"
 msgstr "ชื่อ - นามสกุล นักศึกษา"
 
@@ -1230,7 +1229,7 @@ msgstr "ติดตามความคืบหน้าและผลกา
 
 #: frontend/templates/accounts/profile.html:154
 #: frontend/templates/components/scholarship_card.html:52
-#: frontend/templates/scholarship_dashboard.html:2181
+#: frontend/templates/scholarship_dashboard.html:2174
 #: frontend/templates/scholarships/apply.html:26
 msgid "semester"
 msgstr "ภาคการศึกษา"
@@ -1326,8 +1325,8 @@ msgid "Save"
 msgstr "บันทึก"
 
 #: frontend/templates/components/scholarship_card.html:50
-#: frontend/templates/scholarship_dashboard.html:2008
-#: frontend/templates/scholarship_dashboard.html:2025
+#: frontend/templates/scholarship_dashboard.html:2007
+#: frontend/templates/scholarship_dashboard.html:2023
 msgid "Amount"
 msgstr "มูลค่าทุน"
 
@@ -1336,7 +1335,7 @@ msgid "Minimum GPAX"
 msgstr "เกรดเฉลี่ยขั้นต่ำ (GPAX)"
 
 #: frontend/templates/components/scholarship_card.html:61
-#: frontend/templates/scholarship_dashboard.html:2184
+#: frontend/templates/scholarship_dashboard.html:2177
 #: frontend/templates/scholarships/detail.html:106
 msgid "Quota"
 msgstr "จำนวนที่เปิดรับ"
@@ -1397,7 +1396,6 @@ msgid "Advanced Database"
 msgstr "ฐานข้อมูลขั้นสูง"
 
 #: frontend/templates/dashboard_base.html:541
-#| msgid "Management Menu"
 msgid "Open Management Menu"
 msgstr "เปิดเมนูจัดการระบบ"
 
@@ -2101,262 +2099,275 @@ msgstr "เข้าสู่ระบบสำเร็จ!"
 msgid "PSU Phuket Scholarships"
 msgstr "ระบบทุนการศึกษา ม.อ. ภูเก็ต"
 
-#: frontend/templates/scholarship_dashboard.html:1706
-#| msgid "All Semesters"
+#: frontend/templates/scholarship_dashboard.html:1685
+msgid ""
+"Comprehensive analytics of scholarship disbursements, student applicants, "
+"and allocation quotas"
+msgstr ""
+"ระบบวิเคราะห์และรายงานสถิติการจัดสรรทุนการศึกษา ผู้สมัครรับทุน "
+"และโควตาทุนแบบครบวงจร"
+
+#: frontend/templates/scholarship_dashboard.html:1705
 msgid "Semester"
 msgstr "ภาคการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:1710
+#: frontend/templates/scholarship_dashboard.html:1709
 msgid "All Semesters"
 msgstr "ทุกภาคการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:1722
+#: frontend/templates/scholarship_dashboard.html:1721
 msgid "Month"
 msgstr "เดือน"
 
-#: frontend/templates/scholarship_dashboard.html:1726
+#: frontend/templates/scholarship_dashboard.html:1725
 msgid "All Months"
 msgstr "ทุกเดือน"
 
-#: frontend/templates/scholarship_dashboard.html:1747
+#: frontend/templates/scholarship_dashboard.html:1746
 msgid "Academic Year"
 msgstr "ปีการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:1751
+#: frontend/templates/scholarship_dashboard.html:1750
 msgid "All Years"
 msgstr "ทุกปีการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:1765
+#: frontend/templates/scholarship_dashboard.html:1764
 msgid "Search by scholarship title, applicant name, student ID, major..."
 msgstr "ค้นหาจากชื่อทุน, ชื่อนักศึกษา, รหัสนักศึกษา, สาขาวิชา..."
 
-#: frontend/templates/scholarship_dashboard.html:1769
+#: frontend/templates/scholarship_dashboard.html:1768
 msgid "Clear search"
 msgstr "ล้างการค้นหา"
 
-#: frontend/templates/scholarship_dashboard.html:1778
+#: frontend/templates/scholarship_dashboard.html:1777
 #: frontend/templates/scholarships/list.html:59
 msgid "Search"
 msgstr "ค้นหา"
 
-#: frontend/templates/scholarship_dashboard.html:1783
+#: frontend/templates/scholarship_dashboard.html:1782
 msgid "Reset all filters to view all records"
 msgstr "ล้างตัวกรองทั้งหมดเพื่อแสดงข้อมูลทั้งหมด"
 
-#: frontend/templates/scholarship_dashboard.html:1785
+#: frontend/templates/scholarship_dashboard.html:1784
 msgid "Reset"
 msgstr "ล้างตัวกรอง"
 
-#: frontend/templates/scholarship_dashboard.html:1793
+#: frontend/templates/scholarship_dashboard.html:1792
 msgid "Export PDF"
 msgstr "ส่งออก PDF"
 
-#: frontend/templates/scholarship_dashboard.html:1800
+#: frontend/templates/scholarship_dashboard.html:1799
 msgid "Language"
 msgstr "ภาษา"
 
-#: frontend/templates/scholarship_dashboard.html:1816
+#: frontend/templates/scholarship_dashboard.html:1815
 msgid "Export This Scholarship (PDF)"
 msgstr "ส่งออกรายงานเฉพาะทุนนี้ (PDF)"
 
-#: frontend/templates/scholarship_dashboard.html:1817
+#: frontend/templates/scholarship_dashboard.html:1816
 msgid "Student List"
 msgstr "รายชื่อนักศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:1826
+#: frontend/templates/scholarship_dashboard.html:1825
 msgid "Export Current Filter (PDF)"
 msgstr "ส่งออกรายงานตามเงื่อนไขที่เลือก (PDF)"
 
-#: frontend/templates/scholarship_dashboard.html:1828
+#: frontend/templates/scholarship_dashboard.html:1827
 msgid "Active filtered period"
 msgstr "ช่วงเวลาที่เลือกในตัวกรอง"
 
-#: frontend/templates/scholarship_dashboard.html:1829
+#: frontend/templates/scholarship_dashboard.html:1828
 msgid "With Student Names"
 msgstr "พร้อมรายชื่อผู้สมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:1837
+#: frontend/templates/scholarship_dashboard.html:1836
 msgid "Export All Records (PDF)"
 msgstr "ส่งออกรายงานทุนและผู้สมัครทั้งหมด (PDF)"
 
-#: frontend/templates/scholarship_dashboard.html:1838
+#: frontend/templates/scholarship_dashboard.html:1837
 msgid "All semesters & all student applicants"
 msgstr "ทุกภาคการศึกษาและผู้สมัครทุกคน"
 
-#: frontend/templates/scholarship_dashboard.html:1852
+#: frontend/templates/scholarship_dashboard.html:1851
 msgid "Analytics & Overview"
 msgstr "สถิติและภาพรวม"
 
-#: frontend/templates/scholarship_dashboard.html:1856
-#| msgid "Quota & Applicants"
+#: frontend/templates/scholarship_dashboard.html:1855
 msgid "Scholarships & Applicants"
 msgstr "ทุนการศึกษา & รายชื่อผู้สมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:1878
+#: frontend/templates/scholarship_dashboard.html:1877
 msgid "Total Fund Value"
 msgstr "มูลค่าทุนรวม"
 
-#: frontend/templates/scholarship_dashboard.html:1886
+#: frontend/templates/scholarship_dashboard.html:1885
 msgid "Currently Open"
 msgstr "กำลังเปิดรับสมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:1953
+#: frontend/templates/scholarship_dashboard.html:1952
 msgid "Applications by Status"
 msgstr "สถิติใบสมัครแยกตามสถานะ"
 
-#: frontend/templates/scholarship_dashboard.html:1954
+#: frontend/templates/scholarship_dashboard.html:1953
 msgid "Overall breakdown of application stages"
 msgstr "ภาพรวมการพิจารณาใบสมัครในแต่ละขั้นตอน"
 
-#: frontend/templates/scholarship_dashboard.html:1966
+#: frontend/templates/scholarship_dashboard.html:1965
 msgid "Scholarship Distribution"
 msgstr "สัดส่วนทุนการศึกษาแยกตามหมวดหมู่"
 
-#: frontend/templates/scholarship_dashboard.html:1967
+#: frontend/templates/scholarship_dashboard.html:1966
 msgid "Categorized by scholarship type"
 msgstr "จำแนกตามประเภทของทุนการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:1997
+#: frontend/templates/scholarship_dashboard.html:1996
 msgid "Upcoming Deadlines"
 msgstr "ทุนที่ใกล้หมดเขตที่สุด"
 
-#: frontend/templates/scholarship_dashboard.html:1999
+#: frontend/templates/scholarship_dashboard.html:1998
 msgid "Manage in Admin Console"
 msgstr "จัดการในคอนโซลแอดมิน"
 
-#: frontend/templates/scholarship_dashboard.html:2010
-#: frontend/templates/scholarship_dashboard.html:2029
-#| msgid "Application Period"
+#: frontend/templates/scholarship_dashboard.html:2009
+#: frontend/templates/scholarship_dashboard.html:2027
 msgid "Applications"
 msgstr "ใบสมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:2029
+#: frontend/templates/scholarship_dashboard.html:2027
 msgid "applicant(s)"
 msgstr "คน"
 
-#: frontend/templates/scholarship_dashboard.html:2036
+#: frontend/templates/scholarship_dashboard.html:2034
 msgid "No open scholarships nearing deadline."
 msgstr "ไม่มีทุนที่ใกล้หมดเขตในขณะนี้"
 
-#: frontend/templates/scholarship_dashboard.html:2052
-#| msgid "Scholarships Matching Current Filter"
+#: frontend/templates/scholarship_dashboard.html:2050
 msgid "Data Matching Current Filter"
 msgstr "ข้อมูลตามเงื่อนไขที่เลือก"
 
-#: frontend/templates/scholarship_dashboard.html:2054
-#| msgid "All Scholarships in Period"
+#: frontend/templates/scholarship_dashboard.html:2052
 msgid "All Scholarship & Applicant Records"
 msgstr "ข้อมูลทุนการศึกษาและผู้สมัครทั้งหมด"
 
-#: frontend/templates/scholarship_dashboard.html:2058
-#| msgid ""
-#| "Detailed list of all scholarships included in the statistics above"
+#: frontend/templates/scholarship_dashboard.html:2056
 msgid "Detailed records included in the current analytics period"
 msgstr "รายละเอียดข้อมูลที่นำมาประมวลผลสถิติตามเงื่อนไขที่เลือก"
 
-#: frontend/templates/scholarship_dashboard.html:2073
-#| msgid "Quota & Applicants"
+#: frontend/templates/scholarship_dashboard.html:2071
 msgid "Student Applicants"
 msgstr "รายชื่อนักศึกษาผู้สมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:2087
+#: frontend/templates/scholarship_dashboard.html:2085
 msgid "Scholarship Title"
 msgstr "ชื่อทุนการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:2089
-#: frontend/templates/scholarship_dashboard.html:2111
+#: frontend/templates/scholarship_dashboard.html:2087
+#: frontend/templates/scholarship_dashboard.html:2108
 msgid "Amount / Semester"
 msgstr "มูลค่าทุน / เทอม"
 
-#: frontend/templates/scholarship_dashboard.html:2090
-#: frontend/templates/scholarship_dashboard.html:2114
+#: frontend/templates/scholarship_dashboard.html:2088
+#: frontend/templates/scholarship_dashboard.html:2111
 msgid "Quota & Applicants"
 msgstr "โควตา & ผู้สมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:2092
-#: frontend/templates/scholarship_dashboard.html:2127
+#: frontend/templates/scholarship_dashboard.html:2090
+#: frontend/templates/scholarship_dashboard.html:2124
 msgid "Application Period"
 msgstr "ช่วงเวลารับสมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:2093
+#: frontend/templates/scholarship_dashboard.html:2091
 msgid "Action"
 msgstr "การดำเนินการ"
 
-#: frontend/templates/scholarship_dashboard.html:2103
-#: frontend/templates/scholarship_dashboard.html:2140
+#: frontend/templates/scholarship_dashboard.html:2101
+#: frontend/templates/scholarship_dashboard.html:2137
 msgid "View details"
 msgstr "ดูรายละเอียด"
 
-#: frontend/templates/scholarship_dashboard.html:2116
+#: frontend/templates/scholarship_dashboard.html:2113
 msgid "View student applicants for this scholarship"
 msgstr "ดูรายชื่อนักศึกษาที่สมัครรับทุนนี้"
 
-#: frontend/templates/scholarship_dashboard.html:2135
+#: frontend/templates/scholarship_dashboard.html:2132
 msgid "View and export student applicants for this scholarship"
 msgstr "ดูและส่งออกรายชื่อผู้สมัครรับทุนนี้"
 
-#: frontend/templates/scholarship_dashboard.html:2137
-#| msgid "applicant(s)"
+#: frontend/templates/scholarship_dashboard.html:2134
 msgid "Applicants"
 msgstr "ผู้สมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:2141
+#: frontend/templates/scholarship_dashboard.html:2138
 msgid "View"
 msgstr "เปิดดู"
 
-#: frontend/templates/scholarship_dashboard.html:2159
-#| msgid "scholarship(s) found"
+#: frontend/templates/scholarship_dashboard.html:2154
 msgid "No scholarships found"
 msgstr "ไม่พบทุนการศึกษาตามเงื่อนไขที่ค้นหา"
 
-#: frontend/templates/scholarship_dashboard.html:2173
+#: frontend/templates/scholarship_dashboard.html:2155
+msgid ""
+"There are no scholarships matching the selected semester, month, or year "
+"filter."
+msgstr ""
+"ไม่พบทุนการศึกษาที่ตรงตามเงื่อนไขภาคการศึกษา เดือน หรือปีการศึกษาที่เลือก"
+
+#: frontend/templates/scholarship_dashboard.html:2167
 msgid "Selected Scholarship"
 msgstr "ทุนการศึกษาที่เลือก"
 
-#: frontend/templates/scholarship_dashboard.html:2184
+#: frontend/templates/scholarship_dashboard.html:2177
 msgid "seats"
 msgstr "ที่นั่ง"
 
-#: frontend/templates/scholarship_dashboard.html:2187
-#| msgid "Quota & Applicants"
+#: frontend/templates/scholarship_dashboard.html:2180
 msgid "Total Applicants"
 msgstr "จำนวนผู้สมัครทั้งหมด"
 
-#: frontend/templates/scholarship_dashboard.html:2194
+#: frontend/templates/scholarship_dashboard.html:2180
+#: frontend/templates/scholarship_dashboard.html:2252
+#| msgid "applicant(s)"
+msgid "applicants"
+msgstr "ผู้สมัคร"
+
+#: frontend/templates/scholarship_dashboard.html:2186
 msgid "View all applicants from all scholarships"
 msgstr "ดูรายชื่อผู้สมัครจากทุกทุนการศึกษา"
 
-#: frontend/templates/scholarship_dashboard.html:2196
-#| msgid "All Scholarships in Period"
+#: frontend/templates/scholarship_dashboard.html:2188
 msgid "Show All Scholarships"
 msgstr "แสดงทุนการศึกษาทั้งหมด"
 
-#: frontend/templates/scholarship_dashboard.html:2210
-#: frontend/templates/scholarship_dashboard.html:2227
+#: frontend/templates/scholarship_dashboard.html:2202
+#: frontend/templates/scholarship_dashboard.html:2219
 msgid "Faculty & Major"
 msgstr "คณะ & สาขาวิชา"
 
-#: frontend/templates/scholarship_dashboard.html:2212
-#: frontend/templates/scholarship_dashboard.html:2237
-#| msgid "All Scholarships in Period"
+#: frontend/templates/scholarship_dashboard.html:2204
+#: frontend/templates/scholarship_dashboard.html:2229
 msgid "Applied Scholarship"
 msgstr "ทุนการศึกษาที่สมัคร"
 
-#: frontend/templates/scholarship_dashboard.html:2240
-#| msgid "scholarship(s) found"
+#: frontend/templates/scholarship_dashboard.html:2232
 msgid "View scholarship"
 msgstr "ดูรายละเอียดทุน"
 
-#: frontend/templates/scholarship_dashboard.html:2268
+#: frontend/templates/scholarship_dashboard.html:2257
 msgid "No student applications found"
 msgstr "ไม่พบข้อมูลการสมัครของนักศึกษา"
+
+#: frontend/templates/scholarship_dashboard.html:2258
+#| msgid "View and export student applicants for this scholarship"
+msgid ""
+"There are no student applicants for the scholarships matching the selected "
+"filter."
+msgstr "ไม่พบข้อมูลนักศึกษาผู้สมัครรับทุนที่ตรงตามเงื่อนไขตัวกรองที่เลือก"
 
 #: frontend/templates/scholarship_export_pdf.html:6
 msgid "Scholarship & Student Applicant Report"
 msgstr "รายงานข้อมูลทุนการศึกษาและรายชื่อผู้สมัคร"
 
 #: frontend/templates/scholarship_export_pdf.html:772
-#| msgid "Analytics Dashboard"
 msgid "Back to Dashboard"
 msgstr "กลับสู่แดชบอร์ด"
 

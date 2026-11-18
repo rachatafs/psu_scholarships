@@ -1682,8 +1682,7 @@
   <div class="dash-header-wrap">
     <div class="dash-title-wrap">
       <h1>{% trans "PSU Phuket Scholarships" %} <span>{% trans "Analytics Dashboard" %}</span></h1>
-      <p class="dash-title-sub">{% trans "Comprehensive analytics of scholarship disbursements, student applicants, and
-        allocation quotas" %}</p>
+      <p class="dash-title-sub">{% trans "Comprehensive analytics of scholarship disbursements, student applicants, and allocation quotas" %}</p>
     </div>
   </div>
 
@@ -2019,8 +2018,7 @@
                   </a>
                 </td>
                 <td data-label="{% trans 'Category' %}">
-                  {% include 'components/category_badge.html' with category=s.category
-                  category_display=s.get_category_display %}
+                  {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
                 </td>
                 <td data-label="{% trans 'Amount' %}">
                   <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
@@ -2105,8 +2103,7 @@
                   </a>
                 </td>
                 <td data-label="{% trans 'Category' %}">
-                  {% include 'components/category_badge.html' with category=s.category
-                  category_display=s.get_category_display %}
+                  {% include 'components/category_badge.html' with category=s.category category_display=s.get_category_display %}
                 </td>
                 <td data-label="{% trans 'Amount / Semester' %}">
                   <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
@@ -2149,16 +2146,13 @@
           </table>
         </div>
 
-        {% include 'components/pagination.html' with page_obj=filtered_scholarships page_range=sch_page_range
-        page_param='page_sch' total_count=total_scholarships item_name=_('scholarships') extra_query=sch_extra_query
-        anchor='tabContentScholarships' %}
+        {% include 'components/pagination.html' with page_obj=filtered_scholarships page_range=sch_page_range page_param='page_sch' total_count=total_scholarships item_name=_('scholarships') extra_query=sch_extra_query anchor='tabContentScholarships' %}
 
         {% else %}
         <div class="empty-state-box">
           <span class="material-symbols-outlined empty-icon">search_off</span>
           <div class="empty-title">{% trans "No scholarships found" %}</div>
-          <p class="empty-desc">{% trans "There are no scholarships matching the selected semester, month, or year
-            filter." %}</p>
+          <p class="empty-desc">{% trans "There are no scholarships matching the selected semester, month, or year filter." %}</p>
         </div>
         {% endif %}
       </div>
@@ -2174,8 +2168,7 @@
             </div>
             <h3 class="focus-sch-title">{{ selected_scholarship.localized_title }}</h3>
             <div class="focus-sch-meta">
-              {% include 'components/category_badge.html' with category=selected_scholarship.category
-              category_display=selected_scholarship.get_category_display %}
+              {% include 'components/category_badge.html' with category=selected_scholarship.category category_display=selected_scholarship.get_category_display %}
               <span class="focus-meta-item">
                 {% trans "Value" %}: <strong>฿ {{ selected_scholarship.amount_per_semester|floatformat:0|intcomma
                   }}</strong> / {% trans "semester" %}
@@ -2184,8 +2177,7 @@
                 {% trans "Quota" %}: <strong>{{ selected_scholarship.capacity }}</strong> {% trans "seats" %}
               </span>
               <span class="focus-meta-item">
-                {% trans "Total Applicants" %}: <strong style="color: #0263b8;">{{ total_applications }}</strong> {%
-                trans "applicants" %}
+                {% trans "Total Applicants" %}: <strong style="color: #0263b8;">{{ total_applications }}</strong> {% trans "applicants" %}
               </span>
             </div>
           </div>
@@ -2241,8 +2233,7 @@
                       {{ app.scholarship.localized_title }}
                     </a>
                     <div class="sch-card-badge-row">
-                      {% include 'components/category_badge.html' with category=app.scholarship.category
-                      category_display=app.scholarship.get_category_display %}
+                      {% include 'components/category_badge.html' with category=app.scholarship.category category_display=app.scholarship.get_category_display %}
                     </div>
                   </div>
                 </td>
@@ -2258,16 +2249,13 @@
           </table>
         </div>
 
-        {% include 'components/pagination.html' with page_obj=filtered_applications page_range=app_page_range
-        page_param='page_app' total_count=total_applications item_name=_('applicants') extra_query=app_extra_query
-        anchor='tabContentApplicants' %}
+        {% include 'components/pagination.html' with page_obj=filtered_applications page_range=app_page_range page_param='page_app' total_count=total_applications item_name=_('applicants') extra_query=app_extra_query anchor='tabContentApplicants' %}
 
         {% else %}
         <div class="empty-state-box">
           <span class="material-symbols-outlined empty-icon">person_search</span>
           <div class="empty-title">{% trans "No student applications found" %}</div>
-          <p class="empty-desc">{% trans "There are no student applicants for the scholarships matching the selected
-            filter." %}</p>
+          <p class="empty-desc">{% trans "There are no student applicants for the scholarships matching the selected filter." %}</p>
         </div>
         {% endif %}
       </div>
