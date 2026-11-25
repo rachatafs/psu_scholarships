@@ -286,10 +286,13 @@ def _get_dashboard_analytics_data(request):
 
     has_active_filter = bool(filter_term or filter_month or (filter_year and filter_year != str(now.year)) or selected_scholarship or search_query)
 
-    deadline_soon = Scholarship.objects.filter(
+    deadline_soon_list = list(Scholarship.objects.filter(
         status='active',
-        end_date__gte=now
-    ).order_by('end_date')[:5]
+        end_date__gte=now.date()
+    ).order_by('end_date')[:10])
+    for s in deadline_soon_list:
+        s.days_left = (s.end_date - now.date()).days
+    deadline_soon = deadline_soon_list
 
     return {
         'thai_year': thai_year,

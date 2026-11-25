@@ -2023,7 +2023,26 @@
                 <td data-label="{% trans 'Amount' %}">
                   <strong style="color: #0263b8;">฿ {{ s.amount_per_semester|floatformat:0|intcomma }}</strong>
                 </td>
-                <td data-label="{% trans 'Deadline' %}" class="urgent">{{ s.end_date|date:"j M Y" }}</td>
+                <td data-label="{% trans 'Deadline' %}" class="urgent">
+                  <div style="display: flex; flex-direction: column; gap: 3px;">
+                    <span style="font-weight: 600;">{{ s.end_date|date:"j M Y" }}</span>
+                    {% if s.days_left is not None %}
+                      {% if s.days_left <= 3 %}
+                        <span style="display: inline-block; width: fit-content; background: #ffe4e6; color: #e11d48; font-weight: 700; font-size: 0.72rem; padding: 1px 7px; border-radius: 4px; border: 1px solid #fecdd3;">
+                          {% trans "เหลืออีก" %} {{ s.days_left }} {% trans "วัน" %}
+                        </span>
+                      {% elif s.days_left <= 7 %}
+                        <span style="display: inline-block; width: fit-content; background: #ffedd5; color: #ea580c; font-weight: 600; font-size: 0.72rem; padding: 1px 7px; border-radius: 4px; border: 1px solid #fed7aa;">
+                          {% trans "เหลืออีก" %} {{ s.days_left }} {% trans "วัน" %}
+                        </span>
+                      {% elif s.days_left <= 14 %}
+                        <span style="display: inline-block; width: fit-content; background: #eff6ff; color: #0284c7; font-weight: 600; font-size: 0.72rem; padding: 1px 7px; border-radius: 4px; border: 1px solid #bfdbfe;">
+                          {% trans "เหลืออีก" %} {{ s.days_left }} {% trans "วัน" %}
+                        </span>
+                      {% endif %}
+                    {% endif %}
+                  </div>
+                </td>
                 <td data-label="{% trans 'Applications' %}">{{ s.applications.count }} {% trans "applicant(s)" %}</td>
               </tr>
               {% endfor %}
