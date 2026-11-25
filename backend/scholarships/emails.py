@@ -58,7 +58,7 @@ def send_application_received_email(application):
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[student.user.email],
             html_message=html_message,
-            fail_silently=True,
+            fail_silently=False,
         )
 
 
@@ -182,5 +182,5 @@ def send_status_update_email(application, custom_subject=None, custom_message=No
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[student.user.email],
             html_message=html_message,
-            fail_silently=True,
+            fail_silently=False,
         )

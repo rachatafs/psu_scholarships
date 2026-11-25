@@ -192,9 +192,13 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'scholarships@phuket.psu.ac.th')
 
-# If SMTP credentials are provided, use Gmail SMTP with a 5-second timeout;
-# otherwise use Console backend so applying and updating status never hang or error!
-if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD:
+BREVO_API_KEY = os.environ.get('BREVO_API_KEY', '')
+
+# Render's free tier blocks outbound SMTP (25/465/587), so prefer the HTTPS API (Brevo).
+# Fallbacks: Gmail SMTP (works locally / paid hosting) -> Console (no real sending).
+if BREVO_API_KEY:
+    EMAIL_BACKEND = 'scholarships.brevo_backend.BrevoEmailBackend'
+elif EMAIL_HOST_USER and EMAIL_HOST_PASSWORD:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_PORT = 587
