@@ -1,29 +1,54 @@
 from pathlib import Path
 import os
+import dj_database_url
+from django.utils.translation import gettext_lazy as _
 
-# แก้ BASE_DIR ให้ชี้ขึ้นไป 3 ระดับ
-# เดิม: backend/myproject/ → parent.parent = backend/
-# ใหม่: backend/myproject/ → parent.parent.parent = psu_scholarships/
-BASE_DIR = Path(__file__).resolve().parent.parent.parent  # ← แก้จุดที่ 1
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-SECRET_KEY = 'django-insecure-10%5u*@225j+m!k75bb*h$yv+g#uet%_o61^d+&dq9ob2pfiqk'
+# =============================================
+# ENV LOADER (.env)
+# =============================================
+_env_file = BASE_DIR / '.env'
+if not _env_file.exists():
+    _env_file = Path(__file__).resolve().parent.parent / '.env'
 
-DEBUG = True
+if _env_file.exists():
+    with open(_env_file) as _f:
+        for _line in _f:
+            _line = _line.strip()
+            if _line and not _line.startswith('#') and '=' in _line:
+                _key, _val = _line.split('=', 1)
+                os.environ.setdefault(_key.strip(), _val.strip())
+
+# =============================================
+# SECURITY & HOSTS
+# =============================================
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-10%5u*@225j+m!k75bb*h$yv+g#uet%_o61^d+&dq9ob2pfiqk')
+
+DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = ['*']
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 CSRF_TRUSTED_ORIGINS = [
+    'https://*.onrender.com',
     'https://*.ngrok-free.app',
     'https://*.ngrok-free.dev',
     'https://*.loca.lt',
     'https://*.localhost.run'
 ]
+if RENDER_EXTERNAL_HOSTNAME:
+    CSRF_TRUSTED_ORIGINS.append(f'https://{RENDER_EXTERNAL_HOSTNAME}')
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'social_django',
@@ -32,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,14 +98,21 @@ DATABASES = {
     }
 }
 
+# Override with DATABASE_URL in production (Render, Supabase, Neon, etc.)
+database_url = os.environ.get('DATABASE_URL')
+if database_url:
+    DATABASES['default'] = dj_database_url.config(
+        default=database_url,
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
     {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
-
-from django.utils.translation import gettext_lazy as _
 
 LANGUAGE_CODE = 'en'
 
@@ -94,17 +127,27 @@ USE_TZ = True
 TIME_ZONE = 'Asia/Bangkok'
 
 LOCALE_PATHS = [
-    BASE_DIR / 'backend' / 'locale',  # ← แก้จุดที่ 4
+    BASE_DIR / 'backend' / 'locale',
 ]
 
 # =============================================
 # STATIC & MEDIA
 # =============================================
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'frontend' / 'static']  
+STATICFILES_DIRS = [BASE_DIR / 'frontend' / 'static']
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+    },
+}
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'frontend' / 'media'  
+MEDIA_ROOT = BASE_DIR / 'frontend' / 'media'
 
 # =============================================
 # AUTH & SOCIAL AUTH
@@ -112,21 +155,6 @@ MEDIA_ROOT = BASE_DIR / 'frontend' / 'media'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/auth/redirect/'
 LOGOUT_REDIRECT_URL = '/'
-
-# =============================================
-# ENV LOADER (.env)
-# =============================================
-import os
-from pathlib import Path as _Path
-
-_env_file = _Path(__file__).resolve().parent.parent / '.env'
-if _env_file.exists():
-    with open(_env_file) as _f:
-        for _line in _f:
-            _line = _line.strip()
-            if _line and not _line.startswith('#') and '=' in _line:
-                _key, _val = _line.split('=', 1)
-                os.environ.setdefault(_key.strip(), _val.strip())
 
 # Force HTTPS for redirect URI behind Ngrok/proxy
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

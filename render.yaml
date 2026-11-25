@@ -1,0 +1,24 @@
+databases:
+  - name: psu-scholarships-db
+    databaseName: psu_scholarships_db
+    user: psu_user
+    plan: free
+
+services:
+  - type: web
+    name: psu-scholarships
+    runtime: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn --chdir backend myproject.wsgi:application --bind 0.0.0.0:$PORT"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: psu-scholarships-db
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: PYTHON_VERSION
+        value: "3.12.9"

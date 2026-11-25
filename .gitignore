@@ -9,6 +9,9 @@ backend/venv/
 # Database
 backend/db.sqlite3
 
+# Static collected
+staticfiles/
+
 # Media files
 frontend/media/
 
