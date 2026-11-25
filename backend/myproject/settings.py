@@ -156,10 +156,10 @@ LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/auth/redirect/'
 LOGOUT_REDIRECT_URL = '/'
 
-# Force HTTPS for redirect URI behind Ngrok/proxy
+# Force HTTPS for redirect URI behind Ngrok/proxy or Render
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-# ปิดบังคับ HTTPS สำหรับ localhost (เพื่อให้ส่ง http://127.0.0.1 ได้ถูกต้อง)
-SOCIAL_AUTH_REDIRECT_IS_HTTPS = False
+# เปิด HTTPS เมื่ออยู่บน Render หรือ Production (บน localhost ยังคงเป็น False)
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = bool(os.environ.get('RENDER')) or not DEBUG
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
