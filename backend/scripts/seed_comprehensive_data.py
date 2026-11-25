@@ -161,6 +161,23 @@ def seed_data():
     # Clean up any orphaned users without profile if they collide from previous runs
     User.objects.filter(username__in=[s['username'] for s in students_info], profile__isnull=True).delete()
 
+    # Merge/clean any Google OAuth hashed usernames (e.g. s6630613014db1ea...)
+    for s_info in students_info:
+        clean_uname = s_info['username']
+        for hashed_u in User.objects.filter(username__startswith=clean_uname).exclude(username=clean_uname):
+            clean_u = User.objects.filter(username=clean_uname).first()
+            if clean_u:
+                if hasattr(hashed_u, 'social_auth'):
+                    hashed_u.social_auth.all().update(user=clean_u)
+                if hasattr(hashed_u, 'profile') and hasattr(clean_u, 'profile'):
+                    Application.objects.filter(student=hashed_u.profile).update(student=clean_u.profile)
+                    hashed_u.profile.delete()
+                FavoriteScholarship.objects.filter(user=hashed_u).update(user=clean_u)
+                hashed_u.delete()
+            else:
+                hashed_u.username = clean_uname
+                hashed_u.save()
+
     profiles = []
     for info in students_info:
         # Check if profile already exists by student_id

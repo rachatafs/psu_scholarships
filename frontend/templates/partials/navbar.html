@@ -44,7 +44,7 @@
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle user-nav-pill">
                         {% include 'components/user_avatar.html' %}
-                        <span class="user-name-text">{{ user.username }}</span>
+                        <span class="user-name-text">{% if user.profile.full_name %}{{ user.profile.full_name }}{% else %}{{ user.username }}{% endif %}</span>
                         {% if user.is_staff or user.is_superuser %}
                         <span class="user-role-tag">Admin</span>
                         {% endif %}
