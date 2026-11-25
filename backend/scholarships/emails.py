@@ -5,7 +5,7 @@ from django.utils import translation
 import html
 
 
-def send_application_received_email(application):
+def send_application_received_email(application, sender_name=None):
     """
     Sends an email to the student when their application is successfully submitted,
     localized according to their preferred language.
@@ -51,18 +51,21 @@ def send_application_received_email(application):
             """
 
         plain_message = strip_tags(html_message)
+        default_name = getattr(settings, 'DEFAULT_FROM_NAME', 'PSU Phuket Scholarships')
+        display_name = sender_name or default_name
+        from_email = f"{display_name} <{settings.DEFAULT_FROM_EMAIL}>"
 
         send_mail(
             subject=subject,
             message=plain_message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
+            from_email=from_email,
             recipient_list=[student.user.email],
             html_message=html_message,
             fail_silently=False,
         )
 
 
-def send_status_update_email(application, custom_subject=None, custom_message=None, is_notice=False):
+def send_status_update_email(application, custom_subject=None, custom_message=None, is_notice=False, sender_name=None):
     """
     Sends an email to the student when the admin updates their application status or sends a custom notice,
     localized according to their preferred language.
@@ -175,11 +178,14 @@ def send_status_update_email(application, custom_subject=None, custom_message=No
             """
 
         plain_message = strip_tags(html_message)
+        default_name = getattr(settings, 'DEFAULT_FROM_NAME', 'PSU Phuket Scholarships')
+        display_name = sender_name or default_name
+        from_email = f"{display_name} <{settings.DEFAULT_FROM_EMAIL}>"
 
         send_mail(
             subject=subject,
             message=plain_message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
+            from_email=from_email,
             recipient_list=[student.user.email],
             html_message=html_message,
             fail_silently=False,

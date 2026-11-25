@@ -28,9 +28,13 @@ class BrevoEmailBackend(BaseEmailBackend):
         if not message.recipients():
             return False
 
-        name, addr = parseaddr(message.from_email or settings.DEFAULT_FROM_EMAIL)
+        raw_from = message.from_email or getattr(settings, 'DEFAULT_FROM_EMAIL', '')
+        name, addr = parseaddr(raw_from)
+        if not name:
+            name = getattr(settings, 'DEFAULT_FROM_NAME', 'PSU Phuket Scholarships')
+
         payload = {
-            'sender': {'email': addr, **({'name': name} if name else {})},
+            'sender': {'email': addr, 'name': name},
             'to': [{'email': r} for r in message.to],
             'subject': message.subject,
         }
