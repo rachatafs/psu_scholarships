@@ -288,10 +288,10 @@ def _get_dashboard_analytics_data(request):
 
     deadline_soon_list = list(Scholarship.objects.filter(
         status='active',
-        end_date__gte=now.date()
+        end_date__gte=now
     ).order_by('end_date')[:10])
     for s in deadline_soon_list:
-        s.days_left = (s.end_date - now.date()).days
+        s.days_left = (s.end_date - now).days
     deadline_soon = deadline_soon_list
 
     return {
