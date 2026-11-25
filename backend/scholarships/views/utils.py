@@ -9,6 +9,26 @@ CATEGORY_LABELS = {
     'lunch': _('Lunch Scholarships'),
 }
 
+def auto_cleanup_expired_scholarships(purge=False):
+    """
+    Automatically clean up expired scholarships:
+    - If purge=True: permanently deletes all expired scholarships (end_date < today).
+    - If purge=False:
+      1. Permanently deletes any expired scholarship with 0 applications.
+      2. Marks any expired scholarship with applications as status='closed' so students cannot apply.
+    """
+    from ..models import Scholarship
+    today = timezone.now().date()
+    if purge:
+        deleted, _ = Scholarship.objects.filter(end_date__lt=today).delete()
+        return deleted
+    
+    # Permanently delete expired scholarships that have no applications
+    Scholarship.objects.filter(end_date__lt=today, applications__isnull=True).delete()
+    # Mark remaining expired scholarships as closed
+    Scholarship.objects.filter(end_date__lt=today, status='active').update(status='closed')
+
+
 def enrich_scholarships(scholarships_qs, user):
     """
     Enriches scholarship objects with user-specific and deadline status:

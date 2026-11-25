@@ -11,6 +11,7 @@ from django.utils.translation import gettext as _
 from django.utils import translation
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from ..models import Scholarship, Application
+from .utils import auto_cleanup_expired_scholarships
 
 logger = logging.getLogger(__name__)
 
@@ -35,6 +36,8 @@ def admin_dashboard(request):
         return redirect('login')
     if not (request.user.is_staff or request.user.is_superuser):
         return redirect('home')
+
+    auto_cleanup_expired_scholarships()
 
     apps = Application.objects.select_related(
         'student', 'scholarship', 'student__user'
@@ -328,6 +331,7 @@ def _get_dashboard_analytics_data(request):
 
 @staff_member_required
 def scholarship_dashboard(request):
+    auto_cleanup_expired_scholarships()
     data = _get_dashboard_analytics_data(request)
 
     active_tab = request.GET.get('tab', 'overview')
@@ -422,4 +426,11 @@ def delete_scholarship(request, pk):
         title = scholarship.title
         scholarship.delete()
         messages.success(request, _('Scholarship "%(title)s" has been deleted.') % {'title': title})
-    return redirect('scholarships')
+    return redirect('scholarship_dashboard')
+
+@staff_member_required
+def purge_expired_scholarships(request):
+    if request.method == 'POST':
+        count = auto_cleanup_expired_scholarships(purge=True)
+        messages.success(request, _('Deleted %(count)d expired scholarships successfully.') % {'count': count or 0})
+    return redirect('scholarship_dashboard')

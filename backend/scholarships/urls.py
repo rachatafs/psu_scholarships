@@ -28,6 +28,7 @@ urlpatterns = [
     path('dashboard/export-pdf/', views.export_dashboard_pdf, name='export_dashboard_pdf'),
     path('application/<int:pk>/update/', views.update_application, name='update_application'),
     path('scholarship/<int:pk>/delete/', views.delete_scholarship, name='delete_scholarship'),
+    path('scholarship/purge-expired/', views.purge_expired_scholarships, name='purge_expired_scholarships'),
 
     # ── User Guides (Role-Based) ──────────────────────────────────
     path('guide/', views.guide_redirect, name='guide_redirect'),

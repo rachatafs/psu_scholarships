@@ -6,11 +6,12 @@ from django.utils import timezone
 from django.utils.translation import gettext as _
 from django.http import JsonResponse
 from ..models import Scholarship, Application, StudentProfile, Document, FavoriteScholarship
-from .utils import enrich_scholarships, CATEGORY_LABELS
+from .utils import enrich_scholarships, CATEGORY_LABELS, auto_cleanup_expired_scholarships
 
 logger = logging.getLogger(__name__)
 
 def home(request):
+    auto_cleanup_expired_scholarships()
     today = timezone.now().date()
     categories = [
         {
@@ -57,9 +58,11 @@ def home(request):
     })
 
 def scholarships(request):
+    auto_cleanup_expired_scholarships()
     return render(request, 'scholarships/category.html', {})
 
 def scholarship_list(request, category):
+    auto_cleanup_expired_scholarships()
     query = request.GET.get('q', '')
     today = timezone.now().date()
 
