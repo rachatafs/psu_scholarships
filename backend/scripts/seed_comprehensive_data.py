@@ -25,6 +25,7 @@ def seed_data():
     )
     admin_user.is_staff = True
     admin_user.is_superuser = True
+    admin_user.set_password('psu12345')
     admin_user.save()
 
     # 2. Student User Definitions

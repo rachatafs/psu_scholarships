@@ -10,3 +10,6 @@ python backend/manage.py collectstatic --no-input
 
 # Run database migrations
 python backend/manage.py migrate
+
+# Seed database with initial scholarships, categories, and accounts
+python backend/scripts/seed_comprehensive_data.py
