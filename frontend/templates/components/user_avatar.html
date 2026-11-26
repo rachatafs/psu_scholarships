@@ -1,5 +1,6 @@
 {% if user.profile and user.profile.profile_image %}
-<img src="{{ user.profile.profile_image.url }}" alt="{{ user.username }}" class="user-avatar-img">
+<img src="{{ user.profile.profile_image.url }}" alt="{{ user.username }}" class="user-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='inline-flex';">
+<span class="user-avatar-circle" style="display:none;">{{ user.profile.full_name|default:user.username|first|upper }}</span>
 {% elif user.profile and user.profile.full_name %}
 <span class="user-avatar-circle">{{ user.profile.full_name|first|upper }}</span>
 {% else %}

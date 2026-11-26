@@ -84,19 +84,41 @@ def setup_user_and_profile(backend, details, user=None, is_new=False, *args, **k
         user.save()
 
     # Ensure StudentProfile exists
-    profile, _ = StudentProfile.objects.get_or_create(user=user)
     student_id = prefix[1:] if (prefix.startswith('s') and prefix[1:].isdigit()) else prefix
-    if not profile.student_id:
-        profile.student_id = student_id
+    profile = getattr(user, 'profile', None)
+    if not profile:
+        # Resolve any conflicting profile with the same student_id
+        conflict = StudentProfile.objects.filter(student_id=student_id).exclude(user=user).first()
+        if conflict:
+            if not conflict.applications.exists() and not hasattr(conflict.user, 'social_auth') and conflict.user.username != user.username:
+                conflict_user = conflict.user
+                conflict.delete()
+                conflict_user.delete()
+            else:
+                student_id = f"{student_id}_{user.id}"
 
-    # Populate full_name from Google OAuth if empty
-    if not profile.full_name:
         first = details.get('first_name', '').strip()
         last = details.get('last_name', '').strip()
         full = f"{first} {last}".strip()
-        if full:
-            profile.full_name = full
-        elif prefix == 's6630613014':
-            profile.full_name = 'รชต ไผ่สังข์ (Rachata Faisang)'
+        if not full and prefix == 's6630613014':
+            full = 'รชต ไผ่สังข์ (Rachata Faisang)'
 
-    profile.save()
+        profile = StudentProfile.objects.create(
+            user=user,
+            student_id=student_id,
+            full_name=full or user.username,
+            faculty='computing',
+            major='',
+            gpax=3.65 if prefix == 's6630613014' else 0.0,
+        )
+    else:
+        # Populate full_name from Google OAuth if empty
+        if not profile.full_name:
+            first = details.get('first_name', '').strip()
+            last = details.get('last_name', '').strip()
+            full = f"{first} {last}".strip()
+            if full:
+                profile.full_name = full
+            elif prefix == 's6630613014':
+                profile.full_name = 'รชต ไผ่สังข์ (Rachata Faisang)'
+            profile.save(update_fields=['full_name'])

@@ -25,7 +25,7 @@
                     <div class="profile-header-banner">
                         <div class="profile-avatar-wrapper">
                             {% if student_profile and student_profile.profile_image %}
-                                <img src="{{ student_profile.profile_image.url }}" alt="Profile" class="avatar-image" id="avatarPreview">
+                                <img src="{{ student_profile.profile_image.url }}" alt="Profile" class="avatar-image" id="avatarPreview" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iI2UxZTdmZSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzgiIHI9IjE4IiBmaWxsPSIjMDI4NGM3Ii8+PHBhdGggZD0iTTIwIDgwIGMwLTIwIDEzLjMtMzAgMzAtMzAgczMwIDEwIDMwIDMwIiBmaWxsPSIjMDI4NGM3Ii8+PC9zdmc+';">
                             {% else %}
                                 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1MCIgZmlsbD0iI2UxZTdmZSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMzgiIHI9IjE4IiBmaWxsPSIjMDI4NGM3Ii8+PHBhdGggZD0iTTIwIDgwIGMwLTIwIDEzLjMtMzAgMzAtMzAgczMwIDEwIDMwIDMwIiBmaWxsPSIjMDI4NGM3Ii8+PC9zdmc+" alt="Profile" class="avatar-image" id="avatarPreview">
                             {% endif %}
@@ -45,6 +45,23 @@
                             <p class="profile-student-id">
                                 {% trans "Student ID" %}: <strong>{{ student_profile.student_id|default:user.username }}</strong>
                             </p>
+                            {% if student_profile %}
+                            <div class="profile-meta-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;">
+                                {% if student_profile.faculty %}
+                                <span class="badge-tag-info" style="font-size:0.78rem; padding:3px 8px; border-radius:4px; background:#e0f2fe; color:#0369a1; font-weight:500;">
+                                    {{ student_profile.get_faculty_display }}
+                                </span>
+                                {% endif %}
+                                {% if student_profile.major %}
+                                <span class="badge-tag-info" style="font-size:0.78rem; padding:3px 8px; border-radius:4px; background:#f1f5f9; color:#475569;">
+                                    {{ student_profile.major }}
+                                </span>
+                                {% endif %}
+                                <span class="badge-tag-info" style="font-size:0.78rem; padding:3px 8px; border-radius:4px; background:#ecfdf5; color:#047857; font-weight:600;">
+                                    GPAX: {{ student_profile.gpax|floatformat:2 }}
+                                </span>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
 
@@ -57,6 +74,11 @@
                         <div class="form-group-modern">
                             <label class="field-label">{% trans "Student ID" %}</label>
                             <input type="text" name="student_id" class="modern-text-input" value="{{ student_profile.student_id|default:user.username }}" placeholder="{% trans 'Student ID' %}">
+                        </div>
+
+                        <div class="form-group-modern">
+                            <label class="field-label">{% trans "Cumulative GPAX" %} (0.00 - 4.00)</label>
+                            <input type="number" step="0.01" min="0.00" max="4.00" name="gpax" class="modern-text-input" value="{{ student_profile.gpax|floatformat:2 }}" placeholder="3.50">
                         </div>
 
                         <div class="form-group-modern">
@@ -104,8 +126,18 @@
                     </div>
                     <div class="side-metrics-list">
                         <div class="side-metric-item">
+                            <span class="m-label">{% trans "Cumulative GPAX" %}</span>
+                            <strong class="m-val" style="color:var(--psu-blue-600, #0284c7); font-size:1.15rem;">{{ student_profile.gpax|floatformat:2 }}</strong>
+                        </div>
+
+                        <div class="side-metric-item">
+                            <span class="m-label">{% trans "Faculty" %}</span>
+                            <strong class="m-val" style="font-size:0.9rem;">{{ student_profile.get_faculty_display|default:'-' }}</strong>
+                        </div>
+
+                        <div class="side-metric-item">
                             <span class="m-label">{% trans "Applications Submitted" %}</span>
-                            <strong class="m-val">{{ applications|length }} {% trans "item(s)" %}</strong>
+                            <strong class="m-val">{{ status_counts.all }} {% trans "item(s)" %}</strong>
                         </div>
 
                         <div class="side-metric-item">
