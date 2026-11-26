@@ -1,12 +1,16 @@
+import logging
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import JsonResponse
 from django.utils.translation import gettext as _
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count, Q
 from ..models import StudentProfile, Application
+
+logger = logging.getLogger(__name__)
 
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
@@ -71,38 +75,32 @@ def profile(request):
         )
 
     if request.method == 'POST':
-        full_name = request.POST.get('full_name', '').strip()
-        student_id = request.POST.get('student_id', '').strip()
-        faculty = request.POST.get('faculty', '').strip()
-        major = request.POST.get('major', '').strip()
-        phone_number = request.POST.get('phone_number', '').strip()
-        gpax_raw = request.POST.get('gpax', '').strip()
-        profile_image = request.FILES.get('profile_image')
-
-        # Fallback student_id if empty
-        if not student_id:
-            student_id = student_profile.student_id if (student_profile and student_profile.student_id) else request.user.username
-
-        # Parse GPAX safely (range 0.00 - 4.00)
         try:
-            gpax = float(gpax_raw) if gpax_raw else (student_profile.gpax if student_profile else 0.0)
-            gpax = max(0.0, min(4.0, round(gpax, 2)))
-        except (ValueError, TypeError):
-            gpax = student_profile.gpax if student_profile else 0.0
+            full_name = request.POST.get('full_name', '').strip()
+            student_id = request.POST.get('student_id', '').strip()
+            faculty = request.POST.get('faculty', '').strip()
+            major = request.POST.get('major', '').strip()
+            phone_number = request.POST.get('phone_number', '').strip()
+            gpax_raw = request.POST.get('gpax', '').strip()
+            profile_image = request.FILES.get('profile_image')
 
-        # Prevent student_id duplicate conflict with other users
-        conflict = StudentProfile.objects.filter(student_id=student_id).exclude(user=request.user).first()
-        if conflict:
-            # If the conflict is with a phantom seeded user without real email or oauth, merge safely
-            if not conflict.applications.exists() and not hasattr(conflict.user, 'social_auth') and conflict.user.username != request.user.username:
-                conflict_user = conflict.user
-                conflict.delete()
-                conflict_user.delete()
-            else:
+            # Fallback student_id if empty
+            if not student_id:
+                student_id = student_profile.student_id if (student_profile and student_profile.student_id) else request.user.username
+
+            # Parse GPAX safely (range 0.00 - 4.00)
+            try:
+                gpax = float(gpax_raw) if gpax_raw else (student_profile.gpax if student_profile else 0.0)
+                gpax = max(0.0, min(4.0, round(gpax, 2)))
+            except (ValueError, TypeError):
+                gpax = student_profile.gpax if student_profile else 0.0
+
+            # Prevent student_id duplicate conflict with other users
+            conflict = StudentProfile.objects.filter(student_id=student_id).exclude(user=request.user).first()
+            if conflict:
                 messages.error(request, _('This Student ID (%(sid)s) is already in use by another account.') % {'sid': student_id})
                 return redirect('profile')
 
-        try:
             if student_profile:
                 student_profile.full_name = full_name or student_profile.full_name or request.user.username
                 student_profile.student_id = student_id
@@ -125,16 +123,17 @@ def profile(request):
                     profile_image=profile_image if profile_image else None,
                 )
 
-            # Sync User first/last name
+            # Sync User first/last name safely via QuerySet update
             if full_name:
                 parts = full_name.split(' ', 1)
-                request.user.first_name = parts[0]
-                request.user.last_name = parts[1] if len(parts) > 1 else ''
-                request.user.save(update_fields=['first_name', 'last_name'])
+                User.objects.filter(pk=request.user.pk).update(
+                    first_name=parts[0],
+                    last_name=parts[1] if len(parts) > 1 else ''
+                )
 
             messages.success(request, _('Profile updated successfully!'))
         except Exception as e:
-            logger.error("Failed to update profile for %s: %s", request.user.username, e)
+            logger.error("Failed to update profile for %s: %s", request.user.username, e, exc_info=True)
             messages.error(request, _('Could not save profile: %(err)s') % {'err': str(e)})
 
         return redirect('profile')

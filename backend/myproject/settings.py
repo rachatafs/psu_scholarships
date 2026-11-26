@@ -148,6 +148,8 @@ STORAGES = {
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'frontend' / 'media'
+os.makedirs(MEDIA_ROOT / 'profiles', exist_ok=True)
+os.makedirs(MEDIA_ROOT / 'documents', exist_ok=True)
 
 # =============================================
 # AUTH & SOCIAL AUTH
