@@ -63,7 +63,7 @@ def profile(request):
         fallback_id = request.user.username
         if StudentProfile.objects.filter(student_id=fallback_id).exists():
             fallback_id = f"{request.user.username}_{request.user.id}"
-        student_profile, _ = StudentProfile.objects.get_or_create(
+        student_profile, _created = StudentProfile.objects.get_or_create(
             user=request.user,
             defaults={
                 'student_id': fallback_id,
